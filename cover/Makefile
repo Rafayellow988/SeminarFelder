@@ -29,7 +29,10 @@ back.pdf:	back.tex buchcover.pdf
 
 lncover.pdf:	lncover.tex
 	pdflatex lncover.tex
+xoffset = 84
+yoffset = 94
 lncover.png:	lncover.pdf Makefile
-	convert -density 300 -extract 2007x2834+0+0 lncover.pdf \
-		lncover.png
+	convert -density 300 -extract					\
+		`expr 2008 - $(xoffset)`x`expr 2835 - $(yoffset)`+$(xoffset)+$(yoffset) \
+		-background white -flatten lncover.pdf lncover.png
 
