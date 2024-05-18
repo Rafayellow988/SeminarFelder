@@ -3,7 +3,7 @@
 #
 # (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
 #
-all:	buchcover.jpg backcover.jpg front.pdf back.pdf lncover.png
+all:	buchcover.jpg backcover.jpg front.pdf back.pdf
 
 buchcover.pdf:	buchcover.tex
 	pdflatex buchcover.tex
@@ -26,13 +26,4 @@ front.pdf:	front.tex buchcover.pdf
 
 back.pdf:	back.tex buchcover.pdf
 	pdflatex back.tex
-
-lncover.pdf:	lncover.tex
-	pdflatex lncover.tex
-xoffset = 84
-yoffset = 94
-lncover.png:	lncover.pdf Makefile
-	convert -density 300 -extract					\
-		`expr 2008 - $(xoffset)`x`expr 2835 - $(yoffset)`+$(xoffset)+$(yoffset) \
-		-background white -flatten lncover.pdf lncover.png
 
