@@ -5,7 +5,7 @@
 #
 all:	buchcover.jpg backcover.jpg front.pdf back.pdf
 
-buchcover.pdf:	buchcover.tex
+buchcover.pdf:	buchcover.tex teilnehmer.tex
 	pdflatex buchcover.tex
 
 buchcover.png:	buchcover.pdf  Makefile
