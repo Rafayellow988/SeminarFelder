@@ -81,65 +81,86 @@
 	{\hbox to\hsize{\hfill%
 	\sf \fontsize{13}{5}\selectfont Andreas Müller}};
 
+\def\teilnehmer#1#2{
+\node at ({\einschlag+2*\gelenk+\ruecken+1.5*\breite},{18.4-(#1)*0.65})
+	[color=white,scale=1]
+	{\hbox to\hsize{\hfill%
+	\sf \fontsize{13}{5}\selectfont
+	{#2}
+	}};
+}
+
 \ifthenelse{\boolean{teilnehmer}}{
-\node at ({\einschlag+2*\gelenk+\ruecken+1.5*\breite},18.4)
-	[color=white,scale=1]
-	{\hbox to\hsize{\hfill%
-	\sf \fontsize{13}{5}\selectfont
-	Orlando Ingram,
-	Cassandra Sutton,
-	Shelley Kim,
-	Israel Romero
-	}};
+\teilnehmer{0}{
+	Sofia Aaltonen,		% B
+	Emir Arslan, 		% B
+	Joshua Bächle,		% EEU
+	Jero Barahona%,		% E
+}
 
-\node at ({\einschlag+2*\gelenk+\ruecken+1.5*\breite},17.75)
-	[color=white,scale=1]
-	{\hbox to\hsize{\hfill%
-	\sf \fontsize{13}{5}\selectfont
-	Charlie Mccoy,
-	Tabitha Moore,
-	Wendell Reynolds,
-	Marion Higgins
-	}};
+\teilnehmer{1}{
+	Ricardo Rafel Barbosa Monteiro,	% B
+	Diego Beer%,		% EEU
+}
 
-\node at ({\einschlag+2*\gelenk+\ruecken+1.5*\breite},17.1)
-	[color=white,scale=1]
-	{\hbox to\hsize{\hfill%
-	\sf \fontsize{13}{5}\selectfont
-	Alexander Blake,
-	Kirk Rodriguez,
-	Caleb Mcdaniel,
-	Mack Rice
-	}};
+\teilnehmer{2}{
+	Damian Birchler,	% EEU
+	Flurin Brechbühler,	% E
+	Nino Briker%,		% E
+}
  
-\node at ({\einschlag+2*\gelenk+\ruecken+1.5*\breite},16.45)
-	[color=white,scale=1]
-	{\hbox to\hsize{\hfill%
-	\sf \fontsize{13}{5}\selectfont
-	Nathan Stewart,
-	Kristi Cummings,
-	Dave Munoz,
-	Isaac Spencer
-	}};
+\teilnehmer{3}{
+	Philip Brun,		% E
+	Roman Cvijanovic,	% I
+	Nicola Dall'Acqua%,	% I
+}
 
-\node at ({\einschlag+2*\gelenk+\ruecken+1.5*\breite},15.8)
-	[color=white,scale=1]
-	{\hbox to\hsize{\hfill%
-	\sf \fontsize{13}{5}\selectfont
-	Dwayne Ray
-	}};
+\teilnehmer{4}{
+	Yanick Diggelmann,	% E
+	Robin Eberle,		% MSE
+	Sebastian Eggli%,	% EEU
+}
 
-\node at ({\einschlag+2*\gelenk+\ruecken+1.5*\breite},15.15)
-	[color=white,scale=1]
-	{\hbox to\hsize{\hfill%
-	\sf \fontsize{13}{5}\selectfont
-	}};
+\teilnehmer{5}{
+	Cedric Erb,		% EEU
+	Damien Flury,		% I
+	Roman Häusermann%,	% EEU
+}
 
-\node at ({\einschlag+2*\gelenk+\ruecken+1.5*\breite},14.5)
-	[color=white,scale=1]
-	{\hbox to\hsize{\hfill%
-	\sf \fontsize{13}{5}\selectfont
-	}};
+\teilnehmer{6}{
+	Laurin Heitzer,		% E
+	Andrin Kälin,		% E
+	Alain Keller%,		% MSE
+}
+
+\teilnehmer{7}{
+	Martina Raphaela Knobel,	% E
+	Gian Kraus,		% E
+	Patrik Müller%,		% MSE
+}
+
+\teilnehmer{8}{
+	Lynn Nüesch,		% EEU
+	Mike Peng,		% E
+	Andrin Rütsche%,		% E
+}
+
+\teilnehmer{9}{
+	Sagithiya Saseekaran,	% B
+	Lukas Schöpf,		% MSE
+	David Solari%,		% EEU
+}
+
+\teilnehmer{10}{
+	Fabian Steiner,		% E
+	Loris Trüb,		% EEU
+	Alexander Ulrich,	% EEU
+	Pascal Widmer%,		% E
+}
+
+\teilnehmer{11}{
+	Tobias Zuber%,		% M-I
+}
 
 }{}
  
