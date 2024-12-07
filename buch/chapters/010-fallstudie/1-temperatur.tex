@@ -1,0 +1,273 @@
+%
+% 1-temperatur.tex
+%
+% (c) 2024 Prof Dr Andreas Müller
+%
+
+%
+% Temperatur
+%
+\section{Temperatur
+\label{buch:fallstudie:temperatur}}
+\kopfrechts{Temperatur}
+Die Temperatur ist eine Grösse, die ausdrückt, wie warm oder kalt ein
+physikalisches ist.
+Die wichtigste Eigenschaft der Temperatur ist zweifellos, dass sie
+sich zwischen sich in Kontakt befindlichen Körpern ausgleicht.
+Wird ein heisser Körper mit einem kalten Körper in Berührung gebracht,
+beginnt sich die Temperatur auszugleichen.
+Zwei Körper haben genau die gleiche Temperatur, wenn sie längere
+Zeit in Kontakt waren und sich die Temperaturen angleichen konnten.
+
+Diese Eigenschaft reicht bereits aus, verschiedene zunächst willkürliche
+Temperaturskalen zu definieren.
+Zum Beispiel beobachtet man, dass sich ein Gas bei gleichem Umgebungsdruck
+ausdehnt, wenn die Temperatur erhöht wird.
+Das Ausmass der Ausdehnung kann als Mass für die Temperatur verwendet
+werden.
+Ähnlich kann auch die Ausdehnung von Quecksilber in einer Glaskapillare
+verwendet werden.
+Teilt man die Ausdehnung zwischen der Temperatur gefrierenden Wassers und
+siedenden Wassers in 100 gleiche Teile, erhält man die Celsius-Temperaturskala.
+Allerdings zeigt sich bei genauer Messung, dass die Ausdehnung von
+Quecksilber nicht genau linear ist, so dass sich eine kleine Abweichung
+von einem auf der Ausdehnung eines Gases basierenden Thermometer
+ergibt.
+
+Da die Temperatur nach obiger Definition nur durch Temperaturausgleich
+gemessen werden, wird die Messung durch die Wärmekapazität des Messgeräts
+beeinflusst.
+Hat das Messgerät stark abweichende Temepratur, ändert sich die Temperatur
+des zu messenden Körpers durch Kontakt sehr stark.
+Eine sinnvolle Temperaturangabe ist damit nicht mehr möglich.
+Der technische Fortschritt hat in der Vergangenheit aber ermöglicht, sehr
+kleine Temepratursensoren zu konstruieren.
+Heutzutage enthalten sogar Mikrochips wie Cmoputerprozessoren spezielle
+Dioden, die dazu da sind, die Temperatur des Chips zu überwachen und damit
+den Chip vor Überhitzung zu schützen.
+Wir nehmen daher im folgenden idealisierend an, dass die Temperatur beliebig
+kleiner Teilkörper genügend genau gemessen werden kann.
+
+\subsection{Das Temperaturfeld}
+Der Ausgleich der Temperatur braucht Zeit.
+Sind verschiedene Teile eines Körpers, dann werden diese Unterschiede
+mit der Zeit zwar kleiner werden, aber je kleiner die Unterschiede sind,
+desto langsamer wird auch der Ausgleich sein.
+Die Temperatur eines Körpers ist daher eine Idealisierung, die nur
+nach sehr langer Wartezeit erreicht werden kann.
+Genau genommen ist die Temperatur eines Körpers notwendigerweise eine
+Funktion $T(t,x,y,z)$, die sowohl von der Zeit wie auch von den
+Ortskoordinaten abhängt.
+Wir nennen sie für die Zwecke dieses Kapitels das {\em Temperaturfeld}.
+Das Temperaturfeld eines isolierten Körpers konvergiert für
+$t\to\infty$ gegen die ideale Temperatur des Körpers.
+
+\subsection{Lokalität und Ableitungen}
+In der Thermodynamik wird ausserdem gelehrt, dass die Temperatur die
+mittlere kinetische Energie der Atome oder Moleküle des Körpers wiedergibt.
+Die statistische Mechanik untersucht, wie sich die kinetische Energie
+zwischen verschiedenen Teilchen durch Stösse ausgleicht, bis sich eine
+stationäre Verteilung einstellt.
+Aus diesem Mechanismus kann man sofort schliessen, dass der
+Temperaturausgleich ein {\em lokales} Phänomen ist.
+Stellt man in einem Medium an zwei verschiedenen Punkten verschiedene
+Temperaturen fest, kann sich die Temperatur nur ausgleichen, wenn
+sich auch die Temperatur an allen Punkten zwischen diesen beiden
+ausgleicht.
+Die Gleichungen, die die Veränderung der Temperatur in einem Punkt
+mit der Zeit beschreiben, dürfen also nur die Information verwenden,
+die sich aus dem Temperaturfeld an diesem Punkt ableiten lässt.
+Nehmen wir an, dass die Funktion sich in einem Punkt in eine konvergente
+Taylor-Reihe entwickeln lässt, dann kann man
+\[
+T(t,x)
+=
+T(t,x_0) + DT(t,x_0)\, (x-x_0) + \frac{1}{2!} D^2T(t,x_0)(x-x_0,x-x_0) + \dots
+\]
+schreiben.
+Die Ableitungen\footnote{Die Notation für die Ableitungen wird
+in späteren Kapiteln definiert und erklärt, für die aktuelle Diskussion
+kann sich der mit der Notation nicht vertraute Leser mit dem eindimensionalen
+Fall $D^1f(x) = f'(x)$, $D^2f(x) = f''(x)$ oder $D^kf(x)=f^{(k)}(x)$ behelfen.}
+\[
+T(t,x_0), \quad
+DT(t,x_0), \quad
+D^2(t,x_0),\quad \dots\quad
+D^k(t,x_0),\quad\dots
+\]
+sind Grössen, die nur von der Temperatur in einer beliebig kleinen
+Umgebung des Punktes $x_0$ abhängen.
+Es bleibt die offene Frage, ob sich auch noch weitere Grössen finden lassen.
+
+\begin{aufgabe}
+Es muss eine Theorie der lokalen Operatoren entwickelt werden, mit deren
+Naturgesetze formuliert werden können.
+Die Theorie muss den klassischen Begriff der Ableitung umfassen.
+\end{aufgabe}
+
+Die Geschwindigkeit, mit der sich die Temperatur in einem Punkt
+an die Temperatur der näheren Umgebung anpasst, hängt von den
+Ableitungen ab in diesem Punkt ab.
+Die Zeitableitung von $T$ muss daher eine Funktion der Ableitungen
+sein.
+Die Zeitentwicklungsgleichung es muss daher eine Differentialgleichung
+der Form
+\begin{equation}
+\frac{\partial T}{\partial t}
+=
+F\biggl(x,
+T,
+\frac{\partial T}{\partial x},
+\frac{\partial^2 T}{\partial x^2},
+\dots
+\biggr)
+\label{buch:fallstudie:eqn:allgwaermeleitung}
+\end{equation}
+sein.
+
+\subsection{Symmetrien}
+Es gibt keine experimentellen Anzeichen, dass die Wärmeausbreitung
+eine Richtung bevorzugt.
+Die Differentialgleichung
+\eqref{buch:fallstudie:eqn:allgwaermeleitung}
+muss daher bei einer Spiegelung $x\mapsto -x$ unverändert bleiben.
+Bei einer solchen Spiegelung ändern die ungeraden Ableitungen
+das Vorzeichen, die Funktion $F$ muss daher gerade in den Argumenten
+für die ungeraden Ableitungen sein.
+In der einfachsten Form einer Wärmeleitungsgleichung ist die rechte
+Seite eine Funktion nur von $x$ und der zweiten Ableitung von $T$.
+
+\subsection{Die Wärmeleitungsgleichung}
+Aus Experimenten weiss man aber auch, dass die Geschwindigkeit der
+Temperaturänderung proportional ist zur Temperaturdifferenz.
+Die Temperaturänderungsrate im Punkt $x$, die von der Temperaturdifferenz
+zum benachbarten Punkt $x+h$ verursacht wird, ist daher
+\begin{align*}
+\biggl(\frac{\partial T}{\partial t}\biggr)_{\text{rechts}}
+&=
+a(h) (T(x+h)-T(x))
+\intertext{für eine geeignete, von $h$ abhängige Proportionalitätskonstante
+$a(h)$.
+Die vom linken Nachbarpunkt beigesteuerte Änderungsrate ist}
+\biggl(\frac{\partial T}{\partial t}\biggr)_{\text{links}}
+&=
+a(h) (T(x-h)-T(x))
+\intertext{Die gesamte Änderungsrate ist daher}
+\frac{\partial T}{\partial t}
+&=
+a(h) \bigl(T(x+h) - 2T(x) + T(x-h)\bigr).
+\end{align*}
+Wenn die Temperaturdifferenzen zu den Nachbarpunkten gleich gross 
+sind, verschwindet die Änderungsrate.
+Sie kann daher nur von der zweiten Ableitung, $a(h)$ muss so
+sein, dass
+\[
+\lim_{h\to 0}
+a(h) \bigl( T(x+h)-2T(x)+T(x-h)\bigr)
+=
+a_0
+\frac{\partial T^2}{\partial x^2}
+\]
+ist.
+Damit ist die eindimensionale Wärmeleitungsgleichung
+\begin{equation}
+\frac{\partial T}{\partial t}
+=
+\kappa \frac{\partial^2 T}{\partial x^2}
+\label{buch:fallstudie:waermeleitungsgleichung}
+\end{equation}
+gefunden.
+Für beliebige Dimension ist die zweite Ableitung auf der rechten
+Seite durch den Laplace-Operator
+\[
+\Delta T
+=
+\frac{\partial^2 T}{\partial x_1^2}
++\dots+
+\frac{\partial^2 T}{\partial x_n^2}
+\]
+zu ersetzen.
+
+\subsection{Wohldefinierte Lösungen}
+Die Verwendung der Ableitungen führt jedoch auf ein anderes Problem.
+Die statistische Theorie der Wärmelehre erklärt auch, dass die Temperatur
+ein einem kleinen Teil eines Körpers zufälligen Fluktuationen unterworfen
+ist, die umso grösser werden können, je kleiner der Teil ist.
+Die Ableitung ist der Grenzwert der Differenzenquotienten
+\[
+\lim_{s\to 0}
+\frac{T(x_0+s\Delta x) - T(x_0)}{s}.
+\]
+Die Differenz im Zähler wird aber für für kleiner werdendes $s$ immer
+weniger sinnvoll.
+Die Verwendung der Ableitung ist daher ebenfalls eine Idealisierung.
+Die Bewegungsgleichungen für das Temperaturfeld müssen daher von einer
+Art sein, dass ein Störung des Feldes um kleine Fluktuationen nicht
+zu einer gänzlich anderen Lösung führen.
+
+Ein chaotisches dynamisches System wie das Lorenz-System zeichnet sich
+dadurch aus, dass unmessbar kleine Unterschiede in den Anfangsbedingungen,
+die zum Beispiel durch statistische Fluktuationen verursacht sein können,
+zu verschiedenen Lösungen führen können.
+Das Verhalten des Feldes wird damit für alle praktischen Zwecke nicht
+vorhersagbar.
+Die Wärmeleitungsgleichung hat jedoch die interessante mathematische
+Eigenschaft, dass Sie einem Maximumprinzip gehorcht.
+Es besagt, dass die extreme Werte in einem Teil des Randes des Körpers
+sich sofort ausgleichen und die Lösung der Wärmeleitungsgleichung
+mindestens für kurze Zeiten nur Werte hat, die kleiner sind als die 
+Extremwerte zu Beginn.
+
+Das Problem, dass das Feld nicht exakt bestimmt werden kann, gefährdet
+nicht nur beim Temperaturfeld die Vorhersagbarkeit.
+Auch bei Strömungsfeldern, die von den nichtlinearen
+Navier-Stokes-Gleichungen beschrieben werden, muss eine solche
+Stabilitätseigenschaft mindestens für kurze Zeit weiterhin gelten,
+wenn die Theorie überhaupt testbare Vorhersagen ermöglich soll.
+Die Bewegungsgleichung einer erfolgreichen Feldtheorie müssen daher
+von einer Art sein, die die Existenz und Eindeutigkeit von Lösungen
+mindestens für kurze Zeit und kleine Raumgebiet garantieren.
+
+\subsection{Wärmeleitfähigkeit}
+Die Masseinheiten der beiden Seiten der Wärmeleitungsgleichung 
+\eqref{buch:fallstudie:waermeleitungsgleichung}
+sind
+\[
+\biggl[
+\frac{\partial T}{\partial t}
+\biggr]
+=
+\biggl[
+\frac{\text{K}}{\text{s}}
+\biggr]
+=
+[\kappa]
+\biggl[
+\frac{\partial^2 T}{\partial x^2}
+\biggr]
+=
+[\kappa]
+\biggl[
+\frac{\text{K}}{\text{m}^2}
+\biggr].
+\]
+Es folgt, dass die Masseinheit von $\kappa$
+\[
+[\kappa]
+=
+\biggl[
+\frac{\text{s}}{\text{m}^2}
+\biggr]
+\]
+keine absolute Grösse ist.
+Sie hängt vom für die Zeit- und die Raumdimensionen gewählten
+Koordinatensystem ab.
+Es ist daher zu ermitteln, wie sich $\kappa$ zusammen mit den
+Differentialoperatoren verändert, wenn das Koordinatensystem
+geändert wird.
+
+\begin{aufgabe}
+Es ist eine Theorie der Differentialoperatoren zu entwickeln, die
+unabhängig vom Koordinatensystem formuliert werden kann.
+\end{aufgabe}
+

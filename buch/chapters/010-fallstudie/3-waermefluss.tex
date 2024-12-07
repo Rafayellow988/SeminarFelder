@@ -1,0 +1,76 @@
+%
+% 3-waermefluss.tex
+%
+% (c) 2024 Prof Dr Andreas Müller
+%
+
+%
+% Wärmefluss
+%
+\section{Wärmefluss
+\label{buch:fallstudie:waermefluss}}
+\kopfrechts{Wärmefluss}
+Betrachtet man einen von einer geschlossenen Fläche $S$ berandetes
+Volumen in einem Körper, dann bewirken Temperaturunterschiede zwischen
+Teilen des Körpers auf eiden Seiten der Fläche $S$, dass Wärme durch
+die Fläche fliessen.
+Der Gradient
+\[
+\operatorname{grad} T(x)
+=
+\nabla T
+=
+\renewcommand{\arraystretch}{1.9}
+\begin{pmatrix}
+\displaystyle \frac{\partial T}{\partial x_1}\\
+\displaystyle \frac{\partial T}{\partial x_2}\\
+\displaystyle \frac{\partial T}{\partial x_3}
+\end{pmatrix}
+\]
+beschreibt die Richtung der grössten Temperaturzunahme.
+Unterschieden sich zwei Punkte um den Vektor $\vec{v}$, dann ist der
+Temperaturunterschied in erster Näherung gegeben durch das Skalarprodukt
+$\vec{v}\cdot \nabla T$.
+Sofern der Gradient parallel zur Fläche $S$ ist, kann keine Energie
+durch die Fläche fliessen und die Energie im Inneren von $S$
+ist erhalten.
+
+Ist $\vec{n}$ in jedem Punkt der Fläche ein Vektor, der senkrecht
+auf der Fläche steht, dann ist $\vec{n}\cdot \nabla T$ proportional
+zum Wärmefluss.
+Um den Energieverlust oder -gewinn durch die Fläche $S$ zu
+berechnen, muss ein Integralbegriff konstruiert werden, der
+nur vom Gradienten $\nabla T$ und der Oberfläche $S$ abhängt.
+Die Parametrisierung der Oberfläche darf dabei genausowenig einen
+Einfluss haben wie die Wahl des Koordinatensystems, mit dem der
+Gradientvektor berechnet wird.
+
+Ein weiteres Beispiel ist aus der Mechanik bekannt.
+Das Gravitationsfeld $\smash{\vec{F}}$ als Vektorfeld kann als
+Gradient $\smash{\vec{F}}=\nabla\varphi$ des Gravitationspotenials
+$\varphi$ gefunden werden.
+Die Arbeit, die zwischen den Punkten $A$ und $B$ geleistet
+wird, wird durch das Integral
+\[
+W
+=
+\int_A^B \vec{F}\cdot d\vec{s}
+=
+\int_A^B \nabla \varphi \cdot d\vec{s}
+\]
+unabhängig vom gewählten Weg berechnet.
+Auch in diesem Fall ist eine zentrale physikalische Grösse durch
+ein Integral von Funktionen und Ableitungen gegeben, welches über
+eine in diesem Fall eindimnensionale Untermannigfaltigkeit 
+erstreckt wird.
+Sowohl die Ableitungen wie auch die Parametrisierung des Weges
+sind koordinatenabhängig.
+
+\begin{aufgabe}
+Konstruiere eine koordinatenunabhängige Theorie der Integration
+von Funktioenn und Ableitungen auf beliebigen Untermannigfaltigkeiten
+des Raumes und Sätze, die Bilanzbeziehungen wie die Energieerhaltung
+beim Fluss Wärmeenergiefluss durch eine Oberfläche zu formulieren
+erlauben.
+\end{aufgabe}
+

@@ -1,0 +1,61 @@
+%
+% 2-waermekapazitaet.tex
+%
+% (c) 2024 Prof Dr Andreas Müller
+%
+
+%
+% Wärmekapazität
+%
+\section{Wärmekapazität
+\label{buch:fallstudie:waermekapazitaet}}
+\kopfrechts{Wärmekapazität}
+Wie schon angedeutet ist die Temperatur $T$ ein Mass für die im Körper
+vorhandene kinetische Energie $U$.
+Für kleine Temperaturdifferenzen kann man zunächst annehmen, dass
+es einen linearen Zusammenhang zwischen Energie und Temperatur gibt.
+Die Steigung 
+\[
+C
+=
+\frac{\partial U}{\partial T}
+\]
+heisst die {\em Wärmekapazität} des Körpers.
+
+Je mehr Material zur Verfügung steht, desto grösser ist auch die Energie,
+die bei einem Körper gespeichert werden kann.
+Die Lokalität suggeriert, dass sich die Gesamtenergie eines Körpers 
+additiv aus den Energie der einzelnen Teile zusammensetzt.
+Teilt man durch die Masse eines solchen kleinen Teils, erhält man die
+spezifische Wärmekapazität $c$.
+Sie ist eine Eigenschaft des Materials, aus dem das Teils besteht,
+und hängt nicht mehr von der Grösse des Körpers ab.
+Es ist aber möglich, dass $c$ von weiteren Grössen wie dem Druck oder der
+chemischen Zusammensetzung abhängt, die nicht homogen sein muss.
+Insbesondere kann $c$ wieder eine Funktion der Raumkoordinaten sein.
+
+Multipliziert man $c(x)$ mit der Dichte $\varrho(x)$ des Materials,
+entsteht eine Grösse, mit der sich aus der Temperatur sofort die
+Dichte der gespeicherten Energie berechnen lässt.
+In einem gewählten Koordinatensystem mit den Koordinaten $(x_1,\dots,x_n)$
+wird daher bekannt sein, wie gross das Volumen eines kleine
+Quaders mit Kantenlängen $\Delta x_1$, $\Delta x_2$ und $\Delta x_3$ 
+bestimmt werden kann.
+Schreiben wir $v(x) \Delta x_1\,\Delta x_2\,\Delta x_3$ für dieses 
+Volumen, wird der Energieinhalt durch das Volumenintegral
+\[
+U
+=
+\int_V T(x) c(x)\varrho(x) v(x)\,dx_1\,dx_2\,dx_3
+\]
+gegeben.
+Während die Faktoren $T(x) c(x) \varrho(x)$ nicht von der Wahl der
+Koordinaten abhängt, hängt die Funktion $v(x)$ vom Koordinatensystem
+ab.
+
+\begin{aufgabe}
+Die Theorie der Integration ist so zu formulieren, dass automatisch
+sichergestellt ist, dass ein Koordinatenwechsel die mit dem Integralbegriff
+formulierten Gesetzmässigkeiten nicht verändert.
+\end{aufgabe}
+

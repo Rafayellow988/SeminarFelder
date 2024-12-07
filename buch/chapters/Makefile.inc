@@ -9,3 +9,4 @@ CHAPTERFILES = 								\
 	chapters/vorwort.tex
 
 include chapters/000-einleitung/Makefile.inc
+include chapters/010-fallstudie/Makefile.inc
