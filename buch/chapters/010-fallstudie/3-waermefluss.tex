@@ -10,11 +10,7 @@
 \section{Wärmefluss
 \label{buch:fallstudie:waermefluss}}
 \kopfrechts{Wärmefluss}
-Betrachtet man einen von einer geschlossenen Fläche $S$ berandetes
-Volumen in einem Körper, dann bewirken Temperaturunterschiede zwischen
-Teilen des Körpers auf eiden Seiten der Fläche $S$, dass Wärme durch
-die Fläche fliessen.
-Der Gradient
+An einer Stelle im Körper beschreibt der Gradient
 \[
 \operatorname{grad} T(x)
 =
@@ -27,7 +23,43 @@ Der Gradient
 \displaystyle \frac{\partial T}{\partial x_3}
 \end{pmatrix}
 \]
-beschreibt die Richtung der grössten Temperaturzunahme.
+die Richtung der grössten Temperaturzunahme.
+Ein Flächenstücke senkrecht auf die Richtung des Gradienten
+trennt zwei Teile des Körpers mit grösstmöglichem Temperaturunterschied,
+in diese Richtig wird daher die Energie bevorzugt transportiert werden.
+Die Energie fliesst durch das Flächenstück.
+
+Steht das Flächenstück senkrecht auf dem Gradienten, kann keine
+Wärme durch das Flächenstück fliessen.
+Etwas allgemeiner ist der Energiefluss durch ein Flächenstück mit der
+Normalen $\vec{n}$ proportional zum Skalarprodukt $\vec{n}\cdot\nabla T$
+und zum Flächeninhalt des Flächenstücks.
+In einer Ebene als Definitionsbereich des Temperaturfeldes muss
+das Flächenstück durch eine Strecke ersetzt werden und der Flächeninhalt
+durch die Länge der Strecke.
+
+Um den Zusammenhang vollständig auszudrücken, wird ein Konstrukt 
+benötigt, welches die Flächenmessung eines Randsegmentes und das
+Skalarprodukt miteinander vereinigt und koordinatenunabhängig
+ausdrückt.
+
+\begin{aufgabe}
+Man konstruiere eine koordinatenunabhängige Funktion, welche aus einem
+Vektor den damit beschriebenen Fluss durch ein Randstück berechnet.
+\end{aufgabe}
+
+Die Lösung dieser Aufgabe wird auf den Begriff der Differentialformen
+und des äusseren Produktes führen, welches den Gradienten, das Skalarprodukt
+und die Konstruktion des Flächenelementes verallgemeinert.
+Das äaussere Produkt von Differentialformen wird ausserdem das
+Vektorprodukt, welches nur in drei Dimensionen definiert ist, auf beliebige
+Dimensionen verallgemeinern.
+
+Betrachtet man einen von einer geschlossenen Fläche $S$ berandetes
+Volumen in einem Körper, dann bewirken Temperaturunterschiede zwischen
+Teilen des Körpers auf eiden Seiten der Fläche $S$, dass Wärme durch
+die Fläche fliessen.
+
 Unterschieden sich zwei Punkte um den Vektor $\vec{v}$, dann ist der
 Temperaturunterschied in erster Näherung gegeben durch das Skalarprodukt
 $\vec{v}\cdot \nabla T$.
