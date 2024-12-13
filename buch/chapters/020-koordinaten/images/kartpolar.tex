@@ -1,0 +1,67 @@
+%
+% kartpolar.tex -- kartesische und Polarkoordinaten
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\def\skala{1}
+\def\w{127}
+\def\r{2.3}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\begin{scope}[xshift=-3.3cm]
+	\foreach \x in {-2.5,-2.0,...,2.5}{
+		\draw[color=gray,line width=0.4pt] (\x,-2.6) -- (\x,2.6);
+	}
+	\foreach \y in {-2.5,-2.0,...,2.5}{
+		\draw[color=gray,line width=0.4pt] (-2.6,\y) -- (2.6,\y);
+	}
+	\draw[color=blue] (\w:\r) -- ({\r*cos(\w)},0);
+	\draw[color=blue] (\w:\r) -- (0,{\r*sin(\w)});
+	\draw ({\r*cos(\w)},-0.05) -- ++(0,0.1);
+	\draw (-0.05,{\r*sin(\w)}) -- ++(0.1,0);
+	\node[color=blue] at ({\r*cos(\w)},0) [below] {$x^1$};
+	\node[color=blue] at (0,{\r*sin(\w)}) [right] {$x^2$};
+	\node[color=blue] at (\w:\r) [left] {$(x^1,x^2)$};
+	\node at (\w:\r) [above] {$P$};
+	\fill[color=white] (\w:\r) circle[radius=0.05];
+	\draw[color=blue] (\w:\r) circle[radius=0.05];
+	\node at (0,0) [below left] {$O$};
+	\draw[->] (-2.6,0) -- (2.8,0) coordinate[label={$x^1$}];
+	\draw[->] (0,-2.6) -- (0,2.8) coordinate[label={right:$x^2$}];
+\end{scope}
+
+\begin{scope}[xshift=3.3cm]
+	\foreach \x in {0.5,1,...,2.5}{
+		\draw[color=gray,line width=0.4pt] (0,0) circle[radius=\x];
+	}
+	\foreach \x in {15,30,...,345}{
+		\draw[color=gray,line width=0.4pt] (0,0) -- (\x:2.6);
+	}
+	\fill[color=darkred!40,opacity=0.5] (0,0)
+		-- (1.0,0) arc(0:\w:1.0) -- cycle;
+	\draw[color=darkred] (1.0,0) arc(0:\w:1.0);
+	\node[color=darkred] at ({\w/2}:0.6) {$y^2=\varphi$};
+	\draw[color=darkred] (0,0) -- (\w:\r);
+	\fill[color=white] (\w:\r) circle[radius=0.05];
+	\draw[color=darkred] (\w:\r) circle[radius=0.05];
+	\node[color=darkred] at ($(\w:{0.7*\r})+(0.1,0.1)$) [below left] {$y^1$};
+	\draw[->] (0,0) -- (2.8,0) coordinate[label={$y^1$}];
+	\fill[color=white] (0,0) circle[radius=0.05];
+	\draw (0,0) circle[radius=0.05];
+	\node at (0,0) [below left] {$O$};
+	\node[color=darkred] at (\w:\r) [left] {$(y^1,y^2)$};
+	\node at (\w:\r) [above] {$P$};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+
