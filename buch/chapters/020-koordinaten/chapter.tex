@@ -44,6 +44,7 @@ x \mapsto (x^1,\dots,x^n).
 \]
 
 \begin{beispiel}
+\label{buch:koordinaten:koordinaten:beispiel:kartpolar}
 \input{chapters/020-koordinaten/fig/fig-kartpolar.tex}
 Die Punkte einer Ebene können einerseits mit dem {\em kartesischen}
 Koordinatensystem mit den Koordinaten $(x^1,x^2)\in\mathbb{R}$ 
@@ -67,6 +68,7 @@ berechnet werden.
 \end{beispiel}
 
 \begin{beispiel}
+\label{buch:koordinaten:koordinaten:beispiel:kartkugel}
 \input{chapters/020-koordinaten/fig/fig-kartkugel.tex}
 Der dreidimensionale Raum kann sowohl durch {\em kartesische}
 Koordinatentripel $(x^1,x^2,x^3)$ wie auch durch {\em Kugelkoordinaten}
@@ -101,7 +103,46 @@ Ohne zusätzliche Einschränkungen haben die Punkte auf der
 $x^3$-Achse keine eindeutigen Kugelkoordinaten.
 \end{beispiel}
 
+% XXX Abbildung: Koordinatenabbildung
+
+Auf der Menge $X$ sind bis jetzt keinerlei weitere Eigenschaften definiert,
+welche anzeigen können, ob Punkte nahe beeinander sind, wie man das zum
+Beispiel bei der Formulierung von Grenzwerten oder Ableitungen braucht.
+Diese Eigenschaften können aber mithilfe der Koordinatenabbildung
+gewonnen werden.
+Dazu müssen aber die Koordinatenabbildungen weiter eingeschränkt
+werden.
+Zunächst muss die Koordinatenabbildung bijektiv sein.
+Dies bedeutet, dass jeder Punkt durch genau ein Koordinaten-$n$-Tupel
+beschrieben wird.
+Ausserdem muss die Menge $U$ der möglichen Koordinaten-$n$-Tupel eine
+offene Menge in $\mathbb{R}^n$ sein.
+
+% XXX Beispiel zur Notwendigkeit der letzten Bedingung zeigen
+
 \subsection{Koordinatenwechsel}
+In den Beispielen
+\ref{buch:koordinaten:koordinaten:beispiel:kartpolar}
+und
+\ref{buch:koordinaten:koordinaten:beispiel:kartkugel}
+wurden bereits Umrechnungsformeln zwischen den dort dargestellten
+Koordinatensystemen ermittelt.
+Seien etwas allgemeiner zwei Koordinatensysteme $x^1,\dots,x^n$
+und $y^1,\dots,y^n$ auf der Punktmenge $X$ gegeben.
+Wenn $U$ die Menge der Koordinaten-$n$-Tupel ist, die Punkte von $X$
+in den $x^i$-Koordinaten beschreiben, dann ist die Koordinatenumrechnung
+vom $x^i$-Koordinatensystem in das $y^i$-Koordinatensystem eine Abbildung
+\[
+\varphi
+\colon
+U\to\mathbb{R}^n
+:
+(x^1,\dots,x^n)
+\mapsto
+(y^1,\dots,y^n)
+\]
+von $U$ in $\mathbb{R}^n$.
+
 
 \subsubsection{Stetigkeit}
 
