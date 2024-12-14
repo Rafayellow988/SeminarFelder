@@ -7,6 +7,7 @@ all:	kartpolar.pdf							\
 	kartkugel.pdf							\
 	koordinaten.pdf							\
 	koordinatenwechsel.pdf						\
+	stereographisch.pdf						\
 	stereowechsel.pdf
 
 kartpolar.pdf:	kartpolar.tex
@@ -29,4 +30,7 @@ koordinatenwechsel.pdf:	koordinatenwechsel.tex
 
 stereowechsel.pdf:	stereowechsel.tex
 	pdflatex stereowechsel.tex
+
+stereographisch.pdf:	stereographisch.tex
+	pdflatex stereographisch.tex
 
