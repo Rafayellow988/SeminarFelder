@@ -5,6 +5,7 @@
 %
 \chapter{Koordinaten und Tangentialvektoren
 \label{chapter:koordinaten}}
+\kopflinks{Koordinaten und Tangentialvektoren}
 Die Bühne der Physik ist ein Raum von Punkten, in dem wir geometrische
 Konstruktionen anwenden und zum Beispiel Bahnen von Körpern beschreiben
 können.
@@ -15,7 +16,7 @@ sind, muss es immer möglich sein, die zur Formulierung von Naturgesetzen
 entwickelten Abstraktionen wie Kurven, Funktionen oder Vektoren zwischen
 beliebigen Koordinatensystemen umzurechnen.
 Ziel dieses Kapitels ist daher, eine für alle Arten von Koordinatensystemen
-nützliche Notation zu entwickeln, die Umrechnung zwischen Koordinatensystemn
+nützliche Notation zu entwickeln, die Umrechnung zwischen Koordinatensystemen
 zu studieren und den Begriff des Tangentialvektors einzuführen.
 
 %
@@ -23,10 +24,19 @@ zu studieren und den Begriff des Tangentialvektors einzuführen.
 %
 \section{Koordinaten
 \label{buch:koordinaten:section:koordinaten}}
-In diesem Abschnitt betrachten wir eine Punktemeng $X$, die mit
+\kopfrechts{Koordinaten}
+In diesem Abschnitt betrachten wir eine Punktmenge $X$, die mit
 Koordinatensystemen ausgestattet werden soll.
+Ohne das Koordinatensystem hat die Punktemenge keinerlei Struktur.
+Um von stetigen Abbildungen zwischen solchen Mengen zu sprechen,
+wird zum Beispiel ein Begriff der Nähe benötigt, mit dem die Konvergenz
+von Folgen definiert werden kann.
+Die Konstruktion eines Koordinatensystems ermöglicht, Punkte also
+nahe beeinander zu betrachten, wenn sich ihre Koordinaten nur geringfügig
+unterscheiden.
 
 \subsection{Koordinatensystem}
+\input{chapters/020-koordinaten/fig/fig-koordinaten.tex}%
 Ein $n$-dimensionales Koordinatensystem auf $X$ ordnet jedem Punkt 
 ein $n$-Tupel von Koordinaten zu.
 Aus erst später verständlichen Gründen bezeichnen wir die Koordinaten
@@ -40,8 +50,12 @@ Ein Koordinatensystem ist also eine Abbildung
 \colon
 X\to \mathbb{R}^n
 :
-x \mapsto (x^1,\dots,x^n).
+P \mapsto (x^1,\dots,x^n),
 \]
+wie sie in Abbildung~\ref{buch:koordinaten:koordinaten:fig:koordinaten}
+dargestellt ist.
+Jede einzelne Koordinate kann als Funktion $P\mapsto x^i(P)$ mit
+reellen Werten betrachtet werden.
 
 \begin{beispiel}
 \label{buch:koordinaten:koordinaten:beispiel:kartpolar}
@@ -103,20 +117,47 @@ Ohne zusätzliche Einschränkungen haben die Punkte auf der
 $x^3$-Achse keine eindeutigen Kugelkoordinaten.
 \end{beispiel}
 
-% XXX Abbildung: Koordinatenabbildung
 
-Auf der Menge $X$ sind bis jetzt keinerlei weitere Eigenschaften definiert,
-welche anzeigen können, ob Punkte nahe beeinander sind, wie man das zum
-Beispiel bei der Formulierung von Grenzwerten oder Ableitungen braucht.
-Diese Eigenschaften können aber mithilfe der Koordinatenabbildung
-gewonnen werden.
-Dazu müssen aber die Koordinatenabbildungen weiter eingeschränkt
+Um die Struktur des Koordinatenraumes $\mathbb{R}^n$ auf die Menge
+$X$ zu übertragen, müssen die Koordinatenabbildungen weiter eingeschränkt
 werden.
 Zunächst muss die Koordinatenabbildung bijektiv sein.
 Dies bedeutet, dass jeder Punkt durch genau ein Koordinaten-$n$-Tupel
 beschrieben wird.
-Ausserdem muss die Menge $U$ der möglichen Koordinaten-$n$-Tupel eine
-offene Menge in $\mathbb{R}^n$ sein.
+Diese Bedingung ist in beiden Beispielen nicht erfüllt, da Tupel,
+deren $y^2=\varphi$-Koordinaten sich um $2\pi$ unterscheiden, den
+gleichen Punkt beschreiben.
+Sie ist aber für genügend kleine Teilmengen des Raumes erfüllt.
+
+Tatsächlich kann man nicht erwarten, zum Beispiel die Oberfläche einer
+Kugel oder eines Torus in ihrer Gesamtheit eineindeutig auf Ebene
+abzubilden.
+Die Definition eines Koordinatensystems ist vorerst also nur geeignet,
+eine Punktmenge lokal zu beschreiben.
+Für eine globale Beschreibung wird es notwendig sein, verschiedene
+Koordinatensysteme, die auf Teilen einer Menge definiert sind, zu
+einem grösseren Ganzen zusammenzufügen.
+
+Ausserdem muss die Menge $V=\varphi(X)$ der möglichen Koordinaten-$n$-Tupel
+eine offene Menge in $\mathbb{R}^n$ sein.
+Auch diese Bedingung ist in den Beispielen nicht erfüllt.
+Die $y^1=r$-Koordinate nimmt alle Werte in
+\[
+\mathbb{R}_{\ge 0}
+=
+[0,\infty)
+=
+\{
+y^1\in\mathbb{R}
+\mid
+y^1\ge 0
+\}.
+\]
+Dies ist keine offene Menge, da die Punkte $(0,y^2)$ bzw.~$(0,y^2,y^3)$
+ein Randpunkt des Wertebereichs der $y$-Koordinaten ist.
+Bei Kugelkoordinaten nimmt die Koordinate $y^3$ Werte im
+abgeschlossenen Interval $[0,\pi]$ an, was zu weiteren Randpunkten
+des Wertebereichs führen.
 
 % XXX Beispiel zur Notwendigkeit der letzten Bedingung zeigen
 
@@ -155,18 +196,21 @@ von $U$ in $\mathbb{R}^n$.
 %
 \section{Tangentialvektoren
 \label{buch:koordinaten:section:tangentialvektoren}}
+\kopfrechts{Tangentialvektoren}
 
 %
 % Differentialoperatoren
 %
 \section{Differentialoperatoren
 \label{buch:koordinaten:section:differentialoperatoren}}
+\kopfrechts{Differentialoperatoren}
 
 %
 % Differenzierbare Atlanten und differenzierbare Mannigkfaltigkeiten
 %
 \section{Differenzierbare Mannigfaltigkeiten
 \label{buch:koordinatne:section:mannigfaltigkeiten}}
+\kopfrechts{Differenzierbare Mannigfaltigkeiten}
 
 
 

@@ -4,7 +4,8 @@
 # (c) 2024 Prof Dr Andreas Müller
 #
 all:	kartpolar.pdf							\
-	kartkugel.pdf
+	kartkugel.pdf							\
+	koordinaten.pdf
 
 kartpolar.pdf:	kartpolar.tex
 	pdflatex kartpolar.tex
@@ -18,3 +19,5 @@ kartkugel.jpg:	kartkugel.png Makefile
 kartkugel.pdf:	kartkugel.tex kartkugel.jpg
 	pdflatex kartkugel.tex
 
+koordinaten.pdf:	koordinaten.tex
+	pdflatex koordinaten.tex

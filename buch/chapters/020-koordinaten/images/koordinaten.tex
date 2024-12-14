@@ -1,0 +1,63 @@
+%
+% tikztemplate.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,arrows.meta}
+\begin{document}
+\def\skala{1}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\begin{scope}[xshift=3cm]
+\foreach \x in {-1,-0.5,...,4}{
+	\draw[color=gray!40] (\x,-1.1) -- (\x,4.1);
+	\draw[color=gray!40] (-1.1,\x) -- (4.1,\x);
+}
+\begin{scope}[rotate=20,xshift=0.5cm,yshift=-0.5cm]
+\fill[color=blue!40,opacity=0.5,rounded corners=7mm] (-0.5,-0.5) rectangle ++(4,4);
+\end{scope}
+\draw[->] (-1.1,0) -- (4.3,0) coordinate[label={$x^1$}];
+\draw[->] (0,-1.1) -- (0,4.3) coordinate[label={right:$x^2$}];
+\node[color=blue] at (2.25,2.75) {$V$};
+\coordinate (P) at (3,1);
+\fill (P) circle[radius=0.05];
+\node at (P) [above] {$\varphi(P)=(x^1,x^2)$};
+\end{scope}
+
+\begin{scope}[xshift=-2cm, yshift=1.5cm]
+\coordinate (A1) at (2,-1);
+\coordinate (A2) at (1,2);
+\coordinate (A3) at (-0.5,1);
+\coordinate (A4) at (-2,1.5);
+\coordinate (A5) at (-1.5,-1);
+\coordinate (A6) at (0.1,-1);
+\coordinate (A7) at (1,-2);
+\coordinate (P) at (1.2,-1);
+\fill[color=darkgreen!20]
+	plot[smooth cycle] coordinates {(A1) (A2) (A3) (A4) (A5) (A6) (A7)};
+%\fill (A1) circle[radius=0.05];
+%\fill (A2) circle[radius=0.05];
+%\fill (A3) circle[radius=0.05];
+%\fill (A4) circle[radius=0.05];
+%\fill (A5) circle[radius=0.05];
+%\fill (A6) circle[radius=0.05];
+%\fill (A7) circle[radius=0.05];
+\node[color=darkgreen] at (0,0) {$X$};
+\fill (P) circle[radius=0.05];
+\node at (P) [above] {$P$};
+\draw[->,line width=1.0pt] (0.6,0.9) arc(110:70:8);
+\node at (3.2,1.6) {$\varphi$};
+\draw[{|[width=4pt]}->,shorten <= 0.2cm,shorten >= 0.2cm] (P) -- ++(6.8,0.5);
+\end{scope}
+
+
+\end{tikzpicture}
+\end{document}
+
