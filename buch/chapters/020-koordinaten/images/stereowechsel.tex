@@ -1,0 +1,77 @@
+%
+% stereowechsel.tex -- Koordinatenwechsel in stereographischer Projektion
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\def\skala{2}
+\def\r{3.5}
+\pgfmathparse{atan(\r)}
+\xdef\w{\pgfmathresult}
+\pgfmathparse{2*\w-90}
+\xdef\v{\pgfmathresult}
+\def\s{0.03}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\coordinate (P) at (\r,0);
+\coordinate (P1) at ({1/\r},0);
+\coordinate (A) at (\v:1);
+\coordinate (N) at (0,1);
+\coordinate (S) at (0,-1);
+\coordinate (B) at (-0.1,-0.7);
+
+\draw (0,0) circle[radius=1];
+
+\fill[color=violet!30]
+	(A) -- ++({90+\w}:0.2) arc ({90+\w}:{180+\w}:0.2) -- cycle;
+
+\fill[color=blue!20]
+	(N) -- ++(0,-0.3) arc (-90:{-90+\w}:0.3) -- cycle;
+\node[color=blue] at ($(N)+({-90+\w/2}:0.2)$) {$\alpha_+$};
+
+\fill[color=darkred!20]
+	(S) -- ++(0,0.4) arc (90:\w:0.4) -- cycle;
+\node[color=darkred] at (B) [left] {$\alpha_-$};
+\draw[color=darkred,line width=0.3pt]
+	($(B)+(-0.04,0)$) -- ($(0,-1)+({0.5*(90+\w)}:0.3)$);
+
+\begin{scope}
+\color{blue}
+\draw[line width=1pt] (0,1) -- (\r,0);
+\node at (P) [below] {$r$};
+\node at (P) [above] {$P_+$};
+\end{scope}
+
+\begin{scope}
+\color{darkred}
+\draw[line width=1pt] (0,-1) -- (A);
+\node at (P1) [below right] {$\displaystyle\frac{1}{r}$};
+\node at ($(P1)+(0.05,0)$) [above left] {$P_-$};
+\end{scope}
+
+\fill (N) circle[radius=\s];
+\node at (N) [above left] {$N$};
+\fill (S) circle[radius=\s];
+\node at (S) [below left] {$S$};
+\draw[->] (-1.1,0) -- (4.3,0) coordinate[label={$r$}];
+\draw[->] (0,-1.2) -- (0,1.3) coordinate[label={right:$z$}];
+
+\fill[color=blue] (P) circle[radius=\s];
+\fill[color=darkred] (P1) circle[radius=\s];
+
+\fill[color=violet] (A) circle[radius=\s];
+\node[color=violet] at (A) [above right] {$P$};
+
+\node at (140:1) [above left] {$S^2$};
+
+\end{tikzpicture}
+\end{document}
+

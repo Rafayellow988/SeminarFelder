@@ -5,7 +5,9 @@
 #
 all:	kartpolar.pdf							\
 	kartkugel.pdf							\
-	koordinaten.pdf
+	koordinaten.pdf							\
+	koordinatenwechsel.pdf						\
+	stereowechsel.pdf
 
 kartpolar.pdf:	kartpolar.tex
 	pdflatex kartpolar.tex
@@ -21,3 +23,10 @@ kartkugel.pdf:	kartkugel.tex kartkugel.jpg
 
 koordinaten.pdf:	koordinaten.tex
 	pdflatex koordinaten.tex
+
+koordinatenwechsel.pdf:	koordinatenwechsel.tex
+	pdflatex koordinatenwechsel.tex
+
+stereowechsel.pdf:	stereowechsel.tex
+	pdflatex stereowechsel.tex
+
