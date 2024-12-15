@@ -9,3 +9,4 @@ buch.run.xml
 buch.toc
 buch.synctex.gz
 publish
+*.swp

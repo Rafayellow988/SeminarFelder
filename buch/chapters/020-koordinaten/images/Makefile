@@ -31,6 +31,12 @@ koordinatenwechsel.pdf:	koordinatenwechsel.tex
 stereowechsel.pdf:	stereowechsel.tex
 	pdflatex stereowechsel.tex
 
-stereographisch.pdf:	stereographisch.tex
+stereographisch.png:	stereographisch.pov
+	povray +A0.1 -W1920 -H1080 -Ostereographisch.png stereographisch.pov
+
+stereographisch.jpg:	stereographisch.png Makefile
+	magick -extract 1870x1080+50+0 stereographisch.png stereographisch.jpg
+
+stereographisch.pdf:	stereographisch.tex stereographisch.jpg
 	pdflatex stereographisch.tex
 
