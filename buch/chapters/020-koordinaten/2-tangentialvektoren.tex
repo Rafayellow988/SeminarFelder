@@ -29,15 +29,141 @@ einer Reevaluation.
 % Kurven
 %
 \subsection{Kurven}
+Für ein kartesisches Koordinatensystem in der Ebene ist klar, welche
+Richtung man den Koordinatenachsen zuordnen kann.
+Es ist üblich, die Koordinatenachsen als Vektoren in der Ebene
+zu zeichnen.
+Die Idee einer geraden Koordinatenachse ist nicht mehr anwendbar,
+wenn beliebige Koordinatensystem verwendet werden sollen.
+Bei der Umrechnung zwischen Koordinatensystemen entstehen unweigerlich
+gekrümmte Koordinatenlinien.
+Es braucht also etwas mehr Sorgfalt, die Idee der {\em Richtung}
+Koordinatenunabhängig zu definieren.
+
+\subsubsection{Differenzierbare Kurven}
+Im Folgenden gehen wir on einer Menge $X$ mit einer $n$-dimensionalen
+differenzierbaren Struktur aus.
+Statt uns auf die in der Einleitung angedeuteten gekrümmten
+Koordinatenlinien zu beschränken, möchten wir beliebige Kurven
+definieren.
+Kurven sehen in der Umgebung eines Punktes wie die reelle Achse
+$\mathbb{R}$ aus.
+Tatsächlich können wir jedes Intervall $(a,b)\subset\mathbb{R}$ als
+eine Menge mit einer differenzierbaren Struktur betrachten, indem
+wir die Einbettung
+\[
+\varphi
+\colon
+(a,b) \hookrightarrow \mathbb{R}
+:
+x\mapsto x
+\]
+als Koordinatensystem verwenden.
+Die Koordinatenwechselabbildung zu einem alternativen Koordinatensystem
+auf dem Intervall ist eine streng monoton wachsende, differenzierbare
+Funktion, deren Ableitung nirgends verschwindet.
+In einem Punkt $x_0\in (a,b)$ sind Koordinatenwechsel daher sehr
+einfach: Sie sind nur von 0 verschiedene Zahlen.
+Diese Einfachheit erlaubt uns, zur Vereinfachung der Notation die Menge
+$(a,b)$ mit den Koordinatenwerten zu identifizieren.
+
+\begin{definition}[differenzierbare Kurve]
+Eine {\em differenzierbare Kurve}
+\index{differenzierbare Kurve}%
+\index{Kurve, differenzierbar}%
+ist eine differenzierbare Abbildung
+\[
+\gamma
+\colon
+I = (a,b) \to X
+:
+t \mapsto \gamma(t).
+\]
+\end{definition}
+
+Durch Zusammensetzen der Abbildung $\gamma$ mit einem Koordinatenssystem
+$\varphi\colon X\to \mathbb{R}^n$ entsteht eine Abbildung 
+\[
+\varphi\circ\gamma
+\colon
+(a,b) \to \mathbb{R}^n
+:
+t \mapsto (\varphi^1\circ \gamma(t),\dots,\varphi^n\circ\gamma(t)),
+\]
+wobei jede Koordinate $\varphi^i\circ\gamma(t) = \varphi^i(\gamma(t))$
+eine differenzierbare Funktion von $t$ ist.
+
+% XXX Ableitung der Koordinaten
+
+% XXX Koordinatenwechsel und Ableitung
+
+\begin{beispiel}
+Die Menge $X=\mathbb{R}^2$ hat eine differenzierbare Struktur gegeben durch
+das kartesische Koordinatensystem
+\[
+\varphi
+\colon
+X\to\mathbb{R}^2
+:
+(x,y)\mapsto (x,y).
+\]
+Die Kurve 
+\[
+\gamma
+\colon
+\mathbb{R}\to X
+:
+t\mapsto (\cos t, \sin t)
+\]
+ist der Einheitskreis in der Ebene.
+
+Koordinatenwechsel auf dem Urbildbereich $(-\infty,\infty)$ sind durch
+Funktionen $f\colon\mathbb{R}\to\mathbb{R}$ gegeben, deren Ableitung
+nirgends verschwindet.
+Nach dem Koordinatenwechsel ist die Kurven durch die Parametrisierung
+\[
+t \mapsto (\cos f(t),\sin f(t))
+\]
+gegeben.
+
+Statt der kartesischen Koordinaten kann man mindestens auf der Teilmenge
+$Y=X\setminus (0,0)$ Polarkoordinaten mit der Koordinatenabbildung $\psi$
+verwenden.
+Die Koordinatenumrechnung von Polarkoordinaten in kartesische Koordinaten
+ist
+\[
+(\varphi, r) \mapsto (r\cos\varphi,r\sin\varphi)
+\]
+mit der Umkehrung
+\[
+(x,y) \mapsto \bigl(\arctan\frac{y}{x},\sqrt{x^2+y^2}\bigr),
+\]
+wobei die $\arctan$-Funktion etwas erweitert werden muss, wie es die
+in den meisten Programmierbibliotheken durch die Funktion \texttt{atan2}
+gemacht wird.
+
+In Polarkoordinaten bekommt die Kurve $\gamma$ die Form
+\[
+t\mapsto \psi\circ\gamma(t)
+=
+(t, 1).
+\]
+Die zweite Koordinaten ist konstant und damit ganz offensichtlich 
+differenzierbar.
+Die erste Koordinate hat die Ableitung $1$.
+\end{beispiel}
+
+\subsubsection{Tangentiale Kurven}
+
+%
+% Tangentialvektoren
+%
+\subsection{Tangentialvektoren}
 
 %
 % Koordinatenlinien
 %
 \subsection{Koordinatenlinien}
 
-%
-% Tangentialvektoren
-%
-\subsection{Tangentialvektoren}
 
 
