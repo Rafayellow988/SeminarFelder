@@ -136,7 +136,7 @@ ist
 \]
 mit der Umkehrung
 \[
-(x,y) \mapsto \bigl(\arctan\frac{y}{x},\sqrt{x^2+y^2}\bigr),
+(x,y) \mapsto \Bigl(\arctan\frac{y}{x},\sqrt{x^2+y^2}\Bigr),
 \]
 wobei die $\arctan$-Funktion etwas erweitert werden muss, wie es die
 in den meisten Programmierbibliotheken durch die Funktion \texttt{atan2}
@@ -154,6 +154,19 @@ Die erste Koordinate hat die Ableitung $1$.
 \end{beispiel}
 
 \subsubsection{Tangentiale Kurven}
+Das Beispiel illustriert, dass der Begriff der ``Richtung'' einer
+Koordinatenachse nicht sinnvoll sein kann.
+Im Wertebereich der Koordinatensysteme unterscheidet sich das Bild
+der Kurve $\gamma(t)$ grundsätzlich.
+Im Koordinatensystem ist $\varphi(\gamma(t))$ eine gekrümmte Kurve,
+während sie im Polarkoordinatensystem in der Umgebung des Punktes
+$(1,0)$ die Gerade $r=1$ ist.
+Die Kurve durch einen Punkt von $X$ kann also keine koordinatenunabhängig
+Bedeutung haben, aber für die Richtung der Kurve in einem Punkt ist
+dies möglich.
+Es muss daher definiert werden, wann zwei Kurven die gleiche Richtung
+in einem gemeinsamen Punkt haben.
+
 
 %
 % Tangentialvektoren
