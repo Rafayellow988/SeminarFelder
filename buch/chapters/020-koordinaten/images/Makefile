@@ -7,6 +7,7 @@ all:	kartpolar.pdf							\
 	kartkugel.pdf							\
 	koordinaten.pdf							\
 	koordinatenwechsel.pdf						\
+	kurve.pdf							\
 	stereographisch.pdf						\
 	stereowechsel.pdf
 
@@ -40,3 +41,5 @@ stereographisch.jpg:	stereographisch.png Makefile
 stereographisch.pdf:	stereographisch.tex stereographisch.jpg
 	pdflatex stereographisch.tex
 
+kurve.pdf:	kurve.tex
+	pdflatex kurve.tex

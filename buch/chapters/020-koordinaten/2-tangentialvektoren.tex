@@ -41,20 +41,20 @@ Es braucht also etwas mehr Sorgfalt, die Idee der {\em Richtung}
 Koordinatenunabhängig zu definieren.
 
 \subsubsection{Differenzierbare Kurven}
-Im Folgenden gehen wir on einer Menge $X$ mit einer $n$-dimensionalen
+Im Folgenden gehen wir on einer Menge $Y$ mit einer $n$-dimensionalen
 differenzierbaren Struktur aus.
 Statt uns auf die in der Einleitung angedeuteten gekrümmten
 Koordinatenlinien zu beschränken, möchten wir beliebige Kurven
 definieren.
 Kurven sehen in der Umgebung eines Punktes wie die reelle Achse
 $\mathbb{R}$ aus.
-Tatsächlich können wir jedes Intervall $(a,b)\subset\mathbb{R}$ als
+Tatsächlich können wir jedes Intervall $X=(a,b)\subset\mathbb{R}$ als
 eine Menge mit einer differenzierbaren Struktur betrachten, indem
 wir die Einbettung
 \[
 \varphi
 \colon
-(a,b) \hookrightarrow \mathbb{R}
+X=(a,b) \hookrightarrow \mathbb{R}
 :
 x\mapsto x
 \]
@@ -75,7 +75,7 @@ ist eine differenzierbare Abbildung
 \[
 \gamma
 \colon
-I = (a,b) \to X
+X = (a,b) \to Y
 :
 t \mapsto \gamma(t).
 \]
@@ -86,24 +86,20 @@ $\varphi\colon X\to \mathbb{R}^n$ entsteht eine Abbildung
 \[
 \varphi\circ\gamma
 \colon
-(a,b) \to \mathbb{R}^n
+X=(a,b) \to \mathbb{R}^n
 :
 t \mapsto (\varphi^1\circ \gamma(t),\dots,\varphi^n\circ\gamma(t)),
 \]
 wobei jede Koordinate $\varphi^i\circ\gamma(t) = \varphi^i(\gamma(t))$
 eine differenzierbare Funktion von $t$ ist.
 
-% XXX Ableitung der Koordinaten
-
-% XXX Koordinatenwechsel und Ableitung
-
 \begin{beispiel}
-Die Menge $X=\mathbb{R}^2$ hat eine differenzierbare Struktur gegeben durch
+Die Menge $Y=\mathbb{R}^2$ hat eine differenzierbare Struktur gegeben durch
 das kartesische Koordinatensystem
 \[
 \varphi
 \colon
-X\to\mathbb{R}^2
+Y\to\mathbb{R}^2
 :
 (x,y)\mapsto (x,y).
 \]
@@ -111,7 +107,7 @@ Die Kurve
 \[
 \gamma
 \colon
-\mathbb{R}\to X
+\mathbb{R}\to Y
 :
 t\mapsto (\cos t, \sin t)
 \]
@@ -153,20 +149,65 @@ differenzierbar.
 Die erste Koordinate hat die Ableitung $1$.
 \end{beispiel}
 
+Eine Kurve in $Y$ ist also eine Abbildung $X\to Y$.
+Sowohl in $X$ wie auch in $Y$ können beliebige Koordinatensysteme
+gewählt werden.
+Es ist nur sinnvoll über Objekte zu sprechen, welche in dem
+Sinne unabhängig sind von der Wahl des Koordinatensystems, dass
+auch Umrechnungsformeln zwischen den Koordinatensystemen bereitgestellt
+sind.
+
+% XXX Ableitung der Koordinaten
+
+% XXX Koordinatenwechsel und Ableitung
+
+
 \subsubsection{Tangentiale Kurven}
 Das Beispiel illustriert, dass der Begriff der ``Richtung'' einer
 Koordinatenachse nicht sinnvoll sein kann.
 Im Wertebereich der Koordinatensysteme unterscheidet sich das Bild
-der Kurve $\gamma(t)$ grundsätzlich.
-Im Koordinatensystem ist $\varphi(\gamma(t))$ eine gekrümmte Kurve,
+der Kurve $\gamma$ grundsätzlich.
+Im Koordinatensystem ist $\varphi\circ\gamma$ eine gekrümmte Kurve,
 während sie im Polarkoordinatensystem in der Umgebung des Punktes
 $(1,0)$ die Gerade $r=1$ ist.
-Die Kurve durch einen Punkt von $X$ kann also keine koordinatenunabhängig
+Die Kurve durch einen Punkt von $Y$ kann also keine koordinatenunabhängig
 Bedeutung haben, aber für die Richtung der Kurve in einem Punkt ist
 dies möglich.
 Es muss daher definiert werden, wann zwei Kurven die gleiche Richtung
 in einem gemeinsamen Punkt haben.
 
+
+
+\begin{definition}[tangentiale Kurven]
+Zwei Kurven $\gamma_i\colon X\to Y$, $i=1,2$, sind
+{\em tangential} im Punkt $y_0\in Y$, wenn in jeder Karte
+$\varphi\colon Y\to\mathbb{R}^n$ und für Parametrisierungen
+$\psi_i\colon X\to \mathbb{R}$ mit Parametern $x_i\in\mathbb{R}$ derart,
+dass $\gamma_i(\psi_i^{-1}(x_i)) = y_0$ die Ableitung der Abbildungen
+\[
+\varphi
+\circ
+\gamma_i
+\circ
+\psi_i^{-1}
+\colon
+U_i\to\mathbb{R}^n
+\]
+an der Stelle $x_i$ sich nur durch die Ableitung der
+Koordinatenwechselabbildung $\psi_2\circ\psi_1^{-1}$ unterscheiden:
+\begin{equation}
+\frac{d}{dx}
+\varphi\circ\gamma_1(x_1)
+=
+\frac{d}{dx}
+\varphi\circ\gamma_2(x_2)
+\cdot
+\frac{d}{dx}
+\psi_2\circ\psi_1^{-1}(x_1),
+\label{buch:koordinaten:tangentialvektoren:eqn:tangential}
+\end{equation}
+dies ist die Kettenregel.
+\end{definition}
 
 %
 % Tangentialvektoren
