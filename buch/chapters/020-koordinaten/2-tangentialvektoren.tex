@@ -177,36 +177,35 @@ Es muss daher definiert werden, wann zwei Kurven die gleiche Richtung
 in einem gemeinsamen Punkt haben.
 
 
+\input{chapters/020-koordinaten/fig/fig-kurve.tex}%
 
 \begin{definition}[tangentiale Kurven]
 Zwei Kurven $\gamma_i\colon X\to Y$, $i=1,2$, sind
-{\em tangential} im Punkt $y_0\in Y$, wenn in jeder Karte
-$\varphi\colon Y\to\mathbb{R}^n$ und für Parametrisierungen
-$\psi_i\colon X\to \mathbb{R}$ mit Parametern $x_i\in\mathbb{R}$ derart,
-dass $\gamma_i(\psi_i^{-1}(x_i)) = y_0$ die Ableitung der Abbildungen
+{\em tangential} im Punkt $y\in Y$, wenn
+$\gamma_i(x) = y$, $i=1,2$, und
+in jeder Karte
+$\varphi\colon Y\to\mathbb{R}^n$ und für die Parametrisierung
+$\psi\colon X\to \mathbb{R}$ mit Parameter $x^1\in\mathbb{R}$ 
+im Punkt $\psi(x)$ die Ableitungen der Abbildungen
 \[
 \varphi
 \circ
 \gamma_i
 \circ
-\psi_i^{-1}
+\psi^{-1}
 \colon
-U_i\to\mathbb{R}^n
+U\to\mathbb{R}^n
 \]
-an der Stelle $x_i$ sich nur durch die Ableitung der
-Koordinatenwechselabbildung $\psi_2\circ\psi_1^{-1}$ unterscheiden:
+übereinstimmen, d.~h.
 \begin{equation}
-\frac{d}{dx}
-\varphi\circ\gamma_1(x_1)
+\frac{d}{dx^1}
+\bigl(\varphi\circ\gamma_1\circ\psi^{-1}\bigr)(\psi(x))
 =
-\frac{d}{dx}
-\varphi\circ\gamma_2(x_2)
-\cdot
-\frac{d}{dx}
-\psi_2\circ\psi_1^{-1}(x_1),
+\frac{d}{dx^1}
+\bigl(\varphi\circ\gamma_2\circ\psi^{-1}\bigr)(\psi(x))
 \label{buch:koordinaten:tangentialvektoren:eqn:tangential}
 \end{equation}
-dies ist die Kettenregel.
+für $x^1=\psi(x)$.
 \end{definition}
 
 %
