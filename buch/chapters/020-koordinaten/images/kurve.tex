@@ -65,20 +65,22 @@ declare function={
 \end{scope}
 
 \begin{scope}[yshift=0.25cm]
-	\fill[color=gray!40,rounded corners=0.5cm]
-		(-2.5,-1.5) rectangle ++(5,3);
-	\node at (-2.0,1.0) {$Y$};
 
-	\draw[->,color=darkgreen,line width=1.2pt]
-		(0,0) -- ++({X0(1.5)},{Y0(1.5)});
-	\draw[color=darkred,line width=1.4pt]
-		plot[domain=-1.5:1.5,samples=100]
-			({X0(\x)+g1x(\x)},{Y0(\x)+g1y(\x)});
-	\draw[color=blue,line width=1.4pt]
-		plot[domain=-1.5:1.5,samples=100]
-			({X0(\x)+g2x(\x)},{Y0(\x)+g2y(\x)});
-	\fill[color=violet] (0,0) circle[radius=0.08];
-	\node[color=violet] at (0,0) [above] {$y$};
+	\node at (0,-0.2) {\includegraphics[width=4.8cm]{kurve.jpg}};
+%	\fill[color=gray!40,rounded corners=0.5cm]
+%		(-2.5,-1.5) rectangle ++(5,3);
+	\node at (-0.8,1.0) {$Y$};
+%
+%	\draw[->,color=darkgreen,line width=1.2pt]
+%		(0,0) -- ++({X0(1.5)},{Y0(1.5)});
+%	\draw[color=darkred,line width=1.4pt]
+%		plot[domain=-1.5:1.5,samples=100]
+%			({X0(\x)+g1x(\x)},{Y0(\x)+g1y(\x)});
+%	\draw[color=blue,line width=1.4pt]
+%		plot[domain=-1.5:1.5,samples=100]
+%			({X0(\x)+g2x(\x)},{Y0(\x)+g2y(\x)});
+%	\fill[color=violet] (0,0) circle[radius=0.08];
+	\node[color=violet] at (0.2,-0.3) [above] {$y$};
 
 
 	\draw[->] (0,-1.7) -- ++(0,-2.6);

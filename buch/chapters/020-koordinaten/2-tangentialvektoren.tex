@@ -208,10 +208,184 @@ U\to\mathbb{R}^n
 für $x^1=\psi(x)$.
 \end{definition}
 
+Kurven sind also tangential in einem Punkt, wenn sie sich in jedem
+Koordinatensystem mit der gleichen momentanen Geschwindigkeit
+durch den Punkt im Koordinateraum bewegen.
+Die Abbildung~\ref{buch:koordinaten:tangentialvektoren:fig:kurve}
+macht auch deutlich, dass es in $Y$ nicht sinnvoll ist, von einem
+Tangentialvektor im Punkt $y$ an die Kurven zu sprechen.
+Der grün eingezeichnete Tangentialvektor hängt von der Art der
+für die graphische Darstellung notwendigen Einbettung von Y in
+den dreidimensionalen Raum ab.
+
 %
 % Tangentialvektoren
 %
 \subsection{Tangentialvektoren}
+Die Eigenschaft von Kurven, im Punkt $y$ tangential zu sein, ist
+eine Äquivalenzrelation.
+In einem Koordinatensystem haben die tangentiale Kurven gemäss
+Abbildung~\ref{buch:koordinaten:tangentialvektoren:fig:kurve}
+den grünen Tangentialvektor {\em im Koordinatensystem} gemeinsam.
+Die folgende, sehr abstrakte Definition eines Tangentialvektors
+von $Y$ ist unabhängig von einer Einbettung von $Y$ in einen
+grösseren Raum für Darstellungszwecke.
+
+\begin{definition}[Tangentialvektor]
+\label{buch:koordinaten:tangentialvektoren:def:tangentialvektor}
+Ein Tangentialvektor $V$ im Punkt $y\in Y$ ist die Menge aller Kurven, die
+im Punkt $y$ tangential sind.
+In einem Koordinatensystem $\varphi$ ist der Tangentialvektor an die Kurve
+$\gamma$ durch die Komponenten
+\[
+u^i = \frac{d}{dx^1} \varphi^1(\gamma(\psi(x^1))) \bigg|_{x^1 = \psi(x)}
+\]
+gegeben.
+\end{definition}
+
+Verwendung eines anderen Koordinatensystems $\varphi'$ anstelle von
+$\varphi$ bedeutet, dass die Komponenten des Tangentialvektors
+an die Kurve mit der Koordinatentransformation
+$g=\varphi'\circ\varphi^{-1}$ umgerechnet werden müssen.
+Im neuen Koordinatensystem sind die Komponenten
+\begin{align}
+u^{\prime i}
+&=
+\frac{d}{dx^1}
+\varphi^{\prime i}(\gamma(\psi^{-1}(x^1))) \bigg|_{x^1=\psi(x)}
+\notag
+\\
+&=
+\frac{d}{dx^1}
+(\varphi'\circ\varphi^{-1})^i\circ \varphi\circ\gamma\circ\psi^{-1}(x^1)
+\bigg|_{x^1=\psi(x)}
+\notag
+\\
+&=
+\frac{d}{dx^1} g^i\circ(\varphi\circ\gamma\circ\psi^{-1})(x^1)
+\bigg|_{x^1=\psi(x)}
+\notag
+\\
+&=
+\sum_{k=1}^n
+\frac{\partial g^i}{\partial y^k}(\varphi(y))
+\cdot
+\frac{d}{dx^1}\varphi^k(\circ(\psi^{-1})) 
+\bigg|_{x^1=\psi(x)}
+\notag
+\\
+&=
+\sum_{k=1}^n
+\frac{\partial g^i}{\partial y^k}(\varphi(y))
+\cdot
+u^k
+\label{buch:koordinaten:tangentialvektoren:eqn:tangentialtransformation}
+\end{align}
+Die Ableitungsterme in
+\eqref{buch:koordinaten:tangentialvektoren:eqn:tangentialtransformation}
+sind die Einträge der Jacobi-Matrix der Abbildung $g$.
+
+Man beachte, dass der Index $i$ auf der linken und der rechten 
+Seite des Ausdrucks für $u^{\prime i}$ als oberer Index vorkommt.
+Der Summationsindex kommt in den Faktoren $u^k$ als oberer Index
+vor, während er in der Jacobi-Matrix unter dem Bruchstrich steht.
+Eine Dimensionsüberlegung kann illustrieren, dass der Position unter
+dem Bruchstrich eine andere Bedeutung zukommt.
+Wir nämlich die Masseinheit für die Koordinaten $y$ durch eine kleinere
+Einheit ersetzt, werden die Komponenten $u^k$ des Tangentialvektors
+grösser.
+Die Ableitungen nach $y^k$ werden aber um den gleichen Faktor kleiner.
+Im Ausdruck 
+\eqref{buch:koordinaten:tangentialvektoren:eqn:tangentialtransformation}
+heben sich diese beiden Faktoren auf und er bleibt unverändert.
+Dies ist auch notwendig, denn die Komponenten $u^{\prime i}$ dürfen
+sich nicht verändern, wenn man Sie ausgehend von einem anderen
+Koordinatensystem zu berechnen versucht.
+
+Um anzudeuten, dass sich die Ableitungen nach den $y^k$ anders verhalten
+als die Komponenten des Tangentialvektors oder die Koordinaten selbst,
+unterscheiden wir sie durch die Position des Index.
+Wir schreiben daher im Folgenden die Jacobi-Matrix als
+\[
+J^i\mathstrut_k
+=
+\frac{\partial g^i}{\partial y^k}.
+\]
+Im Ableitungsoperator nach $y^k$ muss also der Index $k$ auch als ein 
+unterer Index betrachtet werden.
+Wir kürzen die Ableitungsoperatoren daher auch als
+\[
+\partial_k = \frac{\partial}{\partial y^k}
+\]
+ab.
+Die Jacobi-Matrix lässt sich damit als
+\[
+J^i\mathstrut_k = \partial_k g^i
+\]
+schreiben und der Ausdruck
+\eqref{buch:koordinaten:tangentialvektoren:eqn:tangentialtransformation}
+wird zu
+\begin{equation}
+u^{\prime i}
+=
+\sum_{k=1}^n J^i\mathstrut_k \cdot u^k
+=
+\sum_{k=1}^n \partial_kg^i\cdot u^k.
+\label{buch:koordinaten:tangentialvektoren:eqn:transformationkurz}
+\end{equation}
+
+Ein einzelner Eintrag des Tangentialvektors oder der Jacobi-Matrix
+kann nicht sinnvoll die Basis eines Naturgesetzes sein, weil er bei
+einer Koordinatentransformation durch andere Einträge oder Linearkombenationen
+von Einträgen ersetzt wird.
+Nur die Kombination
+\eqref{buch:koordinaten:tangentialvektoren:eqn:transformationkurz},
+in der für jeden Index $i$ nur die Summe über alle $k$ erstreckt
+wird, ist unabhängig von der Wahl des $y^k$-Koordinatensystems.
+Daher ist es keine Einschränkung, diese Summierung automatisch
+vorzunehmen, wann immer ein oberer und untere Index in einem Ausdruck
+auftreten.
+
+\begin{definition}[einsteinsche Summenkonvention]
+Kommt in einem Ausdruck der gleiche Index als oberer und als unterer
+Index vor, dann wird über diesen Index summiert.
+\end{definition}
+
+Die Matrizenmultiplikation der Matrizen $A$ mit den Einträgen $a_{ik}$ und
+$B$ mit den Einträgen $b_{kl}$ liefert die Einträge der Produktmatrix
+$C=AB$ mit den Einträgen $c_{il}$ als Summe
+\[
+c_{il}
+=
+\sum_{k=1}^n
+a_{ik} b_{kl}.
+\]
+Die einsteinsche Summenkonvention legt nahe, dass Matrizen mit oberen
+und unteren Indizes geschrieben werden sollten, so dass man die
+Elemente von $C$ als
+\[
+c^i\mathstrut_l
+=
+a^i\mathstrut_k\,
+b^k\mathstrut_l
+\]
+berechnen kann, wo implizit über $k$ summiert wird.
+Der Zeilenindex wird darin als oberer Index geschrieben, so wie
+die Komponenten von Spaltenvektoren, auf denen Matrizen wirken können, 
+ebenfalls als obere Indizes geschrieben werden.
+Der Zeilenindex bekommt daher den Platz als unterer Index.
+
+Der Ausdruck
+\eqref{buch:koordinaten:tangentialvektoren:eqn:transformationkurz}
+kann daher kompakter als
+\[
+u^{\prime i}
+=
+J^i\mathstrut_k \cdot u^k
+=
+\partial_kg^i\cdot u^k
+\]
+geschrieben werden.
 
 %
 % Koordinatenlinien

@@ -41,5 +41,10 @@ stereographisch.jpg:	stereographisch.png Makefile
 stereographisch.pdf:	stereographisch.tex stereographisch.jpg
 	pdflatex stereographisch.tex
 
-kurve.pdf:	kurve.tex
+kurve.pdf:	kurve.tex kurve.jpg
 	pdflatex kurve.tex
+
+kurve.png:	kurve.pov
+	povray +A0.1 -W1920 -H1080 -Okurve.png kurve.pov
+kurve.jpg:	kurve.png Makefile
+	magick -extract 1744x1080+118+0 kurve.png kurve.jpg
