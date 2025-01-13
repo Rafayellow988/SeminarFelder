@@ -26,14 +26,165 @@ kann, die Funktionen ableiten können.
 % Ableitung entlang einer Kurve
 %
 \subsection{Ableitung entlang einer Kurve}
+Sei $X$ eine Menge versehen mit einem Koordinatensystem
+$\varphi\colon X\to \mathbb{R}^n$ und sei ausserdem 
+$f\colon X\to\mathbb{R}$ eine reellwertige Funktion definiert
+auf $Y$.
+Mithilfe des Koordinatensystems ist es möglich, die Funktion $f$
+durch die Koordinaten $x^1,\dots,x^n$ als
+\[
+f(x^1,\dots,x^n) = f\circ\varphi^{-1} (x^1,\dots,x^n)
+\]
+auszudrücken.
+
+Bereits in
+Abschnitt~\ref{buch:koordinaten:koordinaten:subsection:koordinatenwechsel}
+wurde erklärt, was es heisst, dass die Funktion $f$ stetig differenzierbar
+ist.
+Die Ableitungen der Funktion $f\circ\varphi^{-1}$ nach allen Koordinaten
+$x^k$ müssen stetig sein.
+Wir nehmen im folgenden an, dass die Funktion $f$ stetig differenzierbar
+ist.
+
+Sei jetzt eine differenzierbare Kurve in $X$ gegeben, die wir
+der Einfachheit halber als eine differenzierbare Abbildung
+\[
+\gamma\colon (-\varepsilon,\varepsilon) \to X
+\]
+schreiben wollen und damit den Komplikationen durch verschiedene
+Koordinatensysteme auf dem eindimensionalen Definitionsbereich der
+Kurve für die folgende Untersuchung ignorieren.
+Differenzierbarkeit bedeutet, dass die Zusammensetzung von $\gamma$
+mit der Koordinatenabbildung $\varphi$ stetig differenzierbar ist.
+Wir schreiben auch $x^i(t) = \varphi^i\circ\gamma(t)$ für die Koordinaten
+eines Punktes, der sich auf der Kurve bewegt.
+
+Die Zusammensetzung der Funktion $f$ mit der Kurve $\gamma$ ist eine
+differenzierbare Funktion
+\[
+f\circ\gamma
+\colon
+(-\varepsilon,\varepsilon) \to \mathbb{R}
+:
+t
+\mapsto
+f(x^1(t),\dots,x^n(t)).
+\]
+Die Ableitung
+\[
+\frac{d}{dt} f(\gamma(t))
+\bigg|_{t=0}
+=
+\frac{d}{dt} f(x^1(t),\dots,x^n(t))
+\bigg|_{t=0}
+\]
+an der Stelle $t=0$ heisst die Ableitung von $f$ entlang der Kurve
+an der Stelle $\gamma(0)$.
+Sie kann mit der Kettenregel als
+\begin{equation}
+\frac{d}{dt} f(\gamma(t))
+\bigg|_{t=0}
+=
+\frac{\partial f}{\partial x_k}(x^1(0),\dots,x^n(0))
+\cdot
+\frac{dx^k}{dt}(0)
+\label{buch:koordinaten:differentialoperatoren:eqn:kurvenableitung}
+\end{equation}
+berechnet werden (man beachte die einsteinsche Summenkonvention).
+Aus der linken Seite der Formel ist auch bereits klar, dass diese
+Ableitung unabhängig ist vom gewählten Koordinatensystem auf $X$.
 
 %
 % Tangentialvektoren als Differentialoperatoren
 %
 \subsection{Tangentialvektoren als Differentialoperatoren}
+Man erwartet, dass die Ableitung entlang der Kurve an der Stelle
+$\gamma(0)$ eine lokale Eigenschaft ist, dass also nur der Verlauf
+der Kurve in einer beliebig kleinen Umgebung des Punktes $\gamma(0)$
+eine Rolle spielt.
+Eine andere Kurve $\tilde{\gamma}:\colon(-\varepsilon,\varepsilon)\to X$,
+die in $0$ tangential ist an die Kurve $\gamma$, sollte zur gleichen
+Ableitung führen.
+Wir schreiben sie auch $\tilde{\gamma}^i(t) = \tilde{x}^i(t)$.
+Tatsächlich besagt die rechte Seite von
+\eqref{buch:koordinaten:differentialoperatoren:eqn:kurvenableitung},
+dass die Ableitung nur von den Ableitungen
+\[
+\dot{x}^i(0)
+=
+\frac{d\gamma^i}{dt}(0)
+=
+\frac{d\tilde{\gamma}^i}{dt}(0)
+=
+\dot{\tilde{x}}^i(0)
+\]
+abhängt.
+Dies sind aber die Komponenten des Tangentialvektors.
+Die Ableitung einer Funktion entlang einer Kurve verwendet von
+der Kurve nur den Tangentialvektor.
+
+\begin{definition}[Tangentialvektor als Differentialoperator]
+Sei $f\colon X\to\mathbb{R}$ eine differenzierbare Funktion und
+$V$ ein Tangentialvektor im Punkt $x_0\in X$.
+Dann ist
+\[
+X\cdot f(x_0)
+=
+\frac{d}{dt} f(\gamma(t))\bigg|_{t=0}
+\]
+für jede Kurve mit dem Tangentialvektor $V$ an der Stelle $t=0$.
+\end{definition}
+
+Tangentialvektoren können also als Differentialoperatoren betrachtet
+werden.
 
 %
 % Partielle Ableitungensoperatoren
 %
 \subsection{Partielle Ableitungsoperatoren}
+Die Koordinatenlinien von
+Abschnitt~\ref{buch:koordinaten:tangentialvektoren:subsection:koordinatenlinien}
+sind Kurven in $X$.
+Die Kurve
+\[
+\varphi\circ\gamma
+\colon
+(-\varepsilon,\varepsilon)
+\to
+\mathbb{R}^n
+:
+t\mapsto (x_0^1,\dots,x_0^k+t,\dots,x_0^n)
+\]
+durch den Punkt $x_0$ mit den Koordinaten $(x_0^1,\dots,x_0^n)$
+hat als Tangentialvektor den $k$-ten Standardbasisvektor.
+Die Ableitung einer Funktion $f$ entlang dieser Kurve ist
+\begin{align*}
+\frac{d}{dt}
+f(x_0^1,\dots,x_0^k+t,\ddots,x_0^n)
+\bigg|_{t=0}
+&=
+\frac{\partial f}{\partial y^k}(x_0^1,\dots,x_0^n).
+\end{align*}
+Man kann daher den $k$-ten Standardbasisvektor im Tangentialraum
+des Punktes $y_0$ mit der partiellen Ableitung nach der Koordinate
+
+\begin{satz}
+In einem Koordinatensystem $(X,\varphi)$ auf $X$ bilden 
+die partiellen Ableitungsoperatoren 
+\[
+e_k
+\mapsto
+\partial_k = \frac{\partial}{\partial x^k}
+\]
+nach den Koordinaten eine Basis.
+\end{satz}
+
+Dem Tangentialvektor mit den Komponenten $u^i$ im gegebenen
+Koordinatensystem entspricht also der Differentialoperator
+\[
+u^k\partial_i = u^k\frac{\partial}{\partial x^k},
+\]
+also eine Linearkombination der partiellen Ableitungsoperatoren
+(einsteinsche Summenkonvention).
+
 

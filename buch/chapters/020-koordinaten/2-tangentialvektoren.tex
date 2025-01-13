@@ -238,9 +238,13 @@ im Punkt $y$ tangential sind.
 In einem Koordinatensystem $\varphi$ ist der Tangentialvektor an die Kurve
 $\gamma$ durch die Komponenten
 \[
-u^i = \frac{d}{dx^1} \varphi^1(\gamma(\psi(x^1))) \bigg|_{x^1 = \psi(x)}
+u^i
+=
+\frac{d}{dx^1} \varphi^i(\gamma(\psi(x^1))) \bigg|_{x^1 = \psi(x)}
 \]
 gegeben.
+Der Tangentialvektor an die Kurve $\gamma$ an der Stelle $x$
+wird auch als $T_x\gamma\cdot e_1$ bezeichnet.
 \end{definition}
 
 Verwendung eines anderen Koordinatensystems $\varphi'$ anstelle von
@@ -278,7 +282,7 @@ u^{\prime i}
 \sum_{k=1}^n
 \frac{\partial g^i}{\partial y^k}(\varphi(y))
 \cdot
-u^k
+u^k.
 \label{buch:koordinaten:tangentialvektoren:eqn:tangentialtransformation}
 \end{align}
 Die Ableitungsterme in
@@ -390,7 +394,52 @@ geschrieben werden.
 %
 % Koordinatenlinien
 %
-\subsection{Koordinatenlinien}
+\subsection{Koordinatenlinien
+\label{buch:koordinaten:tangentialvektoren:subsection:koordinatenlinien}}
+Sei $(X,\varphi)$ ein Koordinatensystem auf $X$.
+Mit der inversen Abbildung $\varphi^{-1}$ lassen sich durch jeden Punkt
+$x_0\in X$ Kurven finden, entlang denen sich nur eine Koordinate
+ändert.
+Sei also $x_0\in X$ ein beliebiger Punkt in $X$.
+Die Abbildung
+\[
+\gamma_k
+\colon
+(-\varepsilon,\varepsilon)
+\to
+X
+:
+t
+\mapsto
+\gamma_k(t)
+=
+\varphi^{-1}(x_0^1,\dots,x_0^k+t,x_0^n)
+\]
+ist eine Kurve in $X$.
+Sie heisst die Koordinatenlinie der Koordinaten $x^k$.
 
-
-
+Die Zusammensetzung von $\gamma_k$ mit $\varphi$ ergibt für die
+einzelnen Koordinaten
+\[
+\varphi^i\circ\gamma_k(t)
+=
+\begin{cases}
+x_0^i+t&\qquad\text{falls $k=i$} \\
+x_0^i  &\qquad\text{sonst}.
+\end{cases}
+\]
+Die Ableitung nach $t$ ergibt die Komponenten des Tangentialvektors im
+Punkt $x_0$ als
+\[
+\frac{d}{dt}\varphi^i\circ\gamma_k(t)
+\bigg|_{t=0}
+=
+\begin{cases}
+1&\qquad \text{falls $k=i$}\\
+0&\qquad\text{sonst.}
+\end{cases}
+\qquad\Rightarrow\qquad
+T_0\gamma_k \cdot e_1 = e_k.
+\]
+Die Koordinatenlinie $\gamma_k$ hat in jedem Punkt also den
+Standardbasisvektor $e_k$ als Tangentialvektor.
