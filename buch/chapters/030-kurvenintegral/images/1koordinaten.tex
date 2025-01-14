@@ -46,7 +46,7 @@ declare function={
 \node at (2,0) [above] {$b\mathstrut$};
 \fill (0,0) circle[radius=0.08];
 \node at (0,0) [below] {$x^1(P)\mathstrut$};
-\node at (0,-1.2) {$\displaystyle I=\int_{a}^{b} f(x^1)\,dx^1$};
+\node at (-0.5,-1.3) {$\displaystyle I=\int_{a\mathstrut}^{b\mathstrut} f(x^1)\,dx^1$};
 \end{scope}
 
 \begin{scope}[xshift=3cm]
@@ -58,8 +58,19 @@ declare function={
 \fill (1,0) circle[radius=0.08];
 \node at (1,0) [above] {$b'\mathstrut$};
 \node at (0,0) [below] {$y^1(P)\mathstrut$};
-\node at (0,-1.2) {$\displaystyle I=\int_{a'}^{b'} g(y^1)\,dy^1$};
+\node at (0.8,-1.3) {$\displaystyle I=\int_{a'\mathstrut}^{b'\mathstrut} g(y^1)\,dy^1$};
 \end{scope}
+
+\xdef\r{5}
+\pgfmathparse{asin(2/\r)}
+\xdef\w{\pgfmathresult}
+\pgfmathparse{0.6+\r*(1-cos(\w))}
+\xdef\y{\pgfmathresult}
+
+\draw[->] (-2,0.6) arc({90+\w}:{90-\w}:5);
+\node at (0,\y) [above] {$\psi\circ\varphi^{-1}$};
+\draw[->] (2,-0.3) arc({\w-90}:{-90-\w}:5);
+\node at (0,{-\y+0.3}) [below] {$\varphi\circ\psi^{-1}$};
 
 \end{tikzpicture}
 \end{document}
