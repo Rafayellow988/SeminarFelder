@@ -1,0 +1,68 @@
+%
+% wege.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\def\form{
+\begin{scope}
+	\clip (-2,-2) rectangle (2,2);
+	\foreach \t in {0,30,...,330}{
+		\draw[color=gray!50] (0,0) -- ({\t}:2.5);
+	}
+	\fill[color=white] (0,0) circle[radius=0.08];
+\end{scope}
+}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\begin{scope}[xshift=-4.3cm]
+\form
+\draw[line width=1.4pt,color=darkred] (0,-1.5) arc(-90:90:1.5);
+\fill[color=darkred] (0,-1.5) circle[radius=0.08];
+\fill[color=darkred] (0,1.5) circle[radius=0.08];
+\node[color=darkred] at (0,-1.5) [left] {$A$};
+\node[color=darkred] at (0,1.5) [left] {$B$};
+\node[color=darkred] at (1.45,0.2) [above right] {$\gamma$};
+\end{scope}
+
+\begin{scope}
+\form
+\draw[color=darkred,line width=1.4pt] (0,-1.5) -- (0,-0.3) arc(-90:90:0.3) -- (0,1.5);
+\fill[color=darkred] (0,-1.5) circle[radius=0.08];
+\fill[color=darkred] (0,1.5) circle[radius=0.08];
+\fill[color=darkred] (0,0.3) circle[radius=0.05];
+\fill[color=darkred] (0,-0.3) circle[radius=0.05];
+\node[color=darkred] at (0,-1.5) [left] {$A$};
+\node[color=darkred] at (0,1.5) [left] {$B$};
+\node[color=darkred] at (0,-0.3) [left] {$C$};
+\node[color=darkred] at (0,0.3) [left] {$D$};
+\node[color=darkred] at (0.3,0) [above right] {$\gamma_r$};
+\end{scope}
+
+\begin{scope}[xshift=4.3cm]
+\form
+\draw[line width=1.4pt,color=darkred!20]
+	plot[domain=-90:90,samples=100] ({1.5*((90-\x)/90)*((90+\x)/90)},{1.5*\x/90});
+\draw[line width=1.4pt,color=darkred]
+	plot[domain=-90:90,samples=100] ({0.2*((90-\x)/90)*((90+\x)/90)},{1.5*\x/90});
+\fill[color=darkred] (0,-1.5) circle[radius=0.08];
+\fill[color=darkred] (0,1.5) circle[radius=0.08];
+\fill[color=darkred] (1.5,0) circle[radius=0.08];
+\node[color=darkred] at (0,-1.5) [left] {$A$};
+\node[color=darkred] at (1.5,0) [above right] {$E$};
+\node[color=darkred] at (0,1.5) [left] {$B$};
+\node[color=darkred] at (0.2,0) [above right] {$\gamma_s$};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

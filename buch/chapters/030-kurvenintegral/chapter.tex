@@ -145,7 +145,8 @@ Dies ist die bekannt Formel für die Substitutionsformel für das Integral.
 %
 % Integral über ein eindimensionales Definitionsgebiet
 %
-\subsection{Integral über ein eindimensionales Definitionsgebiet}
+\subsection{Integral über ein eindimensionales Definitionsgebiet
+\label{buch:1formen:subsection:integral}}
 \input{chapters/030-kurvenintegral/fig/fig-1koordinaten.tex}
 Die Substitutionsformel erklärt, wie das Integral angepasst werden
 muss, wenn man von einer Koordinatenwahl $x$ zur alternativen
@@ -257,7 +258,8 @@ kleiner werden.
 %
 % Transformation von Linearformen
 %
-\subsection{Linearformen}
+\subsection{Linearformen
+\label{buch:kurvenintegral:1formen:subsection:linearformen}}
 Die im vorangegangenen Abschnitt heuristisch hergeleitete
 Transformationseigenschaft ist nicht so überraschend, man kann sie
 auch in der linearen Algebra bei Linearformen finden.
@@ -825,6 +827,8 @@ Die $1$-Form $\alpha$ auf $M$ definiert damit auch eine $1$-Form auf
 $N$, die wir mit $T_pf^*\alpha$ bezeichnen.
 
 \begin{beispiel}
+\label{buch:kurvenintegral:kurvenintegral:beispiel:loxodrome}
+\input{chapters/030-kurvenintegral/fig/fig-loxodrome.tex}%
 Sei $N=\mathbb{R}$ eindimensional und $M=S^2$ eine Kugel.
 Die Abbildung 
 \begin{equation}
@@ -843,8 +847,9 @@ t
 \label{buch:kurvenintegral:kurvenintegral:eqn:kugel}
 \end{equation}
 beschreibt eine Kurve auf der Kugeloberfläche, die als die
-{\em Loxodrome} bekannt ist, die die Längenkreise unter konstantem
-Winkel $\arctan k$ schneidet.
+{\em Loxodrome} bekannt ist.
+Sie schneidet die Längenkreise unter konstantem Winkel $\arctan k$
+(Abbildung~\ref{buch:kurvenintegral:fig:loxodrome}).
 Wir betrachten die $1$-Form $\sin^2\vartheta\cdot d\varphi$, wobei
 $(\varphi,\vartheta)$ die Längen- und Breitenkoordinaten auf der
 Kugeloberfläche sind.
@@ -921,24 +926,1077 @@ d\varphi,\frac{\partial}{\partial\vartheta}
 &=
 1-\tanh^2 kt
 \end{align*}
-Die $1$-Form $Tf_*\alpha$ auf $\mathbb{R}$ hat daher die Form 
-$Tf_*(\sin^2\vartheta\,d\varphi)=(1-\tanh^2 kt)\,dt$.
+Die $1$-Form $Tf^*\alpha$ auf $\mathbb{R}$ hat daher die Form 
+$Tf^*(\sin^2\vartheta\,d\varphi)=(1-\tanh^2 kt)\,dt$.
 \end{beispiel}
+
 
 %
 % Integral entlang einer Kurve
 %
 \subsection{Integral entlang einer Kurve}
+Da sich jede $1$-Form auf einer Mannigfaltigkeit $M$ mit Hilfe einer
+Kurve auf das Definitionsgebiet der Kurve transportieren lässt, lässt
+sich das in Abschnitt~\ref{buch:1formen:subsection:integral} auf einem
+eindimensionalen Definitionsgebiet definierte Integral auf ein
+Kurvenintegral transportieren.
+
+\begin{definition}
+Ist $f\colon [a,b]\to M$ eine Kurve auf der Mannigfaltigkeit zwischen 
+den Punkten $A=f(a)$ und $B=f(b)$ und $\alpha$ eine $1$-Form auf $M$,
+dann ist das Kurvenintegral von $\alpha$ entlang der Kurve gegeben
+durch
+\[
+\int_{AB} \alpha
+=
+\int_{[a,b]}
+(Tf)^*(\alpha).
+\]
+In einer Karte mit Koordinaten $x^i$ wird die $1$-Form durch Koordinaten
+$\alpha_i\,dx^i$ und die Kurve durch die
+Parametrisierung $t\mapsto x^i(t)$ beschrieben.
+Darin wird das Integral
+\[
+\int_{AB} \alpha
+=
+\int_a^b \alpha_i(f(t)) dx^i
+=
+\int_a^b \alpha_i(f(t))\,\dot{x}^{i}(t)\,dt.
+\]
+\end{definition}
+
+\begin{beispiel}
+Man berechne das Kurvenintegral der $1$-Form $\alpha=-x^2\,dx^1+x^1\,dx^2$ auf
+der zweidimensionalen Ebene mit kartesischen Koordinaten $(x^1,x^2)$
+entlang des Einheitskreises $S^1\subset\mathbb{R}^2$.
+\smallskip
+
+\noindent
+Als Parametrisierung des Einheitskreises verwenden wir die Abbildung
+\[
+f
+\colon
+[0,2\pi]
+\to
+\mathbb{R}^2
+:
+t
+\mapsto
+\begin{pmatrix} x^1(t)\\x^2(t)\end{pmatrix}
+=
+\begin{pmatrix} \cos t\\\sin t\end{pmatrix}.
+\]
+Die 1-Formen werden durch $Tf^*$ auf die Formen
+\[
+\left.
+\begin{aligned}
+(Tf)^*(dx^1) &= -\sin t\,dt           &&\Rightarrow& (Tf)^*(-x^2\,dx^1) &= \sin^2 t\,dt\\
+(Tf)^*(dx^2) &= \phantom{-}\cos t\,dt &&\Rightarrow& (Tf)^*(\phantom{-} x^1\,dx^2) &= \cos^2 t\,dt
+\end{aligned}
+\;
+\right\}
+\quad\Rightarrow\quad
+(Tf)^*(\alpha)
+%=
+%(\sin^2 t+\cos^2 t)\,dt
+=
+dt
+\]
+abgebildet.
+Das Kurvenintegral ist daher
+\[
+\oint_{S^1} \alpha
+=
+\int_0^{2\pi} dt
+=
+\bigl[
+t
+\bigr]_0^{2\pi}
+=
+2\pi.
+\qedhere
+\]
+\end{beispiel}
+
+\begin{beispiel}
+Man berechne das Integral der $1$-Form $\in^2\vartheta\,d\varphi$ auf
+der Kugeloberfläche entlang der Loxodrome $L(-a,a)$ zwischen den Punkten
+mit dem Parameter $-a$ und $+a$.
+\smallskip
+
+\noindent
+In Beispiel~\ref{buch:kurvenintegral:kurvenintegral:beispiel:loxodrome}
+wurde bereits die $1$-Form auf $\mathbb{R}$ transportiert und dafür
+\[
+(1-\tanh^2 kt)\,dt
+\]
+gefunden.
+Wegen
+\[
+\tanh' t
+=
+1-\tanh^2 t
+=
+\frac{1}{\cosh^2 t}
+\qquad\Rightarrow\qquad
+\frac{1}{k}
+\frac{d}{dt}
+\tanh(kt)
+=
+1-\tanh^2 kt
+\]
+ist das gesuchte Integral also
+\begin{align*}
+\int_{L(-a,a)} \sin^2\vartheta\,d\varphi
+&=
+\int_{-a}^a
+(1-\tanh^2 kt)
+\,dt
+=
+\biggl[
+\frac{1}k
+\tanh kt
+\biggr]_{-a}^a
+=\frac{2}{k} \tanh ka.
+\end{align*}
+Im letzten Schritt wurde benutzt, dass die Funktion $t\mapsto \tanh t$
+ungerade ist und dass für eine ungerade Funktion $g(x)$ gilt
+$g(a)-g(-a)= g(a)-(-g(a))=2g(a)$.
+\end{beispiel}
 
 %
-% Spezialfall $n=1$
+% Kurvenintegral eines Vektorfeldes
 %
-\subsection{Spezialfall $n=1$}
+\subsection{Kurvenintegral eines Vektorfeldes
+\label{buch:kurvenintegral:subsection:kurvenintegralvektorfeld}}
+In der Physik wird die Arbeit $W$, die gegen eine Kraft $F$ geleistet wird,
+durch das Produkt
+\[
+W = F\cdot s
+\]
+definiert, wobei $s$ der Weg ist, der gegen den Widerstand der Kraft
+zurückgelegt wird.
+Dabei spielt nur die Kraftkomponente parallel zur Verschiebung eine Rolle.
+Ist $\vec{F}$ die Kraft und $\vec{s}$ der zurückgelegte Weg, dann kann 
+die Arbeit auch als das Skalarprodukt $W=\vec{F}\cdot\vec{s}$ geschrieben
+werden.
+
+Entlang eines Weges $\gamma$ vom Punkt $A=\gamma(a)$ zum Punkt
+$B=\gamma(b)$ kann sich die Kraft verändern, so dass $\vec{F}$
+als Kraftfeld betrachtet werden sollte.
+Der Kraftvektor wird daher als Funktion $\vec{F}(x)$ beschrieben.
+
+Der Weg $x(t)$ parametrisiert durch den Parameter $t$ setzt sich aus
+kleinen Segmenten $d\vec{s} = x(t+dt)-x(t)$ zusammen, die in einem
+kleinen Zeitinterval $dt$ durchlaufen werden.
+Jedes einzelne trägt den Betrag $\vec{F}(x(t))\cdot d\vec{s}$ zur
+Arbeit bei.
+Diese Beiträge müssen aufsummiert werden, was uns auf etwas informelle
+Art auf die Integralformel
+\[
+W
+=
+\int_a^b \vec{F}(x(t))\cdot d\vec{s}(t)
+\]
+führt.
+
+Etwas formeller ist die Ableitung von $x(t)$ nach der Zeit
+der Geschwindigkeitsvektor $\vec{v}(t)=\dot{x}(t)$.
+Das Skalarprodukt $\vec{F}(x(t))\cdot \vec{v}(t)$ ist die
+instantane Leistung gegen die Kraft.
+Durch Integration der Leistung über die Zeit wird die Arbeit
+\begin{equation}
+W
+=
+\int_a^b \vec{F}(x(t))\cdot \vec{v}(t)\,dt
+=
+\int_a^b \vec{F}(x(t))\cdot \dot{x}(t)\,dt
+\label{buch:kurvenintegral:kurvenintegral:eqn:arbeit}
+\end{equation}
+berechnet.
+
+Die Formulierung \eqref{buch:kurvenintegral:kurvenintegral:eqn:arbeit}
+ist abhängig von der Wahl der Koordinaten und daher kein allgemein 
+kovariantes Naturgesetz.
+Dazu muss das Integral in das Integral über eine $1$-Form umgewandelt
+werden.
+Dazu schreiben wir die Kraftkomponenten als $F^i$ und die Koordinaten
+als $x^k(t)$.
+Die Geschwindigkeitskomponenten sind durch $\dot{x}^k(t)$ gegeben.
+Das Integral \eqref{buch:kurvenintegral:kurvenintegral:eqn:arbeit}
+wird damit zu
+\[
+W
+=
+\int_a^b F^i(x(t))\,g_{ik}(x(t))\, \dot{x}^k(t)\,dt.
+\]
+Die $g_{ik}$ sind die Komponenten des metrischen Tensors, mit dem
+das Skalarprodukt definiert wird.
+Daraus kann jetzt die $1$-Form abgelesen werden, die über die
+Kurve $\gamma$ integriert worden, sie ist
+\[
+\omega
+=
+F^ig_{ik}\,dx^k.
+\]
+
+%
+% Der Fluss eines Vektorfeldes durch eine Kurve
+%
+\subsection{Der Fluss eines Vektorfeldes durch eine Kurve}
+Wir betrachten die Strömung eines Mediums in der Ebene, die durch
+den zweidimensionalen Geschwindigkeitsvektor $\vec{v}(x)$ an jeder
+Stelle gegeben ist.
+Wir möchten berechnen, wieviel des Mediums durch die Randkurve
+eines Gebietes fliesst.
+Die Menge des Mediums ist proportional zur Komponente der
+Strömungsgeschwindigkeit orthogonal zur Randkurve.
+Wir beschreiben ein Randsegment durch einen nach aussen
+zeigenden Vektor $\vec{n}$.
+
+Wir parametrisieren die Randkurve mit dem Parameter $s\mapsto x(s)$.
+Das Segment der Randkurve zwischen den Punkten $x(s)$ und $x(s+ds)$
+hat Richtung nahe bei $\dot{x}(s)$ und Länge $|\dot{x}(s)|\,ds$.
+Wir nehmen an, dass die Kurve so parametrisiert ist, dass das Gebiet
+links liegt.
+Der Normalenvektor $\vec{n}$ kann man dann durch Rotation $R$ um
+$90^\circ$ im Uhrzeigersinn erhalten.
+Die Menge des durch dieses Segment fliessendenb Mediums ist
+\[
+\vec{v(x(s))}\cdot \vec{n}(x(s))
+=
+\vec{v}(x(s)) R\dot{x}(s).
+\]
+Das Skalarprodukt ist invariant unter Drehungen, daher bleibt der
+Fluss der gleiche, wenn man beide Vektoren mit $R^{-1}$ multipliziert.
+Damit entsteht die Formel
+\[
+V
+=
+\int_a^b 
+R^{-1}\vec{v}(x(s))\cdot \dot{x}(s)
+\,ds
+\]
+für das Volumen des Mediums.
+Das Flussintegral ist daher das Kurvenintegral wie in
+Abschnitt~\ref{buch:kurvenintegral:subsection:kurvenintegralvektorfeld}
+eines Vektor um $90^\circ$ gegen den Uhrzeigersinn gedrehten
+Vektorfeldes.
+
+In kartesischen Koordinaten ist die Drehung besonders einfach durch
+die Matrix 
+\[
+R^{-1}
+=
+\begin{pmatrix}
+0&-1\\
+1&\phantom{-}0
+\end{pmatrix}
+\]
+beschreiben.
+Sie vertauscht die beden Koordinaten und kehrt das Vorzeichen
+der ersten Komponente.
+
+\begin{beispiel}
+XXX Fluss eines Feldes durch einen Kreis
+\end{beispiel}
 
 %
 % Differential einer Funktion
 %
 \section{Differential einer Funktion}
+Wir betrachten eine reellwertige, differenzierbare Funktion
+$f\colon M\to\mathbb{R}$ auf einer $n$-dimensionalen 
+Mannigfaltigkeit $M$.
+In einer Koordinaten kann man sie als Funktion 
+$f(x^1,\dots,x^n)$ der Koordinaten $x^i$ schreiben.
+
+Ausserdem sei jetzt auch noch ein Tangentialvektor $X$ im Punkt
+$p$ der Mannigfaltigkeit gegeben.
+Er kann durch eine Kurve $\gamma(t)$ beschrieben werden, die
+für $t=0$ durch den Punkt $p$ geht.
+Die Ableitung nach $t$ ist in der Karte gegeben durch die
+lineare Funktion
+\[
+\frac{d}{dt}
+f(\gamma(t))
+\bigg|_{t=0}
+=
+\frac{\partial f}{\partial x^i}(\gamma(t))\,\dot{x}^i(t)\bigg|_{t=0}
+=
+\frac{\partial f}{\partial x^i}(p)\dot{x}^i(0)
+\]
+der Komponenten $\dot{x}^i(0)$ des Tangentialvektors im Punkt $p$.
+
+Die Ableitung von $f$ entlang der Kurve ist eine lineare 
+Funktion des Tangentialvektors, die in einer Karte die
+partiellen Ableitungen nach den Koordinaten als Koeffizienten
+hat.
+
+\begin{definition}[Differential einer Funktion]
+\label{buch:kurvenintegral:differential:def:differential}
+Das Differential $df$ einer Funktion an der Stelle $x$ einer
+$n$-dimensionalen Mannigfaltigkeit ist die $1$-Form, die in einer
+Karte als Komponenten die partiellen Ableitungen von $f$ nach den
+Koordinaten hat.
+Es ist
+\[
+df
+=
+\frac{\partial f}{\partial x^i}\,dx^i.
+\]
+\end{definition}
+
+%
+% Rechenregeln für den $d$-Operator
+%
+\subsection{Rechenregeln für den $d$-Operator}
+Die Definition~\ref{buch:kurvenintegral:differential:def:differential}
+ermöglicht, die bekannten Rechenregeln für Funktionen mehrere Variablen
+auf das Differential von Funktionen auf einer Mannigfaltigkeit zu
+übertragen.
+Seien also im folgenden $f$ und $g$ Funktionen auf einer differenzierbaren
+Mannigfaltigkeit.
+Dann sind auch $f+g$ und $fg$, definiert durch
+\begin{align*}
+(f+g)(x) &= f(x)+g(x)
+&
+(fg)(x) &= f(x)\,g(x),
+\end{align*}
+differenzierbare Funktionen auf der Mannigfaltigkeit.
+In einer Karte können die Differentiale wie folgt berechnet werden.
+\begin{align*}
+d(f+g)(x)
+&=
+\frac{\partial(f+g)}{\partial x^i}(x)\,dx^i
+\\
+&=
+\frac{\partial f}{\partial x^i}(x)\,dx^i
++
+\frac{\partial g}{\partial x^i}(x)\,dx^i
+=
+df(x) + dg(x),
+\\
+d(fg)(x)
+&=
+\frac{\partial (fg)}{\partial x^i}(x)\,dx^i
+\\
+&=
+\frac{\partial f}{\partial x^i}(x)\,g(x)\,dx^i
++
+f(x)\,\frac{\partial g}{\partial x^i}(x)\,dx^i
+=
+f(x)\,dg(x) + g(x)\,df(x),
+\\
+d\biggl(\frac{f}{g}\biggr)(x)
+&=\frac{\partial}{\partial x^i}\biggl(\frac{f}{g}\biggr)\,dx^i
+\\
+&=
+\frac{\displaystyle
+\frac{\partial f}{\partial x^i}(x)\,g(x)-f(x)\,\frac{\partial g}{\partial x^i}(x)
+}{
+g(x)^2
+}\,dx^i
+\\
+&=
+\frac{\displaystyle
+g(x)\,
+\frac{\partial f}{\partial x^i}\,dx^i
+-
+f(x)\,\frac{\partial g}{\partial x^i}\,dx^i
+}{g(x)^2}
+=
+\frac{g(x)\,df(x)-f(x)\,dg(x)}{g(x)^2}.
+\end{align*}
+Wir fassen die Resultate im folgenden Satz zusammen.
+
+\begin{satz}[Rechenregeln für $d$]
+Das Differential auf differenzierbaren Funktionen auf einer
+Mannigfaltigkeit erfüllt die
+\begin{align*}
+\text{Summenregel:}& & d(f+g)&= df + dg, \\[6pt]
+\text{Produktregel:}& & d(fg) &= f\,dg + g\,df,\\
+\text{Quotientenregel:}& & d\biggl(\frac{f}{g}\biggr) &= \frac{g\,df - f\,dg}{g^2}.
+\end{align*}
+Eine Abbildung, die die Summen- und Produktregel erfüllt, heisst eine
+{\em Derivation}.
+\index{Derivation}%
+\end{satz}
+Wenn der Faktor $g$ konstant ist, dann ist $dg=0$ und es folgt
+$d(fg) = g\,df$.
+Der Operator $d$ ist also insbesondere linear.
+
+%
+% Integral eines Differentials
+%
+\subsection{Integral eines Differentials}
+Sei $f$ eine differenzierbare Funktion auf einer $n$-dimensionalen
+Mannigfaltigkeit $M$.
+Das Differential $df$ ist eine $1$-Form auf der Mannigfaltigkeit.
+In einer Karte kann sie als
+\[
+df
+=
+\frac{\partial f}{\partial x^i}\,dx^i
+\]
+geschrieben werden.
+
+Eine Kurve zwischen zwei Punkten $A$ und $B$ sei durch die 
+Parametrisierung $[a,b]\to\mathbb{R}^n:t\mapsto x^i(t)$ gegeben,
+dann kann das Integral sofort durch
+\[
+\int_{\gamma} df
+=
+\int_{\gamma} \frac{\partial f}{\partial x^i} dx^i
+=
+\int_a^b \frac{\partial f}{\partial x^i}(x(t))\,\dot{x}^i(t)\,dt
+\]
+ausgedrückt werden.
+Der Integrand des letzten Integrals ist die Ableitung
+\[
+\frac{d}{dt} f(x(t))
+=
+\frac{\partial f}{\partial x^i}(x(t))\,\dot{x}^i(t).
+\]
+Die Funktion $t\mapsto f(x(t))$ ist daher eine Stammfunktion und
+das Integral kann damit als
+\[
+\int_{\gamma} df
+=
+\bigl[ f(x(t)) \bigr]_a^b
+=
+f(x(b)) - f(x(a))
+\]
+berechnet werden.
+Dies beweist den folgenden Satz.
+
+\begin{satz}
+Ist $\gamma\colon[a,b]\to M$ eine Kurve auf $M$, die die Punkte $A=\gamma(a)$
+und $B=\gamma(b)$ verbindet, dann ist das Integral
+\[
+\int_\gamma df
+=
+f(A) - f(B)
+\]
+unabhängig von der Wahl des Weges zwischen $A$ und $B$.
+\end{satz}
+
+Der Satz formuliert den Hauptsatz der Infinitesimalrechnung mit Hilfe
+von Differentialen und Wegintegralen.
+Das folgende Beispiel zeigt, dass es 1-Formen gibt, deren Integral
+von der Kurve abhängt.
+Der Satz bedeutet also, dass eine solche 1-Form nicht das Differential
+einer Funktion sein kann.
+
+\begin{beispiel}
+\input{chapters/030-kurvenintegral/fig/fig-wege.tex}
+Wir betrachten das Gebiet $M=\mathbb{R}^2\setminus\{0\}$, also die
+Ebene ohne den Nullpunkt.
+Statt in $x$-$y$-Koordinaten kann sie auch in Polarkoordinaten
+beschrieben werden.
+Die Umrechnung ist durch die Abbildung
+\[
+(x,y) \mapsto (r,\varphi)=\biggl(\sqrt{x^2+y^2},\arctan\frac{y}{x}\biggr)
+\]
+gegeben.
+
+Auf diesem Gebiet soll jetzt die 1-Form $r\,d\varphi$ betrachtet und
+zwischen den beiden Punkten $A=(0,-1)$ und $B=(0,1)$ integriert werden.
+In Polarkoordinaten haben die beiden Punkte beide den Radius $r=1$,
+aber der Polarwinkel ist $\varphi(A) = -\frac{\pi}2$ und
+$\varphi(B)=\frac{\pi}2$.
+Als Weg $\gamma$ wird der Abschnitt des Einheitskreises verwendet, der in
+Polarkoordinaten durch $[-\frac{\pi}2,\frac{\pi}2]\to M:t\mapsto (1,t)$ 
+gegeben ist.
+Das Integral von $r\,d\varphi$ ist
+\begin{equation}
+\int_{\gamma} r\,d\varphi
+=
+\int_{-\frac{\pi}2}^{\frac{\pi}2}
+1\cdot \dot{\varphi}\,dt
+=
+\int_{-\frac{\pi}2}^{\frac{\pi}2}\,dt
+=
+\bigl[t\bigr]_{-\frac{\pi}2}^{\frac{\pi}2}
+=
+\pi.
+\label{buch:kurvenintegral:differential:eqn:halbkreis}
+\end{equation}
+Der Wert ändert sich jedoch, wenn ein anderer Weg gewählt wird.
+Der Weg $\gamma_r$ setzt sich zusammen aus einem vertikalen
+Streckensegment von $A$ zum Punkt $C$, einem Halbkreisbogen mit
+Radius $r$ von $C$ zu $D$ und einem weiteren vertikalen Streckensegment
+von $D$ zu $B$.
+Da sich der Polarwinkel entlang der Streckensegmente nicht ändert,
+verschwindet das Integral von $r\,df$ über die Streckensegment.
+Das Integral über den Kreisbogen kann wie in 
+\eqref{buch:kurvenintegral:differential:eqn:halbkreis}
+berechnet werden, mit dem einzigen Unterschied, dass der Faktor $r$
+jetzt nicht $1$ ist.
+Das Integral hat daher den Wert $r\pi$ und es folgt
+\[
+\int_{\gamma_r} r\,d\varphi
+=
+\underbrace{\int_{AC} r\,d\varphi}_{\displaystyle = 0}
++
+\underbrace{\int_{CD} r\,d\varphi}_{\displaystyle = r\pi}
++
+\underbrace{\int_{DB} r\,d\varphi}_{\displaystyle = 0}
+=
+r\pi.
+\]
+Indem man den Radius $r$ des Kreisbogens klein macht, kann das Integral
+also beliebig klein gemacht werden.
+
+Gegen das Argument kann eingewendet werden, dass die verwendete 
+Kurve $\gamma_r$ nicht differenzierbar ist.
+Die entwickelte Theorie ist daher gar nicht anwendbar.
+Man könnte aber auch einen Parabelbogen, der durch die Punkte 
+$A$, $E$ und $B$ geht differenzierbar deformieren.
+Der Weg 
+\[
+\gamma_s
+\colon
+[-1,1]
+\to
+\mathbb{R}^2
+:
+t\mapsto (s(1-t)(1+t), t)=(s(1-t^2),t)
+\]
+geht durch die Punkte $A$, $B$ und $(s,0)$ in karteischen
+Koordinaten.
+Insbesondere geht er im Abstand $s$ am Nullpunkt vorbei.
+Da $\gamma_s$ in kartesischen Koordinaten gegeben ist, muss
+dazu die 1-Form $r\,d\varphi$ erst in die $x$-$y$-Karte umgerechnet
+werden.
+
+Das Differential $d\varphi$ in $x$-$y$-Koordinaten ist
+\begin{align*}
+d\varphi
+&=
+d\arctan\frac{y}{x}
+=
+\frac{\partial}{\partial x}\arctan\frac{y}{x}\,dx
++
+\frac{\partial}{\partial y}\arctan\frac{y}{x}\,dy
+\\
+&=
+-\frac{y}{x^2+y^2}\,dx
++
+\frac{x}{x^2+y^2}\,dy
+=
+-\frac{y}{r^2}\,dx
++
+\frac{x}{r^2}\,dy
+\end{align*}
+Die 1-Form
+\[
+r\,d\varphi
+=
+-\frac{y}{\sqrt{x^2+y^2}}\,dx
++
+\frac{x}{\sqrt{x^2+y^2}}\,dy
+=
+-\frac{y}{r}\,dx
++
+\frac{x}{r}\,dy
+\]
+ist damit in $x$-$y$-Koordinaten ausgedrückt.
+
+Für die Berechnung des Integrals entlang des Weges $\gamma_s$ werden
+die Ableitungen der Koordinaten nach dem Parameter $t$ benötigt, sie
+sind
+\begin{align*}
+\dot{x}(t) &= \frac{d}{dt} s(1-t^2) = -2st \\
+\dot{y}(t) &= \frac{d}{dt} t = 1.
+\end{align*}
+Das Integral entlang des Weges $\gamma_s$ muss jetzt als das Integral
+\begin{align*}
+\int_{\gamma_s} r\,d\varphi
+&=
+\int_{-1}^1
+-\frac{t}{\sqrt{s^2(1-t^2)^2+1}} \dot{x}(t)
++\frac{s(1-t^2)}{\sqrt{(1-t^2)^2+1}} \dot{y}(t)
+\,dt
+\\
+&=
+\int_{-1}^1
+\frac{2st^2}{\sqrt{s^2(1-t^2)^2+1}} 
++\frac{s(1-t^2)}{\sqrt{s^2(1-t^2)^2+1}}
+\,dt
+\\
+&=
+s\int_{-1}^1
+\frac{2t^2+1-t^2}{\sqrt{s^2(1-t^2)^2+1}}
+\,dt
+\end{align*}
+Der Integrand
+\[
+f(t,s)
+=
+\frac{s(t^2+1)}{\sqrt{s^2(1-t^2)^2+1}}
+\]
+nimmt, wie man der
+\input{chapters/030-kurvenintegral/fig/fig-integrand.tex}
+Abbildung~\ref{buch:kurvenintegral:differential:fig:integrand}
+entnehmen kann, sein Maximum bei $t=0$ an, wo der Funktionswert
+$s/\sqrt{s^2+1}$ ist.
+Das Integral kann damit nach oben durch den grössten
+Wert des Integranden als
+\[
+\int_{\gamma_s} r\,d\varphi
+=
+\int_{-1}^1 f(t,s)\,dt
+=
+2 \max_{t\in[-1,1]} f(t,s)
+=
+\frac{2s}{\sqrt{s^2+1}}
+\le
+2s
+\]
+abgeschätzt werden.
+Je kleiner $s$ wird, desto kleiner wird daher auch das Wegintegral.
+Dies zeigt erneut, dass durch einen Weg, der nahe am Nullpunkt vorbeiführt,
+das Wegintegral beliebig klein gemacht werden kann und insbesondere
+sehr stark von der Wahl des Weges abhängig ist.
+\end{beispiel}
+
+%
+% Richtungsableitung
+%
+\subsection{Richtungsableitung}
+Die Richtungsableitung einer Funktion 
+\[
+f\colon
+\mathbb{R}^n\to\mathbb{R}
+:
+(x^1,\dots,x^n)\mapsto f(x^1,\dots,x^n)
+\]
+von $n$ Variablen an der Stelle $x\in\mathbb{R}^n$ in Richtung
+eines Vektors $\vec{v}\in\mathbb{R}^n$ ist gegeben durch
+\begin{align}
+D_{\vec{v}}f(x)
+&=
+\frac{d}{dt}
+f(x+t\vec{v})
+\bigg|_{t=0}
+=
+\frac{d}{dt}
+f(x^1+tv^1,\dots,x^n+tv^n)\bigg|_{t=0}
+\notag
+\\
+&=
+\frac{\partial f}{\partial x^1}(x)v^1
++
+\dots
++
+\frac{\partial f}{\partial x^n}(x)v^n
+=
+\frac{\partial f}{\partial x^i}(x)\,v^i
+\label{buch:kurvenintegral:differential:eqn:ricthungsableitung}
+\end{align}
+(man beachte die Summationskonvention).
+Die Richtungsableitung ist also nur ein Spezialfall der Ableitung
+einer Funktion entlang einer Kurve für eine speziell gewählte
+Kurve.
+In der Karte mit den $x^i$-Koordinaten ist die Kurve die Gerade
+\[
+x^i(t) = x^i(0) + tv^i
+\]
+mit dem Richtungsvektor mit Komponenten $v^i$.
+
+Insbesondere kann man die Richtungsableitung mit dem Differential
+als
+\[
+D_{\vec{v}}f(x)
+=
+\langle
+df(x),
+V
+\rangle
+\]
+schreiben, wobei $V$ der Tangentialvektor ist, der in der Karte
+der $x^i$-Koordinaten die Komponenten $v^i$ hat.
+Das Differential $df$ verallgemeinert also die Theorie der 
+Richtungsableitung aof beliebige Koordinantensysteme.
+
+
+%
+% Gradient
+%
+\subsection{Gradient}
+In der klassischen Vektoranalysis schreibt man den Ausdruck
+\eqref{buch:kurvenintegral:differential:eqn:ricthungsableitung}
+für die Richtungsableitung als Skalarprodukt
+\[
+D_{\vec{v}}f(x)
+=
+\renewcommand{\arraystretch}{1.5}
+\begin{pmatrix}
+\displaystyle
+\frac{\partial f}{\partial x^1}(x)\\
+\vdots\\
+\displaystyle
+\frac{\partial f}{\partial x^n}(x)
+\end{pmatrix}
+\cdot
+\vec{v}
+\]
+und nennt den Vektor
+\[
+\renewcommand{\arraystretch}{1.5}
+\begin{pmatrix}
+\displaystyle
+\frac{\partial f}{\partial x^1}(x)\\
+\vdots\\
+\displaystyle
+\frac{\partial f}{\partial x^n}(x)
+\end{pmatrix}
+=
+\operatorname{grad}f(x)
+=
+\nabla f(x)
+\]
+der partiellen Ableitungen von $f$ nach den
+Variablen auch den {\em Gradienten}
+\index{Gradient}%
+der Funktion $f$.
+Der Operator $\nabla$ heisst auch der Nabla-Operator\footnote{Das Zeichen
+$\nabla$ wurde von William Rowan Hamilton in der Quaternionenanalysis
+als auf den Kopf gestelltes $\Delta$ eingeführt.
+Der Theologe William Robertson Smith nannte es Nabla, weil
+es ihn an die Form eines so genannten Saiteninstruments aus dem
+alten Israel erinnerte.}.
+
+Unter allen Richtungsvektoren $\vec{v}$ mit Länge $1$ wird die
+Richtungsableitung
+\[
+D_{\vec{v}}f(x)
+=
+\operatorname{grad}f(x)\cdot \vec{v}
+=
+|\operatorname{grad}f(x)|\;|\vec{v}|\;\cos\alpha
+\]
+genau dann maximal, wenn der Zwischenwinkel $\alpha$ zwischen
+dem Gradienten $\operatorname{grad}f(x)$ und der Richtung $\vec{v}$
+verschwindet.
+Der Gradient zeigt daher in die Richtung, in der die Funktion am
+schnellsten zunimmt.
+
+%
+% Der inverse metrische Tensor
+%
+\subsubsection{Der inverse metrische Tensor}
+Die Interpretation des Wertes der 1-Form $df$ auf dem Tangentialvektor $V$ 
+als Skalarprodukt des Gradientenvektors $\nabla f(x)$ mit dem
+Richtungsvektor $\vec{v}$ verletzt die Regel, dass die Gesetzmässigkeiten
+unabhängig von den Koordinatensystemen formuliert werden sollen.
+Die Interpretation von
+\eqref{buch:kurvenintegral:differential:eqn:ricthungsableitung}
+als Skalarprodukt nimmt an, dass an der Stelle $x$ die Koordinatenrichtungen
+orthonormiert sind.
+Koordinatenunabhängig kann dies nur formuliert werden, wenn ein metrischer
+Tensor $g_{ik}$ zur Verfügung steht.
+Dann kann man nach einem Vektor $r$ mit den Komponenten $r^k$ fragen,
+der über die Formel
+\[
+\langle df(x),v\rangle
+=
+\frac{\partial f}{\partial x^i}(x)\,v^i
+=
+g_{ik} r^k\,v^i
+\]
+die Richtungsableitung reproduziert.
+Da dies für jeden Vektor $v^i$ gilt, muss für jedes $i$ die Gleichung
+\begin{equation}
+g_{ik}r^k = \frac{\partial f}{\partial x^i}(x)
+\label{buch:kurvenintegral:differential:eqn:ggleichung}
+\end{equation}
+gelten.
+Dies ist ein lineares Gleichungssystem mit der symmetrischen
+Koeffizientenmatrix $g_{ik}$.
+Da der metrische Tensor positiv definit ist, gibt es nur einen
+Vektor $r^k$, der das Gleichungssystem löst.
+
+Das Gleichungssystem~\eqref{buch:kurvenintegral:differential:eqn:ggleichung}
+kann mit der inversen Matrix der Koeffizientenmatrix gelöst
+werden.
+Ist $G$ die Matrix mit den Einträgen $g_{ik}$, dann schreiben wir
+die inverse Matrix $G^{-1}$ von
+\[
+G
+=
+\begin{pmatrix}
+g_{11}&\dots &g_{1n}\\
+\vdots&\ddots&\vdots\\
+g_{n1}&\dots &g_{nn}
+\end{pmatrix}
+\qquad
+\text{mit den Einträgen}
+\qquad
+G^{-1}
+= 
+\begin{pmatrix}
+g^{11}&\dots &g^{1n}\\
+\vdots&\ddots&\vdots\\
+g^{n1}&\dots &g^{nn}
+\end{pmatrix}.
+\]
+Die Matrix $G^{-1}$ ist ebenfalls symmetrisch.
+Die Bedingung $G^{-1}G=I$ wird in Komponenten durch
+\[
+g^{ki}g_{kl}
+=
+\delta^k\mathstrut_i
+\]
+ausgedrückt.
+
+Die Lösung des
+Gleichungssystems~\eqref{buch:kurvenintegral:differential:eqn:ggleichung}
+ist jetzt durch das Produkt $G^{-1}r$ mit den Komponenten
+\[
+r^k = g^{ki}\frac{\partial f}{\partial x^i}
+\]
+gegeben.
+Die Rolle des Gradienten wird also vom kovarianten Tensor
+\[
+g^{ki}\frac{\partial f}{\partial x^i}
+\]
+übernommen.
+
+Für eine orthonormierte Basis ist der metrische Tensor $g_{ik}=\delta_{ik}$
+besonderes einfach, die Matrix $G$ ist die Einheitsmatrix und die 
+Inverse ist $G^{-1}=I^{-1}$ ist ebenfalls die Einheitsmatrix.
+In diesem Fall ist der Gradient also durch
+\[
+g^{ki}\frac{\partial f}{\partial x^i}(x)
+=
+\delta^{ki}\frac{\partial f}{\partial x^i}(x)
+=
+\frac{\partial f}{\partial x^k}(x)
+\]
+gegeben, die der klassischen Definition des Gradienten entspricht.
+
+%
+% Kontravarianz des inversen metrischen Tensors
+%
+\subsubsection{Kontravarianz des inversen metrischen Tensors}
+
+%
+% Indizes anheben und absenken
+%
+\subsubsection{Indizes anheben und absenken}
+Der Tensor $g_{ik}$ hat schon in
+Abschnitt~\ref{buch:kurvenintegral:1formen:subsection:linearformen}
+ermöglicht, aus einem Vektor, also einem kontravarianten Tensor,
+eine Linearform, also einen kovarianten Tensor zu machen.
+Mit dem Tensor $g^{ik}$ wird jetzt auch das, aus einem kontravarianten
+Index einen kovarianten zu machen.
+Diese Operationen sind auf jeden beliebigen Index eines Tensors
+anwendbar.
+
+\begin{definition}[Anheben und Absenken von Indizes]
+Ein kontravarianter Index $i$ eines Tensors $A^i$ wird durch
+$g_{ki}A^i$ zu einem kovarianten Index $k$ {\em abgesenkt}.
+\index{absenken, Index}%
+Ein kovarianter Index $i$ eines Tensors $B_i$ wird durch
+$g^{il}B_i$ zu einem kontravarianten Index {\em angehoben}.
+\index{anheben, Index}%
+\end{definition}
+ 
+%
+% Differentialgleichungen
+%
+\subsection{Differentialgleichungen}
+Eine $1$-Form $\alpha = \alpha_i\,dx^i$ auf einer zweidimensionalen
+Mannigfaltigkeit ist in jedem Punkt der Mannigfaltigkeit eine lineare
+Funktion, die einem Tangentialvektor einen Zahlenwert zuordnet.
+Falls die Linearform nicht verschwindet, kann sie nur Rang $1$
+haben.
+Es gibt daher einen eindimensionalen Unterraum von Vektoren $X$, die
+von der $1$-Form zu $0$ gemacht werden.
+
+Ein Tangentialvektor kann durch eine parametrisierte Kurve repräsentiert
+werden.
+In Koordinaten sind die Komponenten des Tangentialvektors durch
+die Ableitungen der $\dot{x}^i$ gegeben.
+Ein Tangentialvektor, der die 1-Form zum Verschwinden bringt, erfüllt
+daher
+\begin{align*}
+0
+&=
+\langle\alpha, X\rangle
+=
+\langle
+\alpha_i\,dx^i,
+X
+\rangle
+\\
+&=
+\biggl\langle
+\alpha_i(x(t))\,dx^i,
+\dot{x}^k(t)\frac{\partial}{\partial x^k}
+\biggr\rangle
+\\
+&=
+\sum_{i=1}^n
+\alpha_i(x(t))
+\biggl\langle
+dx^i,\frac{\partial}{\partial x^k}
+\biggr\rangle
+\dot{x}^k(t)
+=
+\alpha_i(x(t))\delta_{ik}\dot{x}^k(t)
+\\
+&=
+\alpha_i(x(t))\dot{x}^i(t).
+\end{align*}
+Falls $\alpha_2(x(t))\ne 0$ ist, kann die Gleichung
+\begin{equation}
+\alpha_1(x(t))\, \dot{x}^1(t) + \alpha_2(x(t))\,\dot{x}^2(t) = 0
+\label{buch:kurvenintegral:differential:eqn:1formsteigung}
+\end{equation}
+aufgelöst werden nach
+\[
+\frac{\dot{x}^2}{\dot{x}^1(t)}
+=
+\frac{\alpha_1(x(t))}{\alpha_2(x(t))}.
+\]
+Dies ist die Steigung der Kurve in einem 
+$(x^1,x^2)$-Koordinatensystem.
+Falls $\alpha_2(x(t))=0$ folgt aus
+\eqref{buch:kurvenintegral:differential:eqn:1formsteigung}, dass
+$\dot{x}^1(t)=0$ sein muss, dass die Kurve also eine Tangentenrichtung
+parallel zur $x^2$-Richtung hat.
+
+Die Gleichung $\langle\alpha,X\rangle=0$ legt daher die Richtung
+einer Lösungskurve vor.
+Eine 1-Form definiert somit ein Richtungsfeld auf einer zweidimensionalen
+Mannigfaltigkeit genauso wie eine gewöhnliche Differentialgleichung
+der Form $y'=f(x,y)$ ein Richtungsfeld auf der $x$-$y$-Ebene festlegt.
+
+%
+% Separation der Variablen
+%
+\subsubsection{Separation der Variablen}
+Wenn die Koeffizienten $\alpha_i(x)$ der 1-Form nur von jeweils der einen
+Variable $x^i$ abhängen, dann kann man die beiden 1-Formen
+$\alpha_1\,dx^1$ und $\alpha_2\,dx^2$ entlang der Lösungskurve
+integrieren, man kann also schreiben
+\begin{equation}
+\alpha_1\,dx^1
++
+\alpha_2\,dx^2
+=0
+\quad\Rightarrow\quad
+\int \alpha_1(x^1)\,dx^1 = -\int \alpha_2(x^2)\,dx^2.
+\label{buch:kurvenintegral:differential:eqn:separation}
+\end{equation}
+Da in $\alpha_1$ nur die Variable $x^1$ vorkommt und in $\alpha_2$
+nur die Variable $x^2$, lassen sich die beiden Integrale auf den
+beiden Seiten \eqref{buch:kurvenintegral:differential:eqn:separation}
+als gewöhnliche Integrale ausführen und liefern eine Gleichung,
+die $x^1$ und $x^2$ erfüllen müssen.
+Diese kann man jetzt nach $x^2$ auflösen und damit eine Lösung der
+Differentialgleichung in der Form einer Funktion $x^2(x^1)$ finden.
+
+Die eben beschriebene Vorgehensweise erinnert nicht nur oberflächlich
+an die Methode der Separation der Variablen, die man in einer
+Anfängervorlesung über gewöhnliche Differentialgleichung typischerweise
+kennenlernt.
+In der Theorie der Ableitung und des Riemann-Integrals sind die Zeichen
+$dx^1$ und $dx^2$ nur Formelteile, die für sich allein keine
+wohldefinierte mathematische Bedeutung haben.
+Die Vorgehensweise in der Methode der Separation der Variablen ist
+daher nur formal und nur dadurch gerechtfertigt, dass es am Schluss
+``aufgeht''.
+Die Theorie der 1-Formen und der Integration von 1-Formen zeigt,
+wie diese Lösungsmethode mathematisch widerspruchsfrei formuliert
+werden kann.
+
+\subsubsection{Die Differentialgleichung der Loxodrome}
+Die Loxodrome auf der Kugeloberfläche wird in einer Merkator-Projektion
+zu einer Geraden.
+Betrachten wir die Merkatorprojektion als Karte der Kugeloberfläche
+mit den Koordinaten $(y^1,y^2)$, dann erfüllen die Geraden mit
+Steigung $k$ in Parameterdarstellung die Gleichung
+\[
+\frac{\dot{y}^2(t)}{\dot{y}^1(t)}
+=
+k.
+\]
+Die Differentialgleichung kann man als $1$-Form 
+\begin{equation}
+\beta
+=
+k\,dy^1 - dy^2
+\label{buch:kurvenintegral:differential:merkatorform}
+\end{equation}
+geschrieben werden.
+
+Die Merkatorprojektion ist in Kugelkoordinaten auf der Kugelaberfläche
+die Abbildung
+\[
+f\colon
+\mathbb{R}^2\to\mathbb{R}^2
+:
+(\varphi,\vartheta)
+\mapsto
+(y^1,y^2)
+=
+(\varphi,\tan(90^\circ-\vartheta))
+=
+(\varphi,\cot\vartheta)
+\]
+Durch Transport der 1-Form
+\eqref{buch:kurvenintegral:differential:merkatorform}
+mithilfe der Merkator-Projektion bekommt man aus
+\begin{equation}
+\left.
+\begin{aligned}
+dy^1 &= d\varphi \\
+dy^2 &= -\frac{1}{\sin^2\vartheta}d\vartheta
+\end{aligned}
+\quad
+\right\}
+\qquad
+\Rightarrow
+\qquad
+\alpha
+=
+(Tf)_*(\beta)
+=
+k\,d\varphi+\frac{1}{\sin^2\vartheta}\,d\vartheta.
+\label{buch:kurvenintegral:differential:merkatorsepariert}
+\end{equation}
+
+Wir suchen eine Lösung der Differentialgleichung $\alpha=0$
+als Funktion $\vartheta(\varphi)$.
+Die $1$-Form
+\eqref{buch:kurvenintegral:differential:merkatorsepariert}
+hat die Eigenschaft, dass die Koeffizienten nur von jeweils
+einer Variablen abhängen.
+Somit sind die Voraussetzungen für die Anwendung der Methode
+der Separation der Variablen gegeben.
+Die Differentialgleichung kann damit durch Integration
+\[
+k\,d\varphi=-\frac{1}{\sin^2\vartheta}\,d\vartheta
+\qquad
+\Rightarrow
+\qquad
+k\int d\varphi
+=-
+\int \frac{d\vartheta}{\sin^2\vartheta}
+\qquad
+\Rightarrow
+\qquad
+k\varphi + C
+=
+\frac{1}{\tan \vartheta}
+=
+\cot\vartheta
+\]
+gelöst werden.
 
 %
 % Differenzierbare Zerlegungen der Einheit

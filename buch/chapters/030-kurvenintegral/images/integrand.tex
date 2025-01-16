@@ -1,0 +1,62 @@
+%
+% integrand.tex -- Integrand der 1-Form für den Weg \gamma_s
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\def\skala{1}
+\def\s{0.2}
+\begin{tikzpicture}[>=latex,thick,scale=\skala,
+declare function={
+	z(\t,\s) = \s*(1-\t)*(1+\t);
+	n(\t,\s) = sqrt(z(\t,\s)*z(\t,\s)+1);
+	f(\t,\s) = z(\t,\s)/n(\t,\s);
+	s(\t) = \t / sqrt(4-\t*\t);
+}]
+\begin{scope}
+\clip (-6,-0.1) rectangle (6,4.1);
+\foreach \y in {1,0.8,0.6,0.4,0.2}{
+	\pgfmathparse{s(\y)}
+	\xdef\s{\pgfmathresult}
+	\draw[color=darkred,line width=1.4pt]
+		plot[domain=-1:1,samples=100] ({6*\x},{8*f(\x,\s)});
+}
+\end{scope}
+
+\draw[->] (-6.1,0) -- (6.3,0) coordinate[label={$t$}];
+\draw[->] (0,-0.05) -- (0,4.3) coordinate[label={right:$f(t,s)$}];
+
+\draw (-6,-0.05) -- ++(0,0.1);
+\node at (-6,0) [below] {$-1$};
+\draw (6,-0.05) -- ++(0,0.1);
+\node at (6,0) [below] {$1$};
+
+\foreach \t in {0.1,0.2,...,0.9}{
+	\draw ({6*\t},-0.05) -- ++(0,0.1);
+	\draw ({-6*\t},-0.05) -- ++(0,0.1);
+}
+\foreach \t in {0.1,0.2,...,0.7}{
+	\draw (-0.05,{4*sqrt(2)*\t}) -- ++(0.1,0);
+}
+\node at (0,{4*sqrt(2)*0.1}) [left] {$0.1$};
+\node at (0,{4*sqrt(2)*0.2}) [left] {$0.2$};
+\node at (0,{4*sqrt(2)*0.5}) [left] {$0.5$};
+
+\node at ({6*0.5},0) [below] {$0.5$};
+\node at ({-6*0.5},0) [below] {$-0.5$};
+\node at (0,0) [below] {$0$};
+
+\node[color=darkred] at ({6*0.5},{4*sqrt(2)*f(0.5,1)}) [above right] {$s=1$};
+\node[color=darkred] at ({6*0.5},{8*f(0.5,\s)}) [below left] {$s=\s$};
+
+\end{tikzpicture}
+\end{document}
+
