@@ -1,0 +1,663 @@
+%
+% 1-Formen
+%
+\section{1-Formen}
+Was ist es eigentlich, was man integrieren will?
+Zunächst gibt der riemannsche Integralbegriff aus dem elementaren
+Analysisunterricht den Eindruck, dass es eine Funktion ist.
+Es können aber nicht allein die Funktionswerte sein, die das Integral
+bestimmen.
+Vielmehr kommt es auch darauf an, wie ``schnell'' der Definitionsbereich
+beim Integrieren durchlaufen wird.
+Dies wird zum Beispiel durch die Substitutionsformel für das Integral
+wiedergegeben.
+Man kann sie auch als eine Koordinatenänderungsformel für das Integral
+entlang der reellen Achse betrachten.
+Was ist dann aber die koordinatenunabhängige Grösse, deren Integral
+bestimmt worden ist?
+Dies soll in diesem Abschnitt geklärt werden.
+
+%
+% Riemann-Integral
+%
+\subsection{Riemann-Integral}
+Im elementaren Analysis-Unterricht lernt man, dass das Riemann-Integral
+\[
+I
+=
+\int_a^b f(x)\,dx
+\]
+einer Funktion $f(x)$ die Fläche unter der Kurve $y=f(x)$ berechnet.
+Man macht das, indem man die Fläche in zunächst in vertikale Streifen
+der Breite $\Delta x_i$ zerlegt, die an bei den Koordinaten $x_i$
+beginnen.
+Die Rechtecke dürfen sich nicht überlappen und müssen die Fläche unter
+der Kurve vollständig abdecken, die Teilstellen $x_i$ müssen
+also $x_{i+1}=x_i+\Delta x_i$ erfüllen.
+Dann ist die Summe
+\begin{equation}
+\sum_{i} f(x_i)\cdot \Delta x_i
+\approx 
+I
+\label{buch:kurvenintegral:1-form:eqn:riemann-summe}
+\end{equation}
+eine Approximation für den Wert des Riemann-Integrals.
+
+Der Unterschied zum exakten Wert kommt vor allem daher, dass die
+Rechtecke mit Breite $\Delta x_i$ und Höhe $f(x_i)$ manchmal
+die Funktionskurve überragen, zum Beispiel wenn die Kurve negative
+Steigung hat, und manchmal darunter bleiben, wenn die Kurve positive
+Steigung hat.
+Der Unterschied setzt sich aus Dreiecken zusammen, deren Grundseite
+$\Delta x_i$ ist, und deren Höhe durch $f'(x_i)\cdot \Delta x_i$
+beschränkt ist.
+Der Fehler ist daher grössenordnungsmässig nicht grösser als
+\[
+\Delta I
+\approx
+\sum_i \Delta x_i \cdot |f'(x_i)\cdot \Delta x_i|
+=
+\sum_i |f'(x_i)| \Delta x_i^2.
+\]
+Sorgt man dafür, dass die Schritte $\Delta x_i$ alle gleich klein
+sind, also $\Delta x_i=h$, dann folgt
+\[
+\Delta I
+\approx
+\sum_i |f'(x_i)| h^2
+=
+h\sum_i |f'(x_i)|h
+\approx
+h\int_a^b |f'(x)|\,dx.
+\]
+Für eine stetig differenzierbare Funktion ist $f'(x)$ im Integranden
+auf der rechten Seite beschränkt.
+Das Integral auf der rechten Seite ist also beschränkt.
+Es bleibt aber der Faktor $h$, der den Fehler $\Delta I$ beliebig
+klein macht, wenn man $h$ gegen $0$ gehen lässt.
+
+%
+% Substitution
+%
+\subsection{Substitution}
+Der Integrand $f(x)$ im Riemann-Integral ist offenbar eine von
+der Parametrisierung unabhängige Grösse.
+Wechselt man die Koordinaten mit Hilfe einer Koordinatentransformation
+$x(y)$, dann bleiben die Werte $f(x(y))$ an entsprechenden Stellen
+des Definitionsbereiches die gleichen.
+Es ändert sich aber das durch den Faktor $dx$ im Integral symbolisierte
+Gewicht, mit dem jeder Summand in der Riemann-Summe
+\eqref{buch:kurvenintegral:1-form:eqn:riemann-summe}
+gewichtet wird.
+Die Koordinatentransformation $x(y)$ macht aus einem Schritt $\Delta y$
+einen $x$-Schritt von der Grössenordnung
+\[
+\Delta x
+\approx
+\frac{dx}{dy}(y)\cdot \Delta y.
+\]
+Sind $a'$ und $b'$ die Endpunkte des $y$-Intervalls, die auf 
+$a=x(a')$ und $b=x(b')$ abgebildet werden, dann ist daher das
+Integral
+\begin{equation}
+\int_a^b f(x)\,dx
+=
+\int_{a'}^{b'} f(x(y)) \, \frac{dx}{dy}(y)\,dy.
+\label{buch:kurvenintegral:1-form:eqn:substitution}
+\end{equation}
+Dies ist die bekannt Formel für die Substitutionsformel für das Integral.
+
+
+%
+% Integral über ein eindimensionales Definitionsgebiet
+%
+\subsection{Integral über ein eindimensionales Definitionsgebiet
+\label{buch:1formen:subsection:integral}}
+\input{chapters/030-kurvenintegral/fig/fig-1koordinaten.tex}
+Die Substitutionsformel erklärt, wie das Integral angepasst werden
+muss, wenn man von einer Koordinatenwahl $x$ zur alternativen
+Koordinate $y$ wechseln will.
+Wir können das Integral aber auch als eine Zahl betrachten,
+die nur von zwei rein geometrisch definierten Eigenschaften
+abhängig sind.
+Einerseits ist dies eine Teilmenge eines eindimensionalen
+Definitionsgebietes, welches in
+Abbildung~\ref{buch:kurvenintegral:fig:1koordinaten} durch
+den Bereich zwischen den Punkten $A$ und $B$ entlang der Menge $M$
+symbolisiert ist.
+Durch die Koordinatenssysteme $\varphi$ und $\psi$ werden daraus
+die Intervalle $[a,b]$ von $x^1$-Koordinatenwerten bzw.~$[a',b']$
+von $y^1$-Koordinatenwerten.
+
+Die zweite Komponente zur Definition des Integrals ist eine
+noch zu definierende Grösse $\alpha$, die die Funktionswerte
+entlang des Definitionsgebietes liefert.
+Dies muss so geschehen, dass $\alpha$ wieder ein Objekt ist,
+welches vom Koordinatensystem unabhängig definiert ist, oder 
+besser, dessen Transformationseigenschaften beim Koordinatenwechsel
+klar sind.
+Als Leitlinie für die gesuchte Umrechnungsformel kann die
+Substitutionsformel
+\eqref{buch:kurvenintegral:1-form:eqn:substitution}
+herangezogen werden.
+
+Das gesamte Integral möchten wir als
+\[
+\int_{AB} \alpha
+\]
+schreiben können.
+Es soll die üblichen Eigenschaften eines Integrals haben, also
+insbesondere linear sein:
+\[
+\int_{AB}
+(\alpha + \beta)
+=
+\int_{AB}
+\alpha
++
+\int_{AB}
+\beta
+\qquad\text{und}\qquad
+\int_{AB}
+t
+\alpha
+=
+t
+\int_{AB}
+\alpha.
+\]
+In einem Koordinatensystem soll eine Integralformel entstehen.
+Rein formal ist daher $\alpha$ in den Koordinatensystemen $\varphi$
+bzw.~$\psi$ durch
+\[
+f(x^1)\,dx^1
+\qquad
+\text{bzw.}
+\qquad
+g(y^1)\,dy^1
+\]
+gegeben.
+Die Substitutionsformel
+\eqref{buch:kurvenintegral:1-form:eqn:substitution}
+besagt dann, dass
+\[
+g(y^1)
+= 
+f(\varphi\circ\psi^{-1}(y^1))
+\frac{dx^1}{dy^1}(y^1)
+=
+f(\varphi\circ\psi^{-1}(y^1))
+\frac{d}{dy^1}(\varphi\circ\psi^{-1}(y^1))
+\]
+sein muss.
+Man beachte, dass $g(y^1)$ und $f(x^1)$ nicht Komponenten eines
+Vektors sind, dann für Vektorkomponenten $v_1$ gilt wegen
+\[
+\frac{\partial}{\partial y^1}
+=
+\frac{dx^1}{\partial y^1}\cdot \frac{\partial }{\partial x^1}.
+\]
+die Umrechnungsformel
+\[
+v_1'(y^1)
+=
+\frac{dy^1}{dx^1}
+v_1(x^1)
+\qquad\text{oder}\qquad
+v_1(x^1)
+=
+\frac{dx^1}{dy^1} v_1'(y^1).
+\]
+Die Transformation erfolgt also in der ``falschen'' Richtung.
+
+Aus der Sicht des angestrebten Ziels, ein koordinatenunabhängiges
+Integralkonzept zu definieren, ist die gegenüber Vektoren ``verkehrte''
+Transformationsrichtung zu erwarten.
+Wenn ein Koordinatenwechsel dazu führt, dass der Koordinatenraum
+langsamer durchlaufen wird, äussert sich das darin, dass die Komponenten
+eines Tangentialvektors grösser werden.
+Der Tangentialvektor beschreibt aber die ``Schrittgrösse $dx$'' beim
+Integrieren auf koordinatenunabhängige Art.
+Damit das Integral gleich bleibt, muss der skalare Faktor entsprechend
+kleiner werden.
+
+%
+% Transformation von Linearformen
+%
+\subsection{Linearformen
+\label{buch:kurvenintegral:1formen:subsection:linearformen}}
+Die im vorangegangenen Abschnitt heuristisch hergeleitete
+Transformationseigenschaft ist nicht so überraschend, man kann sie
+auch in der linearen Algebra bei Linearformen finden.
+In diesem Abschnitt soll die Koordinatentransformationsregel für
+Linearformen formuliert werden.
+
+%
+% Koeffizienten einer Linearform
+%
+\subsubsection{Koeffizienten einer Linearform}
+Seien $a^i$ die Komponenten eines Vektors $a$ in einer Basis $e_i$ und
+$t_{i}\mathstrut ^k$ die Koeffizienten der Transformationsmatris
+in eine alternative Basis $e'_k$.
+Die Komponenten in der alternativen Basis werden mit $a^{\prime k}$
+bezeichnet und die Umrechung zwischen den Koordinaten erfolgt mit der
+Formel
+\begin{equation}
+a^{\prime k}
+=
+t_i\mathstrut^k a^i
+\label{buch:kurvenintegral:1formen:linearformen:vektor}
+\end{equation}
+gegeben.
+
+Eine Linearform ist eine lineare Abbildung $l\colon V\to\mathbb{R}$,
+die einem Vektor $v$ einen Zahlenwert $l(v)$ zuordnet.
+Die Linearität verlangt, dass der Wert
+\[
+l(a)
+=
+\sum_i
+l(a^ie_i)
+=
+a^i \underbrace{l(e_i)}_{\displaystyle=l_i}
+\]
+ist (man beachte die einsteinsche Summationskonvention).
+Die Werte $l_i=l(e_i)$ sind die Koeffizienten, mit denen die $a^i$
+multipliziert werden müssen, um $l(a)$ zu ergeben.
+Entsprechend sind die $l'_i=l(e'_i)$ die Koeffizienten der Basis
+
+%
+% Transformation der Koeffizienten einer Linearform
+%
+\subsubsection{Transformation der Koeffizienten einer Linearform}
+Bei der Koordinatentransformation soll sich der Wert $l(a)$ nicht
+ändern, es muss daher
+\[
+l'_k
+a'^k
+=
+l'_k
+(t_i\mathstrut^k a^i)
+=
+(l'_kt_i\mathstrut^k) a^i
+=
+l_i
+a^i
+\]
+sein.
+Da dies für jeden beliebigen Vektor gelten muss, müssen die Koeffizienten
+übereinstimmen und es folgt das Transformationsgesetz
+\begin{equation}
+l'_kt_i\mathstrut^k
+=
+l_i
+\label{buch:kurvenintegral:1formen:linearformen:linearform}
+\end{equation}
+für die Koeffizienten der Linearform.
+Die Transformation der Linearformkoeffizienten erfolgt also
+in der umgekehrten Richtung vom gestrichenen Koordinatensystem 
+zum ungestrichenen.
+Ausserdem wird über den obneren Index von summiert statt über
+den unteren wie in 
+\eqref{buch:kurvenintegral:1formen:linearformen:vektor}.
+
+Betrachtet man die Koeffizienten $t_i\mathstrut^k$ als Matrix, mit der
+die Umrechnung der Koeffizienten von $a$ erfolgt, dann ist die Matrix,
+mit der die Koeffizienten $l_k'$ umberechnet werden, die transponierte
+Matrix.
+
+%
+% Kovariante und kontravariante Indizes
+%
+\subsubsection{Kovariante und kontravariante Indizes}
+Die Koeffizienten einer Linearform und die Komponenten eines Vektors 
+haben also entgegengesetztes Transformationsverhalten.
+Es können die gleichen Koeffizienten der Transformationsmatrix 
+verwendet werden, aber die Transformation erfolgt in der umgekehrten
+Richtung und es muss über den anderen Index summiert werden.
+Das unterschiedliche Verhalten wurde bereits durch die unterschiedliche
+Position der Indizes vorweggenommen.
+Während Vektorkomponenten obere Indizes verwenden, haben die
+Koeffizienten einer Linearform untere Indizes.
+
+\begin{definition}[kovariant und kontravariant]
+Die Komponenten eines Vektors heissen {\em kontravariant}, sie haben
+\index{kontravariant}%
+einen hochgestellten Index, der ebenfalls {\em kontravariant} genannt
+wird.
+Die Koeffizienten einer Linearform von Vektoren heissen dargegen
+{\em kovariant}, sie tragen einen unteren Index, der entsprechend
+\index{kovariant}%
+{\em kovariant} genannt wird.
+\end{definition}
+
+%
+% Tensoren
+%
+\subsubsection{Tensoren}
+Wir werden später sehen, dass es sinnvoll sei kann, dass eine Grösse
+mehr als einen Index haben kann.
+Zum Beispiel hängt die Kraft auf eine bewegte Ladung linear von der
+Richtung des Magnetfeldes und von der aktuellen Bewegungsrichtung ab.
+Beide Einflussfaktoren haben vektoriellen Charakter, werden also durch
+Komponenten beschrieben, die ihrerseits verschiedene Komponenten haben.
+Daher vereinheitlichen und verallgemeinern wir die Konzepte von Vektoren
+und Linearformen zum neuen Begriff des Tensors.
+
+Als etwas konkreteres Beispiel betrachten wir das Skalarprodukt von
+zwei Vektoren $u$ und $v$ mit den Komponenten $u^i$ bzw.~$v^k$.
+In der Vektorgeometrie lernt man, dass man das Skalarprodukt mit der
+Formel $\sum_i u^iv^i$ berechnen kann.
+Man lernt aber auch, dass diese einfache Formel nur für in einem
+orthonormierten Koordinatensystem gilt, wo die Basisvektoren
+orthogonal sind und Länge $1$ haben.
+Insbesondere ist die angegebene Formel für das Skalarprodukt nicht
+für beliebige Koordinatensysteme tauglich.
+
+Schreibt man die Vektoren $u$ und $v$ explizit als Linearkombinationen
+\[
+u = \sum_{i=1}^n u^i b_i
+\qquad\text{und}\qquad
+v = \sum_{k=1}^n v^k b_k
+\]
+der Basisvektoren, dann ist das Skalarprodukt durch
+\[
+u\cdot v
+=
+\sum_{i,k=1}^n u^iv^k \underbrace{(b_i\cdot b_k)}_{\displaystyle g_{ik}}
+\]
+gegeben.
+Für eine orthonormierte Basis sind die Koeffizienten
+\[
+g_{ik}
+=
+\left\{
+\begin{array}{llcl}
+1&\quad i=k&\qquad\Leftrightarrow\qquad&\text{Basisvektor $b_i$ hat Länge $|b_i|=1$}\\
+0&\quad i\ne k&\qquad\Leftrightarrow\qquad&\text{Basisvektoren $b_i$ und $b_k$ sind orthogonal: $b_i\perp b_k$}
+\end{array}
+\right.
+\]
+Für beliebige Koordinatensysteme muss aber zugelassen werden, dass 
+die Koeffizienten $g_{ik}$ beliebige Werte annehmen können.
+
+\begin{definition}[metrischer Tensor]
+Die Koeffizienten $g_{ik}$, die das Skalarprodukt zweier Vektoren durch
+\[
+u\cdot v
+=
+\sum_{i,k=1}^n u^iv^k g_{ik}
+\]
+heisst der {\em metrische Tensor}.
+\index{metrischer Tensor}%
+\end{definition}
+
+Der metrische Tensor hat interessante zusätzliche Eigenschaften.
+Er ist zum Beispiel symmetrisch, was sich in $g_{ik}=g_{ki}$ für
+alle Paare $i,k$ äussert.
+Ausserdem ist das Skalarprodukt üblicherweise positiv definit,
+so dass 
+\[
+g_{ik}u^i u^k
+>
+0
+\]
+für von $0$ verschiedene Vektoren $u$ gilt.
+
+Der metrische Tensor definiert das Skalarprodukt, welches eine bilineare
+Abbildung ist, die aus zwei Vektoren auf jeweils lineare Art einen
+Zahlenwert berechnet.
+Man kann ihn aber auch anders interpretieren.
+Gibt man nur einen Vektor mit den Komponenten $v^i$ vor, erzeugt der
+metrische Tensor eine Linearform mit den Koeffizienten
+\[
+l_k = g_{ki}v^i
+\]
+Die Komponenten $l_k$ kann man auch ermitteln, indem man das Skalar
+von $v$ mit den Basisvektoren berechnet.
+Man kann also die Indizes des metrischen Tensors als Indizes betrachten,
+die mit einem Inputvektor verknüpft werden, oder alternativ als Indizes
+der Komponenten der Output-Linearform.
+
+Es ist auch denkbar, anstelle von Vektoren aus Linearformen
+neue Werte zu berechnen, oder mehr als zwei Faktoren einfliessen zu
+lassen.
+Zum Beispiel kann die Krümmung des Raumes dadurch beschrieben werden,
+dass der Transport eines Vektors (erster Inputvektor) beim Paralleltransport
+entlang eines Parallelogramms (zwei weitere Inputvektoren) gedreht wird.
+Die Krümmung berechnet also auf lineare Weise aus drei Inputvektoren
+einen Outputvektor.
+
+\begin{definition}[Tensor]
+\index{Tensor}
+Ein {\em Tensor $r$-ter Stufe} ist eine multilineare Abbildung, die
+$r$ Vektoren oder Linearformen auf Skalare abbildet.
+Seine Komponenten sind durch eine Grösse
+$A^{i_1\dots i_k}\mathstrut_{i_{k+1}\dots i_r}$
+mit $r$ Indizes gegeben.
+Der Tensor heisst vom Typ $(k,r-k)$ wenn er $k$ kovariante und 
+$r-k$ kontravariante Indizes hat.
+\end{definition}
+
+Ein Skalar ist ein Tensor nullter Stufe.
+Ein Vektor ist ein Tensor erster Stufe mit einem kontravarianten Index,
+also vom Typ $(0,1)$, während eine Linearform ein Tensor erster
+Stufe vom Type $(0,1)$ ist.
+Der metrische Tensor $g_{ik}$ ist ein Tensor zweiter Stufe vom Typ
+$(2,0)$.
+Ein Tensor vom Typ $(1,1)$ hat Komponenten $a^i\mathstrut_k$, die aus
+einem Vektor $u^k$ den Vektor mit den Komponenten
+\[
+v^i = a^i\mathstrut_k u^k
+\]
+berechnet.
+Dies entspricht der Idee einer Matrix, die Vektoren auf andere 
+Vektoren abbildet und die man in der linearen Algebra kennenlernt.
+
+Beim metrischen Tensor sind die beiden Indizes wegen der Symmetrie
+vertauschbar.
+Man beachte aber, dass die Platzierung der Indizes im Allgemeinen nicht
+beliebig ist.
+Zum Beispiel wird der Riemannsche Krümmungstensor oft in der Form
+\(
+R^i\mathstrut_{klr}
+\)
+als Tensor vierter Stufe vom Typ $(3,0)$ geschrieben.
+Er ist antisymmetrisch in den letzten beiden Indizes, es gilt also
+\(
+R^i\mathstrut_{klr}
+=
+-
+R^i\mathstrut_{krl}
+\),
+es gibt aber keine offensichtlichen weiteren Symmetrien.
+Wendet man den Tensor auf zwei Vektoren mit Komponenten $u^l$ und
+$v^r$ an, erhält man
+\[
+a^i\mathstrut_k
+=
+R^i\mathstrut_{klr}u^lv^r,
+\]
+worin nur noch die zwei Indizes $i$ und $k$ frei sind.
+Der Tensor $a^i\mathstrut_k$ zweiter Stufe vom Typ $(1,1)$
+kann als eine Abbildungsmatrix betrachtet werden,
+die einen Vektor auf einen anderen Vektoren abbildet.
+
+Da die einsteinsche Summationskonvention nur über verschieden platzierte
+Indizes summiert, wird sichergestellt, dass Linearformen nur auf
+Vektorkomponenten angewendet werden können.
+Da die Transformationsmatrix einen oberen und einen unteren Index hat,
+kann sie aus einem kontravarianten Vektor nur wieder einen kontrvarianten
+Vektor machen.
+Ebenso wird ein kovarianter Index durch Transformation wieder zu einem
+kovarianten Index.
+
+%
+% Tensoren sind nicht nur Matrizen mit mehr Dimensionen
+%
+\subsubsection{Tensoren sind nicht nur Matrizen mit mehr Dimensionen}
+Auf den ersten Blick besteht eine grosse Ähnlichkeit zwischen dem
+Konzept der Matrix und einem Tensor zweiter Stufe.
+In der linearen Algebra schreibt man eine lineare Abbildung in einer
+Basis durch eine Matrix.
+Die Komponenten $u_k$ eines Vektors $u$ werden von der Matrix $A$
+mit den Einträgen $a_{ik}$ durch
+\[
+v = Au
+\qquad\Leftrightarrow\qquad
+v_i = \sum_{k=1}^n a_{ik}u_k
+\]
+auf einen Vektor $v$ abgebildet.
+Der erste Index, der Zeilenindex, bezeichnet die Komponente, die berechnet
+wird, während über den zweiten Index summiert wird.
+Ein Matrix wird meistens als rechteckiges Zahlenschema
+\[
+A
+=
+\begin{pmatrix}
+a_{11} & a_{12} & \dots  & a_{1n} \\
+a_{21} & a_{22} & \dots  & a_{2n} \\[-2pt]
+\vdots & \vdots & \ddots & \vdots \\[-1pt]
+a_{m1} & a_{m2} & \dots  & a_{mn}
+\end{pmatrix}
+\]
+dargestellt.
+Die Wirkung einer Matrix auf einem Vektor wird durch das Produkt
+``Zeile mal Spalte'' gegeben, summiert wird immer über den zweiten
+Index,, den Spaltenindex.
+
+Tensoren erweitern diese Idee in mehrfacher Hinsicht.
+Zunächst wird die Möglichkeit zusätzlicher Indizes geschaffen.
+Man könnte die Koeffizienten als drei- oder noch höherdimensionales
+Zahlenschema darstellen.
+Allerdings ist dies auch nicht weiter hilfreich für die zweite
+Erweiterung: jeder Index kann als Summationsindex verwendet werden.
+
+In der Matrizenrechnung wird kein Unterschied zwischen kovarianten
+und kontravarianten Indizes gemacht.
+Es ist durchaus üblich, die Koeffizienten $g_{ik}$ des metrischen
+Tensors als Einträge einer Matrix zu betrachten.
+Sie wird die {\em Gram-Matrix} genannt und kann dazu verwendet
+\index{Gram-Matrix}T
+werden, das Skalarprodukt als 
+\[
+u\cdot v
+=
+u^t G v
+=
+\sum_{i,k=1}^n
+g_{ik}u_iv_k
+\]
+zu schreiben.
+Allerdings sind die Koeffizienten
+\[
+\sum_{k=1}^n a_{ik}u_k
+\qquad\text{und}\qquad
+\sum_{k=1}^n g_{ik}v_k
+\]
+für die Abbildungsmatrix bzw.~den metrischen Tensor von ganz verschiedenem
+Charakter.
+Im ersten Fall entstehen Komponenten eines Vektors, die sich bei Basiswechsel
+kontravariant transformieren, im zweiten Fall entstehen Koeffizienten
+einer Linearform, die sich kovariant transformieren.
+Die bisherige Entwicklung hat aber gezeigt, dass diese Unterscheidung
+wesentlich ist, wenn man dem Ziel einer koordinatenunabhängigen
+Beschreibung von Naturgesetzen näher kommen will.
+
+%
+% Integrand $\alpha$ als Linearform
+%
+\subsubsection{Integrand $\alpha$ als Linearform}
+Der Integrand eines koordinatenunabhängig definirten Integrals entlang
+eines eindimensionalen Definitionsgebietes muss also eine
+Linearform sind.
+Tatsächlich wird das Arbeitsintegral in der Physik definiert als
+das Wegintegral der Kraft entlang eines Weges definiert.
+Darin wird die Kraft skalar mit dem Tangentialvektor multipliziert
+und integriert.
+Wir haben das Skalarprodukt bereits durch den metrischen Tensor
+beschrieben.
+Aus dem Kraftvektor mit den Komponenten $F^k$ macht er die Linearform
+mit den Koeffizienten $g_{ik}F^i$.
+
+Solche Linearformen werden auch als $1$-Formen bezeichnet.
+Wir werden für Integranden über Gebiete höherer Dimension weitere
+
+%
+% Die Koordinaten-1-Formen
+%
+\subsection{Die Koordinaten-1-Formen}
+Ein spezieller Fall tritt ein, wenn der Koeffizient der Integranden-1-Form
+$\alpha$ die Zahl $1$ ist.
+In diesem Koordinatensystem wird das Integral
+\[
+\int_{AB} \alpha
+=
+\int_{a}^{b} 1\, dx^1
+=
+\int_{a}^b\,dx^1
+=
+\bigl[ x^1 \bigr]_a^b
+=
+b-a.
+\]
+Im $y^1$-Koordinatensystem ist hat das Integral dagegen den Wert
+\begin{equation}
+\int_{AB}\alpha
+=
+\int_{a'}^{b'} \frac{dx^1}{dy^1}\,dy^1
+=
+\bigl[x^1(y^1)\bigr]_{a'}^{b'}
+=
+x^1(b') - x^1(a')
+=
+b-a,
+\label{buch:kurvenintegral:1formen:eqn:hauptsatz}
+\end{equation}
+wobei im zweiten Schritt verwendet wurde, dass der Integrand die
+Ableitung der Funktion $x^1(y^1)$ nach der Integrationsvariable ist.
+Die Funktion $x^1(y^1)$ ist daher die
+Stammfunktion des Integranden im zweiten Integral ist.
+Wie erwartet, stimmen die Integrale überein.
+
+Die Symbole $dx^1$ und $dy^1$ können daher genauso als Basislinearformen
+betrachtet werden, wie die Ableitungsoperatoren
+$\partial/\partial x^1$ und $\partial/\partial y^1$ als
+Basisvektoren für die Tangentialvektoren betrachtet wurden.
+Sie heissen die Koordinaten-1-Formen und sind besonders einfach
+zu integrieren.
+
+Eine $1$-Form $\alpha$ hat in einer Dimension die Form
+\[
+\alpha
+=
+f(x^1) \,dx^1
+\]
+und ihr Integral über das Intervall zwischen $A$ und $B$ ist
+\[
+\int_{AB}\alpha
+=
+\int_a^b f(x^1)\,dx^1.
+\]
+Die Notation ist so gewählt, dass sich die neue Betrachtungsweise als
+Integral einer 1-Form über ein eindimensionales Gebiet nach Einführung
+eines Koordinatensystems mit der konventionellen Riemann-Integration
+deckt.
+
+Das Resultat
+\eqref{buch:kurvenintegral:fig:1koordinaten}
+ist auch als der Hauptsatz der Infinitesimalrechnung bekannt.
+Wir halten jedoch fest, dass es von einer Form ist, der wir später
+wiederholt begegnen werden.
+Das Integral der Ableitung einer Funktion über ein Intervall hat einen
+Wert, der nur von den Werten der Funktion auf dem Rand des Intervalls
+bestimmt ist.
+Der Satz von Stokes wird später zeigen, dass dies ein allgemeines
+Phänomen ist.
+Das Integral einer geeignet definierten Ableitung eines Integranden
+ist bestimmt durch die Werte auf dem Rand des Integrationsgebietes.
+Dazu muss aber zunächst die Klasse der möglichen Integranden von
+$1$-Formen auf $p$-Formen ausgweitet werden und es muss eine Ableitung
+für $p$-Formen konstruiert werden.
+Dies wird in den nachfolgenden Abschnitten und Kapiteln geschehen.
+
