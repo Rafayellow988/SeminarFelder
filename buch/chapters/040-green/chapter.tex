@@ -215,6 +215,7 @@ dazwischen durch einen Tensor erklärt.
 % Lorentz-Kraft
 %
 \subsubsection{Lorentz-Kraft}
+\input{chapters/040-green/fig/fig-lorentz.tex}
 Die Lorentz-Kraft ist die Kraft, die eine bewegte Ladung in einem
 magnetischen Feld erfährt.
 Sie ist proportional zur Geschwindigkeit, eine ruhende Ladung
@@ -254,20 +255,438 @@ und die Lorentz-Kraft auf einheitliche Art zu beschreiben.
 %
 % Basis, Wedge-Produkt, Rechenregeln
 %
-\subsection{Basis, Wedge-Produkt, Rechenregeln}
+\subsection{Der Vektorraum der 2-Vektoren}
+Die 2-Vektoren sind also eine neue Art von Vektoren, die aus den
+gewöhnlichen Vektoren in $\mathbb{R}^n$ gebildet werden können.
+Sie bilden selbst wieder einen Vektorraum, da man sie addieren
+und mit reellen Zahlen multiplizieren kann.
+In gewissen Fällen, zum Beispiel im dreidimensionalen Raum, kann
+man für 2-Vektoren wieder eine anschauliche Darstellung ähnlich den
+Pfeilen für Vektoren finden.
+Es wurde aber bereits darauf hingewiesen, dass die eigentlich nicht
+zulässig ist, da weder die Dimensionen noch die Symmetrieeigenschaften
+vergleichbar sind.
+Wenn zwei Vektoren geometrische Längen beschreiben, dann haben sie
+die Längeneinheit als Masseinheit.
+Ihr Wedge-Produkt muss dann die Flächeneinheit als Masseinheit haben,
+kann also nicht im gleichen Raum dargestellt werden.
+
+\subsubsection{Basis}
+Ausgehend von der Basis $\vec{e}_1,\dots,\vec{e}_n$ lassen sich jetzt
+alle Wedge-Produkte
+\[
+\vec{e}_i\wedge \vec{e}_k
+\]
+mit $i\ne k$ bilden.
+Wegen
+\[
+\vec{e}_i\wedge\vec{e}_k
+=-
+\vec{e}_k\wedge\vec{e}_i
+\]
+können wir auf die Produkte $\vec{e}_i\wedge\vec{e}_k$ mit $i<k$
+beschränken, die wir alle als linear unabhängig annehmen müssen.
+
+\begin{definition}[Raum der 2-Vektoren]
+Sei $V$ ein $n$-dimensioinaler reeller Vektorraum, dann ist die Menge
+\[
+{\textstyle
+\bigwedge^2 V}
+= \langle \vec{a}\wedge\vec{b} \mid \vec{a},\vec{b}\in V \rangle
+\]
+ein $n(n-1)/2$-dimensionaler reeller Vektorraum.
+Bilden $b_1,\dots,b_n\in V$  eine Basis von $V$, dann bilden die Vektoren
+\[
+b_i\wedge b_k,\qquad i<k
+\]
+eine Basis von $\bigwedge^2 V$.
+\end{definition}
+
+In einem zweidimensionalen Raum $\mathbb{R}^2$ gibt es nur einen
+einzigen 2-Vektor $\vec{e}_1\wedge\vec{e}_2$, nur schon aus diesem
+Grund ist es nicht möglich, einen 2-Vektor als Vektor in $\mathbb{R}^2$
+darzustellen.
+
+In einem dreidimensionalen Raum $\mathbb{R}^3$ gibt es die drei
+Basisvektoren
+\[
+\vec{e}_1\wedge\vec{e}_2,\quad
+\vec{e}_1\wedge\vec{e}_3
+\quad\text{und}\quad
+\vec{e}_2\wedge\vec{e}_3.
+\]
+Tatsächlich lässt sich auch eine Abbildung der 2-Vektoren auf
+die Vektoren finden, die das Wedge-Produkt auf das Vektorprodukt
+abbildet.
+Sie wird aus der Komponentenformel weiter unten abgeleitet.
+
+In einem vierdimensionalen Raum $\mathbb{R}^4$ gibt es die sechs
+linear unabhängigen Basisvektoren
+\[
+\vec{e}_1\wedge\vec{e}_2,\quad
+\vec{e}_1\wedge\vec{e}_3,\quad
+\vec{e}_1\wedge\vec{e}_4,\quad
+\vec{e}_2\wedge\vec{e}_3,\quad
+\vec{e}_2\wedge\vec{e}_4,
+\quad\text{und}\quad
+\vec{e}_3\wedge\vec{e}_4.
+\]
+Da der Raum der 2-Vektoren mehr Dimensionen als der Raum 
+der Vektoren hat, ist es grundsätzlich unmöglich, die 2-Vektoren
+durch Vektoren zu visualisieren.
+
+\subsubsection{Komponentenformel}
+In der Basis $\vec{e}_1,\dots,\vec{e}_n$ kann jeder Vektor als
+Linearkombination
+\[
+\vec{a}
+=
+a^1\vec{e}_1+\dots+a^n\vec{e}_n
+=
+\sum_{i=1}^n a^i\vec{e}_i
+\qquad\text{und}\qquad
+\vec{b}
+=
+b^1\vec{e}_1+\dots+b^n\vec{e}_n
+\sum_{k=1}^n b^k\vec{e}_k
+\]
+geschrieben werden.
+Das Wedge-Produkt der beiden Vektoren ist
+\begin{align}
+\vec{a}\wedge\vec{b}
+&=
+\biggl(
+\sum_{i=1}^n a^i\vec{e}_i
+\biggr)
+\wedge
+\biggl(
+\sum_{k=1}^n b^k\vec{e}_k
+\biggr)
+\notag
+\\
+&=
+\sum_{i,k=1}^n a^ib^k\,\vec{e}_i\wedge\vec{e}_k
+\notag
+\intertext{Die Wedge-Produkt $\vec{e}_i\wedge\vec{e}_i=0$ verschwinden,
+es bleibt daher nur}
+&=
+\sum_{i\ne k} a^ib^k \, \vec{e}_i\wedge\vec{e}_k.
+\notag
+\intertext{Als Basis werden aber nur die Produkte mit $i<k$ verwendet,
+wir zerlegen die Summe daher in die Fälle $i<k$ und $k<i$:}
+&=
+\sum_{i < k} a^ib^k \, \vec{e}_i\wedge\vec{e}_k
++
+\sum_{i > k} a^ib^k \, \vec{e}_i\wedge\vec{e}_k
+\notag
+\\
+&=
+\sum_{i < k} a^ib^k \, \vec{e}_i\wedge\vec{e}_k
+-
+\sum_{i > k} a^ib^k \, \vec{e}_k\wedge\vec{e}_i.
+\notag
+\intertext{In der zweiten Summe ist der erste Index jetzt wieder kleiner
+als der zweite, wir können in dieser Summe die Indizes umbennennen
+und erhalten}
+&=
+\sum_{i < k} a^ib^k \, \vec{e}_i\wedge\vec{e}_k
+-
+\sum_{k > i} a^kb^i \, \vec{e}_i\wedge\vec{e}_k.
+\notag
+\intertext{Damit können die beiden Summen wieder in eine einzige
+zusammengefasst werden.
+Daraus lassen sich die Komponenten von}
+\vec{a}\wedge\vec{b}
+&=
+\sum_{i<k} (a^ib^k-a^kb^i)\,\vec{e}_i\wedge\vec{e}_k
+\label{buch:green:2vektoren:eqn:komponentenformel}
+\end{align}
+in der Basis der 2-Vektoren $\vec{e}_i\wedge\vec{e}_k$ ausdrücken.
+
+\subsubsection{Komponentenformel und Vektorprodukt}
+Das Vektorprodukt wird in Komponenten als
+\[
+\begin{pmatrix} a^1 \\ a^2 \\ a^3 \end{pmatrix}
+\times
+\begin{pmatrix} b^1 \\ b^2 \\ b^3 \end{pmatrix}
+=
+\begin{pmatrix} a^2b^3-a^3b^2 \\ a^3b^1-a^1b^3 \\ a^1b^2-a^2b^1 \end{pmatrix}
+\]
+definiert.
+Die Komponenten des Vektorprodukts sehen der allgemeinen
+Komponentenformel~\eqref{buch:green:2vektoren:eqn:komponentenformel}
+des Wedge-Produktes sehr ähnlich.
+Tatsächlich kann man den Zusammenhang noch etwas offensichtlicher
+machen, indem man die lineare Abbildung $f:\bigwedge^2V\to V$
+verwendet, die auf den Basisvektoren durch
+\[
+\vec{e}_1\wedge\vec{e}_2 \mapsto \vec{e}_3
+\vec{e}_1\wedge\vec{e}_3 \mapsto -\vec{e}_2
+\vec{e}_2\wedge\vec{e}_3 \mapsto \vec{e}_1
+\]
+definiert sind.
+Aus dem 2-Vektor $\vec{a}\wedge\vec{b}$ wird dadurch
+\begin{align*}
+f(\vec{a}\wedge\vec{b})
+&=
+f\bigl((a^1b^2-a^2b^1)\vec{e}_1\wedge\vec{e}_2
+      +(a^1b^3-a^3b^1)\vec{e}_1\wedge\vec{e}_3
+      +(a^2b^3-a^3b^2)\vec{e}_2\wedge\vec{e}_3\bigr)
+\\
+&=
+(a^1b^2-a^2b^1)\,f(\vec{e}_1\wedge\vec{e}_2)
++(a^1b^3-a^3b^1)\,f(\vec{e}_1\wedge\vec{e}_3)
++(a^2b^3-a^3b^2)\,f(\vec{e}_2\wedge\vec{e}_3)
+\\
+&=
+(a^1b^2-a^2b^1) \vec{e}_3
++(a^1b^3-a^3b^1) (-\vec{e}_2)
++(a^2b^3-a^3b^2) \vec{e}_1
+\\
+&=
+(a^2b^3-a^3b^2) \vec{e}_1
++(a^3b^1-a^1b^3) \vec{e}_2
++(a^1b^2-a^2b^1) \vec{e}_3
+\\
+&=
+\vec{a}\times\vec{b}.
+\end{align*}
+In diesem Lichte kann man das Vektorprodukt als ein spezielle Darstellung
+des Wedge-Produktes durch Vektoren statt 2-Vektoren ansehen, die allerdings
+nur in drei Dimensionen möglich ist.
 
 %
-% Vektorprodukt
+% Alternative Darstellungen des Wedge-Produktes
 %
-\subsection{Vektorprodukt}
+\subsection{Alternative Darstellungen des Wedge-Produktes}
+Die algebraischen Eigenschaften der 2-Vektoren und des Wedge-Produktes
+wurden aus geometrischen oder physikalischen Prinzipien hergeleitet.
+Angesichts der Vielfalt der mathematischen Werkzeuge, die zur Beschreibung
+der physikalischen Realität zur Verfügung stehen, erwartet man daher,
+dass die algebraische Struktur sich in verschiedenen mathematischen
+Konstrukten wiederfinden lässt.
 
+\subsubsection{Das Vektorprodukt als Kommutator von Matrizen}
+Wir betrachten die Menge 
+\[
+V
+=
+\{ A\in M_3(\mathbb{R}) \mid A^t=-A\}
+\]
+der antisymmetrischen $3\times 3$-Matrizen.
+Solche Matrizen sind von der Form
+\begin{equation}
+A
+=
+\begin{pmatrix}
+  0  &  a_3 & -a_2 \\
+-a_3 &   0  &  a_1 \\
+ a_2 & -a_1 &   0
+\end{pmatrix}.
+\label{buch:green:2vektoren:eqn:antisym}
+\end{equation}
+Der {\em Kommutator} zweier Matrizen ist $[A,B]=AB-BA$ und ergibt
+für Matrizen der Form~\eqref{buch:green:2vektoren:eqn:antisym}
+\begin{align*}
+AB
+&=
+\begin{pmatrix}
+  0  &  a_3 & -a_2 \\
+-a_3 &   0  &  a_1 \\
+ a_2 & -a_1 &   0
+\end{pmatrix}
+\begin{pmatrix}
+  0  &  b_3 & -b_2 \\
+-b_3 &   0  &  b_1 \\
+ b_2 & -b_1 &   0
+\end{pmatrix}
+\\
+&=
+\begin{pmatrix}
+-a_2b_2-a_3b_3 &     a_2b_1     & a_3b_1         \\
+ a_1b_2        & a_1b_1+a_3b_3  & a_3b_2         \\
+ a_1b_3        &     a_2b_3     & -a_1b_1-a_2b_2 
+\end{pmatrix}
+\\
+BA
+&=
+\begin{pmatrix}
+  0  &  b_3 & -b_2 \\
+-b_3 &   0  &  b_1 \\
+ b_2 & -b_1 &   0
+\end{pmatrix}
+\begin{pmatrix}
+  0  &  a_3 & -a_2 \\
+-a_3 &   0  &  a_1 \\
+ a_2 & -a_1 &   0
+\end{pmatrix}
+\\
+&=
+\begin{pmatrix}
+-a_2b_2-a_3b_3  &      a_1b_2    &    a_1b_3     \\
+     a_2b_1     & -a_1b_1-a_3b_3 &    a_2b_3     \\
+     a_3b_1     &      a_3b_2    & -a_1b_1-a_2b_2
+\end{pmatrix}
+\\
+[A,B]
+&=
+AB-BA
+=
+\begin{pmatrix}
+        0        &   a_2b_1-a_1b_2  & -(-a_3b_1+a_1b_3) \\
+-(a_2b_1-a_1b_2) &         0        &    a_3b_2-a_2b_3  \\
+  a_1b_3-a_3b_1  & -(a_3b_2-a_2b_3) &          0
+\end{pmatrix}.
+\end{align*}
+Diese Matrix ist wieder von der Form 
+\eqref{buch:green:2vektoren:eqn:antisym}
+und die Einträge sind die Komponenten des Vektorproduktes.
+Das Vektorprodukt lässt sich also durch den Matrixkommutator
+auf der Menge darstellen.
+
+\subsubsection{Die Lie-Algebra einer Matrizengruppe}
+TODO XXX
 
 %
 % 2-Formen
 %
-\section{2-Formen
+\section{Tensoren zweiter Stufe, 2-Vektoren und 2-Formen auf Mannigfaltigkeiten
 \label{buch:green:section:2formen}}
 \kopfrechts{2-Formen}
+Die Algebra der 2-Vektoren ist nicht bescchränkt auf einen Vektorraum,
+sie kann auch auf die Tangentialvektoren einer $n$-dimensionalen
+Mannigfaltigkeit angewendet werden.
+Ein 2-Vektor auf einer Mannigfaltigkeit ist dann ein Tensor zweiter
+Stufe vom Typ $(2,0)$.
+In einer Karte wird er gegeben durch eine Grösse $a^{ik}$ mit zwei
+kontravarianten Indizes.
+Gegenüber einem beliebigen Tensor zweiter Stufe zeichnet sich der 
+2-Vektor dadurch aus, dass $a^{ik}$ antisymmetrisch ist, dass also
+$a^{ik}=-a^{ki}$ gilt.
+
+%
+% Notation für Tensoren
+%
+\subsection{Notation für Tensoren}
+In Kapitel~\ref{chapter:kurvenintegral} haben wir zwar den Begriff des
+Tensors eingeführt, aber nur eine Notation für Vektoren eingeführt.
+Wenn mit Tensoren gerechnet worden ist, kam immer nur die Komponenten
+in einer Karte zur Anwendung.
+Das Wedge-Produkt von Vektoren hat 2-Vektoren ergeben, kann aber
+nicht alle Tensoren zweiter Stufe darstellen.
+Wir erweitern daher die Notation, indem wir wie bei der Einführung der
+Basis für die 2-Vektoren, neue Basisvektoren für die Tensoren wie 
+folgt definieren.
+
+\begin{definition}
+\label{buch:green:tensoren:definition:tensorprodukt}
+Sei $V$ ein $n$-dimensionaler reeller Vektorraum mit Basis
+$\vec{e}_1,\dots,\vec{e}_n$.
+Der Vektorraum
+\[
+V^{\otimes p}
+=
+\underbrace{
+V\otimes\dots\otimes V
+}_{\displaystyle \text{$p$ Faktoren}}
+=
+\langle \vec{e}_{i_1}\otimes\dots\otimes \vec{e}_{i_p}
+\mid
+1\le 
+i_1,\dots,i_p
+\le n
+\rangle
+\]
+heisst das $p$-fache Tensorprodukt von $V$.
+Ein Tensor $p$-ter Stufe ist also von der Form
+\[
+a_{i_1\dots i_p}\vec{e}_{i_1}\otimes\dots\otimes\vec{e}_{i_p}
+\]
+mit Koeffizienten $a_{i_1\dots i_p}\in\mathbb{R}$.
+\end{definition}
+
+Ein 2-Vektor ist ein Tensor in $V^{\otimes 2}$, der antisymmetrisch ist.
+Für die Basisvektoren der 2-Vektoren können daher als Tensoren
+\[
+\vec{e}_i\wedge\vec{e}_k
+=
+\vec{e}_i\otimes\vec{e}_k
+-
+\vec{e}_k\otimes\vec{e}_i
+\]
+geschrieben werden.
+Ein 2-Vektor ist also allgemein eine Linearkombination
+\begin{equation}
+a^{ik}\vec{e}_i\otimes\vec{e}_k
+\label{buch:green:tensoren:eqn:2tensor}
+\end{equation}
+mit $a^{ik}=-a^{ki}$.
+
+Die Definition~\ref{buch:green:tensoren:definition:tensorprodukt}
+berücksichtigt die Transformationseigenschaften nicht,
+die die Komponenten eines aus Tangentialvektoren gebildeten
+Tensors zusätzlich erfüllen müssen.
+Ein kontravarianter Tensor zweiter Stufe kann dann als
+\[
+a
+=
+a^{ik}(x) \frac{\partial}{\partial x^i}\otimes\frac{\partial}{\partial x^k}
+\]
+geschrieben werden, wobei die bei einem Koordinatenwechsel die
+Indizes $i$ und $k$ kontravariant transformiert werden.
+Ein 2-Vektor auf der Mannigfaltigkeit entsteht dann aus den Koeffizienten
+$a^{ik}(x)$ durch
+\[
+\sum_{i<k}
+a^{ik}
+\frac{\partial}{\partial x^i}
+\wedge
+\frac{\partial}{\partial x^k}
+=
+a^{ik}(x)
+\frac{\partial}{\partial x^i}
+\otimes
+\frac{\partial}{\partial x^k},
+\]
+wobei $a^{ik}(x)=-a^{ki}(x)$ sein muss.
+
+%
+% 2-Formen
+%
+\subsection{2-Formen}
+Linearformen sind lineare Abbildungen von Vektoren auf reelle Zahlen.
+Linearformen können aber auch auf Tensoren zweiter Stufe definiert werden.
+Eine Linearform $f\colon V^{\otimes 2}\to\mathbb{R}$ muss den Basisvektoren
+$\vec{e}_i\otimes\vec{e}_k$ einen Wert zuordnen.
+Schreiben wir $f(\vec{e}_i\otimes\vec{e}_k)=f_{ik}$, dann ist der Wert
+auf einem Tensor der Form
+\eqref{buch:green:tensoren:eqn:2tensor}
+\[
+f\bigl(
+a^{ik}\vec{e}_i\otimes \vec{e}_k
+\bigr)
+=
+a^{ik}
+f_{ik}.
+\]
+Eine Linearform auf $V^{\otimes 2}$ kann auch aus zwei Linearformen
+$f$ und $g$ auf $V$ konstruiert werden.
+Solche Linearformen können durch die Werte
+\[
+f_i = f(\vec{e}_i) 
+\qquad\text{und}\qquad
+g_k = f(\vec{e}_k)
+\]
+auf den Basisvektoren konstruiert werden.
+Auf dem Tensor $a$ ergibt sie den Wert
+\[
+(f\otimes g)
+=
+a^{ik}f(\vec{e}_i)g(\vec{e}_k)
+=
+a^{ik}f_ig_k.
+\]
+
 
 %
 % Flächenintegrale
@@ -276,11 +695,27 @@ und die Lorentz-Kraft auf einheitliche Art zu beschreiben.
 \label{buch:green:section:integral}}
 \kopfrechts{Flächenintegrale}
 
+\subsection{Orientierung einer 2-dimensionalen Mannigfaltigkeit}
+
+\subsection{Kartenwechsel und Koordinatentransformation von 2-Formen}
+
+\subsection{Integral einer 2-Form auf $\mathbb{R}^2$}
+
 %
 % Der Satz von Green
 %
 \section{Der Satz von Green
 \label{buch:green:section:green}}
 \kopfrechts{Der Satz von Green}
+
+\subsection{Integral über ein Gebiet ohne Rand}
+
+\subsection{Der Rand eines Gebietes}
+
+\subsection{Der Satz von Green}
+
+\subsection{Die äussere Ableitung einer 1-Form}
+
+\subsection{Der Satz von Green als Spezialfall des Satzes von Stokes}
 
 
