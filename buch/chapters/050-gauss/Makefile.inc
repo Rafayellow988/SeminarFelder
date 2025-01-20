@@ -5,4 +5,4 @@
 #
 
 CHAPTERFILES +=								\
-	chapters/040-green/chapter.tex
+	chapters/050-gauss/chapter.tex

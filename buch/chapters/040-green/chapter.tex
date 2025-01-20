@@ -707,15 +707,720 @@ a^{ik}f_ig_k.
 \section{Der Satz von Green
 \label{buch:green:section:green}}
 \kopfrechts{Der Satz von Green}
+Der Hauptsatz der Infinitesimalrechnung besagt, dass man das Integral
+einer Ableitung aus den Werten am Intervallende erhalten kann.
+Diese Idee wurde bereits in Kapitel~\ref{chapter:kurvenintegral} auf
+das Integral einer 1-Form verallgemeinert.
+Das Integral eines Differentials $df$ entlang einer Kurve ist durch
+die Werte der Funktion $f$ in den Endpunkten gegeben.
+Im vorliegenden Abschnitt soll eine ähnliche Ausssage für Integrale
+von 2-Formen über zweidimensionale Gebiete abgeleitet werden.
+Der Satz von Green stellt einen Zusammenhang zwischen dem Integral
+gewisser Ableitungen über das Innere eines Gebietes und den Werten
+auf dem Rand dar.
+Es soll gezeigt werden, dass die Ableitung eine natürlich Erweiterung
+des Differentials $df$ einer Funktion ist.
+In späteren Kapiteln soll dies dann zum allgemeinen Satz von Stokes
+verallgemeinert werden.
+Die auf diese Weise aus dem Differential $d$ erhaltenen
+Differentialoperatoren sind die natürlichen Operatoren, die für
+eine koordinatenfreie Formulierung von Naturgesetzen geeignet sind.
+So wie wir das Differential bereits als Gradient einer Funktion
+interpretiert haben, soll die Ableitung von 1- und 2-Formen später
+als die in den Anwendungen weit verbreitet Operation der Rotation
+und der Divergenz erkannt werden.
 
-\subsection{Integral über ein Gebiet ohne Rand}
+%
+% Zerlegung in Koordinatengebiete
+%
+\subsection{Zerlegung in Koordinatengebiete
+\label{buch:green:satzvongreen:subsection:zerlegung}}
+In Abschnitt~\ref{buch:kurvenintegral:section:zerlegung} wurde gezeigt,
+wie sich ein Integral einer $1$-Form über eine Kurve mit Hilfe einer
+Zerlegung der Einheit durch endlich viele beliebig oft differenzierbare
+Funktionen $g_i$ in eine endlich Summe
+\[
+\int_{\gamma} \alpha = \sum_i \int_{\gamma} g_i\alpha_i
+\]
+von Integralen von differenzierbaren 1-Formen zerlegen, wobei der
+Träger von $g_i$ immer in einem Koordinatengebiet enthalten war.
+Diese Vorgehensweise lässt sich auch auf zweidimensionale Gebiete
+übertragen.
 
-\subsection{Der Rand eines Gebietes}
+Im folgenden betrachten wir nur kompakte Mannigfaltigketen, da nicht
+kompakte Mannigfaltigkeiten ohnehin zu nicht definierten Integralen
+führen können.
 
+Ein Quader in $\mathbb{R}^n$ ist ein kartesisches Produkt
+\[
+Q
+=
+(a_1,b_1)
+\times\dots\times
+(a_n,b_n)
+=
+\{
+(x^1,\dots,x^n)\in\mathbb{R}^n
+\mid
+a_i < x^i < b_i
+\;\forall i=1,\dots,n
+\}.
+\]
+Die Funktionen
+\[
+g_Q(x)
+=
+g_{a_1,b_1}(x^1)\dots g_{a_n,b_n}(x^n)
+\]
+sind beliebig oft differenzierbare Funktionen, die genau im Quader
+$Q$ von $0$ verschieden sind.
+
+Eine beschränkte offene Menge $U\subset\mathbb{R}^n$ kann, wie in
+Abbildung~\ref{XXX} am zweidimensionalen Beispiel gezeigt,
+von innen durch Quader approximiert werden.
+Ist $F\subset U$ eine abgeschlossene Teilmenge, dann ist sie auch
+kompakt und kann daher von endlich vielen Quadern überdeckt werden.
+Durch Addition der zugehörigen Funktionen der Form $g_Q$ kann man also
+eine beliebig oft differenzierbare Funktion finden, die auf $F$ von
+$0$ verschieden ist und deren Träger ganz in $U$ enthalten ist.
+
+Wir wenden diese Überlegung jetzt auf die Kartengebiete eines
+Atlas $(U_\alpha)_{\alpha\in I}$ einer kompakten Mannigfaltigkeit an.
+Da die Mannigfaltigkeit kompakt ist, dürfen wir sogar annehmen, dass
+der Atlas aus nur endlich vielen Karten besteht.
+In jedem Kartengebiet wählen wir jetzt eine Vereinigung $V_\alpha$
+von offenen Quadern so, dass auch die Mengen $V_\alpha$ die ganze
+Mannigfaltigkeit überdecken.
+
+\begin{satz}
+Sei $(U_\alpha,\varphi_\alpha)$ eine endliche Familie von Karten,
+die eine kompakte Mannigfaltigkeit überdecken.
+Dann gibt es Teilmengen $V_\alpha\subset U_\alpha$, die endliche
+Vereingungen von Quadern sind derart, dass die eingeschränkten Karten
+$(V_\alpha,\varphi_\alpha\mathstrut_{|V_\alpha})$ ebenfalls einen Atlas
+bilden.
+\end{satz}
+
+\begin{proof}
+Zu jedem $\alpha$ und Punkt $x\in U_\alpha$ gibt es einen offenen
+Quader $Q_{x,\alpha}$, der $x$ enthält und in $U_\alpha$ enthalten
+ist: $x\in Q_{x,\alpha}\subset U_\alpha$.
+Die Vereinigung der $Q_{x,\alpha}$ ist eine Überdeckung der
+Mannigfaltigkeit.
+Da die Mannigfaltigkeit $M$ kompakt ist, gibt es auch eine endliche 
+Teilmenge, die bereits $M$ überdeckt.
+Bildet man für jedes $\alpha$ die Mengen $V_\alpha$ aus den Quadern
+$Q_{x,\alpha}$, dann ist $V_\alpha$ eine Überdeckung der Mannigfaltigkeit
+der verlangten Art.
+\end{proof}
+
+In einer Überdeckung einer Mannigfaltigkeit durch die Vereinigungen
+$V_\alpha$ von Quadern kann man eine Menge von beliebig oft
+differenzierbaren Funktionen
+$g_\alpha$ ableiten, die genau auf $V_\alpha$ von $0$ verschieden
+sind.
+Da die $V_\alpha$ eine Überdeckung bilden, ist die Summe
+\[
+G(x) = \sum_{\alpha} g_\alpha(x)
+\]
+auf der ganzen Mannigfaltigkeit von $0$ verschieden und kann dazu
+benutzt werden, die Funktionen $g_\alpha$ auf
+\[
+h_\alpha(x) = \frac{1}{G(x)}\,g_\alpha(x)
+\]
+zu normieren, die eine Zerlegung der Einheit bilden.
+
+Auf einem Kartengebiet einer zweidimensionalen Mannigfaltigkeit
+ist bereits bekannt, wie eine 2-Form integriert werden kann.
+Mit einer Zerlegung der Einheit, wie sie oben konstruiert worden ist,
+lässt sich jetzt das Integral einer beliebigen 2-Form jetzt über
+die ganze Mannigfaltigkeit erstrecken.
+Dazu schreibt man
+\[
+\int_M \alpha
+=
+\int_M \sum_{\alpha}h_\alpha\,\alpha
+=
+\int_{V_\alpha} h_\alpha\,\alpha.
+\]
+Dies ist möglich, weil $h_\alpha\,\alpha$ nur innerhalb von $V_\alpha$
+von $0$ verschieden ist.
+Die 2-Form $h_\alpha\,\alpha$ kann im Kartengebiet durch die
+Komponenten dargestellt und integriert werden.
+
+%
+% Interal in einem Koordinatengebiet
+%
+\subsection{Integral in einem Koordinatengebiet}
+Dank der Zerlegung eines Integrals gemäss
+Abschnitt~\ref{buch:green:satzvongreen:subsection:zerlegung}
+muss in diesem Abschnitt nur noch das Integral einer 2-Form in
+einem Koordinatengebiet berechnet werden.
+Wir nehmen daher an, dass die 2-Form durch
+\[
+\omega
+=
+a_{ik}(x)\,dx^i\wedge dx^k
+\]
+gegeben ist, wobei die Koeffizienten $a_{ik}(x)$ ausserhalb
+von $V_\alpha$ verschwindet.
+
+%
+% Integral über ein Gebiet ohne Rand
+%
+\subsubsection{Integral über ein Gebiet ohne Rand}
+In den Koordinaten der Karte wird das Integral der 2-Form $\omega$
+durch
+\begin{equation}
+\int_M \omega
+=
+\int_{\varphi_\alpha(V_\alpha)}
+a_{ik}(x)\, v(x)
+\,dx^1\,dx^2
+\label{buch:green:green:eqn:koordinatenform}
+\end{equation}
+gegeben.
+% XXX was ist v(x)
+Da $\omega$ ausserhalb von $V_\alpha$ verschwindet, können wir $\omega$
+durch 0 auf ganz $\mathbb{R}^2$ ausdehnen und integrieren.
+
+Für das im Satz von Green angestrebte Resultat berechnen wird das
+Integral einer 2-Form der Form
+\[
+\frac{\partial f_i}{\partial x^k}(x)\, dx^i \wedge dx^k,
+\]
+wobei $i\ne k$ ist.
+Einsetzen der Definition in
+\eqref{buch:green:green:eqn:koordinatenform}
+ergibt das Integral
+\begin{align*}
+\int_M\omega
+&=
+\int\hspace*{-2mm}\int_{\varphi_\alpha(V_\alpha)}
+\frac{\partial f_i}{\partial x^k}(x)
+\, dx^i \, dx^k.
+\intertext{Nach dem Satz von Fubini können die Integrale über die
+Variablen unabhängig voneinander durchgeführt werden.
+Wir schreiben daher}
+&=
+\int_{-\infty}^{\infty}
+\int_{-\infty}^{\infty}
+\frac{\partial f_i}{\partial x^k}(x)
+\,dx^k
+\,dx^i.
+\intertext{Das innere Integral kann ausgeführt werden und ergibt}
+&=
+\int_{-\infty}^{\infty}
+\biggl[f_i(x)\biggr]_{-\infty}^{\infty}
+\,dx^i.
+\intertext{Da $f_i(x)$ ausserhalb des Gebietes $\varphi_\alpha(V_\alpha)$
+verschwindet, ist der Integrand $0$ und damit auch}
+\int_{V_\alpha} \omega
+&=
+0.
+\end{align*}
+Für eine 2-Form, deren Koeffizienten eine Ableitung sind, verschwindet
+also das Integral über ein Gebiet ohne Rand.
+
+%
+% Der Rand eines Gebietes
+%
+\subsubsection{Der Rand eines Gebietes}
+\input{chapters/040-green/fig/fig-randkarten.tex}
+Der Wert des Kurvenintegrals der 1-Form $df$ entlang einer
+Kurve zwischen zwei Punkten $A$ und $B$ in einer $n$-dimensionalen
+Mannigfaltigkeit wird durch die Werte von $f$ in den Endpunkten
+gegeben.
+Das Integrationsgebiet $[a,b]$ ist nicht eine eindimensionale
+Mannigfaltigkeit, da in einer solchen jeder Punkt eine Umgebung
+hat, die homöomorph zu einem offenen Intervall in $\mathbb{R}$ ist.
+Die beiden Endpunkt haben diese Eigenschaft nicht, sie haben eine
+Umgebung, die homöomorph zum halboffenen Intervall $[0,1)$ für
+den Anfangspunkt und $(-1,0]$ für den Endpunkt sind.
+Man sagt, $[a,b]$ sei eine eindimensionale Mannigfaltigkeit mit
+Rand.
+
+Eine $n$-dimensionale differenzierbare Mannigfaltigkeit kann
+ähnlich dadurch definiert werden, dass zusätzliche Arten von
+Karten zugelassen werden.
+Eine Karte $(U,\varphi)$ von $M$ ist eine Abbildung
+$\varphi \colon U\to\mathbb{R}^n$, die ein Homöomorphismus
+zwischen $U$ und einer offenen Teilmenge von
+\[
+\{
+(x^1,\dots,x^n) \in\mathbb{R}^n
+\mid
+x^n\ge 0
+\}
+\]
+ist.
+$U$ kann also wie bisher eine offene Menge sein oder sie kann 
+einen Teil der Hyperebene $x^n=0$ enthalten.
+Dieser Teil $\partial U=\varphi^{-1}(\{x^n = 0\})$ ist ein Randstück und
+durch weglassen der letzten Koordinate bekommen wir eine Kartenabbildung
+$\varphi_{|\partial U}\colon \partial U \to \mathbb{R}^{n-1}$ für das
+Randstück.
+Für die Kartenwechsel wird verlangt, dass sie und die Ableitungen
+beliebig oft differenzierbar sind, dass aber auch die Kartenwechsel
+auf den Randteilen umkehrbare differenzierbare Abbildungen zwischen
+offenen Mengen von $\mathbb{R}^{n-1}$ sein müssen.
+Die Kartengebiete mit Rand müssen also einen Atlas für den Rand
+der differenzierbaren Mannigfaltigkeit ergeben.
+
+
+%Der Parameterbereich $[a,b]$ der Kurve gibt derselben eine
+%Orientierung, sie definiert, welcher Punkt der Anfangspunkt bzw.~der
+%Endpunkt ist.
+%Das Vorzeichen, mit dem die Funktionswerte kombiniert werden, hängt
+%vom Punkt ab.
+%Für den Anfangspunkt ist es $-1$, für den Endpunkt $+1$, sodass
+%der Wert des Integrals
+%\[
+%\int_{AB} df = f(B) - f(A)
+%\]
+%ist.
+
+%
+% Integral über den Rand
+%
+\subsubsection{Integral über den Rand}
+Sei jetzt $V_\alpha$ ein Kartengebiet einer 2-dimensionalen
+Mannigfaltigkeit
+
+%
+% Der Satz von Green
+%
 \subsection{Der Satz von Green}
 
+%
+% Die äussere Ableitung einer 1-Form
+%
 \subsection{Die äussere Ableitung einer 1-Form}
 
+%
+% Der Satz von Green als Spezialfall des Satzes von Stokes
+%
 \subsection{Der Satz von Green als Spezialfall des Satzes von Stokes}
+
+%
+% Geschlossene 1-Formen und Wegunabhängigkeit
+%
+\section{Geschlossene 1-Formen und Wegunabhängigkeit}
+Für die 1-Formen $df$ ist die Berechnung des Wegintegrals besonders
+einfach, da $f$ als ``Stammfunktion'' betrachtet werden kann.
+Nicht jede 1-Form lässt sich als Differential einer Funktion $df$ 
+schreiben.
+In diesem Abschnitt soll ein Kriterium dafür gefunden werden, 
+ob eine 1-Form $\alpha$ als $\alpha=df$ geschrieben werden kann.
+
+%
+% Äusseres Differential von $df$
+%
+\subsection{Äusseres Differential von $df$}
+Ist $f$ eine Funktion auf der Mannigfaltigkeit $M$, dann können wir
+die 1-Form $\alpha = df$ bilden.
+In einer Karte ist $\alpha$ durch die partiellen Ableitungen
+\[
+\alpha
+=
+\frac{\partial f}{\partial x^i}(x)\,dx^i
+\]
+gegeben.
+Für die äussere Ableitung von $df$, bildet man
+\[
+d\alpha
+=
+\frac{\partial}{\partial x^k}
+\frac{\partial f}{\partial x^i}(x)\,
+dx^k
+\wedge
+dx^i.
+\]
+Die Terme mit $i=k$ sind Vielfache von $dx^i\wedge dx^i=0$, tragen
+also nichts bei.
+In der Summe (man beachte die einsteinsche Summenkonvention)
+tritt jedes Paar von verschiedenen Indizes genau zweimal in verschiedener
+Reihenfolge auf, wegen $dx^i\wedge dx^k = - dx^k \wedge dx^i$ kann man
+\begin{align}
+d\alpha
+&=
+\sum_{i < k}
+\biggl(
+\frac{\partial^2 f}{\partial x^i\,\partial x^k}(x)\, dx^i\wedge dx^k
++
+\frac{\partial^2 f}{\partial x^k\,\partial x^i}(x)\, dx^k\wedge dx^i
+\biggr)
+\notag
+\\
+&=
+\sum_{i < k}
+\biggl(
+\frac{\partial^2 f}{\partial x^i\,\partial x^k}(x)
+-
+\frac{\partial^2 f}{\partial x^k\,\partial x^i}(x)
+\biggr)
+\, dx^i\wedge dx^k
+\label{buch:green:geschlossen:eqn:dalpha}
+\end{align}
+schreiben.
+Da $f$ beliebig oft stetig differenzierbar sind, sind die partiellen
+Ableitungen vertauschbar, der Klammerausdruck in
+\eqref{buch:green:geschlossen:eqn:dalpha}
+verschwindet und es folgt $d\alpha = 0$.
+
+\begin{definition}[Geschlossene 1-Form]
+\index{geschlossene 1-Form}%
+Eine 1-Form $\alpha$ heisst {\em geschlossen}, wenn ihr äusseres
+Differential $d\alpha=0$ verschwindet.
+\end{definition}
+
+Es liegt nahe zu vermuten, dass jede geschlossene 1-Form als Differential
+geschrieben werden kann.
+Dies ist jedoch nicht richtig, wie das folgende Beispiel zeigt.
+
+\begin{beispiel}
+\label{buch:green:geschlossen:beispiel:wegabhaengig}
+Wir betrachten die 1-Form
+\[
+\alpha
+=
+\frac{-y}{x^2+y^2}\,dx
++
+\frac{x}{x^2+y^2}\,dy
+\]
+auf $M=\mathbb{R}^2\setminus\{0\}$.
+Die äussere Ableitung ist
+\begin{align*}
+d\alpha
+&=
+\biggl(
+\frac{\partial}{\partial y}
+\frac{-y}{x^2+y^2}
+\,dy\wedge dx
++
+\frac{\partial}{\partial x}
+\frac{x}{x^2+y^2}\biggr)
+\,dx\wedge dy
+\\
+&=
+\biggl(
+\frac{\partial}{\partial y}
+\frac{y}{x^2+y^2}\biggr)
++
+\biggl(\frac{\partial}{\partial x}
+\frac{x}{x^2+y^2}
+\biggr)
+\,dx\wedge dy.
+\intertext{Die beiden Ableitungen gehen durch Vertauschen von $x$ und $y$
+ineinander über.
+Sie können leicht mit Maxima oder einem anderen Computeralgebraprogramm
+berechnet werden und sind}
+&=
+\biggl(
+\frac{x^2-y^2}{(x^2+y^2)^2}
++
+\frac{y^2-x^2}{(x^2+y^2)^2}
+\biggr)
+\,dx\wedge dy
+=
+0
+\end{align*}
+$\alpha$ ist also eine geschlossene 1-Form.
+
+Allerdings lässt sich $\alpha$ nicht als Differential schreiben.
+Dann liessen sich nämlich die Wegintegrale für die Halbkreise
+\begin{align*}
+\gamma_+&\colon [0,\pi] \to \mathbb{R}^2 : t \mapsto (\cos t,\sin t)
+\\
+\gamma_-&\colon [0,\pi] \to \mathbb{R}^2 : t \mapsto (\cos t,-\sin t)
+\end{align*}
+von $(1,0)$ nach $(-1,0)$ in der oberen bzw.~der unteren Halbebene
+einfach als Differenz der Funktionswerte berechnen, sie müssten
+also gleich sein.
+% XXX Graphik für die Definition der Wege \gamma_+ und \gamma_-
+Wir berechnen daher die beiden Wegintegrale:
+\begin{align*}
+\int_{\gamma_+}\alpha
+&=
+\int_{0}^{\pi}
+\frac{-\sin t}{\cos^2 t+\sin^2t}(-\sin t)
++
+\frac{\cos t}{\cos^2 t+\sin^2t}\cos t
+\,dt
+\\
+&=
+\int_0^\pi \sin^2 t+\cos^2 t\,dt
+=
+\int_0^\pi 
+\,dt
+=
+\pi,
+\\
+\int_{\gamma_-}\alpha
+&=
+\int_{0}^{\pi}
+\frac{-(-\sin t)}{\cos^2 t+\sin^2t}(-\sin t)
++
+\frac{\cos t}{\cos^2 t+\sin^2t}(-\cos t)
+\,dt
+\\
+&=
+-\int_0^\pi \sin^2 t+\cos^2 t\,dt
+=
+-\int_0^\pi 
+\,dt
+=
+-\pi.
+\end{align*}
+Da die beiden Wegintegrale verschieden sind, kann $\alpha$ kein
+Differential sein.
+\end{beispiel}
+
+%
+% Wegunabhängigkeit
+%
+\subsection{Wegunabhängigkeit}
+Das Beispiel \ref{buch:green:geschlossen:beispiel:wegabhaengig}
+verrät auch, warum die Vermutung falsch ist.
+Wenn $\alpha=df$ ist, dann liefert jeder Weg zwischen zwei Punkten
+$A$ und $B$ den gleichen Wert $f(B)-f(A)$ des Wegintegrals von $\alpha$.
+Tatsächlich geben im Beispiel Wege auf verschiedenen Seiten des Nullpunktes
+verschiedene Werte des Wegintegrals.
+Die Vermutung kann also nur stimmen, wenn diese Situation ausgeschlossen
+werden kann.
+
+\begin{definition}[Einfach zusammenhängend]
+Eine Mannigfaltigkeit heisst {\em einfach zusammenhängend}, wenn sich
+\index{einfach zusammenhängend}
+jeder geschlossene Weg differenzierbar in einen Punkt zusammenziehen
+lässt.
+\end{definition}
+
+Eine Mannigfaltigkeit ist insbesondere einfach zusammenhängend, wenn
+die ganze Mannigfaltigkeit in einen Punkt zusammenziehbar ist.
+Die Abbildung
+\[
+H
+\colon
+\mathbb{R}^n\times [0,1]
+:
+(x,t) \mapsto H_t(x) = (1-t)x
+\]
+deformiert die identische Abbildung
+\(
+H_0(x)
+=
+x
+\)
+in die Nullabbildung
+\(
+H_1(x) = 0
+\).
+Indem man den Parameter $t$ von $0$ auf $1$ anwachsen lässt, werden
+alle Punkte in den Nullpunkte gezogen.
+Ein geschlossener Weg $\gamma(s)$ wird dabei differenzierbar in
+den konstanten geschlossenen Weg $H_1(\gamma(s))=0$ zusammengezogen.
+Ein Abbildung dieser Art heisst eine {\em Homotopie}
+\index{Homotopie}%
+der identischen Abbildung in die Nullabbildung.
+
+\begin{definition}[differenzierbare Homotopie]
+Eine differenzierbare Homotopie zweier Wege $\gamma_0$ und $\gamma_1$
+in der differenzierbaren Manigfaltigkeit mit den gleichen Endpunkten
+ist eine differenzierbare Abbildung
+\[
+H
+\colon
+[0,1]\times[0,1]
+\to
+M
+\]
+mit
+\[
+\left.
+\begin{aligned}
+H_0(s) &= \gamma_0(s)\\
+H_1(s) &= \gamma_1(s)
+\end{aligned}
+\;
+\right\}
+\qquad\text{und}\qquad
+\left\{\;
+\begin{aligned}
+H_t(0) &= \gamma_0(0) = \gamma_1(0)\\
+H_t(1) &= \gamma_0(1) = \gamma_1(1).
+\end{aligned}
+\right.
+\]
+Wege, die durch eine differenzierbare Homotopie verbunden sind,
+heissen {\em homotop}.
+\end{definition}
+
+Die Kugeloberfläche $S^2$ ist einfach zusammenhängend, zum Beispiel
+kann man den Äquator im Nullpunkt zusammenzieht.
+Es gibt aber im Gegensatz zum Beispiel $\mathbb{R}^n$ keine Homotopie
+der identischen Abbildung der Kugeloberfläche in eine konstante
+Abbildung.
+
+\begin{satz}
+\label{buch:green:geschlossen:satz:wegunabhaengig}
+Für eine geschlossene 1-Form $\alpha$ ist das Integral
+\[
+\int_{\gamma_0}\alpha = \int_{\gamma_1} \alpha
+\]
+über zwei homotope Wege $\gamma_0$ und $\gamma_1$ gleich.
+\end{satz}
+
+\begin{proof}
+Wir betrachten die Homotopie $H:[0,1]\times[0,1]\to M$ zwischen
+den beiden Wegen.
+Dann ist nach dem Satz von Green
+\[
+\int_{[0,1]\times[0,1]}
+TH^*(d\alpha)
+=
+\int_{\partial [0,1]^2} TH^*(\alpha).
+\]
+Wegen $d\alpha=0$ verschwindet das Integral auf der linken Seite.
+Das Integral auf der rechten Seite setzt sich aus vier Wegintegralen
+zusammen, einem für jede Kante des Quadrates $\partial[0,1]^2$.
+Das Integral entlang der Seite $[0,1]\times\{0\}$ ergibt das Integral
+entlang dem $H_0(s) = \gamma_0(s)$.
+Die Kante $[0,1]\times\{1\}$ ergibt das Integral entlang der
+Kurve $H_1(s) = \gamma_1(s)$, allerdings wird der Weg in umgekehrter
+Richtung durchlaufen.
+Die beiden Kanten $\{0\}\times[0,1]$ und $\{1\}\times[0,1]$ sind
+konstant, das Integral entlang dieser Kanten ist daher $0$.
+Von den Wegintegralen bleiben daher
+\[
+0
+=
+\int_{\partial[0,1]^2} (TH)^*(\alpha)
+=
+\int_{\gamma_0} \alpha
+-
+\int_{\gamma_1} \alpha
+\quad\Rightarrow\quad
+\int_{\gamma_0} \alpha
+=
+\int_{\gamma_1} \alpha.
+\]
+Die beiden Wegintegrale sind gleich.
+\end{proof}
+
+Im Beispiel~\ref{buch:green:geschlossen:beispiel:wegabhaengig}
+war zwar $d\alpha=0$ aber es gab keine Homotpie, die die Wege
+entlang dem Einheitskreis vom Punkt $(1,0)$ zum Punkt $(-1,0)$
+in der oberen bzw.~der unteren Halbebene verbindet.
+
+%
+% Geschlossene 1-Formen auf einfach zusammenhängenden Gebieten
+%
+\subsection{Geschlossene 1-Formen auf einfach zusammenhängenden Gebieten}
+Die Wegunabhängigkeit des Wegintegrals für eine geschlossene 1-Form
+kann jetzt verwendet werden, um eine Funktion $f$ zu finden, deren
+Differential die gegebene 1-Form ist.
+
+\begin{satz}
+\label{buch:green:geschlossen:satz:poincare}
+Eine geschlossene 1-Form $\alpha$ auf einem einfach zusammenhängenden
+Gebiet kann als $\alpha=df$ geschrieben werden.
+\end{satz}
+
+Die nach Satz~\ref{buch:green:geschlossen:satz:poincare}
+existierende Funktion $f$ ist nicht eindeutig, denn mit $f$ hat
+auch $f+c$ für jede Konstante $c\in\mathbb{R}$ das Differential
+\[
+d(f+c) = df + dc = df = \alpha.
+\]
+Der Beweis wird klar machen, was die Bedeutung
+
+\begin{proof}
+Sie $\alpha$ eine geschlossene 1-Form auf der einfach zusammenhängenden
+Mannigfaltigkeit $M$.
+Ausserdem wird ein Punkt $A\in M$ gewählt.
+Für jeden Punkt $P\in M$ wählen wir einen Weg $\gamma:\colon[0,1]\to M$,
+der $A$ mit $P$ verbindet.
+Die Funktion $f\colon M\to\mathbb{R}$ wird als
+\[
+f(P) = \int_{\gamma} \alpha.
+\]
+Nach Satz~\ref{buch:green:geschlossen:satz:wegunabhaengig} ist das eine
+konsistente Definition, denn jede Wahl des Weges ergibt den gleichen
+Wert des Integrals.
+Wir müssen nachprüfen, dass $df=\alpha$ ist.
+
+Um die Ableitung zu berechnen, verwenden wir eine Karte, in der sich die
+1-Form als
+\[
+\alpha = a_i(x)\, dx^i
+\]
+schreiben lässt.
+Wir müssen zeigen, dass
+\[
+a_i(x) = \frac{\partial f}{\partial x^i}(x)
+\]
+ist.
+Dazu verwenden wir nochmals die Möglichkeit, den Weg $\gamma$ frei wählen
+zu können.
+Wir wählen in so, dass $\gamma(1)=x$ ist und
+\[
+\dot{\gamma}(1) = e_i
+\]
+der Standardbasisvektor ist.
+Nach Definition der Funktion $f$ ist
+\[
+\frac{d}{dt}
+f(\gamma(t))
+\biggl|_{t=1}
+=
+\langle
+\alpha,
+e_i
+\rangle
+=
+a_i(x).
+\]
+Da dies für jede andere Koordinate auch gilt, folgt $df=\alpha$.
+\end{proof}
+
+Im Beweis wurde stillschweigend angenommen, dass sich für jedes
+Paar von Punkten in der Mannigfaltigkeit ein Weg finden lässt, der
+die beiden Punkte verbindet.
+Nicht jede Mannigfaltigkeit hat diese Eigenschaft.
+Die Oberflächen der Planeten des Sonnensystems sind zweidimensionale
+Mannigfaltigkeiten $S^2$, auf jeder einzelnen sind Punkte untereinander
+verbindbar.
+Es gibt aber keine Wege zwischen den einzelnen Planeten.
+Man nennt eine Mannigfaltigkeit {\em wegzusammenhängend}, wenn es zu jedem
+Paar von Punkten einen verbindenden Weg gibt.
+
+Der Beweis ist also nur korrekt für wegzusammenhängende Mannigfaltigkeiten.
+Trotzdem gilt der Satz allgemein.
+Dazu beginnt man mit einem Punkt $A_0\in M$ und berechnet die Funktion $f$
+für jeden Punkt $P\in M$ der sich mit $A_0$ verbinden lässt.
+Damit ist $f$ auf der sogenannten {\em Wegzusammenhangskomponente} von $A_0$
+definiert.
+Die Zusammenhangskomponente ist eine Untermannigfaltigkeit von $M$.
+Falls sie nicht ganz $M$ umfasst, wählen wir einen weiteren Punkt $A_1$,
+der nicht mit $A_0$ verbunden werden kann, und definieren $f$ auf der
+Wegzusammenhangskomponente von $A_1$.
+Auf diese Weise lässt sich die Funktion in jeder Wegzusammenhangskomponente
+definieren.
+
+Eine andere Wahl des Starpunktes $A_k$ in jeder Wegzusammenhangskomponente
+verändert die Werte der Funktion $f$ in der Zusammenhangskomponente
+um eine Konstante $c_k$.
+Die Funktion $f$ ist daher nur bis auf eine Konstante $c_k\in\mathbb{R}$
+in jeder Zusammenhangskomponente definiert.
+
+
+
+
+%
+% Potentialfelder
+%
+\subsection{Potentialfelder}
+
 
 
