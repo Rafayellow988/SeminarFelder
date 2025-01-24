@@ -1,0 +1,40 @@
+%
+% faserintegration.tex -- Faserintegration
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\begin{document}
+\def\skala{1}
+\xdef\x{1.2}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\fill[color=violet!20] (-0.3,0) rectangle (4.3,4);
+
+\draw[->] (-1,-0.05) -- ++(0,4.8) coordinate[label={right:$t$}];
+\draw[color=darkred,line width=1.2pt] (-1,0) -- ++(0,4);
+\node at (-1,2) [left] {$I=[0,1]$};
+\draw (-1.05,4) -- ++(0.1,0);
+\node[color=darkred] at (-1,4) [left] {$1$};
+\node[color=darkred] at (-1,0) [left] {$0$};
+\draw[->] (-1.05,0) -- (6,0) coordinate[label={$x=(x^1,\dots,x^n)$}];
+\draw[color=blue,line width=1.2pt] (-0.3,0) -- (4.3,0);
+\node[color=blue] at (2,0) [below] {$U$};
+\draw[color=darkgreen,line width=1.4pt] (\x,0) -- ++(0,4);
+\fill[color=darkgreen] (\x,0) circle[radius=0.05];
+\node[color=darkgreen] at (\x,2) [above,rotate=90] {$\pi^{-1}(x)$};
+\node[color=darkgreen] at (\x,0) [below] {$x$};
+
+\draw[line width=0.4pt] (-0.3,4) -- (4.3,4);
+
+\end{tikzpicture}
+\end{document}
+

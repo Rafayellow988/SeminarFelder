@@ -1,0 +1,64 @@
+%
+% homotopie.tex -- Homotopie
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\xdef\y{0.8}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\begin{scope}[xshift=-4.5cm]
+	\draw[->,color=blue,line width=1.4pt] (-1.5,0) -- ++(3,0)
+		coordinate[label={below:$x$}];
+	\node[color=blue] at (0,0) [below] {$U$};
+	\draw[->] (0,0.5) to[out=65,in=180] (2.5,2);
+	\draw[->] (0,-0.5) to[out=-65,in=-180] (2.5,-2);
+	\draw[->] (0.5,0.2) to[out=35,in=180] (2.9,\y);
+	\node at (0.6,1.7) {$i_{\color{darkred}1}$};
+	\node at (0.6,-1.7) {$i_{\color{darkred}0}$};
+	\node at (1.5,1) {$i_{\color{darkred}\tau}$};
+\end{scope}
+
+\begin{scope}
+	\fill[color=violet!20] (-1.5,-2) rectangle ++(3,4);
+	\draw[->,color=gray!40,line width=2mm] (1.5,0) -- ++(1.9,0);
+	\fill[color=gray!40] (1.5,-2) to[out=0,in=180] (2.8,-0.1)
+		-- (2.8,0.1) to[out=180,in=0] (1.5,2) -- cycle;
+	\node at (2,0) {$H$};
+	\draw[color=blue,line width=1.4pt] (-1.5,\y) -- ++(3,0);
+	\node at (0,\y) [above]
+		{${\color{blue}U}\times\{{\color{darkred}\tau}\}$};
+	\draw[->] (-1.5,-2) -- ++(3.5,0) coordinate[label={below:$x$}];
+	\draw[->] (-1.5,-2) -- ++(0,4.4) coordinate[label={right:$t$}];
+	\draw[color=darkred,line width=1.4pt] (-1.5,-2) -- ++(0,4);
+	\node[color=darkred] at (-1.5,-2) [left] {$0$};
+	\node[color=darkred] at (-1.5,2) [left] {$1$};
+	\node[color=blue] at (0,-2) [below] {$U$};
+	\node[color=violet] at (0,0) {$U\times[0,1]$};
+
+	\draw[->] (2.2,2) to[out=0,in=115] (5,0.5);
+	\node at (4.2,1.8) {$h_{\color{darkred}1}$};
+	\draw[->] (1.8,\y) to[out=0,in=145] (4.3,0.2);
+	\node at (3.7,0.8) {$h_{\color{darkred}\tau}$};
+	\draw[->] (2.2,-2) to[out=0,in=-115] (5,-0.5);
+	\node at (4.2,-1.8) {$h_{\color{darkred}0}$};
+\end{scope}
+
+\begin{scope}[xshift=5cm]
+	\draw[->,color=blue,line width=1.4pt]
+		(-1.5,0) -- ++(3,0) coordinate[label={below:$x$}];
+	\node[color=blue] at (0,0) [below] {$U$};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+
