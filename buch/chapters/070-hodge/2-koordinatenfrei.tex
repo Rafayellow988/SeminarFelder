@@ -1,0 +1,1212 @@
+%
+% 2-koordinatenfrei.tex -- Koordinatenfreie Definition
+%
+% (c) 2025 Prof Dr Andreas Müller
+%
+\section{Koordinatenfreie Definition
+\label{buch:hodge:section:koordinatenfrei}}
+\kopfrechts{Koordinatenfreie Definition}
+Der Hodge-Operators ist bis jetzt explizit mit Hilfe eines
+Koordinatensystems definiert worden.
+Es ist in keiner Weise offensichtlich, dass die Konstruktion auf
+den Basis-$p$-Formen zum richtigen Koordinatentransverhalten führen
+könnte.
+In diesem Abschnitt wird daher eine weitere Definition gegeben,
+die offensichtlich koordinatenunabhängig ist.
+Sie zeigt auch, dass zur Definition des Hodge-Operators als
+zusätzliche Eigenschaft der Mannigfaltigkeit ein Skalarprodukt
+benötigt wird, die in den bisherigen Entwicklungen keine Rolle
+gespielt hat.
+Dies ist keine wesentliche Einschränkung der Nützlichkeit der
+Definition, denn in allen praktischen Anwendungsfällen ist ein
+Skalarprodukt automatisch gegeben oder kann ohne weitere Konsequenzen
+verfügbar gemacht werden.
+
+%
+% Hodge-Operator und Skalarprodukt
+%
+\subsection{Hodge-Operator und Skalarprodukt
+\label{buch:hodge:koordinatenfrei:subsection:skalarprodukt}}
+Der Hodge-Operator ist eine lineare Abbildung, die 
+$p$-Formen auf $n-p$-Formen abbildet.
+Die Definition auf Basis-$p$-Formen in einem Koordinatensystem
+hat verlangt, dass zu einer $p$-Form $\omega=dx^{i_1}\wedge\dots\wedge dx^{i_p}$
+eine Basis-$n-p$-Form $\ast\omega$ so gefunden werden muss, so dass
+\begin{equation}
+\omega\wedge {\ast\omega}
+=
+dx^1\wedge\dots\wedge dx^n
+\label{buch:hodge:skalarprodukt:eqn:def}
+\end{equation}
+ergibt.
+Auf der rechten Seite von \eqref{buch:hodge:skalarprodukt:eqn:def}
+wird die vom gewählten Koordinatensystem abhängige $n$-Form
+$dx^1\wedge\dots\wedge dx^n$ verwendet.
+Da der Raum der $n$-Formen eindimensional ist, wäre jedes Vielfache
+dieser $n$-Form genauso als Basis für die Definition zulässig.
+Eine Koordinatentransformation multipliziert die $n$-Form mit der
+Funktionaldeterminante der Transformation.
+Eine koordinatenunabhängige Definition des Hodge-Operators braucht
+daher als Basis die Wahl einer $n$-Form.
+Wir nehmen daher im Folgenden an, dass eine $n$-Form $\nu$ gegeben
+ist.
+Da das Integral einer $n$-Form das $n$-dimensionale Volumen misst,
+nennen wir sie auch die {\em Volumenform} auf der Mannigfaltigkeit.
+
+Auf der linken Seite von \eqref{buch:hodge:skalarprodukt:eqn:def}
+treten in der Definition nur Basis-$p$-Formen auf.
+Lässt man eine beliebige $p$-Formen $\alpha$ und $\beta$ zu, dann
+entsteht die $n$-Form $\alpha\wedge{\ast\beta}$, die natürlich ein
+Vielfaches der Volumenform $\nu$ sein muss.
+Es gibt also eine Zahl $s(\alpha,\beta)$ derart, dass
+\begin{equation}
+\alpha \wedge {\ast\beta} = s(\alpha,\beta)\,\nu
+\label{buch:hodge:skalarprodukt:eqn:salphabeta}
+\end{equation}
+gilt.
+Das Wedge-Produkt auf der linken Seite erfüllt das Distributivgesetz,
+die linke Seite ist also linear in $\alpha$.
+Der Hodge-Operator wurde als linearer Operator definiert, so dass 
+die linke Seite auch linear ist in $\beta$.
+Die Funktion $s(\alpha,\beta)$ muss daher bilinear sein.
+
+Für Basis-$p$-Formen $\alpha=dx^{i_1}\wedge\dots\wedge dx^{i_p}$
+und $\beta=dx^{j_1}\wedge\dots\wedge dx^{j_p}$ ergibt die
+Definition~\eqref{buch:hodge:skalarprodukt:eqn:salphabeta}
+\[
+s(\alpha,\beta)
+=
+s(
+dx^{i_1}\wedge\dots\wedge dx^{i_p},
+dx^{j_1}\wedge\dots\wedge dx^{j_p}
+)
+=
+\begin{cases}
+1&\qquad\text{falls }i_1=j_1,\dots,i_p=j_p\\
+0&\qquad\text{sonst.}
+\end{cases}
+\]
+Dies bedeutet, dass die Funktion $s(\alpha,\beta)$ ein Skalarprodukt
+ist, in dem die Basis-$p$-Formen orthonormiert sind.
+Wir schreiben die Funktion daher im folgenden als
+$s(\alpha,\beta)=\langle\alpha,\beta\rangle$, die Eigenschaft
+\eqref{buch:hodge:skalarprodukt:eqn:salphabeta}
+wird daher zu
+\begin{equation}
+\alpha\wedge {\ast\beta}
+=
+\langle\alpha,\beta\rangle\,\nu.
+\label{buch:hodge:skalarprodukt:eqn:skalar}
+\end{equation}
+In dieser Form kommt das Koordinatensystem nicht mehr vor.
+Die Definition~\ref{buch:hodge:hodge:definition:hodge}
+war so einfach, weil wir von einem kartesischen Koordinatensystem
+ausgegangen sind, in dem es plausibel ist, dass die Basis-1-Formen
+orthonormiert sind.
+
+Es soll jetzt gezeigt werden, dass
+\eqref{buch:hodge:skalarprodukt:eqn:skalar}
+den Hodge-Operator eindeutig definiert.
+Es muss also gezeigt werden, dass zu einer gegebenen $p$-Form
+$\beta$ genau eine $n-p$-Form ${\color{darkred}\gamma}$ gibt, so dass
+\begin{equation}
+\alpha\wedge {\color{darkred}\gamma}
+=
+\langle\alpha,\beta\rangle\,\nu
+\label{buch:hodge:skalarprodukt:def:gamma}
+\end{equation}
+für alle $p$-Formen $\alpha$.
+Für ein Skalarprodukt verschwindet die rechte
+Seite von \eqref{buch:hodge:skalarprodukt:def:gamma}
+nicht identisch, es ist aber weniger klar, dass dies auch für die
+linke Seite gilt.
+
+\begin{satz}
+\label{buch:hodge:skalarprodukt:satz:nullteilerfrei}
+Das Wedge-Produkt
+\[
+\Omega^p \times \Omega^{n-p}
+\to
+\Omega^n
+:
+(\alpha,{\color{darkred}\gamma})
+\mapsto
+\alpha\wedge{\color{darkred}\gamma}
+\]
+ist nicht entartet, d.~h. wenn $\alpha\wedge{\color{darkred}\gamma}=0$
+ist, dann ist einer der Faktoren 0.
+\end{satz}
+
+\begin{proof}
+Die Behauptung des Satzes ist gleichbedeutend mit der Aussage, dass 
+sich zu jeder $p$-Form $\alpha\ne 0$ eine $n-p$-Form ${\color{darkred}\gamma}$
+finden lässt, so dass $\alpha\wedge{\color{darkred}\gamma}\ne  0$ ist.
+Wir zeigen dies mit Hilfe einer Basis.
+
+Ist $\lambda^1,\dots,\lambda^n$ eine Basis von 1-Formen, dann bilden
+die
+\[
+\lambda^{i_1}\wedge\dots\wedge\lambda^{i_p},\quad i_1<\dots<i_p
+\]
+eine Basis der $p$-Formen und die
+\[
+\lambda^{j_1}\wedge\dots\wedge\lambda^{j_{n-p}},\quad j_1<\dots<j_{n-p}
+\]
+eine Basis der $n-p$-Formen.
+Eine $p$-Form $\alpha$ ist eine Linearkombination
+\[
+\alpha
+=
+\sum_{i_1<\dots<i_p}
+a_{i_1\dots i_p} \lambda^{i_1}\wedge\dots\wedge \lambda^{i_p}.
+\]
+Sei $i_1,\dots,i_p$ eine Wahl von Indizes so, dass
+der $a_{i_1\dots i_p}\ne 0$ ist, und seien die aufsteigend geordneten
+Indizes $j_1,\dots,j_{n-p}$ so gewählt, dass
+\[
+\{i_1,\dots,i_p\}\cup\{j_1,\dots,j_{n-p}\} = [n].
+\]
+Dann ist
+\[
+\alpha\wedge(\lambda^{j_1}\wedge\dots\wedge\lambda^{j_{n-p}})
+=
+\pm
+a_{i_1\dots i_p} \lambda^1\wedge\dots\wedge\lambda^n
+\ne
+0.
+\]
+${\color{darkred}\gamma}=\lambda^{j_1}\wedge\dots\wedge\lambda^{j_{n-p}}$
+erfüllt also die Forderungen.
+\end{proof}
+
+Aus Satz~\ref{buch:hodge:skalarprodukt:satz:nullteilerfrei} kann jetzt
+abgeleitet werden, dass sich immer eine $n-p$-Form ${\color{darkred}\gamma}$
+finden lässt, für die $\alpha\wedge{\color{darkred}\gamma}=
+\langle\alpha,\beta\rangle\,\nu$ für alle $\alpha$ gilt.
+Wir zeigen dies, indem wir ausnutzen, dass der Vektorraum der
+$n-p$-Formen endlichdimensional ist und sich damit das Problem
+auf eine Aufgabe über lineare Gleichungssysteme reduzieren lässt.
+Zur Konstruktion des Gleichungssystems definieren zunächst die
+Abbildung $a_\alpha$ wie folgt.
+
+\begin{definition}
+Sei $a_\alpha$ die lineare Abbildung
+\[
+a_\alpha
+\colon
+\Omega^{n-p}
+\to
+\mathbb{R}
+:
+{\color{darkred}\gamma}
+\mapsto
+a_\alpha({\color{darkred}\gamma})\,\nu
+\]
+für die
+\[
+\alpha\wedge{\color{darkred}\gamma}
+=
+a_\alpha({\color{darkred}\gamma})\,\nu
+\]
+ist.
+\end{definition}
+
+Die Funktion $a_\alpha({\color{darkred}\gamma})$ ist eine lineare
+Funktion von ${\color{darkred}\gamma}$.
+Wir möchten zeigen, dass sich damit ein bijektive Abbildung zwischen
+endlichdimensionalen Vektorräumen konstruieren lässt.
+
+\begin{satz}
+\label{buch:hodge:skalarprodukt:satz:endlich}
+Ist $\omega_i$, $i=1,\dots,N$ eine Basis von $p$-Formen, dann ist die
+lineare Abbildung
+\[
+f
+\colon
+\Omega^{n-p}
+\to
+\mathbb{R}^N
+:
+{\color{darkred}\gamma}
+\mapsto
+\begin{pmatrix}
+a_i({\color{darkred}\gamma})\\
+\vdots\\
+a_N({\color{darkred}\gamma})
+\end{pmatrix}
+\]
+eine Bijektion.
+\end{satz}
+
+\begin{proof}
+Gäbe es ein ${\color{darkred}\gamma}$ mit $f({\color{darkred}\gamma})=0$,
+dann ist $\omega_i\wedge{\color{darkred}\gamma}=0$ für jedes $i$.
+Da die $\omega_i$ eine Basis bilden, folgt
+$\omega\wedge{\color{darkred}\gamma}=0$ für alle $p$-Formen $\omega$.
+Dies widerspricht aber dem
+Satz~\ref{buch:hodge:skalarprodukt:satz:nullteilerfrei}.
+Somit kann es keine solches ${\color{darkred}\gamma}$ geben.
+Da der Kern von $f$ nur aus der Nullform besteht, ist $f$ injektiv.
+Da die beiden Vektorräume die gleiche Dimension haben, ist $f$ bijektiv.
+\end{proof}
+
+Um zu zeigen, dass mit \eqref{buch:hodge:skalarprodukt:eqn:skalar}
+tatsächlich der Hodge-Operator definiert werden kann, müssen wir
+nachweisen, dass das Skalarprodukt auf $p$-Formen den Hodge-Operator
+vollständig festlegt.
+
+\begin{satz}
+\label{buch:hodge:satz:eindeutigkeit}
+Ist $\langle\alpha,\beta\rangle$ eine nicht entartete Bilinearform
+auf $p$-Formen, und $\nu$ eine $n$-Form, dann gibt es eine lineare
+Abbildung $\beta\mapsto \ast\beta$ von $p$-Formen in $n-p$-Formen
+derart, dass
+\begin{equation}
+\alpha\wedge {\ast\beta}
+=
+\langle\alpha,\beta\rangle\,\nu.
+\label{buch:hodge:skalarprodukt:satz:eqn}
+\end{equation}
+Der Operator $\ast$ ist durch
+\eqref{buch:hodge:skalarprodukt:satz:eqn}
+eindeutig bestimmt.
+\end{satz}
+
+\begin{proof}
+In einer Basis $\omega_i$ der $p$-Formen wie in
+Satz~\ref{buch:hodge:skalarprodukt:satz:endlich}
+ist ${\color{darkred}\gamma}$ durch 
+\[
+f({\color{darkred}\gamma})
+=
+\begin{pmatrix}
+\langle \omega_1,\beta\rangle\\
+\vdots\\
+\langle \omega_N,\beta\rangle
+\end{pmatrix}
+\]
+definiert.
+Da $f$ bijektiv ist, ist ${\color{darkred}\gamma}$ eindeutig
+bestimmt und kann durch Lösung eines linearen Gleichungssystems
+gefunden werden.
+\end{proof}
+
+%
+% Skalarprodukt auf Formen
+%
+\subsection{Skalarprodukt auf Formen}
+Der Definitionsansatz~\eqref{buch:hodge:skalarprodukt:def:gamma}
+für den Hodge-Operator verlangt, dass sich für beliebige $p$-Formen
+ein Skalarprodukt definieren lässt.
+Auf einer beliebigen Mannigfaltigkeit kann man nicht einmal für
+Tangentialvektoren von der Existenz eines Skalarprodukts ausgehen.
+Für die nachfolgende Konstruktion setzt daher voraus, dass auf
+der Mannigfaltigkeit eine Metrik gegeben ist, die durch den 
+metrischen Tensor $g_{ik}$ beschrieben wird.
+
+%
+% Volumenform
+%
+\subsubsection{Volumenform}
+Für die Definition wird die Definition des Volumens benötigt.
+Zu einem $n$-Vektor $X_1\wedge\dots\wedge X_n$ muss diese $n$-Form
+das Volumen des von diesen Vektoren aufgespannten infinitesimalen
+Parallelepipeds bestimmen.
+Das Volumen wird durch die Gram-Determinante
+(siehe \cite[Abschnitt 8.4]{buch:linalg}).
+\begin{align*}
+\operatorname{vol}(X_1,\dots,X_n)^2
+&=
+\operatorname{Gram}(X_1,\dots,X_n)
+\\
+&=
+\left|
+\begin{matrix}
+\langle X_1,X_1\rangle
+	&\langle X_1,X_2\rangle
+	&\dots
+	&\langle X_1,X_n\rangle
+\\
+\langle X_2,X_1\rangle
+	&\langle X_2,X_2\rangle
+	&\dots
+	&\langle X_2,X_n\rangle
+\\[-2pt]
+\vdots
+	&\vdots
+	&\ddots
+	&\vdots
+\\
+\langle X_n,X_1\rangle
+	&\langle X_n,X_2\rangle
+	&\dots
+	&\langle X_n,X_n\rangle
+\end{matrix}
+\right|
+\intertext{der Vektoren $X_1,\dots,X_n$ gegeben.
+Wählt man für die Vektoren die Standardbasisvektoren
+$X_k=\partial/\partial x^k$ sind die Skalarprodukt nach
+Definition des metrischen Tensors durch die Matrixelement
+$g_{ik}$ gegeben.
+Somit ist das Volumen}
+&=
+\left|
+\begin{matrix}
+g_{11} & g_{12} & \dots  & g_{1n} \\
+g_{21} & g_{22} & \dots  & g_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+g_{n1} & g_{n2} & \dots  & g_{nn}
+\end{matrix}
+\right|
+=
+\det(g_{ik}).
+\end{align*}
+Die Determinante der Matrix des metrischen Tensors $g_{ik}$ wird auch
+auch mit $g=\det(g_{ik})$ bezeichnet.
+Die Volumenform ist daher
+\[
+\nu
+=
+\sqrt{g}\, dx^1\wedge\dots\wedge dx^n.
+\]
+
+\begin{beispiel}
+In Polarkoordinaten $(r,\varphi)$ ist die Metrik durch die
+Matrix
+\[
+(g_{ik})
+=
+\begin{pmatrix}
+1 & 0 \\
+0 & r^2
+\end{pmatrix}
+\]
+gegeben.
+Die Determinante ist
+\[
+g
+=
+\det(g_{ik})
+=
+r^2
+\qquad
+\Rightarrow
+\qquad
+\nu
+=
+\sqrt{g}\, dr\wedge d\varphi
+=
+r\,dr\wedge d\varphi.
+\]
+Dies ist das bekannte Flächenelement in Polarkoordinaten.
+\end{beispiel}
+
+\begin{beispiel}
+In Kugelkoordinaten $(r,\vartheta,\varphi)$ ist die Metrik durch die
+Matrix
+\[
+(g_{ik})
+=
+\begin{pmatrix}
+1 &  0  & 0 \\
+0 & r^2 & 0 \\
+0 &  0  & r^2 \sin^2\varphi
+\end{pmatrix}
+\qquad
+\text{mit der Determinanten}
+\qquad
+g = \det(g_{ik}) = r^4\sin^2\varphi
+\]
+gegeben.
+Tatsächlich ist das Volumenelement 
+\[
+\nu 
+=
+r^2 \sin\varphi\,dr\wedge d\vartheta\wedge d\varphi
+\]
+in Kugelkoordinaten.
+\end{beispiel}
+
+%
+% Skalarprodukt der 1-Formen
+%
+\subsubsection{Skalarprodukt der 1-Formen}
+Der metrische Tensor beschreibt das Skalarprodukt von Tangentialvektoren,
+insbesondere ist
+\[
+\biggl\langle
+\frac{\partial}{\partial x^i},\frac{\partial}{\partial x^k}
+\biggr\rangle
+=
+g_{ik}.
+\]
+Benötigt wird jetzt das Skalarprodukt von 1-Formen.
+Die Basisformen $dx^k$ sind dual zu den Basisvektoren, es gilt
+\[
+\biggl\langle dx^i,\frac{\partial}{\partial x^k}\biggr\rangle
+=
+\delta_{ik}.
+\]
+Das Skalarprodukt zweier beliebigen 1-Formen $a_i\,dx^i$ und
+$b_k\,dx^k$ ist eine bilineare Funktion der Koeffizienten
+$a_i$ und $b_i$, muss also durch einen kontravarianten 
+Tensor $g^{ik}$ vermittelt werden.
+Die Einträge $g^{ik}$ bilden eine Matrix, die zur Matrix $(g_{ik})$
+invers ist.
+
+%
+% Skalarprodukt der p-Formen
+%
+\subsubsection{Skalarprodukt der $p$-Formen}
+Um ein Skalarprodukt von $p$-Formen zu definieren, müssen in einem
+Koordinatensystem die Skalarprodukt beliebiger Basis-$p$-Formen
+\[
+g^{i_1\dots i_pk_1\dots k_p}
+=
+\langle
+dx^{i_1}\wedge\dots\wedge dx^{i_p}
+,
+dx^{k_1}\wedge\dots\wedge dx^{k_p}
+\rangle
+\]
+bestimmt werden.
+Falls zwei Indizes gleich sind, verschwindet das Skalarprodukt.
+Vertauscht man zwei verschiedene Indizes in einer Basis-$p$-Form,
+kehrt das Vorzeichen.
+Eine bilineare Funktion mit diesen Eigenschaften ist ein Vielfaches
+einer Bilinearform, die nach dem Muster der Gram-Determinante 
+konstruiert wird.
+Es muss
+\[
+g^{i_1\dots i_pk_1\dots k_p}
+=
+\left|
+\begin{matrix}
+\langle dx^{i_1}, dx^{k_1} \rangle
+	&\langle dx^{i_1}, dx^{k_2} \rangle
+	&\dots
+	&\langle dx^{i_1}, dx^{k_p} \rangle
+\\
+\langle dx^{i_2}, dx^{k_1} \rangle
+	&\langle dx^{i_2}, dx^{k_2} \rangle
+	&\dots
+	&\langle dx^{i_2}, dx^{k_p} \rangle
+\\[-2pt]
+\vdots
+	&\vdots
+	&\ddots
+	&\vdots
+\\
+\langle dx^{i_p}, dx^{k_1} \rangle
+	&\langle dx^{i_p}, dx^{k_2} \rangle
+	&\dots
+	&\langle dx^{i_p}, dx^{k_p} \rangle
+\end{matrix}
+\right|
+\]
+gesetzt werden.
+
+%
+% Definition des Hodge-Operators
+%
+\subsection{Definition des Hodge-Operators}
+In den vorangegangenen Abschnitten wurde das Skalarprodukt auf
+beliebigen $p$-Formen definiert.
+Damit wird es jetzt möglich, den Hodge-Operator zu definieren.
+
+\begin{definition}[Hodge-Operator]
+\label{buch:hodge:koordinatenfrei:def:hodge-operator}
+Der Hodge-Operator auf einer differenzierbaren Mannigfaltigkeit
+mit einer Metrik ist eine lineare Abbildung, die $p$-Formen in
+$n-p$-Formen abbildet.
+Der Hodge-Operator $\ast\omega$ einer $p$-Form $\omega\in\Omega^p$
+Sie ist durch die Bedingung
+\begin{equation}
+\alpha \wedge (\ast\omega) = \langle \alpha,\omega\rangle \nu
+\label{buch:hodge:koordinatenfrei:eqn:definition}
+\end{equation}
+für alle $p$-Formen $\alpha\in\Omega^p$.
+\end{definition}
+
+Die Existenz der $n-p$-Form $\ast\omega$ wird durch den
+Satz~\ref{buch:hodge:skalarprodukt:satz:endlich} sichergestellt.
+Satz~\ref{buch:hodge:satz:eindeutigkeit} garantiert, dass die
+Bedingung~\eqref{buch:hodge:koordinatenfrei:eqn:definition}
+die $n-p$-Form $\ast\omega$ eindeutig definiert ist.
+Beide Sätze sind Koordinatenunabhängige Aussagen, sie verwenden
+ein Koordinatensystem höchstens für den Beweis.
+Damit legt die
+Definition~\ref{buch:hodge:koordinatenfrei:def:hodge-operator}
+den Hodge-Operator koordinatenfrei fest.
+
+%
+% Berechnung des Hodge-Operators
+%
+\subsection{Berechnung des Hodge-Operators}
+Um den Hodge-Operator in einem beliebigen Koordinatensystem zu
+bestimmen, ist wie folgt vorzugehen.
+\begin{enumerate}
+\item
+Bestimmung der Metrik, die für Volumenform und Skalarprodukt
+von $p$-Formen verwendet werden sollen.
+\item
+Bestimmung der Volumenform zu dieser Basis.
+\item
+Bestimmung des Skalarproduktes für 1-Formen.
+\item
+Erweiterung des Skalarproduktes auf $p$-Formen mit $p>1$.
+\item
+Berechnung des Hodge-Operators für Basis-$p$-Formen.
+\end{enumerate}
+
+%
+% Hodge-Operator in Polarkoordinaten
+%
+\subsubsection{Hodge-Operator in Polarkoordinaten}
+Wir betrachten Polarkoordinaten $(r,\varphi)$ auf der Ebene $\mathbb{R}^2$.
+Die Umrechnung von Polarkoordinaten in kartesische Koordinaten ist durch
+\begin{align*}
+x^1 &= r\cos\varphi \\
+x^2 &= r\sin\varphi
+\end{align*}
+gegeben.
+Die Differentiale sind
+\begin{align*}
+dx^1 &= \cos\varphi\,dr - r\sin\varphi\,d\varphi \\
+dx^2 &= \sin\varphi\,dr + r\cos\varphi\,d\varphi.
+\end{align*}
+Das Gleichungssystem kann man auch nach den Differentialen $dr$
+und $d\varphi$ auflösen und erhalt
+\begin{align*}
+dr       &= \cos\varphi\, dx^1 + \sin\varphi\, dx^2 \\
+d\varphi &= -\frac1r \sin\varphi\,dx^1 + \frac1r\cos\varphi\,dx^2.
+\end{align*}
+Zur Berechnung des Hodge-Operators gehen wir nach dem Rezept des 
+vorangegangenen Abschnitts vor.
+\begin{enumerate}
+\item
+{\bf Metrik:}
+In kartesischen Koordinaten ist die Metrik in kartesichen Koordinaten
+ist $g=(dx^1)^2+(dx^2)^2$, was in Polarkoordinaten zu
+\begin{align*}
+g
+&=
+(\cos\varphi\,dr - r\sin\varphi\,d\varphi)^2
++
+(\sin\varphi\,dr + r\cos\varphi\,d\varphi)^2
+\\
+&=
+\cos^2\varphi\,(dr)^2
+-
+2r\sin\varphi\cos\varphi\,dr\,d\varphi
++
+r^2\sin^2\varphi\,(d\varphi)^2
+\\
+&+
+\sin^2\varphi\,(dr)^2
++
+2r\cos\varphi\sin\varphi\,dr\,d\varphi
++
+r^2\cos^2\varphi\,(d\varphi)^2
+\\
+&=
+(dr)^2 + r^2(d\varphi)^2.
+\end{align*}
+Der metrische Tensor in Matrixform ist
+\[
+g_{ik}
+=
+\begin{pmatrix}
+1&0\\
+0&r^2
+\end{pmatrix}.
+\]
+\item {\bf Volumenform:}
+Die Volumenform in Polarkoordinaten ist
+\begin{align*}
+\nu
+=
+dx^1\wedge dx^2
+&=
+(\cos\varphi\,dr - r\sin\varphi\,d\varphi)
+\wedge
+(\sin\varphi\,dr + r\cos\varphi\,d\varphi)
+\\
+&=
+r \cos^2\varphi\,dr \wedge d\varphi
++
+r \sin^2\varphi\,dr \wedge d\varphi
+\\
+&= r \,dr\wedge d\varphi.
+\end{align*}
+\item{\bf Skalarprodukt von $1$-Formen:}
+Für das Skalarprodukt der 1-Formen muss die inverse Matrix
+\[
+g^{ik}
+=
+\begin{pmatrix}
+1&0\\
+0&\frac{1}{r^2}
+\end{pmatrix}
+\]
+verwendet werden.
+Die Determinante des metrischen Tensors ist $\det g = r^2$.
+Die Basisformen $dr$ und $d\varphi$ sind orthogonal und haben die
+Skalarprodukte
+\begin{align*}
+\langle dr,dr\rangle
+&=
+1
+&
+\langle d\varphi,d\varphi\rangle
+&=
+\frac{1}{r^2}.
+\end{align*}
+\item{\bf Skalarprodukt von $2$-Formen:}
+Das Skalarprodukt von $dr\wedge d\varphi$ mit sich selbst wird durch die
+Gram-Determinante
+\[
+\langle dr\wedge d\varphi,dr\wedge d\varphi\rangle
+=
+\left|
+\begin{matrix}
+\langle dr,dr\rangle         & \langle dr,d\varphi\rangle \\
+\langle d\varphi, dr \rangle & \langle d\varphi,d\varphi\rangle
+\end{matrix}
+\right|
+=
+\left|
+\begin{matrix}
+1&0\\
+0&\frac{1}{r^2}
+\end{matrix}
+\right|
+=
+\frac{1}{r^2}.
+\]
+der Skalarprodukte
+\item{\bf Hodge-Operator:}
+Für 1-Formen ergibt die Definition
+\[
+\renewcommand{\arraycolsep}{1.5pt}
+\begin{array}{rcrcrclcrclclcrcl}
+1\,\nu
+&=&
+\langle dr,dr\rangle\,\nu
+&=&
+dr &\wedge& {\ast\,dr}
+&=&
+dr &\wedge& a(r,\varphi)\,d\varphi
+&=&
+a(r,\varphi)
+\frac1r
+\, \nu
+&\;\Rightarrow\;&
+\ast\,dr
+&=&
+r\,d\varphi
+\\
+\frac{1}{r^2}\nu
+&=&
+\langle d\varphi,d\varphi\rangle\,\nu
+&=&
+d\varphi &\wedge& {\ast\,d\varphi}
+&=&
+d\varphi &\wedge& b(r,\varphi)\,dr
+&=&
+-b(r,\varphi)\frac{1}{r}\,\nu
+&\;\Rightarrow\;&
+\ast\,d\varphi
+&=&
+-\frac1r\, dr.
+\end{array}
+\]
+Zur Kontrolle berecchnen wir den iterierten Hodge-Operator:
+\[
+\renewcommand{\arraycolsep}{1.5pt}
+\begin{array}{rclclcl}
+\ast{\ast\,dr}
+&=&
+\ast(r\,d\varphi)
+&=&
+r(-\frac1r\,dr)
+&=&
+-dr
+\\
+\ast{\ast\,d\varphi}
+&=&
+\ast(-\frac1{r}\,dr)
+&=&
+-\frac1r(r\, d\varphi)
+&=&
+-d\varphi.
+\end{array}
+\]
+Der Hodge-Operator der 2-Form $dr\wedge d\varphi$ ist eine Funktion
+$\ast(dr\wedge d\varphi)=c(r,\varphi)$, gemäss Definition muss gelten
+\begin{align*}
+dr\wedge d\varphi\wedge c(r,\varphi)
+&=
+c(r,\varphi)\,dr\wedge d\varphi
+\\
+&=
+\langle dr\wedge d\varphi,dr\wedge d\varphi\rangle \nu
+\\
+&=
+\frac{1}{r^2} r\,dr\wedge d\varphi
+&&\Rightarrow&
+c(r,\varphi)
+&=
+\ast(dr\wedge d\varphi)
+=
+\frac1r.
+\end{align*}
+Schliesslich ist $\ast 1$ die Zweiform $d(r,\varphi)\,dr\wedge d\varphi$,
+nach Definition folgt
+\begin{align*}
+1\wedge{\ast 1}
+&=
+1\wedge d(r,\varphi)\,dr\wedge d\varphi
+\\
+&=
+\langle 1,1\rangle \nu
+=
+r\,dr\wedge d\varphi
+&&\Rightarrow&
+d(r,\varphi)
+&=
+r
+&&\Rightarrow&
+\ast 1
+&=
+r\,dr\wedge d\varphi.
+\end{align*}
+Auch für diese Kombination berechnen wir den iterierten Hodge-Operator
+\[
+\renewcommand{\arraycolsep}{1.5pt}
+\begin{array}{rclclclcl}
+\ast{\ast 1}
+&=&
+\ast (r\,dr\wedge d\varphi)
+&=&
+r\,{\ast(dr\wedge d\varphi)}
+&=&
+r\cdot\frac1r
+&=&
+1
+\\
+\ast{\ast(dr\wedge d\varphi)}
+&=&
+\ast(\frac1r)
+&=&
+\frac1r\cdot({\ast\, 1})
+&=&
+\frac1r(r\,dr\wedge d\varphi)
+&=&
+dr\wedge d\varphi.
+\end{array}
+\]
+In beiden Fällen ist der iterierte Hodge-Operator die identische
+Abbildung.
+\end{enumerate}
+
+In kartesischen Koordinaten haben wir den Hodge-Operator schon früher
+berechnet.
+Durch Umrechnung der Formeln für Polarkoordinaten in kartesische Koordinaten
+müssten sich die Formeln von Beispiel~\ref{buch:hodge:hodge:beispiel:r2} ergeben.
+\begin{align*}
+\ast dx^1
+&=
+\cos\varphi (\ast dr) - r\sin\varphi(\ast d\varphi)
+\\
+&=
+\cos\varphi (r\,d\varphi) - r\sin\varphi(-{\textstyle\frac1r}\,dr)
+\\
+&=
+r\cos\varphi d\varphi + \sin\varphi\,dr
+\\
+&=
+r\cos\varphi(-{\textstyle\frac1r}\sin\varphi\,dx^1 + {\textstyle\frac1r}\cos\varphi\, dx^2)
++
+\sin\varphi(\cos\varphi\,dx^1+\sin\varphi\,dx^2)
+\\
+&=
+dx^2,
+\\
+\ast dx^2
+&=
+\sin\varphi\,(\ast dr) + r\cos\varphi\,(\ast d\varphi)
+\\
+&=
+r\sin\varphi\,d\varphi + r\cos\varphi (-{\textstyle\frac1r})\,dr
+\\
+&=
+r\sin\varphi (-{\textstyle\frac1r}\sin\varphi\,dx^1+{\textstyle\frac1r}\cos\varphi\,dx^2)
++
+r\cos\varphi(-{\textstyle\frac1r})(\cos\varphi\,dx^1+\sin\varphi\,dx^2)
+\\
+&=
+-dx^1,
+\end{align*}
+in Übereinstimmung mit den Resultaten von
+Beispiel~\ref{buch:hodge:hodge:beispiel:r2}.
+
+%
+% Hodge-Operator in Kugelkoordinaten
+%
+\subsubsection{Hodge-Operator in Kugelkoordinaten}
+Kugelkoordinaten $(r,\vartheta,\varphi)$ sind gegeben durch die
+Umrechnungsformeln
+\begin{equation}
+\begin{aligned}
+dx^1 &= r \sin\vartheta \cos\varphi \\
+dx^2 &= r \sin\vartheta \sin\varphi \\
+dx^3 &= r \cos\vartheta
+\end{aligned}
+\label{buch:hodge:skalarprodukt:eqn:kugelkoordinaten}
+\end{equation}
+mit den Differentialen
+\begin{align*}
+dx^1
+&=
+\sin\vartheta \cos\varphi \,dr
++
+r \cos\vartheta \cos\varphi \,d\vartheta
+-
+r \sin\vartheta \sin\varphi \,d\varphi
+\\
+dx^2
+&=
+\sin\vartheta \sin\varphi \,dr
++
+r \cos\vartheta \sin\varphi \,d\vartheta
++
+r \sin\vartheta \cos\varphi \,d\varphi
+\\
+dx^3
+&=
+\cos\vartheta\,dr
+-
+r \sin\vartheta\,d\vartheta.
+\end{align*}
+Wie im vorangegangenen Abschnitt soll der Hodge-Operator in
+Kugelkoordinaten berechnet werden.
+\begin{enumerate}
+\item {\bf Metrik:}
+Wie bei den Plarkoordinaten kann die Metrik direkt aus 
+\eqref{buch:hodge:skalarprodukt:eqn:kugelkoordinaten}
+gewinnen.
+\begin{align*}
+g
+&=
+(dx^1)^2 + (dx^2)^2 + (dx^3)^2
+\\
+&=\phantom{+}
+(
+  \cos\varphi \sin\vartheta \,dr
++
+r \cos\varphi \cos\vartheta \,d\vartheta
+-
+r \sin\varphi \sin\vartheta \,d\varphi
+)^2
+\\
+&\phantom{=}\mathstrut+
+(
+  \sin\varphi \sin\vartheta \,dr
++
+r \cos\varphi \sin\vartheta \,d\varphi
++
+r \sin\varphi \cos\vartheta \,d\vartheta
+)^2
+\\
+&\phantom{=}\mathstrut+
+(
+  \cos\vartheta \,dr
+-
+r \sin\vartheta \,d\vartheta
+)^2
+\\
+&=\mathstrut\phantom{+}
+\cos^2\varphi \sin^2\vartheta \, (dr)^2
++
+r^2 \cos^2\varphi \cos^2\vartheta \, (d\vartheta)^2
++
+r^2 \sin^2\varphi \sin^2\vartheta \, (d\varphi)^2
+\\
+&\phantom{=}\mathstrut-
+2r \cos\varphi \sin\varphi \sin^2\vartheta \,dr\,d\varphi
++
+2r \cos^2\varphi \sin\vartheta \cos\vartheta \,dr\,d\vartheta
+\\
+&\phantom{=}\mathstrut-
+2r^2 \sin\varphi \cos\varphi \sin\vartheta \cos\vartheta \,d\varphi\,d\vartheta
+\\
+&\phantom{=}\mathstrut+
+\sin^2\varphi\sin^2\vartheta \,(dr)^2
++
+r^2\sin^2\varphi\cos^2\vartheta \,(d\vartheta)^2
++
+r^2\cos^2\varphi\sin^2\vartheta \,(d\varphi)^2
+\\
+&\phantom{=}\mathstrut+
+2r\sin\varphi\cos\varphi\sin^2\vartheta \,dr\,d\varphi
++
+2r\sin^2\varphi\sin\vartheta\cos\vartheta \,dr\,d\vartheta
+\\
+&\phantom{=}\mathstrut+
+2r^2\cos\varphi\sin\varphi\sin\vartheta\cos\vartheta \,d\varphi\,d\vartheta
+\\
+&\phantom{=}\mathstrut+
+   \cos^2\vartheta \,(dr)^2
++
+r^2 \sin^2\vartheta \,(d\vartheta)^2
+-
+2r \cos\vartheta \sin\vartheta \,dr\,d\vartheta
+\\
+&=
+(dr)^2
++
+r^2\, (d\vartheta)^2
++
+r^2\sin^2\vartheta\,(d\varphi)^2
+\end{align*}
+Der metrische Tensor ist
+\[
+g
+=
+\begin{pmatrix}
+1 &  0  &         0           \\
+0 & r^2 &         0           \\
+0 &  0  & r^2 \sin^2\vartheta
+\end{pmatrix}
+\]
+der Determinante $\det g=r^4\sin^2\vartheta$ und der inversen Matrix
+\[
+g^{-1}
+=
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & \frac1{r^2} & 0 \\
+0 & 0 & \frac{1}{r^2\sin^2\vartheta}
+\end{pmatrix}.
+\]
+\item {\bf Volumenform:}
+Die Volumenform ist
+\begin{align*}
+\nu
+&=
+dx^1\wedge dx^2 \wedge dx^3
+\\
+&=
+\bigl(
+r^2 \cos^2\vartheta \sin\vartheta (\sin^2\varphi+\cos^2\varphi)
++
+r^2 \sin^3\vartheta (\cos^2\varphi +\sin^2\varphi)
+\bigr)\,
+dr\wedge d\vartheta \wedge d\varphi
+\\
+&=
+r^2 \sin\vartheta
+(
+\cos^2\vartheta
++
+\sin^2\vartheta
+)
+\,dr\wedge d\vartheta \wedge d\varphi
+\\
+&=
+r^2 \sin\vartheta\, dr\wedge d\vartheta\wedge d\varphi.
+\end{align*}
+\item {\bf Skalarprodukt von 1-Formen:}
+Für die Metrik der 1-Formen muss die inverse Matrix
+des metrischen Tensors verwendet werden.
+Es folgen die Skalarprodukte
+\begin{align*}
+\langle dr,dr\rangle &= 1
+&
+\langle d\vartheta,d\vartheta\rangle &= \frac{1}{r^2}
+&
+\langle d\varphi,d\varphi\rangle &= \frac{1}{r^2\sin^2\vartheta}
+\end{align*}
+von Basis-1-Formen.
+Alle anderen Skalarprodukt von Basis-1-Formen verschwinden.
+
+\item {\bf Skalarprodukt von $p$-Formen:}
+Für 2-Formen muss die Gram-Determinante verwendet werden:
+\begin{align*}
+\langle dr\wedge d\vartheta , dr\wedge d\vartheta \rangle
+&=
+\left|\begin{matrix}
+\langle dr, dr \rangle        & \langle dr,d\vartheta \rangle \\
+\langle d\vartheta,dr \rangle & \langle d\vartheta, d\vartheta \rangle
+\end{matrix}\right|
+=
+\langle dr, dr \rangle \langle d\vartheta, d\vartheta \rangle
+=
+\frac1{r^2}
+\\
+\langle dr\wedge d\varphi , dr\wedge d\varphi \rangle
+&=
+\left|\begin{matrix}
+\langle dr, dr \rangle      & \langle dr,d\varphi \rangle \\
+\langle d\varphi,dr \rangle & \langle d\varphi, d\varphi \rangle
+\end{matrix}\right|
+=
+\langle dr, dr \rangle \langle d\varphi, d\varphi \rangle
+=
+\frac1{r^2\sin^2\vartheta}
+\\
+\langle d\vartheta\wedge d\varphi , d\vartheta\wedge d\varphi \rangle
+&=
+\left|\begin{matrix}
+\langle d\vartheta, d\vartheta \rangle
+	& \langle d\vartheta,d\varphi \rangle \\
+\langle d\varphi,d\vartheta \rangle
+	& \langle d\varphi, d\varphi \rangle
+\end{matrix}\right|
+=
+\langle d\vartheta, d\vartheta \rangle \langle d\varphi, d\varphi \rangle
+=
+\frac1{r^4\sin^2\vartheta}
+\end{align*}
+Alle anderen Skalarprodukte von 2-Formen verschwinden.
+
+Es gibt nur eine 3-Form, das Skalarprodukt ist wieder durch die 
+Gram-Determinante
+\begin{align*}
+\langle
+dr\wedge d\vartheta \wedge d\varphi,
+dr\wedge d\vartheta \wedge d\varphi
+\rangle
+&=
+\left|
+\begin{matrix}
+\langle dr, dr \rangle
+&\langle dr, d\vartheta \rangle
+&\langle dr, d\varphi \rangle
+\\
+\langle d\vartheta, dr \rangle
+&\langle d\vartheta, d\vartheta \rangle
+&\langle d\vartheta, d\varphi \rangle
+\\
+\langle d\varphi, dr \rangle
+&\langle d\varphi, d\vartheta \rangle
+&\langle d\varphi, d\varphi \rangle
+\end{matrix}
+\right|
+\\
+&=
+\left|\begin{matrix}
+1 & 0 & 0 \\
+0 & \frac{1}{r^2} & 0 \\
+0 & 0 & \frac{1}{r^2\sin^2\vartheta}
+\end{matrix}\right|
+=
+\frac{1}{r^4\sin^2\vartheta}
+\end{align*}
+gegeben.
+\item {\bf Hodge-Operator:}
+Der Hodge-Operator angewendet auf die 1-Form $dv$ für
+$v\in\{r,\vartheta,\varphi\}$  ergibt ein Vielfaches der Basis-2-Form,
+die $dv$ nicht enthält.
+Wir schreiben den Faktor $a_v$, also
+z.~B.~$*dr = a_r\,d\vartheta\wedge d\varphi$.
+Aus der Bedingung $\omega\wedge {\ast\omega}=\langle\omega,\omega\rangle\,\nu$
+entstehen die Gleichungen
+\begin{align*}
+a_r\,
+dr\wedge(d\vartheta\wedge d\varphi)
+&=
+\langle dr, dr\rangle
+r^2\sin\vartheta\, dr\wedge d\vartheta\wedge d\varphi
+&&\Rightarrow&
+a_r &= r^2 \sin\vartheta
+\\
+a_\vartheta\,
+d\vartheta \wedge(dr \wedge d\varphi)
+&=
+\langle d\vartheta,d\vartheta\rangle
+r^2\sin\vartheta\,dr\wedge d\vartheta\wedge d\varphi
+&&\Rightarrow&
+a_\vartheta &= -\sin\vartheta
+\\
+a_\varphi\,
+d\varphi \wedge(dr \wedge d\vartheta)
+&=
+\langle d\varphi,d\varphi\rangle
+r^2\sin\vartheta\,dr\wedge d\vartheta\wedge d\varphi
+&&\Rightarrow&
+a_\varphi &= \frac{1}{\sin\vartheta}.
+\end{align*}
+Die Resultierenden Werte des Hodge-Operators auf 1-Formen sind in
+Tabelle~\ref{buch:hodge:skalarprodukt:table:kugelhodge} zusammengestellt.
+
+In der gleichen Art ist der Wert des Hodge-Operators auf einer
+Basis-2-Form $\alpha$ ein Vielfaches von $dv$, wenn $v$ in $\alpha$
+fehlt.
+Wir schreiben den Faktor wieder als $b_v$ und stellen die Gleichungen
+$\alpha\wedge {\ast\alpha} = \langle \alpha,\alpha\rangle\,\nu$ auf.
+Es ergeben sich 
+\begin{align*}
+b_r(d\vartheta\wedge d\varphi)\wedge dr
+&=
+\langle d\vartheta\wedge d\varphi,d\vartheta\wedge d\varphi\rangle
+r^2\sin\vartheta\, dr\wedge d\vartheta\wedge d\varphi
+&&\Rightarrow&
+b_r &= \frac{1}{r^2\sin \vartheta}
+\\
+b_\vartheta(dr\wedge d\varphi)\wedge d\vartheta
+&=
+\langle dr \wedge d\varphi,dr \wedge d\varphi\rangle
+r^2\sin\vartheta\, dr\wedge d\vartheta\wedge d\varphi
+&&\Rightarrow&
+b_\vartheta &= -\frac{1}{\sin \vartheta}
+\\
+b_\varphi(dr\wedge d\vartheta)\wedge d\varphi
+&=
+\langle dr \wedge d\vartheta,dr \wedge d\vartheta\rangle
+r^2\sin\vartheta\, dr\wedge d\vartheta\wedge d\varphi
+&&\Rightarrow&
+b_\varphi &= \sin \vartheta.
+\end{align*}
+
+Es bleibt noch den Hodge-Operator für die Basis-3-Form
+$\omega=dr\wedge d\vartheta\wedge d\varphi$ zu bestimmen.
+$\ast\omega$ ist eine Zahl $c$, für die
+\begin{align*}
+\omega\wedge c
+&=
+c
+\,dr\wedge d\vartheta\wedge d\varphi
+\\
+&=
+\langle
+dr\wedge d\vartheta\wedge d\varphi,
+dr\wedge d\vartheta\wedge d\varphi
+\rangle
+r^2\sin\vartheta
+\,
+dr\wedge d\vartheta\wedge d\varphi
+\\
+&=
+\frac{1}{r^2\sin\vartheta}
+dr\wedge d\vartheta\wedge d\varphi
+\qquad\Rightarrow\qquad
+c=\frac{1}{r^2\sin\vartheta}
+\end{align*}
+gelten muss.
+Somit ist
+\[
+\ast(dr \wedge d\vartheta \wedge d\varphi)
+=
+\frac{1}{r^2\sin\vartheta}
+\qquad\text{und}\qquad
+{\ast}1
+=
+r^2\sin\vartheta\, dr \wedge d\vartheta \wedge d\varphi.
+\]
+Wie im Falle der Polarkoordinaten kann man nachprüfen, dass der
+iterierte Hodge-operator $\ast{\ast}$ die identische Abbildung ist.
+\end{enumerate}
+\input{chapters/070-hodge/fig/table-kugelhodge.tex}
+

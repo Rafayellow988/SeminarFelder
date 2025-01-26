@@ -1,0 +1,419 @@
+%
+% 3-vektoranalysis.tex -- Operatoren der Vektoranalysis
+%
+% (c) 2025 Prof Dr Andreas Müller
+%
+\section{Die Operatoren der Vektoranalysis
+\label{buch:hodge:section:vektoranlysis}}
+\kopfrechts{Die Operatoren der Vektoranalysis}
+Die klassische Vektoranalysis definiert dagegen mehr oder weniger
+ad hoc eine Reihe von Operatoren auf Vektorfeldern, meistens nur
+in kartesischen Koordinaten.
+Feldgleichungen für Strömungsfelder oder für das elektromagnetische
+Feld können dann mit diesen Operatoren formuliert werden, aber auch
+diese nur in kartesischen Koordinaten.
+Es entsteht die etwas unbefriedigende Situation, dass man nicht
+sicher sein kann, dass die konstruierten Gleichungen Aussagen
+darstellen, die nicht Artefakte der Wahl des Koordinatensystems
+sind.
+
+Die äussere Ableitung von $p$-Formen wurde als allgemeine Theorie
+der offensichtlich koordinatenunabhängig definierbaren
+Differentialoperatoren aufgebaut.
+Wenn es gelingt, die klassischen Operatoren der Vektoranalysis
+durch Operatoren auszudrücken, die koordinatenunabhängig formuliert
+werden können, dann weiss man auch, dass die Gleichungen, die man
+aus diesen Operatoren konstruiert, unabhängig sind von der Wahl
+eines Koordinatensystems.
+Gleichzeitig ermöglicht der allgemeine Formalismus, diese Operatoren
+für beliebige Koordinatensysteme darzustellen.
+
+Die klassiche Vektoranalysis arbeitet nur in Dimension 3, wir gehen
+daher in den nachfolgenden Ausführungen normalerweise von einem
+dreidimensionalen Raum aus.
+Einige der Konstruktionen funktionieren allerdings auch in $n$.
+
+%
+% Gradient
+%
+\subsection{Gradient}
+Die Richtungsableitung einer Funktion $f\colon M\to\mathbb{R}$ in 
+\index{Richtungsableitung}%
+Richtung des Tangentialvektors $X$ im Punkt $p\in M$ ist gegeben
+durch das Differential
+\[
+X\cdot f(p) = \langle df, X\rangle.
+\]
+In einer Karte ist
+\[
+\langle df,X\rangle
+=
+\frac{\partial f}{\partial x^k}(p)
+\cdot X^k
+\]
+Da dies wie ein Skalarprodukt aussieht, werden in der klassischen
+Vektoranalysis die Koordinaten des Differentials mit den Komponenten
+eines Vektors identifiziert.
+Wir verwenden daher in den nachfolgenden jeweils die Identifikation
+\[
+V\colon
+a_i\,dx^i \mapsto \begin{pmatrix} a_1\\a_2\\a_3\end{pmatrix}.
+\]
+In dieser Identifikation ist
+\[
+V(df)
+=
+V\biggl(
+\frac{\partial f}{\partial x^1}\,dx^1
++
+\frac{\partial f}{\partial x^2}\,dx^2
++
+\frac{\partial f}{\partial x^3}\,dx^3
+\biggr)
+=
+\renewcommand{\arraystretch}{1.8}
+\begin{pmatrix}
+\displaystyle\frac{\partial f}{\partial x^1}\\
+\displaystyle\frac{\partial f}{\partial x^2}\\
+\displaystyle\frac{\partial f}{\partial x^3}
+\end{pmatrix}
+\]
+Die Identifikation von Vektoren mit 1-Formen ist nicht nur in 
+3 Dimensionen möglich sondern auch für Formen auf $\mathbb{R}^n$.
+Der {\em Gradient} als Differentialoperator ist also auch auf $\mathbb{R}^n$
+\index{Gradient}%
+definiert.
+
+%
+% Rotation
+%
+\subsection{Rotation}
+Wir betrachten jetzt die äussere Ableitung der 1-Form
+$\omega=f_i(x)\,dx^i$.
+Sie ist definiert durch
+\[
+d\omega
+=
+\frac{\partial f_i}{\partial x^k}\,dx^k\wedge dx^i
+\in
+\Omega^3(\mathbb{R}^3).
+\]
+In drei Dimensionen ausgeschrieben ist dies
+\begin{align*}
+d\omega
+&=\phantom{+}
+\frac{\partial f_1}{\partial x^1}\,dx^1\wedge dx^1
++
+\frac{\partial f_1}{\partial x^2}\,dx^2\wedge dx^1
++
+\frac{\partial f_1}{\partial x^3}\,dx^3\wedge dx^1
+\\
+&
+\phantom{=}+
+\frac{\partial f_2}{\partial x^1}\,dx^1\wedge dx^2
++
+\frac{\partial f_2}{\partial x^2}\,dx^2\wedge dx^2
++
+\frac{\partial f_2}{\partial x^3}\,dx^3\wedge dx^2
+\\
+&
+\phantom{=}+
+\frac{\partial f_3}{\partial x^1}\,dx^1\wedge dx^3
++
+\frac{\partial f_3}{\partial x^2}\,dx^2\wedge dx^3
++
+\frac{\partial f_3}{\partial x^3}\,dx^3\wedge dx^3.
+\intertext{Die 2-Formen $dx^i\wedge dx^i$ verschwinden alle und die
+die 2-Formen mit verschiedenen Faktoren sind zum Teil noch nicht in
+der Standardreihenfolge aufsteigender Indizes, wodurch zusätzlich
+Vorzeichen auftreten:}
+&=-
+\frac{\partial f_1}{\partial x^2}\,dx^1\wedge dx^2
+-
+\frac{\partial f_1}{\partial x^3}\,dx^1\wedge dx^3
+\\
+&
+\phantom{=}+
+\frac{\partial f_2}{\partial x^1}\,dx^1\wedge dx^2
+-
+\frac{\partial f_2}{\partial x^3}\,dx^2\wedge dx^3
+\\
+&
+\phantom{=}+
+\frac{\partial f_3}{\partial x^1}\,dx^1\wedge dx^3
++
+\frac{\partial f_3}{\partial x^2}\,dx^2\wedge dx^3.
+\intertext{Durch Zusammenfassen gleicher Basis-2-Formen erhält man}
+&=
+\biggl(
+\frac{\partial f_3}{\partial x^2}
+-
+\frac{\partial f_2}{\partial x^3}
+\biggr)\,dx^2\wedge dx^3
++
+\biggl(
+\frac{\partial f_3}{\partial x^1}
+-
+\frac{\partial f_1}{\partial x^3}
+\biggr)\,dx^1\wedge dx^3
++
+\biggl(
+\frac{\partial f_2}{\partial x^1}
+-
+\frac{\partial f_1}{\partial x^2}
+\biggr)\,dx^1\wedge dx^2.
+\end{align*}
+
+$d\omega$ ist eine 2-Form ist, die nicht direkt mit einem Vektor identifiziert
+werden kann.
+Durch Anwendung des Hodge-Operators kann die 2-Form $d\omega$ in eine 1-Form
+verwendelt werden, ohne dass dabei Information verloren geht.
+Der Hodge-Operator auf $\mathbb{R}^3$ wurde in
+Beispiel~\ref{buch:hodge:hodge:beispiel:r3} berechnet.
+Angewendet auf $d\omega$ ergibt sich
+\begin{align*}
+\ast d\omega
+&=
+\biggl(
+\frac{\partial f_3}{\partial x^2}
+-
+\frac{\partial f_2}{\partial x^3}
+\biggr)\, dx^1
++
+\biggl(
+\frac{\partial f_1}{\partial x^3}
+-
+\frac{\partial f_3}{\partial x^1}
+\biggr)\,dx^3
++
+\biggl(
+\frac{\partial f_2}{\partial x^1}
+-
+\frac{\partial f_1}{\partial x^2}
+\biggr)\,dx^3.
+\end{align*}
+Man beachte den Vorzeichenwechsel beim mittleren Teil.
+Diese 1-Form wird durch die Abbildung $V$ mit dem Vektor
+\[
+V(\ast d\omega)
+=
+\bgroup
+\renewcommand\arraystretch{2.0}
+\begin{pmatrix}
+\displaystyle
+\frac{\partial f_3}{\partial x^2}
+-
+\frac{\partial f_2}{\partial x^3}
+\\
+\displaystyle
+\frac{\partial f_1}{\partial x^3}
+-
+\frac{\partial f_3}{\partial x^1}
+\\
+\displaystyle
+\frac{\partial f_2}{\partial x^1}
+-
+\frac{\partial f_1}{\partial x^2}
+\end{pmatrix}
+\egroup
+=
+\operatorname{rot}
+\begin{pmatrix}
+f_1\\
+f_2\\
+f_3
+\end{pmatrix}
+=
+\operatorname{rot}\vec{f}
+\]
+identifiziert.
+Dies ist die {\em Rotation} des Vektorfeldes $\vec{f}$.
+\index{Rotation}%
+In der englischsprachigen Literatur wird die Rotation auch als
+$\operatorname{curl}\vec{f}$ bezeichnet.
+\index{curl}%
+Sie kann formal auch als das Vektorprodukt mit dem Nabla-Operator
+\[
+\nabla\times\vec{f}
+=
+\operatorname{rot}\vec{f}
+\]
+geschrieben werden.
+
+%
+% Divergenz
+%
+\subsection{Divergenz
+\label{buch:hodge:skalarprodukt:subsection:divergenz}}
+Die Rotation wurde durch äussere Ableitung einer 1-Form erhalten.
+Es war nötig, die Ableitung durch Anwendung des Hodge-Operators in eine
+1-Form zu verwandeln, die dann wieder mit einem Vektor identifiziert
+werden konnte.
+
+Um die Ableitung einer 2-Form mit einer Vektoranalysis-Operation
+zu identifizieren, muss erst eine 2-Form gewonnen werden.
+Ein Vektor kann mit einer 1-Form identifiziert werden, die durch
+den Hodge-Operator in eine 2-Form umgewandelt werden kann.
+Wir beginnen daher mit dem Vektor $\vec{f}=V(f_i\,dx^i)=V(\omega)$
+und wenden den Hodge-Operator darauf an:
+\begin{align*}
+\ast(f_i\,dx^i)
+&=
+f_1\, dx^2\wedge dx^3
+-
+f_2\, dx^1\wedge dx^3
++
+f_3\, dx^1\wedge dx^2
+\end{align*}
+Bei der Berechnung der äusseren Ableitung kommen zu den Basis-2-Formen
+weitere Basis-1-Formen hinzu, jedoch gibt es in jedem Term immer nur eine
+einzige Basis-1-Form, die das Wedge-Produkt nicht zu 0 macht.
+Daher ist die äusser Ableitung
+\begin{align*}
+d{\ast\omega}
+&=
+\frac{\partial f_1}{\partial x^1}dx^1\wedge dx^2\wedge dx^3
+-
+\frac{\partial f_2}{\partial x^2}dx^2\wedge dx^1\wedge dx^3
++
+\frac{\partial f_3}{\partial x^3}dx^3\wedge dx^1\wedge dx^2
+\intertext{Die 3-Formen auf der rechten Seite müssen in die
+Standardreihenfolge gebracht werden und nehmen bei einer ungeraden
+Anzahl Vertauschungen ein negatives Vorzeichen auf:}
+&=
+\biggl(
+\frac{\partial f_1}{\partial x_1}
++
+\frac{\partial f_2}{\partial x_2}
++
+\frac{\partial f_3}{\partial x_3}
+\biggr)
+\,
+dx^1\wedge dx^2\wedge dx^3.
+\intertext{Dies ist eine 3-Form, in der klassischen Vektoranalysis gibt
+es aber nur Funktionen und Vektoren.
+Daher wird jetzt nochmals der Hodge-Operator angewendet, um die 3-Form
+in eine Funktion zu verwandeln.
+So entsteht die Gleichung}
+\ast{d{\ast\omega}}
+&=
+\frac{\partial f_1}{\partial x_1}
++
+\frac{\partial f_2}{\partial x_2}
++
+\frac{\partial f_3}{\partial x_3}.
+\end{align*}
+Diese Funktion ist auch als die {\em Divergenz}
+\index{Divergenz}%
+\begin{equation}
+\operatorname{div}\vec{f}
+=
+\sum_{i=1}^n \frac{\partial f_i}{\partial x^i}
+\label{buch:hodge:hodge:divergenz:eqn:divdef}
+\end{equation}
+bekannt.
+Formal kann sie auch als Skalarprodukt
+\[
+\operatorname{div}\vec{f}
+=
+\nabla\cdot\vec{f}
+\]
+mit dem Nabla-Operator geschrieben werden.
+
+Die Divergenz eines Vektorfeldes ist also die Funktion, die durch
+Anwendung des Operators $*{d}*$ auf die zugehörige 1-Form entsteht.
+Dieser Operator funktioniert aber auch auf 1-Formen in $n$ Dimensionen.
+Der Hodge-Operator macht aus einer 1-Form auf $\mathbb{R}^n$ eine
+$n-1$-Form.
+Die äussere Ableitung davon ist eine $n$-Form, die der Hodge-Operator
+wieder zu einer Funktion macht.
+Auch die Formel \eqref{buch:hodge:hodge:divergenz:eqn:divdef} gilt
+für bliebige $n$.
+\input{chapters/070-hodge/fig/table-operatoren.tex}%
+
+%
+% Operatorrelationen
+%
+\subsection{Operatorrelationen}
+Die äussere Ableitung ist nilpotent vom Grad 2, d.~h.~die iterierte
+äussere Ableitung $d^2=0$ verschwindet.
+Zusammen mit den Identifikationen mit Vektorfeldern ergeben sich
+daraus Kombinationen von Operatoren der Vektoranalysis, die
+0 ergeben.
+
+\subsubsection{Rotation eines Gradienten}
+Der Gradient einer Funktion $f$ ist
+\[
+\operatorname{rot}\operatorname{grad}f
+=
+*{d}df
+=
+*d^2f
+=
+0
+\]
+verschwindet, weil der äussere Differentialoperator nilpotent mit
+Ordnung $2$ ist.
+
+\subsubsection{Divergenz einer Rotation}
+Die Divergenz der Rotation eines Vektorfeldes ist
+\[
+\operatorname{div}\operatorname{rot} \vec{f}
+=
+*{d}{*}{*}d V^{-1}(\vec{f})
+=
+*d^2 V^{-1}(\vec{f})
+=
+0,
+\]
+wobei beim zweiten Gleichheitszeichen die Involutionseigenschaft
+des Hodge-Operators und beim dritten die Nilpotenz der äusseren Ableitung
+verwendet wird.
+
+\subsubsection{Poincaré-Lemma in Vektoranalysis-Schreibeweise}
+Das Poincaré-Lemma besagt, dass geschlossene Differentialformen auf
+$\mathbb{R}^n$ exakt ist.
+Eine geschlossene 0-Form ist eine Funktion $f$, deren Differential
+$df=0$ verschwindet.
+In einer Karte verschwinden alle partiellen Ableitungen, die Funktion
+ist konstant.
+
+Für $n=3$ gibt es zwei interessante Fälle, nämlich geschlossene 1-Formen
+und geschlossene 2-Formen.
+Wir übersetzen die Aussagen des Poincaré-Lemmas für diese beiden
+Fälle in die Schreibweise der Vektoranalsis.
+
+Eine geschlossene 1-Form $\omega$ entspricht einem Vektorfeld.
+Geschlossen bedeutet, dass die Rotation dieses Vektorfeldes verschwindet.
+Nach dem Poincaré-Lemma gibt es eine 0-Form $f$ derart dass
+$df=\omega$ ist.
+Die Identifikation von 1-Formen mit Vektorfeldern besagt also, dass
+ein Vektorfeld, dessen Rotation verschwindet, ein Gradientfeld
+einer Funktion $f$ ist.
+
+Eine geschlossene 2-Form $\omega$ entspricht einer 1-Form $\ast\omega$,
+auf die mit Hilfe des Hodge-Operators angewendet worden ist.
+$d\omega=0$ bedeutet, dass die Divergenz des zu $\ast\omega$
+gehörigen Vektorfeldes verschwindet.
+Da $d\omega=0$ ist, gibt es nach dem Poincaré-Lemma eine 1-Form $\alpha$,
+deren äussere Ableitung $d\alpha=\omega$ ist.
+Folglich ist 
+\[
+d\alpha = \omega
+\qquad\Rightarrow\qquad
+\ast d\alpha = \ast\omega.
+\]
+Der 1-Form $\beta$ entspricht ein Vektorfeld, und $\ast d\beta$ entspricht
+der Rotation dieses Vektorfelds.
+Es folgt, dass ein Vektorfeld, dessen Divergenz verschwindet, als
+Rotation eines anderen Vektorfeldes geschrieben werden kann.
+
+\begin{satz}[Poincaré-Lemma der Vektoranalsis]
+Wenn die Rotation eines Vektorfeldes $\vec{v}$ auf $\mathbb{R}^3$
+verschwindet, dann gibt es eine Funktion $f$ mit
+$\vec{v}=\operatorname{grad}f$.
+Wenn die Divergenz eines Vektorfeldes $\vec{v}$ verschwindet,
+dann gibt es ein Vektorveld $\vec{a}$, dessen Rotation
+$\operatorname{rot}\vec{a}=\vec{v}$ das Vektorfeld ist.
+\end{satz}
+

@@ -1,0 +1,99 @@
+%
+% 4-kodifferential.tex -- Kodifferential
+%
+% (c) 2025 Prof Dr Andreas Müller
+%
+\section{Kodifferential}
+\kopfrechts{Kodifferential}
+Der $d$-Operator erhöht den Grad einer Differentialform um $1$.
+Aus der Zusammensetzung mit dem Hodge-Operator entsteht ein neuer
+Operator, das Kodifferential $\delta$, der den Grad erniedrigt.
+Zusammen mit $d$ entstehen damit weitere Möglichkeiten,
+koordinatenunabhängige Operatoren zu definieren.
+
+%
+% Definition
+%
+\subsection{Definition}
+
+
+\begin{definition}[Kodifferential]
+Das {\em Kodifferential} ist der lineare Operator
+\[
+\delta
+=
+(-1)^{p(n-p)+p}
+{\ast}d{\ast}
+\colon
+\Omega^p(M)\to\Omega^{p-1}
+:
+\omega \mapsto (-1)^{p(n-p)+p}{\ast}d\ast \omega
+\]
+vom Grad $-1$.
+\end{definition}
+
+Der Vorzeichenfaktor setzt sich aus zwei Beiträgen zusammen.
+Der Faktor $(-1)^{p(n-p)}$ zusammen mit dem Hodge-Operator ${\ast}$
+ist der inverse Hodge-Operator: $\ast^{-1} = (-1)^{p(n-p)}{\ast}$.
+Der verbleibende Faktor $(-1)^p$ kehrt das Vorzeichen für ungerade
+$p$-Formen und ist die zweckmässigere Wahl, wie im Abschnitt über
+den Laplace-Operator weiter unten klar werden wird.
+Das Kodifferential kann daher auch als
+\[
+\delta
+=
+(-1)^p
+{\ast}^{-1}d{\ast}
+\]
+geschrieben werden.
+
+%
+% Vektoranalsis und Kodifferential
+%
+\subsection{Vektoranalysis und Kodifferential}
+Kombinationen des Hodge-Operators mit dem Differential reproduzieren
+gemäss der Tabelle~\ref{buch:hodge:hodge:table:operatoren} die 
+klassischen Operatoren der Vektoranalysis.
+Wir erwarten daher, dass diese Operatoren sich noch etwas leichter
+durch das Kodifferential ausdrücken lassen.
+
+Die Divergenz eines Vektorfeldes in $\mathbb{R}^3$ ist auf der
+zugehörigen 1-Form gegeben durch den Operator ${\ast}d{\ast}$,
+der sich von $\delta$ nur um den Faktor $(-1)^{1(3-1)+1}=-1$
+unterscheidet.
+
+Am Ende von Abschnitt~\ref{buch:hodge:skalarprodukt:subsection:divergenz}
+wurde darauf hingewiesen, dass die Divergenz auch für Vektorfelder
+auf $\mathbb{R}^n$ durch ${\ast}d{\ast}$ berechnet wird.
+In diesem Fall ist der Unterschied ein Vorzeichenfaktor der Form
+$(-1)^{1\cdot(n-1)+1}=(-1)^n$.
+
+%
+% Poincaré-Lemma für das Kodifferential
+%
+\subsection{Poincaré-Lemma für das Kodifferential}
+Auch für das Kodifferential gilt ein Poincaré-Lemma.
+
+\begin{satz}[Poincaré-Lemma für das Kodifferential]
+Wenn $\omega \in \Omega^p(\mathbb{R}^n)$ eine $p$-Form ist mit
+$\delta\omega=0$, dann gibt es eine $p+1$-Form
+$\alpha\in\Omega^{p+1}(\mathbb{R}^n)$ mit $\delta\alpha=\omega$.
+\end{satz}
+
+\begin{proof}
+Nach Voraussetzung ist $\delta \omega = {\ast}d{\ast}\omega = 0$.
+Da der Hodge-Operator invertierbar ist, muss auch $d{\ast}\omega=0$
+sein.
+Die $(n-p)$-Form $\ast\omega$ ist geschlossen, nach dem Poincaré-Lemma
+gibt es eine $(n-p-1)$-Form $\beta$ mit $d\beta=\ast\omega$.
+Durch erneute Anwendung des Hodge-Operators wird daraus
+\[
+{\ast}d{\ast} {\ast}\beta = (-1)^{p(n-p)}\omega.
+\]
+Setzen wir $\alpha=(-1)^{p(n-p)}\beta$, dann folgt
+\[
+\delta \alpha = \omega,
+\]
+womit ist das Poincaré-Lemma für das Kodifferential bewiesen.
+\end{proof}
+

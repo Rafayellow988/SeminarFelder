@@ -1,0 +1,397 @@
+%
+% 5-laplace.tex -- Laplace-Operator
+%
+% (c) 2025 Prof Dr Andreas Müller
+%
+\section{Der Laplace-Operator}
+\kopfrechts{Der Laplace-Operator}
+Das Kodifferential $\delta$ reduziert die Ordnung einer Differentialform,
+während $d$ die Ordnung erhöht.
+Die Zusammensetzung dieser beiden Operatoren ist ein Differentialoperator
+zweiter Ordnung, die die Ordnung einer Differentialform nicht ändert.
+Um diese Operatoren besser zu verstehen, berechnen wir $\delta d$ und
+$d\delta$ in einigen Beispielen.
+
+\begin{beispiel}
+Die Operatoren $\delta d$ und $d\delta$ auf $\Omega^*(\mathbb{R}^2)$.
+Eine 0-Form ist eine Funktion $f$, $\delta f={\ast}d{\ast}f =0$, weil
+$*f$ eine $n$-Form ist, aber $d$ macht alle $n$-Formen zu 0.
+Daher ist auch $d\delta=0$ auf 0-Formen.
+Umgekehrt ist $\delta d=0$ auf $n$-Formen.
+
+Auf der Funktion $f$ ist 
+\begin{align*}
+\delta d f
+&=
+{\ast}d{\ast}
+\biggl(
+\frac{\partial f}{\partial x^1}dx^1
++
+\frac{\partial f}{\partial x^2}dx^2
+\biggr)
+\\
+&=
+{\ast}d
+\biggl(
+\frac{\partial f}{\partial x^1}dx^2
+-
+\frac{\partial f}{\partial x^2}dx^1
+\biggr)
+\\
+&=
+{\ast}\biggl(
+\frac{\partial^2 f}{\partial (x^1)^2}dx^1\wedge dx^2
+-
+\frac{\partial^2 f}{\partial (x^2)^2}dx^2\wedge dx^1
+\biggr)
+=
+\ast \Delta f dx^1\wedge dx^2
+=
+\Delta f
+\intertext{Umgekehrt ist auf einer $n$-Form $\omega = f\,dx^1\wedge dx^2$}
+d\delta \omega
+&=
+d{\ast}d{\ast}(f\,dx^1\wedge dx^2)
+\\
+&= d{\ast}df
+\\
+&=
+d{\ast}
+\biggl(
+\frac{\partial f}{\partial x^1}dx^1
++
+\frac{\partial f}{\partial x^2}dx^2
+\biggr)
+\\
+&=
+d
+\biggl(
+\frac{\partial f}{\partial x^1}dx^2
+-
+\frac{\partial f}{\partial x^2}dx^1
+\biggr)
+\\
+&=
+\frac{\partial^2 f}{\partial (x^1)^2} dx^1\wedge dx^2
+-
+\frac{\partial^2 f}{\partial (x^2)^2} dx^2\wedge dx^1
+\\
+&=
+\Delta f\, dx^1\wedge dx^2
+.
+\end{align*}
+Der Operator $d\delta$ ist also im Wesentlichen die Wirkung
+des Laplace-Operators auf dem Koeffizienten $f$.
+
+Schliesslich können wir die Operatoren $d\delta$ und $\delta d$ auf
+der 1-Form $\omega = f_1\,dx^1+f_2\,dx^2$ berechnen:
+\begin{align*}
+d\delta\omega
+&=
+d{\ast}d{\ast}\omega
+\\
+&=
+d{\ast}d\bigl(f_1\,dx_2 - f_2\,dx_1)
+\\
+&=
+d{\ast}\biggl(
+\frac{\partial f_1}{\partial x^1}\,dx^1\wedge dx^2
+-
+\frac{\partial f_2}{\partial x^2}\,dx^2\wedge dx^1
+\biggr)
+\\
+&=
+d\biggl(
+\frac{\partial f_1}{\partial x^1}
++
+\frac{\partial f_2}{\partial x^2}
+\biggr)
+\\
+&=
+\frac{\partial^2 f_1}{\partial (x^1)^2}\,dx^1
++
+\frac{\partial^2 f_1}{\partial x^2\,\partial x^1}\,dx^2
++
+\frac{\partial^2 f_2}{\partial x^1\,\partial x^2}\, dx^1
++
+\frac{\partial^2 f_2}{\partial (x^2)^2}\, dx^2
+\\
+&=
+\biggl(
+\frac{\partial^2 f_1}{\partial (x^1)^2}
++
+\frac{\partial^2 f_2}{\partial x^1\,\partial x^2}
+\biggr)
+\, dx_1
++
+\biggl(
+\frac{\partial^2 f_1}{\partial x^2\,\partial x^1}
++
+\frac{\partial^2 f_2}{\partial (x^2)^2}
+\biggr)
+\, dx_2
+\\
+\delta d\omega
+&=
+{\ast}d{\ast}
+\biggl(
+\frac{\partial f_1}{\partial x^2}dx^2\wedge dx^1
++
+\frac{\partial f_2}{\partial x^2}dx^2\wedge dx^2
+\biggr)
+\\
+&=
+{\ast}d{\ast}
+\biggl(
+\frac{\partial f_1}{\partial x^2}
+-
+\frac{\partial f_2}{\partial x^1}
+\biggr) dx^1\wedge dx^2
+\\
+&=
+{\ast}d
+\biggl(
+\frac{\partial f_1}{\partial x^2}
+-
+\frac{\partial f_2}{\partial x^1}
+\biggr)
+\\
+&=
+{\ast}
+\biggl(
+\frac{\partial^2 f_1}{\partial x^1\,\partial x^2}
+-
+\frac{\partial^2 f_2}{\partial (x^1)^2}
+\biggr)
+dx^1
++
+{\ast}
+\biggl(
+\frac{\partial^2 f_1}{\partial (x^2)^2}
+-
+\frac{\partial^2 f_2}{\partial x^1\,\partial x^2}
+\biggr) 
+dx^2
+\\
+&=
+\biggl(
+\frac{\partial^2 f_1}{\partial x^1\,\partial x^2}
+-
+\frac{\partial^2 f_2}{\partial (x^1)^2}
+\biggr)
+dx^2
++
+\biggl(
+\frac{\partial^2 f_1}{\partial x^1\,\partial x^2}
+-
+\frac{\partial^2 f_2}{\partial (x^2)^2}
+\biggr) 
+dx^1
+\intertext{Daraus kann man ableiten, dass}
+(d\delta+\delta d)\omega
+&=
+\Delta f_1\,dx^1
++
+\Delta F_2\,dx^2
+\end{align*}
+In allen Fällen ist also $d\delta + \delta d$ im wesentlichen
+der Laplace-Operator.
+\end{beispiel}
+
+Das Beispiel zeigt, dass der Laplace-Operator koordinatenunabhängig
+definiert werden kann.
+Man kann aber sogar nachrechnen, dass für eine beliebige Funktion
+auf $\mathbb{R}^n$ der Operator $\delta d$ der Laplace-Operator
+ist:
+\begin{align*}
+\delta d f
+&=
+{\ast}d{\ast}\sum_{k=1}^n \frac{\partial f}{\partial x^k}\,dx^k
+\\
+&=
+{\ast}d\sum_{k=1} \frac{\partial f}{\partial x^k}
+(-1)^k
+dx^1\wedge\dots\wedge \widehat{dx^k}\wedge\dots\wedge dx^n
+\\
+&=
+{\ast}
+\sum_{k=1}^n
+(-1)^k
+\frac{\partial^2 f}{\partial (x^k)^2}
+dx^k\wedge dx^1\wedge\dots\wedge\widehat{dx^k}\wedge\dots\wedge dx^n
+\\
+&=
+{\ast}
+\biggl(
+\sum_{k=1}^n
+\frac{\partial^2 f}{\partial (x^k)^2}
+\biggr)
+dx^1\wedge\dots\wedge dx^n
+\\
+&=
+\sum_{k=1}^n \frac{\partial^2 f}{\partial (x^k)^2}
+=
+\Delta f,
+\end{align*}
+wobei der Hut $\widehat{dx^k}$ bedeutet, dass diese 1-Form im
+Produkt weggelassen werden muss.
+
+\begin{definition}
+Sei $M$ eine Mannigfaltigkeit mit einer Metrik, dann ist
+der {\em Hodge-Laplace-Operator} ist der Operator
+\index{Hodge-Laplace-Operator}%
+\[
+\Delta = d\delta + \delta d.
+\]
+Der Hodge-Laplace-Operator ist auf ganz $\Omega^*$ definiert.
+\end{definition}
+
+\begin{beispiel}
+Wir berechnen den Hodge-Laplace-Operator auf $\mathbb{R}^2$ in
+Polarkoordinaten.
+Dazu verwenden wir die früher berechnete Darstellung des Hodge-Operators
+in Polarkoordinaten.
+\begin{align*}
+\Delta f
+&=
+d\delta f
++
+\delta d f
+=
+\delta d f
+\\
+&=
+(-1)^{1\cdot 1+1}
+{\ast}d{\ast}d f
+=
+{\ast}d{\ast}d f
+\\
+&=
+{\ast}d{\ast}
+\biggl(
+\frac{\partial f}{\partial r}\,dr
++
+\frac{\partial f}{\partial \varphi}\,d\varphi
+\biggr)
+\\
+&=
+{\ast}d\biggl(
+\frac{\partial f}{\partial r}\,r\,d\varphi
+-
+\frac{\partial f}{\partial \varphi}\,\frac{1}{r}\,dr
+\biggr)
+\\
+&=
+{\ast}
+\biggl(
+\biggl(
+\frac{\partial }{\partial r} r \frac{\partial f}{\partial r}
++
+\frac{1}{r}
+\frac{\partial^2 f}{\partial\varphi^2}
+\biggr)
+\,dr\wedge d\varphi
+\biggr)
+\\
+&=
+\biggl(
+\frac{1}{r}
+\frac{\partial}{\partial r} 
+r
+\frac{\partial}{\partial r}
++
+\frac{1}{r^2}
+\frac{\partial^2}{\partial \varphi^2}
+\biggr)
+f.
+\end{align*}
+Dies ist tatsächlich die wohlbekannte Darstellung des
+Laplace-Operators in Polarkoordinaten
+\end{beispiel}
+
+\begin{beispiel}
+Der Hodge-Laplace-Operator auf $\mathbb{R}^3$ in
+Kugelkoordinaten.
+Die gleiche Art von Rechnung wie für den Hodge-Laplace-Operator in
+Polarikoordinaten, aber unter Verwendung der Resultate von
+Beispiel~\ref{buch:hodge:hodge:beispiel:r3}, ergibt 
+\begin{align*}
+\Delta f
+&=
+(d\delta + \delta d) f
+=
+\delta d f
+\\
+&=
+(-1)^{1\cdot 2+2}
+{\ast}d{\ast}df
+\\
+&=
+{\ast}d{\ast}\biggl(
+\frac{\partial f}{\partial r}\,dr
++
+\frac{\partial f}{\partial\vartheta}\,d\vartheta
++
+\frac{\partial f}{\partial\varphi}\,d\varphi
+\biggr)
+\\
+&=
+{\ast}d\biggl(
+\frac{\partial f}{\partial r} r^2\sin\vartheta \, d\vartheta\wedge d\varphi
+-
+\frac{\partial f}{\partial\vartheta}\,\sin\vartheta\,dr\wedge d\varphi
++
+\frac{\partial f}{\partial\varphi}\,\frac{1}{\sin\vartheta}\,dr\wedge d\vartheta
+\biggr)
+\\
+&=
+{\ast}
+\biggl(
+\frac{\partial}{\partial r}r^2\frac{\partial f}{\partial r}
+\sin\vartheta
++
+\frac{\partial}{\partial \vartheta}
+\sin\vartheta
+\frac{\partial f}{\partial \vartheta}
++
+\frac{1}{\sin\vartheta}
+\frac{\partial^2 f}{\partial\varphi^2}
+\biggr)
+\,dr\wedge d\vartheta\wedge d\varphi
+\\
+&=
+\frac{1}{r^2}
+\frac{\partial}{\partial r}r^2\frac{\partial f}{\partial r}
++
+\frac{1}{r^2\sin\vartheta}
+\frac{\partial}{\partial \vartheta}
+\sin\vartheta
+\frac{\partial f}{\partial \vartheta}
++
+\frac{1}{r^2\sin^2\vartheta}
+\frac{\partial^2 f}{\partial \varphi^2}.
+\end{align*}
+Dies ist die wohlbekannte Formel für den Laplace-Operator in 
+Kugelkoordinaten.
+\end{beispiel}
+
+\begin{satz}
+Für den Hodge-Laplace-Operator gilt $\Delta = (d+\delta)^2$.
+\end{satz}
+
+\begin{proof}
+Durch direkte Rechnung finden wir
+\[
+(d+\delta)^2
+=
+dd+d\delta+\delta d+\delta\delta
+=
+d\delta +\delta d.
+\qedhere
+\]
+\end{proof}
+
+An dieser Stelle wird klar, warum das Vorzeichen $(-1)^p$ in der
+Definition des Kodifferentials zweckmässig war.
+
+

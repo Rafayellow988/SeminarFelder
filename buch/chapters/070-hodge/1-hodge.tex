@@ -1,0 +1,244 @@
+%
+% 1-hodge.tex -- Der Hodge-Operator
+%
+% (c) 2025 Prof Dr Andreas Müller
+%
+\section{Der Hodge-Operator
+\label{buch:hodge:section:hodge}}
+\kopfrechts{Der Hodge-Operator}
+Der Hodge-Operator bildet $p$-Formen umkehrbar auf $n-p$-Formen ab.
+Im folgenden wird er zunächst ad hoc mit Hilfe der Basis-$p$-Formen
+konstruiert.
+
+%
+% Basisformen
+%
+\subsection{Basisformen}
+Der Raum der $p$-Formen hat als Basis die $p$-Formen der Form
+\[
+\alpha = dx^{i_1}\wedge\dots\wedge dx^{i_p}.
+\]
+Die Indizes $i_1,\dots,i_p$ müssen alle verschieden sein, weil
+$dx^i\wedge dx^i=0$ ist.
+Zu jeder Auswahl von $p$ Indizes $i_1,\dots,i_p$ aus der Mengen
+$[n]=\{1,\dots,n\}$ der Zahlen von 1 bis $n$ gibt es genau eine Basisform.
+Die Dimension des Raums der $p$-Formen ist daher die Anzahl der möglichen
+Auswahlen von $p$ Zahlen aus den $n$ Zahlen $[n]$.
+
+Die Auswahl von $p$ Zahlen aus $[n]$ lässt aber genau $n-p$ Basisformen
+zurück.
+Aus den Indizes $n-p$ Zahlen aus $]n]$, die in $i_1,\dots,i_p$ nicht
+vorkommen, lässt sich eine Basis $n-p$-Form bilden.
+Diese Zuordnung einer Basis-$p$-Form $dx^{i_1}\wedge\dots\wedge dx^{i_p}$
+ist offensichtlich umkehrbar.
+Es bleibt noch die Freiheit, das Vorzeichen festzulegen.
+
+\begin{definition}[Hodge-Operator]
+\label{buch:hodge:hodge:definition:hodge}
+Der Hodge-Operator ist der lineare Operator, der der
+Basis-$p$-Form
+$dx^{i_1}\wedge\dots\wedge dx^{i_p}$ mit $i_1<i_2<\dots<i_p$
+die $n-p$-Form
+\[
+\ast(dx^{i_1}\wedge\dots\wedge dx^{i_p})
+=
+s\,dx^{j_1}\wedge\dots\wedge dx^{j_{n-p}}
+\]
+mit $j_1<\dots <j_{n-p}$, $s\in\{\pm1\}$ zuordnet, für die
+$\{i_1,\dots,i_p\}\cup\{j_1,\dots,j_{n-p}\}=[n]$ gilt.
+Das Vorzeichen $s$ muss so gewählt werden, dass
+\[
+(dx^{i_1}\wedge\dots\wedge dx^{i_p})
+\wedge
+(s\,dx^{j_1}\wedge\dots\wedge dx^{j_{n-p}})
+=
+dx^1\wedge dx^2\wedge\dots\wedge dx^n
+\]
+gilt.
+\end{definition}
+
+Ganz allgemein lässt sich daraus bereits beantworten, wie $0$-Formen und
+$n$-Formen durch den Hodge-Operator abgebildet werden.
+Die einzige 0-Form ist $\alpha=1$.
+Es muss eine $n$-Form $\beta$ gefunden werden, so dass
+$\alpha\wedge\beta=dx^1\wedge\dots\wedge dx^n$ ist.
+Da es nur die eine $n$-Form $dx^1\wedge\dots\wedge dx^n$ gibt, muss
+nur noch das Vorzeichen gefunden werden.
+Da aber
+\[
+\alpha\wedge
+s\,dx^1\wedge\dots\wedge dx^n
+=
+s\,dx^1\wedge\dots\wedge dx^n
+=
+dx^1\wedge\dots\wedge dx^n
+\]
+sein soll, muss $s=1$ gewählt werden.
+Somit ist $\ast 1=dx^1\wedge\dots\wedge dx^n$.
+Auf die gleiche Art kann man folgern, dass
+$\ast(dx^1\wedge\dots\wedge dx^n)=1$.
+
+\begin{beispiel}
+\label{buch:hodge:hodge:beispiel:r2}
+Hodge-Operator in $\mathbb{R}^2$.
+Die Basis-1-Formen sind $dx^1$ und $dx^2$ und die Form höchsten Grades ist
+die 2-Form $dx^1\wedge dx^2$.
+Aus der Definition lässt sich jetzt sofort die Wirkung des Hodge-Operators
+ableiten.
+Für 0- und 2-Formen wurde dies im Anschluss an die
+Definition~\ref{buch:hodge:hodge:definition:hodge} durchgeführt.
+
+Die 1-Formen $dx^1$ und $dx^2$ werden aufeinander abgebildet, es müssen
+aber noch die Vorzeichen ermittelt werden.
+Wenn $\*dx^1=s\,dx^2$ ist, dann soll
+$dx^1\wedge \*dx^1=dx^1\wedge s\,dx^2=dx^1\wedge dx^2$ sein.
+Somit muss $s=1$ gewählt werden und es folgt $\*dx^1=dx^2$.
+Wenn $\*dx^2=s\,dx^1$ ist, dann soll
+$dx^2\wedge(\*dx^2)=dx^2\wedge(s\,dx^1)=dx^1\wedge dx^2$ sein.
+Dies kann erreicht werden, dann man im mittleren Ausdruck der
+Gleichungskette $dx^1$ und $dx^2$ vertauscht und dafür $s=-1$ setzt.
+Es folgt $\*dx^2=-dx^1$.
+\end{beispiel}
+
+\begin{beispiel}
+\label{buch:hodge:hodge:beispiel:r3}
+Hodge-Operator in $\mathbb{R}^3$.
+Im dreidimensionalen Fall ist nur die Abbildung von 1-Formen auf
+2-Formen und zurück zu untersuchen.
+Nach der gleichen Methode wie im
+Beispiel~\ref{buch:hodge:hodge:beispiel:r2}
+sind nur noch die Vorzeichen zu bestimmen.
+Die Rechnung ergibt die Zuordnung
+\begin{align*}
+\ast dx^1 &= \phantom{-}dx^2\wedge dx^3 \\
+\ast dx^2 &=          - dx^1\wedge dx^3 \\
+\ast dx^3 &= \phantom{-}dx^1\wedge dx^2 \\
+\ast(dx^1\wedge dx^2) &= \phantom{-}dx^3 \\
+\ast(dx^1\wedge dx^3) &=          - dx^2 \\
+\ast(dx^2\wedge dx^3) &= \phantom{-}dx^1
+\qedhere
+\end{align*}
+\end{beispiel}
+
+Da die Indexmengen $\{i_1,\dots,i_p\}$ und
+$\{j_1,\dots,j_{n-p}\}$ in $[n]$ komplementär sein müssen,
+muss
+\(
+\ast{\ast}(dx^{i_1}\wedge\dots\wedge dx^{i_p})
+=
+\pm dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\)
+sein.
+Aus den Beispielen kann man ablesen, dass in den Fällen $n=2$ und $n=3$
+der iterierte Hodge-Operator  $\ast\ast$ durch
+\[
+\left.
+\begin{aligned}
+\ast{\ast dx^1} &= \phantom{-}{\ast dx^2} = -dx^1\\
+\ast{\ast dx^2} &=          - {\ast dx^1} = -dx^2
+\end{aligned}
+\quad
+\right\}
+\qquad
+\text{bzw.}
+\qquad
+\left\{
+\quad
+\begin{aligned}
+\ast{\ast dx^1} &= \phantom{-}{\ast(dx^2\wedge dx^3)} = dx^1 \\
+\ast{\ast dx^2} &=          - {\ast(dx^1\wedge dx^3)} = dx^2 \\
+\ast{\ast dx^3} &= \phantom{-}{\ast(dx^1\wedge dx^2)} = dx^3 
+\end{aligned}
+\right.
+\]
+gegeben ist.
+Diese Überlegungen können verallgemeinert werden und ergeben den
+folgenden Satz.
+
+\begin{satz}
+Für jede $p$-Form auf einer $n$-dimensionalen Mannigfaltigkeit gilt
+\[
+\ast{\ast \omega}
+=
+(-1)^{p(n-p)}\omega.
+\]
+\end{satz}
+
+\begin{proof}
+Sei $\omega = dx^{i_1}\wedge\dots\wedge dx^{i_p}$ und 
+$\ast\omega = s\,dx^{j_1}\wedge\dots\wedge dx^{j_{n-p}}$ mit
+$s\in\{\pm 1\}$.
+Das Vorzeichen $s$ kommt von den Vertauschungen der Basis-1-Formen,
+mit denen man die Standardreihenfolge $dx^1\wedge \dots\wedge dx^n$
+erreicht.
+Es erfüllt
+\begin{equation}
+(dx^{i_1}\wedge\dots\wedge dx^{i_p})
+\wedge
+s(dx^{j_1}\wedge\dots\wedge dx^{j_{n-p}})
+=
+dx^1\wedge\dots\wedge dx^n.
+\label{buch:hodge:hodge:vorz1}
+\end{equation}
+
+Jetzt soll $\ast{\ast\,\omega}$ berechnet werden.
+Nach Definition gibt es einen Vorzeichenfaktor $t\in\{\pm1\}$ mit
+\[
+\ast(dx^{j_1}\wedge\dots\wedge dx^{j_{n-p}})
+=
+t\,dx^{i_1}\wedge\dots\wedge dx^{i_p}.
+\]
+Er muss so gewählt werden, dass
+\begin{align}
+(dx^{j_1}\wedge\dots\wedge dx^{j_{n-p}})
+\wedge
+t(dx^{i_1}\wedge\dots\wedge dx^{i_p})
+&=
+dx^1\wedge\dots\wedge dx^n
+\label{buch:hodge:hodge:vorz2}
+\end{align}
+gilt.
+Für den iterierten Hodge-Operator findet man dann
+\begin{align}
+\ast{\ast\, \omega}
+=
+\ast(s\,dx^{j_1}\wedge\dots\wedge dx^{j_{n-p}})
+&=
+st\, dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\notag
+\end{align}
+Der iterierte Hodge-Operator ist also das Vorzeichen $st\in\{\pm 1\}$.
+
+Durch $p$ Vertauschungen mit den 1-Formen $dx^{j_p}$,
+$dx^{j_{p-1}},\dots,dx^{j_1}$ auf der linken Seite von
+\eqref{buch:hodge:hodge:vorz2}
+kann man $dx^{i_1}$ an den Anfang
+der $n$-Form bringen.
+Durch Widerholung für die 1-Formen $dx^{i_2}$ bis $dx^{i_p}$ kann
+man mit insgesamt $p(n-p)$ Vertauschungen alle $dx^{i_k}$, $k=1,\dots,p$
+nach vorne bringen und erhält so
+\begin{align}
+(-1)^{p(n-p)}
+t(dx^{i_1}\wedge\dots\wedge dx^{i_p})
+\wedge
+(dx^{j_1}\wedge\dots\wedge dx^{j_p})
+&=
+dx^1\wedge\dots\wedge dx^n.
+\end{align}
+Durch Vergleich mit 
+\eqref{buch:hodge:hodge:vorz1}
+kann man ablesen, dass $(-1)^{p(n-p)}t=s$ gelten muss.
+Daraus kann man
+$st=(-1)^{p(n-p)}$ ablesen, was den Satz beweist.
+\end{proof}
+
+Wenn $n$ ungerade ist, dann ist immer einer der beiden Faktoren $p$
+oder $n-p$ gerade und damit ist $(-1)^{p(n-p)}=1$.
+Für ungerades $n$ ist der Hodge-Operator also eine Involution.
+Für gerades $n$ sind entweder beide Zahlen $p$ und $n-p$ ungerade
+oder keine von beiden.
+Für $p$ ungerade ist auch $n-p$ und damit $p(n-p)$ ungerade
+und entsprechend ist $\ast{\ast\omega}=-\omega$ für $p$-Formen.
+Der iterierte Hodge-Operator ist also eine Antiinvolution auf
+$p$-Formen ungeraden Grades.
+

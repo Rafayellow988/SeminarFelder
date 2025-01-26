@@ -1,0 +1,34 @@
+%
+% table-kugelhodge.tex
+%
+% (c) 2025 Prof Dr Andreas Müller
+%
+\begin{table}
+\centering
+\renewcommand\arraystretch{1.3}
+\begin{tabular}{|>{$}c<{$}|>{$}c<{$}||>{$}c<{$}|>{$}c<{$}|}
+\hline
+\text{1-Form $\omega$} & \ast\omega & \text{2-Form $\alpha$}    & \ast\alpha\\
+\hline
+dr
+& r^2\sin\vartheta\, d\vartheta\wedge d\varphi
+& d\vartheta\wedge d\varphi
+& \displaystyle \frac{1}{r^2\sin\vartheta}\,dr
+\raisebox{9pt}{\mathstrut}
+\\[7pt]
+d\vartheta
+& -\sin\vartheta\, dr\wedge d\varphi
+& dr\wedge d\varphi
+& \displaystyle -\frac{1}{\sin\vartheta}\,d\vartheta
+\\[7pt]
+d\varphi
+& \displaystyle \frac{1}{\sin\vartheta}\, dr\wedge d\vartheta
+& dr\wedge d\vartheta
+& \sin\vartheta\, d\varphi
+\\[7pt]
+\hline
+\end{tabular}
+\caption{Tabelle der Wirkung des Hodge-Operators auf 1-Formen und 2-Formen
+in Kugelkoordinaten.
+\label{buch:hodge:skalarprodukt:table:kugelhodge}}
+\end{table}
