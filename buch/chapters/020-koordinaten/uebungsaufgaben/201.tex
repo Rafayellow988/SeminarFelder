@@ -1,0 +1,156 @@
+Zwei Koordinatensysteme $(x^1,x^2)$ und $(y^1,y^2)$ in der Ebene sind
+durch die Gleichungen
+\begin{equation}
+\renewcommand\arraycolsep{2pt}
+\begin{array}{rcrcr}
+y^1 &=&  x^1 &+& 2x^2 \\
+y^2 &=& 2x^1 &-& 1x^2
+\end{array}
+\label{buch:201:transformation}
+\end{equation}
+\begin{teilaufgaben}
+\item
+Berechnen Sie die jacobische Matrix dieser Koordinatentransformation.
+\item
+Zeichen Sie die $(y^1,y^2)$-Koordinatenlinien im
+$(x^1,x^2)$-Koordinatensystem ein.
+\item
+Betrachten Sie die Kurve $\gamma(t) = (x^1(t),x^2(t))$ im
+$(x^1,x^2)$-Koordinatensystem mit
+\begin{align*}
+x^1(t) &= \cos t \\
+x^2(t) &= \sin t
+\end{align*}
+Berechnen Sie die Komponenten des Tangentialvektor im
+$(x^1,x^2)$-Koordinaten\-sys\-tem.
+\item
+Verwenden Sie die Transformation \eqref{buch:201:transformation}
+um eine Darstellung der Kurve im $(y^1,y^2)$-Koordinatensystem zu erhalten.
+\item
+Berechnen Sie die Komponenten des Tangentialvektors in einem
+Punkt der Kurve im $(y^1,y^2)$-Koordinatensystem und rechnen Sie
+nach, dass diese Komponenten auch durch Anwendung der Jacobi-Matrix
+auf die in Teilaufgabe c) gefundenen Komponenten berechnet werden
+können.
+\end{teilaufgaben}
+
+\begin{loesung}
+\begin{teilaufgaben}
+\item
+Die Jacobi-Matrix ist
+\[
+J
+=
+\bgroup
+\renewcommand\arraystretch{1.4}
+\begin{pmatrix}
+\frac{\partial y^1}{\partial x^1}& \frac{\partial y^1}{\partial x^2} \\
+\frac{\partial y^2}{\partial x^1}& \frac{\partial y^2}{\partial x^2}
+\end{pmatrix}
+\egroup
+=
+\begin{pmatrix}
+1 &  2 \\
+2 & -1 
+\end{pmatrix}.
+\]
+\item
+Die Koordinatenlinien mit konstanter $y^1$- bzw.~$y^2$-Koordinate
+erfüllen die Gleichungen
+\begin{align*}
+ x^1 +          2 x^2 &= \operatorname{const} \\
+\text{bzw.}\qquad
+2x^1 - \phantom{1}x^2 &= \operatorname{const},
+\end{align*}
+dies sind Koordinatengleichungen von Geraden.
+Die Normalen dieser Geraden sind
+\[
+\vec{n}_1 = \begin{pmatrix} 1 \\  2 \end{pmatrix}
+\qquad\text{und}\qquad
+\vec{n}_2 = \begin{pmatrix} 2 \\ -1 \end{pmatrix}.
+\]
+\begin{figure}
+\centering
+\begin{tikzpicture}[thick,>=latex,scale=1]
+\begin{scope}
+\clip (-5,-4) rectangle (5,4);
+\pgfmathparse{1/sqrt(5)}
+\xdef\l{\pgfmathresult}
+\foreach \n in {-21,...,21}{
+	\draw[color=darkred]
+		($\n*\l*\l*(1,2)-5*(2,-1)$) -- ($\n*\l*\l*(1,2)+5*(2,-1)$);
+}
+\foreach \n in {-21,...,21}{
+	\draw[color=blue]
+		($\n*\l*\l*(1,-2)-5*(2,1)$) -- ($\n*\l*\l*(1,-2)+5*(2,1)$);
+}
+\end{scope}
+\draw[->] (-5.1,0) -- (5.5,0) coordinate[label={$x^1$}];
+\draw[->] (0,-4.1) -- (0,4.3) coordinate[label={right:$x^2$}];
+\foreach \x in {1,...,5}{
+	\draw (\x,-0.05) -- (\x,0.05);
+	\node at (\x,-0.05) [below] {$\x$};
+	\draw (-\x,-0.05) -- (-\x,0.05);
+	\node at (-\x,-0.05) [below] {$-\x$};
+}
+\foreach \y in {1,...,4}{
+	\draw (-0.05,\y) -- (0.05,\y);
+	\node at (-0.05,\y) [left] {$\y$};
+	\draw (-0.05,-\y) -- (0.05,-\y);
+	\node at (-0.05,-\y) [left] {$-\y$};
+}
+\end{tikzpicture}
+\caption{Koordinatenlinien $y^1\in\mathbb{Z}$ in rot und 
+$y^2\in\mathbb{Z}$ in blau
+\label{buch:201:fig}}
+\end{figure}
+Da Division durch die Länge der Normalenvektoren die Hessesche
+Normalform ergibt, kann man schliessen, dass die Geraden mit
+konstantem $y^1$ in einem Abstand am Nullpunkt vorbeigehen, 
+der ein Vielfaches von $1/|\vec{n}_1|=1/\sqrt{5}$ ist.
+Analog haben die Geraden mit konstantem $y_2$ einen Abstand,
+der ein Vielfaches von $1/|\vec{n}_2|=1/\sqrt{5}$.
+Die Geraden sind in Abbildung~\ref{buch:201:fig} dargestellt.
+\item
+Die Ableitung der Kurvenkoordinaten ist
+\[
+\dot{x}^1(t) = -\sin t
+\qquad\text{und}\qquad
+\dot{x}^2(t) = \cos t.
+\]
+\item
+In den $(y^1,y^2)$-Koordinaten hat die Kurve die Koordinaten
+\[
+(y^1(t), y^2(t))
+=
+(4\cos t+3\sin t, 5\cos t + 4\sin t).
+\]
+\item
+Der Tangentialvektor im $(x^1,x^2)$-Koordinatensystem hat die
+Komponenten
+\[
+(\dot{y}^1(t),\dot{y}^2(t))
+=
+(-4\sin t+3\cos t, -5\sin t + 4\cos t).
+\]
+Anwendung der $J$-Matrix auf den Tangentialvektor von Aufgabe c) ergibt
+\[
+\begin{pmatrix}
+4 & 3 \\
+5 & 4
+\end{pmatrix}
+\begin{pmatrix}
+-\sin t\\
+ \cos t
+\end{pmatrix}
+=
+\begin{pmatrix}
+-4\sin t + 3\cos t\\
+-5\sin t + 4\cos t
+\end{pmatrix},
+\]
+was mit dem Resultat von Teilaufgabe b) übereinstimmt.
+\qedhere
+\end{teilaufgaben}
+\end{loesung}
+

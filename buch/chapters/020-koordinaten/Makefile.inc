@@ -5,6 +5,8 @@
 #
 
 CHAPTERFILES +=								\
+	chapters/020-koordinaten/uebungsaufgaben/201.tex		\
+	chapters/020-koordinaten/uebungsaufgaben/202.tex		\
 	chapters/020-koordinaten/1-koordinaten.tex			\
 	chapters/020-koordinaten/2-tangentialvektoren.tex		\
 	chapters/020-koordinaten/3-differentialoperatoren.tex		\
