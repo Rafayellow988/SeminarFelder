@@ -16,3 +16,5 @@ include chapters/040-green/Makefile.inc
 include chapters/050-gauss/Makefile.inc
 include chapters/060-pformen/Makefile.inc
 include chapters/070-hodge/Makefile.inc
+include chapters/080-feldgleichungen/Makefile.inc
+include chapters/090-pdenumerik/Makefile.inc

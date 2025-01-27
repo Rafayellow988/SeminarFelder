@@ -3,7 +3,7 @@
 #
 # (c) 2025 Prof Dr Andreas Müller
 #
-all:	parallelogramm.pdf lorentz.pdf randkarten.pdf
+all:	parallelogramm.pdf lorentz.pdf randkarten.pdf homotopie.pdf
 
 #
 # Parallelogramm-Fäche
@@ -35,4 +35,15 @@ randkarten.jpg:	randkarten.png Makefile
 randkarten.pdf:	randkarten.tex randkarten.jpg
 	pdflatex randkarten.tex
 
+#
+# Homotopie
+#
+homotopie.png:	homotopie.pov
+	povray +A0.1 -W1920 -H1080 -Ohomotopie.png homotopie.pov
+
+homotopie.jpg:	homotopie.png Makefile
+	magick -extract 1820x1050+4+2 homotopie.png homotopie.jpg
+
+homotopie.pdf:	homotopie.tex homotopie.jpg
+	pdflatex homotopie.tex
 
