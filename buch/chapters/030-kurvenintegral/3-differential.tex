@@ -578,6 +578,101 @@ gegeben, die der klassischen Definition des Gradienten entspricht.
 % Kontravarianz des inversen metrischen Tensors
 %
 \subsubsection{Kontravarianz des inversen metrischen Tensors}
+Bei einem Koordinatenwechsel vom $(x^1,\dots,x^n)$-Koordinatensystem
+mit metrischem Tensor $g_{ik}$ in das $(y^1,\dots,y^n)$-Koordinatensystem
+mit dem metrischen Tensor $h_{ik}$ mit den partiellen Ableitungen
+der $y$-Koordinaten nach den $x$-Koordinaten umgerechnet.
+Aus der Rechnung
+\begin{align*}
+\sum_{i,k=1}^n
+h_{ik} \, dy^i \otimes dy^k
+&=
+\sum_{i,k=1}^n
+h_{ik}
+\biggl(\sum_{l=1}^n \frac{\partial y^i}{\partial x^l}\, dx^l \biggr)
+\otimes
+\biggl(\sum_{m=1}^n \frac{\partial y^k}{\partial x^m}\, dx^m \biggr)
+\\
+&=
+\sum_{l,m=1}^n
+\biggl(
+\underbrace{
+\sum_{i,k=1}^n h_{ik}
+\frac{\partial y^i}{\partial x^l}
+\frac{\partial y^k}{\partial x^m}
+}_{\displaystyle = g_{lm}}
+\biggr)
+\,
+dx^l\otimes dx^m
+\end{align*}
+folgt daher, dass
+\begin{equation}
+g_{ik}
+=
+\sum_{i,k=1}^n h_{ik}
+\frac{\partial y^i}{\partial x^l}
+\frac{\partial y^k}{\partial x^m}.
+\label{buch:kurvenintegral:differential:eqn:gkovarianz}
+\end{equation}
+Dies ist das erwartete Resultat für einen Tensor mit unteren und daher
+kovarianten Indizes.
+
+Für die metrischen Tensoren für 1-Formen kann eine analoge Rechnung
+durchgeführt werden.
+Dabei wird verwendet, dass
+\[
+\frac{\partial}{\partial y^i}
+=
+\sum_{k=1}^n
+\frac{\partial x^k}{\partial y^i}
+\,
+\frac{\partial}{\partial x^k}
+\qquad\text{und}\qquad
+\frac{\partial}{\partial x^k}
+=
+\sum_{i=1}^n
+\frac{\partial y^i}{\partial x^k}
+\,
+\frac{\partial}{\partial x^i}.
+\]
+Eingesetzt in die Transformationsformel für Metrik von Formen folgt
+\begin{align*}
+\sum_{k,i=1}^n
+g^{ik} \frac{\partial}{\partial x^i}\otimes \frac{\partial}{\partial x^k}
+&=
+\sum_{i,k=1}^n
+g^{ik}
+\biggl(
+\sum_{l=1}^n \frac{\partial y^l}{\partial x^i}\frac{\partial}{\partial y^l}
+\biggr)
+\otimes
+\biggl(
+\sum_{m=1}^n \frac{\partial y^m}{\partial x^k}\frac{\partial}{\partial y^m}
+\biggr)
+\\
+&=
+\sum_{l,m=1}^n
+\biggl(
+\sum_{i,k=1}^n
+g^{ik}
+\frac{\partial y^l}{\partial x^i}
+\frac{\partial y^m}{\partial x^k}
+\biggr)
+\,
+\frac{\partial}{\partial y^l}
+\otimes
+\frac{\partial}{\partial y^m}
+\intertext{und daher}
+h^{lm}
+&=
+\sum_{i,k=1}^n
+g^{ik}
+\frac{\partial y^l}{\partial x^i}
+\frac{\partial y^m}{\partial x^k}.
+\end{align*}
+Die Transformation erfolgt also im Gegensatz zu den Komponenten
+$g_{ik}$ in der umgekehrten Richtung, was zeigt, dass die $g^{ik}$
+kontravariant sind.
 
 %
 % Indizes anheben und absenken
@@ -600,6 +695,148 @@ Ein kovarianter Index $i$ eines Tensors $B_i$ wird durch
 $g^{il}B_i$ zu einem kontravarianten Index {\em angehoben}.
 \index{anheben, Index}%
 \end{definition}
+
+%
+% Konforme Abbildungen
+%
+\subsubsection{Konforme Abbildungen}
+Eine Abbildung heisst {\em konform}, wenn Sie winkeltreu ist.
+Die Länge von Vektoren darf also ändern, nicht aber der Winkel.
+Da Winkel mit der Skalarproduktformel
+\[
+\cos \angle(X,Y)
+=
+\frac{
+\langle X,Y \rangle
+}{
+\!\sqrt{\langle X, X\rangle}\cdot\!\sqrt{\langle Y,Y\rangle}
+}
+\]
+berechnet werden können, darf sich das Skalarprodukt unter einer
+konformen Abbildung nur um einen gemeinsamen Faktor ändern.
+Mit der Notation von
+\eqref{buch:kurvenintegral:differential:eqn:gkovarianz}
+folgt daher, dass
+\[
+g_{ik} = s\,h_{ik}
+\quad\Rightarrow\quad
+g_{ik}
+=
+\sum_{l,m=1}^n
+\frac{\partial y^l}{\partial x^i}
+\frac{\partial y^m}{\partial x^k}
+g_{lm}
+\]
+als Bedingung dafür, dass die Koordinatenwechselabbildung
+konform ist.
+
+\begin{beispiel}
+Die stereographische Projektion von Beispiel 
+\ref{buch:koordinaten:diffmannig:beispiel:stereographisch}
+ist konform, wie im Folgenden nachgerechnet werden soll.
+\end{beispiel}
+
+\subsubsection{Die Mercator-Projektion}
+Die Mercator-Projektion bildet Punkte $(\vartheta,\beta)$ auf
+der Oberfläche der Einheitskugel auf einen Zylinder mit Koordinaten
+$(\varphi,z)$ ab, der die Kugel im Äquator berührt.
+Wir verwenden die vom Äquator gemessene geographsiche Breite $\beta$
+anstelle des bei Kugelkoordinaten üblichen Polabstandes $\vartheta$.
+Sie ist aber nicht eine geometrische Projektion, vielmehr wird die
+$z$-Koordinate durch eine nichtlineare Funktion $z(\beta)$
+gegeben.
+
+Zunächst muss der metrische Tensor für die Kugeloberfläche
+berechnet werden.
+Die Kugelkoordinaten sind orthogonal, der metrische Tensor wird
+eine Diagonalmatrix, genauer
+\[
+g
+=
+\begin{pmatrix}
+ 1 & 0           \\
+ 0 & \cos^2\beta
+\end{pmatrix}.
+\]
+Da der Zylinder nur eine ``aufgerollte Ebene'' ist, ist die Metrik
+auf dem Zylinder durch die Einheitsmatrix
+\[
+h = \begin{pmatrix} 1&0\\0&1\end{pmatrix}
+\]
+gegeben.
+
+Die Koordinatentransformation ist
+\[
+S^2\to\mathbb{R}^2
+:
+(\varphi,\beta) \mapsto (\varphi, z(\beta)).
+\]
+Die zugehörige Jacobimatrix ist
+\[
+J
+=
+\frac{\partial(\varphi,z)}{\partial(\varphi,\beta)}
+=
+\begin{pmatrix}
+ 1 & 0 \\
+ 0 & f'(\beta)
+\end{pmatrix}.
+\]
+Transformiert man $g$ mit dieser Matrix, muss ein Vielfaches der
+Einheitsmatrix entstehen.
+Die Transformation liefert
+\begin{align*}
+J^tgJ
+&=
+\begin{pmatrix}
+ 1 & 0 \\
+ 0 & f'(\beta)
+\end{pmatrix}
+\begin{pmatrix}
+ 1 & 0           \\
+ 0 & \cos^2\beta
+\end{pmatrix}
+\begin{pmatrix}
+ 1 & 0 \\
+ 0 & f'(\beta)
+\end{pmatrix}
+\\
+&=
+\begin{pmatrix}
+1&0\\
+0&f'(\beta)^2\cos^2\beta
+\end{pmatrix}
+=
+I
+\qquad\Rightarrow\qquad
+f'(\beta)^2\cos^2\beta = 1.
+\end{align*}
+Daraus ergibt sich die Differentialgleichung
+\[
+f'(\beta)=\frac{1}{\cos \beta}
+\qquad\text{mit der Anfangsbedingung}\qquad
+f(0)=0.
+\]
+Sie kann durch Integration gelöst werden, die Lösung ist
+\[
+f(\beta)
+=
+\int_0^\beta \frac{dt}{\cos t}
+=
+\frac12 \log\biggl(
+\frac{1+\sin\beta}{1-\sin\beta}
+\biggr).
+\]
+Die Mercator-Projektion ist daher gegeben durch
+\begin{equation}
+(\varphi,\beta) \mapsto \biggl(
+\varphi,\frac12\log\biggl(\frac{1+\sin\beta}{1-\sin\beta}\biggr)
+\biggr).
+\label{buch:kurvenintegral:differential:eqn:mercatorprojektion}
+\end{equation}
+\input{chapters/030-kurvenintegral/fig/fig-mercator.tex}%
+Die Funktion $f(\beta)$ ist auch in
+Abbildung~\ref{buch:kurvenintegral:fig:mercator} dargestellt.
  
 %
 % Differentialgleichungen
@@ -712,86 +949,94 @@ wie diese Lösungsmethode mathematisch widerspruchsfrei formuliert
 werden kann.
 
 \subsubsection{Die Differentialgleichung der Loxodrome}
-Die Loxodrome auf der Kugeloberfläche wird in einer Merkator-Projektion
+Die Loxodrome auf der Kugeloberfläche wird in einer Mercator-Projektion
 zu einer Geraden.
-Betrachten wir die Merkatorprojektion als Karte der Kugeloberfläche
-mit den Koordinaten $(y^1,y^2)$, dann erfüllen die Geraden mit
+Betrachten wir die Mercator-Projektion als Karte der Kugeloberfläche
+mit den Koordinaten $(\varphi,z)$, dann erfüllen die Geraden mit
 Steigung $k$ in Parameterdarstellung die Gleichung
 \[
-\frac{\dot{y}^2(t)}{\dot{y}^1(t)}
+\frac{\dot{z}(t)}{\dot{\varphi}(t)}
 =
 k.
 \]
 Die Differentialgleichung kann man als $1$-Form 
 \begin{equation}
-\beta
+\alpha
 =
-k\,dy^1 - dy^2
-\label{buch:kurvenintegral:differential:merkatorform}
+k\,d\varphi - dz
+\label{buch:kurvenintegral:differential:mercatorform}
 \end{equation}
 geschrieben werden.
 
-Die Merkatorprojektion ist in Kugelkoordinaten auf der Kugelaberfläche
-die Abbildung
+Die Mercator-Projektion ist in geographischen Koordinaten
+auf der Kugelaberfläche die Abbildung
 \[
 f\colon
 \mathbb{R}^2\to\mathbb{R}^2
 :
-(\varphi,\vartheta)
+(\varphi,\beta)
 \mapsto
-(y^1,y^2)
+(\varphi,z)
 =
-(\varphi,\tan(90^\circ-\vartheta))
+(\varphi,f(\beta))
 =
-(\varphi,\cot\vartheta)
+\biggl(\varphi,\frac12\log\frac{1+\sin\beta}{1-\sin\beta}\biggr).
 \]
 Durch Transport der 1-Form
-\eqref{buch:kurvenintegral:differential:merkatorform}
-mithilfe der Merkator-Projektion bekommt man aus
+\eqref{buch:kurvenintegral:differential:mercatorform}
+mithilfe der Mercator-Projektion
+von~\eqref{buch:kurvenintegral:differential:eqn:mercatorprojektion}
+bekommt man aus
 \begin{equation}
-\left.
-\begin{aligned}
-dy^1 &= d\varphi \\
-dy^2 &= -\frac{1}{\sin^2\vartheta}d\vartheta
-\end{aligned}
-\quad
-\right\}
-\qquad
-\Rightarrow
-\qquad
+dz
+=
+f'(\beta)\,d\beta
+=
+\frac{1}{\cos\beta}\,d\beta
+\qquad\Rightarrow\qquad
 \alpha
 =
-(Tf)_*(\beta)
-=
-k\,d\varphi+\frac{1}{\sin^2\vartheta}\,d\vartheta.
-\label{buch:kurvenintegral:differential:merkatorsepariert}
+k\,d\varphi-\frac{1}{\cos\beta}\,d\beta
+\label{buch:kurvenintegral:differential:mercatorsepariert}
 \end{equation}
 
 Wir suchen eine Lösung der Differentialgleichung $\alpha=0$
 als Funktion $\vartheta(\varphi)$.
 Die $1$-Form
-\eqref{buch:kurvenintegral:differential:merkatorsepariert}
+\eqref{buch:kurvenintegral:differential:mercatorsepariert}
 hat die Eigenschaft, dass die Koeffizienten nur von jeweils
 einer Variablen abhängen.
 Somit sind die Voraussetzungen für die Anwendung der Methode
 der Separation der Variablen gegeben.
 Die Differentialgleichung kann damit durch Integration
 \[
-k\,d\varphi=-\frac{1}{\sin^2\vartheta}\,d\vartheta
-\qquad
+k\,d\varphi=\frac{1}{\cos\beta}\,d\beta
+\quad
 \Rightarrow
-\qquad
+\quad
 k\int d\varphi
 =-
-\int \frac{d\vartheta}{\sin^2\vartheta}
-\qquad
+\int \frac{d\beta}{\cos\beta}
+\quad
 \Rightarrow
-\qquad
+\quad
 k\varphi + C
 =
-\frac{1}{\tan \vartheta}
-=
-\cot\vartheta
+\frac12
+\log\frac{1+\sin\beta}{1-\sin\beta}
 \]
 gelöst werden.
+Die Funktion auf der rechten Seite ist auch der $\operatorname{artanh}$
+von $\sin\varphi$, daher kann man die Lösung für die Loxodrome auch
+als
+\[
+\sin\beta
+=
+\tanh(k\varphi+C)
+\quad
+\Rightarrow
+\quad
+\beta = \arcsin\tanh(k\varphi+C)
+\]
+schreiben.
 

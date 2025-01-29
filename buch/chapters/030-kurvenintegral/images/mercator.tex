@@ -1,0 +1,42 @@
+%
+% mercator.tex -- Mercator-
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\begin{document}
+\def\skala{2}
+\def\h{2}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\draw[->] (-1.6,0) -- (1.7,0) coordinate[label={$\beta$}];
+\draw[->] (0,{-\h-0.05}) -- (0,{\h+0.1}) coordinate[label={right:$z(\beta)$}];
+
+\begin{scope}
+	\clip (-1.6,{-\h}) rectangle (1.6,\h);
+	\draw[color=blue!40,line width=1.4pt] 
+		plot[domain=-1.5:1.5,samples=100]
+		({\x},{tan(180*\x/3.14159)});
+	\draw[color=darkred,line width=1.4pt] 
+		plot[domain=-1.5:1.5,samples=100]
+		({\x},{0.5*ln((1+sin(180*\x/3.14159))/(1-sin(180*\x/3.14159)))});
+	\draw[line width=0.5pt] ({-3.1415/2},-3) -- ++(0,6);
+	\draw[line width=0.5pt] ({3.1415/2},-3) -- ++(0,6);
+\end{scope}
+
+\node[color=blue!40] at (0.7,1.5) {$\tan \beta$};
+\node[color=darkred] at (1.1,0.9) {$f(\beta)$};
+
+\node at ({-3.1415/2},0) [below right] {$\displaystyle\frac{\pi}2$};
+\node at ({3.1415/2},0) [below left] {$\displaystyle\frac{\pi}2$};
+
+\end{tikzpicture}
+\end{document}
+
