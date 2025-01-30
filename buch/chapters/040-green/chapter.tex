@@ -694,12 +694,108 @@ a^{ik}f_ig_k.
 \section{Flächenintegrale von 2-Formen
 \label{buch:green:section:integral}}
 \kopfrechts{Flächenintegrale}
+In Abschnitt~\ref{buch:kurvenintegral:section:1form} wurde gezeigt,
+wie das Integral einer 1-Form entlang einer Kurve auf
+koordinatensystemunabhängige Grösse definiert werden kann.
+Entscheidend war die Erkenntnis, dass das Integral der Werte einer
+Funktion entlang der Kurve von der Parametrisierung, also dem
+Koordinatensystem, der Kurve abhängt.
+Nur eine 1-Form hat das richtige Transformationsverhalten beim
+Wechsel des Koordinatensystems, das zu einer koordinatensystemunabhängigen
+Definition führt.
+In diesem Abschnitt wird diese Überlegung auf zweifache Integrale
+verallgemeinert.
 
-\subsection{Orientierung einer 2-dimensionalen Mannigfaltigkeit}
+\subsection{Integral einer 2-Form auf $\mathbb{R}^2$}
+Wir betrachten eine differenzierbare Funktion
+$f\colon \mathbb{R}^2\to\mathbb{R}$ zweier Variablen.
+Zusätzlich sei angenommen, dass $f$ kompakten Träger hat. 
+Dann ist dass Integral von $f$ über $\mathbb{R}^2$ wohldefiniert
+und kann mit Hilfe des Satzes von Fubini als iteriertes Integral
+\begin{equation}
+\int_{\mathbb{R}^2} f(x^1,x^2)\,dx^1\,dx^2
+=
+\int_{\mathbb{R}} \biggl(\int_{\mathbb{R}} f(x^1,x^2) \,dx^1\biggr) \,dx^2
+=
+\int_{\mathbb{R}} \biggl(\int_{\mathbb{R}} f(x^1,x^2) \,dx^2\biggr) \,dx^1
+\label{buch:green:flaechenintegral:eqn:int2}
+\end{equation}
+berechnet werden.
+Die Klammern sind nur zur Verdeutlichung.
+Das innere Integral hängt von einem Parameter $x^2$ bzw.~$x^1$ ab.
+Das Resultat der Integration ist daher nur noch eine differenzierbare
+Funktion von $x^2$ bzw.~$x^1$, die wieder integrierbar ist.
+
+Das Integral~\eqref{buch:green:flaechenintegral:eqn:int2} kann jedoch
+nicht koordinatenunabhängig sein.
+\input{chapters/040-green/fig/fig-volint.tex}%
+Dazu interpretieren wir das Integral als das Volumen unter einer der 
+Fläche, die der Graph der Funkion $f(x^1,x^2)$ ist.
+Es setzt sich approximativ zusammen aus kleinen Quadern mit
+rechteckiger Grundfläche $\Delta x^1 \times \Delta x^2$ und Höhe
+$f(x^1,x^2)$.
+Das gleiche Volumen wird nach einer lineare Transformation 
+\[
+\begin{aligned}
+x^1 &= a^1\mathstrut_1 y^1 + a^1\mathstrut_2 y^2 \\
+x^2 &= a^2\mathstrut_1 y^1 + a^2\mathstrut_2 y^2 
+\end{aligned}
+\]
+durch eine Summe von Prismen approximiert, die Höhe $f(y^1,y^2)$ haben,
+aber als Grundfläche ein Parallelogramm, mit den Kantenvektoren
+\[
+\begin{pmatrix}
+a^1\mathstrut_1\\
+a^2\mathstrut_1
+\end{pmatrix}
+\Delta y^1
+\qquad\text{und}\qquad
+\begin{pmatrix}
+a^1\mathstrut_2\\
+a^2\mathstrut_2
+\end{pmatrix}
+\Delta y^2.
+\]
+Der Flächeneinhalt eines solchen Parallelogramms ist die Determinante
+\[
+F
+=
+\left|
+\begin{matrix}
+a^1\mathstrut_1 & a^1\mathstrut_2 \\
+a^2\mathstrut_1 & a^2\mathstrut_2
+\end{matrix}
+\right|
+\Delta y^1\cdot \Delta y^2.
+\]
+Um also das gleiche Volumen wie von
+\eqref{buch:green:flaechenintegral:eqn:int2}
+zu erhalten, muss das Integral
+\[
+\int_{\mathbb{R}^2}
+f(x^1,x^2)
+\,dx^1\,dx^2
+=
+\int_{\mathbb{R}^2}
+f(y^1,y^2)
+\left|
+\begin{matrix}
+a^1\mathstrut_1 & a^1\mathstrut_2 \\
+a^2\mathstrut_1 & a^2\mathstrut_2
+\end{matrix}
+\right|
+\,dy^1\,dy^2
+\]
+berechnet werden.
+Die Verzerrung des Gitters ist in Abbildung~\ref{buch:green:fig:volint}
+dargestellt.
+Der Determinantenfaktor rechnet das Volumen des Einheitsquadrates in den
+$(y^1,y^2)$-Koordinaten um in den Flächeninhalt des Grundseitenparallelogramms
+eines Prismas in den $(x^1,x^2)$-Koordinaten.
 
 \subsection{Kartenwechsel und Koordinatentransformation von 2-Formen}
 
-\subsection{Integral einer 2-Form auf $\mathbb{R}^2$}
+\subsection{Orientierung einer 2-dimensionalen Mannigfaltigkeit}
 
 %
 % Der Satz von Green

@@ -3,7 +3,7 @@
 #
 # (c) 2025 Prof Dr Andreas Müller
 #
-all:	parallelogramm.pdf lorentz.pdf randkarten.pdf homotopie.pdf
+all:	parallelogramm.pdf lorentz.pdf randkarten.pdf homotopie.pdf volint.pdf
 
 #
 # Parallelogramm-Fäche
@@ -46,4 +46,25 @@ homotopie.jpg:	homotopie.png Makefile
 
 homotopie.pdf:	homotopie.tex homotopie.jpg
 	pdflatex homotopie.tex
+
+#
+# Integral
+#
+volintx.png:	volintx.pov volintcommon.inc volintdata.inc
+	povray +A0.1 -W1920 -H1080 -Ovolintx.png volintx.pov 
+
+volintx.jpg:	volintx.png
+	magick volintx.png volintx.jpg
+
+volinty.png:	volinty.pov volintcommon.inc volintdata.inc
+	povray +A0.1 -W1920 -H1080 -Ovolinty.png volinty.pov 
+
+volinty.jpg:	volinty.png
+	magick volinty.png volinty.jpg
+
+volintdata.inc:	volint.m
+	octave volint.m
+
+volint.pdf:	volint.tex volintx.jpg volinty.jpg
+	pdflatex volint.tex
 
