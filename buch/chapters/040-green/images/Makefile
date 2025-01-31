@@ -3,7 +3,12 @@
 #
 # (c) 2025 Prof Dr Andreas Müller
 #
-all:	parallelogramm.pdf lorentz.pdf randkarten.pdf homotopie.pdf volint.pdf
+all:	parallelogramm.pdf						\
+	lorentz.pdf							\
+	randkarten.pdf							\
+	homotopie.pdf							\
+	volint.pdf							\
+	greenrand.pdf
 
 #
 # Parallelogramm-Fäche
@@ -67,4 +72,30 @@ volintdata.inc:	volint.m
 
 volint.pdf:	volint.tex volintx.jpg volinty.jpg
 	pdflatex volint.tex
+
+#
+# greenrand
+#
+green = greenrand.inc greenranddata.inc
+greengeometry = 1680x492+230+318
+
+greenrandgerade.png:	greenrandgerade.pov $(green)
+	povray +A0.1 -W1920 -H1080 -Ogreenrandgerade.png greenrandgerade.pov
+
+greenrandgerade.jpg:	greenrandgerade.png Makefile
+	magick -extract $(greengeometry) greenrandgerade.png greenrandgerade.jpg
+
+greenrandgekruemmt.png:	greenrandgekruemmt.pov $(green)
+	povray +A0.1 -W1920 -H1080 -Ogreenrandgekruemmt.png \
+		greenrandgekruemmt.pov
+
+greenrandgekruemmt.jpg:	greenrandgekruemmt.png Makefile
+	magick -extract $(greengeometry) greenrandgekruemmt.png \
+		greenrandgekruemmt.jpg
+
+greenranddata.inc:	greenrand.m
+	octave greenrand.m
+
+greenrand.pdf:	greenrand.tex greenrandgerade.jpg greenrandgekruemmt.jpg
+	pdflatex greenrand.tex
 

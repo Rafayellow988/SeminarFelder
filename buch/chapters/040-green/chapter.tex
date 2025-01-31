@@ -793,8 +793,241 @@ Der Determinantenfaktor rechnet das Volumen des Einheitsquadrates in den
 $(y^1,y^2)$-Koordinaten um in den Flächeninhalt des Grundseitenparallelogramms
 eines Prismas in den $(x^1,x^2)$-Koordinaten.
 
-\subsection{Kartenwechsel und Koordinatentransformation von 2-Formen}
+Eine Funktion hat also nicht die richtigen Transformationseigenschaften.
+Die Determinante
+\[
+\det A
+=
+a^1\mathstrut_1
+a^2\mathstrut_2
+-
+a^1\mathstrut_2
+a^2\mathstrut_1
+\]
+bedeutet, dass bei der Transformation immer zwei Faktoren aus der
+Transformationsmatrix auftauchen, dies ist nicht möglich bei einem
+Tensor erster Stufe.
+Nur mit einem Tensor zweiter Stufe ist es möglich, solche Produkte 
+in der Transformationsformel zu haben.
 
+Seien also jetzt $f_{ik}$ die Koeffizienten eines Tensors 
+zweiter Stufe in $x$-Koordinaten und $\tilde{f}_{lm}$ die Koeffizienten
+des Tensors in den $y$-Koordinaten.
+Die Transformationsformel ist dann
+\begin{align}
+\tilde{f}_{lm}
+&=
+\sum_{i,k=1}^2
+f_{ik}\, a^i\mathstrut_l\, a^k\mathstrut_m.
+\intertext{Die Transformation soll nur die Determinante von $A$
+hinzufügen.
+Schreibt man die Transformationsformeln aus, erhält man}
+\tilde{f}_{11}
+&=
+f_{11}\, a^1\mathstrut_1\, a^1\mathstrut_1
++
+f_{12}\, a^1\mathstrut_1\, a^2\mathstrut_1
++
+f_{21}\, a^2\mathstrut_1\, a^1\mathstrut_1
++
+f_{22}\, a^2\mathstrut_1\, a^2\mathstrut_1
+\\
+\tilde{f}_{12}
+&=
+f_{11}\, a^1\mathstrut_1\, a^1\mathstrut_2
++
+f_{12}\, a^1\mathstrut_1\, a^2\mathstrut_2
++
+f_{21}\, a^2\mathstrut_1\, a^1\mathstrut_2
++
+f_{22}\, a^2\mathstrut_1\, a^2\mathstrut_2
+\\
+\tilde{f}_{21}
+&=
+f_{11}\, a^1\mathstrut_2\, a^1\mathstrut_1
++
+f_{12}\, a^1\mathstrut_2\, a^2\mathstrut_1
++
+f_{21}\, a^2\mathstrut_2\, a^1\mathstrut_1
++
+f_{22}\, a^2\mathstrut_2\, a^2\mathstrut_1
+\\
+\tilde{f}_{22}
+&=
+f_{11}\, a^1\mathstrut_2\, a^1\mathstrut_2
++
+f_{12}\, a^1\mathstrut_2\, a^2\mathstrut_2
++
+f_{21}\, a^2\mathstrut_2\, a^1\mathstrut_2
++
+f_{22}\, a^2\mathstrut_2\, a^2\mathstrut_2.
+\end{align}
+Diese Formeln können nur dann nur einen Faktor $\det A$ ergeben,
+wenn alle Terme, in denen Produkt von $a^s\mathstrut_r$ wie in der
+Determinante vorkommen.
+Daraus kann man schliessen, dass $f_{11}=f_{12}=0$ sein muss.
+Es bleiben  dann die Gleichungen
+\begin{align*}
+0
+&=
+f_{12}\, a^1\mathstrut_1\, a^2\mathstrut_1
++
+f_{21}\, a^2\mathstrut_1\, a^1\mathstrut_1
+=
+(f_{12}+f_{21})\, a^1\mathstrut_1\, a^2\mathstrut_1
+\\
+\tilde{f}_{12}
+&=
+f_{12}\, a^1\mathstrut_1\, a^2\mathstrut_2
++
+f_{21}\, a^2\mathstrut_1\, a^1\mathstrut_2
+\\
+\tilde{f}_{21}
+&=
+f_{12}\, a^1\mathstrut_2\, a^2\mathstrut_1
++
+f_{21}\, a^2\mathstrut_2\, a^1\mathstrut_1
+\\
+0
+&=
+f_{12}\, a^1\mathstrut_2\, a^2\mathstrut_2
++
+f_{21}\, a^2\mathstrut_2\, a^1\mathstrut_2
+=
+(f_{12}+f_{21}) a^1\mathstrut_2\, a^2\mathstrut_2
+\end{align*}
+Die erste und die letzte dieser Gleichungen können nur erfüllt sein,
+wenn $f_{12}=-f_{21}$, $f$ muss also ein antisymmetrischer
+Tensor sein.
+Es bleiben dann nur noch die mittleren beiden Gleichungen,
+die sich zu
+\begin{align*}
+\tilde{f}_{12}
+&=
+f_{12}\,(a^1\mathstrut_1\, a^2\mathstrut_2
+-
+a^2\mathstrut_1\, a^1\mathstrut_2)
+=
+f_{12}\,\det A
+\\
+\tilde{f}_{21}
+&=
+f_{12}\,(- a^1\mathstrut_2\, a^2\mathstrut_1
++
+a^2\mathstrut_2\, a^1\mathstrut_1)
+=
+-f_{21}\,\det A
+\end{align*}
+vereinfachen.
+Genau die antisymmetrischen kovarianten Tensoren haben also ein
+koordinatensystemunabhängiges Integral.
+Ein antisymmetrischer Tensor $f_{ik}$ zweiter Stufe auf $\mathbb{R}^2$
+ist gegeben durch die einzige unabhängige Komponente $f_{12}$ bereits
+festgelegt, weil $f_{11}=f_{22}=0$ und $f_{21}=-f_{12}$.
+
+\begin{definition}
+\label{buch:green:flaechenintegral:2formintegral}
+Eine 2-Form ist ein antisymmetrischer, kovarianter Tensor
+\[
+\omega
+=
+f_{12}\, dx^1\wedge dx^2
+\]
+zweiter Stufe.
+Das Integral der 2-Form $\omega$ ist
+\[
+\int_{\mathbb{R}^2}
+\omega
+=
+\int_{\mathbb{R}^2}
+f_{12}\, dx^1\wedge dx^2
+=
+\int_{-\infty}^\infty
+\int_{-\infty}^\infty
+%\int_{\mathbb{R}^2}
+f_{12}(x)
+\,
+dx^1\,dx^2.
+\]
+\end{definition}
+
+%
+% Kartenwechsel und Koordinatentransformation von 2-Formen
+%
+\subsection{Kartenwechsel und Koordinatentransformation von 2-Formen}
+Eine 2-Form führt auf die richtigen Transformationsformeln für ein Integral.
+In einem Koordinatengebiet kann man daher das Integral durch die Formel
+der Definition~\ref{buch:green:flaechenintegral:2formintegral}
+berechnet werden.
+Für eine 2-Form, deren Träger in einer Karte enthalten ist, ist
+damit das Integral der 2-Form definiert.
+
+In der Schnittmenge zweier Karten $(U_x,\varphi_x)$ und $(U_y,\varphi_y)$
+gibt es zwei verschiedene Koordinatensysteme.
+Die Kartenwechselabbildung zwischen den beiden Karten ist
+$\varphi=\varphi_x\circ\varphi_y^{-1}$, sie bildet $y$ auf
+$x=\varphi(y)$ ab.
+Falls die 2-Form $\omega$ Träger in der Schnittmenge der Karten hat,
+kann das Integral auf zwei verschieden Arten berechnet werden,
+die den gleichen Wert ergeben.
+Auf den beiden Kartengebieten wird die 2-Form durch
+\[
+\omega
+=
+f_{12}(x)\,dx^1\wedge dx^2\quad\text{auf $\varphi_x(U_x)$}
+\qquad\text{und}\qquad
+\omega
+=
+\tilde{f}_{12}(y)\,dy^1\wedge dy^2\quad\text{auf $\varphi_y(U_y)$}
+\]
+gegeben.
+Wir stellen uns die Funktionen $f_{12}(x)$ und $\tilde{f}_{12}(y)$
+durch 0 auf ganz $\mathbb{R}^2$ fortgesetzt, damit wir uns nicht um
+Integralgrenzen kümmern müssen.
+Dann kann der Wert des Integrals von $\omega$ durch
+\begin{align*}
+\int \omega
+&=
+\int_{U_x} f_{12}(x) \,dx^1\wedge dx^2
+=
+\int_{-\infty}^\infty\int_{-\infty}^\infty f_{12}(x)\,dx^1\,dx^2
+\\
+&=
+\int_{U_y} \tilde{f}_{12}(y) \,dy^1\wedge dy^2
+=
+\int_{-\infty}^\infty\int_{-\infty}^\infty \tilde{f}_{12}(y)\,dy^1\,dy^2
+\end{align*}
+mit
+\[
+\tilde{f}_{12}(y)
+=
+f_{12}(\varphi(y))
+\,
+\left|
+\frac{\partial(x^1,x^2)}{\partial(y^1,y^2)}
+\right|
+=
+f_{12}(\varphi(y))
+\,
+\det(D\varphi(y))
+\]
+mit der Kartenwechselabbildung $\varphi=\varphi_x\circ\varphi_y^{-1}$
+ergeben.
+
+Wenn der Träger der 2-Form nicht in einer einzelnen Karte Platz
+findet, dann muss die 2-Form in 2-Formen aufgeteilt werden, deren
+Träger jeweils in einem Kartengebiet enthalten ist.
+Im Abschnitt~\ref{buch:green:satzvongreen:subsection:zerlegung}
+wird gezeigt, wie dies mit einer differenzierbaren Zerlegung
+der Einheit erreicht werden kann.
+Dies wird sicherstellen, dass einer 2-Form auf einer
+zweidimensionalen Mannigfaltigkeit auch dann ein eindeutig bestimmter
+Wert zugeordnet werden kann, wenn der Träger in keiner Karte Platz
+findet.
+
+%
+% Orientierung einer 2-dimensionalen Mannigfaltigkeit
+%
 \subsection{Orientierung einer 2-dimensionalen Mannigfaltigkeit}
 
 %
@@ -1080,6 +1313,7 @@ der differenzierbaren Mannigfaltigkeit ergeben.
 % Integral über den Rand
 %
 \subsubsection{Integral über den Rand}
+\input{chapters/040-green/fig/fig-greenrand.tex}%
 Sei jetzt $V_\alpha$ ein Kartengebiet einer 2-dimensionalen
 Mannigfaltigkeit
 
