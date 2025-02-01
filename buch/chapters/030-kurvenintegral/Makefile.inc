@@ -11,4 +11,6 @@ CHAPTERFILES +=								\
 	chapters/030-kurvenintegral/2-kurvenintegral.tex		\
 	chapters/030-kurvenintegral/3-differential.tex			\
 	chapters/030-kurvenintegral/4-zerlegung.tex			\
-	chapters/030-kurvenintegral/chapter.tex
+	chapters/030-kurvenintegral/chapter.tex				\
+	chapters/030-kurvenintegral/uebungsaufgaben/301.tex		\
+	chapters/030-kurvenintegral/uebungsaufgaben/302.tex

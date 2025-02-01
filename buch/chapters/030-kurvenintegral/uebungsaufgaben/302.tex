@@ -1,0 +1,68 @@
+Berechnen Sie das Integral der 1-Form
+\[
+\alpha
+=
+y\,dx - x \,dy
+\]
+über den Einheitskreis mit der Parametrisierung
+\[
+\gamma
+\colon
+[0,2\pi] \to \mathbb{R}^2
+:
+t\mapsto (\cos t,\sin t).
+\]
+
+\begin{loesung}
+Der Tangentialvektor der Kurve $\gamma(t)$ ist
+\[
+X(t)
+=
+\dot{\gamma}(t)
+=
+(-\sin t,\cos t).
+\]
+Daraus folgt
+\begin{align*}
+\langle dx,\dot{\gamma}(t)\rangle
+&=
+-\sin t
+\\
+\langle dy,\dot{\gamma}(t)\rangle
+&=
+\cos t
+\end{align*}
+Damit kann jetzt das Wegintegral von $\alpha$ berechnet werden:
+\begin{align*}
+\oint_{\gamma} \alpha
+&=
+\int_0^{2\pi} \langle \alpha(\gamma(t)),\dot{\gamma}(t)\rangle \,dt
+\\
+&=
+\int_0^{2\pi}
+\sin t\,\langle dx,\dot{\gamma}(t)\rangle
+-
+\cos t\,\langle dy,\dot{\gamma}(t)\rangle
+\,dt
+\\
+&=
+\int_0^{2\pi}
+\sin t\,\langle dx,\dot{\gamma}(t)\rangle
+-
+\cos t\,\langle dy,\dot{\gamma}(t)\rangle
+\,dt
+\\
+&=
+\int_0^{2\pi}
+-
+\sin^2 t
+-
+\cos^2 t
+\,dt
+=
+-\int_0^{2\pi}\,dt
+=
+-2\pi.
+\qedhere
+\end{align*}
+\end{loesung}
