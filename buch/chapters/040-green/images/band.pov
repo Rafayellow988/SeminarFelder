@@ -1,5 +1,5 @@
 //
-// 3dimage.pov -- -template for 3d images rendered by Povray
+// band.pov -- Karten eines zylindrischen Bandes
 //
 // (c) 2023 Prof Dr Andreas Müller
 //
@@ -15,10 +15,6 @@ lightsource(<10, 50, 40>, 1, White)
 #declare farbe0 = rgb<1.0,0.6,0.8>;
 #declare farbe1 = rgb<0.6,0.8,1.0>;
 #declare farbe2 = rgb<0.8,1.0,0.6>;
-
-//arrow(-e1, e1, 0.01, White)
-//arrow(-e2, e2, 0.01, White)
-//arrow(-e3, e3, 0.01, White)
 
 difference {
 	cylinder { <0,-l,0>, <0,l,0>, 1 }

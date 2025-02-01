@@ -11,7 +11,8 @@ all:	parallelogramm.pdf						\
 	greenbeweis.pdf							\
 	greenrand.pdf							\
 	greenrand2d.pdf							\
-	band.pdf
+	band.pdf							\
+	moebius.pdf
 
 #
 # Parallelogramm-Fäche
@@ -121,5 +122,13 @@ band.png:	band.pov
 	povray +A0.1 -W1920 -H1080 -Oband.png band.pov
 band.jpg:	band.png
 	magick band.png band.jpg
+
+
+moebius.png:	moebius.pov
+	povray +A0.1 -W1920 -H1080 -Omoebius.png moebius.pov
+moebius.jpg:	moebius.png Makefile
+	magick -extract 1882x710+20+104 moebius.png moebius.jpg
+moebius.pdf:	moebius.tex moebius.jpg
+	pdflatex moebius.tex
 
 

@@ -1047,6 +1047,7 @@ Ein Kartenwechsel kann also das Vorzeichen des Koeffizienten
 von $dx^1\wedge dx^2$ ändern oder gleich belassen.
 
 \begin{beispiel}
+\label{buch:green:green:beispiel:band}
 \input{chapters/040-green/fig/fig-band.tex}
 Die Mannigfaltigkeit $M$ von Abbildung~\ref{buch:green:green:fig:band}
 wird durch die drei Kartengebiete
@@ -1086,16 +1087,78 @@ Kartengebiet durch $dx\wedge dy$ gegeben ist.
 Insbesondere hat diese 2-Form keine Nullstellen.
 \end{beispiel}
 
+
+\begin{beispiel}
+\label{buch:green:green:beispiel:moebius}
+\input{chapters/040-green/fig/fig-moebius.tex}%
+Durch Änderung der Kartenwechselabbildung in
+\begin{align*}
+\psi_{12}&\colon
+\psi_1(U_1\cap U_2)
+\to
+V_2
+:(x,y) \mapsto \biggl(x-\frac{2\pi}3,-y\biggr)
+\end{align*}
+entsteht ein neuer Atlas, der aber nicht mehr ein zylindrisches Band
+beschreibt.
+In Abbildung~\ref{buch:green:green:fig:moebius} wird das gemeinsame
+Gebiet $U_1\cap U_2$ der grünen und der blauen Karte gespiegelt,
+was einem um $180^\circ$ verdrehten Band entspricht.
+Dies ein Möbius-Band.
+
+Auf dem Möbius-Band gibt es keine 2-Form ohne Nullstellen.
+Gäbe es eine solche 2-Form $\omega$, dann könnten wir die Komponenten
+in der roten und der grünen Karte $U_0$ und $U_1$ so ändern, dass
+$\omega$ auf beiden durch $dx\wedge dy$ gegeben ist.
+Dann ist nur noch eine Darstellung $u(x,y)\,dx\wedge dy$ für die 
+blaue Karte $U_2$ gefunden werden.
+Auf dem Überschneidungsgebiet $\varphi_2(U_0\cap U_2)$ muss $u(x,y)=1$
+sein.
+Auf dem Überschneidungsgebiet $\varphi_2(U_1\cap U_2)$ ist die 
+Determinante des Kartenwechsels $-1$, d.~h.~dort muss $u(x,y)=-1$
+sein.
+$u(x,y)$ ist daher eine differenzierbare Funktion auf dem zusammenhängend
+Rechteck $V_2$, welche am einen Ende den Wert $1$ und am anderen den 
+Wert $-1$ haben muss.
+Nach dem Zwischenwertsatz muss diese Funktion eine Nullstelle haben.
+\end{beispiel}
+
+Der Unterschied zwischen den beiden Mannigfaltigkeiten der Beispiele
+\ref{buch:green:green:beispiel:band}
+und
+\ref{buch:green:green:beispiel:moebius}
+ist, dass das Möbius-Band nicht orientierbar ist.
+Lässt man eine Ameise entlang dem Möbius-Band krabbeln, wird sie
+sich nach einem Umlauf um das Band auf der anderen Seite des Bandes
+wiederfinden.
+Sie muss also nochmals einen weiteren Umlauf ausführen, um wieder
+am Ausgangspunkt auf der gleichen Seite wie beim Start anzukommen.
+
 \begin{definition}
 Eine differenzierbare zweidimensionale Mannigfaltigkeit heisst 
 {\em orientierbar}, wenn es eine 2-Form gibt, die nirgends
 verschwindet.
 \end{definition}
 
+Die Konstruktion des Atlas in den Beispielen zeigt, dass es eine
+alternative Beschreibung einer orientierbaren Mannigfaltigkeit.
+Für die orientierbare Mannigfaltigkeit wurde ein Atlas gefunden,
+dessen Kartenwechsel alle positive Determinanten hatten.
+Für das nicht orientierbare Möbius-Band war dies nicht möglich.
+
 \begin{definition}[orientierbarer Atlas]
 Ein {\em orientierbarer Atlas} einer differenzierbaren Mannigfaltigkeit
 ist ein Atlas, dessen Kartenwechsel alle positive Determinante haben.
 \end{definition}
+
+Man kann zeigen, dass diese beiden Definitionen sind.
+Dies ist der Inhalt des folgenden Satzes, den wir aber nicht
+beweisen werden.
+
+\begin{satz}
+Eine zweidimensionale Mannigfaltigkeit ist genau dann orientierbar,
+wenn es einen orientierbaren Atlas gibt.
+\end{satz}
 
 
 %
@@ -2290,13 +2353,64 @@ um eine Konstante $c_k$.
 Die Funktion $f$ ist daher nur bis auf eine Konstante $c_k\in\mathbb{R}$
 in jeder Zusammenhangskomponente definiert.
 
-
-
-
 %
 % Potentialfelder
 %
 \subsection{Potentialfelder}
+Das Gravitationsfeld ist bekannt dafür, dass die Arbeit, die gegen
+das Feld geleistet werden muss, um einen Massepunkt von einem Punkt $A$
+zu einem Punkt $B$ zu bewegen, nicht von der Wahl des Weges abhängt.
+Die Unabhängigkeit vom Weg garantiert, dass es
+eine Funktion $U(x)$ gibt, mit der man den Energieunterschied
+$U(B)-U(A)$ berechnen kann.
+Die Funktion $U$ heisst das Potential.
+In der Physik wird es meistens noch durch die Masse geteilt,
+diese Unterscheidung ist für die aktuelle Diskussion jedoch unwichtig.
 
+Sei $\gamma(t)$ die Kurve, auf der sich der Massepunkt 
+bewegt.
+Die Leistung gegen das Gravitationsfeld ist dann
+$\langle dU, \dot{g}(t)\rangle$.
+Die Funktion $U$ kann als Wegintegral von $dU$ rekonstruiert werden.
 
+\begin{definition}[Potential]
+Eine 1-Form $\omega$ heisst ein {\em Potentialfeld}, wenn es eine
+Funktion $U$ gibt derart, dass $dU=\omega$.
+\end{definition}
+
+Nach Satz~\ref{buch:green:geschlossen:satz:poincare} ist $\omega$
+auf einem einfach zusammenhängenden Gebiet genau dann ein Potentialfeld,
+wenn $d\omega=0$ ist.
+
+\begin{beispiel}
+Für das Gravitationsfeld einer Masse $M$ im Nullpunkt des Koordinatensystems
+ist die potentielle Energie
+\[
+U(x,y,z)
+=
+-\frac{GM}{r}.
+\]
+Die äussere Ableitung 
+\begin{align*}
+dU
+&=
+\frac{\partial U}{\partial x}\,dx
++
+\frac{\partial U}{\partial y}\,dy
++
+\frac{\partial U}{\partial z}\,dz
+\\
+&=
+-\frac{GM}{r^3}\bigl(
+x\,dx
++
+y\,dy
++
+z\,dz
+\bigr)
+\end{align*}
+Im nächsten Kapitel wird gezeigt, dass die Funktion $U$ noch eine
+weitere Eigenschaft hat, nämlich dass die Divergenz verschwindet.
+Daraus wird sich dann die Gleichung $\Delta U=0$ ergeben.
+\end{beispiel}
 
