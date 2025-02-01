@@ -8,7 +8,10 @@ all:	parallelogramm.pdf						\
 	randkarten.pdf							\
 	homotopie.pdf							\
 	volint.pdf							\
-	greenrand.pdf
+	greenbeweis.pdf							\
+	greenrand.pdf							\
+	greenrand2d.pdf							\
+	band.pdf
 
 #
 # Parallelogramm-Fäche
@@ -98,4 +101,25 @@ greenranddata.inc:	greenrand.m
 
 greenrand.pdf:	greenrand.tex greenrandgerade.jpg greenrandgekruemmt.jpg
 	pdflatex greenrand.tex
+
+#
+# greenrand2d
+#
+greenrand2d.pdf:	greenrand2d.tex
+	pdflatex greenrand2d.tex
+
+#
+# Green Beweis
+#
+greenbeweis.pdf:        greenbeweis.tex
+	pdflatex greenbeweis.tex
+
+band.pdf:	band.tex band.jpg
+	pdflatex band.tex
+
+band.png:	band.pov
+	povray +A0.1 -W1920 -H1080 -Oband.png band.pov
+band.jpg:	band.png
+	magick band.png band.jpg
+
 
