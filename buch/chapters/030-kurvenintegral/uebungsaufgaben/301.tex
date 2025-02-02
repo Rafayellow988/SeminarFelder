@@ -1,8 +1,8 @@
 Berechnen Sie das Differential der folgenden Funktionen
 \begin{teilaufgaben}
 \item $f(x,y)=\cos x\sin y$
-\item $\displaystyle g(x,y)=\frac1{\sqrt{x^2+y^2}}$
-\item
+\item $\displaystyle g(x,y)=\frac1{\!\sqrt{x^2+y^2}}$
+\item $h(x,y)=-\log \!\sqrt{x^2+y^2}$
 \end{teilaufgaben}
 
 \begin{loesung}
@@ -31,7 +31,21 @@ dg
 -\frac{x}{(x^2+y^2)^{\frac32}}\,dx
 -\frac{y}{(x^2+y^2)^{\frac32}}\,dy.
 \end{align*}
-\item
+\item Das Differential von $h$ ist die 1-Form
+\begin{align*}
+dh
+&=
+\frac{\partial h}{\partial x}(x,y)\,dx
++
+\frac{\partial h}{\partial y}(x,y)\,dy
+\\
+&=
+-
+\frac{x}{x^2+y^2}\,dx
+-
+\frac{y}{x^2+y^2}\,dy.
+\qedhere
+\end{align*}
 \end{teilaufgaben}
 \end{loesung}
 
