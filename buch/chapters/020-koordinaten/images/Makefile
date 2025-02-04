@@ -9,7 +9,8 @@ all:	kartpolar.pdf							\
 	koordinatenwechsel.pdf						\
 	kurve.pdf							\
 	stereographisch.pdf						\
-	stereowechsel.pdf
+	stereowechsel.pdf						\
+	parallel.pdf
 
 kartpolar.pdf:	kartpolar.tex
 	pdflatex kartpolar.tex
@@ -48,3 +49,13 @@ kurve.png:	kurve.pov
 	povray +A0.1 -W1920 -H1080 -Okurve.png kurve.pov
 kurve.jpg:	kurve.png Makefile
 	magick -extract 1744x1080+118+0 kurve.png kurve.jpg
+
+parallel.png:	parallel.pov
+	povray +A0.1 -W1920 -H1080 -Oparallel.png parallel.pov
+
+parallel.jpg:	parallel.png Makefile
+	magick -extract 1052x1080+320+0 parallel.png parallel.jpg
+
+parallel.pdf:	parallel.tex parallel.jpg
+	pdflatex parallel.tex
+

@@ -187,4 +187,379 @@ u^k\partial_i = u^k\frac{\partial}{\partial x^k},
 also eine Linearkombination der partiellen Ableitungsoperatoren
 (einsteinsche Summenkonvention).
 
+%
+% Ableitung eines Vektors?
+%
+\subsection{Ableitung eines Vektors?
+\label{buch:koordinaten:diffop:subsection:vektorableitung}}
+Kann man einen Tangentialvektor ableiten?
+Ein Tangentialvektor an eine $n$-dimensionale Mannigfaltigkeit wurde
+definiert als eine Klasse von Kurven, die die gleiche Ableitung in
+einem Punkt haben.
+In einem Koordinatensystem konnte ein Tangentialvektor mit einem
+Vektor in $\mathbb{R}^n$ identifiziert werden.
+Später wurde dann erkannt, dass ein solcher Tangentialvektor als
+Ableitungsoperator betrachtet werden kann, der auf Funktionen
+wirkt.
+In einem Koordinatensystem kann ein Tangentialvektor $X$ als
+ein Ableitungsoperator
+\[
+X
+=
+\sum_{i=1}^n
+X^i \frac{\partial}{\partial x^i}
+\]
+geschrieben werden.
+
+Betrachtet man nicht nur einen Tangentialvektor in einem einzelnen
+Punkt, sondern ein Vektorfeld, welches jedem Punkt der Mannigfaltigkeit
+einen Vektor zuordnet, dann lässt sich diese Vektorfeld in Koordinaten
+als ortsabhängiger Vektor
+\[
+X(x)
+=
+\sum_{i=1}^n
+X^i(x)
+\frac{\partial}{\partial x^i}
+\]
+schreiben.
+Auf eine Funktion $f$ angewendet ergibt sich die Funktion
+\[
+(X\cdot f)(x)
+=
+\sum_{i=1}^n X^i(x)\frac{\partial f}{\partial x^i}(x).
+\]
+Die Komponenten $X^i$ erfüllen die korrekten Transformationseigenschaften
+für einen Vektor.
+
+Für einen Vektor $Y$ mit der Komponentendarstellung
+\[
+Y
+=
+\sum_{i=1}^n
+Y^i\frac{\partial}{\partial x^i}
+\]
+an einer Stelle $x$ stellt sich jetzt die Frage, ob man $Y$ als
+Differentialoperator auf das Vektorfeld $X$ anwenden und daraus
+wieder einen Tangentialvektor bekommen kann.
+Das Resultat müsste wieder ein Differentialoperator erster Ordnung
+sein.
+Die Zusammensetzung der beiden Differentialoperatoren $Y$ und $X(x)$
+angewendet auf eine Funktion $f$ ist
+\begin{align}
+Y\cdot(X\cdot f)
+&=
+\sum_{i=1}^n Y^i\frac{\partial}{\partial x^i}
+\sum_{k=1}^n
+X^k(x)
+\frac{\partial f}{\partial x^k}f(x)
+\notag
+\\
+&=
+\sum_{i,k=1}^n
+Y^i
+\frac{\partial X^k}{\partial x^i}(x)
+\frac{\partial f}{\partial x^k}(x)
++
+\sum_{i,k=1}^n
+Y^i
+X^k(x)
+\frac{\partial^2 f}{\partial x^i\,\partial x^k}(x).
+\label{buch:koordinaten:diffop:eqn:vektorableitung}
+\end{align}
+Der erste Term könnte als ein Vektor mit den Komponenten 
+\[
+\sum_{i=1}^n
+Y^i\frac{\partial X^k}{\partial x^i}(x)
+\]
+betrachtet werden, der zweite Term ist aber definitiv kein
+Differentialoperator erster Ordnung.
+Man kann also nicht erwarten, dass sich Vektoren ableiten lassen.
+
+Der tiefere Grund dafür ist, dass eine Ableitung von Vektoren verlangt,
+dass man Vektoren an verschiedenen Stellen miteinander verrechnen kann.
+Diese Voraussetzung ist aber nicht selbstverständlich.
+\input{chapters/020-koordinaten/fig/fig-parallel.tex}%
+In einem bestimmten Koordinatensystem kann man zwar einen Vektor
+von einem Punkt zu einem anderen Punkt verschieben.
+In Abbildung~\ref{buch:koordinaten:diffop:fig:transport}
+ist dargestellt, wie ein Vektor, der in kartesischen Koordinaten
+parallel verschoben ist, in Polarkoordinaten nach einer undurchschaubaren
+Vorschrift transformiert wird.
+Der Transport von Vektoren entlang einer Kurve ist also keine
+Selbstverständlichkeit, er erfordert ein zusätzliches mathematisches
+Hilfsmittel.
+Ein Zusammenhang, wie er in Kapiteln~\ref{chapter:zusammenhang} definiert
+wird, schafft diese Möglichkeit.
+
+%
+% Die Lie-Ableitung
+%
+\subsection{Lie-Ableitung}
+Abschnitt~\ref{buch:koordinaten:diffop:subsection:vektorableitung}
+hat gezeigt, dass die Zusammensetzung zweier Vektorfelder, betrachtet
+als Differentialoperatoren, kein Differentialoperator erster Ordnung
+sein kann.
+Aus technischer Sicht war der Grund der zweite Term 
+in~\eqref{buch:koordinaten:diffop:eqn:vektorableitung}
+mit den zweiten Ableitungen.
+Für zwei Vektorfelder $X$ und $Y$ mit Komponenten $X^i(x)$ und
+$Y^k(x)$ ergibt sich bei Anwendung der
+Formel~\eqref{buch:koordinaten:diffop:eqn:vektorableitung}
+der gleiche Term mit zweiten Ableitungen.
+Die Differenz enthält diesen Term daher nicht mehr:
+\begin{align*}
+Y\cdot(X\cdot f)
+-
+X\cdot(Y\cdot f)
+&=
+\sum_{i,k=1}^n
+Y^i(x)\frac{\partial X^k}{\partial x^i}(x) \frac{\partial f}{\partial x^k}(x)
+-
+\sum_{i,k=1}^n
+X^i(x)\frac{\partial Y^k}{\partial x^i}(x) \frac{\partial f}{\partial x^k}(x)
+\\
+&=
+\sum_{k=1}^n
+\sum_{i=1}^n
+\biggl(
+Y^i(x)\frac{\partial X^k}{\partial x^i}(x)
+-
+X^i(x)\frac{\partial Y^k}{\partial x^i}(x)
+\biggr)
+\frac{\partial f}{\partial x^k}(x)
+\end{align*}
+Da da darin nur noch erste Ableitungen vorkommen, ist dies wieder
+ein Differentialoperator erster Ordnung, der als Vektor
+geschrieben werden kann.
+
+\begin{definition}[Lie-Ableitung]
+\label{buch:koordinaten:diffop:def:lieableitung}
+Der Differentialoperator 
+\[
+f\mapsto
+X\cdot(Y\cdot f)
+-
+Y\cdot(X\cdot f)
+\]
+ist ein Differentialoperator erster Ordnung.
+Er heisst die {\em Lie-Klammer} und wird auch $[X,Y]$
+geschrieben.
+\end{definition}
+
+\begin{satz}[Lie-Algebra]
+\label{buch:koordinaten:diffop:satz}
+Die Lie-Klammer der Vektorfelder $X$, $Y$ und $Z$ erfüllt
+\begin{enumerate}
+\item $[X,X]=0$
+\item $[X, [Y, Z]] + [Y, [Z, X]] + [Z, [X, Y]] = 0$
+\end{enumerate}
+\end{satz}
+
+Die zweite Formel ist unter dem Namen {\em Jacobi-Identität} bekannt.
+Die Rechenregeln von Satz~\ref{buch:koordinaten:diffop:satz} besagen,
+dass die Vektorfelder eine sogenannten {\em Lie-Algebra} bilden.
+
+\begin{proof}
+Beide Formeln können sofort mit Hilfe der
+Definition~\ref{buch:koordinaten:diffop:def:lieableitung}
+berechnet werden.
+\begin{enumerate}
+\item
+\(
+[X,X]\cdot f = X\cdot X\cdot f - X\cdot X\cdot f
+=
+0
+\).
+\item
+Ein Term der Jacobi-Identität ist nach
+\definecolor{cyan}{rgb}{0,0.8,0.8}
+\begin{align*}
+[X,[Y,Z]]\cdot f
+&=
+X\cdot [Y, Z]\cdot f
+-
+[Y, Z]\cdot X\cdot f
+\\
+&=
+X\cdot Y\cdot Z\cdot f
+-
+X\cdot Z\cdot Y\cdot f
+-
+Y\cdot Z\cdot X\cdot f
++
+Z\cdot Y\cdot X\cdot f.
+\intertext{Dazu werden jetzt die Terme mit zyklisch vertauschten
+$X$, $Y$ und $Z$ hinzuaddiert, dann ergibt sich die linke Seite
+der Jacobi-Identität:}
+\text{LHS}
+&=
+{\color{darkred}X\cdot Y\cdot Z}\cdot f
+-
+{\color{blue}X\cdot Z\cdot Y}\cdot f
+-
+{\color{darkgreen}Y\cdot Z\cdot X}\cdot f
++
+{\color{orange}Z\cdot Y\cdot X}\cdot f
+\\
+&+
+{\color{darkgreen}Y\cdot Z\cdot X}\cdot f
+-
+{\color{violet}Y\cdot X\cdot Z}\cdot f
+-
+{\color{cyan}Z\cdot X\cdot Y}\cdot f
++
+{\color{blue}X\cdot Z\cdot Y}\cdot f
+\\
+&+
+{\color{cyan}Z\cdot X\cdot Y}\cdot f
+-
+{\color{orange}Z\cdot Y\cdot X}\cdot f
+-
+{\color{darkred}X\cdot Y\cdot Z}\cdot f
++
+{\color{violet}Y\cdot X\cdot Z}\cdot f.
+\end{align*}
+Die Terme gleicher Farbe heben sich weg, was die Jacobi-Identität
+beweist.
+\qedhere
+\end{enumerate}
+\end{proof}
+
+Ein Ableitungsoperator ist ein linearer Operator, der auch eine
+Produktregel erfüllt.
+Zum Beispiel gilt für ein Produkt von Funktionen $f\cdot g$
+\begin{align*}
+X\cdot (f\cdot g)
+&=
+\sum_{k=1}^n
+X^k
+\frac{\partial (f\cdot g)}{\partial x^k}(x)
+\\
+&=
+\sum_{k=1}^n
+X^k
+\biggl(
+\frac{\partial f}{\partial x^k}(x)\cdot g(x)
++
+f(x)
+\cdot
+\frac{\partial g}{\partial x^k}(x)
+\biggr)
+\\
+&=
+\biggl(
+\sum_{k=1}^n
+X^k
+\frac{\partial f}{\partial x^k}(x)
+\biggr)\cdot g(x)
++
+f(x)
+\cdot
+\biggl(
+\sum_{k=1}^n
+X^k
+\frac{\partial g}{\partial x^k}(x)
+\biggr)
+\\
+&=
+(X\cdot f)\cdot g
++
+f\cdot(X\cdot g).
+\end{align*}
+Diese Eigenschaft heisst
+
+\begin{definition}[Derivation]
+\label{buch:koordinaten:diffop:def:derivation}
+Sei $A$ eine reelle Algebra.
+Eine Derivation auf $A$ ist eine lineare Abbildung $d\colon A\to A$,
+die
+\[
+d(f\cdot g)
+=
+(df)\cdot g
++
+f\cdot dg
+\]
+erfüllt.
+\end{definition}
+
+Die Lie-Klammer hat die Eigenschaft einer Derivation auch dann,
+wenn man sie auf ein Produkt $fY$ einer Funktion und eines Vektorfeldes
+anwendet.
+Dazu berechnen wir:
+\begin{align}
+[X,fY]\cdot g
+&=
+X\cdot((fY)\cdot g)
+-
+(fY)\cdot(X\cdot g)
+\notag
+\\
+&=
+X\cdot(f (Y\cdot g))
+-
+fY\cdot (X\cdot g)
+\notag
+\\
+&=
+(X\cdot f)(Y\cdot g))
++
+f(X\cdot (Y\cdot g))
+-
+fY\cdot (X\cdot g)
+\notag
+\\
+&=
+(X\cdot f)(Y\cdot g)
++
+f([X,Y]\cdot g).
+\notag
+\intertext{Geschrieben als Operatoren (ohne die Funktion $g$) ist dies}
+[X,fY]
+&=
+(X\cdot f)Y + f[X,Y].
+\label{buch:koordinaten:diffop:eqn:lieprodukt}
+\end{align}
+In den beiden Termen der letzten Gleichungen wirkt die zu $X$
+gehörige Ableitung jeweils auf einem der Faktoren wie in der Produktregel.
+Die Analogie kann noch etwas offensichtlicher gemacht werden, wenn
+wir die folgende Notation wählen.
+
+\begin{definition}
+\label{buch:koordinaten:diffop:def:lieableitung}
+Sei $X$ ein Vektorfeld, dann ist die zum Vektorfeld $X$ gehörige
+{\em Lie-Ableitung} $L_X$ auf einer Funktion $f$ definiert durch
+\index{Lie-Ableitung}%
+$L_Xf=X\cdot f$, und auf einem Vektorfeld $Y$ durch $L_XY=[X,Y]$.
+\end{definition}
+
+Mit dieser Schreibweise wird die Gleichung
+\eqref{buch:koordinaten:diffop:eqn:lieprodukt}
+zu
+\[
+L_X(fY)
+=
+(L_Xf)\cdot Y
++
+f\cdot L_XY,
+\]
+die genau die Form einer Produktregel hat.
+
+Mit der Schreibeweise von Definition
+\ref{buch:koordinaten:diffop:def:lieableitung} kann auch die
+Jacobi-Identität kann man ebenfalls in eine übersichtlichere Form
+gebracht werden.
+Dazu schreibt man sie zunächst so um, dass $Z$ jeweils ganz rechts steht:
+\[
+[X,[Y,Z]] - [Y,[X,Z]] - [[X,Y],Z] = 0.
+\]
+Darin schreiben wir alle Lie-Klammern als Lie-Ableitungen, ausser der Klammer
+$[X,Y]$, und erhalten
+\[
+L_X\circ L_Y - L_Y\circ L_X = L_{[X,Y]}.
+\]
+
+
+
 
