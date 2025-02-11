@@ -1,0 +1,140 @@
+%
+% 2-Formen
+%
+\section{Tensoren zweiter Stufe, 2-Vektoren und 2-Formen auf Mannigfaltigkeiten
+\label{buch:green:section:2formen}}
+\kopfrechts{2-Formen}
+Die Algebra der 2-Vektoren ist nicht bescchränkt auf einen Vektorraum,
+sie kann auch auf die Tangentialvektoren einer $n$-dimensionalen
+Mannigfaltigkeit angewendet werden.
+Ein 2-Vektor auf einer Mannigfaltigkeit ist dann ein Tensor zweiter
+Stufe vom Typ $(2,0)$.
+In einer Karte wird er gegeben durch eine Grösse $a^{ik}$ mit zwei
+kontravarianten Indizes.
+Gegenüber einem beliebigen Tensor zweiter Stufe zeichnet sich der 
+2-Vektor dadurch aus, dass $a^{ik}$ antisymmetrisch ist, dass also
+$a^{ik}=-a^{ki}$ gilt.
+
+%
+% Notation für Tensoren
+%
+\subsection{Notation für Tensoren}
+In Kapitel~\ref{chapter:kurvenintegral} haben wir zwar den Begriff des
+Tensors eingeführt, aber nur eine Notation für Vektoren eingeführt.
+Wenn mit Tensoren gerechnet worden ist, kam immer nur die Komponenten
+in einer Karte zur Anwendung.
+Das Wedge-Produkt von Vektoren hat 2-Vektoren ergeben, kann aber
+nicht alle Tensoren zweiter Stufe darstellen.
+Wir erweitern daher die Notation, indem wir wie bei der Einführung der
+Basis für die 2-Vektoren, neue Basisvektoren für die Tensoren wie 
+folgt definieren.
+
+\begin{definition}
+\label{buch:green:tensoren:definition:tensorprodukt}
+Sei $V$ ein $n$-dimensionaler reeller Vektorraum mit Basis
+$\vec{e}_1,\dots,\vec{e}_n$.
+Der Vektorraum
+\[
+V^{\otimes p}
+=
+\underbrace{
+V\otimes\dots\otimes V
+}_{\displaystyle \text{$p$ Faktoren}}
+=
+\langle \vec{e}_{i_1}\otimes\dots\otimes \vec{e}_{i_p}
+\mid
+1\le 
+i_1,\dots,i_p
+\le n
+\rangle
+\]
+heisst das $p$-fache Tensorprodukt von $V$.
+Ein Tensor $p$-ter Stufe ist also von der Form
+\[
+a_{i_1\dots i_p}\vec{e}_{i_1}\otimes\dots\otimes\vec{e}_{i_p}
+\]
+mit Koeffizienten $a_{i_1\dots i_p}\in\mathbb{R}$.
+\end{definition}
+
+Ein 2-Vektor ist ein Tensor in $V^{\otimes 2}$, der antisymmetrisch ist.
+Für die Basisvektoren der 2-Vektoren können daher als Tensoren
+\[
+\vec{e}_i\wedge\vec{e}_k
+=
+\vec{e}_i\otimes\vec{e}_k
+-
+\vec{e}_k\otimes\vec{e}_i
+\]
+geschrieben werden.
+Ein 2-Vektor ist also allgemein eine Linearkombination
+\begin{equation}
+a^{ik}\vec{e}_i\otimes\vec{e}_k
+\label{buch:green:tensoren:eqn:2tensor}
+\end{equation}
+mit $a^{ik}=-a^{ki}$.
+
+Die Definition~\ref{buch:green:tensoren:definition:tensorprodukt}
+berücksichtigt die Transformationseigenschaften nicht,
+die die Komponenten eines aus Tangentialvektoren gebildeten
+Tensors zusätzlich erfüllen müssen.
+Ein kontravarianter Tensor zweiter Stufe kann dann als
+\[
+a
+=
+a^{ik}(x) \frac{\partial}{\partial x^i}\otimes\frac{\partial}{\partial x^k}
+\]
+geschrieben werden, wobei die bei einem Koordinatenwechsel die
+Indizes $i$ und $k$ kontravariant transformiert werden.
+Ein 2-Vektor auf der Mannigfaltigkeit entsteht dann aus den Koeffizienten
+$a^{ik}(x)$ durch
+\[
+\sum_{i<k}
+a^{ik}
+\frac{\partial}{\partial x^i}
+\wedge
+\frac{\partial}{\partial x^k}
+=
+a^{ik}(x)
+\frac{\partial}{\partial x^i}
+\otimes
+\frac{\partial}{\partial x^k},
+\]
+wobei $a^{ik}(x)=-a^{ki}(x)$ sein muss.
+
+%
+% 2-Formen
+%
+\subsection{2-Formen}
+Linearformen sind lineare Abbildungen von Vektoren auf reelle Zahlen.
+Linearformen können aber auch auf Tensoren zweiter Stufe definiert werden.
+Eine Linearform $f\colon V^{\otimes 2}\to\mathbb{R}$ muss den Basisvektoren
+$\vec{e}_i\otimes\vec{e}_k$ einen Wert zuordnen.
+Schreiben wir $f(\vec{e}_i\otimes\vec{e}_k)=f_{ik}$, dann ist der Wert
+auf einem Tensor der Form
+\eqref{buch:green:tensoren:eqn:2tensor}
+\[
+f\bigl(
+a^{ik}\vec{e}_i\otimes \vec{e}_k
+\bigr)
+=
+a^{ik}
+f_{ik}.
+\]
+Eine Linearform auf $V^{\otimes 2}$ kann auch aus zwei Linearformen
+$f$ und $g$ auf $V$ konstruiert werden.
+Solche Linearformen können durch die Werte
+\[
+f_i = f(\vec{e}_i) 
+\qquad\text{und}\qquad
+g_k = f(\vec{e}_k)
+\]
+auf den Basisvektoren konstruiert werden.
+Auf dem Tensor $a$ ergibt sie den Wert
+\[
+(f\otimes g)
+=
+a^{ik}f(\vec{e}_i)g(\vec{e}_k)
+=
+a^{ik}f_ig_k.
+\]
+

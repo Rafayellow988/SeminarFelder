@@ -1,0 +1,160 @@
+Berechnen Sie das Wegintegral der 1-Form
+\[
+\omega
+=
+y
+\,dx
++
+x^2
+\,dy
+\]
+entlang eines Parabelbogens $\gamma_1$, der durch die Punkte
+$(-1,0)$, $(0,1)$ und $(0,a)$ geht.
+\begin{teilaufgaben}
+\item Berechnen Sie die 2-Form $d\omega$
+\item Berechnen Sie das Integral der Zweiform über die Fläche zwischen
+den Kurven $\gamma_{-1}$ und $\gamma_1$.
+\item Verifizieren Sie den Satz von Green für die Situation in Teilaufgabe b).
+\item Ist die 1-Form ein Potentialfeld?
+\end{teilaufgaben}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[>=latex,thick]
+\xdef\a{3}
+\fill[color=darkred!20]
+	plot[domain=-3:3,samples=100]
+		({\x},{-\a*(3+\x)*(3-\x)/9})
+	--
+	plot[domain=-3:3,samples=100]
+		({-\x},{\a*(3+\x)*(3-\x)/9})
+	-- cycle;
+\draw[color=darkred,line width=1.2pt]
+	plot[domain=-4:4,samples=100]
+		({\x},{\a*(3+\x)*(3-\x)/9});
+\node at (1,1.5) {$\Omega$};
+\node at (-2,1.66) [left] {$\gamma_1$};
+\draw[->] (-4.1,0) -- (4.4,0) coordinate[label={$x$}];
+\draw[->] (0,-3.1) -- (0,3.6) coordinate[label={right:$y$}];
+\draw (-3,-0.1) -- (-3,0.1);
+\draw (3,-0.1) -- (3,0.1);
+\node at (-3,0) [below right] {$-1$};
+\node at (3,0) [below left] {$1$};
+\end{tikzpicture}
+\caption{Weg für das Wegintegral in Aufgabe~\ref{401}
+\label{buch:401:fig}}
+\end{figure}
+
+\begin{loesung}
+Der Parabelbogen wird durch die Funktion
+\[
+\gamma_a
+\colon
+[-1,1]\to\mathbb{R}^2
+:
+x\mapsto (x,a(1-x)(1+x))
+\]
+parametrisiert.
+Für das Wegintegral wird der Tangentialvektor benötigt, der
+\[
+\frac{d\gamma_a}{dx}(x)
+=
+(1,-2ax)
+\]
+ist.
+Das Wegintegral wird damit zu
+\begin{align*}
+\int_{\gamma_a} \omega
+&=
+\int_{-1}^1 a(1-x)(1+x) + x^2 (-2ax) \,dx
+\\
+&=
+a\int_{-1}^1 1-x^2-2x^3\,dx
+\\
+&=
+a
+\biggl[
+x-\frac{x^3}{3}-\frac{x^4}{2}
+\biggr]_{-1}^1
+\\
+&=
+a\biggl(
+2-\frac23
+\biggr)
+=
+\frac{4a}{3}.
+\end{align*}
+\begin{teilaufgaben}
+\item
+Die äussere Ableitung von $\omega$ ist
+\begin{align*}
+d\omega
+&=
+\biggl(
+\frac{\partial}{\partial x}x^2
+-
+\frac{\partial}{\partial y}y
+\biggr)\,dx\wedge dy
+\\
+&=
+(2x-1)
+\,dx\wedge dy.
+\end{align*}
+\item
+Das Flächenintegral ist
+\begin{align*}
+\int_{\Omega}
+d\omega
+&=
+\int_{-1}^1
+\int_{\gamma_{-1}(x)}^{\gamma_1(x)}
+2x-1
+\,dy
+\,dx
+\\
+&=
+\int_{-1}^1
+\biggl[(2x-1)y\biggr]_{-1+x^2}^{1-x^2}
+\,dx
+\\
+&=
+\int_{-1}^1
+(2x-1)
+\bigl(
+1-x^2-(-1+x^2)
+\bigr)
+\,dx
+\\
+&=
+2
+\int_{-1}^1
+(2x-1)
+(1-x^2)
+\,dx
+=
+-\frac{8}{3}.
+\end{align*}
+\item
+Das oben berechnete Wegintegral durchläuft die Kurve von links nach
+rechts.
+Für den Beitrag des oberen Randes zum Integral über den Rand von
+$\Omega$ muss daher das Vorzeichen gekehrt werden.
+Damit wir das Wegintegral
+\begin{align*}
+\int_{\partial\Omega} \omega
+&=
+\int_{\gamma_{-1}}\omega - \int_{\gamma_{1}}\omega
+\\
+&=
+-\frac{4}{3}-\frac{4}{3}
+=
+-\frac{8}3,
+\end{align*}
+was mit dem Resultate von Teilaufgabe b) übereinstimmt.
+\item
+Wäre $\omega$ ein Potentialfeld, dann müsste das Wegintegral vom Parameter
+$a$ unabhängig sein, was es aber ganz offensichtlich nicht ist.
+Somit kann $\omega$ ein Potentialfeld sein.
+\end{teilaufgaben}
+\end{loesung}
+

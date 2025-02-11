@@ -23,6 +23,8 @@ auf einer Mannigfaltigkeit entwickelt und gezeigt,
 %
 \section{$p$-Formen
 \label{buch:pformen:section:pformen}}
+\kopfrechts{$p$-Formen}
+
 
 %
 % Antisymmetrische Multilinearformen
@@ -57,16 +59,269 @@ Indexpaar.
 %
 % Das \wedge-Produkt von $p$-Formen
 %
-\subsubsection{Das $\wedge$-Produkt}
-
-\begin{satz} Für eine $p$-Form $\alpha\in\Omega^p(M)$ und eine $q$-Form
-$\beta\in\Omega^q(M)$ gilt
+\subsection{Das $\wedge$-Produkt}
+Das Wedge-Produkt von Differentialformen ist eine bilineare Abbildung
 \[
+\Omega^p(M)\times \Omega^q(M) \to \Omega^{p+q}(M)
+:
+(\alpha,\beta) \mapsto \alpha\wedge\beta.
+\]
+Dies bedeutet, dass es ausreicht, das Wedge-Produkt auf einer Basis
+zu definieren.
+
+Seien jetzt also
+\begin{align*}
+\alpha &= dx^{i_1}\wedge\dots\wedge dx^{i_p} \\
+\beta  &= dx^{j_{p+1}}\wedge\dots\wedge dx^{j_{p+q}}
+\end{align*}
+zwei Basis-$p$- bzw.~-$q$-Formen.
+Es muss das Produkt
+\begin{equation}
+dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\wedge
+dx^{i_{p+1}}\wedge\dots\wedge dx^{i_{p+q}}
+\label{buch:pformen:pformen:eqn:basisprodukt}
+\end{equation}
+durch Basis-$p+q$-Formen ausgedrückt werden.
+Falls $(i_1,\dots,i_p)$ und $(i_{p+1},\dots,i_{p+q})$ einen Index gemeinsam
+haben, dann verschwindet das Produkt.
+Das Wedge-Produkt~\eqref{buch:pformen:pformen:eqn:basisprodukt}
+ist also nur dann von $0$ verschieben, wenn alle Indizes in
+$(i_1,\dots,i_p,i_{p+1},\dots,i_{p+q})$ verschieden sind.
+Das Produkt~\eqref{buch:pformen:pformen:eqn:basisprodukt} ist aber
+normalerweise keine Basis-$p+q$-Form, da in den Basisformen die
+Indizes aufsteigend sind.
+Die 1-Formen in \eqref{buch:pformen:pformen:eqn:basisprodukt} müssen
+also so vertauscht werden, dass sich eine aufsteigende Reihenfolge
+$(k_1,\dots,k_{p+q})$
+der Indizes ergibt.
+Bei jeder Vertauschung ändert das Vorzeichen.
+Das Produkt \eqref{buch:pformen:pformen:eqn:basisprodukt} unterscheidet
+sich also nur durch das Vorzeichen von 
+\(
+dx^{k_1}\wedge\dots\wedge dx^{k_{p+q}}
+\).
+
+Zur Bestimmung des Vorzeichens des Produktes $\alpha\wedge\beta$ 
+sei $\sigma\in S_{p+q}$ die Permutation\footnote{Die Theorie der
+Permutationen, der Gruppen $S_n$ und des Vorzeichens einer Permutation
+wird ausführlich erklärt in \cite[Abschnitt~4.3.4]{buch:linalg}.}
+der Zahlen $1,\dots,p+q$,
+die $(i_1,\dots,i_p,i_{p+1},\dots,i_{p+q})$ in die geordnete
+Reihenfolge
+\[
+(i_{\sigma(1)},\dots,i_{\sigma(p)},i_{\sigma(p+1)},\dots,i_{\sigma(p+q)})
+=
+(k_1,\dots,k_{p+q})
+\]
+überführt.
+Die Anzahl $t(\sigma)$ der Vertauschungen, mit denen sich die
+Permutation $\sigma$ schreiben lässt, ist nicht eindeutig bestimmt,
+aber sie ist entweder gerade oder ungerade.
+Das gesuchte Vorzeichen ist daher das sogenannte Signum
+\[
+\operatorname{sgn}(\sigma) = (-1)^{t(\sigma)}
+\]
+oder Vorzeichen der Permutation.
+
+%
+% Die Summenformel
+%
+\subsubsection{Die Summenformel}
+Bei der konkreten Berechnung eines Wedge-Produktes ist es jeweils
+einfach, die nötigen Vertauschungen vorzunehmen und damit das
+richtige Vorzeichen zu finden.
+Für die algebraische Rechnung ist dies jedoch etwas komplizierter,
+da die Algebra keine gute Notation für die richtige Reihenfolge der
+Indizes zu finden.
+
+Um eine einfachere Formel zu finden, schreiben wir erst die Basis
+auf eine neue Art.
+Statt als Basisvektoren die Produkte von 1-Formen in einer vorgegebenen
+Reihenfolge zu nehmen, lassen wir alle Reihenfolgen der Indizes zu.
+Die so entstehenden Produkte unterscheiden sich nur durch ein
+Vorzeichen.
+Jedes der Produkte
+\[
+dx^{i_1}\wedge\dots\wedge dx^{i_p}
+=
+\operatorname{sgn}(\sigma)
+\,
+dx^{i_{\sigma(1)}} \wedge\dots\wedge dx^{i_{\sigma(p)}}
+\]
+für eine Permutation $\sigma\in S_p$ ist also gleichermassen geeignet
+als Basisvektor.
+Es gibt $p!$ solche Permutationen.
+Damit wir die verschiedenen Basisvektoren gleichberechtigt verwenden
+können, nehmen wir deren Mittelwert
+\[
+dx^{i_1}\wedge\dots\wedge dx^{i_p}
+=
+\frac{1}{p!}
+\sum_{\sigma\in S_p} dx^{i_{\sigma(1)}} \wedge\dots\wedge dx^{i_{\sigma(p)}}
+\]
+Diese Summe ändert nicht, wenn die Indizes $i_1,\dots,i_p$ mit einer
+geraden Permutation permutiert werden.
+
+Eine beliebige $p$-Form ist in der Basis der
+$dx^{i_1}\wedge\dots\wedge dx^{i_p}$  mit $i_1<\dots<i_p$
+durch die Koeffizienten $f_{i_1\dots i_p}$ gegeben.
+Die Forderung der aufsteigend sortierten Indizes in
+\[
+\omega
+=
+\sum_{i_1<\dots<i_p}
+f_{i_1\dots i_p}\,
+dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\]
+ist etwas schwerfällig.
+Die Beschreibung wird einfacher, wenn man verlangt, dass die
+Koeffizienten vollständig antisymmetrisch sind, also
+\[
+f_{i_1\dots i_p}
+=
+\operatorname{sgn}\,
+f_{i_{\sigma(1)}\dots i_{\sigma(p)}}
+\]
+für jede Permutation $\sigma\in S_p$.
+Damit fällt jetzt die Foderung nach aufsteigenden Indizes weg und man
+kann
+\begin{equation}
+\omega
+=
+\frac{1}{p!}
+\sum_{i_1,\dots,i_p=1}^n
+f_{i_1\dots i_p}
+\,
+dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\label{buch:pformen:pformen:eqn:summenformel}
+\end{equation}
+schreiben.
+
+%
+% Kommutativität
+%
+\subsubsection{Kommutativität}
+Das Wedge-Produkt ist nicht kommutativ.
+Für 1-Formen gilt $dx^i\wedge dx^k=-dx^k\wedge dx^i$.
+Es ist aber auch nicht antikommutativ, denn 
+\[
+(dx^2\wedge dx^3)\wedge dx^1
+=
+-dx^2\wedge dx^1\wedge dx^3
+=
+dx^1\wedge dx^2\wedge dx^3,
+\]
+in diesem Fall ändert das Vorzeichen bei der Vertauschung der
+Faktoren $dx^1$ und $dx^2\wedge dx^3$ nicht.
+Der Grund ist, dass {\em zwei} Vertauschungen nötig sind, um
+die Faktoren in die Standardreihenfolge zu bringen.
+Wir beweisen die folgende Kommutationsformel.
+
+\begin{satz}
+Für eine $p$-Form $\alpha\in\Omega^p(M)$ und eine $q$-Form
+$\beta\in\Omega^q(M)$ gilt
+\begin{equation}
 \alpha\wedge\beta
 =
-(-1)^{pq}\beta\wedge\alpha.
-\]
+(-1)^{pq}\,\beta\wedge\alpha.
+\label{buch:pformen:pformen:eqn:kommutativ}
+\end{equation}
 \end{satz}
+
+\begin{proof}
+Wir müssen zeigen, dass die
+Formel~\eqref{buch:pformen:pformen:eqn:kommutativ}
+Für die Basisdifferentialformen gilt.
+Wir verwenden die Farben {\color{darkred}rot} und {\color{blue}blau},
+um die Vertauschungen der 1-Form-Faktoren duetlich zu machen.
+Wir schreiben also
+\begin{align*}
+{\color{darkred}\alpha}
+&=
+{\color{darkred}dx^{i_1}}
+\wedge \dots \wedge
+{\color{darkred}dx^{i_p}}
+\\
+\text{und}\qquad
+{\color{blue}\beta}
+&=
+{\color{blue}dx^{k_1}}
+\wedge \dots \wedge
+{\color{blue}dx^{k_p}}
+\end{align*}
+und berechnen die Produkte $\alpha\wedge\beta$ und $\beta\wedge\alpha$.
+Um das Produkt $\beta\wedge\alpha$ in die Reihenfolge der 1-Form-Faktoren
+von $\alpha\wedge\beta$ zu bringen, sind jeweils Vertauschungen mit
+Nachbarfaktoren notwendig:
+\begin{align*}
+{\color{darkred}\alpha}\wedge{\color{blue}\beta}
+&=
+{\color{darkred}dx^{i_1}}
+\wedge\dots\wedge
+{\color{darkred}dx^{i_p}}
+\wedge
+{\color{blue}dx^{k_1}}
+\wedge\dots\wedge
+{\color{blue}dx^{k_q}}
+\\
+&=
+{\color{darkred}dx^{i_1}}
+\wedge\dots\wedge
+{\color{blue}dx^{k_1}}
+\wedge
+{\color{darkred}dx^{i_p}}
+\wedge
+{\color{blue}dx^{k_2}}
+\wedge\dots\wedge
+{\color{blue}dx^{k_q}}
+\\
+&=
+(-1)^p
+\,
+{\color{blue}dx^{k_1}}
+\wedge
+{\color{darkred}dx^{i_1}}
+\wedge\dots\wedge
+{\color{darkred}dx^{i_p}}
+\wedge
+{\color{blue}dx^{k_2}}
+\wedge\dots\wedge
+{\color{blue} dx^{k_q}}
+\\
+&=
+(-1)^2q
+\,
+{\color{blue}dx^{k_1}}
+\wedge
+{\color{blue}dx^{k_2}}
+\wedge
+{\color{darkred}dx^{i_1}}
+\wedge\dots\wedge
+{\color{darkred}dx^{i_p}}
+\wedge
+{\color{blue}dx^{k_3}}
+\wedge\dots\wedge
+{\color{blue} dx^{k_q}}
+\\
+&=
+(-1)^{pq}
+\,
+{\color{blue}dx^{k_1}}
+\wedge\dots\wedge
+{\color{blue}dx^{k_q}}
+\wedge
+{\color{darkred}dx^{i_1}}
+\wedge\dots\wedge
+{\color{darkred}dx^{i_p}}
+\\
+&=
+(-1)^{pq}
+\,
+{\color{blue}\beta}\wedge{\color{darkred}\alpha}.
+\end{align*}
+Damit ist die Formel bewiesen.
+\end{proof}
 
 %
 % Die graduierte Algebra der p-Formen
@@ -126,28 +381,237 @@ daher heisst $\Omega^*(M)$ auch eine graduierte $\mathscr{E}(M)$-Algebra.
 %
 \section{Die äussere Ableitung
 \label{buch:pformen:section:aeussereableitung}}
-Für 
+\kopfrechts{Die äussere Ableitung}
+Für 1-Formen, 2-Formen und $n-1$-Formen wurde die äussere
+Ableitung bereits definiert.
+Auf Basisdifferentialformen ist die äussere Ableitung
+durch die ausreichend verschiedenen Formeln
+\begin{align*}
+d(
+f\,dx^i
+)
+&=
+\frac{\partial f}{\partial x^k}\, dx^k\wedge dx^i
+\\
+d(g\,dx^i\wedge dx^k)
+&=
+\sum_{l=1}^n
+\frac{\partial g}{\partial x^l}\, dx^l\wedge dx^i\wedge dx^k
+\\
+d(h\,
+dx^1\wedge\dots\wedge \widehat{dx^i}\wedge\dots\wedge dx^n
+)
+&=
+\frac{\partial h}{\partial x^i}
+\,
+dx^i\wedge
+(dx^1\wedge\dots\wedge \widehat{dx^i}\wedge\dots\wedge dx^n)
+\\
+&=
+(-1)^{n-1}
+\frac{\partial h}{\partial x^i}
+\,
+dx^1\wedge\dots\wedge dx^n.
+\end{align*}
+gegeben.
+Für die weitere Entwicklung brauchen wir eine Definition, die in allen
+Fällen anwendbar ist.
 
 %
 % Definition der äusseren Ableitung
 %
-\subsection{Definition der äussere Ableitung}
-% äussere Ableitung als antiderivation
+\subsection{Definition der äusseren Ableitung}
+Die äussere Ableitung ist linear, es reicht daher, sie auf
+Basisdifferentialformen zu definieren.
 
+\begin{definition}[Äussere Ableitung]
+Die äussere Ableitung der Basis-$p$-Form 
+$\alpha=f(x)\, dx^{i_1}\wedge\dots\wedge dx^{i_p}$
+ist
+\[
+d\alpha
+=
+\sum_{k=1}^n
+\frac{\partial f}{\partial x^k}
+\,dx^k\wedge
+dx^{i_1}\wedge\dots\wedge dx^{i_p}.
+\]
+\end{definition}
+
+Für eine beliebige $p$-Form
+\[
+\omega
+=
+\sum_{i_1<\dots <i_p}
+f_{i_1\dots i_p}\, dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\]
+kann die äussere Ableitung daher als
+\[
+d\omega
+=
+\sum_{k=1}^n
+\sum_{i_1<\dots <i_p}
+\frac{\partial f_{i_1\dots i_p}}{\partial x^k}
+\,dx^k
+\wedge
+dx^{i_1}
+\wedge
+\dots
+\wedge
+dx^{i_p}
+\]
+geschrieben werden.
+Verwendet man vollständig antisymmetrische Koeffizienten wie in
+\eqref{buch:pformen:pformen:eqn:summenformel}, bekommt die
+äussere Ableitung die Form
+\[
+d\omega
+=
+\frac{1}{p!}
+\sum_{i_1,\dots,i_p=1}^n
+\frac{\partial f_{i_1\dots i_p}}{\partial x^k}
+\,
+dx^k\wedge dx^{i_1}\wedge\dots\wedge dx^{i_p}.
+\]
 
 %
 % Äussere Ableitung und Wedge-Produkt
 %
 \subsection{Äussere Ableitung und Wedge-Produkt}
-
-\begin{satz}[Äussere Ableitung]
-
-\end{satz}
+Wir berechnen die äussere Ableitung des Wedge-Produkts zweier
+Differentialformen.
+Seien also $\alpha\in\Omega^p(M)$ und $\beta\in\Omega^q(M)$
+Differentialformen auf der Mannigfaltigkeit.
+Um die äussere Ableitung des Produktes $\alpha\wedge\beta$ zu
+berechnen, gehen wir von einfachen Monomen
+\[
+\alpha
+=
+f\,dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\qquad\text{und}\qquad
+\beta
+=
+g\,dx^{i_{p+1}}\wedge\dots\wedge dx^{i_{p+q}}
+\]
+aus.
+Das Produkt ist
+\[
+\alpha\wedge\beta
+=
+f(x)\,g(x)\,
+dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\wedge
+dx^{i_{p+1}}\wedge\dots\wedge d^{i_{p+q}}.
+\]
+Die äussere Ableitung ist
+\begin{align*}
+d(\alpha\wedge\beta)
+&=
+\sum_{k=1}^n
+\frac{\partial(f\cdot g)}{\partial x^k}
+dx^k
+\wedge
+dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\wedge
+dx^{i_{p+1}}\wedge\dots\wedge d^{i_{p+q}}
+\\
+&=
+\sum_{k=1}^n
+\biggl(
+\frac{\partial f}{\partial x^k}(x)
+g(x)
++
+f(x)
+\frac{\partial g}{\partial x^k}(x)
+\biggr)\,
+dx^k
+\wedge
+dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\wedge
+dx^{i_{p+1}}\wedge\dots\wedge d^{i_{p+q}}
+\\
+&=
+\sum_{k=1}^n
+\frac{\partial f}{\partial x^k}(x)\,
+dx^k
+\wedge
+dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\wedge
+g(x)\,
+dx^{i_{p+1}}\wedge\dots\wedge d^{i_{p+q}}
+\\
+&\qquad +
+\sum_{k=1}^n
+f(x)\,
+dx^k
+\wedge
+dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\wedge
+\frac{\partial g}{\partial x^k}(x)\,
+dx^{i_{p+1}}\wedge\dots\wedge d^{i_{p+q}}.
+\intertext{Um den Faktor $dx^k$ im zweiten Summanden neben
+die partielle Ableitung von $g$ zu bringen, sind $p$ Vertauschungen
+nötig, die Ableitung wird dann}
+&=
+\biggl(
+\sum_{k=1}^n
+\frac{\partial f}{\partial x^k}(x)\,
+dx^k
+\wedge
+dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\biggr)
+\wedge
+g(x)\,
+dx^{i_{p+1}}\wedge\dots\wedge d^{i_{p+q}}
+\\
+&\qquad +
+f(x)\,
+dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\wedge
+(-1)^p
+\sum_{k=1}^n
+\frac{\partial g}{\partial x^k}(x)\,
+dx^k
+\wedge
+dx^{i_{p+1}}\wedge\dots\wedge d^{i_{p+q}}
+\\
+&=
+d\alpha \wedge \beta
++
+(-1)^p
+\alpha\wedge d\beta.
+\end{align*}
+Abgesehen vom zusätzlichen Vorzeichen im zweiten Term ist dies
+die Produktregel.
 
 \begin{definition}
-Eine Antiderivation 
+Eine {\em Antiderivation} $d$ einer graduierten Algebra $A$ ist eine
+\index{Antiderivation}%
+lineare Abbildung mit
+\begin{equation}
+d(\alpha\cdot\beta)
+=
+(d\alpha)\cdot\beta
++
+(-1)^p \alpha\cdot(d\beta)
+\label{buch:pformen:pformen:eqn:antiderivation}
+\end{equation}
+für $\alpha\in A^p$ und $\beta\in A^q$.
 \end{definition}
 
+Die äussere Ableitung ist also eine Antiderivation in der graduierten
+Algebra der Differentialformen auf einer Mannigfaltigkeit.
+Für eine Funktion $f\in\Omega^0(M)$, $p=0$, und $\beta\in\Omega^q(M)$ 
+wird aus
+\eqref{buch:pformen:pformen:eqn:antiderivation}
+die bekannte Produktregel
+\[
+d(f\beta)
+=
+(df)\wedge \beta
++
+f\wedge d\beta.
+\]
 
 \subsection{Geschlossene und exakte Formen}
 % Definitionen der Begriffe geschlossen und exakt
@@ -166,6 +630,7 @@ sodass $\omega = d\alpha$.
 %
 \section{Abbildung von $p$-Formen
 \label{buch:pformen:section:abbildung}}
+\kopfrechts{Abbildung von $p$-Formen}%
 
 \subsection{Abbildung von Funktionen}
 % 
