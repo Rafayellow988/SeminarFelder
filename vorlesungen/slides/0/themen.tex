@@ -1,0 +1,71 @@
+%
+% themen.tex -- slide template
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\bgroup
+\begin{frame}[t]
+\setlength{\abovedisplayskip}{5pt}
+\setlength{\belowdisplayskip}{5pt}
+\frametitle{Themen}
+\vspace{-20pt}
+\begin{columns}[t,onlytextwidth]
+\only<1-21>{
+\begin{column}{0.48\textwidth}
+\begin{enumerate}
+\item<2-> Phasenportraits in 2D
+\item<3-> Geometrische Algebra
+\item<4-> Elastizitätstheorie
+\item<5-> Platten und Schalen
+\item<6-> Geostrophische Näherung
+\item<7-> Rossby-Wellen
+\item<8-> Kelvin-Wellen
+\item<9-> Reynolds-averaging
+\item<10-> Wirbelringe
+\item<11-> Überschallströmung
+\item<12-> Joukowski-Formel
+\end{enumerate}
+\end{column}
+}
+\only<13-28>{
+\begin{column}{0.48\textwidth}
+\begin{enumerate}
+\setcounter{enumi}{11}
+\item<13-> 4D Maxwell
+\item<14-> Eichtransformationen
+\item<15-> Fourier-Transformation und Felder
+\item<16-> DiffOp in orthogonalen Koordinaten
+\item<17-> Turing-Muster
+\item<18-> Nervenfasern
+\item<19-> Burgers-Gleichung
+\item<20-> OpenFOAM
+\item<21-> Gebiet und Parallelisierung
+\end{enumerate}
+\end{column}
+}
+\only<22->{%
+\begin{column}{0.48\textwidth}
+\begin{enumerate}
+\setcounter{enumi}{21}
+\item<22-> MSE: Poincaré-Bendixson
+\item<23-> MSE: Nullklinen in 3D
+\item<24-> MSE: Reaktion-Diffusion
+\item<25-> MSE: Monge-Ampère
+\item<26-> MSE: Monge-Kantorovitch-Transport
+\item<27-> MSE: Helmholtz-Zerlegung
+\item<28-> MSE: Poincaré-Lemma für Wirbelfelder
+\item<29-> MSE: Kotangentialbündel
+\item<30-> MSE: Schallfeld
+\end{enumerate}
+\end{column}
+}
+%\only<29->{%
+%\begin{column}{0.48\textwidth}
+%\begin{enumerate}
+%\setcounter{enumi}{27}
+%\end{enumerate}
+%\end{column}
+%}
+\end{columns}
+\end{frame}
+\egroup
