@@ -3,7 +3,7 @@
 #
 # (c) 2025 Prof Dr Andreas Müller
 #
-all:	kuh.pdf kont.pdf gaussrand.pdf
+all:	kuh.pdf kont.pdf gaussrand.pdf oberflaeche.pdf
 
 # kuh image
 kuh.pdf:	kuh.png kuh.tex
@@ -25,3 +25,10 @@ gaussrand.jpg:	gaussrand.png Makefile
 gaussrand.pdf:	gaussrand.tex gaussrand.jpg
 	pdflatex gaussrand.tex
 
+# Oberfläche und Orientierung
+oberflaeche.png:	oberflaeche.pov
+	povray +A0.1 -W1920 -H1080 -Ooberflaeche.png oberflaeche.pov
+oberflaeche.jpg:	oberflaeche.png Makefile
+	magick -extract 1084x1080+336+0 oberflaeche.png oberflaeche.jpg
+oberflaeche.pdf:	oberflaeche.tex oberflaeche.jpg
+	pdflatex oberflaeche.tex
