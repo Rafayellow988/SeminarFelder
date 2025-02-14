@@ -1,0 +1,272 @@
+%
+% Abbildung von p-Formen
+%
+\section{Abbildung von $p$-Formen
+\label{buch:pformen:section:abbildung}}
+\kopfrechts{Abbildung von $p$-Formen}%
+Beim Studium des Satzes von Stokes hat sich gezeigt, dass eine
+Einbettung einer 2-dimensionalen Mannigfaltigkeit $N$ in eine beliebige
+$n$-dimensionale Mannigfaltigkeit $M$ Tangentialvektoren von $N$ in
+Tangentialvektoren von $M$ abgebildet werden, dass aber auch Linearformen
+auf $M$ auf Linearformen in auf $N$ zurückgezogen werden können.
+In diesem Abschnitt soll gezeigt werden, dass die Dimension 2
+kein Spezialfall ist, sondern dass diese Konstruktion immer möglich ist
+
+%
+% Abbildungen zwischen Mannigfaltigkeiten
+%
+\subsection{Abbildungen zwischen Mannigfaltigkeiten}
+In diesem Abschnitt sind $N$ und $M$ Mannigfaltigkeiten der Dimension
+$n$ bzw.~$m$ und $f\colon N\to M$ ist eine beliebig oft stetig
+differenzierbare Abbildung von $N$ nach $M$.
+Eine Funktion $h\colon M\to\mathbb{R}$ auf der Mannigfaltigkeit gibt
+unmittelbar Anlass zu einer Funktion $f^*h\colon N\to\mathbb{R}$,
+die sich durch Zusammensetzung $f^*h=h\circ f$ ergibt.
+
+%
+% Abbildung von Vektoren
+%
+\subsubsection{Abbildung von Vektoren}
+Die Ableitung von $f$ definiert eine lineare Abblidung der
+Tangentialvektoren $T_pN$ von $N$ in einem Punkt $p$ in die
+Tangentialvektoren $T_{f(p)}M$ von $M$ im Punkt $f(p)$.
+Wir betrachten eine Karte $(V,\varphi)$ von $N$ in der Umgebung des Punktes
+$p$ und eine Karte $(U,\psi)$ von $M$ in der Umgebung von $f(p)$.
+Der Einfachheit halber nehmen wir an, dass $f(V)\subset U$ ist, was wird
+nötigenfalls durch Verkleinern von $V$ immer erreichen können.
+In den Karten $(V,\varphi)$ und $(U,\psi$ wird die Abbildung
+$f$ zu einer glatten Abbildung
+\[
+\tilde{f}
+=
+\psi\circ f\circ\varphi^{-1}
+\colon
+\varphi(V)\to\psi(U)
+:
+q\mapsto \psi\circ f\circ \varphi^{-1}(q).
+\]
+Ist $\gamma\colon I\to \varphi(V)$ eine Kurve durch den Punkt $\varphi(p)$
+in $\varphi(V)$, dann ist die Zusammensetzung $g\circ \gamma$
+eine Kurve durch den Punkt $\psi(f(p))$ in $\psi(U)$.
+In Koordinaten wird die Abbildung durch die Matrix der partiellen
+Ableitungen
+\[
+Dg
+=
+\renewcommand\arraystretch{2.0}
+\begin{pmatrix}
+ \displaystyle\frac{\partial g^1}{\partial x^1}
+&\displaystyle\frac{\partial g^1}{\partial x^2}
+&\dots&
+ \displaystyle\frac{\partial g^1}{\partial x^n}
+\\
+ \displaystyle\frac{\partial g^2}{\partial x^1}
+&\displaystyle\frac{\partial g^2}{\partial x^2}
+&\dots&
+ \displaystyle\frac{\partial g^2}{\partial x^n}
+\\[-1pt]
+\vdots&\vdots&\ddots&\vdots
+\\[-3pt]
+ \displaystyle\frac{\partial g^m}{\partial x^1}
+&\displaystyle\frac{\partial g^m}{\partial x^2}
+&\dots&
+ \displaystyle\frac{\partial g^m}{\partial x^n}
+\end{pmatrix}
+\]
+gegegben.
+Die Ableitung $D\tilde{f}$ bildet damit Tangentialvektoren von $N$
+auf Tangentialvektoren von $M$ ab.
+
+%
+% Abbildung von p-Vektoren
+%
+\subsubsection{Abbildung von $p$-Vektoren}
+Die Abbildung $Tf$ bildet kann auch auf Tensoren beliebiger Stufe und
+insbesondere auf $p$-Vektoren ausgedehnt werden.
+Die Abbildung $Tf^{\otimes p}$ bildet einen kontravarianten Tensor
+$p$-ter Stufe gemäss
+\[
+\renewcommand{\arraycolsep}{1.5pt}
+\begin{array}{rcccc}
+Tf^{\otimes p}
+=
+Tf\otimes\dots\otimes Tf
+&:&
+\underbrace{TN\otimes\dots\otimes TN}_{\bigotimes TM}
+&\to&
+\underbrace{TM\otimes\dots\otimes TM}_{\bigotimes TM}
+\\
+&:&
+X_1\otimes\dots\otimes X_p
+&\mapsto&
+Tf(X_1)\otimes\dots\otimes TF(X_p)
+\end{array}
+\]
+ab.
+Da $Tf^{\otimes p}$ linear ist, gilt auch
+\begin{align*}
+Tf^{\otimes p}(X_1\wedge\dots\wedge X_p)
+&=
+Tf^{\otimes p}\biggl(
+\sum_{i_1,\dots,i_p=1}^{p}
+\varepsilon_{i_1\dots i_p}
+X_{i_1} \otimes\dots\otimes X_{i_p}
+\biggr)
+\\
+&=
+\sum_{i_1,\dots,i_p=1}^{p}
+\varepsilon_{i_1\dots i_p}
+Tf^{\otimes p}(X_{i_1}\otimes\dots\otimes X_{i_p})
+\\
+&=
+\sum_{i_1,\dots,i_p=1}^{p}
+\varepsilon_{i_1\dots i_p}
+Tf(X_{i_1})\otimes\dots\otimes Tf(X_{i_p})
+\\
+&=
+Tf(X_1)\wedge\dots\wedge Tf(X_p).
+\end{align*}
+Diese Abbildung  von $p$-Vektoren wird manchmal auch als
+\[
+Tf_*
+=
+{\textstyle\bigwedge^p}Tf
+=
+Tf^{\bigwedge p}
+=
+\underbrace{Tf\wedge\dots\wedge Tf}_{\displaystyle \text{$p$ Faktoren}}
+\]
+oder auch nur als $Tf$ bezeichnet.
+
+%
+% Abbildung von 1-Formen
+%
+\subsection{Abbildung von 1-Formen}
+Eine 1-Form ist durch die Werte auf Tangentialvektoren
+gegeben.
+Falls die Dimension $n$ von $N$ kleiner ist als die Dimension $m$ von $M$,
+bilden die Bildvektoren $Tf(X)$ von Vektoren $X\in T_pN$ einen höchstens
+$n$-dimensionalen Unterraum.
+Es ist daher unmöglich, die Werte einer Linearform auf den restlichen
+Richtungen in $T_{f(p)}M$ festzulegen.
+Man kann also nicht erwarten, dass es eine Abbildung von Linearformen
+von $N$ auf Linearformen von $M$ gibt.
+
+Umgekehrt sei jetzt $\alpha$ eine 1-Form auf $M$, also eine lineare
+Abbildung $TM\to \mathbb{R}$.
+Daraus lässt sich eine lineare Abbildung
+$Tf^*(\alpha)\colon TN\to\mathbb{R}$ konstruieren.
+Dazu muss für jeden Vektor $X\in T_pN$ der Wert auf dem Vektor $X$
+festgelegt werden.
+\[
+\langle Tf^*(\alpha),X\rangle
+=
+\langle \alpha, Tf(X)\rangle.
+\]
+Da $Tf(X)\in T_{f(p)}M$ im Definitionsbereich von $\alpha$ ist, ist
+die rechte Seite ist wohldefiniert.
+
+In einer Karte ist die Abbildung besonders leicht durchzuführen.
+Sei dazu in geeigneten Karten die Abbildung $f$ durch die Abbildung
+\[
+y
+\colon
+\varphi(U) \to \mathbb{R}^n 
+:
+x\mapsto y(x)
+\]
+gegeben.
+Die Komponente $y^k(x)$ ist die $k$-te Koordinaten in der Karte von $M$.
+Die Linearformen $\alpha$ auf $TM$ können in der Basis der 1-Formen $dy^k$ als
+\[
+\alpha
+=
+\sum_{k=1}^n a_k(x) \,dy^k
+\]
+geschrieben werden.
+Die Differentiale von $y^k(x)$ sind
+\[
+dy^k
+=
+\sum_{i=1}^m
+\frac{\partial y^k}{\partial x^i}\,dx^i
+\]
+und damit folgt
+\begin{align*}
+Tf^*(\alpha)
+&=
+\sum_{k=1}^n
+a_k(x)
+\sum_{i=1}^m
+\frac{\partial y^k}{\partial x^i}\,dx^i
+\\
+&=
+\sum_{i=1}^m
+\biggl(
+\sum_{k=1}^n
+a_k(x)
+\frac{\partial y^k}{\partial x^i}
+\biggr)\,dx^i.
+\end{align*}
+Die Koeffizienten der 1-Form $Tf^*(\alpha)$ in der Basis der
+1-Formen $dx^i$ ist daher durch das Matrizenprodukt
+\[
+\biggl(\frac{\partial(y^1,\dots,y^m)}{\partial(x^1,\dots,x^n)}\biggr)^t
+\begin{pmatrix}
+a_1(x)\\[-3pt]
+\vdots\\[-1pt]
+a_n(x)
+\end{pmatrix}
+\]
+gegeben.
+
+%
+% Abbildung von p-Formen
+%
+\subsection{Abbildung $p$-Formen}
+Die Abbildung $Tf^*$ von 1-Formen ist linear, daher kann sie ebenso
+wie die Abbildung $Tf$ der Vektoren auch auf Tensorprodukte und
+Wedge-Produkte von 1-Formen ausgedehnt werden.
+Die Abbildung für das Tensorprodukt ist
+\begin{align*}
+Tf^*(dx^{i_1}\otimes\dots\otimes dx^{i_p})
+&=
+Tf^*(dx^{i_1}) \otimes\dots\otimes Tf^*(dx^{i_p})
+\intertext{und für das Wedge-Produkt}
+Tf^*(dx^{i_1}\wedge\dots\wedge dx^{i_p})
+&=
+Tf^*(dx^{i_1}) \wedge\dots\wedge Tf^*(dx^{i_p}).
+\end{align*}
+
+Falls $N\subset M$ eine Untermannigfaltigkeit ist, dann lässt sich
+in der Umgebung eines Punktes $p\in N$ jeweils ein Koordinatensystem
+von $M$ finden derart, dass $N$ in Koordinaten durch
+$y^{n+1}=\dots=y^{m}=0$ gegeben ist.
+Die Koordinaten $x^1=y^1,\dots,x^n=y^n$ sind ein lokales Koordinatensystem
+von $N$.
+Die Einbettungsabbildung ist
+$i\colon (x^1,\dots,x^n)\mapsto(x^1,\dots,x^n,0,\dots,0)$
+hat die Funktionalmatrix
+\[
+Di
+=
+\frac{\partial (y^1,\dots,y^n,y^{n+1},\dots,y^m)}{\partial(x^1,\dots,x^n)}
+=
+\begin{pmatrix}
+1&0&\dots&0&0&\dots&0\\
+0&1&\dots&0&0&\dots&0\\[-3pt]
+\vdots&\vdots&\ddots&\vdots&\vdots&\ddots&\vdots\\
+0&0&\dots&1&0&\dots&0
+\end{pmatrix}.
+\]
+Die Transponierte von $Di$ bildet die Basis-1-Formen gemäss
+\[
+dy^i
+\mapsto
+\begin{cases}
+dx^i&\qquad \text{für $1\le i\le n$}\\
+0   &\qquad \text{für $i>n$}
+\end{cases}
+\]
+ab.
+

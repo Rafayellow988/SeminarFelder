@@ -1,0 +1,262 @@
+%
+% Die äussere Ableitung
+%
+\section{Die äussere Ableitung
+\label{buch:pformen:section:aeussereableitung}}
+\kopfrechts{Die äussere Ableitung}
+Für 1-Formen, 2-Formen und $n-1$-Formen wurde die äussere
+Ableitung bereits definiert.
+Auf Basisdifferentialformen ist die äussere Ableitung
+durch die ausreichend verschiedenen Formeln
+\begin{align*}
+d(
+f\,dx^i
+)
+&=
+\frac{\partial f}{\partial x^k}\, dx^k\wedge dx^i
+\\
+d(g\,dx^i\wedge dx^k)
+&=
+\sum_{l=1}^n
+\frac{\partial g}{\partial x^l}\, dx^l\wedge dx^i\wedge dx^k
+\\
+d(h\,
+dx^1\wedge\dots\wedge \widehat{dx^i}\wedge\dots\wedge dx^n
+)
+&=
+\frac{\partial h}{\partial x^i}
+\,
+dx^i\wedge
+(dx^1\wedge\dots\wedge \widehat{dx^i}\wedge\dots\wedge dx^n)
+\\
+&=
+(-1)^{n-1}
+\frac{\partial h}{\partial x^i}
+\,
+dx^1\wedge\dots\wedge dx^n.
+\end{align*}
+gegeben.
+Für die weitere Entwicklung brauchen wir eine Definition, die in allen
+Fällen anwendbar ist.
+
+%
+% Definition der äusseren Ableitung
+%
+\subsection{Definition der äusseren Ableitung}
+Die äussere Ableitung ist linear, es reicht daher, sie auf
+Basisdifferentialformen zu definieren.
+
+\begin{definition}[Äussere Ableitung]
+Die äussere Ableitung der Basis-$p$-Form 
+$\alpha=f(x)\, dx^{i_1}\wedge\dots\wedge dx^{i_p}$
+ist
+\[
+d\alpha
+=
+\sum_{k=1}^n
+\frac{\partial f}{\partial x^k}
+\,dx^k\wedge
+dx^{i_1}\wedge\dots\wedge dx^{i_p}.
+\]
+\end{definition}
+
+Für eine beliebige $p$-Form
+\[
+\omega
+=
+\sum_{i_1<\dots <i_p}
+f_{i_1\dots i_p}\, dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\]
+kann die äussere Ableitung daher als
+\[
+d\omega
+=
+\sum_{k=1}^n
+\sum_{i_1<\dots <i_p}
+\frac{\partial f_{i_1\dots i_p}}{\partial x^k}
+\,dx^k
+\wedge
+dx^{i_1}
+\wedge
+\dots
+\wedge
+dx^{i_p}
+\]
+geschrieben werden.
+Verwendet man vollständig antisymmetrische Koeffizienten wie in
+\eqref{buch:pformen:pformen:eqn:summenformel}, bekommt die
+äussere Ableitung die Form
+\[
+d\omega
+=
+\frac{1}{p!}
+\sum_{i_1,\dots,i_p=1}^n
+\frac{\partial f_{i_1\dots i_p}}{\partial x^k}
+\,
+dx^k\wedge dx^{i_1}\wedge\dots\wedge dx^{i_p}.
+\]
+
+%
+% Äussere Ableitung und Wedge-Produkt
+%
+\subsection{Äussere Ableitung und Wedge-Produkt}
+Wir berechnen die äussere Ableitung des Wedge-Produkts zweier
+Differentialformen.
+Seien also $\alpha\in\Omega^p(M)$ und $\beta\in\Omega^q(M)$
+Differentialformen auf der Mannigfaltigkeit.
+Um die äussere Ableitung des Produktes $\alpha\wedge\beta$ zu
+berechnen, gehen wir von einfachen Monomen
+\[
+\alpha
+=
+f\,dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\qquad\text{und}\qquad
+\beta
+=
+g\,dx^{i_{p+1}}\wedge\dots\wedge dx^{i_{p+q}}
+\]
+aus.
+Das Produkt ist
+\[
+\alpha\wedge\beta
+=
+f(x)\,g(x)\,
+dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\wedge
+dx^{i_{p+1}}\wedge\dots\wedge d^{i_{p+q}}.
+\]
+Die äussere Ableitung ist
+\begin{align*}
+d(\alpha\wedge\beta)
+&=
+\sum_{k=1}^n
+\frac{\partial(f\cdot g)}{\partial x^k}
+dx^k
+\wedge
+dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\wedge
+dx^{i_{p+1}}\wedge\dots\wedge d^{i_{p+q}}
+\\
+&=
+\sum_{k=1}^n
+\biggl(
+\frac{\partial f}{\partial x^k}(x)
+g(x)
++
+f(x)
+\frac{\partial g}{\partial x^k}(x)
+\biggr)\,
+dx^k
+\wedge
+dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\wedge
+dx^{i_{p+1}}\wedge\dots\wedge d^{i_{p+q}}
+\\
+&=
+\sum_{k=1}^n
+\frac{\partial f}{\partial x^k}(x)\,
+dx^k
+\wedge
+dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\wedge
+g(x)\,
+dx^{i_{p+1}}\wedge\dots\wedge d^{i_{p+q}}
+\\
+&\qquad +
+\sum_{k=1}^n
+f(x)\,
+dx^k
+\wedge
+dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\wedge
+\frac{\partial g}{\partial x^k}(x)\,
+dx^{i_{p+1}}\wedge\dots\wedge d^{i_{p+q}}.
+\intertext{Um den Faktor $dx^k$ im zweiten Summanden neben
+die partielle Ableitung von $g$ zu bringen, sind $p$ Vertauschungen
+nötig, die Ableitung wird dann}
+&=
+\biggl(
+\sum_{k=1}^n
+\frac{\partial f}{\partial x^k}(x)\,
+dx^k
+\wedge
+dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\biggr)
+\wedge
+g(x)\,
+dx^{i_{p+1}}\wedge\dots\wedge d^{i_{p+q}}
+\\
+&\qquad +
+f(x)\,
+dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\wedge
+(-1)^p
+\sum_{k=1}^n
+\frac{\partial g}{\partial x^k}(x)\,
+dx^k
+\wedge
+dx^{i_{p+1}}\wedge\dots\wedge d^{i_{p+q}}
+\\
+&=
+d\alpha \wedge \beta
++
+(-1)^p
+\alpha\wedge d\beta.
+\end{align*}
+Abgesehen vom zusätzlichen Vorzeichen im zweiten Term ist dies
+die Produktregel.
+
+\begin{definition}
+Eine {\em Antiderivation} $d$ einer graduierten Algebra $A$ ist eine
+\index{Antiderivation}%
+lineare Abbildung mit
+\begin{equation}
+d(\alpha\cdot\beta)
+=
+(d\alpha)\cdot\beta
++
+(-1)^p \alpha\cdot(d\beta)
+\label{buch:pformen:pformen:eqn:antiderivation}
+\end{equation}
+für $\alpha\in A^p$ und $\beta\in A^q$.
+\end{definition}
+
+Die äussere Ableitung ist also eine Antiderivation in der graduierten
+Algebra der Differentialformen auf einer Mannigfaltigkeit.
+Für eine Funktion $f\in\Omega^0(M)$, $p=0$, und $\beta\in\Omega^q(M)$ 
+wird aus
+\eqref{buch:pformen:pformen:eqn:antiderivation}
+die bekannte Produktregel
+\[
+d(f\beta)
+=
+(df)\wedge \beta
++
+f\wedge d\beta.
+\]
+
+%
+% Geschlossene und exakte Formen
+%
+\subsection{Geschlossene und exakte Formen}
+Als Anwendung des Satzes von Green wurde gezeigt, dass Wegintegrale
+einer 1-Form $\alpha$, deren äussere Ableitung $d\alpha$ verschwindet,
+vom Weg unabhängig sind.
+Es gibt dann eine Funktion $f$, deren Differential $df=\alpha$ ist.
+Die Idee kann auch auf $p$-Formen ausgedehnt werden.
+
+\begin{definition}
+Eine $p$-Form $\omega$ heisst {\em geschlossen}, wenn $d\omega=0$ ist.
+\index{geschlossene $p$-Form}%
+Eine $p$-Form heisst {\em exakt}, wenn es eine $p-1$-Form $\alpha$ gibt,
+sodass $\omega = d\alpha$.
+\index{exakte $p$-Form}%
+\end{definition}
+
+Nach den Erkenntnissen von Abschnitt~\ref{buch:green:section:geschlossen}
+ist eine geschlossene 1-Form auf einem zusammenhängenden Gebiet exakt.
+In Abschnitt~\ref{buch:pformen:geschlossen:subsection:exakt}
+wird das Poincaré-Lemma~\ref{buch:pformen:geschlossen:satz:poincare-lemma}
+bewiesen, welches zeigt, dass auf einem sternförmigen Gebiet eine
+geschlossene $p$-Form exakt ist.
+

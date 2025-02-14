@@ -1,0 +1,407 @@
+%
+% p-Formen
+%
+\section{$p$-Formen
+\label{buch:pformen:section:pformen}}
+\kopfrechts{$p$-Formen}
+Im ersten Schritt müssen die Begriffe der 2-Vektoren und der 
+Differentialformen auf Vektoren und Formen beliebigen Grades
+verallgemeinert werden.
+
+%
+% p-Vektoren
+%
+\subsection{$p$-Vektoren}
+In früheren Kapiteln würden 2-Vektoren, $n-1$-Vektoren und $n$-Vektoren
+eingeführt, sobald sie für die Erklärung der Sätze von Green,
+Stokes und Gauss nötig waren.
+Die Konstruktion lässt sich aber auf den Begriff eines $p$-Vektors
+für beliebiges $p$ auf einer $n$-dimensionalen Mannigfaltigkeit
+verallgemeinern.
+
+\begin{definition}
+Ein $p$-Vektor ist ein vollständig antisymmetrischer Tensor
+$p$-ter Stufe.
+\end{definition}
+
+Aus einer Basis $X_1,\dots,X_n$ von $TM$ entsteht eine Basis des
+Vektorraums der $p$-Vektoren besteht daher mit den
+total antisymmetrischen Tensoren
+\[
+X_{i_1}\wedge \dots\wedge X_{i_p}
+=
+\sum_{k_1,\dots,k_p=1}^{n}
+\varepsilon_{k_1\dots k_p}
+X_{i_{k_1}}\otimes\dots\otimes X_{i_{k_p}}
+\]
+Darin ist $\varepsilon_{k_1\dots k_p}$ ist das Levi-Cività-Symbol
+$p$-ter Stufe.
+Der Vektorraum der $p$-Vektoren wird auch als 
+$\bigwedge^p TM$ geschrieben.
+
+%
+% Antisymmetrische Multilinearformen
+%
+\subsection{Antisymmetrische Multilinearformen auf $TM$}
+Dual zu den $p$-Vektoren sind die Linearformen auf einer $n$-dimensionalen
+Mannigfaltigkeit sind die $p$-Formen.
+
+\begin{definition}
+Eine $p$-Form auf der $n$-dimensionalen Mannigfaltigkeit ist eine vollständig
+antisymmetrische Multilinearform vom Grad $p$.
+Die $p$-Formen $dx^{i_1}\wedge\dots\wedge dx^{i_p}$ sind dual zu den 
+$p$-Vektoren $X_{i_1}\wedge\dots\wedge X_{i_p}$:
+\[
+\langle
+dx^{i_1}\wedge\dots\wedge dx^{i_p},
+X_{k_1}\wedge\dots\wedge X_{k_p}
+\rangle
+=
+\delta^{i_1}_{k_1}
+\dots
+\delta^{i_p}_{k_p}.
+\]
+Die Menge der $p$-Formen auf einer Mannigfaltigkeit wird mit $\Omega^p(M)$
+geschrieben.
+\end{definition}
+
+\begin{satz}
+Die $p$-Formen auf einer Mannigfaltigkeit bilden einen $\mathscr{E}(M)$-Modul.
+In einer Karte kann eine $p$-Form $\omega\in \Omega^p(M)$ als
+\begin{align*}
+\omega
+&=
+\sum_{i_1<i_2<\dots< i_p}
+f_{i_1 i_2\dots i_p}(x)
+\, dx^{i_1}\wedge dx^{i_2}\wedge\dots\wedge dx^{i_p}
+\\
+&=
+\frac{1}{p!}
+\sum_{i_1,i_2,\dots,i_p}
+f_{i_1 2_2\dots i_p}(x)
+\, dx^{i_1}\wedge dx^{i_2}\wedge\dots\wedge dx^{i_p}
+\end{align*}
+geschrieben werden, wobei $f_{i_1 i_2\dots i_p}$  antisymmetrisch ist in jedem
+Indexpaar.
+\end{satz}
+
+%
+% Das \wedge-Produkt von $p$-Formen
+%
+\subsection{Das $\wedge$-Produkt}
+Das Wedge-Produkt von Differentialformen ist eine bilineare Abbildung
+\[
+\Omega^p(M)\times \Omega^q(M) \to \Omega^{p+q}(M)
+:
+(\alpha,\beta) \mapsto \alpha\wedge\beta.
+\]
+Dies bedeutet, dass es ausreicht, das Wedge-Produkt auf einer Basis
+zu definieren.
+
+Seien jetzt also
+\begin{align*}
+\alpha &= dx^{i_1}\wedge\dots\wedge dx^{i_p} \\
+\beta  &= dx^{j_{p+1}}\wedge\dots\wedge dx^{j_{p+q}}
+\end{align*}
+zwei Basis-$p$- bzw.~-$q$-Formen.
+Es muss das Produkt
+\begin{equation}
+dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\wedge
+dx^{i_{p+1}}\wedge\dots\wedge dx^{i_{p+q}}
+\label{buch:pformen:pformen:eqn:basisprodukt}
+\end{equation}
+durch Basis-$p+q$-Formen ausgedrückt werden.
+Falls $(i_1,\dots,i_p)$ und $(i_{p+1},\dots,i_{p+q})$ einen Index gemeinsam
+haben, dann verschwindet das Produkt.
+Das Wedge-Produkt~\eqref{buch:pformen:pformen:eqn:basisprodukt}
+ist also nur dann von $0$ verschieben, wenn alle Indizes in
+$(i_1,\dots,i_p,i_{p+1},\dots,i_{p+q})$ verschieden sind.
+Das Produkt~\eqref{buch:pformen:pformen:eqn:basisprodukt} ist aber
+normalerweise keine Basis-$p+q$-Form, da in den Basisformen die
+Indizes aufsteigend sind.
+Die 1-Formen in \eqref{buch:pformen:pformen:eqn:basisprodukt} müssen
+also so vertauscht werden, dass sich eine aufsteigende Reihenfolge
+$(k_1,\dots,k_{p+q})$
+der Indizes ergibt.
+Bei jeder Vertauschung ändert das Vorzeichen.
+Das Produkt \eqref{buch:pformen:pformen:eqn:basisprodukt} unterscheidet
+sich also nur durch das Vorzeichen von 
+\(
+dx^{k_1}\wedge\dots\wedge dx^{k_{p+q}}
+\).
+
+Zur Bestimmung des Vorzeichens des Produktes $\alpha\wedge\beta$ 
+sei $\sigma\in S_{p+q}$ die Permutation\footnote{Die Theorie der
+Permutationen, der Gruppen $S_n$ und des Vorzeichens einer Permutation
+wird ausführlich erklärt in \cite[Abschnitt~4.3.4]{buch:linalg}.}
+der Zahlen $1,\dots,p+q$,
+die $(i_1,\dots,i_p,i_{p+1},\dots,i_{p+q})$ in die geordnete
+Reihenfolge
+\[
+(i_{\sigma(1)},\dots,i_{\sigma(p)},i_{\sigma(p+1)},\dots,i_{\sigma(p+q)})
+=
+(k_1,\dots,k_{p+q})
+\]
+überführt.
+Die Anzahl $t(\sigma)$ der Vertauschungen, mit denen sich die
+Permutation $\sigma$ schreiben lässt, ist nicht eindeutig bestimmt,
+aber sie ist entweder gerade oder ungerade.
+Das gesuchte Vorzeichen ist daher das sogenannte Signum
+\[
+\operatorname{sgn}(\sigma) = (-1)^{t(\sigma)}
+\]
+oder Vorzeichen der Permutation.
+
+%
+% Die Summenformel
+%
+\subsubsection{Die Summenformel}
+Bei der konkreten Berechnung eines Wedge-Produktes ist es jeweils
+einfach, die nötigen Vertauschungen vorzunehmen und damit das
+richtige Vorzeichen zu finden.
+Für die algebraische Rechnung ist dies jedoch etwas komplizierter,
+da die Algebra keine gute Notation für die richtige Reihenfolge der
+Indizes zu finden.
+
+Um eine einfachere Formel zu finden, schreiben wir erst die Basis
+auf eine neue Art.
+Statt als Basisvektoren die Produkte von 1-Formen in einer vorgegebenen
+Reihenfolge zu nehmen, lassen wir alle Reihenfolgen der Indizes zu.
+Die so entstehenden Produkte unterscheiden sich nur durch ein
+Vorzeichen.
+Jedes der Produkte
+\[
+dx^{i_1}\wedge\dots\wedge dx^{i_p}
+=
+\operatorname{sgn}(\sigma)
+\,
+dx^{i_{\sigma(1)}} \wedge\dots\wedge dx^{i_{\sigma(p)}}
+\]
+für eine Permutation $\sigma\in S_p$ ist also gleichermassen geeignet
+als Basisvektor.
+Es gibt $p!$ solche Permutationen.
+Damit wir die verschiedenen Basisvektoren gleichberechtigt verwenden
+können, nehmen wir deren Mittelwert
+\[
+dx^{i_1}\wedge\dots\wedge dx^{i_p}
+=
+\frac{1}{p!}
+\sum_{\sigma\in S_p} dx^{i_{\sigma(1)}} \wedge\dots\wedge dx^{i_{\sigma(p)}}
+\]
+Diese Summe ändert nicht, wenn die Indizes $i_1,\dots,i_p$ mit einer
+geraden Permutation permutiert werden.
+
+Eine beliebige $p$-Form ist in der Basis der
+$dx^{i_1}\wedge\dots\wedge dx^{i_p}$  mit $i_1<\dots<i_p$
+durch die Koeffizienten $f_{i_1\dots i_p}$ gegeben.
+Die Forderung der aufsteigend sortierten Indizes in
+\[
+\omega
+=
+\sum_{i_1<\dots<i_p}
+f_{i_1\dots i_p}\,
+dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\]
+ist etwas schwerfällig.
+Die Beschreibung wird einfacher, wenn man verlangt, dass die
+Koeffizienten vollständig antisymmetrisch sind, also
+\[
+f_{i_1\dots i_p}
+=
+\operatorname{sgn}\,
+f_{i_{\sigma(1)}\dots i_{\sigma(p)}}
+\]
+für jede Permutation $\sigma\in S_p$.
+Damit fällt jetzt die Foderung nach aufsteigenden Indizes weg und man
+kann
+\begin{equation}
+\omega
+=
+\frac{1}{p!}
+\sum_{i_1,\dots,i_p=1}^n
+f_{i_1\dots i_p}
+\,
+dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\label{buch:pformen:pformen:eqn:summenformel}
+\end{equation}
+schreiben.
+
+%
+% Kommutativität
+%
+\subsubsection{Kommutativität}
+Das Wedge-Produkt ist nicht kommutativ.
+Für 1-Formen gilt $dx^i\wedge dx^k=-dx^k\wedge dx^i$.
+Es ist aber auch nicht antikommutativ, denn 
+\[
+(dx^2\wedge dx^3)\wedge dx^1
+=
+-dx^2\wedge dx^1\wedge dx^3
+=
+dx^1\wedge dx^2\wedge dx^3,
+\]
+in diesem Fall ändert das Vorzeichen bei der Vertauschung der
+Faktoren $dx^1$ und $dx^2\wedge dx^3$ nicht.
+Der Grund ist, dass {\em zwei} Vertauschungen nötig sind, um
+die Faktoren in die Standardreihenfolge zu bringen.
+Wir beweisen die folgende Kommutationsformel.
+
+\begin{satz}
+Für eine $p$-Form $\alpha\in\Omega^p(M)$ und eine $q$-Form
+$\beta\in\Omega^q(M)$ gilt
+\begin{equation}
+\alpha\wedge\beta
+=
+(-1)^{pq}\,\beta\wedge\alpha.
+\label{buch:pformen:pformen:eqn:kommutativ}
+\end{equation}
+\end{satz}
+
+\begin{proof}
+Wir müssen zeigen, dass die
+Formel~\eqref{buch:pformen:pformen:eqn:kommutativ}
+Für die Basisdifferentialformen gilt.
+Wir verwenden die Farben {\color{darkred}rot} und {\color{blue}blau},
+um die Vertauschungen der 1-Form-Faktoren duetlich zu machen.
+Wir schreiben also
+\begin{align*}
+{\color{darkred}\alpha}
+&=
+{\color{darkred}dx^{i_1}}
+\wedge \dots \wedge
+{\color{darkred}dx^{i_p}}
+\\
+\text{und}\qquad
+{\color{blue}\beta}
+&=
+{\color{blue}dx^{k_1}}
+\wedge \dots \wedge
+{\color{blue}dx^{k_p}}
+\end{align*}
+und berechnen die Produkte $\alpha\wedge\beta$ und $\beta\wedge\alpha$.
+Um das Produkt $\beta\wedge\alpha$ in die Reihenfolge der 1-Form-Faktoren
+von $\alpha\wedge\beta$ zu bringen, sind jeweils Vertauschungen mit
+Nachbarfaktoren notwendig:
+\begin{align*}
+{\color{darkred}\alpha}\wedge{\color{blue}\beta}
+&=
+{\color{darkred}dx^{i_1}}
+\wedge\dots\wedge
+{\color{darkred}dx^{i_p}}
+\wedge
+{\color{blue}dx^{k_1}}
+\wedge\dots\wedge
+{\color{blue}dx^{k_q}}
+\\
+&=
+{\color{darkred}dx^{i_1}}
+\wedge\dots\wedge
+{\color{blue}dx^{k_1}}
+\wedge
+{\color{darkred}dx^{i_p}}
+\wedge
+{\color{blue}dx^{k_2}}
+\wedge\dots\wedge
+{\color{blue}dx^{k_q}}
+\\
+&=
+(-1)^p
+\,
+{\color{blue}dx^{k_1}}
+\wedge
+{\color{darkred}dx^{i_1}}
+\wedge\dots\wedge
+{\color{darkred}dx^{i_p}}
+\wedge
+{\color{blue}dx^{k_2}}
+\wedge\dots\wedge
+{\color{blue} dx^{k_q}}
+\\
+&=
+(-1)^2q
+\,
+{\color{blue}dx^{k_1}}
+\wedge
+{\color{blue}dx^{k_2}}
+\wedge
+{\color{darkred}dx^{i_1}}
+\wedge\dots\wedge
+{\color{darkred}dx^{i_p}}
+\wedge
+{\color{blue}dx^{k_3}}
+\wedge\dots\wedge
+{\color{blue} dx^{k_q}}
+\\
+&=
+(-1)^{pq}
+\,
+{\color{blue}dx^{k_1}}
+\wedge\dots\wedge
+{\color{blue}dx^{k_q}}
+\wedge
+{\color{darkred}dx^{i_1}}
+\wedge\dots\wedge
+{\color{darkred}dx^{i_p}}
+\\
+&=
+(-1)^{pq}
+\,
+{\color{blue}\beta}\wedge{\color{darkred}\alpha}.
+\end{align*}
+Damit ist die Formel bewiesen.
+\end{proof}
+
+%
+% Die graduierte Algebra der p-Formen
+%
+\subsection{Die graduierte Algebra der $p$-Formen}
+Die Räume $\Omega^p(M)$ haben für verschiedene $0$ keine gemeinsamen 
+nichttrivialen Formen.
+Die Nullform, die auf jedem beliebigen $p$-Vektor verschwindet, kann man
+aber durchaus als ein gemeinsames Element betrachten.
+Rein Formale kann man daher auch Linearkombinationen von $p$-Formen für
+verschiedenes $p$ bilden.
+So entsteht die Menge
+\[
+\Omega^*(M)
+=
+\bigoplus_{p=0}^n \Omega^p (M)
+\]
+der Differentialformen auf der Mannigfaltigkeit.
+$\Omega^*(M)$ ist ein reeller Vektorraum: Differentialformen können mit
+Zahlen multipliziert und addiert werden.
+
+Die $0$-Formen sind die Funktionen und können mit glatten Funktionen in
+$\Omega^0(M)=\mathscr{E}(M)$ multipliziert werden.
+Die glatten Funktionen bilden keinen Körper, da man durch Funktionen mit
+Nullstellen nicht dividieren kann.
+Die glatten Funktionen bilden aber einen sogenannten Ring. 
+\index{Ring}%
+Es sind alle Rechenregeln definiert, die auch in einem Körper gelten,
+ausser die Existenz eines multiplikativen Inversen.
+
+Die Differentialformen können mit Funktionen in $\mathscr{E}(M)$
+multipliziert werden.
+Dadurch wird $\Omega^*(M)$ zu einem sogenannten {\em Modul} über
+dem Ring $\mathscr{E}(M)$.
+Wenn $f\in\mathscr{E}(M)$ eine glatte Funktion und $\omega\in\Omega^p(M)$
+eine $p$-Form ist, dann ist $f\omega\in\Omega^p(M)$ ebenfalls eine
+$p$-Form.
+Die Multiplikation mit einer glatten Funktion ändert den Grad einer
+$p$-Form nicht.
+Jeder einzelne Summand $\Omega^p(M)\subset\Omega^*(M)$ ist also für
+sich genommen ebenfalls ein $\mathscr{E}(M)$-Modul.
+Man nennt $\Omega^*(M)$ daher einen {\em graduierten} $\mathscr{E}(M)$-Modul.
+\index{graduiert}%
+\index{Modul!graduiert}%
+
+Das Wedge-Produkt der Differentialformen verknüpft eine $p$-Form
+$\alpha\in\Omega^p(M)$ mit einer $q$-Form $\beta\in\Omega^q(M)$
+zu einer $p+q$-Form $\alpha\wedge\beta\in\Omega^{p+q}(M)$.
+Die Menge $\Omega^*(M)$ hat also nicht nur die Struktur eines
+Moduls über dem Ring $\mathscr{E}(M)$ sondern auch die Struktur
+einer Algebra über dem Ring $\mathscr{E}(M)$.
+Das Produkt respektiert aber auch die Graduierung von $\Omega^*(M)$,
+daher heisst $\Omega^*(M)$ auch eine graduierte $\mathscr{E}(M)$-Algebra.
+
