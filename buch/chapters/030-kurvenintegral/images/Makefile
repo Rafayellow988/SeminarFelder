@@ -3,7 +3,12 @@
 #
 # (c) 2024 Prof Dr Andreas Müller
 #
-all:	1koordinaten.pdf loxodrome.pdf wege.pdf integrand.pdf mercator.pdf
+all:	1koordinaten.pdf						\
+	loxodrome.pdf							\
+	wege.pdf							\
+	integrand.pdf							\
+	mercator.pdf							\
+	zerlegung.pdf
 
 1koordinaten.pdf:	1koordinaten.tex
 	pdflatex 1koordinaten.tex
@@ -25,4 +30,10 @@ integrand.pdf:	integrand.tex
 
 mercator.pdf:	mercator.tex
 	pdflatex mercator.tex
+
+zerlegungpath.tex:	zerlegung.m
+	octave zerlegung.m
+
+zerlegung.pdf:	zerlegung.tex zerlegungpath.tex
+	pdflatex zerlegung.tex
 

@@ -1,0 +1,114 @@
+%
+% zerlegung.tex -- Zerlegung der Einheit
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\definecolor{farbe1}{rgb}{0.4,0.8,0.0}
+\definecolor{farbe2}{rgb}{0.0,0.8,0.4}
+\definecolor{farbe3}{rgb}{0.0,0.4,0.8}
+\definecolor{farbe4}{rgb}{0.4,0.0,0.8}
+\definecolor{farbe5}{rgb}{0.8,0.0,0.4}
+\definecolor{farbe6}{rgb}{0.8,0.4,0.0}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+\def\dy{1.2}
+\def\dx{1}
+\input{zerlegungpath.tex}
+
+\begin{scope}[yshift=12cm]
+\fill[color=farbe1!20] \psione -- (12,0) -- (0,0) -- cycle;
+\draw[color=farbe1,line width=1.2pt] \psione;
+\draw[->] (-0.1,0) -- (12.3,0) coordinate[label={$x$}];
+\draw[->] (0,-0.1) -- (0,1.5) coordinate[label={right:$h_1$}];
+%\draw (\aone,-0.05) -- ++(0,0.1);
+%\node at (\aone,0) [below] {$a_1$};
+\draw (\bone,-0.05) -- ++(0,0.1);
+\node at (\bone,0) [below] {$b_1$};
+\node[color=farbe1] at (1.2,0.6) {$h_1(x)$};
+\end{scope}
+
+\begin{scope}[yshift=10cm]
+\fill[color=farbe2!20] \psitwo -- (12,0) -- (0,0) -- cycle;
+\draw[color=farbe2,line width=1.2pt] \psitwo;
+\draw[->] (-0.1,0) -- (12.3,0) coordinate[label={$x$}];
+\draw[->] (0,-0.1) -- (0,1.5) coordinate[label={right:$h_2$}];
+\draw (\atwo,-0.05) -- ++(0,0.1);
+\node at (\atwo,0) [below] {$a_2$};
+%\draw (\btwo,-0.05) -- ++(0,0.1);
+%\node at (\btwo,0) [below] {$b_2$};
+\node[color=farbe2] at (11.2,0.6) {$h_2(x)$};
+\end{scope}
+
+\begin{scope}[yshift=8cm]
+\fill[color=farbe3!20] \psithree -- (12,0) -- (0,0) -- cycle;
+\draw[color=farbe3,line width=1.2pt] \psithree;
+\draw[->] (-0.1,0) -- (12.3,0) coordinate[label={$x$}];
+\draw[->] (0,-0.1) -- (0,1.5) coordinate[label={right:$h_3$}];
+\draw (\athree,-0.05) -- ++(0,0.1);
+\node at (\athree,0) [below] {$a_3$};
+\draw (\bthree,-0.05) -- ++(0,0.1);
+\node at (\bthree,0) [below] {$b_3$};
+\node[color=farbe3] at (3.4,0.5) {$h_3(x)$};
+\end{scope}
+
+\begin{scope}[yshift=6cm]
+\fill[color=farbe4!20] \psifour -- (12,0) -- (0,0) -- cycle;
+\draw[color=farbe4,line width=1.2pt] \psifour;
+\draw[->] (-0.1,0) -- (12.3,0) coordinate[label={$x$}];
+\draw[->] (0,-0.1) -- (0,1.5) coordinate[label={right:$h_4$}];
+\draw (\afour,-0.05) -- ++(0,0.1);
+\node at (\afour,0) [below] {$a_4$};
+\draw (\bfour,-0.05) -- ++(0,0.1);
+\node at (\bfour,0) [below] {$b_4$};
+\node[color=farbe4] at (5.6,0.4) {$h_4(x)$};
+\end{scope}
+
+\begin{scope}[yshift=4cm]
+\fill[color=farbe5!20] \psifive -- (12,0) -- (0,0) -- cycle;
+\draw[color=farbe5,line width=1.2pt] \psifive;
+\draw[->] (-0.1,0) -- (12.3,0) coordinate[label={$x$}];
+\draw[->] (0,-0.1) -- (0,1.5) coordinate[label={right:$h_5$}];
+\draw (\afive,-0.05) -- ++(0,0.1);
+\node at (\afive,0) [below] {$a_5$};
+\draw (\bfive,-0.05) -- ++(0,0.1);
+\node at (\bfive,0) [below] {$b_5$};
+\node[color=farbe5] at (8,0.4) {$h_5(x)$};
+\end{scope}
+
+\begin{scope}[yshift=2cm]
+\fill[color=farbe6!20] \psisix -- (12,0) -- (0,0) -- cycle;
+\draw[color=farbe6,line width=1.2pt] \psisix;
+\draw[->] (-0.1,0) -- (12.3,0) coordinate[label={$x$}];
+\draw[->] (0,-0.1) -- (0,1.5) coordinate[label={right:$h_6$}];
+\draw (\asix,-0.05) -- ++(0,0.1);
+\node at (\asix,0) [below] {$a_6$};
+\draw (\bsix,-0.05) -- ++(0,0.1);
+\node at (\bsix,0) [below] {$b_6$};
+\node[color=farbe6] at (9.6,0.5) {$h_6(x)$};
+\end{scope}
+
+\begin{scope}[yshift=-1cm]
+\def\dy{2.0}
+\fill[color=farbe6!40] \cpsisix -- (12,0) -- (0,0) -- cycle;
+\fill[color=farbe5!40] \cpsifive -- (12,0) -- (0,0) -- cycle;
+\fill[color=farbe4!40] \cpsifour -- (12,0) -- (0,0) -- cycle;
+\fill[color=farbe3!40] \cpsithree -- (12,0) -- (0,0) -- cycle;
+\fill[color=farbe2!40] \cpsitwo -- (12,0) -- (0,0) -- cycle;
+\fill[color=farbe1!40] \cpsione -- (12,0) -- (0,0) -- cycle;
+\draw (0,\dy) -- (12,\dy);
+\draw[->] (-0.1,0) -- (12.3,0) coordinate[label={$x$}];
+\draw[->] (0,-0.1) -- (0,2.5) coordinate[label={right:$y$}];
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+
