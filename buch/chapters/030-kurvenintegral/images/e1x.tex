@@ -1,0 +1,43 @@
+%
+% e1x.tex -- 
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\draw[->] (-3.1,0) -- (9.5,0) coordinate[label={$x$}];
+\draw[->] (0,-0.1) -- (0,3.4) coordinate[label={right:$y=g(x)$}];
+
+\draw[color=darkred,line width=1.4pt] 
+	plot[domain=3:0.1,samples=100]  ({3*\x},{3*exp(-1/\x)})
+	--
+	plot[domain=10:100,samples=100] ({3/\x},{3*exp(-\x)})
+	--
+	(0,0) -- (-3,0);
+
+\draw (-3,-0.05) -- ++(0,0.1);
+\node at (-3,0) [below] {$-1$};
+\draw (3,-0.05) -- ++(0,0.1);
+\node at (3,0) [below] {$1$};
+\draw (6,-0.05) -- ++(0,0.1);
+\node at (6,0) [below] {$2$};
+\draw (9,-0.05) -- ++(0,0.1);
+\node at (9,0) [below] {$3$};
+
+\node[color=darkred] at ({1.5*3},{3*exp(-1/1.5)})
+		[below right] {$g(x)=e^{-1/x}$};
+\node[color=darkred] at (-1.5,0) [above] {$g(x)=0$};
+
+\end{tikzpicture}
+\end{document}
+

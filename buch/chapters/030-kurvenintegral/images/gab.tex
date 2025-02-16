@@ -1,0 +1,44 @@
+%
+% gab.tex -- 
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\def\a{7.5}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\clip (-3.1,-0.4) rectangle (9.5,3.55);
+
+\fill[color=gray!20] (-3,0) rectangle (9,3.2);
+\fill[color=darkred!10] (0,0) rectangle (6,3.2);
+
+\draw[->] (-3.1,0) -- (9.3,0) coordinate[label={$x$}];
+\draw[->] (-1,-0.1) -- (-1,3.4) coordinate[label={right:$y$}];
+
+\draw[color=darkred,line width=1.4pt] (-3,0) -- (0,0)
+	--
+	plot[domain=0.01:1,samples=100] ({3*\x},{\a*3*exp(-1/\x)*exp(-1/(2-\x))})
+	--
+	plot[domain=1:0.01,samples=100] ({6-3*\x},{\a*3*exp(-1/\x)*exp(-1/(2-\x))})
+	--
+	(6,0) -- (9,0);
+
+\draw (0,-0.05) -- ++(0,0.1);
+\node at (0,0) [below] {$\mathstrut a$};
+\draw (6,-0.05) -- ++(0,0.1);
+\node at (6,0) [below] {$\mathstrut b$};
+
+\node[color=darkred] at (3,2.5) {$g_{a,b}(x)$};
+
+\end{tikzpicture}
+\end{document}
+

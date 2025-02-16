@@ -4,6 +4,8 @@
 # (c) 2024 Prof Dr Andreas Müller
 #
 all:	1koordinaten.pdf						\
+	e1x.pdf								\
+	gab.pdf								\
 	loxodrome.pdf							\
 	wege.pdf							\
 	integrand.pdf							\
@@ -36,4 +38,10 @@ zerlegungpath.tex:	zerlegung.m
 
 zerlegung.pdf:	zerlegung.tex zerlegungpath.tex
 	pdflatex zerlegung.tex
+
+e1x.pdf:	e1x.tex
+	pdflatex e1x.tex
+
+gab.pdf:	gab.tex
+	pdflatex gab.tex
 
