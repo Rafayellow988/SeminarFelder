@@ -17,7 +17,8 @@
 #include <sys/stat.h>
 
 void	usage(char *progname) {
-	std::cout << "usage: " << progname << " [ -dfh? ] [ -n number ] [ -t title ] ";
+	std::cout << "usage: " << progname;
+	std::cout << " [ -dfh? ] [ -n number ] [ -t title ] ";
 	std::cout << "<unnumbered.pdf> <numbered.pdf>" << std::endl;
 	std::cout << "options:" << std::endl;
 	std::cout << " -d,--debug         enable debug mode" << std::endl;
