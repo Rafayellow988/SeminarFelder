@@ -392,6 +392,59 @@ J^i\mathstrut_k \cdot u^k
 geschrieben werden.
 
 %
+% Tangentialvektoren als Spaltenvektoren
+%
+\subsection{Tangentialvektoren als Spaltenvektoren}
+In einem Koordinatensystem ist ein Tangentialvektor durch die Komponenten
+$u^k$ gegeben.
+Bei einem Koordinatenwechsel werden diese Komponenten mit der
+Jacobi-Matrix multipliziert.
+In Matrix-Notation wird dies als
+\[
+u^{\prime i}
+=
+\sum_{k=1}^n
+J^i\mathstrut_k \cdot u^k
+\qquad\Rightarrow\qquad
+\begin{pmatrix}
+u^{\prime 1}\\
+u^{\prime 2}\\[-2pt]
+\vdots\\
+u^{\prime n}
+\end{pmatrix}
+=
+\bgroup
+\renewcommand{\arraystretch}{1.8}
+\begin{pmatrix}
+\displaystyle\frac{\partial  g^1}{\partial y^1}&
+\displaystyle\frac{\partial  g^1}{\partial y^2}&
+\dots&
+\displaystyle\frac{\partial  g^1}{\partial y^n}
+\\[-2pt]
+%\displaystyle\frac{\partial  g^2}{\partial y^1}&
+%\displaystyle\frac{\partial  g^2}{\partial y^2}&
+%\dots&
+%\displaystyle\frac{\partial  g^2}{\partial y^n}
+%\\
+\vdots&\vdots&\ddots&\vdots\\
+\displaystyle\frac{\partial  g^n}{\partial y^1}&
+\displaystyle\frac{\partial  g^n}{\partial y^2}&
+\dots&
+\displaystyle\frac{\partial  g^n}{\partial y^n}
+\end{pmatrix}
+\egroup
+\begin{pmatrix}
+u^{1}\\
+u^{2}\\
+\vdots\\[-2pt]
+u^{n}
+\end{pmatrix}
+\]
+geschrieben.
+Tangentialvektoren sind daher als Spaltenvektoren zu betrachten.
+\index{Spaltenvektoren}%
+
+%
 % Koordinatenlinien
 %
 \subsection{Koordinatenlinien

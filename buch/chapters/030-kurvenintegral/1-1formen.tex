@@ -245,7 +245,7 @@ Formel
 \begin{equation}
 a^{\prime k}
 =
-t_i\mathstrut^k a^i
+t^k\mathstrut_i a^i
 \label{buch:kurvenintegral:1formen:linearformen:vektor}
 \end{equation}
 gegeben.
@@ -273,13 +273,15 @@ Entsprechend sind die $l'_i=l(e'_i)$ die Koeffizienten der Basis
 Bei der Koordinatentransformation soll sich der Wert $l(a)$ nicht
 ändern, es muss daher
 \[
+l(a)
+=
 l'_k
 a'^k
 =
 l'_k
-(t_i\mathstrut^k a^i)
+(t^k\mathstrut _i a^i)
 =
-(l'_kt_i\mathstrut^k) a^i
+(l'_kt^k\mathstrut_i) a^i
 =
 l_i
 a^i
@@ -288,7 +290,7 @@ sein.
 Da dies für jeden beliebigen Vektor gelten muss, müssen die Koeffizienten
 übereinstimmen und es folgt das Transformationsgesetz
 \begin{equation}
-l'_kt_i\mathstrut^k
+l'_kt^k\mathstrut_i
 =
 l_i
 \label{buch:kurvenintegral:1formen:linearformen:linearform}
@@ -301,10 +303,97 @@ Ausserdem wird über den obneren Index von summiert statt über
 den unteren wie in 
 \eqref{buch:kurvenintegral:1formen:linearformen:vektor}.
 
-Betrachtet man die Koeffizienten $t_i\mathstrut^k$ als Matrix, mit der
+Betrachtet man die Koeffizienten $t^k\mathstrut_i$ als Matrix, mit der
 die Umrechnung der Koeffizienten von $a$ erfolgt, dann ist die Matrix,
 mit der die Koeffizienten $l_k'$ umberechnet werden, die transponierte
 Matrix.
+
+%
+% Linearformen als Zeilenvektoren
+%
+\subsubsection{Linearformen als Zeilenvektoren}
+Der Wert einer Linearform $l$ auf einem Vektor $a$ kann in Komponenten
+als
+\[
+l(a) = \sum_{i=1}^n l_ia^i
+\]
+geschrieben werden.
+In der Matrixform
+\[
+l(a)
+=
+\begin{pmatrix}l_1&\dots&l_n\end{pmatrix}
+\begin{pmatrix}
+a^1\\[-2pt]
+\vdots\\
+a^n
+\end{pmatrix}
+\]
+zeigt sich, dass Linearformen als Zeilenvektoren betrachtet werden
+sollten.
+
+Das Transformationsgesetz
+\eqref{buch:kurvenintegral:1formen:linearformen:linearform}
+für Linearformen bestätigt dies.
+Schreibt man das Transformationsgesetz für die Komponenten des
+Vektors mit den Koeffizienten als
+\[
+a^{\prime i}
+=
+\sum_{k=1}^n t^i\mathstrut_k a^i
+\]
+und berechnet den Wert $l(a)$ in Koordinaten als
+\[
+l(a)
+=
+\sum_{i=1}^n l'_i a^{\prime i}
+=
+\sum_{i=1}^n
+l'_i
+\sum_{k=1}^n
+t^i\mathstrut_k a^k
+=
+\sum_{k=1}^n
+\biggl(
+\sum_{i=1}^n
+l'_i
+t^i\mathstrut_k
+\biggl)
+a^k
+=
+\sum_{k=1}^n
+l_k
+a^k.
+\]
+Man liest also ab, dass die Koeffizienten der Normalform nach dem
+Gesetz
+\[
+l_k
+=
+\sum_{i=1}^n
+l'_i
+t^i\mathstrut_k
+\]
+transformiert werden.
+In Matrixform geschrieben bedeutet dies
+\[
+\begin{pmatrix}l_1&\dots&l_n\end{pmatrix}
+=
+\begin{pmatrix}l_1'&\dots&l_n'\end{pmatrix}
+\begin{pmatrix}
+t^1\mathstrut_1 & \dots  & t^1\mathstrut_n \\[-3pt]
+\vdots          & \ddots & \vdots          \\
+t^n\mathstrut_1 & \dots  & t^n\mathstrut_n
+\end{pmatrix}.
+\]
+Die Transformation erfolgt also mit der gleichen Matrix, aber
+einerseits durch Multiplikation des Zeilenvektors von rechts
+und vor allem in der umgekehrten Richtung von den gestrichtenen
+zu den ungestrichenen Koordinaten:
+\[
+l = l' T
+\qquad\Rightarrow\qquad l' = lT^{-1}.
+\]
 
 %
 % Kovariante und kontravariante Indizes
