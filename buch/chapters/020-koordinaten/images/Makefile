@@ -59,3 +59,13 @@ parallel.jpg:	parallel.png Makefile
 parallel.pdf:	parallel.tex parallel.jpg
 	pdflatex parallel.tex
 
+tangentialvektoren.png:	tangentialvektoren.pov tangentialvektoren.inc
+	povray +A0.1 -W1920 -H1080 -Otangentialvektoren.png \
+		tangentialvektoren.pov
+
+tangentialvektoren.inc:	tangentialvektoren.m
+	octave tangentialvektoren.m
+
+tangentialvektoren.jpg:	tangentialvektoren.png Makefile
+	magick -extract 1250x1080+336+0 tangentialvektoren.png \
+		tangentialvektoren.jpg
