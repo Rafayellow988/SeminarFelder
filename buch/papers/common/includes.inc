@@ -2,6 +2,7 @@ include papers/4d/Makefile.inc
 include papers/elastomechanik/Makefile.inc
 include papers/geoalgebra/Makefile.inc
 include papers/diffortho/Makefile.inc
+include papers/fourier/Makefile.inc
 include papers/geostrophisch/Makefile.inc
 include papers/helmholtz/Makefile.inc
 include papers/mongeampere/Makefile.inc
@@ -25,6 +26,7 @@ TEXFILES = \
 	$(dependencies-elastomechanik) \
 	$(dependencies-geoalgebra) \
 	$(dependencies-diffortho) \
+	$(dependencies-fourier) \
 	$(dependencies-geostrophisch) \
 	$(dependencies-helmholtz) \
 	$(dependencies-mongeampere) \
