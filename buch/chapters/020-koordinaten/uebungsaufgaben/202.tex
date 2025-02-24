@@ -21,24 +21,25 @@ Berechnen Sie die Jacobi-Matrix von $\psi$.
 \item
 Rechnen Sie nach, dass das Produkt der beiden Matrizen die Einheitsmatrix ist.
 \end{teilaufgaben}
-\begin{figure}
-\centering
-\begin{tikzpicture}[>=latex,thick,scale=3]
-\draw[->] (-1.6,0) -- (1.7,0) coordinate[label={$x^1$}];
-\draw[->] (0,-1.3) -- (0,1.37) coordinate[label={right:$x^2$}];
-\begin{scope}
-	\clip (-1.6,-1.3) rectangle (1.6,1.3);
-	\foreach \m in {0.2,0.4,0.6,0.8,1,1.2,1.4,1.6}{
-		\draw[color=darkred] plot[domain=-1.6:1.6,samples=100]
-			({\x},{-\m*\m/2+\x*\x/(2*\m*\m)});
-		\draw[color=blue] plot[domain=-1.6:1.6,samples=100]
-			({\x},{\m*\m/2-\x*\x/(2*\m*\m)});
-	}
-\end{scope}
-\end{tikzpicture}
-\caption{Koordinatenlinien für parabolische Koordinaten
-\label{202:fig:koordinatenlinien}}
-\end{figure}
+\input{chapters/020-koordinaten/uebungsaufgaben/fig-202.tex}%
+%\begin{figure}
+%\centering
+%\begin{tikzpicture}[>=latex,thick,scale=3]
+%\draw[->] (-1.6,0) -- (1.7,0) coordinate[label={$x^1$}];
+%\draw[->] (0,-1.3) -- (0,1.37) coordinate[label={right:$x^2$}];
+%\begin{scope}
+%	\clip (-1.6,-1.3) rectangle (1.6,1.3);
+%	\foreach \m in {0.2,0.4,0.6,0.8,1,1.2,1.4,1.6}{
+%		\draw[color=darkred] plot[domain=-1.6:1.6,samples=100]
+%			({\x},{-\m*\m/2+\x*\x/(2*\m*\m)});
+%		\draw[color=blue] plot[domain=-1.6:1.6,samples=100]
+%			({\x},{\m*\m/2-\x*\x/(2*\m*\m)});
+%	}
+%\end{scope}
+%\end{tikzpicture}
+%\caption{Koordinatenlinien für parabolische Koordinaten
+%\label{202:fig:koordinatenlinien}}
+%\end{figure}
 
 \begin{hinweis}
 Berechnen Sie $(x^1)^2+(x^2)^2$.
