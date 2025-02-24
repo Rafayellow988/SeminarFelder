@@ -7,8 +7,10 @@ include papers/helmholtz/Makefile.inc
 include papers/mongeampere/Makefile.inc
 include papers/mongekant/Makefile.inc
 include papers/neuronal/Makefile.inc
+include papers/nerven/Makefile.inc
 include papers/openfoam/Makefile.inc
 include papers/particles/Makefile.inc
+include papers/parallelisierung/Makefile.inc
 include papers/poinbendix/Makefile.inc
 include papers/reaktdiff/Makefile.inc
 include papers/reynolds/Makefile.inc
@@ -16,6 +18,7 @@ include papers/rossby/Makefile.inc
 include papers/schall/Makefile.inc
 include papers/turing/Makefile.inc
 include papers/ueberschall/Makefile.inc
+include papers/wirbelringe/Makefile.inc
 
 TEXFILES = \
 	$(dependencies-4d) \
@@ -27,8 +30,10 @@ TEXFILES = \
 	$(dependencies-mongeampere) \
 	$(dependencies-mongekant) \
 	$(dependencies-neuronal) \
+	$(dependencies-nerven) \
 	$(dependencies-openfoam) \
 	$(dependencies-particles) \
+	$(dependencies-parallelisierung) \
 	$(dependencies-poinbendix) \
 	$(dependencies-reaktdiff) \
 	$(dependencies-reynolds) \
@@ -36,4 +41,5 @@ TEXFILES = \
 	$(dependencies-schall) \
 	$(dependencies-turing) \
 	$(dependencies-ueberschall) \
+	$(dependencies-wirbelringe) \
 

@@ -17,8 +17,10 @@ PAPERFILES = \
 	papers/mongeampere/main.tex \
 	papers/mongekant/main.tex \
 	papers/neuronal/main.tex \
+	papers/nerven/main.tex \
 	papers/openfoam/main.tex \
 	papers/particles/main.tex \
+	papers/parallelisierung/main.tex \
 	papers/poinbendix/main.tex \
 	papers/reaktdiff/main.tex \
 	papers/reynolds/main.tex \
@@ -26,6 +28,7 @@ PAPERFILES = \
 	papers/schall/main.tex \
 	papers/turing/main.tex \
 	papers/ueberschall/main.tex \
+	papers/wirbelringe/main.tex \
 	
 $(workdir)/buch1-blx.bbl:	$(workdir)/buch1-blx.aux
 	cd $(workdir); bibtex buch1-blx
@@ -136,10 +139,28 @@ $(workdir)/$(seminar)18-blx.bbl:	$(workdir)/$(seminar)18-blx.aux
 	cd $(workdir); bibtex $(seminar)18-blx
 
 $(workdir)/buch19-blx.bbl:	$(workdir)/buch19-blx.aux
-	cd $(workdir) bibtex buch19-blx
+	cd $(workdir); bibtex buch19-blx
 
 $(workdir)/$(seminar)19-blx.bbl:	$(workdir)/$(seminar)19-blx.aux
-	cd $(workdir) bibtex $(seminar)19-blx
+	cd $(workdir); bibtex $(seminar)19-blx
+
+$(workdir)/buch20-blx.bbl:	$(workdir)/buch20-blx.aux
+	cd $(workdir); bibtex buch20-blx
+
+$(workdir)/$(seminar)20-blx.bbl:	$(workdir)/$(seminar)20-blx.aux
+	cd $(workdir); bibtex $(seminar)20-blx
+
+$(workdir)/buch21-blx.bbl:	$(workdir)/buch21-blx.aux
+	cd $(workdir); bibtex buch21-blx
+
+$(workdir)/$(seminar)21-blx.bbl:	$(workdir)/$(seminar)21-blx.aux
+	cd $(workdir); bibtex $(seminar)21-blx
+
+$(workdir)/buch22-blx.bbl:	$(workdir)/buch22-blx.aux
+	cd $(workdir) bibtex buch22-blx
+
+$(workdir)/$(seminar)22-blx.bbl:	$(workdir)/$(seminar)22-blx.aux
+	cd $(workdir) bibtex $(seminar)22-blx
 
 BLXFILES = $(workdir)/buch.bbl \
 	$(workdir)/buch1-blx.bbl \
@@ -161,6 +182,9 @@ BLXFILES = $(workdir)/buch.bbl \
 	$(workdir)/buch17-blx.bbl \
 	$(workdir)/buch18-blx.bbl \
 	$(workdir)/buch19-blx.bbl \
+	$(workdir)/buch20-blx.bbl \
+	$(workdir)/buch21-blx.bbl \
+	$(workdir)/buch22-blx.bbl \
 
 
 SBLXFILES = $(workdir)/$(seminar).bbl\
@@ -183,6 +207,9 @@ SBLXFILES = $(workdir)/$(seminar).bbl\
 	$(workdir)/$(seminar)17-blx.bbl \
 	$(workdir)/$(seminar)18-blx.bbl \
 	$(workdir)/$(seminar)19-blx.bbl \
+	$(workdir)/$(seminar)20-blx.bbl \
+	$(workdir)/$(seminar)21-blx.bbl \
+	$(workdir)/$(seminar)22-blx.bbl \
 
 
 PAPER_DIRECTORIES = \
@@ -195,8 +222,10 @@ PAPER_DIRECTORIES = \
 	mongeampere \
 	mongekant \
 	neuronal \
+	nerven \
 	openfoam \
 	particles \
+	parallelisierung \
 	poinbendix \
 	reaktdiff \
 	reynolds \
@@ -204,6 +233,7 @@ PAPER_DIRECTORIES = \
 	schall \
 	turing \
 	ueberschall \
+	wirbelringe \
 	
 PAPER_MAKEFILEINC = \
 	papers/4d/Makefile.inc \
@@ -215,8 +245,10 @@ PAPER_MAKEFILEINC = \
 	papers/mongeampere/Makefile.inc \
 	papers/mongekant/Makefile.inc \
 	papers/neuronal/Makefile.inc \
+	papers/nerven/Makefile.inc \
 	papers/openfoam/Makefile.inc \
 	papers/particles/Makefile.inc \
+	papers/parallelisierung/Makefile.inc \
 	papers/poinbendix/Makefile.inc \
 	papers/reaktdiff/Makefile.inc \
 	papers/reynolds/Makefile.inc \
@@ -224,4 +256,5 @@ PAPER_MAKEFILEINC = \
 	papers/schall/Makefile.inc \
 	papers/turing/Makefile.inc \
 	papers/ueberschall/Makefile.inc \
+	papers/wirbelringe/Makefile.inc \
 	
