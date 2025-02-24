@@ -12,6 +12,7 @@ include papers/particles/Makefile.inc
 include papers/poinbendix/Makefile.inc
 include papers/reaktdiff/Makefile.inc
 include papers/reynolds/Makefile.inc
+include papers/rossby/Makefile.inc
 include papers/turing/Makefile.inc
 include papers/ueberschall/Makefile.inc
 
@@ -30,6 +31,7 @@ TEXFILES = \
 	$(dependencies-poinbendix) \
 	$(dependencies-reaktdiff) \
 	$(dependencies-reynolds) \
+	$(dependencies-rossby) \
 	$(dependencies-turing) \
 	$(dependencies-ueberschall) \
 
