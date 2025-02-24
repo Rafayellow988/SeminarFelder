@@ -11,6 +11,7 @@ PAPERFILES = \
 	papers/4d/main.tex \
 	papers/elastomechanik/main.tex \
 	papers/geoalgebra/main.tex \
+	papers/diffortho/main.tex \
 	papers/geostrophisch/main.tex \
 	papers/helmholtz/main.tex \
 	papers/mongeampere/main.tex \
@@ -115,10 +116,16 @@ $(workdir)/$(seminar)15-blx.bbl:	$(workdir)/$(seminar)15-blx.aux
 	cd $(workdir); bibtex $(seminar)15-blx
 
 $(workdir)/buch16-blx.bbl:	$(workdir)/buch16-blx.aux
-	cd $(workdir) bibtex buch16-blx
+	cd $(workdir); bibtex buch16-blx
 
 $(workdir)/$(seminar)16-blx.bbl:	$(workdir)/$(seminar)16-blx.aux
-	cd $(workdir) bibtex $(seminar)16-blx
+	cd $(workdir); bibtex $(seminar)16-blx
+
+$(workdir)/buch17-blx.bbl:	$(workdir)/buch17-blx.aux
+	cd $(workdir) bibtex buch17-blx
+
+$(workdir)/$(seminar)17-blx.bbl:	$(workdir)/$(seminar)17-blx.aux
+	cd $(workdir) bibtex $(seminar)17-blx
 
 BLXFILES = $(workdir)/buch.bbl \
 	$(workdir)/buch1-blx.bbl \
@@ -137,6 +144,7 @@ BLXFILES = $(workdir)/buch.bbl \
 	$(workdir)/buch14-blx.bbl \
 	$(workdir)/buch15-blx.bbl \
 	$(workdir)/buch16-blx.bbl \
+	$(workdir)/buch17-blx.bbl \
 
 
 SBLXFILES = $(workdir)/$(seminar).bbl\
@@ -156,12 +164,14 @@ SBLXFILES = $(workdir)/$(seminar).bbl\
 	$(workdir)/$(seminar)14-blx.bbl \
 	$(workdir)/$(seminar)15-blx.bbl \
 	$(workdir)/$(seminar)16-blx.bbl \
+	$(workdir)/$(seminar)17-blx.bbl \
 
 
 PAPER_DIRECTORIES = \
 	4d \
 	elastomechanik \
 	geoalgebra \
+	diffortho \
 	geostrophisch \
 	helmholtz \
 	mongeampere \
@@ -179,6 +189,7 @@ PAPER_MAKEFILEINC = \
 	papers/4d/Makefile.inc \
 	papers/elastomechanik/Makefile.inc \
 	papers/geoalgebra/Makefile.inc \
+	papers/diffortho/Makefile.inc \
 	papers/geostrophisch/Makefile.inc \
 	papers/helmholtz/Makefile.inc \
 	papers/mongeampere/Makefile.inc \
