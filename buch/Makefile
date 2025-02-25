@@ -64,16 +64,21 @@ $(workdir)/$(buch).ind:	$(workdir)/$(buch).idx
 #
 # Einzelnes Paper
 #
-paper.pdf:	paper.tex papername.tex
-	$(pdflatex) paper.tex
+paper:	paper.pdf
+paper.pdf:	$(workdir) $(workdir)/paper.pdf
 	cp $(workdir)/paper.pdf .
 
+$(workdir)/paper.pdf:	paper.tex papername.tex $(TEXFILES)
+	$(pdflatex) paper.tex
+
 papername.tex:
-	@echo "Das File papername.tex muss von Hand angelegt werden."
-	@echo "Es enthält den Namen des Kapitels, das vom File paper.tex"
-	@echo "als einzelnes Kapitel gesetzt werden soll. Konsultieren Sie"
-	@echo "die Anleitung zum Seminar."
-	@echo "Achtung: papername.tex darf nicht zum Repo hinzugefügt werden."
+	@echo "FEHLER: Das File papername.tex wurde nicht gefunden. Es muss von Hand "
+	@echo "FEHLER: angelegt werden. Es enthält den Namen des Kapitels, das vom "
+	@echo "FEHLER: File paper.tex als einzelnes Kapitel gesetzt werden soll. "
+	@echo "FEHLER: Konsultieren Sie die Anleitung zum Seminar, wo das genaue "
+	@echo "FEHLER: Format des Inhalts von papername.tex erklärt wird."
+	@echo "FEHLER: Achtung: papername.tex darf nicht zum Repo hinzugefügt werden!"
+	@exit 1
 
 #
 # This Makefile can also construct the short tests

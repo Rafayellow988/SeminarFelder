@@ -27,10 +27,6 @@ pdfauthor={Andreas Müller}
 % Bibresources for each article
 \input{papers/common/addbibresources.tex}
 
-% make sure the last index starts on an odd page
-\AtEndDocument{\clearpage\ifodd\value{page}\else\null\clearpage\fi}
-\makeindex
-
 %\pgfplotsset{compat=1.12}
 \setlength{\headheight}{15pt} % fix headheight warning
 \DeclareGraphicsRule{*}{mps}{*}{}
