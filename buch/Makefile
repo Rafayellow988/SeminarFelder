@@ -62,6 +62,20 @@ $(workdir)/$(buch).ind:	$(workdir)/$(buch).idx
 	cd $(workdir); $(makeindex) $(buch).idx
 
 #
+# Einzelnes Paper
+#
+paper.pdf:	paper.tex papername.tex
+	$(pdflatex) paper.tex
+	cp $(workdir)/paper.pdf .
+
+papername.tex:
+	@echo "Das File papername.tex muss von Hand angelegt werden."
+	@echo "Es enthält den Namen des Kapitels, das vom File paper.tex"
+	@echo "als einzelnes Kapitel gesetzt werden soll. Konsultieren Sie"
+	@echo "die Anleitung zum Seminar."
+	@echo "Achtung: papername.tex darf nicht zum Repo hinzugefügt werden."
+
+#
 # This Makefile can also construct the short tests
 #
 include test/Makefile.inc

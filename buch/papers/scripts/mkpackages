@@ -10,8 +10,10 @@ awk 'BEGIN {
 	printf("%%\n")
 	printf("%% (c) 2023 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule\n")
 	printf("%%\n")
+	counter = 13
 }
 {
+	printf("\\def\\kapitelNummer%s{%d}\n", $1, counter++)
 	printf("\\input{papers/%s/packages.tex}\n", $1)
 }' common/paperlist > common/addpackages.tex
 
