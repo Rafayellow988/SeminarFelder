@@ -75,9 +75,15 @@ papername.tex:
 	@echo "FEHLER: Das File papername.tex wurde nicht gefunden. Es muss von Hand "
 	@echo "FEHLER: angelegt werden. Es enthält den Namen des Kapitels, das vom "
 	@echo "FEHLER: File paper.tex als einzelnes Kapitel gesetzt werden soll. "
-	@echo "FEHLER: Konsultieren Sie die Anleitung zum Seminar, wo das genaue "
-	@echo "FEHLER: Format des Inhalts von papername.tex erklärt wird."
-	@echo "FEHLER: Achtung: papername.tex darf nicht zum Repo hinzugefügt werden!"
+	@echo "FEHLER: Der Name muss in der Form"
+	@echo "FEHLER: "
+	@echo "FEHLER: \\def\\papername{diffortho}"
+	@echo "FEHLER: "
+	@echo "FEHLER: eingegeben werden, damit das Paper 'diffortho' gebaut wird."
+	@echo "FEHLER: Konsultieren Sie die Anleitung zum Seminar, Abschnitt 4.2,"
+	@echo "FEHLER: für Details."
+	@echo "FEHLER: Achtung: Ihr persöhnliches papername.tex darf nicht zum "
+	@echo "FEHLER:          Repo hinzugefügt werden!"
 	@exit 1
 
 #
