@@ -1,0 +1,15 @@
+/*
+ kugel.maxima
+ */
+y1: r*sin(theta)*cos(phi);
+y2: r*sin(theta)*sin(phi);
+y3: r*cos(theta);
+J: matrix(
+	[ diff(y1, theta), diff(y1, phi), diff(y1, r) ],
+	[ diff(y2, theta), diff(y2, phi), diff(y2, r) ],
+	[ diff(y3, theta), diff(y3, phi), diff(y3, r) ]
+);
+J: ratsimp(J);
+P: ratsimp(transpose(J).J);
+trigsimp(P);
+

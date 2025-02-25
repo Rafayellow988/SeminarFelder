@@ -65,11 +65,24 @@ $(workdir)/$(buch).ind:	$(workdir)/$(buch).idx
 # Einzelnes Paper
 #
 paper:	paper.pdf
+
 paper.pdf:	$(workdir) $(workdir)/paper.pdf
 	cp $(workdir)/paper.pdf .
 
-$(workdir)/paper.pdf:	paper.tex papername.tex $(TEXFILES)
+$(workdir)/paper.pdf:	paper.tex papername.tex $(workdir)/paper.ind $(TEXFILES) $(workdir)/paper1-blx.bbl
 	$(pdflatex) paper.tex
+	cd $(workdir); $(bibtex) paper
+
+$(workdir)/paper1-blx.bbl:       $(workdir)/paper1-blx.aux
+	cd $(workdir); bibtex paper1-blx
+
+$(workdir)/paper.ind:	$(workdir) $(workdir)/paper.idx
+	cd $(workdir); $(makeindex) paper.idx
+
+$(workdir)/paper.idx:	$(workdir) paper.tex $(TEXFILES) images
+	$(touch) $(workdir)/paper.ind
+	$(pdflatex) paper.tex
+
 
 papername.tex:
 	@echo "FEHLER: Das File papername.tex wurde nicht gefunden. Es muss von Hand "

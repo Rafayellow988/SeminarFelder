@@ -9,4 +9,159 @@
 \section{Der Laplace-Operator
 \label{diffortho:section:laplace}}
 \kopfrechts{Der Laplace-Operator}
+Mit  der Darstellung der partiellen Ableitung nach den kartesischen
+Koordinaten $y^k$ durch die Koordinaten kann jetzt auch durch die
+partiellen Ableitungen nach den neuen Koordinaten $x^i$ ausgedrückt
+werden.
+Der Laplace-Operator in kartesischen Koordinaten ist
+\index{Laplace-Operator}%
+\[
+\Delta
+=
+\frac{\partial^2}{\partial (y^1)^2}
++
+\dots
++
+\frac{\partial^2}{\partial (y^n)^2}
+=
+\sum_{k=1}^n
+\frac{\partial^2}{\partial (y^k)^2}
+=
+\sum_{k=1}^n
+\frac{\partial}{\partial y^k}
+\frac{\partial}{\partial y^k}.
+\]
+Mit \eqref{diffortho:eqn:1ordnung} kann man die Ableitungen nach
+den $y^k$ durch Ableitungen nach den $x^i$ ausdrücken:
+\begin{align}
+\Delta
+&=
+\sum_{k=1}^n
+\biggl(
+\sum_{i=1}^n
+{\tilde J}^i\mathstrut_k
+\frac{\partial}{\partial x^i}
+\biggr)
+\biggl(
+\sum_{j=1}^n
+{\tilde J}^j\mathstrut_k
+\frac{\partial}{\partial x^j}
+\biggr)
+\notag
+\\
+&=
+\sum_{k,i,j=1}^n
+{\tilde J}^i\mathstrut_k
+\frac{\partial}{\partial x^i}
+{\tilde J}^j\mathstrut_k
+\frac{\partial}{\partial x^j}.
+\notag
+\intertext{Der erste partielle Differentialoperator wirkt auf alles,
+was rechts von ihm steht.
+Für die Ableitung des Produktes von $\tilde{J}^j\mathstrut_k$ mit
+dem zweiten Differentialoperator ist daher die Produktregel zu verwenden.
+Es entstehen zwei Terme, im ersten Term wird $\tilde{J}^j\mathstrut_k$
+nach $x^i$ abgeleitet und es bleibt ein Differentialoperator erster
+Ordnung stehen.
+Im zweiten Term bleiben alle zweiten Ableitungen erhalten:
+}
+&=
+\sum_{k,i,j=1}^n
+{\tilde J}^i\mathstrut_k
+\biggl(
+\frac{\partial \tilde{J}^j\mathstrut_k}{\partial x^i}
+\frac{\partial}{\partial x^j}
++
+{\tilde J}^j\mathstrut_k
+\frac{\partial^2}{\partial x^i\,\partial x^j}
+\biggr)
+\notag
+\\
+&=
+\sum_{k,i,j=1}^n
+{\tilde J}^i\mathstrut_k
+\frac{\partial \tilde{J}^j\mathstrut_k}{\partial x^i}
+\frac{\partial}{\partial x^j}
++
+\sum_{k,i,j=1}^n
+{\tilde J}^i\mathstrut_k
+{\tilde J}^j\mathstrut_k
+\frac{\partial^2}{\partial x^i\,\partial x^j}
+\label{diffortho:eqn:laplaceterme}
+\end{align}
+Die Koeffizienten in der zweiten Summe von
+\eqref{diffortho:eqn:laplaceterme}
+sind die die Skalarprodukte
+der Spalten von $\tilde{J}$, die wie die Spalten von $J$ orthogonal
+sind.
+Aus
+\eqref{diffortho:eqn:Jij}
+folgt, dass die Koeffizienten der zweiten Ableitungen die quadrierten
+Kehrwerte der metrischen Faktoren $h_i(x)$ sind.
+
+Der zweite Term von
+\eqref{diffortho:eqn:laplaceterme}
+ist
+\begin{equation}
+\sum_{i=1}^n \frac{1}{h_i(x)^2}\frac{\partial^2}{\partial (x^i)^2}.
+\label{diffortho:eqn:2abl}
+\end{equation}
+Wir können daraus bereits schliessen, dass im Laplace-Operator
+ausgedrückt in $x^i$-Koordinaten keine gemischten zweiten Ableitungen
+vorkommen.
+
+Die Symbolmatrix $A$ eines Differentialoperators besteht aus den
+Koeffizienten der zweiten Ableitungen.
+Die Gleichung \eqref{diffortho:eqn:2abl} enthält alle Operatoren zweiter
+Ordnung im Laplace-Operator, die Symbolmatrix hat daher die Form
+\begin{equation}
+A
+=
+\tilde{J}\tilde{J}^t
+=
+\begin{pmatrix}
+h_1(x)^{-2} & \dots  & 0          \\
+\vdots      & \ddots & \vdots     \\[-2pt]
+0           & \dots  & h_n(x)^{-2}
+\end{pmatrix}.
+\label{diffortho:eqn:symbolmatrix}
+\end{equation}
+Ein Operator heisst {\em elliptisch}, wenn alle Eigenwerte der
+Symbolmatrix das gleiche Vorzeichen haben.
+Aus der Diagonalform \eqref{diffortho:eqn:symbolmatrix} der Symbolmatrix
+kann man die Eigenwerte sofort ablesen, sie sind
+\[
+\lambda_i
+=
+\frac{1}{h_i(x)^2}
+>
+0.
+\]
+Der Laplace-Operator ist also wie es sein muss elliptisch.
+
+%In der erste Summe von
+%\eqref{diffortho:eqn:laplaceterme}
+%wird nur der zweite Faktor abgeleitet.
+%Durch Anwendung der Produktregel kann ihn auch als
+%\begin{align*}
+%\sum_{k,i,j=1}^n
+%{\tilde J}^i\mathstrut_k
+%\frac{\partial \tilde{J}^j\mathstrut_k}{\partial x^i}
+%\frac{\partial}{\partial x^j}
+%&=
+%\sum_{k,i,j=1}^n
+%\tilde{J}^i\mathstrut_k
+%\frac{\partial(\tilde{J}^i\mathstrut_k\tilde{J}^j\mathstrut_k)}{\partial x^i}
+%\frac{\partial}{\partial x^j}
+%-
+%\sum_{k,i,j=1}^n
+%\frac{\partial \tilde{J}^i\mathstrut_k}{\partial x^i}
+%\tilde{J}^j\mathstrut_k
+%\frac{\partial}{\partial x^j}
+%\end{align*}
+%geschrieben werden.
+
+%\begin{beispiel}
+%\end{beispiel}
+
 

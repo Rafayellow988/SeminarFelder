@@ -49,6 +49,9 @@ $(workdir)/buch.bbl:		build/buch.aux
 $(workdir)/$(seminar).bbl:		build/$(seminar).aux
 	cd build; bibtex $(seminar)
 
+$(workdir)/paper.bbl:		build/paper.aux
+	cd build; bibtex paper
+
 clean:	cleansubdir
 	rm -f *.bbl *.aux *.log *.out *.run.xml *.pdf *.blg *.idx *.ind \
 		*.ilg *.toc *.synctex.gz *.auxlock *.bak *-blx.bib *.dvi

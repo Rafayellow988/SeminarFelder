@@ -9,4 +9,86 @@
 \section{Operatoren erster Ordnung
 \label{diffortho:section:ersteordnung}}
 \kopfrechts{Operatoren erster Ordnung}
+In diesem Abschnitt gehen wir von einer Koordinatentransformation
+\[
+y^k
+=
+y^k(x^1,\dots,x^n)
+\]
+aus, die orthogonale Koordinaten $(x^1,\dots,x^n)$ in die kartesischen
+Koordinaten $(y^1,\dots,y^n)$ transformiert.
+
+Die partiellen Ableitungsoperatoren
+\begin{align*}
+\frac{\partial f}{\partial x^i}
+&=
+\sum_{k=1}^n
+\frac{\partial y^k}{\partial x^i}\frac{\partial f}{\partial y^k}
+\\
+\Rightarrow
+\qquad
+\frac{\partial}{\partial x^i}
+&=
+\sum_{k=1}^n
+\frac{\partial y^k}{\partial x^i}\frac{\partial}{\partial y^k}
+=
+\sum_{k=1}^n
+J^k\mathstrut_i \frac{\partial}{\partial y^k}
+\end{align*}
+werden mit der Jacobi-Matrix transformiert.
+Im nächsten Abschnitt möchten wir den Laplace-Operator in den
+$x^i$-Koordinaten ausdrücken.
+Dazu müssen wir die Ableitungen $\partial/\partial y^k$ durch die
+$\partial/\partial x^i$ ausdrücken.
+Die Transformation muss daher in der umgekehrten Richtung als
+\begin{align}
+\frac{\partial}{\partial y^k}
+&=
+\sum_{i=1}^n
+{\tilde J}^i\mathstrut_k
+\frac{\partial}{\partial x^i},
+\label{diffortho:eqn:1ordnung}
+\end{align}
+wobei $\tilde{J}^i\mathstrut_k$ die Einträge der Inversen der
+Jacobi-Matrix sind.
+
+In der klassischen Vektorgeometrie werden die Operatoren der
+Divergenz, des Gradienten und der Rotation definiert.
+Die Formel \eqref{diffortho:eqn:1ordnung} ermöglicht, diese
+Operatoren in beliebigen Koordinaten zu schreiben.
+Allerdings hat das Kapitel~\ref{chapter:pformen} gezeigt, dass
+diese Definitionen vom Skalarprodukt abhängig sind und
+man daher besser mit $p$-Formen arbeiten sollte.
+Formal lassen sich die Formeln für diese Operatoren durch
+Einsetzen der Operatoren \eqref{diffortho:eqn:1ordnung} in die
+definierenden Formeln in kartesischen Koordinaten einsetzen.
+Da dies nur von begrenztem Nutzen ist, wird statt der ausführlichen
+Rechnung auf die Resulate in \cite{diffortho:ref:wikipedia} verwiesen.
+
+Für später berechnen wir das Produkt
+\begin{align*}
+\sum_{k=1}^n \tilde{J}^i\mathstrut_k \tilde{J}^j\mathstrut_k
+&=
+(\tilde{J}\tilde{J}^t)_{ij}.
+\end{align*}
+Da $\tilde{J}$ die Inverse von $J$ ist, kann man 
+\[
+\tilde{J}\tilde{J}^t
+=
+J^{-1}(J^{-1})^t
+=
+J^{-1}(J^t)^{-1}
+=
+(J^tJ)^{-1}
+\]
+rechnen.
+Auch diese Matrix ist eine Diagonalmatrix und
+wir können schliessen, dass
+\begin{equation}
+\sum_{k=1}^n \tilde{J}^i\mathstrut_k \tilde{J}^j\mathstrut_k
+=
+\frac{\delta_{ij}}{h_i(x)^2}
+\label{diffortho:eqn:Jij}
+\end{equation}
+ist.
 
