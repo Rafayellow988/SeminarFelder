@@ -11,6 +11,29 @@
 \begin{refsection}
 \chapterauthor{Roman Cvijanovic, Nicola Dall'Acqua}
 
+\section{Themenbeschreibung}
+\textbf{Struktur des Papers}
+\begin{enumerate}
+    \item Methode zum Lösen von Feldgleichungen mit neuronalen Netzen (NNs) theoretisch herleiten
+    \item Methode anhand einer bestimmten Feldgleichung demonstrieren (praktisch)
+    \item Weitere Anwendungsmöglichkeiten kurz vorstellen\newline
+\end{enumerate}
+
+\textbf{Praktischer Teil}
+
+Wir würden die Wellengleichung mit einem NN lösen
+\begin{equation}
+    \frac{\partial^2 u}{\partial t^2} = c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right)
+\end{equation}
+
+
+Wobei \( u(x, y, t) \) die z-Koordinate am Punkt \( (x, y) \) zum Zeitpunkt \( t \) darstellt.
+
+Mit dem neuronalen Netz \^{u} wird diese Funktion approximiert.\newline
+
+Mittels entsprechenden Initialbedingungen der Gleichung könnten, durch das NN, Wellen auf Wasser modelliert werden.
+Somit würde unsere Arbeit ein visuelles Resultat erzielen.\newline
+
 Ein paar Hinweise für die korrekte Formatierung des Textes
 \begin{itemize}
 \item
