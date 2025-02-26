@@ -8,6 +8,13 @@ buch.idx
 buch.run.xml
 buch.toc
 buch.synctex.gz
+paper-blx.bib
+paper.bbl
+paper.blg
+paper.idx
+paper.run.xml
+paper.toc
+paper.synctex.gz
 publish
 *.swp
 papername.tex
