@@ -828,13 +828,33 @@ INPUT .\common\macros.tex
 INPUT .\common\macros.tex
 INPUT common\macros.tex
 INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\t1xb.tfm
-OUTPUT buch.toc
+INPUT .\buch.toc
+INPUT .\buch.toc
+INPUT buch.toc
+INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\t1xr.tfm
+INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\t1xb.tfm
+INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\t1xb.tfm
 INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\vf\public\txfonts\t1xb.vf
 INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxptmb.tfm
 INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxb.tfm
+INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\vf\public\txfonts\t1xb.vf
+INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxptmb.tfm
+INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxb.tfm
+INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\vf\public\txfonts\t1xb.vf
+INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxptmb.tfm
+INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxb.tfm
+INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\vf\public\txfonts\txr.vf
+INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\vf\public\txfonts\txmi.vf
+INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxmi.tfm
+INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxptmri.tfm
+INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\vf\public\txfonts\txr.vf
+INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxptmr.tfm
+INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxr.tfm
+OUTPUT buch.toc
 INPUT .\chapters\part1.tex
 INPUT .\chapters\part1.tex
 INPUT chapters\part1.tex
+INPUT buch1-blx.aux
 OUTPUT buch1-blx.aux
 INPUT .\chapters\vorwort.tex
 INPUT .\chapters\vorwort.tex
@@ -876,13 +896,7 @@ INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\tex\latex\txfonts\t1tx
 INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\tex\latex\txfonts\t1txtt.fd
 INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\tex\latex\txfonts\t1txtt.fd
 INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\t1xtt.tfm
-INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\t1xb.tfm
 INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\vf\public\txfonts\t1xr.vf
-INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxptmr.tfm
-INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxr.tfm
-INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\vf\public\txfonts\t1xb.vf
-INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxptmb.tfm
-INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxb.tfm
 INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\vf\public\txfonts\t1xr.vf
 INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxptmr.tfm
 INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxr.tfm
@@ -917,7 +931,6 @@ INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\vf\public\txfont
 INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxptmr.tfm
 INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxr.tfm
 INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\vf\public\txfonts\t1xi.vf
-INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxptmri.tfm
 INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxi.tfm
 INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\tcxr.tfm
 INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\tcxr.tfm
@@ -934,9 +947,6 @@ INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfon
 INPUT .\chapters\000-einleitung\3-buch.tex
 INPUT .\chapters\000-einleitung\3-buch.tex
 INPUT chapters\000-einleitung\3-buch.tex
-INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\vf\public\txfonts\txmi.vf
-INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxmi.tfm
-INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\vf\public\txfonts\txr.vf
 INPUT .\chapters\000-einleitung\fig\fig-kruemmung.tex
 INPUT .\chapters\000-einleitung\fig\fig-kruemmung.tex
 INPUT chapters\000-einleitung\fig\fig-kruemmung.tex
@@ -970,12 +980,6 @@ INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\vf\public\txfont
 INPUT .\chapters\010-fallstudie\1-temperatur.tex
 INPUT .\chapters\010-fallstudie\1-temperatur.tex
 INPUT chapters\010-fallstudie\1-temperatur.tex
-INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\t1xr.tfm
-INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\t1xb.tfm
-INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\vf\public\txfonts\t1xb.vf
-INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxptmb.tfm
-INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxb.tfm
-INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\vf\public\txfonts\txr.vf
 INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\t1xr.tfm
 INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\vf\public\txfonts\txmi.vf
 INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxmi.tfm
@@ -1363,10 +1367,6 @@ INPUT .\chapters\040-green\images\homotopie.pdf
 INPUT .\chapters\040-green\uebungsaufgaben\\401.tex
 INPUT .\chapters\040-green\uebungsaufgaben\\401.tex
 INPUT chapters\040-green\uebungsaufgaben\\401.tex
-INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\t1xb.tfm
-INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\vf\public\txfonts\t1xb.vf
-INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxptmb.tfm
-INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxb.tfm
 INPUT .\chapters\050-gauss\chapter.tex
 INPUT .\chapters\050-gauss\chapter.tex
 INPUT chapters\050-gauss\chapter.tex
@@ -1558,6 +1558,7 @@ INPUT papers\common\addpapers.tex
 INPUT .\papers\4d\main.tex
 INPUT .\papers\4d\main.tex
 INPUT papers\4d\main.tex
+INPUT buch2-blx.aux
 OUTPUT buch2-blx.aux
 INPUT .\papers\4d\teil0.tex
 INPUT .\papers\4d\teil0.tex
@@ -1577,6 +1578,7 @@ INPUT papers\4d\teil3.tex
 INPUT .\papers\elastomechanik\main.tex
 INPUT .\papers\elastomechanik\main.tex
 INPUT papers\elastomechanik\main.tex
+INPUT buch3-blx.aux
 OUTPUT buch3-blx.aux
 INPUT .\papers\elastomechanik\teil0.tex
 INPUT .\papers\elastomechanik\teil0.tex
@@ -1593,6 +1595,7 @@ INPUT papers\elastomechanik\teil3.tex
 INPUT .\papers\geoalgebra\main.tex
 INPUT .\papers\geoalgebra\main.tex
 INPUT papers\geoalgebra\main.tex
+INPUT buch4-blx.aux
 OUTPUT buch4-blx.aux
 INPUT .\papers\geoalgebra\teil0.tex
 INPUT .\papers\geoalgebra\teil0.tex
@@ -1609,6 +1612,7 @@ INPUT papers\geoalgebra\teil3.tex
 INPUT .\papers\diffortho\main.tex
 INPUT .\papers\diffortho\main.tex
 INPUT papers\diffortho\main.tex
+INPUT buch5-blx.aux
 OUTPUT buch5-blx.aux
 INPUT .\papers\diffortho\teil0.tex
 INPUT .\papers\diffortho\teil0.tex
@@ -1643,6 +1647,7 @@ INPUT papers\diffortho\teil2.tex
 INPUT .\papers\fourier\main.tex
 INPUT .\papers\fourier\main.tex
 INPUT papers\fourier\main.tex
+INPUT buch6-blx.aux
 OUTPUT buch6-blx.aux
 INPUT .\papers\fourier\teil0.tex
 INPUT .\papers\fourier\teil0.tex
@@ -1659,6 +1664,7 @@ INPUT papers\fourier\teil3.tex
 INPUT .\papers\geostrophisch\main.tex
 INPUT .\papers\geostrophisch\main.tex
 INPUT papers\geostrophisch\main.tex
+INPUT buch7-blx.aux
 OUTPUT buch7-blx.aux
 INPUT .\papers\geostrophisch\teil0.tex
 INPUT .\papers\geostrophisch\teil0.tex
@@ -1675,6 +1681,7 @@ INPUT papers\geostrophisch\teil3.tex
 INPUT .\papers\helmholtz\main.tex
 INPUT .\papers\helmholtz\main.tex
 INPUT papers\helmholtz\main.tex
+INPUT buch8-blx.aux
 OUTPUT buch8-blx.aux
 INPUT .\papers\helmholtz\teil0.tex
 INPUT .\papers\helmholtz\teil0.tex
@@ -1691,6 +1698,7 @@ INPUT papers\helmholtz\teil3.tex
 INPUT .\papers\mongeampere\main.tex
 INPUT .\papers\mongeampere\main.tex
 INPUT papers\mongeampere\main.tex
+INPUT buch9-blx.aux
 OUTPUT buch9-blx.aux
 INPUT .\papers\mongeampere\teil0.tex
 INPUT .\papers\mongeampere\teil0.tex
@@ -1707,6 +1715,7 @@ INPUT papers\mongeampere\teil3.tex
 INPUT .\papers\mongekant\main.tex
 INPUT .\papers\mongekant\main.tex
 INPUT papers\mongekant\main.tex
+INPUT buch10-blx.aux
 OUTPUT buch10-blx.aux
 INPUT .\papers\mongekant\teil0.tex
 INPUT .\papers\mongekant\teil0.tex
@@ -1723,6 +1732,7 @@ INPUT papers\mongekant\teil3.tex
 INPUT .\papers\neuronal\main.tex
 INPUT .\papers\neuronal\main.tex
 INPUT papers\neuronal\main.tex
+INPUT buch11-blx.aux
 OUTPUT buch11-blx.aux
 INPUT .\papers\neuronal\teil0.tex
 INPUT .\papers\neuronal\teil0.tex
@@ -1739,6 +1749,7 @@ INPUT papers\neuronal\teil3.tex
 INPUT .\papers\nerven\main.tex
 INPUT .\papers\nerven\main.tex
 INPUT papers\nerven\main.tex
+INPUT buch12-blx.aux
 OUTPUT buch12-blx.aux
 INPUT .\papers\nerven\teil0.tex
 INPUT .\papers\nerven\teil0.tex
@@ -1755,6 +1766,7 @@ INPUT papers\nerven\teil3.tex
 INPUT .\papers\openfoam\main.tex
 INPUT .\papers\openfoam\main.tex
 INPUT papers\openfoam\main.tex
+INPUT buch13-blx.aux
 OUTPUT buch13-blx.aux
 INPUT .\papers\openfoam\teil0.tex
 INPUT .\papers\openfoam\teil0.tex
@@ -1771,6 +1783,7 @@ INPUT papers\openfoam\teil3.tex
 INPUT .\papers\particles\main.tex
 INPUT .\papers\particles\main.tex
 INPUT papers\particles\main.tex
+INPUT buch14-blx.aux
 OUTPUT buch14-blx.aux
 INPUT .\papers\particles\teil0.tex
 INPUT .\papers\particles\teil0.tex
@@ -1787,6 +1800,7 @@ INPUT papers\particles\teil3.tex
 INPUT .\papers\parallelisierung\main.tex
 INPUT .\papers\parallelisierung\main.tex
 INPUT papers\parallelisierung\main.tex
+INPUT buch15-blx.aux
 OUTPUT buch15-blx.aux
 INPUT .\papers\parallelisierung\teil0.tex
 INPUT .\papers\parallelisierung\teil0.tex
@@ -1803,6 +1817,7 @@ INPUT papers\parallelisierung\teil3.tex
 INPUT .\papers\poinbendix\main.tex
 INPUT .\papers\poinbendix\main.tex
 INPUT papers\poinbendix\main.tex
+INPUT buch16-blx.aux
 OUTPUT buch16-blx.aux
 INPUT .\papers\poinbendix\teil0.tex
 INPUT .\papers\poinbendix\teil0.tex
@@ -1819,6 +1834,7 @@ INPUT papers\poinbendix\teil3.tex
 INPUT .\papers\reaktdiff\main.tex
 INPUT .\papers\reaktdiff\main.tex
 INPUT papers\reaktdiff\main.tex
+INPUT buch17-blx.aux
 OUTPUT buch17-blx.aux
 INPUT .\papers\reaktdiff\teil0.tex
 INPUT .\papers\reaktdiff\teil0.tex
@@ -1835,6 +1851,7 @@ INPUT papers\reaktdiff\teil3.tex
 INPUT .\papers\reynolds\main.tex
 INPUT .\papers\reynolds\main.tex
 INPUT papers\reynolds\main.tex
+INPUT buch18-blx.aux
 OUTPUT buch18-blx.aux
 INPUT .\papers\reynolds\teil0.tex
 INPUT .\papers\reynolds\teil0.tex
@@ -1851,6 +1868,7 @@ INPUT papers\reynolds\teil3.tex
 INPUT .\papers\rossby\main.tex
 INPUT .\papers\rossby\main.tex
 INPUT papers\rossby\main.tex
+INPUT buch19-blx.aux
 OUTPUT buch19-blx.aux
 INPUT .\papers\rossby\teil0.tex
 INPUT .\papers\rossby\teil0.tex
@@ -1867,6 +1885,7 @@ INPUT papers\rossby\teil3.tex
 INPUT .\papers\schall\main.tex
 INPUT .\papers\schall\main.tex
 INPUT papers\schall\main.tex
+INPUT buch20-blx.aux
 OUTPUT buch20-blx.aux
 INPUT .\papers\schall\teil0.tex
 INPUT .\papers\schall\teil0.tex
@@ -1883,6 +1902,7 @@ INPUT papers\schall\teil3.tex
 INPUT .\papers\turing\main.tex
 INPUT .\papers\turing\main.tex
 INPUT papers\turing\main.tex
+INPUT buch21-blx.aux
 OUTPUT buch21-blx.aux
 INPUT .\papers\turing\teil0.tex
 INPUT .\papers\turing\teil0.tex
@@ -1899,6 +1919,7 @@ INPUT papers\turing\teil3.tex
 INPUT .\papers\ueberschall\main.tex
 INPUT .\papers\ueberschall\main.tex
 INPUT papers\ueberschall\main.tex
+INPUT buch22-blx.aux
 OUTPUT buch22-blx.aux
 INPUT .\papers\ueberschall\teil0.tex
 INPUT .\papers\ueberschall\teil0.tex
@@ -1915,6 +1936,7 @@ INPUT papers\ueberschall\teil3.tex
 INPUT .\papers\wirbelringe\main.tex
 INPUT .\papers\wirbelringe\main.tex
 INPUT papers\wirbelringe\main.tex
+INPUT buch23-blx.aux
 OUTPUT buch23-blx.aux
 INPUT .\papers\wirbelringe\teil0.tex
 INPUT .\papers\wirbelringe\teil0.tex
@@ -1929,6 +1951,7 @@ INPUT .\papers\wirbelringe\teil3.tex
 INPUT .\papers\wirbelringe\teil3.tex
 INPUT papers\wirbelringe\teil3.tex
 INPUT buch.aux
+INPUT buch.run.xml
 OUTPUT buch.run.xml
 INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\type1\public\rsfs\rsfs10.pfb
 INPUT C:\Users\Tobias Zuber\AppData\Local\Programs\MiKTeX\fonts\type1\public\rsfs\rsfs10.pfb
