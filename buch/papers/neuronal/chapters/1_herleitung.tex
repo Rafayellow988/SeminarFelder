@@ -1,0 +1,25 @@
+%
+% 1_herleitung.tex -- Herleitung der Methode
+%
+% (c) 2025 Roman Cvijanovic & Nicola Dall'Acqua, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+
+\section{Herleitung der Methode\label{neuronal:section:herleitung}}
+\kopfrechts{Herleitung der Methode}
+
+Im Folgenden wird die Methode zum Lösen von Feldgleichungen mittels neuronaler Netze theoretisch hergeleitet.
+Dies wird anhand des Beispiels der Wellengleichung gemacht
+\begin{equation}
+    \frac{\partial^2 u}{\partial t^2} = c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right)
+\end{equation}
+
+
+Wobei \( u(x, y, t) \) die z-Koordinate am Punkt \( (x, y) \) zum Zeitpunkt \( t \) darstellt.
+Anders ausgedrückt ist \( u \) eine gewellte Oberfläche.
+
+Mittels des neuronalen Netzes \( \hat{u}(x, y, t; \theta) \) kann diese Funktion approximiert werden.\newline
+
+

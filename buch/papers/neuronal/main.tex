@@ -11,29 +11,15 @@
 \begin{refsection}
 \chapterauthor{Roman Cvijanovic, Nicola Dall'Acqua}
 
-\section{Themenbeschreibung}
-\textbf{Struktur des Papers}
-\begin{enumerate}
-    \item Methode zum Lösen von Feldgleichungen mit neuronalen Netzen (NNs) theoretisch herleiten
-    \item Methode anhand einer bestimmten Feldgleichung demonstrieren (praktisch)
-    \item Weitere Anwendungsmöglichkeiten kurz vorstellen\newline
-\end{enumerate}
+Die Dynamik von Feldern, also die raum-zeitliche Änderung der Feldgröße, wird mittels Feldgleichungen beschrieben.
+Feldgleichungen sind partielle Differentialgleichungen und ihre Lösungen sind Funktionen.
+Diese Funktionen, von Raum und Zeit, entsprechen direkt dem jeweiligen Feld.
+Insofern ist das Lösen dieser Gleichungen von hoher Bedeutung in der Feldtheorie.
+Da es generell nicht möglich ist eine explizite Lösung für partielle Differentialgleichungen zu finden, müssen Lösungen approximiert werden.
 
-\textbf{Praktischer Teil}
+Hierzu gibt es diverse Approximationsverfahren.
+Innerhalb dieses Papers soll eine Methode - nämlich Lösungen mittels neuronaler Netze - vorgestellt werden.\newline
 
-Wir würden die Wellengleichung mit einem NN lösen
-\begin{equation}
-    \frac{\partial^2 u}{\partial t^2} = c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right)
-\end{equation}
-
-
-Wobei \( u(x, y, t) \) die z-Koordinate am Punkt \( (x, y) \) zum Zeitpunkt \( t \) darstellt.
-Anders ausgedrückt ist \( u \) eine gewellte Oberfläche.
-
-Mittels eines neuronalen Netzes \( \hat{u}(x, y, t; \theta) \) kann diese Funktion approximiert werden.\newline
-
-Durch entsprechende Initialbedingungen der Gleichung könnten, durch das NN, Wellen auf Wasser modelliert werden.
-Somit würde unsere Arbeit ein visuelles Resultat erzielen.\newline
 
 Ein paar Hinweise für die korrekte Formatierung des Textes
 \begin{itemize}
@@ -54,6 +40,13 @@ Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
 Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
 \end{itemize}
 
+\input{papers/neuronal/chapters/1_herleitung.tex}
+\input{papers/neuronal/chapters/2_beispiel.tex}
+\input{papers/neuronal/chapters/3_weiteres.tex}
+
+
+%%%     Keep these files for now
+%%%     They contain stuff like how to reference equations or chapters
 \input{papers/neuronal/teil0.tex}
 \input{papers/neuronal/teil1.tex}
 \input{papers/neuronal/teil2.tex}
