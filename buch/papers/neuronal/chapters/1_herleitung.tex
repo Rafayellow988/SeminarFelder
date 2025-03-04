@@ -10,16 +10,51 @@
 \section{Herleitung der Methode\label{neuronal:section:herleitung}}
 \kopfrechts{Herleitung der Methode}
 
-Im Folgenden wird die Methode zum Lösen von Feldgleichungen mittels neuronaler Netze theoretisch hergeleitet.
+Im Folgenden wird die Methode zum Lösen von Feldgleichungen mittels eines neuronalen Netzes theoretisch hergeleitet.
 Dies wird anhand des Beispiels der Wellengleichung gemacht
 \begin{equation}
     \frac{\partial^2 u}{\partial t^2} = c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right)
+    \label{neuronal:wellengleichung}
 \end{equation}
 
-
 Wobei \( u(x, y, t) \) die z-Koordinate am Punkt \( (x, y) \) zum Zeitpunkt \( t \) darstellt.
-Anders ausgedrückt ist \( u \) eine gewellte Oberfläche.
+Anders ausgedrückt ist \( u \) eine gewellte Oberfläche. Zudem ist \( c \in \mathbb{R} \) eine Konstante und stellt die Verbreitungsgeschwindigkeit der Welle dar.
 
-Mittels des neuronalen Netzes \( \hat{u}(x, y, t; \theta) \) kann diese Funktion approximiert werden.\newline
+Weiter sei das neuronale Netzwerk gegeben als
+\begin{equation}
+    \hat{u}(x, y, t; \theta)
+    \label{neuronal:nn}
+\end{equation}
+Das Netz hängt von den gleichen Variablen ab wie \( u \).
+Zusätzlich besitzt es einen Vektor \( \theta \in \mathbb{R}^n \) der n \emph{trainierbaren Parameter}.
+Das Ziel des Trainings eines neuronalen Netzes ist es, diese Parameter so zu wählen, dass das Netz die gesuchte Funktion (hier \( u \)) möglichst gut approximiert.
 
+
+\subsection{Formulierung als Optimierungsproblem}\label{neuronal:subsection:optimierungsproblem}
+Durch Subtrahieren der rechten Seite von der Wellengleichung \eqref{neuronal:wellengleichung} erhält man
+\begin{equation}
+    \frac{\partial^2 u}{\partial t^2} - c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right) = 0
+\end{equation}
+Substituiert man nun das neuronale Netz \eqref{neuronal:nn} für \( u \) und quadriert anschliessend, lässt sich das Training des Netzes als Optimierungsproblem formulieren:\newline
+
+Wähle \( \theta \) so, dass
+\begin{equation}
+    \left(\frac{\partial^2 \hat{u}}{\partial t^2} - c^2 \left( \frac{\partial^2 \hat{u}}{\partial x^2} + \frac{\partial^2 \hat{u}}{\partial y^2} \right)\right)^2
+    \label{neuronal:optimierung}
+\end{equation}
+minimal wird.\newline
+
+Durch das Quadrieren wird erreicht, dass Minima des Terms in der Nähe von 0 sind und nicht beliebig klein sein können.
+Wenn eine Lösung zu diesem Problem gefunden wurde, ist
+\begin{equation}
+    \left(\frac{\partial^2 \hat{u}}{\partial t^2} - c^2 \left( \frac{\partial^2 \hat{u}}{\partial x^2} + \frac{\partial^2 \hat{u}}{\partial y^2} \right)\right)^2 \approx 0
+    \iff
+    \frac{\partial^2 \hat{u}}{\partial t^2} - c^2 \left( \frac{\partial^2 \hat{u}}{\partial x^2} + \frac{\partial^2 \hat{u}}{\partial y^2} \right) \approx 0
+    \iff
+    \frac{\partial^2 \hat{u}}{\partial t^2} \approx c^2 \left( \frac{\partial^2 \hat{u}}{\partial x^2} + \frac{\partial^2 \hat{u}}{\partial y^2} \right)
+\end{equation}
+und das neuronale Netz löst somit \emph{approximativ} die Wellengleichung.
+
+
+\subsection{Training des neuronalen Netzes}\label{neuronal:subsection:training_nn}
 
