@@ -44,8 +44,9 @@ Wähle \( \theta \) so, dass
 \end{equation}
 minimal wird.\newline
 
-Durch das Quadrieren wird erreicht, dass Minima des Terms in der Nähe von 0 sind und nicht beliebig klein sein können.
-Wenn eine Lösung zu diesem Problem gefunden wurde, ist
+Durch das Quadrieren wird erreicht, dass der Term für alle \( x, y, t \) immer \( \geq 0 \) ist.
+Somit sind Minima des Terms in der Nähe von 0 und nicht beliebig klein.
+Sobald eine Lösung \( \theta \) zu diesem Problem gefunden wurde, ist
 \begin{equation}
     \left(\frac{\partial^2 \hat{u}}{\partial t^2} - c^2 \left( \frac{\partial^2 \hat{u}}{\partial x^2} + \frac{\partial^2 \hat{u}}{\partial y^2} \right)\right)^2 \approx 0
     \iff
@@ -53,7 +54,7 @@ Wenn eine Lösung zu diesem Problem gefunden wurde, ist
     \iff
     \frac{\partial^2 \hat{u}}{\partial t^2} \approx c^2 \left( \frac{\partial^2 \hat{u}}{\partial x^2} + \frac{\partial^2 \hat{u}}{\partial y^2} \right)
 \end{equation}
-und das neuronale Netz löst somit \emph{approximativ} die Wellengleichung.
+und die Wellengleichung wird somit approximativ durch das neuronale Netz gelöst.
 
 
 \subsection{Training des neuronalen Netzes}\label{neuronal:subsection:training_nn}
