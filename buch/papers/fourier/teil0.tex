@@ -41,9 +41,11 @@ Um die Reihe aufzustellen, braucht man nur 3 Koeffizienten zu bestimmen.
 	
 \end{itemize}
 
-Mit allen Koeffizienten bestimmt lässt sich die ursprüngliche Funktion nachamen. 
-
-Mit der Grafik ??? lässt sich dies schön zeigen.
+Mit allen Koeffizienten bestimmt lässt sich die ursprüngliche Funktion nachahmen.
+Bei Funktionen mit Sprungstellen tritt das Gibbsche Phänomen auf.
+Dies erklärt einen Überschwinger nach einem Sprung. Auch wenn man die unendliche Summe bildet, wird dieser Überschwinger nicht verschwinden.
+Das $=$ Zeichen stimmt also nur bedingt.
+Anhand der Abbildung ... sieht man sehr schön, wie die Rechteckfunktion mit Schwingungen nachgeahmt wird.
 
 \[
 f(t) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left( a_n \cos\left( \frac{2\pi n}{T} x \right) + b_n \sin\left( \frac{2\pi n}{T} x \right) \right)
@@ -53,20 +55,23 @@ f(t) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left( a_n \cos\left( \frac{2\pi n}{T
 	\begin{axis}[
 		axis lines = middle,
 		xlabel = {$t$},
-		ylabel = {Amplitude},
-		domain=0:9,
-		samples=100,
-		xtick={0,1,2,3,4,5,6,7,8,9},
+		ylabel = {$f(t)$},		
+		domain=0:6,
+		samples=1000,
+		xtick={0,1,2,3,4,5,6},
 		ytick={0,1},
-		ymin=-0.2, ymax=1.2, 
-		enlargelimits
+		enlargelimits,
+		width=\textwidth
 		]
 		\addplot[thick] {mod(floor(x),2) == 0 ? 1 : 0};
+		\addplot[blue, thick] {(1/2) + 
+			(2/pi)*sin(pi * deg(x)) + 
+			(2/(3*pi))*sin(pi *3*deg(x)) +
+			(2/(5*pi))*sin(pi *5*deg(x))};
 	\end{axis}
 \end{tikzpicture}
 
-De abschnitt isch nur mal grob gmacht, wird scho no überarbeitet.
-Ich plan no die fourier Reihe über die funktion z lege. maybe no s gibbsche phenomen a spreche. 
+$a_0$ ist bei 
 
 
 \subsection{Fouriertransformation\label{fourier:subsection:fouriertransformation}}
