@@ -894,6 +894,8 @@ erster Art}
 \biggr)
 .
 \end{equation}
+Zur klareren Unterscheidung werden die $\Gamma^i_{kl}$ oft auch die
+Christoffel-Symbole zweiter Art genannt.
 
 \begin{satz}
 Der einzige Zusammenhang mit symmetrischen Christoffelsymbolen
@@ -959,7 +961,7 @@ Die Christoffel-Symbole erster Art sind
 &
 \Gamma_{2,12} &= \Gamma_{2,21} = r,
 &
-\Gamma_{2,22} &= 0
+\Gamma_{2,22} &= 0.
 \end{aligned}
 \]
 Die Christoffel-Symbole zweiter Art sind dann durch
@@ -971,18 +973,32 @@ g^{jl}\Gamma_{l,ik}
 g^{j1}\Gamma_{1,ik}
 +
 g^{j2}\Gamma_{2,ik}
+=
+\delta^{j1}\Gamma_{1,ik}
++
+\frac{1}{r^2}
+\delta^{j2}\Gamma_{2,ik}
+=
+\begin{cases}
+\phantom{\frac1{r^2}}\Gamma_{1,ik}&\qquad\text{falls $j=1$}\\
+         \frac1{r^2} \Gamma_{2,ik}&\qquad\text{falls $j=2$}
+\end{cases}
 \]
 zu berechnen.
-Es ergbit sich
+Es ergibt sich
 \[
 \begin{aligned}
-\Gamma^1_{11} &= 0
+\Gamma^1_{11} &= 0,
 &
-\Gamma^1_{21} &= 
+\Gamma^1_{21} &= \Gamma^1_{12} = 0,
+&
+\Gamma^1_{22} &= -r,
 \\
-\Gamma^2_{11} &=
+\Gamma^2_{11} &= 0,
 &
-\Gamma^2_{21} &=
+\Gamma^2_{21} &= \Gamma^2_{21} = \frac1r,
+&
+\Gamma^2_{22} &= 0.
 \end{aligned}
 \]
 \end{beispiel}
@@ -992,12 +1008,273 @@ Es ergbit sich
 %
 \section{Geodäten
 \label{buch:zusammenhang:section:geodaeten}}
+Die kovariante Ableitung war motiviert als ein Kriterium, mit
+dem man erkennen kann, ob ein Vektor parallel transportiert
+worden ist.
+Eine Geodäte kann daher als Kurve definiert werden, entlang der
+der Tangentialvektor parallel transportiert wird.
+Diese Bedingung äussert sich als Differentialgleichung, die in
+Abschnitt~\ref{buch:zusammenhang:geodaeten:subsection:differentiagleichung}
+diskutiert wird.
+Meist werden Geodäten aber Kurven minimaler Länge zwischen zwei Punkten
+definiert.
+Sie minimieren das Längenfunktional, welches aus der Metrik gewonnen
+werden kann.
+Nach den Regeln der Variationsrechnung lässt sich aus dem Längenfunktional
+mit der Euler-Lagrange-Differentialgleichung eine Differentialgleichung
+für die kürzesten Kurven finden.
+In Abschnitt~\ref{buch:zusammenhang:geodaeten:subsection:kuerzeste}
+wird gezeigt, dass sie mit der Differentialgleichung übereinstimmt.
 
 %
 % Differentialgleichung
 %
-\subsection{Differentialgleichung
+\subsection{Differentialgleichung für Geodäten
 \label{buch:zusammenhang:geodaeten:subsection:differentialgleichung}}
+Eine Geodäte ist eine Kurve, entlang der der Tangentialvektor an die
+Kurve parallel transportiert wird.
+Dies bedeutet, dass in jedem Punkt der Kurve $\gamma(t)$ die kovariante
+Ableitung des Tangentialvektors $\dot{\gamma}$ in Richtung
+$\dot{\gamma}$ verschwindet.
+Es gilt also
+\[
+\nabla_{\dot{\gamma}(t)} \dot{\gamma}(t)
+=
+0
+\]
+Die Komponenten des Tangentialvektors in einer Karte sind $\dot{x}^i(t)$.
+Mit den Christoffel-Symbolen ist die kovariante Ableitung
+\begin{align*}
+\dot{x}^k
+\biggl(
+\frac{\partial\dot{x}^i}{\partial x^k}
++
+\Gamma^i_{kl}\dot{x}^l
+\biggr)
+&=
+0
+\\
+\frac{\partial\dot{x}^i}{\partial x^k}
+\dot{x}^k
++
+\Gamma^i_{kl} \dot{x}^l \dot{x}^k
+&=
+0
+\end{align*}
+
+%
+% Beispiele
+%
+\subsection{Beispiele
+\label{buch:zusammenhang:geodaeten:subsection:beispiele}}
+
+%
+% Geodäten als kürzeste Verbindungen
+%
+\subsection{Geodäten als kürzeste Verbindungen
+\label{buch:zusammenhang:geodaeten:subsection:kuerzeste}}
+Eine Kurve zwischen zwei Punkten kann in einer Karte durch eine Funktion
+\(
+t\mapsto x^i(t)
+\)
+beschrieben werden.
+Die Länge dieser Kurve zwischen den Parameterwerten $t_A$ und $t_B$
+ist durch das Integral
+\begin{equation}
+l
+=
+\int_{t_A}^{t_B}
+\sqrt{g_{ik}(x) \dot{x}^i \dot{x}^k }
+\,dt.
+\label{buch:zusammenhang:geodaeten:eqn:funktional}
+\end{equation}
+Die Länge der Kurve ist nicht abhängig von der Parametrisierung, es ist
+daher keine Einschränkung, ein festes Parameterintervall zu verwenden.
+
+Die Lagrange-Funktion des Funktionals
+\eqref{buch:zusammenhang:geodaeten:eqn:funktional}
+ist 
+\[
+L(x^i, \dot{x}^i)
+=
+\sqrt{ g_{ik}(x) \dot{x}^i \dot{x}^k }.
+\]
+Die Wurzel führt dazu, dass die für die Euler-Lagrange-Differentialgleichung
+nötigen partiellen Ableitungen von $L$ einen hässlichen Nenner haben.
+Dies kann vermieden werden, indem die Unabhängigkeit der Weglänge von der
+Parametrisierung ausgenutzt wird.
+Verwendet man als Parameter die Weglänge, dann ist $L(x^i,\dot{x}^i)$
+konstant.
+Wir schreiben daher
+\[
+F(x^i,\dot{x}^i)
+=
+\frac12 L(x^i,\dot{x}^i)^2
+\]
+und verlangen von der Parametrisierung, dass 
+\[
+\frac{d}{dt} L(x^i, \dot{x}^i) = 0
+\]
+ist.
+Die partiellen Ableitungen für die Euler-Lagrange-Differentialgleichungen
+\begin{align*}
+\frac{\partial F}{\partial x^l}
+&=
+L(x^i,\dot{x}^i)\, \frac{\partial L}{\partial x^l} (x^i,\dot{x}^i)
+\\
+\frac{\partial F}{\partial \dot{x}^l}
+&=
+L(x^i,\dot{x}^i)\, \frac{\partial L}{\partial \dot{x}^l} (x^i,\dot{x}^i).
+\end{align*}
+Damit wird die Euler-Lagrange-Differentialgleichung für $F$ zu
+\begin{align*}
+\frac{\partial F}{\partial x^l}
+-
+\frac{d}{dt}\frac{\partial F}{\partial \dot{x}^l}
+&=
+L
+\frac{\partial L}{\partial x^l}
+-
+\frac{d}{dt}\biggl(
+L
+\frac{\partial L}{\partial\dot{x}^l}
+\biggr)
+\\
+&=
+L(x^i,\dot{x}^i)
+\frac{\partial L}{\partial x^l}
+-
+\frac{dL}{dt}
+\frac{\partial L}{\partial\dot{x}^l}
+-
+L
+\frac{d}{dt}
+\frac{\partial L}{\partial\dot{x}^l}.
+\intertext{Da $L$ konstant ist, fällt der mittlere Term weg und es
+bleibt}
+\frac{\partial F}{\partial x^l}
+-
+\frac{d}{dt}\frac{\partial F}{\partial \dot{x}^l}
+&=
+L
+\cdot
+\biggl(
+\frac{\partial L}{\partial x^l}
+-
+\frac{d}{dt}
+\frac{\partial L}{\partial\dot{x}^l}
+\biggr).
+\end{align*}
+Da $L$ konstant und verschieden von $0$ ist, verschwindet die rechte
+Seite nur dann, wenn auch die linke Seite verschwindet.
+Statt der Lagrange-Funktion $L(x^i,\dot{x}^i)$ kann also mit gleichem
+Resultat die Lagrange-Funktion $f(x^i,\dot{x}^i)$ verwendet
+werden.
+
+Die partiellen Ableitungen der Lagrange-Funktion sind
+\begin{align*}
+\frac{\partial F}{\partial x^l}
+&=
+\frac12
+\frac{\partial g_{ik}}{\partial x^l}
+\dot{x}^i\dot{x}^k
+\\
+\frac{\partial F}{\partial \dot{x}^l}
+&=
+\frac12
+g_{ik}(\dot{x}^i\delta_i^l\dot{x}^k + \dot{x}^i\dot{x}^k\delta_k^l)
+=
+\frac12
+\bigl(
+g_{lk}\dot{x}^k
++
+g_{il}\dot{x}^i
+\bigr).
+\intertext{Für die Euler-Lagrange-Differentialgleichung ist jetzt auch
+noch die Ableitung nach $t$ zu bestimmen:}
+\frac{d}{dt}
+\frac{\partial F}{\partial x^l}
+&=
+\frac12
+\biggl(
+\frac{\partial g_{lk}}{\partial x^s}\dot{x}^s\dot{x}^k
++
+g_{lk}\ddot{x}^k
++
+\frac{\partial g_{il}}{\partial x^s}\dot{x}^s\dot{x}^i
++
+g_{il}\ddot{x}^i
+\biggr)
+\end{align*}
+Damit wird die Euler-Lagrange-Differentialgleichung
+\begin{align*}
+0
+&=
+\frac{\partial F}{\partial x^l}
+-
+\frac{d}{dt}\frac{\partial F}{\partial\dot{x}^l}
+\\
+&=
+\frac12
+\biggl(
+\frac{\partial g_{ik}}{\partial x^l}
+\dot{x}^i\dot{x}^k
+-
+\frac{\partial g_{lk}}{\partial x^s}\dot{x}^s\dot{x}^k
+-
+\frac{\partial g_{il}}{\partial x^s}\dot{x}^s\dot{x}^i
+\biggr)
+-
+\frac12
+g_{lk}\ddot{x}^k
+-
+\frac12
+g_{lk}\ddot{x}^k
+\\
+&=
+\frac12
+\biggl(
+\frac{\partial g_{ik}}{\partial x^l}
+\dot{x}^i\dot{x}^k
+-
+\frac{\partial g_{lk}}{\partial x^i}\dot{x}^i\dot{x}^k
+-
+\frac{\partial g_{il}}{\partial x^k}\dot{x}^k\dot{x}^i
+\biggr)
+-
+g_{lk}\ddot{x}^k
+\\
+&=
+\frac12
+\biggl(
+\frac{\partial g_{ik}}{\partial x^l}
+-
+\frac{\partial g_{lk}}{\partial x^i}
+-
+\frac{\partial g_{il}}{\partial x^k}
+\biggr)
+\dot{x}^i\dot{x}^k
+-
+g_{lk}\ddot{x}^k
+\\
+&=
+-\Gamma_{l,ik} \dot{x}^i\dot{x}^k
+-
+g_{lk} \ddot{x}^k
+\end{align*}
+Multipliziert man dies mit den Einträgen $g^{jl}$ der inversen
+Matrix von $g$ und summiert über $l$, ergibt sich
+\[
+0
+=
+g^{jl}\Gamma_{l,ik}\dot{x}^i\dot{x}^k+g^{jl}g_{lk}\ddot{x}^k
+=
+\Gamma^j_{ik}\dot{x}^i\dot{x}^k + \delta^j_k\ddot{x}^k
+=
+\Gamma^j_{ik}\dot{x}^i\dot{x}^k + \ddot{x}^j.
+\]
+Die Euler-Lagrange-Differentialgleichung für das Weglängenfunktional
+ist also die Differentialgleichung für Geodäten.
 
 %
 % Zusammenhang
