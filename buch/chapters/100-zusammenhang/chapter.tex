@@ -918,6 +918,7 @@ mit der Richtungsableitung.
 \end{beispiel}
 
 \begin{beispiel}
+\label{buch:zusammenhang:paralleltransport:bsp:polar}
 In Polarkoordinaten $x^1=r$ und $x^2=\varphi$ in der Ebene ist die
 Matrik durch die Matrix
 \[
@@ -1059,14 +1060,87 @@ Mit den Christoffel-Symbolen ist die kovariante Ableitung
 +
 \Gamma^i_{kl} \dot{x}^l \dot{x}^k
 &=
-0
+0.
 \end{align*}
+Der erste Term ist wegen
+\[
+\frac{dA^i}{dt}
+=
+\frac{\partial A^i}{\partial x^k}\frac{dx^k}{dt}
+=
+\frac{\partial A^i}{\partial x^k}
+\dot{x}^k
+\]
+die Ableitung von $\dot{x}^i$ nach der Zeit.
+
+\begin{satz}
+Eine Geodäte $\gamma(t)$ erfüllt in jeder Karte die Differentialgleichung
+\begin{equation}
+\ddot{x}^i
++
+\Gamma^i_{kl} \dot{x}^l \dot{x}^k
+=
+0.
+\label{buch:zusammenhang:geodaeten:eqn:dgl}
+\end{equation}
+\end{satz}
 
 %
 % Beispiele
 %
 \subsection{Beispiele
 \label{buch:zusammenhang:geodaeten:subsection:beispiele}}
+Falls die Christoffel-Symbole alle verschwinden, bleibt von der
+Differentialgleichung~\eqref{buch:zusammenhang:geodaeten:eqn:dgl}
+nur noch die Gleichungen
+\[
+\ddot{x}^i = 0
+\]
+übrig, welche als Lösungen alle Geraden im $n$-dimensionalen
+Raum haben.
+
+\subsubsection{Polarkoordinaten}
+Für Polarkoordinaten wurden die Christoffel-Symbole bereits
+in Beispiel~\ref{buch:zusammenhang:paralleltransport:bsp:polar}
+berechnet.
+Die Differentialgleichungen
+\begin{align*}
+\ddot{x}^i=-\Gamma^i_{kl}\dot{x}^k\dot{x}^l
+\end{align*}
+können mit den Resultaten von 
+Beispiel~\ref{buch:zusammenhang:paralleltransport:bsp:polar}
+ausgeschrieben werden als die beiden Differentialgleichungen
+\[
+\left.
+\begin{aligned}
+\ddot{x}^1
+&=
+\Gamma^1_{22}(\dot{x}^2)^2
+\\
+\ddot{x}^2
+&=
+\Gamma^2_{21}\dot{x}^1\dot{x^2}
++
+\Gamma^2_{12}\dot{x}^2\dot{x^1}
+\end{aligned}
+\quad
+\right\}
+\qquad
+\Rightarrow
+\qquad
+\left\{
+\quad
+\begin{aligned}
+\ddot{r}
+&=
+-r \dot{r}^2
+\\
+\ddot{\varphi}
+&=
+\frac{2}{r}\dot{\varphi}\dot{r}
+\end{aligned}
+\right.
+\]
 
 %
 % Geodäten als kürzeste Verbindungen
