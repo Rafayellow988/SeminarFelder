@@ -1533,38 +1533,39 @@ Durch Einsetzen der Differentialgleichung erhält man
 -\frac{\sin\vartheta\cos\vartheta}{\vartheta'}
 -\cot\vartheta\cdot\vartheta'.
 \end{align*}
+Dies ist die Differentialgleichung für eine Geodäte, die als Funktion
+$\vartheta(\varphi)$ geschrieben wird.
+
+Wir untersuchen jetzt, ob die Funktion $\vartheta(\varphi)$, die zu einem
+Grosskreis gehört, die Differentialgleichung erfüllt.
 Die Punkte $(\frac{\pi}2,0)$, $(\frac{\pi}2,\varphi)$ und $(\vartheta,\varphi)$
-bilden ein rechtwinkliges Kugeldreieck, für das gilt
+bilden ein rechtwinkliges Kugeldreieck, für das
 \[
-\tan\vartheta(\varphi)
+\cot\vartheta(\varphi)
 =
 d
-\sin\varphi.
+\sin\varphi
 \]
+für eine Konstante $d$ gilt.
 Die Ableitung ist
 \begin{align*}
-\frac{1}{\cos^2\vartheta}
+-
+\frac{1}{\sin^2\vartheta}
 \cdot \vartheta'(\varphi)
 &=
 d\cos\varphi
 &&\Rightarrow&
-\vartheta'
+\vartheta'(\varphi)
 &=
--\frac{d}{\cos^2\vartheta\sin\vartheta}
-\\
--\cos\vartheta \cdot\vartheta'(\varphi)^2
--\sin\vartheta\cdot\vartheta''(\varphi)
+-d\cos\varphi\sin^2\vartheta.
+\end{align*}
+Die zweite Ableitung ist
+\begin{align*}
+\vartheta''(\varphi)
 &=
-\frac{2d\sin \vartheta}{\cos^3\vartheta}
-&&\Rightarrow&
-\vartheta''
-&=
--\frac{2d}{\cos^3\vartheta}+\frac{d\cos\vartheta\cdot \vartheta'}{\sin\vartheta}
-\\
-&
-&&&
-&=
--\frac{2d}{\cos^3\vartheta}-\frac{d}{\cos\vartheta\sin^2\vartheta}
+d\sin\varphi\sin^2\vartheta
+-
+2d\cos\varphi\cos\vartheta\sin\vartheta\vartheta'(\varphi)
 \end{align*}
 
 
