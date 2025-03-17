@@ -11,11 +11,68 @@
 \vspace{-20pt}
 \begin{columns}[t,onlytextwidth]
 \begin{column}{0.48\textwidth}
-\begin{block}{Äussere Algebra}
+\begin{block}{Äussere Algebra mit $\wedge$-Produkt}
+\begin{itemize}
+\item $\alpha\in\Omega^p(M)$, $\beta\in\Omega^q(M)$
+\begin{align*}
+\alpha\wedge \beta &= (-1)^{pq}\beta\wedge\alpha
+\\
+(\alpha_1+\alpha_2)\wedge\beta &= \alpha_1\wedge \beta + \alpha_2\wedge\beta
+\\
+\alpha\wedge(\beta_1+\beta_2) &= \alpha\wedge\beta_1 + \alpha\wedge\beta_2
+\end{align*}
+\item 
+Basis der $p$-Formen:
+$dx^{i_1}\wedge\dots\wedge dx^{i_p}$,
+$i_1<\dots <i_p$
+\item
+Komponenten $a_{i_1\dots i_p}$ (kovariant)
+\item $p$-Formen auf $M$:
+\begin{align}
+\alpha
+&=
+\sum_{i_1<\dots<i_p}
+a_{i_1\dots i_p} dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\label{slide:algebra:1}
+\\
+&\in \Omega^p (M)
+\notag
+\end{align}
+\end{itemize}
 \end{block}
 \end{column}
 \begin{column}{0.48\textwidth}
 \begin{block}{Äussere Ableitung}
+$\alpha\in\Omega^p(M)$ wie in \eqref{slide:algebra:1}
+hat die äussere Ableitung
+\[
+d\alpha
+=
+\sum_{i=1}^n
+\sum_{i_1<\dots<i_p}
+\hspace*{-3pt}
+\frac{\partial a_{i_1\dots i_p}}{\partial x^i} dx^i \wedge  dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\]
+Für $\alpha\in\Omega^p(M)$ und $\beta\in\Omega^q(M)$:
+\begin{itemize}
+\item linear:
+\begin{align*}
+d(\alpha+\beta)
+&=
+d\alpha + d\beta
+\\
+d(c\alpha) &= c\, d\alpha \qquad c\in\mathbb{R}
+\end{align*}
+\item Produktregel:
+\[
+d(\alpha\wedge\beta)
+=
+d\alpha \wedge \beta
++
+(-1)^{p}
+\alpha\wedge d\beta
+\]
+\end{itemize}
 \end{block}
 \end{column}
 \end{columns}

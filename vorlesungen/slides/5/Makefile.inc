@@ -5,5 +5,6 @@
 #
 chapter5 =								\
 	../slides/5/gauss.tex						\
+	../slides/5/kont.tex						\
 	../slides/5/algebra.tex
 
