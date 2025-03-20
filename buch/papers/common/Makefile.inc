@@ -27,7 +27,6 @@ PAPERFILES = \
 	papers/reynolds/main.tex \
 	papers/rossby/main.tex \
 	papers/schall/main.tex \
-	papers/turing/main.tex \
 	papers/ueberschall/main.tex \
 	papers/wirbelringe/main.tex \
 	
@@ -158,16 +157,10 @@ $(workdir)/$(seminar)21-blx.bbl:	$(workdir)/$(seminar)21-blx.aux
 	cd $(workdir); bibtex $(seminar)21-blx
 
 $(workdir)/buch22-blx.bbl:	$(workdir)/buch22-blx.aux
-	cd $(workdir); bibtex buch22-blx
+	cd $(workdir) bibtex buch22-blx
 
 $(workdir)/$(seminar)22-blx.bbl:	$(workdir)/$(seminar)22-blx.aux
-	cd $(workdir); bibtex $(seminar)22-blx
-
-$(workdir)/buch23-blx.bbl:	$(workdir)/buch23-blx.aux
-	cd $(workdir) bibtex buch23-blx
-
-$(workdir)/$(seminar)23-blx.bbl:	$(workdir)/$(seminar)23-blx.aux
-	cd $(workdir) bibtex $(seminar)23-blx
+	cd $(workdir) bibtex $(seminar)22-blx
 
 BLXFILES = $(workdir)/buch.bbl \
 	$(workdir)/buch1-blx.bbl \
@@ -192,7 +185,6 @@ BLXFILES = $(workdir)/buch.bbl \
 	$(workdir)/buch20-blx.bbl \
 	$(workdir)/buch21-blx.bbl \
 	$(workdir)/buch22-blx.bbl \
-	$(workdir)/buch23-blx.bbl \
 
 
 SBLXFILES = $(workdir)/$(seminar).bbl\
@@ -218,7 +210,6 @@ SBLXFILES = $(workdir)/$(seminar).bbl\
 	$(workdir)/$(seminar)20-blx.bbl \
 	$(workdir)/$(seminar)21-blx.bbl \
 	$(workdir)/$(seminar)22-blx.bbl \
-	$(workdir)/$(seminar)23-blx.bbl \
 
 
 PAPER_DIRECTORIES = \
@@ -241,7 +232,6 @@ PAPER_DIRECTORIES = \
 	reynolds \
 	rossby \
 	schall \
-	turing \
 	ueberschall \
 	wirbelringe \
 	
@@ -265,7 +255,6 @@ PAPER_MAKEFILEINC = \
 	papers/reynolds/Makefile.inc \
 	papers/rossby/Makefile.inc \
 	papers/schall/Makefile.inc \
-	papers/turing/Makefile.inc \
 	papers/ueberschall/Makefile.inc \
 	papers/wirbelringe/Makefile.inc \
 	
