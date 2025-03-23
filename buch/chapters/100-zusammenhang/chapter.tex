@@ -1445,6 +1445,7 @@ zur Zeit $t_0$ im geringsten Abstand $d$ am Nullpunkt vorbeigeht.
 In Beispiel~\ref{buch:zusammenhang:paralleltransport:bsp:kugel}
 wurden die Christoffel-Symbole für Kugelkoordinaten auf einer
 Kugeloberfläche berechnet.
+\input{chapters/100-zusammenhang/fig/kugeldreieck.tex}%
 Damit lässt sich jetzt die Differentialgleichung für eine Geodäte auf
 einer Kugel finden.
 Sie ist
@@ -1472,7 +1473,7 @@ Sie ist
 \right.
 \]
 Der Äquator ist durch $\vartheta=\frac{\pi}2$ definiert.
-Für diesen Wert wirden die Differentialgleichungen für $\varphi$ zu
+Für diesen Wert werden die Differentialgleichungen für $\varphi$ zu
 \[
 \ddot{\varphi}=0,
 \]
@@ -1490,84 +1491,51 @@ $\vartheta(t) = \omega t + \vartheta_0$ hat.
 
 Andere Geodäten schneiden den Äquator, wir können ohne Beschränkung der
 Allgemeinheit annehmen, dass dies für $\varphi=0$ geschieht.
-Eine Geodäte lässt sich dann mit einer Funktion $\vartheta(\varphi)$
-parametrisieren.
-Wir versuchen eine Differentialgleichung dafür zu finden.
-Die Ableitung von $\vartheta(\varphi)$ ist
+In Abbildung~\ref{buch:zusammenhang:geodaeten:fig:kugeldreieck}
+ist rot der Grosskreis durch den Punkt $A$ bei $\varphi=0$ dargestellt,
+der den Äquator im Winkel $\alpha$ schneidet.
+Als Parameter wird die Länge $c=t$ der Hypothenuse des rechtwinkligen
+Dreiecks verwendet.
+Der sphärische Sinussatz liefert die Beziehung
 \[
-\vartheta'
+\sin a : \sin \alpha
 =
-\frac{\dot{\vartheta}}{\dot{\varphi}}
+\sin c : \sin\gamma
+=
+\sin c,
 \]
-mit der zweiten Ableitung
-\[
-\vartheta''
-=
-\frac{d}{d\vartheta} \vartheta'
-=
-\frac{1}{\dot{\vartheta}}\frac{d}{dt}\frac{\dot{\vartheta}}{\dot{\varphi}}
-=
-\frac{1}{\dot{\vartheta}}
-\frac{\ddot{\vartheta}\dot{\varphi}-\dot{\vartheta}\ddot{\varphi}}{\dot{\varphi}^2}.
-\]
-Durch Einsetzen der Differentialgleichung erhält man
+wegen $\sin\gamma=\sin\frac{\pi}2=1$.
+Durch einsetzen der Werte aus der
+Abbildung~\ref{buch:zusammenhang:geodaeten:fig:kugeldreieck}
+erhalten wir
 \begin{align*}
-\vartheta''
+\sin\biggl(\frac{\pi}2-\vartheta\biggr) : \sin\alpha
 &=
-\frac{
--\sin\vartheta\cos\vartheta\dot{\varphi}^3
--
-\cot\vartheta\dot{\varphi}\dot{\vartheta}^2
-}{
-\dot{\varphi}^2\dot{\vartheta}
-}
-=
--
-\frac{
-\sin\vartheta\cos\vartheta +\cot\vartheta\cdot \vartheta^{\prime 2}
-}{
-\vartheta'
-}
+\sin t
 \\
+\cos\vartheta
 &=
--\frac{\sin\vartheta\cos\vartheta}{\vartheta'}
--\cot\vartheta\cdot\vartheta'.
-\end{align*}
-Dies ist die Differentialgleichung für eine Geodäte, die als Funktion
-$\vartheta(\varphi)$ geschrieben wird.
-
-Wir untersuchen jetzt, ob die Funktion $\vartheta(\varphi)$, die zu einem
-Grosskreis gehört, die Differentialgleichung erfüllt.
-Die Punkte $(\frac{\pi}2,0)$, $(\frac{\pi}2,\varphi)$ und $(\vartheta,\varphi)$
-bilden ein rechtwinkliges Kugeldreieck, für das
-\[
-\cot\vartheta(\varphi)
-=
-d
-\sin\varphi
-\]
-für eine Konstante $d$ gilt.
-Die Ableitung ist
-\begin{align*}
--
-\frac{1}{\sin^2\vartheta}
-\cdot \vartheta'(\varphi)
-&=
-d\cos\varphi
+\sin\alpha \sin t
 &&\Rightarrow&
-\vartheta'(\varphi)
-&=
--d\cos\varphi\sin^2\vartheta.
+\vartheta &= \arccos(\sin\alpha\sin t).
 \end{align*}
-Die zweite Ableitung ist
+Für die Berechnung von $\varphi$ kann der sphärische Kosinussatz
+für rechtwinklige sphärische Dreiecke in der Form
 \begin{align*}
-\vartheta''(\varphi)
+\cos c = \cos a\cos b
+\quad\Rightarrow\quad
+\cos\varphi\cos\biggl(\frac{\pi}2-\vartheta\biggr)
 &=
-d\sin\varphi\sin^2\vartheta
--
-2d\cos\varphi\cos\vartheta\sin\vartheta\vartheta'(\varphi)
+\cos t
+\\
+\cos\varphi
+&= 
+\frac{
+\cos t
+}{
+\sin\vartheta
+}.
 \end{align*}
-
 
 %
 % Geodäten als kürzeste Verbindungen
