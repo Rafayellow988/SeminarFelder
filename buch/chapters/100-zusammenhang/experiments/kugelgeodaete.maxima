@@ -5,13 +5,13 @@
  */
 theta: acos(s * sin(t));
 
-phi = acos(cos(t) / sin(theta));
+phi: acos(cos(t) / sin(theta));
 
-thetadot:  diff(theta, t);
-thetaddot: diff(thetadot, t);
+thetadot:  trigsimp(diff(theta, t));
+thetaddot: trigsimp(diff(thetadot, t));
 
-phidot:  diff(phi, t);
-phiddot: diff(phidot, t);
+phidot:  trigsimp(ratsimp(diff(phi, t)));
+phiddot: trigsimp(ratsimp(diff(phidot, t)));
 
 etheta: thetaddot + sin(theta) * cos(theta) * phidot^2;
 trigsimp(ratsimp(etheta));

@@ -9,6 +9,7 @@
 #declare longitude = radians(80);
 #declare beta = radians(30);
 #declare dreieck = rgb<0.95,0.95,0.95>;
+#declare kugelfarbe = rgb<0.5,0.5,0.5>;
 #declare winkel = rgb<1.0,0.6,0.2>;
 #declare aequatorfarbe = rgb<0.2,0.6,1.0>;
 #declare aequatorwinkel = rgb<0.2,0.6,1.0>;
@@ -29,7 +30,7 @@ arrow(-1.2 * e3, 1.2 * e3, 0.01, White)
 
 sphere { O, 1
 	pigment {
-		color Gray
+		color kugelfarbe
 	}
 	finish {
 		metallic
@@ -37,13 +38,44 @@ sphere { O, 1
 	}
 }
 
+#macro axis(s)
+< -sin(longitude-s), 0, cos(longitude-s) >
+#end
+
 intersection {
 	sphere { O, 1.001 }
 	plane { -e2, 0 }
-	plane { < -sin(longitude), 0, cos(longitude)>, 0 }
+	plane { axis(0), 0 }
 	plane { < 0, cos(beta), -sin(beta) >, 0 }
 	pigment {
 		color dreieck
+	}
+	finish {
+		metallic
+		specular 0.99
+	}
+}
+
+intersection {
+	cylinder { <0,-0.002, 0>, <0, 0.002, 0>, 1.1 }
+	plane { -e3, 0 }
+	plane { axis(0), 0 }
+	pigment {
+		color winkel
+	}
+	finish {
+		metallic
+		specular 0.99
+	}
+}
+
+
+intersection {
+	cylinder { 0.002 * axis(0), -0.002 * axis(0), 1.1 }
+	plane { -e3, 0 }
+	plane { -< 0, cos(beta), -sin(beta) >, 0 }
+	pigment {
+		color winkel
 	}
 	finish {
 		metallic
@@ -56,8 +88,8 @@ intersection {
 intersection {
 	sphere { O, 1 + d }
 	plane { -e2, 0 }
-	plane { < -sin(longitude), 0, cos(longitude)>, 0 }
-	plane { -< -sin(longitude-s), 0, cos(longitude-s)>, 0 }
+	plane { axis(0), 0 }
+	plane { -axis(s), 0 }
 	plane { < 0, cos(s), -sin(s) >, 0 }
 	pigment {
 		color grosskreiswinkel
@@ -86,7 +118,7 @@ intersection {
 	sphere { O, 1 + d }
 	cone { O, 0, 1.1 * B, 0.2 }
 	plane { < 0, cos(beta), -sin(beta) >, 0 }
-	plane { < -sin(longitude), 0, cos(longitude)>, 0 }
+	plane { axis(0), 0 }
 	pigment {
 		color aequatorwinkel
 	}

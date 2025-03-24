@@ -1449,7 +1449,7 @@ Kugeloberfläche berechnet.
 Damit lässt sich jetzt die Differentialgleichung für eine Geodäte auf
 einer Kugel finden.
 Sie ist
-\[
+\begin{equation}
 \left.
 \begin{aligned}
 \ddot{x}^1 &= \Gamma^1_{ik}\dot{x}^i\dot{x}^k
@@ -1471,7 +1471,8 @@ Sie ist
 \cot\vartheta \cdot \dot{\vartheta}\dot{\varphi}.
 \end{aligned}
 \right.
-\]
+\label{buch:zusammenhang:geodaeten:kugeldgl}
+\end{equation}
 Der Äquator ist durch $\vartheta=\frac{\pi}2$ definiert.
 Für diesen Wert werden die Differentialgleichungen für $\varphi$ zu
 \[
@@ -1517,14 +1518,14 @@ erhalten wir
 &=
 \sin\alpha \sin t
 &&\Rightarrow&
-\vartheta &= \arccos(\sin\alpha\sin t).
+\vartheta(t) &= \arccos(\sin\alpha\sin t).
 \end{align*}
 Für die Berechnung von $\varphi$ kann der sphärische Kosinussatz
 für rechtwinklige sphärische Dreiecke in der Form
 \begin{align*}
 \cos c = \cos a\cos b
 \quad\Rightarrow\quad
-\cos\varphi\cos\biggl(\frac{\pi}2-\vartheta\biggr)
+\cos\varphi\cos\biggl(\frac{\pi}2-\vartheta(t)\biggr)
 &=
 \cos t
 \\
@@ -1533,8 +1534,45 @@ für rechtwinklige sphärische Dreiecke in der Form
 \frac{
 \cos t
 }{
-\sin\vartheta
+\sin\vartheta(t)
 }.
+\end{align*}
+Daraus erhalten wir als vollständige Parametrisierung des Grosskreises
+\begin{equation}
+\begin{aligned}
+\vartheta(t)
+&=
+\arccos(\sin\alpha\cos t)
+\\
+\varphi(t)
+&=
+\arccos\frac{\cos t}{\sin\vartheta(t)}
+\end{aligned}
+\label{buch:zusammenhang:geodaeten:eqn:kugelgeodaeten}
+\end{equation}
+
+Wir prüfen jetzt durch nachrechnen, dass die Funktionen
+$\vartheta(t)$ und $\varphi(t)$ gemäss
+\eqref{buch:zusammenhang:geodaeten:eqn:kugelgeodaeten}
+die Geodätengleichung
+\eqref{buch:zusammenhang:geodaeten:kugeldgl}
+erfüllen.
+Dazu sind zunächst die erste und zweite Ableitung nach $t$ zu berechnen.
+\begin{align*}
+\dot{\vartheta}(t)
+&=
+-\frac{\sin\alpha\cos t}{\sqrt{1-\sin^2\alpha\sin^2 t}}
+\\
+\ddot{\vartheta}(t)
+&=
+\frac{
+\sin \alpha\cos^2\alpha
+}{
+(1-\sin^2\alpha\sin^2t)^{\frac32}
+}
+\\
+\dot{\varphi}(t)
+&=
 \end{align*}
 
 %
