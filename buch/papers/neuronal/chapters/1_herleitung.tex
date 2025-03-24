@@ -11,42 +11,44 @@
 \kopfrechts{Herleitung der Methode}
 
 Im Folgenden wird die Methode zum Lösen von Feldgleichungen mittels eines neuronalen Netzes theoretisch hergeleitet.
-Dies wird anhand des Beispiels der Wellengleichung gemacht
+Dies wird anhand des Beispiels der Wellengleichung in zwei räumlichen Dimensionen gemacht
 \begin{equation}
-    \frac{\partial^2 u}{\partial t^2} = c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right)
+    \frac{\partial^2 u}{\partial t^2} = c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right).
     \label{neuronal:wellengleichung}
 \end{equation}
 
 Wobei \( u(x, y, t) \) die z-Koordinate am Punkt \( (x, y) \) zum Zeitpunkt \( t \) darstellt.
-Anders ausgedrückt ist \( u \) eine gewellte Oberfläche. Zudem ist \( c \in \mathbb{R} \) eine Konstante und stellt die Verbreitungsgeschwindigkeit der Welle dar.
+Anders ausgedrückt ist \( u \) eine Oberfläche, welche sich im Laufe der Zeit ändert und somit eine Welle modelliert. 
+Zudem ist \( c \in \mathbb{R} \) eine Konstante und stellt die Verbreitungsgeschwindigkeit der Welle dar.
 
 Weiter sei das neuronale Netzwerk gegeben als
 \begin{equation}
-    \hat{u}(x, y, t; \theta)
+    \hat{u}(x, y, t; \vartheta).
     \label{neuronal:nn}
 \end{equation}
 Das Netz hängt von den gleichen Variablen ab wie \( u \).
-Zusätzlich besitzt es einen Vektor \( \theta \in \mathbb{R}^n \) der n \emph{trainierbaren Parameter}.
+Zusätzlich besitzt es einen Vektor \( \vartheta \in \mathbb{R}^n \) der n \emph{trainierbaren Parameter}.
 Das Ziel des Trainings eines neuronalen Netzes ist es, diese Parameter so zu wählen, dass das Netz die gesuchte Funktion (hier \( u \)) möglichst gut approximiert.
 
 
 \subsection{Formulierung als Optimierungsproblem}\label{neuronal:subsection:optimierungsproblem}
 Durch Subtrahieren der rechten Seite von der Wellengleichung \eqref{neuronal:wellengleichung} erhält man
 \begin{equation}
-    \frac{\partial^2 u}{\partial t^2} - c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right) = 0
+    \frac{\partial^2 u}{\partial t^2} - c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right) = 0.
 \end{equation}
 Substituiert man nun das neuronale Netz \eqref{neuronal:nn} für \( u \) und quadriert anschliessend, lässt sich das Training des Netzes als Optimierungsproblem formulieren:\newline
 
-Wähle \( \theta \) so, dass
+Wähle \( \vartheta \) so, dass
 \begin{equation}
     \left(\frac{\partial^2 \hat{u}}{\partial t^2} - c^2 \left( \frac{\partial^2 \hat{u}}{\partial x^2} + \frac{\partial^2 \hat{u}}{\partial y^2} \right)\right)^2
     \label{neuronal:optimierung}
 \end{equation}
 minimal wird.\newline
 
-Durch das Quadrieren wird erreicht, dass der Term für alle \( x, y, t \) immer \( \geq 0 \) ist.
-Somit sind Minima des Terms in der Nähe von 0 und nicht beliebig klein.
-Sobald eine Lösung \( \theta \) zu diesem Problem gefunden wurde, ist
+Durch das Quadrieren wird erreicht, dass der Term für alle \( x, y, t \) immer positiv ist.
+Somit sind Minima des Terms tiefstens 0 und nicht beliebig klein.
+
+Sobald eine Lösung \( \vartheta \) zu diesem Problem gefunden wurde, ist
 \begin{equation}
     \left(\frac{\partial^2 \hat{u}}{\partial t^2} - c^2 \left( \frac{\partial^2 \hat{u}}{\partial x^2} + \frac{\partial^2 \hat{u}}{\partial y^2} \right)\right)^2 \approx 0
     \iff
@@ -57,5 +59,26 @@ Sobald eine Lösung \( \theta \) zu diesem Problem gefunden wurde, ist
 und die Wellengleichung wird somit approximativ durch das neuronale Netz gelöst.
 
 
-\subsection{Training des neuronalen Netzes}\label{neuronal:subsection:training_nn}
+\subsection{Struktur des neuronalen Netzes}\label{neuronal:subsection:struktur_nn}
+
+Im vorangegangenen Kapitel wurde nicht weiter auf die Struktur des neuronalen Netzes \eqref{neuronal:nn} eingegangen.
+Dies wird innerhalb dieses Kapitels gemacht.
+
+Generell können neuronale Netze als Kompositionen von mehreren Teilfunktionen betrachtet werden.
+Dabei besteht jede Teilfunktion \( f_i \) aus einer Affintransformation, gefolgt von einer nicht-linearen Aktivierungsfunktion
+
+\begin{align*}
+    f_i\colon \mathbb{R}^n & \longrightarrow\mathbb{R}^m \\[-1ex]
+    x & \longmapsto \tanh(Ax + b)
+\end{align*}
+
+mit \( x \in \mathbb{R}^n, A \in \mathbb{R}^{m \times n}, b \in \mathbb{R}^m \). 
+Da das Resultat der Affintransformation ein Vektor ist, wird die hyperbolische Tangens einzeln auf jeden Komponenten angewendet.
+Wichtig zu beachten ist, dass die Nutzung von \( \tanh() \) als Aktivierungsfunktion nicht zwingend ist.
+Es gibt viele weitere Aktivierungsfunktionen welche verwendet werden können. 
+
+Das gesamte neuronale Netzwerk ist somit gegeben als
+\begin{equation}
+    \hat{u}(x, y, t; \vartheta) = f_n(...(f_i(...(f_1(x, y, t))))) = f_n \circ ... \circ f_i ... \circ f_1
+\end{equation}
 
