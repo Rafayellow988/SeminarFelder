@@ -65,20 +65,33 @@ Im vorangegangenen Kapitel wurde nicht weiter auf die Struktur des neuronalen Ne
 Dies wird innerhalb dieses Kapitels gemacht.
 
 Generell können neuronale Netze als Kompositionen von mehreren Teilfunktionen betrachtet werden.
-Dabei besteht jede Teilfunktion \( f_i \) aus einer Affintransformation, gefolgt von einer nicht-linearen Aktivierungsfunktion
+Dabei besteht jede Teilfunktion \( f_i \) aus einer Affintransformation, gefolgt von einer nicht-linearen Aktivierungsfunktion \( g_i \)
 
 \begin{align*}
     f_i\colon \mathbb{R}^n & \longrightarrow\mathbb{R}^m \\[-1ex]
-    x & \longmapsto \tanh(Ax + b)
+    v & \longmapsto g_i(A_iv + b_i)
 \end{align*}
 
-mit \( x \in \mathbb{R}^n, A \in \mathbb{R}^{m \times n}, b \in \mathbb{R}^m \). 
-Da das Resultat der Affintransformation ein Vektor ist, wird die hyperbolische Tangens einzeln auf jeden Komponenten angewendet.
-Wichtig zu beachten ist, dass die Nutzung von \( \tanh() \) als Aktivierungsfunktion nicht zwingend ist.
-Es gibt viele weitere Aktivierungsfunktionen welche verwendet werden können. 
+mit \( v \in \mathbb{R}^n, A_i \in \mathbb{R}^{m \times n}, b_i \in \mathbb{R}^m \). 
+Die Elemente aller \( A_i \) und \( b_i \) bilden den Vektor \( \vartheta \) der \emph{trainierbaren Parameter}.
+
+Da das Resultat der Affintransformation auch ein Vektor ist, wird die Aktivierungsfunktion \( g_i \) einzeln auf jeden Komponenten angewendet.
+Für \( g_i \) gibt es viele verschiedene Möglichkeiten, eine häufig verwendete Aktivierungsfunktion ist die hyperbolische Tangens \( \tanh() \).
 
 Das gesamte neuronale Netzwerk ist somit gegeben als
 \begin{equation}
-    \hat{u}(x, y, t; \vartheta) = f_n(...(f_i(...(f_1(x, y, t))))) = f_n \circ ... \circ f_i ... \circ f_1
+    \hat{u}(x, y, t; \vartheta) = f_k(\ldots(f_i(\ldots(f_1(x, y, t))))) = f_k \circ \ldots \circ f_i \ldots \circ f_1(x, y, t).
+    \label{neuronal:nn_ausformuliert}
 \end{equation}
 
+Die Domänen und Bereiche der Teilfunktionen \( f_i \) sind mehr oder weniger frei wählbar.
+Damit es mit den Dimensionen aufgeht, muss jeweils der Bereich von \( f_i \) gleich der Domäne von \( f_{i+1} \) sein.
+Ebenfalls ist man relativ frei in der Wahl der Anzahl Teilfunktion.
+
+Die einzigen strikten Vorgaben sind die Domäne der ersten Teilfunktion \( f_1 \) und der Bereich der letzten Teilfunktion \( f_k \).
+Da das Netzwerk die Wellenfunktion
+\begin{align*}
+    u\colon \mathbb{R}^3 & \longrightarrow\mathbb{R}
+\end{align*}
+
+in zwei räumlichen und der zeitlichen Dimension approximieren soll, muss die Domäne von \( f_1, \mathbb{R}^3\) sein und der Bereich von \( f_k, \mathbb{R}\).
