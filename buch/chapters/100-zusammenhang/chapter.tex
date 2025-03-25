@@ -1479,9 +1479,9 @@ Sie ist
 \begin{equation}
 \left.
 \begin{aligned}
-\ddot{x}^1 &= \Gamma^1_{ik}\dot{x}^i\dot{x}^k
+\ddot{x}^1 &= -\Gamma^1_{ik}\dot{x}^i\dot{x}^k
 \\
-\ddot{x}^2 &= \Gamma^2_{ik}\dot{x}^i\dot{x}^k
+\ddot{x}^2 &= -\Gamma^2_{ik}\dot{x}^i\dot{x}^k
 \end{aligned}
 \quad
 \right\}
@@ -1491,11 +1491,11 @@ Sie ist
 \begin{aligned}
 \ddot{\vartheta}
 &=
--\sin\vartheta\cos\vartheta \cdot \dot{\varphi}^2
+\sin\vartheta\cos\vartheta \cdot \dot{\varphi}^2
 \\
 \ddot{\varphi}
 &=
-\cot\vartheta \cdot \dot{\vartheta}\dot{\varphi}.
+-\cot\vartheta \cdot \dot{\vartheta}\dot{\varphi}.
 \end{aligned}
 \right.
 \label{buch:zusammenhang:geodaeten:kugeldgl}
@@ -1573,34 +1573,15 @@ Daraus erhalten wir als vollständige Parametrisierung des Grosskreises
 \\
 \varphi(t)
 &=
-\arccos\frac{\cos t}{\sin\vartheta(t)}
+\arccos\frac{\cos t}{\sin\vartheta(t)}.
 \end{aligned}
 \label{buch:zusammenhang:geodaeten:eqn:kugelgeodaeten}
 \end{equation}
+Durch Nachrechnen kann geprüft werden, dass diese Funktionen tatsächlich
+eine Lösung der Geodätendifferentialgleichung ergeben.
+Die Rechnung ist allerdings ziemlich mühsam, die Verwendung eines
+Computeralgebrasystems ist empfohlen.
 
-Wir prüfen jetzt durch nachrechnen, dass die Funktionen
-$\vartheta(t)$ und $\varphi(t)$ gemäss
-\eqref{buch:zusammenhang:geodaeten:eqn:kugelgeodaeten}
-die Geodätengleichung
-\eqref{buch:zusammenhang:geodaeten:kugeldgl}
-erfüllen.
-Dazu sind zunächst die erste und zweite Ableitung nach $t$ zu berechnen.
-\begin{align*}
-\dot{\vartheta}(t)
-&=
--\frac{\sin\alpha\cos t}{\sqrt{1-\sin^2\alpha\sin^2 t}}
-\\
-\ddot{\vartheta}(t)
-&=
-\frac{
-\sin \alpha\cos^2\alpha
-}{
-(1-\sin^2\alpha\sin^2t)^{\frac32}
-}
-\\
-\dot{\varphi}(t)
-&=
-\end{align*}
 
 %
 % Geodäten als kürzeste Verbindungen

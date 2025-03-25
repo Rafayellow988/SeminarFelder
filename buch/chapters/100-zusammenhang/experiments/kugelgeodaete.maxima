@@ -7,15 +7,17 @@ theta: acos(s * sin(t));
 
 phi: acos(cos(t) / sin(theta));
 
-thetadot:  trigsimp(diff(theta, t));
-thetaddot: trigsimp(diff(thetadot, t));
+thetadot:  trigsimp(ratsimp(diff(theta,    t)));
+thetaddot: trigsimp(ratsimp(diff(thetadot, t)));
 
-phidot:  trigsimp(ratsimp(diff(phi, t)));
-phiddot: trigsimp(ratsimp(diff(phidot, t)));
+phidot: diff(phi,t);
+phiddot: diff(phidot, t);
+phidot:  ratsimp(phidot);
+phiddot: ratsimp(phiddot);
 
-etheta: thetaddot + sin(theta) * cos(theta) * phidot^2;
+etheta: thetaddot - sin(theta) * cos(theta) * phidot^2;
 trigsimp(ratsimp(etheta));
 
-ephi:   phiddot - cot(theta) * thetadot * phidot;
+ephi:   phiddot + 2 * cot(theta) * thetadot * phidot;
 trigsimp(ratsimp(ephi));
 
