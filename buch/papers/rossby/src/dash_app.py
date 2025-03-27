@@ -1,4 +1,5 @@
 from dash import Dash, html, dcc, callback, Output, Input
+import dash_bootstrap_components as dbc
 
 def dash_app(fig):
 
@@ -6,7 +7,7 @@ def dash_app(fig):
 
     # Requires Dash 2.17.0 or later
     app.layout = [
-        html.H1(children='Rossby Waves', style={'textAlign':'center'}),
+        # html.H1(children='Rossby Waves', style={'textAlign':'center'}),
         dcc.Graph(id='graph-content', figure=fig),
     ]
     return app

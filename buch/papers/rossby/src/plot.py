@@ -2,7 +2,9 @@ import numpy as np
 import plotly.graph_objects as go
 import cartopy.io.shapereader as shpreader
 import cartopy.crs as ccrs
-
+import time
+import os
+import plotly.io as pio
 
 # Function to get coastline data
 def get_coastline():
@@ -84,19 +86,24 @@ def plot_coastline():
 
 
 def animate_sphere(theta, phi, fields):
+    t = time.time()
+    static_traces = plot_sphere_static(
+        theta, phi, plot_coastlines=False, plot_lonlat_lines=False
+    )
     frames = [
         go.Frame(
-            data=plot_sphere(
-                theta, phi, field=field, plot_coastlines=True, plot_lonlat_lines=True
-            ),
+            data=[
+                plot_sphere_surface(theta, phi, field),
+            ],
             name=str(i),
         )
         for i, field in enumerate(fields)
     ]
+    print("Time to create frames:", time.time() - t)
+    # fig = go.Figure(frames[0])
     fig = go.Figure(
-    data=[go.Surface(z=fields[0])],
+        data=static_traces + [plot_sphere_surface(theta, phi, fields[0])],
         layout=go.Layout(
-            title="Oscillating Field",
             updatemenus=[
                 dict(
                     type="buttons",
@@ -107,8 +114,7 @@ def animate_sphere(theta, phi, fields):
                             args=[
                                 None,
                                 {
-                                    "frame": {"duration": 100, "redraw": True},
-                                    "fromcurrent": True,
+                                    "frame": {"duration": 10, "redraw": True},
                                 },
                             ],
                         )
@@ -118,21 +124,40 @@ def animate_sphere(theta, phi, fields):
         ),
         frames=frames,
     )
+    fig.update_layout(height=850, showlegend=False)
+    fig.update_layout(
+        scene=dict(
+            xaxis=dict(visible=False),
+            yaxis=dict(visible=False),
+            zaxis=dict(visible=False),
+            bgcolor="rgba(0,0,0,0)",  # transparent background
+        ),
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        margin=dict(l=0, r=10, b=0, t=10),
+    )
+    return fig
 
-    fig.show()
 
 
-def get_spehre():
-    pass
-
-
-def plot_sphere(theta, phi, field=None, plot_coastlines=True, plot_lonlat_lines=True):
+def plot_sphere_surface(theta, phi, field):
     theta_grid, phi_grid = np.meshgrid(theta, phi)
-
-    # Convert spherical coordinates to Cartesian
     x = np.sin(theta_grid) * np.cos(phi_grid)
     y = np.sin(theta_grid) * np.sin(phi_grid)
     z = np.cos(theta_grid)
+
+    return go.Surface(
+        x=x,
+        y=y,
+        z=z,
+        surfacecolor=field,
+        colorscale="Blues",
+        opacity=1,
+        showscale=False,
+    )
+
+
+def plot_sphere_static(theta, phi, plot_coastlines=True, plot_lonlat_lines=True):
 
     coastline = []
     if plot_coastlines:
@@ -145,17 +170,7 @@ def plot_sphere(theta, phi, field=None, plot_coastlines=True, plot_lonlat_lines=
             len(theta), len(phi), theta, phi
         )
 
-    sphere_surface = go.Surface(
-        x=x,
-        y=y,
-        z=z,
-        colorscale="Blues",
-        opacity=1,
-        showscale=False,
-        surfacecolor=field,
-    )
-
-    traces = [sphere_surface] + longitude_lines + latitude_lines + coastline
+    traces = longitude_lines + latitude_lines + coastline
 
     return traces
 
@@ -179,4 +194,19 @@ def make_fig(traces):
     return fig
 
 
-# Create sphere surface
+def export_frames(fig, folder="frames"):
+    os.makedirs(folder, exist_ok=True)
+    for i, frame in enumerate(fig.frames):
+        fig.update(data=frame.data)
+        pio.write_image(fig, f"{folder}/frame_{i:03d}.png", width=800, height=800)
+    print(f"Exported {len(fig.frames)} frames to '{folder}/'")
+
+def render_video(folder="frames", output="out.mp4", speed=2):
+    framerate = 20
+    fast_filter = 1 / speed
+    os.system(f"""
+    ffmpeg -y -framerate {framerate} -i {folder}/frame_%03d.png -c:v libx264 -preset veryslow -crf 18 -pix_fmt yuv420p temp_out.mp4
+    ffmpeg -y -i temp_out.mp4 -filter:v "setpts={fast_filter}*PTS" {output}
+    rm temp_out.mp4
+    """)
+    print(f"Saved sped-up video as '{output}'")
