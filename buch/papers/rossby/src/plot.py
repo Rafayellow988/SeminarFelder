@@ -6,6 +6,7 @@ import time
 import os
 import plotly.io as pio
 
+
 class Plot_Sphere:
     def __init__(
         self, theta, phi, fields=None, plot_coastlines=True, plot_lonlat_lines=True
@@ -96,14 +97,10 @@ class Plot_Sphere:
 
     def animate_sphere(self):
         t = time.time()
-        static_traces = self.plot_sphere_static(
-            self.theta, self.phi, plot_coastlines=False, plot_lonlat_lines=False
-        )
+        static_traces = self.plot_sphere_static()
         frames = [
             go.Frame(
-                data=[
-                    self.plot_sphere_surface(self.theta, self.phi, field),
-                ],
+                data=(static_traces + [self.plot_sphere_surface(field)]),
                 name=str(i),
             )
             for i, field in enumerate(self.fields)
@@ -111,7 +108,7 @@ class Plot_Sphere:
         print("Time to create frames:", time.time() - t)
         # fig = go.Figure(frames[0])
         fig = go.Figure(
-            data=static_traces + [self.plot_sphere_surface(self.theta, self.phi, self.fields[0])],
+            data=static_traces + [self.plot_sphere_surface(self.fields[0])],
             layout=go.Layout(
                 updatemenus=[
                     dict(
@@ -150,10 +147,12 @@ class Plot_Sphere:
     def animate_sphere_multiple_figs(self):
         figs = []
         for field in self.fields:
-            figs.append(self.make_fig(self.plot_sphere_surface(field) + self.plot_sphere_static()))
+            figs.append(
+                self.make_fig(
+                    [self.plot_sphere_surface(field)] + self.plot_sphere_static()
+                )
+            )
         return figs
-
-
 
     def plot_sphere_surface(self, field):
         theta_grid, phi_grid = np.meshgrid(self.theta, self.phi)
@@ -180,14 +179,11 @@ class Plot_Sphere:
         longitude_lines = []
         latitude_lines = []
         if self.plot_lonlat_lines:
-            longitude_lines, latitude_lines = self.plot_lon_lat_lines(
-                self.n_latitudes, self.n_longitudes, self.theta, self.phi
-            )
+            longitude_lines, latitude_lines = self.plot_lon_lat_lines()
 
         traces = longitude_lines + latitude_lines + coastline
 
         return traces
-
 
     def make_fig(self, traces):
         fig = go.Figure(data=traces)
@@ -207,7 +203,7 @@ class Plot_Sphere:
         )
 
         return fig
-
+    
 
     def export_frames(self, fig, folder="frames"):
         os.makedirs(folder, exist_ok=True)
@@ -219,9 +215,11 @@ class Plot_Sphere:
     def render_video(self, folder="frames", output="out.mp4", speed=2):
         framerate = 20
         fast_filter = 1 / speed
-        os.system(f"""
+        os.system(
+            f"""
         ffmpeg -y -framerate {framerate} -i {folder}/frame_%03d.png -c:v libx264 -preset veryslow -crf 18 -pix_fmt yuv420p temp_out.mp4
         ffmpeg -y -i temp_out.mp4 -filter:v "setpts={fast_filter}*PTS" {output}
         rm temp_out.mp4
-        """)
+        """
+        )
         print(f"Saved sped-up video as '{output}'")
