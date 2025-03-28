@@ -2,7 +2,9 @@ import numpy as np
 import plotly.graph_objects as go
 import cartopy.io.shapereader as shpreader
 import cartopy.crs as ccrs
-
+import time
+import os
+import plotly.io as pio
 
 class Plot_Sphere:
     def __init__(
@@ -93,17 +95,24 @@ class Plot_Sphere:
         return coastline
 
     def animate_sphere(self):
+        t = time.time()
+        static_traces = self.plot_sphere_static(
+            self.theta, self.phi, plot_coastlines=False, plot_lonlat_lines=False
+        )
         frames = [
             go.Frame(
-                data=self.plot_sphere(field),
+                data=[
+                    self.plot_sphere_surface(self.theta, self.phi, field),
+                ],
                 name=str(i),
             )
             for i, field in enumerate(self.fields)
         ]
+        print("Time to create frames:", time.time() - t)
+        # fig = go.Figure(frames[0])
         fig = go.Figure(
-            data=[frames[0].data[0]],
+            data=static_traces + [self.plot_sphere_surface(self.theta, self.phi, self.fields[0])],
             layout=go.Layout(
-                title="Oscillating Field",
                 updatemenus=[
                     dict(
                         type="buttons",
@@ -114,8 +123,7 @@ class Plot_Sphere:
                                 args=[
                                     None,
                                     {
-                                        "frame": {"duration": 100, "redraw": True},
-                                        "fromcurrent": True,
+                                        "frame": {"duration": 10, "redraw": True},
                                     },
                                 ],
                             )
@@ -125,36 +133,45 @@ class Plot_Sphere:
             ),
             frames=frames,
         )
+        fig.update_layout(height=850, showlegend=False)
         fig.update_layout(
             scene=dict(
                 xaxis=dict(visible=False),
                 yaxis=dict(visible=False),
                 zaxis=dict(visible=False),
+                bgcolor="rgba(0,0,0,0)",  # transparent background
             ),
-            # margin=dict(l=0, r=0, b=0, t=0),
-            showlegend=False,
-            width=1000,
-            height=1000,
-            uirevision="keep",  # preserves 3D view
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            margin=dict(l=0, r=10, b=0, t=10),
         )
         return fig
 
     def animate_sphere_multiple_figs(self):
         figs = []
         for field in self.fields:
-            figs.append(self.make_fig(self.plot_sphere(field)))
+            figs.append(self.make_fig(self.plot_sphere_surface(field) + self.plot_sphere_static()))
         return figs
 
-    def get_spehre():
-        pass
 
-    def plot_sphere(self, field):
+
+    def plot_sphere_surface(self, field):
         theta_grid, phi_grid = np.meshgrid(self.theta, self.phi)
-
-        # Convert spherical coordinates to Cartesian
         x = np.sin(theta_grid) * np.cos(phi_grid)
         y = np.sin(theta_grid) * np.sin(phi_grid)
         z = np.cos(theta_grid)
+
+        return go.Surface(
+            x=x,
+            y=y,
+            z=z,
+            surfacecolor=field,
+            colorscale="Blues",
+            opacity=1,
+            showscale=False,
+        )
+
+    def plot_sphere_static(self):
 
         coastline = []
         if self.plot_coastlines:
@@ -163,21 +180,14 @@ class Plot_Sphere:
         longitude_lines = []
         latitude_lines = []
         if self.plot_lonlat_lines:
-            longitude_lines, latitude_lines = self.plot_lon_lat_lines()
+            longitude_lines, latitude_lines = self.plot_lon_lat_lines(
+                self.n_latitudes, self.n_longitudes, self.theta, self.phi
+            )
 
-        sphere_surface = go.Surface(
-            x=x,
-            y=y,
-            z=z,
-            colorscale="Blues",
-            opacity=1,
-            showscale=False,
-            surfacecolor=field,
-        )
-
-        traces = [sphere_surface] + longitude_lines + latitude_lines + coastline
+        traces = longitude_lines + latitude_lines + coastline
 
         return traces
+
 
     def make_fig(self, traces):
         fig = go.Figure(data=traces)
@@ -199,4 +209,19 @@ class Plot_Sphere:
         return fig
 
 
-# Create sphere surface
+    def export_frames(self, fig, folder="frames"):
+        os.makedirs(folder, exist_ok=True)
+        for i, frame in enumerate(fig.frames):
+            fig.update(data=frame.data)
+            pio.write_image(fig, f"{folder}/frame_{i:03d}.png", width=800, height=800)
+        print(f"Exported {len(fig.frames)} frames to '{folder}/'")
+
+    def render_video(self, folder="frames", output="out.mp4", speed=2):
+        framerate = 20
+        fast_filter = 1 / speed
+        os.system(f"""
+        ffmpeg -y -framerate {framerate} -i {folder}/frame_%03d.png -c:v libx264 -preset veryslow -crf 18 -pix_fmt yuv420p temp_out.mp4
+        ffmpeg -y -i temp_out.mp4 -filter:v "setpts={fast_filter}*PTS" {output}
+        rm temp_out.mp4
+        """)
+        print(f"Saved sped-up video as '{output}'")

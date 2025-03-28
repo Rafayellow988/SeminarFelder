@@ -6,8 +6,8 @@ from rossby import random_field
 
 def plot_basic_sphere():
 
-    n_latitudes = 25
-    n_longitudes = 25
+    n_latitudes = 100
+    n_longitudes = 100
     theta = np.linspace(0, np.pi, n_latitudes)  # Latitude angles
     phi = np.linspace(0, 2 * np.pi, n_longitudes)  # Longitude angles
 
@@ -24,7 +24,6 @@ def plot_basic_sphere():
     # # Show plot
     app = dash_app(figs)
     app.run(debug=True)
-
 
 if __name__ == "__main__":
     plot_basic_sphere()
