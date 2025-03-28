@@ -3,7 +3,7 @@
 #
 # (c) 2025 Prof Dr Andreas Müller
 #
-all:	exzess.pdf
+all:	exzess.pdf drehung.pdf
 
 exzess.jpg:	exzess.png
 	magick exzess.png exzess.jpg
@@ -30,3 +30,7 @@ exzess2.jpg:	exzess2.png Makefile
 
 exzess.pdf:	exzess.tex exzess0.jpg exzess1.jpg exzess2.jpg
 	pdflatex exzess.tex
+
+drehung.pdf:	drehung.tex
+	pdflatex drehung.tex
+
