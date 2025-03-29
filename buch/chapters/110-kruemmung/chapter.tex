@@ -94,9 +94,24 @@ ableiten.
 %
 % Der riemannsche Krümmungstensor
 %
-\section{Der Krümmung
+\section{Berechnung der Krümmung
 \label{buch:kruemmung:section:riemann}}
+Das eingangs am Beispiel des Paralleltransports entlang eines
+Dreiecksweges auf einer Kugeloberfläche illustrierte Phänomen
+der Drehung eines paralleltransportierten Vektors soll jetzt
+als Ausgangspunkt der Definition eines Krümmungsmasses sein.
+Im Geiste der früheren Kapitel muss die Krümmung als eine 2-Form
+beschrieben werden können, da die Krümmung offenbar durch Bewegung
+entlang des Randes eines Flächenstücks erkennbar wird.
+Allerdings können die Werte nicht nur skalare Werte sein, da
+sich die Drehung eines Vektors nur mit Hilfe einer Matrix
+beschreiben lässt.
+Wir erwarten daher einen Tensor vierter Stufe.
+Dieser Tensor ist der riemannsche Krümmungstensor.
 
+%
+% Der riemannsche Krümmungstensor
+%
 \subsection{Der riemannsche Krümmungstensor}
 Das Einführungsbeispiel der Winkeldrehung eines paralleltransportieren
 Vektors motiviert die Definition der Krümmung als die Abbildung 
@@ -367,17 +382,133 @@ Der riemannsche Krümmungstensor für die Kugeloberfläche.
 \end{beispiel}
 
 \subsubsection{Herleitung mit Hilfe des Satzes von Green}
-Jeder dieser Wege kann für den Paralleltransport eines Vektors
-verwendet werden, der Tangentialvektoren $T_AM$ im Punkt $A$ auf
-Tangentialvektoren in $T_CM$ abbildet.
+Für die Berechnung des Krümmungstensors haben wir ein konkretes
+Parallelogramm verwendet und den Transport eines Vektors entlang
+seiner Kanten approximiert.
+Der Krümmungstensor ergab sich dann in linearer Näherung.
+Dieser Zugang hat aber den Nachteil, dass er einen speziellen, nicht
+differenzierbaren Weg und eine etwas holperig wirkende Approximation
+verwendet, der Zulässigkeit nicht nachgeprüft wurde.
 
-Sei also $g_{ik}$ die Metrik und $\Gamma^i_{jk}$ die
-Zusammenhangskomponeten.
-Die kovariante Ableitung ermöglicht, die Veränderung eines Vektors in
-Koordinaten zu berechnen, wenn er in Richtung eines Vektors parallel
-transportiert wird.
-Der Vektor $Z\in T_AM$ mit den Komponenten $z^i$ wird beim Transport
-entlang des Randes 
+Der Satz von Green ermöglicht, ein Wegintegral über einen geschlossenen
+Weg direkt zu formulieren und in ein Flächenintegral umzuwandeln.
+Seien also $a^k$ die Komponenten eines Vektors $A$ und $\gamma(t)$ in
+Weg mit den Koordinaten $x^i(t)$.
+Der Vektor ändert beim Paralleltransport entlang der Kurve um den
+Betrag $\Delta a^k$.
+Die kovariante Ableitung $\nabla_{\dot{\gamma}} A$ gibt die infinitesimale
+Änderung.
+Die Änderung $\Delta a^k$ kann daher als das Integral
+\begin{align*}
+\Delta A
+&=
+\oint_{\gamma}
+\nabla_{\dot{\gamma}}
+A
+\,d\gamma(t)
+\intertext{über den Weg $\gamma$, oder in Komponenten}
+\Delta a^k
+&=
+\int 
+\biggl(
+\frac{\partial a^k}{\partial x^v}
++
+\Gamma^k_{uv} a^u
+\biggr)
+\dot{x}^v
+\,dt.
+\end{align*}
+Um den Satz von Green anwenden zu können, brauchen wir ein ebenes
+Kurvenintegral.
+Wir betrachten daher einen Weg in der $x^v$-$x^s$-Koordinaten-Ebene.
+Die Änderung entlang eines solchen Weges ist dann das Integral
+\begin{align}
+\Delta a^k
+&=
+\int
+\biggl(
+\frac{\partial a^k}{\partial x^v} + \Gamma^k_{uv}a^u
+\biggr)
+\,
+dx^v
++
+\biggl(
+\frac{\partial a^k}{\partial x^s} + \Gamma^k_{us}a^u
+\biggr)
+dx^s,
+\intertext{welches mit dem Satz von Green in das Integral}
+&=
+\int
+\frac{\partial}{\partial x^s}
+\biggl(
+\frac{\partial a^k}{\partial x^v} + \Gamma^k_{uv}a^u
+\biggr)
+-
+\frac{\partial}{\partial x^v}
+\biggl(
+\frac{\partial a^k}{\partial x^s} + \Gamma^k_{us}a^u
+\biggr)
+\,dx^u\,dx^s
+\notag
+\\
+&=
+\int
+\frac{\partial^2 a^k}{\partial x^s\,\partial x^v}
+-
+\frac{\partial^2 a^k}{\partial x^v\,\partial x^s}
++
+\frac{\partial \Gamma^k_{uv}}{\partial x^s} a^u
++
+\Gamma^k_{uv}\frac{\partial a^u}{\partial x^s}
+-
+\frac{\partial \Gamma^k_{us}}{\partial x^v} a^u
+-
+\Gamma^k_{us}\frac{\partial a^u}{\partial x^v}
+\,dx^v\,dx^s.
+\label{buch:kruemmung:eqn:greendelta1}
+\end{align}
+Die zweiten Ableitungen heben sich weg und müssen daher nicht weiter
+berücksichtigt werden.
+Für den paralleltransportierten Vektor verschwindet die kovariante
+Ableitung, so dass sie sich nach der partiellen Ableitung von $a^k$
+nach den Koordinaten auflössen lässt.
+Dies ergibt
+\[
+\frac{\partial a^u}{\partial x^s}
+=
+\Gamma^u_{sl}a^l.
+\]
+Eingesetzt in den Ausdruck
+\eqref{buch:kruemmung:eqn:greendelta1}
+ergibt sich
+\begin{align*}
+\Delta a^k
+&=
+\int
+\frac{\partial\Gamma^k_{uv}}{\partial x^s} a^u
+-
+\frac{\partial\Gamma^k_{us}}{\partial x^v} a^u
++
+\Gamma^k_{uv}\Gamma^u_{sl} a^l
+-
+\Gamma^k_{us}\Gamma^u_{vl} a^l
+\,dx^s\,dx^v
+\\
+&=
+\int
+\biggl(
+\frac{\partial\Gamma^k_{uv}}{\partial x^s}
+-
+\frac{\partial\Gamma^k_{us}}{\partial x^v}
++
+\Gamma^k_{lv}\Gamma^l_{su}
+-
+\Gamma^k_{ls}\Gamma^l_{vu}
+\biggr)
+a^u
+\,dx^s\,dx^v
+\end{align*}
+Der Klammerausdruck im Integral ist wieder der riemannsche Krümmungstensor.
 
 %
 % Ricci-Krümmung
