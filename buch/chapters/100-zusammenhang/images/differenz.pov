@@ -26,21 +26,3 @@ union {
 	}
 }
 
-//#declare n = kurve(T1);
-//
-//#declare west = vnormalize(vcross(n, e2));
-//#declare upward = vnormalize(vcross(n, west));
-//
-//arrow(0, 1.1 * west, 0.01, Blue)
-//arrow(0, 1.1 * upward, 0.01, Green)
-//
-//intersection {
-//	plane { n, 0.99 }
-//	plane { n, 1.01 }
-//	pigment {
-//		color rgbf<0.6,0.8,0.6,0.5>
-//	}
-//	finish {
-//		metallic
-//	}
-//}
