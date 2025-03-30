@@ -144,6 +144,10 @@ class Plot_Sphere:
         )
         return fig
 
+    def plot_sphere(self):
+        traces = self.plot_sphere_static() + [self.plot_sphere_surface(None)]
+        return traces
+
     def animate_sphere_multiple_figs(self):
         figs = []
         for field in self.fields:
@@ -165,9 +169,27 @@ class Plot_Sphere:
             y=y,
             z=z,
             surfacecolor=field,
-            colorscale="Blues",
+            colorscale=[[0, 'white'], [1, 'white']],
             opacity=1,
             showscale=False,
+        )
+
+    def cone_plot3D(self, u, v, w):
+        theta_grid, phi_grid = np.meshgrid(self.theta, self.phi)
+        x = np.sin(theta_grid) * np.cos(phi_grid)
+        y = np.sin(theta_grid) * np.sin(phi_grid)
+        z = np.cos(theta_grid)
+
+        return go.Cone(
+            x=x.flatten(),
+            y=y.flatten(),
+            z=z.flatten(),
+            u=u.flatten(),
+            v=v.flatten(),
+            w=w.flatten(),
+            colorscale="Viridis",
+            sizemode="absolute",
+            sizeref=2,
         )
 
     def plot_sphere_static(self):
