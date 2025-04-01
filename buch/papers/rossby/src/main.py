@@ -15,12 +15,15 @@ def plot_basic_sphere():
         theta=theta, phi=phi, fields=None, plot_coastlines=True, plot_lonlat_lines=True
     )
 
-    u, v, w = vorticity_field(theta=theta, phi=phi)
+    t = np.linspace(0, 0.1, 25)
+    values = vorticity_field(theta=theta, phi=phi, t=t)
 
-    cone_plot = plot_sphere.cone_plot3D(u, v, w)
+    cone_plots = plot_sphere.cone_plot3D(values)
     sphere_plot = plot_sphere.plot_sphere()
-    fig = plot_sphere.make_fig([cone_plot] + sphere_plot)
-    figs = [fig]
+    figs = []
+    for cone_plot in cone_plots:
+        fig = plot_sphere.make_fig([cone_plot] + sphere_plot)
+        figs.append(fig)
     app = dash_app(figs)
     app.run(debug=True)
 

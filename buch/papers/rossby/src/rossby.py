@@ -14,20 +14,24 @@ def random_field(theta, phi):
         fields.append(np.sin(5 * theta_grid - t_i) ** 2 + 0.2 * np.cos(7 * phi_grid + t_i))
     return fields
 
-def vorticity_field(theta, phi):
+def vorticity_field(theta, phi, t=None):
     theta_grid, phi_grid = np.meshgrid(theta, phi)
-
-    x = np.sin(theta_grid)*np.cos(phi_grid)
-    y = np.sin(theta_grid)*np.sin(phi_grid)
-    z = np.cos(theta_grid)
 
     Omega = 1
 
-    u = -Omega * y     # vx
-    v =  Omega * x     # vy
-    w =  np.zeros_like(z)
+    values = []
+    for t_i in t:
+        phi_grid = phi_grid + Omega * t_i  # simple rotation in time
+        x = np.sin(theta_grid)*np.cos(phi_grid)
+        y = np.sin(theta_grid)*np.sin(phi_grid)
+        z = np.cos(theta_grid)
+        u = -Omega * y     # vx
+        v = Omega * x     # vy
+        w =  np.zeros_like(z)
+        print(x[23,20])
+        values.append((x, y, z, u, v, w))
 
-    return u, v, w
+    return values
 
     # # Add the cone plot to the figure
     # fig.add_trace(go.Cone(

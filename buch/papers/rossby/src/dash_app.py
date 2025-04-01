@@ -39,6 +39,7 @@ def dash_app(figs: list):
         else:
             new_index = current_index
 
+        print(new_index)
         return figs[new_index], new_index
 
     return app

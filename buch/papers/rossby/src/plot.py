@@ -169,28 +169,34 @@ class Plot_Sphere:
             y=y,
             z=z,
             surfacecolor=field,
-            colorscale=[[0, 'white'], [1, 'white']],
+            colorscale=[[0, "white"], [1, "white"]],
             opacity=1,
             showscale=False,
         )
 
-    def cone_plot3D(self, u, v, w):
-        theta_grid, phi_grid = np.meshgrid(self.theta, self.phi)
-        x = np.sin(theta_grid) * np.cos(phi_grid)
-        y = np.sin(theta_grid) * np.sin(phi_grid)
-        z = np.cos(theta_grid)
+    def cone_plot3D(self, values):
+        traces = []
+        for value in values:
+            x = value[0]
+            y = value[1]
+            z = value[2]
+            u = value[3]
+            v = value[4]
+            w = value[5]
+            trace = go.Cone(
+                x=x.flatten(),
+                y=y.flatten(),
+                z=z.flatten(),
+                u=u.flatten(),
+                v=v.flatten(),
+                w=w.flatten(),
+                colorscale="Viridis",
+                sizemode="absolute",
+                sizeref=2,
+            )
+            traces.append(trace)
 
-        return go.Cone(
-            x=x.flatten(),
-            y=y.flatten(),
-            z=z.flatten(),
-            u=u.flatten(),
-            v=v.flatten(),
-            w=w.flatten(),
-            colorscale="Viridis",
-            sizemode="absolute",
-            sizeref=2,
-        )
+        return traces
 
     def plot_sphere_static(self):
 
@@ -225,7 +231,6 @@ class Plot_Sphere:
         )
 
         return fig
-    
 
     def export_frames(self, fig, folder="frames"):
         os.makedirs(folder, exist_ok=True)
