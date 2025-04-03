@@ -15,47 +15,76 @@ def random_field(theta, phi):
     return fields
 
 def vorticity_field(theta, phi, t=None):
-    theta_grid, phi_grid = np.meshgrid(theta, phi)
+    theta_grid, phi_grid_org = np.meshgrid(theta, phi)
 
     Omega = 1
 
     values = []
     for t_i in t:
-        phi_grid = phi_grid + Omega * t_i  # simple rotation in time
+        phi_grid = phi_grid_org + Omega * t_i  # simple rotation in time
         x = np.sin(theta_grid)*np.cos(phi_grid)
         y = np.sin(theta_grid)*np.sin(phi_grid)
         z = np.cos(theta_grid)
         u = -Omega * y     # vx
         v = Omega * x     # vy
         w =  np.zeros_like(z)
-        print(x[23,20])
         values.append((x, y, z, u, v, w))
 
     return values
 
-    # # Add the cone plot to the figure
-    # fig.add_trace(go.Cone(
-    #     x=x.flatten(),
-    #     y=y.flatten(),
-    #     z=z.flatten(),
-    #     u=u.flatten(),
-    #     v=v.flatten(),
-    #     w=w.flatten(),
-    #     colorscale='Viridis',
-    #     sizemode='absolute',
-    #     sizeref=0.5
-    # ))
+def zonal_jet_field(theta, phi, t=None):
+    theta_grid, phi_grid = np.meshgrid(theta, phi)
 
-    # # Update layout for better visualization
-    # fig.update_layout(
-    #     scene=dict(
-    #         xaxis_title='X',
-    #         yaxis_title='Y',
-    #         zaxis_title='Z',
-    #         aspectratio=dict(x=1, y=1, z=1)
-    #     ),
-    #     title="Vorticity Field Cone Plot"
-    # )
+    # Latitude-dependent zonal wind (e.g., strongest at equator)
+    U0 = 1
+    u = U0 * np.sin(theta_grid)**2  # Eastward velocity varies with latitude
 
-    # # Show the plot
-    # fig.show()
+    # No meridional or vertical flow
+    v = np.zeros_like(u)
+    w = np.zeros_like(u)
+
+    # Spherical to Cartesian coords
+    x = np.sin(theta_grid) * np.cos(phi_grid)
+    y = np.sin(theta_grid) * np.sin(phi_grid)
+    z = np.cos(theta_grid)
+
+    return [(x, y, z, u, v, w)]
+
+def rossby_wave_field(theta, phi, t=None):
+    theta_grid, phi_grid = np.meshgrid(theta, phi)
+
+    U0 = 1
+    m = 3                # zonal wavenumber
+    epsilon = 0.1        # amplitude
+    c = 0.5              # westward phase speed
+
+    if t is None:
+        t = [0]
+
+    values = []
+    for t_i in t:
+        # Define streamfunction ψ as a traveling wave
+        sin_theta = np.sin(theta_grid)
+        sin_theta = np.clip(sin_theta, 1e-3, None)  # avoid divide-by-small
+        psi = epsilon * np.sin(m * phi_grid - c * t_i) * np.sin(theta_grid)**2
+
+        # Compute u = -1/r * ∂ψ/∂θ
+        dpsi_dtheta = np.gradient(psi, theta, axis=1)
+        u = - dpsi_dtheta / sin_theta
+        # Compute v = 1/(r sinθ) * ∂ψ/∂φ
+        dpsi_dphi = np.gradient(psi, phi, axis=0)
+        v = dpsi_dphi / sin_theta
+        # Add background zonal jet to u
+        u += U0 * np.sin(theta_grid)**2
+
+        # No radial flow
+        w = np.zeros_like(u)
+
+        # Sphere surface
+        x = np.sin(theta_grid) * np.cos(phi_grid)
+        y = np.sin(theta_grid) * np.sin(phi_grid)
+        z = np.cos(theta_grid)
+        print(u.min(), u.max())
+        values.append((x, y, z, u, v, w))
+
+    return values

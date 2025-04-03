@@ -41,7 +41,7 @@ class Plot_Sphere:
 
         # Longitude lines (meridians)
         longitude_lines = []
-        for p in np.linspace(0, 2 * np.pi, self.n_latitudes):
+        for p in self.phi:
             x_line = np.sin(self.theta) * np.cos(p)
             y_line = np.sin(self.theta) * np.sin(p)
             z_line = np.cos(self.theta)
@@ -57,7 +57,7 @@ class Plot_Sphere:
 
         # Latitude lines (parallels)
         latitude_lines = []
-        for t in np.linspace(-np.pi / 2, np.pi / 2, self.n_longitudes):
+        for t in np.linspace(-np.pi / 2, np.pi / 2, self.n_latitudes):
             x_line = np.cos(t) * np.cos(self.phi)
             y_line = np.cos(t) * np.sin(self.phi)
             z_line = np.full_like(self.phi, np.sin(t))
@@ -95,20 +95,25 @@ class Plot_Sphere:
             )
         return coastline
 
-    def animate_sphere(self):
+    def animate_sphere(self, static_traces, changing_traces):
         t = time.time()
-        static_traces = self.plot_sphere_static()
+        camera = dict(
+            eye=dict(
+                x=1.25, y=1.25, z=1.25
+            )  # or pull this from fig.layout.scene.camera
+        )
         frames = [
             go.Frame(
-                data=(static_traces + [self.plot_sphere_surface(field)]),
+                data=(static_traces + [trace]),
                 name=str(i),
+                layout=go.Layout(title_text=f"Frame {i}",scene_camera=camera),
             )
-            for i, field in enumerate(self.fields)
+            for i, trace in enumerate(changing_traces)
         ]
         print("Time to create frames:", time.time() - t)
         # fig = go.Figure(frames[0])
         fig = go.Figure(
-            data=static_traces + [self.plot_sphere_surface(self.fields[0])],
+            data=static_traces + [changing_traces[0]],
             layout=go.Layout(
                 updatemenus=[
                     dict(
@@ -140,8 +145,11 @@ class Plot_Sphere:
             ),
             paper_bgcolor="rgba(0,0,0,0)",
             plot_bgcolor="rgba(0,0,0,0)",
-            margin=dict(l=0, r=10, b=0, t=10),
         )
+        fig.update_layout(
+            scene_camera=dict(projection=dict(type="orthographic"))  # optional
+        )
+
         return fig
 
     def plot_sphere(self):
@@ -192,10 +200,9 @@ class Plot_Sphere:
                 w=w.flatten(),
                 colorscale="Viridis",
                 sizemode="absolute",
-                sizeref=2,
+                sizeref=1,
             )
             traces.append(trace)
-
         return traces
 
     def plot_sphere_static(self):

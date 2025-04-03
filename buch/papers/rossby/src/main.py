@@ -2,28 +2,35 @@ import numpy as np
 from plot import Plot_Sphere
 import plotly.graph_objects as go
 from dash_app import dash_app
-from rossby import random_field, vorticity_field
+from rossby import random_field, vorticity_field, zonal_jet_field, rossby_wave_field
 
 
 def plot_basic_sphere():
 
-    n_latitudes = 100
-    n_longitudes = 100
-    theta = np.linspace(0, np.pi, n_latitudes)  # Latitude angles
-    phi = np.linspace(0, 2 * np.pi, n_longitudes)  # Longitude angles
+    n_latitudes = 25
+    n_longitudes = 25
+    theta = np.linspace(np.deg2rad(10), np.deg2rad(170), n_latitudes)
+    phi = np.linspace(0, 2 * np.pi, n_longitudes, endpoint=True)  # Longitude angles
+    print(phi)
     plot_sphere = Plot_Sphere(
-        theta=theta, phi=phi, fields=None, plot_coastlines=True, plot_lonlat_lines=True
+        theta=theta, phi=phi, fields=None, plot_coastlines=False, plot_lonlat_lines=False
     )
 
-    t = np.linspace(0, 0.1, 25)
-    values = vorticity_field(theta=theta, phi=phi, t=t)
+    t = np.linspace(0, 10, 50)
+    # values = vorticity_field(theta=theta, phi=phi, t=t)
+    values = rossby_wave_field(theta=theta, phi=phi, t=t)
 
-    cone_plots = plot_sphere.cone_plot3D(values)
-    sphere_plot = plot_sphere.plot_sphere()
+    # cone_plots = plot_sphere.cone_plot3D(values)
+    # sphere_plot = plot_sphere.plot_sphere()
+    sphere_plot = plot_sphere.plot_sphere_surface(values)
     figs = []
-    for cone_plot in cone_plots:
-        fig = plot_sphere.make_fig([cone_plot] + sphere_plot)
-        figs.append(fig)
+    fig = plot_sphere.animate_sphere(
+        static_traces=[], changing_traces=sphere_plot
+    )
+    figs = [fig]
+    # for cone_plot in cone_plots:
+    #     fig = plot_sphere.make_fig([cone_plot] + sphere_plot)
+    #     figs.append(fig)
     app = dash_app(figs)
     app.run(debug=True)
 
