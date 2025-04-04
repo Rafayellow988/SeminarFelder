@@ -15,7 +15,9 @@ allgemein kovariante Art definiert werden kann.
 Der Grund dafür ist, dass die Tangentialvektoren in den Punkten
 $\gamma(t)$ und $\gamma(t+\Delta t)$ in den disjunkten Vektorräumen
 $T_{\gamma(t)}M$ und $T_{\gamma(t+\Delta t)}M$ liegen und sich nicht
-einfach so miteinander verrechnen lassen.
+einfach so miteinander verrechnen lassen
+(Abbildung~\ref{buch:zusammenhang:fig:differenz}).
+\input{chapters/100-zusammenhang/fig/fig-differenz.tex}%
 Dazu wird eine Methode benötigt, die Tangentialvektoren vom einen
 Punkt in einen nahegelegenen Punkt zu transportieren.
 Die einfachste Methode, dies zu erreichen, ist eine Metrik $g$ auf der
@@ -247,6 +249,8 @@ sind die paralleltransportierten Vektorfelder leicht zu identifizieren,
 es sind die Vektorfelder mit konstanten Komponenten.
 In diesem Falle verschwinden die partiellen Ableitungen.
 
+\input{chapters/100-zusammenhang/fig/fig-transport.tex}
+
 %
 % Kovariante Ableitung der Standardbasisvektoren in einer Karte
 %
@@ -280,6 +284,7 @@ oder
 Die Christoffel-Symbole in einer Karte beschreiben daher die Komponenten
 der kovarianten Ableitung der Standardbasisvektoren in Richtung
 der Standardbasisvektoren.
+
 %
 % Koordinatentransformation für Christoffel-Symbole
 %
@@ -1361,7 +1366,7 @@ Multipliziert man die letzte Gleichung mit $m$, erhält man
 $m\omega r^2=\text{const}$, also die Aussage, dass der Drehimpuls
 erhalten ist.
 Jeder Massepunkt, der sich in der Ebene mit konstanter Geschwindigkeit
-bewegt, erfüllt diese Gleichung.
+und konstanter Richtung bewegt, erfüllt diese Gleichung.
 
 Mit der Drehimpulserhaltung
 \eqref{buch:zusammenhang:paralleltransport:bsp:drehimpuls}
@@ -1417,6 +1422,7 @@ a\biggl(t+\frac{b}{2a}\biggr)^2 - \frac{b^2-4ac}{4a^2}
 bringen.
 Das Minimum wird erreicht wenn $t=-b/2a$ ist, daher kann man die
 Parameter wie folgt interpretieren.
+\input{chapters/100-zusammenhang/fig/fig-polargeodaete.tex}%
 Schreibt man
 \[
 t_0=-b/2a,
@@ -1439,21 +1445,48 @@ r(t)
 \]
 Daraus kann man mit Hilfe des Satzes von Pythagoras ablesen, dass sich
 der Punkt mit der Geschwindigkeit $v$ auf einer Geraden bewegt und
-zur Zeit $t_0$ im geringsten Abstand $d$ am Nullpunkt vorbeigeht.
+zur Zeit $t_0$ im geringsten Abstand $d$ am Nullpunkt vorbeigeht
+(Abbildung~\ref{buch:zusammenhang:geodaeten:fig:polargeodaete}).
+Damit lässt sich jetzt auch die Konstante $D$ bestimmen.
+Aus $v=\omega d$ folgt
+\[
+\omega=\frac{d}{v}
+\quad \Rightarrow \quad
+D=\omega d^2 = \frac{d^3}{v}
+\]
+
+Aus $\dot{\varphi}=\omega = Dr^{-2} = d^3 / v r^2$
+kann jetzt durch Integration auch die explizite Formel 
+\[
+\varphi(t)
+=
+\varphi_0
++
+\frac{d}{v}
+\int_{t_0}^t
+\frac{d^2\,dt}{v^2(t-t_0)^2+d^2}
+=
+\varphi_0
++
+\frac{d}{v}
+\arctan\frac{(t-t_0)v}{d}
+\]
+für $\varphi(t)$ gefunden werden.
 
 \subsubsection{Geodäten auf einer Kugeloberfläche}
 In Beispiel~\ref{buch:zusammenhang:paralleltransport:bsp:kugel}
 wurden die Christoffel-Symbole für Kugelkoordinaten auf einer
 Kugeloberfläche berechnet.
+\input{chapters/100-zusammenhang/fig/kugeldreieck.tex}%
 Damit lässt sich jetzt die Differentialgleichung für eine Geodäte auf
 einer Kugel finden.
 Sie ist
-\[
+\begin{equation}
 \left.
 \begin{aligned}
-\ddot{x}^1 &= \Gamma^1_{ik}\dot{x}^i\dot{x}^k
+\ddot{x}^1 &= -\Gamma^1_{ik}\dot{x}^i\dot{x}^k
 \\
-\ddot{x}^2 &= \Gamma^2_{ik}\dot{x}^i\dot{x}^k
+\ddot{x}^2 &= -\Gamma^2_{ik}\dot{x}^i\dot{x}^k
 \end{aligned}
 \quad
 \right\}
@@ -1463,16 +1496,17 @@ Sie ist
 \begin{aligned}
 \ddot{\vartheta}
 &=
--\sin\vartheta\cos\vartheta \cdot \dot{\varphi}^2
+\sin\vartheta\cos\vartheta \cdot \dot{\varphi}^2
 \\
 \ddot{\varphi}
 &=
-\cot\vartheta \cdot \dot{\vartheta}\dot{\varphi}.
+-\cot\vartheta \cdot \dot{\vartheta}\dot{\varphi}.
 \end{aligned}
 \right.
-\]
+\label{buch:zusammenhang:geodaeten:kugeldgl}
+\end{equation}
 Der Äquator ist durch $\vartheta=\frac{\pi}2$ definiert.
-Für diesen Wert wirden die Differentialgleichungen für $\varphi$ zu
+Für diesen Wert werden die Differentialgleichungen für $\varphi$ zu
 \[
 \ddot{\varphi}=0,
 \]
@@ -1490,83 +1524,68 @@ $\vartheta(t) = \omega t + \vartheta_0$ hat.
 
 Andere Geodäten schneiden den Äquator, wir können ohne Beschränkung der
 Allgemeinheit annehmen, dass dies für $\varphi=0$ geschieht.
-Eine Geodäte lässt sich dann mit einer Funktion $\vartheta(\varphi)$
-parametrisieren.
-Wir versuchen eine Differentialgleichung dafür zu finden.
-Die Ableitung von $\vartheta(\varphi)$ ist
+In Abbildung~\ref{buch:zusammenhang:geodaeten:fig:kugeldreieck}
+ist rot der Grosskreis durch den Punkt $A$ bei $\varphi=0$ dargestellt,
+der den Äquator im Winkel $\alpha$ schneidet.
+Als Parameter wird die Länge $c=t$ der Hypothenuse des rechtwinkligen
+Dreiecks verwendet.
+Der sphärische Sinussatz liefert die Beziehung
 \[
-\vartheta'
+\sin a : \sin \alpha
 =
-\frac{\dot{\vartheta}}{\dot{\varphi}}
+\sin c : \sin\gamma
+=
+\sin c,
 \]
-mit der zweiten Ableitung
-\[
-\vartheta''
-=
-\frac{d}{d\vartheta} \vartheta'
-=
-\frac{1}{\dot{\vartheta}}\frac{d}{dt}\frac{\dot{\vartheta}}{\dot{\varphi}}
-=
-\frac{1}{\dot{\vartheta}}
-\frac{\ddot{\vartheta}\dot{\varphi}-\dot{\vartheta}\ddot{\varphi}}{\dot{\varphi}^2}.
-\]
-Durch Einsetzen der Differentialgleichung erhält man
+wegen $\sin\gamma=\sin\frac{\pi}2=1$.
+Durch einsetzen der Werte aus der
+Abbildung~\ref{buch:zusammenhang:geodaeten:fig:kugeldreieck}
+erhalten wir
 \begin{align*}
-\vartheta''
+\sin\biggl(\frac{\pi}2-\vartheta\biggr) : \sin\alpha
 &=
-\frac{
--\sin\vartheta\cos\vartheta\dot{\varphi}^3
--
-\cot\vartheta\dot{\varphi}\dot{\vartheta}^2
-}{
-\dot{\varphi}^2\dot{\vartheta}
-}
-=
--
-\frac{
-\sin\vartheta\cos\vartheta +\cot\vartheta\cdot \vartheta^{\prime 2}
-}{
-\vartheta'
-}
+\sin t
 \\
+\cos\vartheta
 &=
--\frac{\sin\vartheta\cos\vartheta}{\vartheta'}
--\cot\vartheta\cdot\vartheta'.
-\end{align*}
-Dies ist die Differentialgleichung für eine Geodäte, die als Funktion
-$\vartheta(\varphi)$ geschrieben wird.
-
-Wir untersuchen jetzt, ob die Funktion $\vartheta(\varphi)$, die zu einem
-Grosskreis gehört, die Differentialgleichung erfüllt.
-Die Punkte $(\frac{\pi}2,0)$, $(\frac{\pi}2,\varphi)$ und $(\vartheta,\varphi)$
-bilden ein rechtwinkliges Kugeldreieck, für das
-\[
-\cot\vartheta(\varphi)
-=
-d
-\sin\varphi
-\]
-für eine Konstante $d$ gilt.
-Die Ableitung ist
-\begin{align*}
--
-\frac{1}{\sin^2\vartheta}
-\cdot \vartheta'(\varphi)
-&=
-d\cos\varphi
+\sin\alpha \sin t
 &&\Rightarrow&
-\vartheta'(\varphi)
-&=
--d\cos\varphi\sin^2\vartheta.
+\vartheta(t) &= \arccos(\sin\alpha\sin t).
 \end{align*}
-Die zweite Ableitung ist
+Für die Berechnung von $\varphi$ kann der sphärische Kosinussatz
+für rechtwinklige sphärische Dreiecke in der Form
 \begin{align*}
-\vartheta''(\varphi)
+\cos c = \cos a\cos b
+\quad\Rightarrow\quad
+\cos\varphi\cos\biggl(\frac{\pi}2-\vartheta(t)\biggr)
 &=
-d\sin\varphi\sin^2\vartheta
--
-2d\cos\varphi\cos\vartheta\sin\vartheta\vartheta'(\varphi)
+\cos t
+\\
+\cos\varphi
+&= 
+\frac{
+\cos t
+}{
+\sin\vartheta(t)
+}.
 \end{align*}
+Daraus erhalten wir als vollständige Parametrisierung des Grosskreises
+\begin{equation}
+\begin{aligned}
+\vartheta(t)
+&=
+\arccos(\sin\alpha\cos t)
+\\
+\varphi(t)
+&=
+\arccos\frac{\cos t}{\sin\vartheta(t)}.
+\end{aligned}
+\label{buch:zusammenhang:geodaeten:eqn:kugelgeodaeten}
+\end{equation}
+Durch Nachrechnen kann geprüft werden, dass diese Funktionen tatsächlich
+eine Lösung der Geodätendifferentialgleichung ergeben.
+Die Rechnung ist allerdings ziemlich mühsam, die Verwendung eines
+Computeralgebrasystems ist empfohlen.
 
 
 %
