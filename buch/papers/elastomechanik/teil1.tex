@@ -6,53 +6,89 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 1
-\label{elastomechanik:section:teil1}}
-\kopfrechts{Problemstellung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
-\begin{equation}
-\int_a^b x^2\, dx
-=
-\left[ \frac13 x^3 \right]_a^b
-=
-\frac{b^3-a^3}3.
-\label{elastomechanik:equation1}
-\end{equation}
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-consectetur, adipisci velit, sed quia non numquam eius modi tempora
-incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+\section{Grundbegriffe der Baustatik und Mechanik}
+\label{elastomechanik:section:teil1}
+\subsection{Begriffe}
+\begin{description}	
+	\item[\textbf{Druckkräfte:}] Druckkräfte sind Kräfte, die senkrecht auf die Oberfläche eines Körpers wirken und dabei eine Kompression bzw. Zusammenstauchung des Körpers verursachen. 
+	Eine negative Normalkraft entspricht einer Druckkraft.
+	
+	\item[\textbf{Druckspannungen:}] Druckspannungen sind Spannungen, die im Inneren eines Materials entstehen, wenn Druckkräfte senkrecht auf die Oberfläche eines Körpers ausgeübt werden. 
+	Sie bewirken eine Stauchung oder Kompression des Materials.
+	Druckspannungen haben ein negatives Vorzeichen, da die Kräfte nach innen gerichtet sind.
+	
+	\item[\textbf{Elastizitätsmodul ($E$):}] Der Elastizitätsmodul (E-Modul) ist eine Materialkonstante, die die Steifigkeit eines Werkstoffs beschreibt. 
+	Er gibt an, wie stark ein Material auf eine mechanische Spannung mit Dehnung reagiert. 
+	Je grösser der Elastizitätsmodul, desto weniger verformt sich das Material unter einer gegebenen Belastung.
+	Der Elastizitätsmodul wird definiert als
+	\begin{equation}
+		E=
+		\frac{\sigma}{\varepsilon}
+	\end{equation}
+	$\sigma$ = Spannung
+	
+	$\varepsilon$ = Dehnung
+	
+	\item[\textbf{Isotropie:}] Isotropie beschreibt eine Materialeigenschaft, bei der die mechanischen Eigenschaften in allen Raumrichtungen identisch sind. 
+	Ein isotropes Material reagiert auf Belastungen unabhängig von der Belastungsrichtung stets gleich.
+	In der linearen Elastizitätstheorie bedeutet Isotropie, dass das Materialverhalten vollständig durch zwei unabhängige Materialkonstanten beschrieben werden kann, etwa den Elastizitätsmodul ($E$) und die Poissonzahl ($\nu$).  
+	Isotrope Annahmen vereinfachen die mathematische Modellierung deutlich und finden in der technischen Mechanik insbesondere bei homogenen Metallen, Glas und einigen Kunststoffen Anwendung \cite{elastomechanik:Isotropie}.
+	
+	\item[\textbf{Normalkraft ($N$):}] Die Normalkraft ist eine Kraft, die senkrecht (normal) zur Querschnittsfläche eines Körpers oder Bauteils wirkt. 
+	Sie entsteht durch Zug oder Druck entlang der Längsachse des Körpers und ist eine der wichtigsten Grundkräfte in der Technischen Mechanik und Statik.
+	
+	\item[\textbf{Normalspannungen ($\sigma_N$):}] Die Normalspannung ist eine Form der Spannung, die auftritt, wenn eine Kraft senkrecht (normal) zur Fläche eines Körpers wirkt. 
+	Sie beschreibt den inneren Spannungszustand eines Materials bei Zug- oder Druckbelastung.
+	
+	\item[\textbf{Poissonzahl ($\nu$):}] Die Poissonzahl, auch bekannt als Querkontraktionszahl, ist eine materialabhängige Konstante, die das Verhältnis zwischen der Querdehnung und der Längsdehnung eines Körpers unter Zug- oder Druckbelastung beschreibt.
+	Sie ist definiert als
+	\begin{equation}
+		\nu=
+		-\frac{\varepsilon_{quer}}{\varepsilon_{laengs}}
+	\end{equation}
+	$\varepsilon_quer$ = Dehnung senkrecht zur Belastungsrichtung
+	
+	$\varepsilon_längs$ = Dehnung in Belastungsrichtung
+	
+	\item[\textbf{Spannung ($\sigma$):}] Die Spannung beschreibt die innere Kraftverteilung in einem Material, die infolge externer Belastungen (wie Zug, Druck oder Scherung) entsteht. 
+	Sie gibt an, welche Kraft pro Flächeneinheit innerhalb eines Körpers wirkt.
+		
+	\item[\textbf{Verzerrung ($\varepsilon$):}] Die Verzerrung (auch Dehnung genannt) beschreibt die relative Änderung der Form oder Länge eines Körpers infolge einer äußeren Belastung. 
+	Sie ist ein maßloser Wert, da sie ein Verhältnis zweier Längen ist.
+	Die Normalverrung wird berechnet mit
+	\begin{equation}
+		\varepsilon 
+		= \frac{\Delta L}{L_0}
+	\end{equation}
+	$\varepsilon$ = Verzerrung
+	
+	$\Delta L$ = Längenänderung
+	
+	$\L_0$ = ursprüngliche Länge des Körpers
+	
+	\item[\textbf{Verzerrungstensor ($\varepsilon_{ij}$):}] Der Verzerrungstensor beschreibt die Verformung (Dehnung und Scherung) eines Körpers infolge äußerer Belastungen in drei Raumrichtungen. 
+	Er erfasst nicht nur Längenänderungen (Normalverzerrungen), sondern auch Winkeländerungen (Schubverzerrungen) und stellt somit die vollständige lokale Verformung eines Materials im Raum dar.
+	Die Verzerrungstensor wird über die Ableitungen des Verschiebungsfeldes definiert als
+	\begin{equation}
+		\varepsilon_{ij} = 
+		\frac{1}{2} \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right)
+	\end{equation}
+	wobei er in drei Raumdimensionen die Form einer symmetrischen 3×3-Matrix annimmt:
+	\begin{equation}
+	\boldsymbol{\varepsilon} =
+	\begin{bmatrix}
+		\varepsilon_{xx} & \varepsilon_{xy} & \varepsilon_{xz} \\
+		\varepsilon_{yx} & \varepsilon_{yy} & \varepsilon_{yz} \\
+		\varepsilon_{zx} & \varepsilon_{zy} & \varepsilon_{zz}
+	\end{bmatrix}
+	\end{equation}
+		
+	\item[\textbf{Zugkraft:}] Die Zugkraft ist eine Kraft, die längs zur Achse eines Körpers wirkt und diesen in Richtung Verlängerung belastet. 
+	Sie verursacht Zugverformungen im Material.
+	
+	\item[\textbf{Zugspannungen:}] Die Zugspannung ist die innere Spannung, die durch eine Zugkraft im Material erzeugt wird. 
+	Sie wirkt senkrecht zur Querschnittsfläche des Körpers und beschreibt die Kraft pro Flächeneinheit, mit der das Material dem Zug widersteht.
+\end{description}
 
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-fugiat quo voluptas nulla pariatur?
-
-\subsection{De finibus bonorum et malorum
-\label{elastomechanik:subsection:finibus}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga \eqref{elastomechanik:equation1}.
-
-Et harum quidem rerum facilis est et expedita distinctio
-\ref{elastomechanik:section:teil2}.
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-impedit quo minus id quod maxime placeat facere possimus, omnis
-voluptas assumenda est, omnis dolor repellendus
-\ref{elastomechanik:section:teil3}.
-Temporibus autem quibusdam et aut officiis debitis aut rerum
-necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-molestiae non recusandae.
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus
-asperiores repellat.
-
+\subsection{Materialgesetzlichkeiten}
 
