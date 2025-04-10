@@ -62,16 +62,16 @@ Elektromagnetisches Feld $\rightarrow$ Fourier $\rightarrow$ Feldgleichung wie G
 				name=leftaxis,
 				width=12cm,
 				height=8cm,
-				xlabel={Wellenlänge $\lambda$ ($\mu$m)},
-				ylabel={Spektrale Strahlung $B_\lambda(\lambda, T)$ [W\,m$^{-2}$sr$^{-1}\mu$m$^{-1}$]},
+				xlabel={Wellenlänge $\lambda$ in ($\mu$m)},
+				ylabel={Spektrale Strahlung $B_\lambda(\lambda, T)$ in $[W/(m^2 \mu m)]$},
 				xmin=0.1, xmax=25,
 				ymin=0, ymax=14000,
 				legend style={at={(0.97,0.97)}, anchor=north east},
 				grid=both,
-				domain=0.1:5,
-				samples=500
+				domain=0.01:26,
+				samples=1000
 				]
-				
+				%W\,m$^{-2}$m$^{-1}
 				% Konstanten (SI)
 				\def\h{6.62607015e-34}       % Plancksche Konstante
 				\def\c{2.99792458e8}         % Lichtgeschwindigkeit
@@ -81,7 +81,7 @@ Elektromagnetisches Feld $\rightarrow$ Fourier $\rightarrow$ Feldgleichung wie G
 				% --- Plancksche Strahlungsformel ---
 				\addplot[black, thick] 
 				expression{
-					(2*\h*\c^2)/((x*1e-6)^5) * (1/(exp(\h*\c/((x*1e-6)*\kB*\T))-1))/1e6
+					(2*pi*\h*\c^2)/((x*1e-6)^5) * 1/(exp(\h*\c/((x*1e-6)*\kB*\T)) - 1) / 1e6
 				};
 				\addlegendentry{Planck}
 				
@@ -89,42 +89,17 @@ Elektromagnetisches Feld $\rightarrow$ Fourier $\rightarrow$ Feldgleichung wie G
 				% --- Rayleigh-Jeans-Gesetz (Langwellennähe) ---
 				\addplot[blue, thick, restrict y to domain=0:14000]
 				expression{
-					(2*\c*\kB*\T)/((x*1e-6)^4)/1e6
+					(2*pi*\c*\kB*\T)/((x*1e-6)^4) / 1e6
 				};
 				\addlegendentry{Rayleigh-Jeans}
 				
-				% Hier kannst du zusätzlich deine Messwerte als Punkte einfügen:
-				\addplot[only marks, mark=*, mark size=1.5pt, black]
-				coordinates {
-					      (0.8, 2000)
-					      (1.2, 5000)
-					      (1.8, 10000)
-					      (2.5, 12000)
-					      (3.3, 8000)
-					      (4.0, 3000)
-					  };
-				\addlegendentry{Messwerte}
 				
 			\end{axis}
 			
-			% Sekundäre Achse rechts (0 bis 4000) für die spektrale Strahlungsdichte.
-	%		\begin{axis}[
-	%			at={(leftaxis.outer east)},
-	%			anchor=outer east,
-	%			width=1pt,         % minimale Breite, damit pgfplots keine Fehler wirft
-	%			height=8cm,
-	%			axis x line=none,  % x-Achse dieser Achse ausblenden
-	%			axis y line*=right,
-	%			yticklabel pos=right,
-	%			ymin=0, ymax=4000,
-	%			ylabel={Spektrale Strahlungsdichte},
-	%			ytick={0,500,1000,1500,2000,2500,3000,3500,4000}
-	%			]
-				% Kein Plot, es werden nur die Achsenbeschriftungen angezeigt.
-	%		\end{axis}
+			
 			
 		\end{tikzpicture}
-		\caption{Strahlungsspektren nach Planck, Wien und Rayleigh-Jeans bei $T=1000\,\mathrm{K}$; linke Achse 0--14000, rechte Achse 0--4000.}
+		\caption{Strahlungsspektren nach Planck und Rayleigh-Jeans bei $T=1000\,\mathrm{K}$}
 	\end{figure}
 		
 
