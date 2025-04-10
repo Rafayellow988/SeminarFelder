@@ -17,6 +17,186 @@ Vielfache der Grundfrequenz sind möglich.
 
 Elektromagnetisches Feld $\rightarrow$ Fourier $\rightarrow$ Feldgleichung wie Gleichung vom Federpendel
 
+
+\subsection{Die Idee der Quantisierung
+	\label{fourier:subsection:DieIdeeDerQuantisierung}}
+	
+	Mit 16 Jahren fragte Max Planck seinen Professor, ob sich ein Studium in der Physik lohne. 
+	Dieser antwortete:
+	
+	\begin{center}
+		\textit{"In diesem Fach ist im Grunde schon alles entdeckt, was es zu entdecken gibt.\\
+			Es bleibt höchstens noch, ein paar Lücken auszufüllen."}
+	\end{center}
+	
+	Das war 1874. 
+	Zum Glück liess sich Planck davon nicht abhalten.
+	1897 wurde er Professor für Physik und beschäftigte sich mit einem dieser ungelösten Probleme, der Schwarzkörperstrahlung, auch bekannt als die ultraviolette Katastrophe. 
+	Nach dem Rayleigh-Jeans-Gesetz steigt die abgegebene Strahlung eines Körpers mit der Frequenz immer weiter an. Bei tiefen Frequenzen stimmt das, aber im ultravioletten Bereich versagt die Theorie komplett. 
+	Sie sagt unendlich hohe Energien voraus, während in Wirklichkeit kaum noch Strahlung messbar ist.
+	Planck suchte drei Jahre lang nach einer Lösung. 
+	
+	
+	Am Ende war es eher ein Akt der Verzweiflung als eine geniale Eingebung. 
+	Planck suchte nicht nach einer neuen Theorie, sondern nach einem mathematischen Trick, der zu den Messwerten passte.
+	Ohne genau zu verstehen, was seine Formel physikalisch bedeutete, passte er sie so an, dass sie die experimentellen Daten korrekt beschrieb. 
+
+
+	%\begin{equation}
+	%	u(f, T) = \frac{8\pi h f^3}{c^3} \cdot %\frac{1}{e^{\frac{h f}{k_B T}} - 1}
+	%\end{equation}
+	
+	
+	
+
+	To Do, Diagramm korrekt machen. verdammt schwierig!
+	%https://de.wikipedia.org/wiki/Rayleigh-Jeans-Gesetz#/media/Datei:PlanckWienRayleigh_linear_150dpi_de.png
+
+		
+	\begin{figure}[htbp]
+		\centering
+		\begin{tikzpicture}
+			
+			% Hauptachse (linke y-Achse; Werte von 0 bis 14000)
+			\begin{axis}[
+				name=leftaxis,
+				width=12cm,
+				height=8cm,
+				xlabel={Wellenlänge $\lambda$ ($\mu$m)},
+				ylabel={Spektrale Strahlung $B_\lambda(\lambda, T)$ [W\,m$^{-2}$sr$^{-1}\mu$m$^{-1}$]},
+				xmin=0.1, xmax=25,
+				ymin=0, ymax=14000,
+				legend style={at={(0.97,0.97)}, anchor=north east},
+				grid=both,
+				domain=0.1:5,
+				samples=500
+				]
+				
+				% Konstanten (SI)
+				\def\h{6.62607015e-34}       % Plancksche Konstante
+				\def\c{2.99792458e8}         % Lichtgeschwindigkeit
+				\def\kB{1.380649e-23}        % Boltzmann-Konstante
+				\def\T{1000}                 % Temperatur in Kelvin
+				
+				% --- Plancksche Strahlungsformel ---
+				\addplot[black, thick] 
+				expression{
+					(2*\h*\c^2)/((x*1e-6)^5) * (1/(exp(\h*\c/((x*1e-6)*\kB*\T))-1))/1e6
+				};
+				\addlegendentry{Planck}
+				
+				
+				% --- Rayleigh-Jeans-Gesetz (Langwellennähe) ---
+				\addplot[blue, thick, restrict y to domain=0:14000]
+				expression{
+					(2*\c*\kB*\T)/((x*1e-6)^4)/1e6
+				};
+				\addlegendentry{Rayleigh-Jeans}
+				
+				% Hier kannst du zusätzlich deine Messwerte als Punkte einfügen:
+				\addplot[only marks, mark=*, mark size=1.5pt, black]
+				coordinates {
+					      (0.8, 2000)
+					      (1.2, 5000)
+					      (1.8, 10000)
+					      (2.5, 12000)
+					      (3.3, 8000)
+					      (4.0, 3000)
+					  };
+				\addlegendentry{Messwerte}
+				
+			\end{axis}
+			
+			% Sekundäre Achse rechts (0 bis 4000) für die spektrale Strahlungsdichte.
+	%		\begin{axis}[
+	%			at={(leftaxis.outer east)},
+	%			anchor=outer east,
+	%			width=1pt,         % minimale Breite, damit pgfplots keine Fehler wirft
+	%			height=8cm,
+	%			axis x line=none,  % x-Achse dieser Achse ausblenden
+	%			axis y line*=right,
+	%			yticklabel pos=right,
+	%			ymin=0, ymax=4000,
+	%			ylabel={Spektrale Strahlungsdichte},
+	%			ytick={0,500,1000,1500,2000,2500,3000,3500,4000}
+	%			]
+				% Kein Plot, es werden nur die Achsenbeschriftungen angezeigt.
+	%		\end{axis}
+			
+		\end{tikzpicture}
+		\caption{Strahlungsspektren nach Planck, Wien und Rayleigh-Jeans bei $T=1000\,\mathrm{K}$; linke Achse 0--14000, rechte Achse 0--4000.}
+	\end{figure}
+		
+
+	
+
+
+
+	
+	
+	
+	Früher nahm man an, die Energie einer Welle hänge nur von ihrer Amplitude ab. 
+	Man glaubte auch, Atome könnten jede beliebige Energiemenge abstrahlen. Plancks Modell stellte das infrage. 
+	Energie konnte nur in bestimmten Portionen abgegeben werden, abhängig von der Frequenz und nicht von der Amplitude.
+    Er führte eine neue Naturkonstante ein, das Plancksche Wirkungsquantum $h = 6{,}626 \times 10^{-34} \ \text{J\,s}$. 
+	
+	
+	\begin{equation}
+		E = h \cdot f
+	\end{equation}
+	 
+	 
+	Je höher die Frequenz, desto grösser ist das nötige Energiepaket. 
+	Deshalb nimmt die Strahlung bei hohen Frequenzen wieder ab. Denn hohe Frequenzen bedeuten viel Energie pro Lichtquant und es ist ziemlich unwahrscheinlich, dass ein einzelnes Atom so viel Energie auf einen Schlag abgibt. 
+	Planck wusste dies nicht. 
+	Aber mit seiner Formel war der erste Schritt in Richtung Quantentheorie gemacht.
+	
+	%Einstein
+	
+	
+	1905 kam Albert Einstein ins Spiel. 
+	Er nahm Plancks Idee und dachte sie weiter. 
+	Licht, das man bisher nur als elektromagnetische Welle kannte, sollte sich manchmal wie ein Teilchen verhalten.
+	Er nannte diese Teilchen Lichtquanten, heute sagen wir Photonen. 
+	Mit dieser Vorstellung konnte er den photoelektrischen Effekt erklären, ein Experiment, das sich mit klassischer Physik nicht deuten liess. 
+	Für diese Arbeit bekam er 1921 den Nobelpreis.
+	 
+	%Bohr
+	
+	1913 übertrug Niels Bohr die Quantisierung auf Atome. 
+	In seinem Modell durften Elektronen nur auf festen Bahnen existieren. 
+	Ein Übergang zwischen diesen diskreten Bahnen ging immer mit einer Energieabgabe oder aufnahme in Form eines Photons einher. 
+
+	%de Broglie
+	
+	Louis de Broglie stellte die Frage, ob Teilchen ebenfalls wellenartige Eigenschaften besitzen könnten. 
+	Er postulierte, dass jedes Teilchen mit Impuls $p$ eine Wellenlänge besitzt, die durch
+	
+	
+	\begin{equation}
+		\lambda = \frac{h}{p}
+	\end{equation}
+	
+	
+	gegeben ist. So verband er die Konzepte von Materie und Welle.
+	
+	%Schrödinger
+	
+	Erwin Schrödinger entwickelte schliesslich eine Wellengleichung, die das Verhalten dieser Materiewellen beschreibt. Die eindimensionale zeitabhängige Schrödingergleichung lautet:
+	
+	
+	\begin{equation}
+		i \hbar \frac{\partial \psi(x,t)}{\partial t} = -\frac{\hbar^2}{2m} \frac{\partial^2 \psi(x,t)}{\partial x^2} + V(x) \psi(x,t)
+	\end{equation}
+	
+	
+	Anstatt exakte Bahnen zu liefern, gibt sie die Wahrscheinlichkeitsverteilung für den Aufenthaltsort eines Teilchens an, ein Grundprinzip der Quantenmechanik.
+	
+	So wurde klar, dass die Welt im Kleinen ganz eigene Regeln besitzt, die sich mathematisch erfassen lassen.
+	
+	
+	
+
 \subsection{Der harmonische Oszillator
 \label{fourier:subsection:derHarmonischeOszillator}}
 Warum genau schauen wir uns den harmonischen Oszillator an?
