@@ -21,4 +21,47 @@
 %wie man diese umwandlung macht. über den Frequenzraum
 %Wellengleichung als Beispiel
 
+ODE steht für ordinary differential equation, diese Gleichungen sind berühmt berüchtigt schwierig zu lösen.
+Schlimmer geht es immer.
+PDE steht für partial differential equantion. Sie hat enthaltet ableitungen nach mehreren Variabeln.
+In diesem Abschnitt vereinfachen wir eine PDE in eine ODE, mithilfe der Fourierreihe.
+Alle Ableitungen sollten schlussendlich den identischen Nenner besitzen.
+Als PDE verwenden wir die Wellengleichung.
+
+
+\begin{equation}
+	\frac{\partial^2 u(x, t)}{\partial t^2} = c^2 \cdot \frac{\partial^2 u(x, t)}{\partial x^2}
+\end{equation}
+
+Wir nehmen an $u(x, t)$ ist eine sich periodisch wiederholende Funktion. 
+Wir führen eine Fourierreihen-Entwicklung durch. 
+
+\begin{equation}
+	u(x,t) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left( a_n(t) \cos(n \omega t) + b_n(t) \sin(n \omega t) \right)
+\end{equation}
+
+Die Fourier Koeffizienten $a_n(t)$ und $b_n(t)$ sind neu von der Zeit abhängig.
+Nun wird $u(x,t)$ in seiner Summenform in die Wellengleichung eingebaut.
+Die zweite Ableitungen von $u(x,t)$ nach der Zeit und nach x lauten:
+
+\begin{equation}
+	\frac{\partial^2 u(x,t)}{\partial t^2} = \sum_{n=1}^{\infty} \left( -a_n n^2 \omega^2 \cos(n \omega t) - b_n n^2 \omega^2 \sin(n \omega t) \right)
+\end{equation}
+
+\begin{equation}
+	\frac{\partial^2 u(x,t)}{\partial x^2} = \sum_{n=1}^{\infty} \left( a_n''(x) \cos(n \omega t) + b_n''(x) \sin(n \omega t) \right)
+\end{equation}
+
+Die Resultate schlussendlich einsetzen.
+
+\begin{equation}
+	\sum_{n=1}^{\infty} \left( -a_n n^2 \omega^2 \cos(n \omega t) - b_n n^2 \omega^2 \sin(n \omega t) \right) = c^2 \sum_{n=1}^{\infty} \left( a_n''(x) \cos(n \omega t) + b_n''(x) \sin(n \omega t) \right)
+\end{equation}
+
+Die Beiden Summenzeichen kürzen sich raus. Mithilfe dem Koeffizientenvergleich, findet man zwei lösungen:
+
+\begin{equation}
+	-a_n n^2 \omega^2 = c^2 a_n''(x) \quad \text{und} \quad -b_n n^2 \omega^2 = c^2 b_n''(x)
+\end{equation}
+
 
