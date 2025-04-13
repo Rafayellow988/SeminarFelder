@@ -65,7 +65,7 @@ def rossby_wave_field(theta, phi, t=None):
     for t_i in t:
         # Define streamfunction ψ as a traveling wave
         sin_theta = np.sin(theta_grid)
-        sin_theta = np.clip(sin_theta, 1e-3, None)  # avoid divide-by-small
+        # sin_theta = np.clip(sin_theta, 1e-3, None)  # avoid divide-by-small
         psi = epsilon * np.sin(m * phi_grid - c * t_i) * np.sin(theta_grid)**2
 
         # Compute u = -1/r * ∂ψ/∂θ
@@ -84,7 +84,6 @@ def rossby_wave_field(theta, phi, t=None):
         x = np.sin(theta_grid) * np.cos(phi_grid)
         y = np.sin(theta_grid) * np.sin(phi_grid)
         z = np.cos(theta_grid)
-        print(u.min(), u.max())
         values.append((x, y, z, u, v, w))
 
     return values

@@ -5,6 +5,7 @@ import cartopy.crs as ccrs
 import time
 import os
 import plotly.io as pio
+import plotly.figure_factory as ff
 
 
 class Plot_Sphere:
@@ -106,7 +107,7 @@ class Plot_Sphere:
             go.Frame(
                 data=(static_traces + [trace]),
                 name=str(i),
-                layout=go.Layout(title_text=f"Frame {i}",scene_camera=camera),
+                layout=go.Layout(title_text=f"Frame {i}", scene_camera=camera),
             )
             for i, trace in enumerate(changing_traces)
         ]
@@ -166,21 +167,75 @@ class Plot_Sphere:
             )
         return figs
 
-    def plot_sphere_surface(self, field):
-        theta_grid, phi_grid = np.meshgrid(self.theta, self.phi)
-        x = np.sin(theta_grid) * np.cos(phi_grid)
-        y = np.sin(theta_grid) * np.sin(phi_grid)
-        z = np.cos(theta_grid)
+    def plot_sphere_surface(self, values=None):
+        if values is None:
+            # Create a dummy surface
+            theta_grid, phi_grid = np.meshgrid(self.theta, self.phi)
+            x = np.sin(theta_grid) * np.cos(phi_grid)
+            y = np.sin(theta_grid) * np.sin(phi_grid)
+            z = np.cos(theta_grid)
+            magnitude = None
+            return go.Surface(
+                x=x,
+                y=y,
+                z=z,
+                surfacecolor=magnitude,
+                colorscale="Viridis",
+                opacity=1,
+                showscale=False,
+            )
+        else:
+            traces = []
+            for value in values:
+                # Unpack the values
+                x = value[0]
+                y = value[1]
+                z = value[2]
+                u = value[3]
+                v = value[4]
+                w = value[5]
+                magnitude = np.sqrt(u**2 + v**2 + w**2)
+                trace = go.Surface(
+                    x=x,
+                    y=y,
+                    z=z,
+                    surfacecolor=magnitude,
+                    colorscale="Viridis",
+                    opacity=1,
+                    showscale=False,
+                )
+                traces.append(trace)
+            return traces
 
-        return go.Surface(
-            x=x,
-            y=y,
-            z=z,
-            surfacecolor=field,
-            colorscale=[[0, "white"], [1, "white"]],
-            opacity=1,
-            showscale=False,
-        )
+
+    # Simple Euler method for one streamline
+    def euler_streamline(self, x0, y0, f, steps=50, h=0.1):
+        x_vals, y_vals = [x0], [y0]
+        for _ in range(steps):
+            vx, vy = f(x_vals[-1], y_vals[-1])
+            x_vals.append(x_vals[-1] + vx*h)
+            y_vals.append(y_vals[-1] + vy*h)
+        return x_vals, y_vals
+
+
+    def streamline(self, values):
+        figs = []
+        for value in values:
+            theta = np.arccos(value[2])
+            phi = np.arctan2(value[1], value[0])
+            u = value[3]
+            v = value[4]
+
+            lat = np.rad2deg(np.pi / 2 - theta)
+            lon = np.rad2deg(phi)
+            u_clean = np.nan_to_num(u, nan=0.0, posinf=0.0, neginf=0.0)
+            v_clean = np.nan_to_num(v, nan=0.0, posinf=0.0, neginf=0.0)
+            # Flatten
+            x = np.linspace(0, 2 * np.pi, 20)
+            y = np.linspace(-np.pi / 2, np.pi / 2, 20)
+            fig = ff.create_streamline(x, y, u_clean, v_clean, arrow_scale=0.1)
+            figs.append(fig)
+        return figs
 
     def cone_plot3D(self, values):
         traces = []
@@ -200,6 +255,71 @@ class Plot_Sphere:
                 w=w.flatten(),
                 colorscale="Viridis",
                 sizemode="absolute",
+                sizeref=1,
+            )
+            traces.append(trace)
+        return traces
+
+    def rossby_surface_with_flow(self, values):
+        traces = []
+        for value in values:
+            x = value[0]
+            y = value[1]
+            z = value[2]
+            u = value[3]
+            v = value[4]
+            w = value[5]
+
+            # Cone: velocity vectors (x, y, z: locations; u, v, w: flow)
+            traces.append(
+                go.Cone(
+                    x=x.flatten(),
+                    y=y.flatten(),
+                    z=z.flatten() + 0.2,
+                    u=u.flatten(),
+                    v=v.flatten(),
+                    w=w.flatten(),
+                    colorscale="Viridis",
+                    sizemode="absolute",
+                    sizeref=1,
+                    anchor="tip",
+                    showscale=False,
+                )
+            )
+
+            magnitude = np.sqrt(u**2 + v**2 + w**2)
+            # # Surface: assumes x, y, z represent scalar field like ψ or height
+            traces.append(
+                go.Surface(
+                    x=x,
+                    y=y,
+                    z=z,
+                    colorscale="Viridis",
+                    opacity=0.6,
+                    showscale=False,
+                    surfacecolor=magnitude,
+                )
+            )
+
+        return traces
+
+    def streamtube_plot(self, values):
+        traces = []
+        for value in values:
+            x = value[0]
+            y = value[1]
+            z = value[2]
+            u = value[3]
+            v = value[4]
+            w = value[5]
+            trace = go.Streamtube(
+                x=x.flatten(),
+                y=y.flatten(),
+                z=z.flatten(),
+                u=u.flatten(),
+                v=v.flatten(),
+                w=w.flatten(),
+                colorscale="Viridis",
                 sizeref=1,
             )
             traces.append(trace)

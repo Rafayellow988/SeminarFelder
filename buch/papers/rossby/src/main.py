@@ -7,11 +7,10 @@ from rossby import random_field, vorticity_field, zonal_jet_field, rossby_wave_f
 
 def plot_basic_sphere():
 
-    n_latitudes = 25
-    n_longitudes = 25
+    n_latitudes = 50
+    n_longitudes = 50
     theta = np.linspace(np.deg2rad(10), np.deg2rad(170), n_latitudes)
     phi = np.linspace(0, 2 * np.pi, n_longitudes, endpoint=True)  # Longitude angles
-    print(phi)
     plot_sphere = Plot_Sphere(
         theta=theta, phi=phi, fields=None, plot_coastlines=False, plot_lonlat_lines=False
     )
@@ -20,14 +19,16 @@ def plot_basic_sphere():
     # values = vorticity_field(theta=theta, phi=phi, t=t)
     values = rossby_wave_field(theta=theta, phi=phi, t=t)
 
-    # cone_plots = plot_sphere.cone_plot3D(values)
+    figs = plot_sphere.streamline(values)
+    # traces = plot_sphere.streamtube_plot(values)    
     # sphere_plot = plot_sphere.plot_sphere()
-    sphere_plot = plot_sphere.plot_sphere_surface(values)
-    figs = []
-    fig = plot_sphere.animate_sphere(
-        static_traces=[], changing_traces=sphere_plot
-    )
-    figs = [fig]
+    # traces = plot_sphere.plot_sphere_surface(values)
+    # traces = plot_sphere.rossby_surface_with_flow(values)
+    # figs = []
+    # fig = plot_sphere.animate_sphere(
+    #     static_traces=[], changing_traces=traces
+    # )
+    # figs = [fig]
     # for cone_plot in cone_plots:
     #     fig = plot_sphere.make_fig([cone_plot] + sphere_plot)
     #     figs.append(fig)
