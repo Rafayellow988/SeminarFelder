@@ -1,3 +1,5 @@
+import time
+
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -5,6 +7,7 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib import animation
+from matplotlib.animation import FuncAnimation
 
 matplotlib.use('TkAgg')
 
@@ -98,8 +101,7 @@ def plot_solution(model, t_fixed=0.5):
     plt.ylabel("y")
     plt.show()
 
-# Should do the same as above except update the plot for new values of t every second
-# Does not work yet
+# Same as above but updates at every second for t values in [0; 1]
 def animate_solution(model, t_values=np.linspace(0, 1, 11), grid_size=100):
     x_vals = np.linspace(-1, 1, grid_size)
     y_vals = np.linspace(-1, 1, grid_size)
@@ -116,13 +118,12 @@ def animate_solution(model, t_values=np.linspace(0, 1, 11), grid_size=100):
         ).to(device)
         U_pred = model(xy_t).cpu().detach().numpy().reshape(grid_size, grid_size)
 
-        ax.clear()
         cont = ax.contourf(X, Y, U_pred, levels=100, cmap='coolwarm')
         ax.set_title(f"Wave solution at t = {t_fixed:.1f}")
         ax.set_xlabel("x")
         ax.set_ylabel("y")
 
-        if cbar:
+        if cbar is not None:
             cbar.remove()
         cbar = fig.colorbar(cont, ax=ax, label='Wave Height')
 
@@ -130,5 +131,5 @@ def animate_solution(model, t_values=np.linspace(0, 1, 11), grid_size=100):
     plt.show()
 
 
-# plot_solution(model, t_fixed=0.5)
+#plot_solution(model, t_fixed=0.5)
 animate_solution(model)
