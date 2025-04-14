@@ -64,9 +64,9 @@ optimizer = optim.Adam(model.parameters(), lr=0.001)
 # Generate training points
 # Uniformly generated in the x-y-t coordinate system
 n_samples = 5000
-x = torch.FloatTensor(n_samples, 1).uniform_(-1, 1)
-y = torch.FloatTensor(n_samples, 1).uniform_(-1, 1)
-t = torch.FloatTensor(n_samples, 1).uniform_(0, 1)
+x = torch.FloatTensor(n_samples, 1).uniform_(-2, 2)
+y = torch.FloatTensor(n_samples, 1).uniform_(-2, 2)
+t = torch.FloatTensor(n_samples, 1).uniform_(0, 5)
 xyt = torch.cat([x, y, t], dim=1).to(device)
 
 # Training loop
@@ -102,32 +102,35 @@ def plot_solution(model, t_fixed=0.5):
     plt.show()
 
 # Same as above but updates at every second for t values in [0; 1]
-def animate_solution(model, t_values=np.linspace(0, 1, 11), grid_size=100):
-    x_vals = np.linspace(-1, 1, grid_size)
-    y_vals = np.linspace(-1, 1, grid_size)
+def animate_solution(model, t_values=np.linspace(0, 5, 51), grid_size=100):
+    x_vals = np.linspace(-2, 2, grid_size)
+    y_vals = np.linspace(-2, 2, grid_size)
     X, Y = np.meshgrid(x_vals, y_vals)
 
     fig, ax = plt.subplots()
     cbar = None
+    u_pred_array = []
+
+    for t in t_values:
+        xy_t = torch.FloatTensor(
+            np.column_stack([X.ravel(), Y.ravel(), np.full_like(X.ravel(), t)])
+        ).to(device)
+        u_pred_array.append(model(xy_t).cpu().detach().numpy().reshape(grid_size, grid_size))
 
     def update(frame):
         nonlocal cbar
-        t_fixed = t_values[frame]
-        xy_t = torch.FloatTensor(
-            np.column_stack([X.ravel(), Y.ravel(), np.full_like(X.ravel(), t_fixed)])
-        ).to(device)
-        U_pred = model(xy_t).cpu().detach().numpy().reshape(grid_size, grid_size)
+        t = t_values[frame]
+        U_pred = u_pred_array[frame]
 
         cont = ax.contourf(X, Y, U_pred, levels=100, cmap='coolwarm')
-        ax.set_title(f"Wave solution at t = {t_fixed:.1f}")
+        ax.set_title(f"Wave solution at t = {t:.1f}")
         ax.set_xlabel("x")
         ax.set_ylabel("y")
 
-        if cbar is not None:
-            cbar.remove()
-        cbar = fig.colorbar(cont, ax=ax, label='Wave Height')
+        if cbar is None:
+            cbar = fig.colorbar(cont, ax=ax, label='Wave Height')
 
-    ani = animation.FuncAnimation(fig, update, frames=len(t_values), interval=1000, repeat=True)
+    ani = animation.FuncAnimation(fig, update, frames=len(t_values), interval=100, repeat=True)
     plt.show()
 
 
