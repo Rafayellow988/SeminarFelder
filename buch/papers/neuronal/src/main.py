@@ -33,10 +33,27 @@ class WaveNet(nn.Module):
     def forward(self, x):
         return self.net(x)
 
+    def fit(self, xyt, optimizer, n_epochs):
+        train_error = []
+        for epoch in range(n_epochs):
+            optimizer.zero_grad()
+            residual = wave_equation_residual(self, xyt)
+            loss = torch.mean(residual ** 2)  # Minimize the squared wave equation residual
+            loss.backward()
+            optimizer.step()
+
+            train_error.append(loss.item())
+
+            if epoch % 100 == 0:
+                print(f"Epoch {epoch}, Loss: {loss.item():.6f}")
+
+        return train_error
+
+
 
 # Define the wave equation residual
 # Equation 23.4 in the paper
-def wave_equation_residual(model, xyt, c=1.0):
+def wave_equation_residual(model, xyt, c=2.0):
     xyt.requires_grad_(True)
     u = model(xyt)
 
@@ -64,23 +81,33 @@ optimizer = optim.Adam(model.parameters(), lr=0.001)
 # Generate training points
 # Uniformly generated in the x-y-t coordinate system
 n_samples = 5000
-x = torch.FloatTensor(n_samples, 1).uniform_(-2, 2)
-y = torch.FloatTensor(n_samples, 1).uniform_(-2, 2)
-t = torch.FloatTensor(n_samples, 1).uniform_(0, 5)
-xyt = torch.cat([x, y, t], dim=1).to(device)
+x_train = torch.FloatTensor(n_samples, 1).uniform_(-2, 2)
+y_train = torch.FloatTensor(n_samples, 1).uniform_(-2, 2)
+t_train = torch.FloatTensor(n_samples, 1).uniform_(0, 5)
+xyt_train = torch.cat([x_train, y_train, t_train], dim=1).to(device)
 
-# Training loop
-n_epochs = 200
-for epoch in range(n_epochs):
-    optimizer.zero_grad()
-    residual = wave_equation_residual(model, xyt)
-    loss = torch.mean(residual ** 2)  # Minimize the squared wave equation residual
-    loss.backward()
-    optimizer.step()
+# Training
+train_error = model.fit(xyt_train, optimizer, 200)
 
-    if epoch % 100 == 0:
-        print(f"Epoch {epoch}, Loss: {loss.item():.6f}")
 
+# Testing loop
+test_error = []
+grid_size = 100
+t_values = np.linspace(0, 5, 51)
+x_vals = np.linspace(-2, 2, grid_size)
+y_vals = np.linspace(-2, 2, grid_size)
+X, Y = np.meshgrid(x_vals, y_vals)
+
+u_pred_array = []
+
+for t in t_values:
+    xy_t = torch.FloatTensor(
+        np.column_stack([X.ravel(), Y.ravel(), np.full_like(X.ravel(), t)])
+    ).to(device)
+    u_pred_array.append(model(xy_t).cpu().detach().numpy().reshape(grid_size, grid_size))
+    test_error.append(torch.mean(wave_equation_residual(model, xyt_train) ** 2).item())
+
+print(f"Average test error: {np.mean(test_error)}")
 
 # Evaluates the model at random x and y values in the ranges (-1, 1)
 # Creates a contour plot at a single timestep t (t is fixed at 0.5)
@@ -102,20 +129,9 @@ def plot_solution(model, t_fixed=0.5):
     plt.show()
 
 # Same as above but updates at every second for t values in [0; 1]
-def animate_solution(model, t_values=np.linspace(0, 5, 51), grid_size=100):
-    x_vals = np.linspace(-2, 2, grid_size)
-    y_vals = np.linspace(-2, 2, grid_size)
-    X, Y = np.meshgrid(x_vals, y_vals)
-
+def animate_solution(t_values, X, Y, u_pred_array):
     fig, ax = plt.subplots()
     cbar = None
-    u_pred_array = []
-
-    for t in t_values:
-        xy_t = torch.FloatTensor(
-            np.column_stack([X.ravel(), Y.ravel(), np.full_like(X.ravel(), t)])
-        ).to(device)
-        u_pred_array.append(model(xy_t).cpu().detach().numpy().reshape(grid_size, grid_size))
 
     def update(frame):
         nonlocal cbar
@@ -133,6 +149,20 @@ def animate_solution(model, t_values=np.linspace(0, 5, 51), grid_size=100):
     ani = animation.FuncAnimation(fig, update, frames=len(t_values), interval=100, repeat=True)
     plt.show()
 
+# Plots training error over training epochs
+def train_error_plot(training_error):
+    epochs = range(1, len(training_error) + 1)
+
+    plt.figure(figsize=(10, 6))
+    plt.plot(epochs, training_error, label='Training Error', marker='o')
+    plt.xlabel('Epoch')
+    plt.ylabel('Error')
+    plt.title('Training Error over Epochs')
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
 
 #plot_solution(model, t_fixed=0.5)
-animate_solution(model)
+#animate_solution(t_values, X, Y, u_pred_array)
+train_error_plot(train_error)
