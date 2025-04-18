@@ -22,14 +22,17 @@ Im Folgenden ein geschichtlicher Exkurs, wie es dazu kam.
 
 \subsection{Die Idee der Quantisierung\label{fourier:subsection:DieIdeeDerQuantisierung}}
 	
-	Die beiden Wörter Quanten und Quantisierung ähneln sich, dessen bedeutung jedenfall nicht. Ein Quant ist ein kleinst mögliches Teilchen und Quantisierung bedeutet nichts Anderes als zählbar. In der Quantenfeldtheorie ist Alles Zählbar, auch Licht. In der Primarschule wurde uns gelehrt, dass Dinge die nicht zählbar sind, stets "das" als vording haben. Das Licht ist also offensichtlich inkorrekt. Nun erfolgt ein  Geschichtlicher Exkurs, wie es dazu kam. 
+	Die beiden Wörter Quanten und Quantisierung ähneln sich, dessen bedeutung jedenfall nicht.
+	Ein Quant ist ein kleinst mögliches Teilchen und Quantisierung bedeutet nichts Anderes als zählbar.
+	In der Quantenfeldtheorie ist Alles Zählbar, auch Licht. In der Primarschule wurde uns gelehrt, dass Dinge die nicht zählbar sind, stets ``das'' als vording haben.
+	Das Licht ist also offensichtlich inkorrekt. Nun erfolgt ein  Geschichtlicher Exkurs, wie es dazu kam. 
 	
 	Mit 16 Jahren fragte Max Planck seinen Professor, ob sich ein Studium in der Physik lohne. 
 	Dieser antwortete:
 	
 	\begin{center}
-		\textit{"{}In diesem Fach ist im Grunde schon alles entdeckt, was es zu entdecken gibt.\\
-			Es bleibt höchstens noch, ein paar Lücken auszufüllen."}
+		\textit{``{}In diesem Fach ist im Grunde schon alles entdeckt, was es zu entdecken gibt.\\
+			Es bleibt höchstens noch, ein paar Lücken auszufüllen. ''}
 	\end{center}
 	
 	Das war 1874. 
@@ -157,9 +160,8 @@ Im Folgenden ein geschichtlicher Exkurs, wie es dazu kam.
 	gegeben ist. So verband er die Konzepte von Materie und Welle.
 	
 	%Schrödinger
-	
-	Erwin Schrödinger entwickelte schliesslich eine Wellengleichung, die das Verhalten dieser Materiewellen beschreibt. Die eindimensionale zeitabhängige Schrödingergleichung lautet:
-	
+	Erwin Schrödinger entwickelte schliesslich eine Wellengleichung, die das Verhalten dieser Materiewellen beschreibt.
+	Die eindimensionale zeitabhängige Schrödingergleichung lautet:
 	
 	\begin{equation}
 		i \hbar \frac{\partial \psi(x,t)}{\partial t} = -\frac{\hbar^2}{2m} \frac{\partial^2 \psi(x,t)}{\partial x^2} + V(x) \psi(x,t)
@@ -242,10 +244,10 @@ Es handelt sich hier um ein ``Quanten-Federpendel''.
 \end{figure}
 
 %%
-\subsection{Einführung in Werkzeuge der Quantenmechanik\label{fourier:subsection:WerkzeugeQuantenmechanik}}
+\subsection{Einführung in Werkzeuge der Quantenmechanik\label{fourier:subsection:werkzeugeQuantenmechanik}}
 Für die Erklärung von Photonen sind einige Werkzeuge der Quantenmechanik nützlich, welche nachfolgend kurz eingeführt werden.
 
-\subsubsection{Bra-Ket-Notation\label{fourier:subsubsection:BraKetNotation}}
+\subsubsection{Bra-Ket-Notation\label{fourier:subsubsection:braKetNotation}}
 Die Bra-Ket-Notation, auch Dirac Notation genannt, wird in der Quantenmechanik häufig verwendet.
 Sie wurde von Paul Dirac eingeführt und ist sehr praktisch, um Zustände und Operatoren kompakt und elegant darzustellen.
 \begin{equation}
@@ -261,7 +263,7 @@ Ket $\langle \psi |$ beschreibt einen Zustand beispielsweise eines Systems oder 
 Bra $| \phi \rangle$ ist das duale (konjugiert komplexe) zu $\langle \psi |$.
 A ist ein Operator (z.B. Hamilton-Operator, Impulsoperator, Ortsoperator).
 
-\subsubsection{Unschärferelation\label{fourier:subsubsection:Unschaerferelation}}
+\subsubsection{Heisenbergs Unschärferelation\label{fourier:subsubsection:unschaerferelation}}
 In der Quantenmechanik gibt es keine festen Werte, sondern Wahrscheinlichkeiten und Mittelwerte.
 In der klassischen Physik ist es der Impuls p, wohingegen in der Quantenmechanik der Impuls ein Operator 
 \begin{equation}
@@ -280,7 +282,7 @@ Diese Relation sagt, dass es eine Grenze gibt, wie präzise man einen Ort und ei
 Es ist ein Ausdruck der Wellen-Natur von Teilchen.
 % todo knma: Ergänzungen anbringen
 
-\subsection{Beweis des Photons\label{fourier:subsection:BeweisPhoton}}
+\subsection{Beweis des Photons\label{fourier:subsection:beweisPhoton}}
 Mit dem Grundwissen, welches in den bisherigen Kapiteln dieses Papers vermittelt wurde und den vorgestellten Werkzeugen der Quantenmechanik wird in diesem Kapitel bewiesen, dass das Photon exisitert.
 
 Die Hamilton-Funktion
@@ -300,14 +302,54 @@ Durch Schrödinger wird der Impuls p durch
 	\frac{\hbar}{i} \frac{\partial}{\partial x}
 \end{equation}
 ersetzt.
-Wodurch
+Wodurch der Hamiltonoperator
 \begin{equation}
 	\hat{H} = -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2} + V(x)
 \end{equation}	
-der Hamiltonoperator resultiert.
+resultiert.
 
 % todo: Überleitung
-Der Erwartungswert des Impulses
-% todo equation
-ist der mittlere (erwartete) Impuls, wenn das System im Zustand $| \phi \rangle$ ist.
-% todo: somehow from Bra-Ket to measuring values
+Der Erwartungswert des Impulses p
+\begin{equation}
+	E(p) = \int \bar{\psi}p\psi \, dx
+	= \int \bar{\psi} \, \frac{\hbar}{\mathrm{i}} \, \frac{d\psi}{dx} \, dx
+	= \langle \psi | p | \psi \rangle
+\end{equation}
+ist der mittlere (erwartete) Impuls, wenn das System im Zustand $| \psi \rangle$ ist.
+% todo: somehow from Bra-Ket to measuring values -> probably a bit upper
+
+Nach Heisenbergs Unschärferelation, die in Abschnitt~\ref{fourier:subsubsection:unschaerferelation} behandelt wurde, gilt in der Quantenmechanik, dass die Vertauschung der Impuls- und Ortsoperatoren nicht null ist, also
+\begin{equation}
+	px \neq xp.
+\end{equation}
+Die Vertauschungsrelation kann wie folgt geschrieben werden oder so\dots
+\begin{equation}
+	[x, p] = \hbar 1 % todo: evtl. andere eins...
+\end{equation}
+Dies zeigt, dass Impuls und Ort in der Quantenmechanik nicht vertauschbar sind. % todo: Ist dies nicht eine Wiederholung vom referenzierten Kapitel?!
+Mit Varianzen ausgedrückt, ergibt sich
+\begin{equation}
+	\sqrt{var(x)}\sqrt{var(p)} \geq \hbar.
+\end{equation}
+% todo: some explanation and überleiten
+\begin{equation}
+	\vec{a}\bullet\vec{b} = |\vec{a}| \cdot |\vec{b}| \cdot \cos{\alpha} \leq |\vec{a}| \cdot |\vec{b}|
+\end{equation}
+% todo: some text
+\begin{equation}
+	\int \langle \psi |xp|\psi \rangle\,dx	% todo: Was wollte er uns mit dieser Gleichung sagen?
+\end{equation}
+% todo: some text
+
+
+Kommen wir nun zum Harmonischen Oszillator, welcher in Abschnitt~\ref{fourier:subsection:derHarmonischeOszillator} bereits erklärt wurde.
+Zum Beweis des Photons benötigen wir zwei neue Operatoren
+\begin{equation}
+	a^{+} = \frac{1}{\sqrt{2}}(Q + \mathrm{i}P), a = \frac{1}{\sqrt{2}}(Q - \mathrm{i}P).
+\end{equation}
+Mit der Vertauschungsrelation
+\begin{equation}
+	[P,Q] = -\mathrm{i} \cdot id,
+\end{equation}
+wobei id die Einheitsmatrix ist, lässt sich über die blablabla-Matrix % todo, welche Matrix?
+% todo: tbc
