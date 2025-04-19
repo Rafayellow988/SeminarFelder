@@ -250,36 +250,60 @@ Für die Erklärung von Photonen sind einige Werkzeuge der Quantenmechanik nütz
 \subsubsection{Bra-Ket-Notation\label{fourier:subsubsection:braKetNotation}}
 Die Bra-Ket-Notation, auch Dirac Notation genannt, wird in der Quantenmechanik häufig verwendet.
 Sie wurde von Paul Dirac eingeführt und ist sehr praktisch, um Zustände und Operatoren kompakt und elegant darzustellen.
-\begin{equation}
-	\langle \psi | \phi \rangle
-\end{equation}
+\[
+\langle \psi | \phi \rangle
+\]
 ist eine abgekürzte mathematische Schreibweise für
-\begin{equation}
-	\int \psi^*(x)\,\psi(x)\,dx
-\end{equation}
+\[
+\int \psi^*(x)\,\psi(x)\,dx
+\]
 $\psi$ steht nach wie vor für die Wellenfunktion und wird hier zur Erläuterung der Bra-Ket-Notation verwendet.
 Die Bra-Ket-Notation besteht aus zwei Hauptteilen.
 Ket $\langle \psi |$ beschreibt einen Zustand beispielsweise eines Systems oder der Wellenfunktion.
 Bra $| \phi \rangle$ ist das duale (konjugiert komplexe) zu $\langle \psi |$.
 A ist ein Operator (z.B. Hamilton-Operator, Impulsoperator, Ortsoperator).
 
+Durch die Bra-Ket-Notation kann ein Messwert eines Operators einfach gefunden werden.
+Als Beispiel haben wir
+\[
+% todo: here knma
+\]
+
 \subsubsection{Heisenbergs Unschärferelation\label{fourier:subsubsection:unschaerferelation}}
+In der klassischen Mechanik können Ort und Impuls eines Teilchens beliebig genau gleichzeitig festgelegt werden.
+In der Quantenmechanik jedoch treten fundamentale Einschränkungen auf, die Heisenberg formulierte.
+
 In der Quantenmechanik gibt es keine festen Werte, sondern Wahrscheinlichkeiten und Mittelwerte.
-In der klassischen Physik ist es der Impuls p, wohingegen in der Quantenmechanik der Impuls ein Operator 
+In der klassischen Physik ist es der Impuls p, wohingegen in der Quantenmechanik der Impuls 
 \begin{equation}
-	p - i \, \hbar \frac{d}{dx}
+	\hat{p} = - \mathrm{i} \hbar \frac{d}{dx}
 \end{equation}
-ist.
+ein Operator ist.
 Man kann nicht einfach sagen ``Das Teilchen hat einen Impuls p'', weil der Impuls unscharf (nicht exakt bestimmt) sein kann.
 Der Ort und der Impuls sind nicht gleichzeitig messbare Observablen.
 Ihre Operatoren vertauschen nicht
 \begin{equation}
-    [\hat{x}, \hat{p}] = i\hbar.
+    [\hat{x}, \hat{p}] = \mathrm{i} \hbar.
 \end{equation}
 Aus dieser Vertauschungsrelation folgt mathematisch direkt die Unschärferelation.
 Die Unschärferelation ist kein Messfehler, sondern ein fundamentales Naturgesetz.
 Diese Relation sagt, dass es eine Grenze gibt, wie präzise man einen Ort und einen Impuls gleichzeitig kennen kann.
+Man kann den Ort und den Impuls nie gleichzeitig beliebig genau wissen.
+Dies zeigt, dass Impuls und Ort in der Quantenmechanik nicht vertauschbar sind. % todo: Ist dies nicht eine Wiederholung vom referenzierten Kapitel?!
+Mit Varianzen ausgedrückt, ergibt sich
+\begin{equation}
+	\sqrt{var(x)}\sqrt{var(p)} \geq \frac{\hbar}{2}.
+\end{equation}
+Bekanntlich ist die Wurzel aus Varianzen die Standardabweichung, daraus folgt
+\begin{equation}
+	\sigma_x \cdot \sigma_p \geq \frac{\hbar}{2}.
+\end{equation}
+Die Standardabweichung kann als Unschärfe der Position und des Impulses verstanden werden.
+Das geteilt durch 2 ist die exakte Form, wenn es um präzise Rechnungen oder Beweise geht.
+Würde dies weggelassen, wäre es eine grobe, aber anschauliche Form für das physikalische Verständnis.
+Wenn man den Ort sehr genau kennt ($\sigma_x$ klein), wird der Impuls sehr ungenau.
 Es ist ein Ausdruck der Wellen-Natur von Teilchen.
+
 % todo knma: Ergänzungen anbringen
 
 \subsection{Beweis des Photons\label{fourier:subsection:beweisPhoton}}
@@ -293,13 +317,13 @@ ist eine Funktion von Positionen (x) und Impulsen (p).
 Sie beschreibt die Gesamtenergie eines Systems.
 Dienend als Grundlage für Hamiltonische Gleichungen beschreibt sie die Systembewegung.
 %todo: evtl. simpler schreiben.
-T (p) ist die kinetische und V (x) ist die potentielle Energie.
+$T(p)$ ist die kinetische und $V(x)$ ist die potentielle Energie.
 %Mit Notizen
 % todo: add some stuff of book quantum mechanics to glue things together
 
 Durch Schrödinger wird der Impuls p durch
 \begin{equation}
-	\frac{\hbar}{i} \frac{\partial}{\partial x}
+	\frac{\hbar}{\mathrm{i}} \frac{\partial}{\partial x}
 \end{equation}
 ersetzt.
 Wodurch der Hamiltonoperator
@@ -312,7 +336,7 @@ resultiert.
 Der Erwartungswert des Impulses p
 \begin{equation}
 	E(p) = \int \bar{\psi}p\psi \, dx
-	= \int \bar{\psi} \, \frac{\hbar}{\mathrm{i}} \, \frac{d\psi}{dx} \, dx
+	= \int \bar{\psi} \, \frac{\hbar}{i} \, \frac{d\psi}{dx} \, dx
 	= \langle \psi | p | \psi \rangle
 \end{equation}
 ist der mittlere (erwartete) Impuls, wenn das System im Zustand $| \psi \rangle$ ist.
@@ -322,15 +346,11 @@ Nach Heisenbergs Unschärferelation, die in Abschnitt~\ref{fourier:subsubsection
 \begin{equation}
 	px \neq xp.
 \end{equation}
-Die Vertauschungsrelation kann wie folgt geschrieben werden oder so\dots
+Die Vertauschungsrelation kann als
 \begin{equation}
 	[x, p] = \hbar 1 % todo: evtl. andere eins...
 \end{equation}
-Dies zeigt, dass Impuls und Ort in der Quantenmechanik nicht vertauschbar sind. % todo: Ist dies nicht eine Wiederholung vom referenzierten Kapitel?!
-Mit Varianzen ausgedrückt, ergibt sich
-\begin{equation}
-	\sqrt{var(x)}\sqrt{var(p)} \geq \hbar.
-\end{equation}
+geschrieben werden.
 % todo: some explanation and überleiten
 \begin{equation}
 	\vec{a}\bullet\vec{b} = |\vec{a}| \cdot |\vec{b}| \cdot \cos{\alpha} \leq |\vec{a}| \cdot |\vec{b}|
@@ -344,12 +364,14 @@ Mit Varianzen ausgedrückt, ergibt sich
 
 Kommen wir nun zum Harmonischen Oszillator, welcher in Abschnitt~\ref{fourier:subsection:derHarmonischeOszillator} bereits erklärt wurde.
 Zum Beweis des Photons benötigen wir zwei neue Operatoren
-\begin{equation}
-	a^{+} = \frac{1}{\sqrt{2}}(Q + \mathrm{i}P), a = \frac{1}{\sqrt{2}}(Q - \mathrm{i}P).
-\end{equation}
+\[
+a^{+} = \frac{1}{\sqrt{2}}(Q + iP)
+\qquad\text{und}\qquad
+a = \frac{1}{\sqrt{2}}(Q - iP).
+\]
 Mit der Vertauschungsrelation
 \begin{equation}
 	[P,Q] = -\mathrm{i} \cdot id,
 \end{equation}
-wobei id die Einheitsmatrix ist, lässt sich über die blablabla-Matrix % todo, welche Matrix?
+wobei id die Einheitsmatrix ist, lässt sich über den Hamiltonoperator % todo: ist es wirklich der und Satz vervollstängigen
 % todo: tbc
