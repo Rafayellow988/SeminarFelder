@@ -247,63 +247,104 @@ Es handelt sich hier um ein ``Quanten-Federpendel''.
 \subsection{Einführung in Werkzeuge der Quantenmechanik\label{fourier:subsection:werkzeugeQuantenmechanik}}
 Für die Erklärung von Photonen sind einige Werkzeuge der Quantenmechanik nützlich, welche nachfolgend kurz eingeführt werden.
 
-\subsubsection{Bra-Ket-Notation\label{fourier:subsubsection:braKetNotation}}
-Die Bra-Ket-Notation, auch Dirac Notation genannt, wird in der Quantenmechanik häufig verwendet.
-Sie wurde von Paul Dirac eingeführt und ist sehr praktisch, um Zustände und Operatoren kompakt und elegant darzustellen.
-\[
-\langle \psi | \phi \rangle
-\]
-ist eine abgekürzte mathematische Schreibweise für
-\[
-\int \psi^*(x)\,\psi(x)\,dx
-\]
-$\psi$ steht nach wie vor für die Wellenfunktion und wird hier zur Erläuterung der Bra-Ket-Notation verwendet.
-Die Bra-Ket-Notation besteht aus zwei Hauptteilen.
-Ket $\langle \psi |$ beschreibt einen Zustand beispielsweise eines Systems oder der Wellenfunktion.
-Bra $| \phi \rangle$ ist das duale (konjugiert komplexe) zu $\langle \psi |$.
-A ist ein Operator (z.B. Hamilton-Operator, Impulsoperator, Ortsoperator).
+\subsubsection{Bra-Ket-Notation\label{fourier:subsubsection:braKetNotation}} % todo knma: dies verständlicher formulieren und, dass man das dann als Werkzeug gebrauchen kann, um Photon zu beweisen
+Die Bra-Ket-Notation, auch Dirac-Notation genannt, wurde von Paul Dirac eingeführt und ist heute Standard in der Quantenmechanik.
+Sie dient dazu, Zustände und Operatoren kompakt und elegant darzustellen.
 
-Durch die Bra-Ket-Notation kann ein Messwert eines Operators einfach gefunden werden.
-Als Beispiel haben wir
-\[
-% todo: here knma
-\]
+Ein \emph{Ket} $|\psi\rangle$ beschreibt den Zustand eines quantenmechanischen Systems.
+Man kann sich Kets wie Richtungs-Pfeile vorstellen, die angeben, ``wie'' das System gerade ist - z.B. mit welcher Energie, welchem Spin oder an welchem Ort sich ein Teilchen befindet.
+Ein \emph{Bra} $\langle\psi|$ ist das zugehörige Gegenstück zum Ket - es steht symbolisch für eine Messung oder einen Test auf diesen Zustand.
+Formal ist es das komplex-konjugierte und transponierte Objekt zum Ket.
 
-\subsubsection{Heisenbergs Unschärferelation\label{fourier:subsubsection:unschaerferelation}}
-In der klassischen Mechanik können Ort und Impuls eines Teilchens beliebig genau gleichzeitig festgelegt werden.
-In der Quantenmechanik jedoch treten fundamentale Einschränkungen auf, die Heisenberg formulierte.
+Beispiele:
+\begin{itemize}
+  \item $|0\rangle$ kann den Grundzustand eines Systems beschreiben.
+  \item $|x\rangle$ steht für einen Zustand, in dem sich ein Teilchen genau am Ort $x$ befindet.
+  \item Allgemeine Zustände lassen sich als Superposition (Überlagerung) schreiben, z.B.:
+  \[
+    |\psi\rangle = \alpha\,|0\rangle + \beta\,|1\rangle,
+  \]
+  wobei $\alpha$ und $\beta$ komplexe Zahlen sind.
+\end{itemize}
 
-In der Quantenmechanik gibt es keine festen Werte, sondern Wahrscheinlichkeiten und Mittelwerte.
-In der klassischen Physik ist es der Impuls p, wohingegen in der Quantenmechanik der Impuls 
+Das \emph{Skalarprodukt} zwischen zwei Zuständen $|\phi\rangle$ und $|\psi\rangle$ ergibt eine komplexe Zahl:
 \begin{equation}
-	\hat{p} = - \mathrm{i} \hbar \frac{d}{dx}
+  \langle \phi | \psi \rangle = \int \phi^*(x)\,\psi(x)\,dx,
+\end{equation}
+die misst, wie ähnlich sich die beiden Zustände sind („Überlappung“).
+
+Die \emph{Norm} eines Zustands ist einfach das Skalarprodukt mit sich selbst:
+\begin{equation}
+  \langle \psi | \psi \rangle = \int \psi^*(x)\,\psi(x)\,dx.
+\end{equation}
+
+Der \emph{Erwartungswert} eines physikalischen Operators $A$ im Zustand $|\psi\rangle$ beschreibt den durchschnittlich gemessenen Wert bei vielen Wiederholungen:
+\begin{equation}
+  \langle A \rangle = \langle \psi | A | \psi \rangle = \int \psi^*(x)\,(A\psi)(x)\,dx.
+\end{equation}
+
+Ist $|\psi\rangle$ ein Eigenzustand von $A$ mit einem bestimmten Eigenwert $a$, d.h.
+\begin{equation}
+  A\,|\psi\rangle = a\,|\psi\rangle,
+\end{equation}
+so ergibt eine ideale Messung des Operators $A$ immer genau den Wert $a$.
+
+Die Bra-Ket-Notation ist nicht nur kompakt, sondern macht viele Rechnungen in der Quantenmechanik übersichtlich und leicht handhabbar.
+
+% here workin on
+%%%%%%%%%%%%%%%%%
+\subsubsection{Heisenbergs Unschärferelation%  
+\label{fourier:subsubsection:unschaerferelation}}
+In der Quantenmechanik gibt es keine festen Werte, sondern Wahrscheinlichkeiten und Mittelwerte.
+In der klassischen Physik ist der Impuls $p$ eine fest definierte Größe, wohingegen in der Quantenmechanik
+\begin{equation}
+\hat{p} = -\,\mathrm{i}\,\hbar\,\frac{d}{dx}
 \end{equation}
 ein Operator ist.
-Man kann nicht einfach sagen ``Das Teilchen hat einen Impuls p'', weil der Impuls unscharf (nicht exakt bestimmt) sein kann.
-Der Ort und der Impuls sind nicht gleichzeitig messbare Observablen.
-Ihre Operatoren vertauschen nicht
+Man kann nicht einfach sagen ``Das Teilchen hat einen Impuls $p$'', weil dieser unscharf (nicht exakt bestimmt) sein kann.
+Ort und Impuls sind nicht gleichzeitig messbare Observablen: Ihre Operatoren vertauschen nicht,
 \begin{equation}
-    [\hat{x}, \hat{p}] = \mathrm{i} \hbar.
+[\hat{x},\hat{p}] = \hat{x} \hat{p} - \hat{p} \hat{x} = \mathrm{i} \hbar.
 \end{equation}
-Aus dieser Vertauschungsrelation folgt mathematisch direkt die Unschärferelation.
-Die Unschärferelation ist kein Messfehler, sondern ein fundamentales Naturgesetz.
-Diese Relation sagt, dass es eine Grenze gibt, wie präzise man einen Ort und einen Impuls gleichzeitig kennen kann.
-Man kann den Ort und den Impuls nie gleichzeitig beliebig genau wissen.
-Dies zeigt, dass Impuls und Ort in der Quantenmechanik nicht vertauschbar sind. % todo: Ist dies nicht eine Wiederholung vom referenzierten Kapitel?!
-Mit Varianzen ausgedrückt, ergibt sich
+Die daraus folgende Unschärferelation ergibt sich durch Anwendung der Cauchy–Schwarz-Ungleichung:
 \begin{equation}
-	\sqrt{var(x)}\sqrt{var(p)} \geq \frac{\hbar}{2}.
+\vec{a} \bullet \vec{b} = |\vec{a}|\,|\vec{b}|\cos\alpha \le |\vec{a}|\,|\vec{b}|
 \end{equation}
-Bekanntlich ist die Wurzel aus Varianzen die Standardabweichung, daraus folgt
+und in der Form für Skalarprodukte:		% todo knma: dies verständlich erklären; zuerst Bra-Ket-Notation in Angriff nehmen....
 \begin{equation}
-	\sigma_x \cdot \sigma_p \geq \frac{\hbar}{2}.
+|\langle \phi | \chi \rangle|^2 \le \langle \phi | \phi \rangle\,\langle \chi | \chi \rangle.
 \end{equation}
-Die Standardabweichung kann als Unschärfe der Position und des Impulses verstanden werden.
-Das geteilt durch 2 ist die exakte Form, wenn es um präzise Rechnungen oder Beweise geht.
-Würde dies weggelassen, wäre es eine grobe, aber anschauliche Form für das physikalische Verständnis.
-Wenn man den Ort sehr genau kennt ($\sigma_x$ klein), wird der Impuls sehr ungenau.
-Es ist ein Ausdruck der Wellen-Natur von Teilchen.
+Wählt man
+\begin{equation}
+|\phi\rangle = (\hat{x} - \langle \hat{x} \rangle)\,|\psi\rangle,
+\quad
+|\chi\rangle = (\hat{p} - \langle \hat{p} \rangle)\,|\psi\rangle,
+\end{equation}
+so folgt mit den Definitionen
+\begin{equation}
+\sigma_x^2 = \langle \phi | \phi \rangle,
+\quad
+\sigma_p^2 = \langle \chi | \chi \rangle
+\end{equation}
+und
+\begin{equation}
+\langle \psi | [\hat{x},\hat{p}] | \psi \rangle = \mathrm{i}\hbar
+\end{equation}
+unmittelbar:
+\begin{equation}
+\sigma_x^2\,\sigma_p^2 \ge \frac{1}{4}\,|\langle \psi | [\hat{x},\hat{p}] | \psi \rangle|^2
+= \frac{\hbar^2}{4},
+\end{equation}
+also
+\begin{equation}
+\sigma_x\,\sigma_p \ge \frac{\hbar}{2}.
+\end{equation}
+Die Standardabweichungen $\sigma_x$ und $\sigma_p$ sind hier als Unschärfen von Position und Impuls zu verstehen.
+Würde man das $\tfrac12$ weglassen, erhielte man eine anschauliche, aber weniger exakte Formulierung.
+Kennt man beispielsweise den Ort sehr genau (kleines $\sigma_x$), so wird die Unschärfe $\sigma_p$ des Impulses entsprechend groß.
+Dies spiegelt die Wellennatur von Teilchen wider.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % todo knma: Ergänzungen anbringen
 
 \subsection{Beweis des Photons\label{fourier:subsection:beweisPhoton}}
