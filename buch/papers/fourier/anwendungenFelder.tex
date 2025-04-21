@@ -23,10 +23,10 @@
 
 ODE steht für ordinary differential equation, diese Gleichungen sind berühmt berüchtigt schwierig zu lösen.
 Schlimmer geht es immer.
-PDE steht für partial differential equantion. Sie hat enthaltet ableitungen nach mehreren Variabeln.
+PDE steht für partial differential equantion. Sie enthaltet ableitungen nach mehreren Variabeln.
 In diesem Abschnitt vereinfachen wir eine PDE in eine ODE, mithilfe der Fourierreihe.
 Alle Ableitungen sollten schlussendlich den identischen Nenner besitzen.
-Als PDE verwenden wir die Wellengleichung. 
+Als PDE verwenden wir die eindimensionale Wellengleichung mit der Lichtgeschwindigkeit als Ausbreitungsgeschwindigkeit. 
 
 
 \begin{equation}
@@ -53,8 +53,6 @@ Dazu muss fleissig abgeleitet werden, je zwei Mal nach $t$ und $x$.
 	\frac{\partial^2 u(x,t)}{\partial x^2} = \sum_{n=1}^{\infty} \left( -a_n(t) n^2 \omega^2 \cos(n \omega t) - b_n(t) n^2 \omega^2 \sin(n \omega t) \right)
 \end{equation}
 
-
-
 Die Resultate in die Wellengleichung einsetzen.
 
 \begin{equation}
@@ -68,13 +66,21 @@ Die Beiden Summenzeichen kürzen sich raus. Mithilfe dem Koeffizientenvergleich,
 	  \quad   \text{und} \quad  \frac{d^2}{dt^2} b_n(t) + b_n(t) n^2 \omega^2 c^2 = 0
 \end{equation}
 
-Wenn man im physik Unterricht aufgepasst hat, sollte einem diese Form bekannt vorkommen. 
+Wenn man im physik Unterricht aufgepasst hat, sollte einem diese Form bekannt vorkommen. Die DGL vom ungedämpften Federpendel besitz dieselbe Form. 
 
 \begin{equation}
 	\frac{d^2}{dt^2} x(t) + \omega^2 x(t) = 0
 \end{equation}
 
-Das ist die Differentialgleichung vom Federpendel.
+Die lösung von dieser DGL ist einfach eine ungedämpfte schwingung der Form $x(t) = A \cos(\omega t) + B \sin(\omega t)$. Dieses Resultat beschreib mit welcher Frequenz und Amplitude eine Masse an einer Feder schwingt. 
+
+Könnte man nun dasselbe mit der periodischen Funktion machen?
+Das Resultat wäre jedoch eine unendliche Anzahl von Felderpendeln, da $n$ nach unendlich läuft. 
+Die Kreisfrequenz wäre  $n \omega c$. Dies macht mathematisch Sinn, physikalisch müsste man sich jedoch fragen, was da hin und her pendelt.
+
+
+
+
 
 
 
