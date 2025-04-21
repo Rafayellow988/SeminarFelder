@@ -10,22 +10,14 @@
 \kopfrechts{Quantenfeldtheorie}
 Die beiden Wörter Quanten und Quantisierung ähneln sich, dessen bedeutung jedenfall nicht. 
 Ein Quant ist ein kleinst mögliches Teilchen und Quantisierung bedeutet nichts Anderes als zählbar. 
-In der Quantenfeldtheorie ist genau dieser Schritt von zentraler Bedeutung. 
+In der Quantenfeldtheorie ist genau dieser Schritt von zentraler Bedeutung, denn nun ist Alles zählbar. 
 Dabei werden klassische Felder wie das elektromagnetische Feld in quantenmechanische Operatoren überführt, wodurch die zuvor kontinuierlichen Felder plötzlich aus einer endlichen Menge von Quanten bestehen.
-
 
 Im Folgenden ein geschichtlicher Exkurs, wie es dazu kam. 
 
 
 
-
 \subsection{Die Idee der Quantisierung\label{fourier:subsection:DieIdeeDerQuantisierung}}
-	
-	Die beiden Wörter Quanten und Quantisierung ähneln sich, dessen bedeutung jedenfall nicht.
-	Ein Quant ist ein kleinst mögliches Teilchen und Quantisierung bedeutet nichts Anderes als zählbar.
-	In der Quantenfeldtheorie ist Alles Zählbar, auch Licht. In der Primarschule wurde uns gelehrt, dass Dinge die nicht zählbar sind, stets ``das'' als vording haben.
-	Das Licht ist also offensichtlich inkorrekt. Nun erfolgt ein  Geschichtlicher Exkurs, wie es dazu kam. 
-	
 	Mit 16 Jahren fragte Max Planck seinen Professor, ob sich ein Studium in der Physik lohne. 
 	Dieser antwortete:
 	
@@ -39,17 +31,21 @@ Im Folgenden ein geschichtlicher Exkurs, wie es dazu kam.
 	1897 wurde er Professor für Physik und beschäftigte sich mit einem dieser ungelösten Probleme, der Schwarzkörperstrahlung, auch bekannt als die ultraviolette Katastrophe. 
 	UV Strahlung umfasst den Wellenbereich von 0.01 $\mu$m bis 0.4 $\mu$m.
 	Nach dem Rayleigh-Jeans-Gesetz steigt die abgegebene Strahlung eines Körpers mit der Frequenz immer weiter an. Bei tiefen Frequenzen stimmt das, aber im ultravioletten Bereich versagt die Theorie komplett. 
-	Sie sagt unendlich hohe Energien voraus, während in Wirklichkeit kaum noch Strahlung messbar ist.
+	Sie sagt gigantische Energien voraus, während in Wirklichkeit kaum noch Strahlung messbar ist.
 	Planck suchte drei Jahre lang nach einer Lösung. 
 	
 	
 	Am Ende war es eher ein Akt der Verzweiflung als eine geniale Eingebung. 
 	Planck suchte nicht nach einer neuen Theorie, sondern nach einem mathematischen Trick, der zu den Messwerten passte.
-	Ohne genau zu verstehen, was seine Formel physikalisch bedeutete, passte er sie so an, dass sie die experimentellen Daten korrekt beschrieb. 
+	Ohne genau zu verstehen, was seine Formel physikalisch bedeutete, passte er sie so an, dass sie die experimentellen Daten korrekt beschrieb.
 
 
 	\begin{equation}
-		B(\lambda, T) = \frac{2 \pi h c^2}{\lambda^5} \cdot \frac{1}{e^{\frac{h c}{\lambda k_B T}} - 1}
+		\text{Rayleigh-Jeans:} \quad B(\lambda, T) = \frac{2 \pi c k_\mathrm{B} T}{\lambda^4}
+	\end{equation}
+
+	\begin{equation}
+		\text{Plank:} \quad B(\lambda, T) = \frac{2 \pi h c^2}{\lambda^5} \cdot \frac{1}{e^{\frac{h c}{\lambda k_B T}} - 1}
 	\end{equation}
 	
 
@@ -106,17 +102,14 @@ Im Folgenden ein geschichtlicher Exkurs, wie es dazu kam.
 	\end{figure}
 		
 
-	
-
-
-
-	
+	In beiden Formeln kommen diverse Konstanten vor: Pi, die Bolzmann Konstante $k_B$, die Lichtgeschwindigkeit $c$ und $h$. 
+	Er führte eine neue Naturkonstante ein, das Plancksche Wirkungsquantum $h = 6{,}626 \times 10^{-34} \ \text{J\,s}$. 
+	Wie oben erwähnt entstand $h$ rein experimentell und war erst als mathematisches Trick gedacht. 
 	
 	
 	Früher nahm man an, die Energie einer Welle hänge nur von ihrer Amplitude ab. 
 	Man glaubte auch, Atome könnten jede beliebige Energiemenge abstrahlen. Plancks Modell stellte das infrage. 
-	Energie konnte nur in bestimmten Portionen abgegeben werden, abhängig von der Frequenz und nicht von der Amplitude.
-    Er führte eine neue Naturkonstante ein, das Plancksche Wirkungsquantum $h = 6{,}626 \times 10^{-34} \ \text{J\,s}$. 
+	Nun konnte Energie nur in bestimmten Portionen abgegeben werden, abhängig von der Frequenz und nicht von der Amplitude.
 	
 	
 	\begin{equation}
@@ -125,42 +118,57 @@ Im Folgenden ein geschichtlicher Exkurs, wie es dazu kam.
 	 
 	 
 	Je höher die Frequenz, desto grösser ist das nötige Energiepaket. 
-	Deshalb nimmt die Strahlung bei hohen Frequenzen wieder ab. Denn hohe Frequenzen bedeuten viel Energie pro Lichtquant und es ist ziemlich unwahrscheinlich, dass ein einzelnes Atom so viel Energie auf einen Schlag abgibt. 
+	Deshalb nimmt die Strahlung bei hohen Frequenzen wieder ab. 
+	Denn hohe Frequenzen bedeuten viel Energie pro Lichtquant und es ist ziemlich unwahrscheinlich, dass ein einzelnes Atom so viel Energie auf einen Schlag abgibt. 
 	Planck wusste dies nicht. 
-	Aber mit seiner Formel war der erste Schritt in Richtung Quantentheorie gemacht.
+	Aber mit dieser Formel war der erste Schritt in Richtung  Quantentheorie gemacht.
 	
 	%Einstein
 	
 	
 	1905 kam Albert Einstein ins Spiel. 
-	Er nahm Plancks Idee und dachte sie weiter. 
-	Licht, das man bisher nur als elektromagnetische Welle kannte, sollte sich manchmal wie ein Teilchen verhalten.
-	Er nannte diese Teilchen Lichtquanten, heute sagen wir Photonen. 
-	Mit dieser Vorstellung konnte er den photoelektrischen Effekt erklären, ein Experiment, das sich mit klassischer Physik nicht deuten liess. 
+	Er griff diese Formel auf, um den photoelektrischen Effekt zu erklären. 
+	Er interpretierte sie so, dass Licht tatsächlich aus Teilchen (Photonen) besteht, die jeweils die Energie $E = h \cdot f$ tragen, also nicht nur als mathematischer Trick wie bei Planck, sondern als reale physikalische Aussage über die Natur des Lichts.
 	Für diese Arbeit bekam er 1921 den Nobelpreis und nicht für seine Relativitätstheorie, wie viele denken.
+	
 	 
 	%Bohr
 	
-	1913 übertrug Niels Bohr die Quantisierung auf Atome. 
-	In seinem Modell befinden sich Elektronen in Schalen, dazuwischen ist nichts. 
-	Ein Übergang zwischen diesen diskreten Schalen ging immer mit einer Energieabgabe oder aufnahme in Form eines Photons einher. 
-	Auch wenn sein Modell längst überholt ist, war seine Idee von Schalen Grundlegend korrekt. 
+	%Auskommentier, da exkurs (Atommodell)
+	
+	%1913 übertrug Niels Bohr die Quantisierung auf Atome. 
+	%In seinem Modell befinden sich Elektronen in Schalen, dazuwischen ist nichts. 
+	%Ein Übergang zwischen diesen diskreten Schalen ging immer mit einer Energieabgabe oder aufnahme in Form eines Photons einher. 
+	%Auch wenn sein Modell längst überholt ist, war seine Idee von Schalen Grundlegend korrekt. 
 
 	%de Broglie
 	
-	Louis de Broglie stellte die Frage, ob Teilchen ebenfalls wellenartige Eigenschaften besitzen könnten. 
-	Er postulierte, dass jedes Teilchen mit Impuls $p$ eine Wellenlänge besitzt, die durch
-	
+	1924 stellte Louis de Broglie eine revolutionäre Idee vor.
+	Nicht nur Licht besitzt Wellencharakter, auch Materie, also Teilchen wie Elektronen, könnten wellenartige Eigenschaften haben.
+	Er vermutete, dass jedem Teilchen mit Impuls p eine Wellenlänge λ zugeordnet werden kann:
 	
 	\begin{equation}
 		\lambda = \frac{h}{p}
-	\end{equation}
+	\end{equation}	
+	
+	Mit dieser einfachen Formel verband de Broglie die Vorstellung von Teilchen und Wellen. Damit wurde erstmals verständlich, warum sich auch Elektronen in bestimmten Experimenten wie Wellen verhalten.
+	Kurios ist, dass jedes Objekt eine Wellenlänge hat, auch ein Fussball.
+	Angenommen man schiesst ein Fussball mit der Masse von 0.45 $kg$ mit der Geschwindigkeit von 20 $m/s$.
+	
+	\begin{equation}
+		\lambda = \frac{h}{p} = \frac{h}{m \cdot v} = 	\frac{6{,}626 \cdot 10^{-34} \ \text{Js}}{0{,}45 \ \text{kg} \cdot 20 \ \text{m/s}} \approx 7{,}36 \cdot 10^{-35} \ \text{m}
+	\end{equation}	
+	
+	Die Berechnung zeigt, dass der Fussball eine extrem kleine Wellenlänge hat, somit besitzt er Wellencharakteristiken.
+	Das Resultat ist absurd und hat in der Realität keinerlei bedeutung.
+	Solche Rechnungen machen nur in der Quantenwelt Sinn, auch wenn die Gleichungen für alle Objekte gelten. 
+	De Broglie zeigte, dass Wellen als Teilchen intepretiert werden können und umgekehrt. 
 	
 	
-	gegeben ist. So verband er die Konzepte von Materie und Welle.
 	
 	%Schrödinger
-	Erwin Schrödinger entwickelte schliesslich eine Wellengleichung, die das Verhalten dieser Materiewellen beschreibt.
+	Erwin Schrödinger formulierte 1926 eine Gleichung, die das Verhalten von Teilchen als Wellen beschreibt. 
+	Sie bildet die Grundlage der Quantenmechanik. Die Lösung dieser Gleichung ist die Wellenfunktion \( \psi(x, t) \). Sie liefert keine feste Bahn, sondern eine Wahrscheinlichkeitsverteilung für den Aufenthaltsort eines Teilchens.  
 	Die eindimensionale zeitabhängige Schrödingergleichung lautet:
 	
 	\begin{equation}
@@ -168,13 +176,22 @@ Im Folgenden ein geschichtlicher Exkurs, wie es dazu kam.
 	\end{equation}
 	
 	
-	Anstatt exakte Bahnen zu liefern, gibt sie die Wahrscheinlichkeitsverteilung für den Aufenthaltsort eines Teilchens an, ein Grundprinzip der Quantenmechanik.
+	Um herauszufinden, wie wahrscheinlich ein Teilchen an einem Ort ist, muss man den Betrag von \( \psi(x, t) \) quadrieren. 
+	Die resultierende Funktion \( |\psi(x, t)|^2 \) ist die Aufenthaltswahrscheinlichkeit. 
+	Das Symbol \( \hbar \) steht für das reduzierte Plancksche Wirkungsquantum und ist gleich \( \frac{h}{2\pi} \). 
 	
-	So wurde klar, dass die Welt im Kleinen ganz eigene Regeln besitzt, die sich mathematisch erfassen lassen.
+	Die Reise begann mit Plancks Energiepaketen, führte über Einsteins Lichtteilchen und de Broglies Materiewellen hin zu Schrödingers Wahrscheinlichkeitswellen. 
+	Doch all diese Ideen behandelten Teilchen meist als isolierte Objekte.
 	
+	Die Quantenfeldtheorie geht einen Schritt weiter.
+	Sie sagt, dass Teilchen gar nicht mehr als kleine Kügelchen existieren, sondern als Anregungen von Feldern, die den gesamten Raum durchdringen. 
+	Elektronen, Photonen und alle anderen Teilchen sind Wellen in ihren jeweiligen Quantenfeldern.
 	
+	Damit verschmilzt die Teilchenwelt mit der Feldvorstellung.
+	Nicht das Teilchen ist grundlegend, sondern das Feld und was wir beobachten, sind nur dessen kleinste Schwingungen.
 	
-
+	So wird aus der Quantenmechanik eine Feldtheorie.
+	
 \subsection{Der harmonische Oszillator\label{fourier:subsection:derHarmonischeOszillator}}
 Warum genau schauen wir uns den harmonischen Oszillator an?
 In der Quantenelektrodynamik werden die elektromagnetischen Felder als quantisierte harmonische Oszillatoren modelliert, deren Energie ebenfalls in Vielfachen von $\hbar\cdot\omega$ vorliegt.
