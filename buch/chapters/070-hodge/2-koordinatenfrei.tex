@@ -579,6 +579,61 @@ g\,g_{ik}\,dg^{ik}
 geschrieben werden.
 
 %
+% Ableitung einer Determinanten
+%
+\subsubsection{Ableitung der Determinanten}
+Die explizite Berechnung der Ableitung der Determinangen $g$ in
+Komponenten kann auch in für eine beliebige matrixwertige Funktion
+\[
+A
+\colon
+\mathbb{R}\to M_{n\times n}(\mathbb{R})
+:
+t\mapsto A(t)
+\]
+durchgeführt werden.
+Dazu berechnet man
+\begin{align*}
+\frac{d}{dt}
+\det A(t)
+&=
+\lim_{h\to 0}
+\frac{\det A(t+h) - \det A(t)}{h}
+\\
+&=
+\det A(t)
+\lim_{h\to 0}
+\frac{\det A(t)^{-1}\bigl(\det A(t+h) - \det A(t)\bigr)}{h}
+\\
+&=
+\det A(t)
+\lim_{h\to 0}
+\frac{\det(A(t)^{-1} A(t+h)) - 1)}{h}.
+\intertext{Der Grenzwert auf der rechten Seite ist die Ableitung 
+der Matrixfunktion $B(h)=A(t)^{-1}A(t+h)$ an der Stelle $h=0$
+mit der Eigenschaft $B(0)=I$.}
+&=
+\det A(t)
+\frac{d}{dh} \det(A(t)^{-1} A(t+h))\bigg|_{h=0}
+\intertext{Eine solche Ableitung ist die Spur, es folgt daher, dass die
+Ableitung von $\det A(t)$}
+&=
+\det A(t) \operatorname{Spur} \frac{d}{dh}A(t)^{-1}A(t+h)\bigg|_{h=0}
+\\
+&=
+\det A(t) \operatorname{Spur}\biggl( A(t)\frac{dA(t)}{dt}\biggr).
+\intertext{In Komponenten ausgeschrieben ist dies}
+\frac{d}{dt}\det A(t)
+&=
+\det A(t)
+\sum_{i,k=1}^n
+a_{ik}(t) a_{ki}'(t),
+\end{align*}
+was für eine symmetrische Matrix mit den für $g$ gefundenen Formeln
+übereinstimmt.
+
+
+%
 % Skalarprodukt der 1-Formen
 %
 \subsubsection{Skalarprodukt der 1-Formen}
