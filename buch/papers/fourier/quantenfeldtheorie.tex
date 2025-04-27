@@ -269,8 +269,10 @@ Die Bra-Ket-Notation, auch Dirac-Notation genannt, wurde von Paul Dirac eingefü
 Sie dient dazu, Zustände und Operatoren kompakt und elegant darzustellen.
 
 Ein \emph{Ket} $|\psi\rangle$ beschreibt den Zustand eines quantenmechanischen Systems.
-Man kann sich Kets wie Richtungs-Pfeile vorstellen, die angeben, ``wie'' das System gerade ist - z.B. mit welcher Energie, welchem Spin oder an welchem Ort sich ein Teilchen befindet.
-Ein \emph{Bra} $\langle\psi|$ ist das zugehörige Gegenstück zum Ket - es steht symbolisch für eine Messung oder einen Test auf diesen Zustand.
+Man kann sich Kets wie Richtungs-Pfeile vorstellen, die angeben, ``wie'' das System gerade ist;
+z.B. mit welcher Energie, welchem Spin oder an welchem Ort sich ein Teilchen befindet.
+Ein \emph{Bra} $\langle\psi|$ ist das zugehörige Gegenstück zum Ket.
+Es steht symbolisch für eine Messung oder einen Test auf diesen Zustand.
 Formal ist es das komplex-konjugierte und transponierte Objekt zum Ket.
 
 Beispiele:
@@ -310,57 +312,59 @@ Die Bra-Ket-Notation ist nicht nur kompakt, sondern macht viele Rechnungen in de
 
 % here workin on
 %%%%%%%%%%%%%%%%%
-\subsubsection{Heisenbergs Unschärferelation%  
+\subsubsection{Heisenbergs Unschärferelation%
 \label{fourier:subsubsection:unschaerferelation}}
-In der Quantenmechanik gibt es keine festen Werte, sondern Wahrscheinlichkeiten und Mittelwerte.
-In der klassischen Physik ist der Impuls $p$ eine fest definierte Größe, wohingegen in der Quantenmechanik
+In der Quantenmechanik gibt es keine festen Werte für Grössen wie Ort oder Impuls eines Teilchens, sondern nur Wahrscheinlichkeiten und Mittelwerte, wo sich diese befinden oder wie schnell sie sind.
+Im Gegensatz zur klassischen Physik, wo der Impuls $p$ eine klar definierte Zahl ist, wird in der Quantenmechanik der Impuls durch einen sogenannten Operator beschrieben:
 \begin{equation}
-\hat{p} = -\,\mathrm{i}\,\hbar\,\frac{d}{dx}
+	\hat{p} = \frac{\hbar}{\mathrm{i}} \frac{d}{dx}.
 \end{equation}
-ein Operator ist.
-Man kann nicht einfach sagen ``Das Teilchen hat einen Impuls $p$'', weil dieser unscharf (nicht exakt bestimmt) sein kann.
-Ort und Impuls sind nicht gleichzeitig messbare Observablen: Ihre Operatoren vertauschen nicht,
+Das bedeutet:
+Man kann nicht einfach sagen ``Das Teilchen hat genau diesen Impuls'', sondern der Impuls ist grundsätzlich unscharf (nicht exakt bestimmbar).
+Ort und Impuls sind sogenannte nicht gleichzeitig messbare Grössen:
+Ihre Operatoren ``vertauschen'' nicht miteinander, was mathematisch ausgedrückt wird durch
 \begin{equation}
-[\hat{x},\hat{p}] = \hat{x} \hat{p} - \hat{p} \hat{x} = \mathrm{i} \hbar.
+	[\hat{x},\hat{p}] = \hat{x} \hat{p} - \hat{p} \hat{x} = \mathrm{i} \hbar.
 \end{equation}
-Die daraus folgende Unschärferelation ergibt sich durch Anwendung der Cauchy–Schwarz-Ungleichung:
+Diese fehlende Vertauschbarkeit führt direkt zur bekannten Unschärferelation.
+Ihre Herleitung basiert auf einer grundlegenden mathematischen Ungleichung, der sogenannten Cauchy-Schwarz-Ungleichung:
 \begin{equation}
-\vec{a} \bullet \vec{b} = |\vec{a}|\,|\vec{b}|\cos\alpha \le |\vec{a}|\,|\vec{b}|
-\end{equation}
-und in der Form für Skalarprodukte:		% todo knma: dies verständlich erklären; zuerst Bra-Ket-Notation in Angriff nehmen....
+	\vec{a} \bullet \vec{b} = |\vec{a}| |\vec{b}|\cos\alpha \le |\vec{a}| |\vec{b}|,
+\end{equation} 
+die besagt, dass das Skalarprodukt zweier Vektoren nie grösser sein kann als das Produkt ihrer Längen.
+Übertragen auf Quantenzustände lautet diese Ungleichung:
 \begin{equation}
-|\langle \phi | \chi \rangle|^2 \le \langle \phi | \phi \rangle\,\langle \chi | \chi \rangle.
+	|\langle\phi | \chi\rangle|^2 \le \langle\phi | \phi\rangle \langle\chi | \chi\rangle.
 \end{equation}
-Wählt man
+Hierbei bezeichnen $| \phi \rangle$ und $| \chi \rangle$ Zustände eines Systems in der sogenannten Bra-Ket-Notation, einer Kurzschreibweise für quantenmechanische Zustände
+Die Grundlagen zu dieser Notation wurden bereits in Abschnitt\ref{fourier:subsubsection:braKetNotation} erläutert.
+Setzt man
 \begin{equation}
-|\phi\rangle = (\hat{x} - \langle \hat{x} \rangle)\,|\psi\rangle,
-\quad
-|\chi\rangle = (\hat{p} - \langle \hat{p} \rangle)\,|\psi\rangle,
+	|\phi\rangle = (\hat{x} - \langle \hat{x} \rangle) |\psi\rangle \quad |\chi\rangle = (\hat{p} - \langle \hat{p} \rangle) | \psi\rangle,
 \end{equation}
-so folgt mit den Definitionen
+also die Abweichungen von Ort und Impuls gegenüber ihren Mittelwerten ein, so führen die Definitionen
 \begin{equation}
-\sigma_x^2 = \langle \phi | \phi \rangle,
-\quad
-\sigma_p^2 = \langle \chi | \chi \rangle
+	\sigma_x^2 = \langle\phi | \phi\rangle \quad \sigma_p^2 = \langle\chi | \chi\rangle
 \end{equation}
-und
+für die sogenannten Standardabweichungen --ein Mass für die „Streuung“ oder Unschärfe-- zusammen mit
 \begin{equation}
-\langle \psi | [\hat{x},\hat{p}] | \psi \rangle = \mathrm{i}\hbar
+	\langle\psi | [\hat{x},\hat{p}] | \psi\rangle = \mathrm{i}\hbar
 \end{equation}
-unmittelbar:
+zur Beziehung:
 \begin{equation}
-\sigma_x^2\,\sigma_p^2 \ge \frac{1}{4}\,|\langle \psi | [\hat{x},\hat{p}] | \psi \rangle|^2
-= \frac{\hbar^2}{4},
+	\sigma_x^2 \sigma_p^2 \ge \frac{1}{4} |\langle\psi | [\hat{x},\hat{p}] | \psi\rangle|^2 = \frac{\hbar^2}{4},
 \end{equation}
-also
+und damit schliesslich zur bekannten Form der Unschärferelation:
 \begin{equation}
-\sigma_x\,\sigma_p \ge \frac{\hbar}{2}.
+	\sigma_x \sigma_p \ge \frac{\hbar}{2}.
 \end{equation}
-Die Standardabweichungen $\sigma_x$ und $\sigma_p$ sind hier als Unschärfen von Position und Impuls zu verstehen.
-Würde man das $\tfrac12$ weglassen, erhielte man eine anschauliche, aber weniger exakte Formulierung.
-Kennt man beispielsweise den Ort sehr genau (kleines $\sigma_x$), so wird die Unschärfe $\sigma_p$ des Impulses entsprechend groß.
-Dies spiegelt die Wellennatur von Teilchen wider.
 
+Hier bedeuten $\sigma_x$ und $\sigma_p$ die Unschärfen (Standardabweichungen) in Ort und Impuls.
+Die Unschärferelation sagt also:
+Je genauer der Ort eines Teilchens bekannt ist (kleines $\sigma_x$), desto unschärfer muss sein Impuls ($\sigma_p$) sein --und umgekehrt.
+Das zeigt anschaulich die Wellennatur von Teilchen:
+Ein Teilchen, das genau lokalisiert ist, muss eine breite Wellenverteilung im Impulsraum haben.
+Würde man das $\tfrac{1}{2}$ in der Formel weglassen, erhielte man eine vereinfachte, aber weniger präzise Darstellung des Zusammenhangs.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % todo knma: Ergänzungen anbringen
 
@@ -432,4 +436,23 @@ Mit der Vertauschungsrelation
 	[P,Q] = -\mathrm{i} \cdot id,
 \end{equation}
 wobei id die Einheitsmatrix ist, lässt sich über den Hamiltonoperator % todo: ist es wirklich der und Satz vervollstängigen
+%todo blablabla
+\begin{equation}
+	H = \frac{1}{2}(P^2+Q^2)
+\end{equation}
+\begin{equation}
+	H - \frac{1}{2} = N
+\end{equation}
+\begin{equation}
+	\textcolor{blue}{[a, a^+] = 1}
+\end{equation}
+\begin{equation}
+	N = a^+a + \frac{1}{2}
+\end{equation}
+\begin{equation}
+	N\cdot a^+ - a^+N 
+	= \textcolor{blue}{a^+a}a^+ + \cancel{\frac{1}{2}a^+} \textcolor{blue}{-a^+a}a^+ - \cancel{\frac{1}{2}a^+}
+	= a^+\textcolor{blue}{[a, a^+]} 
+	= \textcolor{blue}{1}\cdot a^+
+\end{equation}
 % todo: tbc
