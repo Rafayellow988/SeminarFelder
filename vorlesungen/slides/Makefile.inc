@@ -11,7 +11,8 @@ include ../slides/4/Makefile.inc
 include ../slides/5/Makefile.inc
 #include ../slides/6/Makefile.inc
 include ../slides/7/Makefile.inc
+include ../slides/8/Makefile.inc
 
 slides =								\
 	$(chapter0) $(chapter1) $(chapter2) $(chapter3) $(chapter4)	\
-	$(chapter5) $(chapter6) $(chapter7)
+	$(chapter5) $(chapter6) $(chapter7) $(chapter8)
