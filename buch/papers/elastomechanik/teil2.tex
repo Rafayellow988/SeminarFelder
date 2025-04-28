@@ -28,12 +28,10 @@ Um das mechanische Verhalten eines Körpers unter Belastung vollständig beschre
 \subsection{Spannungstensor und Verzerrungstensor}
 Durch die Cauchy-Spannungstensor werden Spannungsvektooren in jedem beliebige Schnittrichtung zugeornet, der auf der betreffenden Schnittfläche wirkt.
 Dieser Zusammenhang wird durch die Cauchy’sche Formel beschrieben:
-
 	\begin{equation}
 		t_i = 
 		\sigma_{ij} \cdot n_j
 	\end{equation}
-
 Der Spannungstensor ist aufgrund des Momentengleichgewichts an einem infinitesimalen Volumenelement symmetrisch. Schubspannungen müssen sich dabei paarweise ausgleichen. 
 Der Tensor enthält sowohl die Normal- als auch die Schubspannungen und beschreibt somit vollständig den inneren Spannungszustand im Material.
 
@@ -44,14 +42,11 @@ Aus diesen Änderungen wird beispielsweise in $x$-Richtung die relative Längen�
 Dieses Vorgehen lässt sich analog auf die übrigen Normal- und Schubverzerrungen übertragen.
 
 Die einzelnen Komponenten des Verzerrungstensors lauten \cite{elastomechanik:Technische Mechanik 2:Elastostatik}:
-
 	\begin{equation}
 		\varepsilon_{xx} =
 		\frac{\partial u}{\partial x}
 	\end{equation}
-	
 	und
-	
 	\begin{equation}
 		\varepsilon_{xy} =
 		\frac{1}{2} \left( \frac{\partial u}{\partial y} + \frac{\partial v}{\partial x} \right)
@@ -59,29 +54,22 @@ Die einzelnen Komponenten des Verzerrungstensors lauten \cite{elastomechanik:Tec
 
 \subsection{Elastizitätsgesetz und Materialkonstanten}
 Aus dem Hooke’schen Gesetz ist bekannt, dass im einachsigen, linearen Fall folgender Zusammenhang zwischen Spannung und Dehnung gilt:
-
 	\begin{equation}
 		\sigma = 
 		E \cdot \varepsilon
 	\end{equation}
-
 Im dreiachsigen Fall kann die lineare Beziehung zwischen den Spannungs- und Verzerrungskomponenten durch einen Elastizitätstensor 4. Stufe beschrieben werden:
-
 	\begin{equation}
 		\sigma_{ij} = 
 		E_{ijkl} \cdot \varepsilon_{kl}
 	\end{equation}
-
 Da wir den dreidimensionalen Fall unter der Annahme eines isotropen Materials betrachten, bei dem die mechanischen Eigenschaften in alle Richtungen gleich sind, reduziert sich die Form des Elastizitätstensors auf zwei unabhängige Konstanten: die sogenannten Lame’schen Konstanten $\lambda$ und $\mu$. 
 Damit ergibt sich das Elastizitätsgesetz in kompakter Form:
-
 	\begin{equation}
 		\sigma_{ij} = 
 		\lambda \cdot \delta_{ij} \cdot \varepsilon_{kk} + 2\mu \cdot \varepsilon_{ij}
 	\end{equation}
-
 Die Lame’schen Konstanten lassen sich durch die technischen Materialkonstanten $E$ (Elastizitätsmodul), $\nu$ (Poissonzahl) und $G$ (Schubmodul) wie folgt ausdrücken:
-
 	\begin{equation}
 		E = 
 		\mu \cdot \frac{3\lambda + 2\mu}{\lambda + \mu}, \quad 
@@ -90,10 +78,8 @@ Die Lame’schen Konstanten lassen sich durch die technischen Materialkonstanten
 		G = 
 		\mu
 	\end{equation}
-
 Durch Einsetzen in die Spannungs-Verzerrungs-Beziehung kann das Elastizitätsgesetz auch in Form der Deviatorzerlegung dargestellt werden. 
 Dabei ergibt sich der Zusammenhang zwischen Spannungs- und Verzerrungsdeviator \cite{elastomechanik:Grundlagen der Elastizitaetstheorie}:
-
 	\begin{equation}
 		s_{ij} = 
 		\sigma_{ij} - \frac{1}{3} \sigma_{kk} \delta_{ij} = 
