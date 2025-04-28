@@ -62,20 +62,20 @@ und die Wellengleichung wird somit approximativ durch das neuronale Netz gelöst
 \subsection{Struktur des neuronalen Netzes}\label{neuronal:subsection:struktur_nn}
 
 Im vorangegangenen Kapitel wurde nicht weiter auf die Struktur des neuronalen Netzes \eqref{neuronal:nn} eingegangen.
-Dies wird innerhalb dieses Kapitels gemacht.
+Diese wird innerhalb dieses Kapitels entwickelt.
 
 Generell können neuronale Netze als Kompositionen von mehreren Teilfunktionen betrachtet werden.
 Dabei besteht jede Teilfunktion \( f_i \) aus einer Affintransformation, gefolgt von einer nicht-linearen Aktivierungsfunktion \( g_i \)
 
 \begin{align*}
-    f_i\colon \mathbb{R}^n & \longrightarrow\mathbb{R}^m \\[-1ex]
+    f_i\colon \mathbb{R}^q & \longrightarrow\mathbb{R}^p \\[-1ex]
     v & \longmapsto g_i(A_iv + b_i)
 \end{align*}
 
-mit \( v \in \mathbb{R}^n, A_i \in \mathbb{R}^{m \times n}, b_i \in \mathbb{R}^m \). 
+mit \( v \in \mathbb{R}^q, A_i \in \mathbb{R}^{p \times q}, b_i \in \mathbb{R}^p \). 
 Die Elemente aller \( A_i \) und \( b_i \) bilden den Vektor \( \vartheta \) der \emph{trainierbaren Parameter}.
 
-Da das Resultat der Affintransformation auch ein Vektor ist, wird die Aktivierungsfunktion \( g_i \) einzeln auf jeden Komponenten angewendet.
+Weiter ist die Aktivierungsfunktion \( g_i\colon \mathbb{R} \longrightarrow\mathbb{R} \), da das Resultat der Affintransformation ein Vektor ist, wird \( g_i \) einzeln auf jeden Vektor-Komponenten angewendet.
 Für \( g_i \) gibt es viele verschiedene Möglichkeiten, eine häufig verwendete Aktivierungsfunktion ist die hyperbolische Tangens \( \tanh() \).
 
 Das gesamte neuronale Netzwerk ist somit gegeben als
@@ -95,3 +95,65 @@ Da das Netzwerk die Wellenfunktion
 \end{align*}
 
 in zwei räumlichen und der zeitlichen Dimension approximieren soll, muss die Domäne von \( f_1, \mathbb{R}^3\) sein und der Bereich von \( f_k, \mathbb{R}\).
+
+Je mehr Teilfunktionen und Anzahl Dimensionen in den Teilfunktionen, desto mehr trainierbare Parameter besitzt das Modell.
+Auf die Frage nach der Anzahl Parameter gibt es keine ``richtige'' Antwort.
+Als Faustregel gilt: Je komplizierter die Funktion die approximiert wird, desto mehr Parameter sollten verwendet werden.
+
+% TODO: Auf Struktur/Anzahl Parameter des verwendeten Netzes für die Wellengleichung eingehen (sobald dieses fertig ist)
+
+
+\subsection{Training des neuronalen Netzes}\label{neuronal:subsection:training_nn}
+
+Nachdem nun das neuronale Netzwerk als Funktion definiert ist, ist der nächste Schritt die Wahl von \( \vartheta \) bzw. die Wahl der trainierbaren Parameter.
+Dies wird als Training des Netzes bezeichnet.
+
+Wie im Kapitel \ref{neuronal:subsection:optimierungsproblem} beschrieben, soll das Netz den Term \eqref{neuronal:optimierung} minimieren.
+Hierzu werden drei Dinge benötigt:
+\begin{itemize}
+    \item Ein Trainings-Datensatz an x-, y- und t-Werten
+    \item Eine Loss-Funktion
+    \item Ein Optimierungsalgorithmus\\
+\end{itemize}
+
+\textbf{Trainings-Datensatz}\\
+Der Trainings-Datensatz muss aus x-, y- und t-Werten bestehen, für die die Wellengleichung erfüllt ist.
+Da die Wellengleichung für alle x, y und t gilt, können zufällig generierte, reelle Zahlen verwendet werden.
+Grundsätzlich gilt, je mehr Parameter das neuronale Netz hat, desto mehr Werte benötigt man.
+Sei die Anzahl Werte \( k \), so ist der Datensatz:
+\begin{center}
+    \( x_1, x_2, \ldots, x_k \)\\
+    \( y_1, y_2, \ldots, y_k \)\\
+    \( t_1, t_2, \ldots, t_k \)\\
+\end{center}
+
+
+% TODO: In welchem Bereich werden die Zahlenwerte generiert und wieviele genau?
+
+\textbf{Loss-Funktion}\\
+Die Loss-Funktion ist eine Funktion von \( \vartheta \) und liefert eine reelle Zahl als Resultat.
+Diese reelle Zahl ist ein Mass dafür, wie gut das neuronale Netzwerk, mit den verwendeten Parametern, die Wellengleichung an den x-, y- und t-Werten aus dem Trainings-Datensatzes approximiert.
+Die Loss-Funktion ist somit die Summe von \eqref{neuronal:optimierung} über alle Datensatz-Werte.
+
+Sei die Loss-Funktion
+\begin{equation}
+    J(\vartheta) = \sum_{i=1}^{k} \left(\frac{\partial^2 \hat{u}}{\partial t_i^2} - c^2 \left( \frac{\partial^2 \hat{u}}{\partial x_i^2} + \frac{\partial^2 \hat{u}}{\partial y_i^2} \right)\right)^2.
+    \label{neuronal:loss}
+\end{equation}
+
+Da die Funktion \( J \) eine Summe von Parabeln mit positiven Vorzeichen ist, kann sie minimal 0 werden.
+
+\textbf{Optimierungsalgorithmus}\\
+Der Optimierungsalgorithmus hat zum Ziel, die Loss-Funktion \( J \) zu minimieren.
+Da \( J \) ein hochdimensionales Hyper-Surface ist, ist es sehr unwahrscheinlich dass man analytisch ein Minimum findet.
+Das bedeutet, dass stattdessen ein numerischer Algorithmus verwendet werden muss, welcher Minima approximativ findet.
+
+Die Schritte die der Algorithmus durchläuft sind:
+\begin{enumerate}
+    \item Werte \( J \) an den aktuellen Parameterwerten in \( \vartheta \) aus. Dies ergibt eine Zahl \( r_1 \)
+    \item Passe die Parameterwerte leicht an, so dass \( J \) an den neuen Parameterwerten eine Zahl \( r_2 \) mit \( r_2 \leq r_1 \) ergibt
+    \item Wiederhole dies solange, bis J genügend nahe bei 0 ist. (J = 0 würde bedeuten dass das Netzwerk die Wellengleichung an den Punkten des Trainings-Datensatzes perfekt löst.)
+\end{enumerate}
+
+Nach dem letzten Schritt dieses Algorithmus ist das neuronale Netzwerk fertig trainiert.
+%% TODO: Wie gut ist die Approximierung und von was hängt die Qualität ab?
