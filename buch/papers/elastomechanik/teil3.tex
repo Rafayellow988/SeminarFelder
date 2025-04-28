@@ -6,38 +6,68 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 3
-\label{elastomechanik:section:teil3}}
-\kopfrechts{Teil 3}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
+\section{Mathematische Herleitung der Grundgleichungen der Elastizitätstheorie}
+\label{elastomechanik:section:herleitung}
 
-\subsection{De finibus bonorum et malorum
-\label{elastomechanik:subsection:malorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
+\subsection{Kinematische Beziehungen}
 
+Ausgangspunkt ist das Verschiebungsfeld $\vec{u} = [u_1, u_2, u_3]^T$. Die Verzerrung ergibt sich als symmetrischer Teil des Gradienten:
 
+\begin{equation}
+	\varepsilon_{ij} = \frac{1}{2} \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right)
+\end{equation}
+
+Dies gilt unter der Annahme kleiner Verformungen (infinitesimaler Verzerrungstheorie), sodass Rotationen vernachlässigt werden können. Die Größe $\varepsilon_{ij}$ beschreibt sowohl Normal- ($i = j$) als auch Schubverzerrungen ($i \ne j$).
+
+\subsection{Materialgesetz (Hooke’sches Gesetz)}
+
+Für ein linear-elastisches, isotropes Material ergibt sich der Zusammenhang zwischen Spannung und Verzerrung durch das verallgemeinerte Hooke’sche Gesetz:
+
+\begin{equation}
+	\sigma_{ij} = \lambda \delta_{ij} \varepsilon_{kk} + 2\mu \varepsilon_{ij}
+\end{equation}
+
+Dabei sind:
+\begin{itemize}
+	\item $\sigma_{ij}$ die Spannungskomponenten,
+	\item $\lambda, \mu$ die Lamé-Konstanten,
+	\item $\delta_{ij}$ das Kronecker-Delta.
+\end{itemize}
+
+Die Lamé-Konstanten lassen sich mit den technisch verwendeten Materialkonstanten $E$ (Elastizitätsmodul) und $\nu$ (Poissonzahl) ausdrücken:
+
+\begin{equation}
+	\lambda = \frac{E \nu}{(1+\nu)(1-2\nu)}, \qquad \mu = \frac{E}{2(1+\nu)} = G
+\end{equation}
+
+\subsection{Gleichgewichtsbedingungen}
+
+Für das mechanische Gleichgewicht im Körper gilt, dass die Summe aller Kräfte (Spannungsresultierende und Volumenkraft $f_i$) null sein muss:
+
+\begin{equation}
+	\frac{\partial \sigma_{ij}}{\partial x_j} + f_i = 0
+\end{equation}
+
+Dies sind drei partielle Differentialgleichungen (eine pro Raumrichtung), die für jedes infinitesimale Volumenelement im Körper erfüllt sein müssen.
+
+\subsection{Zusammenfassung: Gleichungssystem der linearen Elastizität}
+
+Das vollständige System der linearen Elastizitätstheorie besteht aus:
+\begin{enumerate}
+	\item \textbf{Kinematik:}
+	\[
+	\varepsilon_{ij} = \frac{1}{2} \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right)
+	\]
+	
+	\item \textbf{Materialgesetz (Isotrop, linear):}
+	\[
+	\sigma_{ij} = \lambda \delta_{ij} \varepsilon_{kk} + 2\mu \varepsilon_{ij}
+	\]
+	
+	\item \textbf{Gleichgewicht:}
+	\[
+	\frac{\partial \sigma_{ij}}{\partial x_j} + f_i = 0
+	\]
+\end{enumerate}
+
+Zusammen mit geeigneten Randbedingungen (z. B. vorgegebene Verschiebungen oder Spannungen) ergibt sich eine eindeutig lösbare Randwertaufgabe.

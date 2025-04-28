@@ -21,10 +21,12 @@
 	Er gibt an, wie stark ein Material auf eine mechanische Spannung mit Dehnung reagiert. 
 	Je grösser der Elastizitätsmodul, desto weniger verformt sich das Material unter einer gegebenen Belastung.
 	Der Elastizitätsmodul wird definiert als
+
 	\begin{equation}
 		E=
 		\frac{\sigma}{\varepsilon}
 	\end{equation}
+
 	$\sigma$ = Spannung
 	
 	$\varepsilon$ = Dehnung
@@ -34,6 +36,23 @@
 	In der linearen Elastizitätstheorie bedeutet Isotropie, dass das Materialverhalten vollständig durch zwei unabhängige Materialkonstanten beschrieben werden kann, etwa den Elastizitätsmodul ($E$) und die Poissonzahl ($\nu$).  
 	Isotrope Annahmen vereinfachen die mathematische Modellierung deutlich und finden in der technischen Mechanik insbesondere bei homogenen Metallen, Glas und einigen Kunststoffen Anwendung \cite{elastomechanik:Isotropie}.
 	
+	\item[\textbf{Kinematische Gleichungen (Verzerrungsdefinition):}] Die kinematischen Gleichungen beschreiben den Zusammenhang zwischen den Verschiebungen $u_i$ eines Punktes im Raum und den daraus resultierenden Verzerrungen $\varepsilon_{ij}$. 
+	Sie sind die Grundlage für die geometrische Beschreibung der Deformation in der Elastizitätstheorie. 
+	Für kleine Verformungen gilt \cite{elastomechanik:Technische Mechanik 2:Elastostatik}:
+
+	\begin{equation}
+		\varepsilon_{ij} = 
+		\frac{1}{2} \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right)
+	\end{equation}
+	
+	Dabei ist:
+	
+		$u_i$ = Verschiebung in Richtung $i$
+		
+		$x_j$ = Raumkoordinate in Richtung $j$
+		
+	Diese Gleichungen stellen sicher, dass die Verzerrungen aus einem stetigen Verschiebungsfeld berechnet werden können.
+	
 	\item[\textbf{Normalkraft ($N$):}] Die Normalkraft ist eine Kraft, die senkrecht (normal) zur Querschnittsfläche eines Körpers oder Bauteils wirkt. 
 	Sie entsteht durch Zug oder Druck entlang der Längsachse des Körpers und ist eine der wichtigsten Grundkräfte in der Technischen Mechanik und Statik.
 	
@@ -42,24 +61,65 @@
 	
 	\item[\textbf{Poissonzahl ($\nu$):}] Die Poissonzahl, auch bekannt als Querkontraktionszahl, ist eine materialabhängige Konstante, die das Verhältnis zwischen der Querdehnung und der Längsdehnung eines Körpers unter Zug- oder Druckbelastung beschreibt.
 	Sie ist definiert als
+
 	\begin{equation}
 		\nu=
 		-\frac{\varepsilon_{quer}}{\varepsilon_{laengs}}
 	\end{equation}
-	$\varepsilon_quer$ = Dehnung senkrecht zur Belastungsrichtung
+
+	$\varepsilon_{quer}$ = Dehnung senkrecht zur Belastungsrichtung
 	
-	$\varepsilon_längs$ = Dehnung in Belastungsrichtung
+	$\varepsilon_{laengs}$ = Dehnung in Belastungsrichtung
 	
+	\item[\textbf{Schubmodul ($\mu$) oder ($G$):}] Der Schubmodul ist eine mechanische Materialkonstante, die beschreibt, wie steif ein Material gegenüber Scherkräften ist.
+	Scherkräfte (auch Schubkräfte) sind Kräfte, die parallel zur Fläche eines Körpers wirken. 
+	Bei isotropen Materialien wird es folgend berechnet:
+
+	\begin{equation}
+		\mu = 
+		\frac{E}{2(1 + \nu)} =
+		G
+	\end{equation}
+	
+	\begin{figure} [h]
+		\centering
+		\includegraphics[width=\textwidth]{papers/elastomechanik/images/teil1/Zugverformung_Schubverformung.png}
+		\caption{Die linke Abbildung zeigt eine Normalverzerrung infolge axialer Belastung, die rechte Abbildung eine Schubverzerrung infolge tangentialer Beanspruchung.}
+		\label{fig:Zugverformung_Schubverformung}
+	\end{figure}
+
 	\item[\textbf{Spannung ($\sigma$):}] Die Spannung beschreibt die innere Kraftverteilung in einem Material, die infolge externer Belastungen (wie Zug, Druck oder Scherung) entsteht. 
 	Sie gibt an, welche Kraft pro Flächeneinheit innerhalb eines Körpers wirkt.
+	
+	\item[\textbf{Spannungtensor ($\sigma_{ij}$):}] Der Spannungstensor (auch Cauchy-Spannungstensor genannt) beschreibt die Verteilung der inneren Spannungen im Material. 
+	Der erste Index	i gibt die Richtung der Flächennormalen an, der zweite Index j die Richtung der Spannungswirkung. 
+	Er ist in der Regel symmetrisch und wird als 3×3-Matrix notiert \cite{elastomechanik:Grundlagen der Elastizitaetstheorie}:
+
+	\begin{equation}
+	\boldsymbol{\sigma} =
+	\begin{bmatrix}
+		\sigma_{xx} & \sigma_{xy} & \sigma_{xz} \\
+		\sigma_{yx} & \sigma_{yy} & \sigma_{yz} \\
+		\sigma_{zx} & \sigma_{zy} & \sigma_{zz}
+	\end{bmatrix}
+	\end{equation}
+
+	Da der Spannungstensor symmetrisch ist (für reine Elastizität), gilt:
+
+	\begin{equation}
+		\sigma_{ij} = 
+		\sigma_{ji}
+	\end{equation}
 		
 	\item[\textbf{Verzerrung ($\varepsilon$):}] Die Verzerrung (auch Dehnung genannt) beschreibt die relative Änderung der Form oder Länge eines Körpers infolge einer äußeren Belastung. 
 	Sie ist ein maßloser Wert, da sie ein Verhältnis zweier Längen ist.
 	Die Normalverrung wird berechnet mit
+
 	\begin{equation}
 		\varepsilon 
 		= \frac{\Delta L}{L_0}
 	\end{equation}
+
 	$\varepsilon$ = Verzerrung
 	
 	$\Delta L$ = Längenänderung
@@ -69,11 +129,14 @@
 	\item[\textbf{Verzerrungstensor ($\varepsilon_{ij}$):}] Der Verzerrungstensor beschreibt die Verformung (Dehnung und Scherung) eines Körpers infolge äußerer Belastungen in drei Raumrichtungen. 
 	Er erfasst nicht nur Längenänderungen (Normalverzerrungen), sondern auch Winkeländerungen (Schubverzerrungen) und stellt somit die vollständige lokale Verformung eines Materials im Raum dar.
 	Die Verzerrungstensor wird über die Ableitungen des Verschiebungsfeldes definiert als
+
 	\begin{equation}
 		\varepsilon_{ij} = 
 		\frac{1}{2} \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right)
 	\end{equation}
+
 	wobei er in drei Raumdimensionen die Form einer symmetrischen 3×3-Matrix annimmt:
+
 	\begin{equation}
 	\boldsymbol{\varepsilon} =
 	\begin{bmatrix}
@@ -90,5 +153,93 @@
 	Sie wirkt senkrecht zur Querschnittsfläche des Körpers und beschreibt die Kraft pro Flächeneinheit, mit der das Material dem Zug widersteht.
 \end{description}
 
-\subsection{Materialgesetzlichkeiten}
+\begin{figure} [h]
+	\centering
+	\includegraphics[width=\textwidth]{papers/elastomechanik/images/teil1/Zugverformung_Schubverformung.png}
+	\caption{Die linke Abbildung zeigt eine Normalverzerrung infolge axialer Belastung, die rechte Abbildung eine Schubverzerrung infolge tangentialer Beanspruchung.}
+	\label{fig:Zugverformung_Schubverformung}
+\end{figure}
 
+\subsection{Materialgesetzlichkeiten}
+\begin{description}	
+	\item[\textbf{Elastizitätsgesetz (Hookesches Gesetz):}] Das Hookesche Gesetz stellt im eindimensionalen Fall den linearen Zusammenhang zwischen Spannung $\sigma$ und Dehnung $\varepsilon$ durch die Beziehung 
+	
+	\begin{equation}
+		\sigma = 
+		E \cdot \varepsilon
+	\end{equation}
+	 
+	 her.
+	
+	 Wobei $E$ der Elastizitätsmodul des Materials ist \cite{elastomechanik:Kontinuumsmechanik}.
+	 
+	 \item[\textbf{Gleichgewichtsbedingungen:}] Diese bilden den zweiten Bestandteil der Herleitung und folgen in der Regel auf das Materialgesetz. 
+	 Sie stellen sicher, dass im Inneren des Körpers keine resultierende Kraft wirkt, also mechanisches Gleichgewicht herrscht.
+	 
+	 Lokal formuliert ergibt sich:
+
+	 \begin{equation}
+	 	\frac{\partial \sigma_{ij}}{\partial x_j} + f_i =
+	 	0
+	 \end{equation}
+	
+	 Dabei bezeichnet $\sigma_{ij}$ die Spannungskomponenten und $f_i$ die Komponenten der Volumenkraft pro Einheit Volumen. 
+	 Die Gleichung fordert, dass die Summe der inneren Spannungsänderungen und der äußeren Volumenkräfte in jedem Punkt verschwindet. Sie gilt für jeden Punkt des Körpers und bildet die Grundlage für die statische Beschreibung des Spannungsfeldes \cite{elastomechanik:Grundlagen der Elastizitaetstheorie}.
+	 
+	 \item[\textbf{Isotropes Materialverhalten:}] Für isotrope Materialien (die in alle Richtungen die gleichen mechanischen Eigenschaften haben) vereinfacht sich das elastische Gesetz in Tensorform zu:
+	 
+	 \begin{equation}
+	 	\sigma_{ij} = 
+	 	\lambda \cdot \delta_{ij} \cdot \varepsilon_{kk} + 2\mu \cdot \varepsilon_{ij},
+	 \end{equation}
+
+	$\sigma_{ij}$ = Spannungstensor (Komponenten der Spannung in Richtung $i$ auf der Fläche senkrecht zu Richtung $j$)
+	
+	$\varepsilon_{ij}$ = Dehnungstensor (Komponenten der Verzerrung)
+	
+	$\varepsilon_{kk}$ = Spur des Verzerrungstensors, also
+
+	\begin{equation}
+		\varepsilon_{11} + \varepsilon_{22} + \varepsilon_{33}
+	\end{equation}
+	
+	das ist die Volumendehnung \cite{elastomechanik:Grundlagen der Elastizitaetstheorie}.
+	 
+	 $\delta_{ij}$ = Kronecker-Delta 
+	 
+	 $\lambda_{,\mu}$ = Lame’sche Konstanten
+	 
+	 \item[\textbf{Lame’sche Konstanten ($\lambda_{,\mu}$):}] Die Lame'schen Konstanten werden die Konstanten $\lambda$ und $\mu$ bezeichnet. 
+	 Die sind zwei materialabhängige Parameter, die das mechanische Verhalten eines isotropen elastischen Materials vollständig beschreiben.
+	 Die Lame’sche Konstante ($\lambda$) lässt sich aus dem Elastizitätsmodul und der Poissonzahl wie folgt berechnen \cite{elastomechanik:Grundlagen der Elastizitaetstheorie}:
+	 
+	 \begin{equation}
+	 	\lambda = 
+	 	\frac{E \cdot \nu}{(1 + \nu)(1 - 2\nu)}
+	 \end{equation}
+	 
+	 $\mu$ = Schubmodul
+	 
+	 $\lambda$ = steht in Verbindung mit der Volumenverformung
+	 
+	 \item[\textbf{Materialverhaltenseigenschaften:}] Für ideal elastisches Verhalten gilt:
+	 
+	 \begin{enumerate}
+	 	\item Dehnung verschwindet vollständig bei Entlastung.
+	 	
+	 	\item Der Energieinhalt ist vollständig reversibel.
+	 	
+	 	\item Das Verhalten ist unabhängig von der Geschwindigkeit der Belastung.
+	 	
+	 	\item Es existiert eine eindeutige Beziehung zwischen Spannung und Dehnung
+	 \end{enumerate}
+	 
+	 \item[\textbf{Reziproke Form (für Verzerrungen aus Spannungen):}] Die reziproke Form des Hooke’schen Gesetzes beschreibt den linearen Zusammenhang zwischen Spannung und Verzerrung bei isotropen Materialien durch die Gleichung
+	 
+	 \begin{equation}
+	 	\varepsilon_{ij} = 
+	 	\frac{1+\nu}{E} \cdot \sigma_{ij} - \frac{\nu}{E} \cdot \sigma_{kk} \cdot \delta_{ij}
+	 \end{equation}
+	
+	 wobei die Verzerrung aus der direkten Spannung und der Spur des Spannungstensors unter Berücksichtigung des Elastizitätsmoduls und der Poissonzahl berechnet wird \cite{elastomechanik:Grundlagen der Elastizitaetstheorie}.
+\end{description}
