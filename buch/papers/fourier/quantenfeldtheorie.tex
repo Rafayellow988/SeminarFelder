@@ -310,8 +310,6 @@ so ergibt eine ideale Messung des Operators $A$ immer genau den Wert $a$.
 
 Die Bra-Ket-Notation ist nicht nur kompakt, sondern macht viele Rechnungen in der Quantenmechanik übersichtlich und leicht handhabbar.
 
-% here workin on
-%%%%%%%%%%%%%%%%%
 \subsubsection{Heisenbergs Unschärferelation%
 \label{fourier:subsubsection:unschaerferelation}}
 In der Quantenmechanik gibt es keine festen Werte für Grössen wie Ort oder Impuls eines Teilchens, sondern nur Wahrscheinlichkeiten und Mittelwerte, wo sich diese befinden oder wie schnell sie sind.
@@ -336,7 +334,7 @@ die besagt, dass das Skalarprodukt zweier Vektoren nie grösser sein kann als da
 \begin{equation}
 	|\langle\phi | \chi\rangle|^2 \le \langle\phi | \phi\rangle \langle\chi | \chi\rangle.
 \end{equation}
-Hierbei bezeichnen $| \phi \rangle$ und $| \chi \rangle$ Zustände eines Systems in der sogenannten Bra-Ket-Notation, einer Kurzschreibweise für quantenmechanische Zustände
+Hierbei bezeichnen $| \phi \rangle$ und $| \chi \rangle$ Zustände eines Systems in der sogenannten Bra-Ket-Notation, einer Kurzschreibweise für quantenmechanische Zustände.
 Die Grundlagen zu dieser Notation wurden bereits in Abschnitt\ref{fourier:subsubsection:braKetNotation} erläutert.
 Setzt man
 \begin{equation}
@@ -369,18 +367,14 @@ Würde man das $\tfrac{1}{2}$ in der Formel weglassen, erhielte man eine vereinf
 % todo knma: Ergänzungen anbringen
 
 \subsection{Beweis des Photons\label{fourier:subsection:beweisPhoton}}
-Mit dem Grundwissen, welches in den bisherigen Kapiteln dieses Papers vermittelt wurde und den vorgestellten Werkzeugen der Quantenmechanik wird in diesem Kapitel bewiesen, dass das Photon exisitert.
+In diesem Abschnitt verwenden wir die bisher eingeführten Grundlagen der Quantenmechanik, um zu zeigen, dass Licht nicht kontinuierlich, sondern in kleinsten Energiepaketen, sogenannten Photonen, übertragen wird.
 
-Die Hamilton-Funktion
+Wir starten mit der klassischen Hamilton-Funktion, die die Gesamtenergie eines Systems beschreibt:
 \begin{equation}
-	H(x,p) = T(p) + V(x)
+	H(x, p) = T(p) + V(x),
 \end{equation}
-ist eine Funktion von Positionen (x) und Impulsen (p).
-Sie beschreibt die Gesamtenergie eines Systems.
-Dienend als Grundlage für Hamiltonische Gleichungen beschreibt sie die Systembewegung.
-%todo: evtl. simpler schreiben.
-$T(p)$ ist die kinetische und $V(x)$ ist die potentielle Energie.
-%Mit Notizen
+wo $T(p)$ die kinetische Energie und $V(x)$ die potenzielle Energie des Teilchens darstellen.
+
 % todo: add some stuff of book quantum mechanics to glue things together
 
 Durch Schrödinger wird der Impuls p durch
@@ -394,26 +388,29 @@ Wodurch der Hamiltonoperator
 \end{equation}	
 resultiert.
 
-% todo: Überleitung
-Der Erwartungswert des Impulses p
+Der Erwartungswert des Impulses in einem Zustand $|\psi\rangle$ lässt sich schreiben als:
 \begin{equation}
-	E(p) = \int \bar{\psi}p\psi \, dx
-	= \int \bar{\psi} \, \frac{\hbar}{i} \, \frac{d\psi}{dx} \, dx
+	E(p) = \int \bar{\psi}p\psi dx
+	= \int \bar{\psi} \frac{\hbar}{i} \frac{d\psi}{dx} dx
 	= \langle \psi | p | \psi \rangle
 \end{equation}
-ist der mittlere (erwartete) Impuls, wenn das System im Zustand $| \psi \rangle$ ist.
+Er gibt an, welcher mittlere Impuls gemessen wird, wenn sich das System im Zustand $|\psi\rangle$ befindet.
+
 % todo: somehow from Bra-Ket to measuring values -> probably a bit upper
 
-Nach Heisenbergs Unschärferelation, die in Abschnitt~\ref{fourier:subsubsection:unschaerferelation} behandelt wurde, gilt in der Quantenmechanik, dass die Vertauschung der Impuls- und Ortsoperatoren nicht null ist, also
+Nach Heisenbergs Unschärferelation (siehe Abschnitt~\ref{fourier:subsubsection:unschaerferelation}) gilt in der Quantenmechanik, dass die Vertauschung der Impuls- und Ortsoperatoren nicht null ist, also
 \begin{equation}
 	px \neq xp.
 \end{equation}
 Die Vertauschungsrelation kann als
 \begin{equation}
-	[x, p] = \hbar 1 % todo: evtl. andere eins...
+	[x, p] = \hbar id
 \end{equation}
 geschrieben werden.
-% todo: some explanation and überleiten
+
+
+%%%%%%%%%%%%%%%%%%%%% dieser Abschnitt nötig/ an anderem Ort einfügen
+% todo knma: Abschnitt evtl. weg oder an anderem Ort? War in seinen Notizen.
 \begin{equation}
 	\vec{a}\bullet\vec{b} = |\vec{a}| \cdot |\vec{b}| \cdot \cos{\alpha} \leq |\vec{a}| \cdot |\vec{b}|
 \end{equation}
@@ -422,15 +419,28 @@ geschrieben werden.
 	\int \langle \psi |xp|\psi \rangle\,dx	% todo: Was wollte er uns mit dieser Gleichung sagen?
 \end{equation}
 % todo: some text
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+Um nun den Beweis für das Photon zu führen, betrachten wir den harmonischen Oszillator (Abschnitt~\ref{fourier:subsection:derHarmonischeOszillator}).
+Hierfür führen wir dimensionslose Operatoren ein:
+\[ 
+Q = \sqrt{\frac{m\omega}{\hbar}}x
+\qquad\text{und}\qquad
+P = \frac{1}{\sqrt{m\hbar\omega}}p.
+\]
+Der Hamilton-Operator nimmt dann die Form an:
+\begin{equation}
+	H = \frac{1}{2}(P^2 + Q^2).
+\end{equation}
 
-Kommen wir nun zum Harmonischen Oszillator, welcher in Abschnitt~\ref{fourier:subsection:derHarmonischeOszillator} bereits erklärt wurde.
-Zum Beweis des Photons benötigen wir zwei neue Operatoren
+Nun definieren wir die sogenannten Leiteroperatoren:
 \[
 a^{+} = \frac{1}{\sqrt{2}}(Q + iP)
 \qquad\text{und}\qquad
 a = \frac{1}{\sqrt{2}}(Q - iP).
 \]
+
+%% todo: here knma
 Mit der Vertauschungsrelation
 \begin{equation}
 	[P,Q] = -\mathrm{i} \cdot id,
