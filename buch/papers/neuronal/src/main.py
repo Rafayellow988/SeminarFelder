@@ -14,27 +14,25 @@ matplotlib.use('TkAgg')
 
 # neural network architecture
 class WaveNet(nn.Module):
+    train_error = []
     def __init__(self):
         super(WaveNet, self).__init__()
         self.net = nn.Sequential(
             # Input layer with 3 input units for x, y and t
-            nn.Linear(3, 64),
+            nn.Linear(3, 32),
             nn.Tanh(),
             # First hidden layer
-            nn.Linear(64, 64),
-            nn.Tanh(),
-            # Second hidden layer
-            nn.Linear(64, 64),
+            nn.Linear(32, 32),
             nn.Tanh(),
             # Output layer with a single output unit for the z-coordinate
-            nn.Linear(64, 1)  # Output u(x, y, t) --> Model gibt einzelnen Wert (z-Koordinate) zurück
+            nn.Linear(32, 1)  # Output u(x, y, t) --> Model gibt einzelnen Wert (z-Koordinate) zurück
         )
 
     def forward(self, x):
         return self.net(x)
 
+    # Train model
     def fit(self, xyt, optimizer, n_epochs):
-        train_error = []
         for epoch in range(n_epochs):
             optimizer.zero_grad()
             residual = wave_equation_residual(self, xyt)
@@ -42,12 +40,26 @@ class WaveNet(nn.Module):
             loss.backward()
             optimizer.step()
 
-            train_error.append(loss.item())
+            self.train_error.append(loss.item())
 
             if epoch % 100 == 0:
                 print(f"Epoch {epoch}, Loss: {loss.item():.6f}")
 
-        return train_error
+        return self.train_error
+
+    # Plots training error over training epochs
+    def train_error_plot(self):
+        epochs = range(1, len(self.train_error) + 1)
+
+        plt.figure(figsize=(10, 6))
+        plt.plot(epochs, self.train_error, label='Training Error', marker='o')
+        plt.xlabel('Epoch')
+        plt.ylabel('Error')
+        plt.title('Training Error over Epochs')
+        plt.legend()
+        plt.grid(True)
+        plt.tight_layout()
+        plt.show()
 
 
 
@@ -92,20 +104,20 @@ train_error = model.fit(xyt_train, optimizer, 200)
 
 # Testing loop
 test_error = []
-grid_size = 100
-t_values = np.linspace(0, 5, 51)
-x_vals = np.linspace(-2, 2, grid_size)
-y_vals = np.linspace(-2, 2, grid_size)
-X, Y = np.meshgrid(x_vals, y_vals)
+grid_size = 1000
+t_test = np.linspace(0, 5, 51)
+x_vals_test = np.linspace(-10, 10, grid_size)
+y_vals_test = np.linspace(-10, 10, grid_size)
+X_test, Y_test = np.meshgrid(x_vals_test, y_vals_test)
 
 u_pred_array = []
 
-for t in t_values:
-    xy_t = torch.FloatTensor(
-        np.column_stack([X.ravel(), Y.ravel(), np.full_like(X.ravel(), t)])
+for t in t_test:
+    xyt_test = torch.FloatTensor(
+        np.column_stack([X_test.ravel(), Y_test.ravel(), np.full_like(X_test.ravel(), t)])
     ).to(device)
-    u_pred_array.append(model(xy_t).cpu().detach().numpy().reshape(grid_size, grid_size))
-    test_error.append(torch.mean(wave_equation_residual(model, xyt_train) ** 2).item())
+    u_pred_array.append(model(xyt_test).cpu().detach().numpy().reshape(grid_size, grid_size))
+    test_error.append(torch.mean(wave_equation_residual(model, xyt_test) ** 2).item())
 
 print(f"Average test error: {np.mean(test_error)}")
 
@@ -149,20 +161,6 @@ def animate_solution(t_values, X, Y, u_pred_array):
     ani = animation.FuncAnimation(fig, update, frames=len(t_values), interval=100, repeat=True)
     plt.show()
 
-# Plots training error over training epochs
-def train_error_plot(training_error):
-    epochs = range(1, len(training_error) + 1)
-
-    plt.figure(figsize=(10, 6))
-    plt.plot(epochs, training_error, label='Training Error', marker='o')
-    plt.xlabel('Epoch')
-    plt.ylabel('Error')
-    plt.title('Training Error over Epochs')
-    plt.legend()
-    plt.grid(True)
-    plt.tight_layout()
-    plt.show()
-
 #plot_solution(model, t_fixed=0.5)
-#animate_solution(t_values, X, Y, u_pred_array)
-train_error_plot(train_error)
+#animate_solution(t_test, X_test, Y_test, u_pred_array)
+model.train_error_plot()
