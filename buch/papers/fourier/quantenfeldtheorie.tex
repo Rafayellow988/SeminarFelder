@@ -286,11 +286,18 @@ Beispiele:
   wobei $\alpha$ und $\beta$ komplexe Zahlen sind.
 \end{itemize}
 
-Das \emph{Skalarprodukt} zwischen zwei Zuständen $|\phi\rangle$ und $|\psi\rangle$ ergibt eine komplexe Zahl:
+Das \emph{Skalarprodukt}
 \begin{equation}
-  \langle \phi | \psi \rangle = \int \phi^*(x)\,\psi(x)\,dx,
+  \langle \phi | \psi \rangle = \int\limits_{-\infty}^{+\infty} \phi^*(x)\,\psi(x)\,dx,
 \end{equation}
-die misst, wie ähnlich sich die beiden Zustände sind („Überlappung“).
+ist eine einzige (meist komplexe) Zahl, die angibt, wie ``gleich'' oder ``verschieden'' sich die beiden Zustände $|\phi\rangle$ und $|\psi\rangle$ verhalten.
+Man multipliziert dafür $\phi^*(x)$ (das konjugiert-komplexe von $\phi$) mit $\psi(x)$ und integriert über den gesamten Raum.
+\begin{itemize}
+	\item Liegen die Zustände genau übereinander, erhält man den Betrag 1 (bei Normierung).
+	\item Sind sie orthogonal, also völlig verschieden, ist das Ergebnis 0.
+\end{itemize}
+Kurz gesagt:
+$\langle \phi | \psi \rangle$ misst die Überlappung (den ``Winkel'') zwischen zwei Quantenzuständen.
 
 Die \emph{Norm} eines Zustands ist einfach das Skalarprodukt mit sich selbst:
 \begin{equation}
@@ -327,15 +334,21 @@ Ihre Operatoren ``vertauschen'' nicht miteinander, was mathematisch ausgedrückt
 Diese fehlende Vertauschbarkeit führt direkt zur bekannten Unschärferelation.
 Ihre Herleitung basiert auf einer grundlegenden mathematischen Ungleichung, der sogenannten Cauchy-Schwarz-Ungleichung:
 \begin{equation}
-	\vec{a} \bullet \vec{b} = |\vec{a}| |\vec{b}|\cos\alpha \le |\vec{a}| |\vec{b}|,
-\end{equation} 
+	\vec{a} \bullet \vec{b} = |\vec{a}| |\vec{b}|\cos\alpha \le |\vec{a}| |\vec{b}|.
+\end{equation}
 die besagt, dass das Skalarprodukt zweier Vektoren nie grösser sein kann als das Produkt ihrer Längen.
-Übertragen auf Quantenzustände lautet diese Ungleichung:
+Übertragen auf die Wellenfunktionen zweier Quantenzustände $|\phi\rangle$ und $|\chi\rangle$, erhält man
 \begin{equation}
 	|\langle\phi | \chi\rangle|^2 \le \langle\phi | \phi\rangle \langle\chi | \chi\rangle.
 \end{equation}
-Hierbei bezeichnen $| \phi \rangle$ und $| \chi \rangle$ Zustände eines Systems in der sogenannten Bra-Ket-Notation, einer Kurzschreibweise für quantenmechanische Zustände.
-Die Grundlagen zu dieser Notation wurden bereits in Abschnitt\ref{fourier:subsubsection:braKetNotation} erläutert.
+Diese Relation stellt eine fundamentale Schranke für das Skalarprodukt zweier Zustände dar.
+Der Ausdruck $|\langle\phi|\chi\rangle|^2$ misst die Überlappung der beiden Zustände, also gewissermaßen, wie ähnlich sie sich sind.
+Die Terme $\langle\phi|\phi\rangle$ und $\langle\chi|\chi\rangle$ entsprechen dabei den Quadraten der Längen (Normen) der Zustände.
+Der Betrag des Skalarprodukts kann also niemals größer werden als das Produkt der Normen, ganz analog zur klassischen Vektoranalysis.
+Das Quadrat auf der linken Seite ergibt sich, weil die Ungleichung eine Aussage über den Betrag des Skalarprodukts ist, während die rechte Seite stets reell und positiv ist.
+Diese Form der Ungleichung bildet die mathematische Grundlage für die Herleitung der Heisenbergschen Unschärferelation.
+Die Zustände $|\phi\rangle$ und $|\chi\rangle$ sind hier in der sogenannten Bra-Ket-Notation geschrieben, einer kompakten Notation für Zustände in der Quantenmechanik, wie sie in Abschnitt~\ref{fourier:subsubsection:braKetNotation} eingeführt wurde.
+
 Setzt man
 \begin{equation}
 	|\phi\rangle = (\hat{x} - \langle \hat{x} \rangle) |\psi\rangle \quad |\chi\rangle = (\hat{p} - \langle \hat{p} \rangle) | \psi\rangle,
@@ -375,7 +388,7 @@ Wir starten mit der klassischen Hamilton-Funktion, die die Gesamtenergie eines S
 \end{equation}
 wo $T(p)$ die kinetische Energie und $V(x)$ die potenzielle Energie des Teilchens darstellen.
 
-% todo: add some stuff of book quantum mechanics to glue things together
+%%% maybe todo: add some stuff of book quantum mechanics to glue things together
 
 Durch Schrödinger wird der Impuls p durch
 \begin{equation}
@@ -396,8 +409,6 @@ Der Erwartungswert des Impulses in einem Zustand $|\psi\rangle$ lässt sich schr
 \end{equation}
 Er gibt an, welcher mittlere Impuls gemessen wird, wenn sich das System im Zustand $|\psi\rangle$ befindet.
 
-% todo: somehow from Bra-Ket to measuring values -> probably a bit upper
-
 Nach Heisenbergs Unschärferelation (siehe Abschnitt~\ref{fourier:subsubsection:unschaerferelation}) gilt in der Quantenmechanik, dass die Vertauschung der Impuls- und Ortsoperatoren nicht null ist, also
 \begin{equation}
 	px \neq xp.
@@ -416,7 +427,7 @@ geschrieben werden.
 \end{equation}
 % todo: some text
 \begin{equation}
-	\int \langle \psi |xp|\psi \rangle\,dx	% todo: Was wollte er uns mit dieser Gleichung sagen?
+	\int \langle \psi |xp|\psi \rangle\,dx	% todo: Was soll uns diese Gleichung sagen?
 \end{equation}
 % todo: some text
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -462,8 +473,50 @@ wobei id die Einheitsmatrix ist, lässt sich über den Hamiltonoperator % todo: 
 \begin{equation}
 	N\cdot a^+ - a^+N 
 	= \textcolor{blue}{a^+a}a^+ + \cancel{\frac{1}{2}a^+} \textcolor{blue}{-a^+a}a^+ - \cancel{\frac{1}{2}a^+}
-	= a^+\textcolor{blue}{[a, a^+]} 
+	= a^+\textcolor{blue}{[a, a^+]}
 	= \textcolor{blue}{1}\cdot a^+
 \end{equation}
 % todo: tbc
-Commit worked!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Quantisierung vom Feld --> Erklärung Photon, Schwierigkeit von Polarisation erwähnen, E und B
+
+% Für jede Wellenlänge gibt es einen Fourier-Koeffizienten, davon kommen die a's
+
+-----------------------------------------------------------------------------------
+
+% todo: Diese Gleichung mit Erklärungen irgendwo einflechten.
+% question: Wo wäre es sinnvoll?
+Mit dem Hamiltonoperator in der Form
+\begin{equation}
+	H = \hbar\omega(N + \frac{1}{2})
+\end{equation}
+folgt die Eigenwertgleichung
+\begin{equation}
+	H\,|\psi_n\rangle = E_n\,|\psi_n\rangle,
+  	\quad
+	E_n = \hbar\omega\Bigl(n + \tfrac12\Bigr).
+\end{equation}
+Dabei ist $n = 0,1,2,\dots$ die Besetzungszahl (Photonenzahl beim Lichtfeld).
+Das zeigt, dass $|\psi_n\rangle$ die stationären Energiezustände sind und die Energiewerte quantisiert in Schritten von $\hbar\omega$ liegen.
+
+% todo: diese Formeln genauer ausführen und in Kapitel einbinden.
+\begin{equation}
+	a^+ |\psi_n\rangle \rightarrow a^+ | \psi_n\rangle
+\end{equation}
+Energie
+\begin{equation}
+	H(a^+ | \psi_n\rangle) = ...
+	= (1 + \epsilon_n) a^+ | \psi_n\rangle % todo ausführen
+\end{equation}
+$(1+\epsilon_n)$ = EW = Energie % todo: direkt darunter
+\begin{equation}
+	a^- |\psi_n\rangle \rightarrow a^-|\psi_n\rangle
+\end{equation}
+\begin{equation}
+	H(a^-|\psi_n\rangle) = ...
+	= (-1 + \epsilon_n) a^- |\psi_n\rangle % todo: ausführen
+\end{equation}
+
+Final text % todo: this is only a filler
