@@ -84,4 +84,5 @@ def animate_solution(model, device):
             cbar = fig.colorbar(cont, ax=ax, label='Wave Height')
 
     ani = animation.FuncAnimation(fig, update, frames=len(t_values), interval=100, repeat=True)
+    ani.save("wave_animation.gif", writer='pillow', fps=5)
     plt.show()
