@@ -4,7 +4,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib import animation
 from matplotlib.animation import FuncAnimation
-from Residuals import wave_equation_residual
+from Residuals import total_loss
 
 matplotlib.use('TkAgg')
 
@@ -59,7 +59,11 @@ def animate_solution(model, device):
             np.column_stack([X.ravel(), Y.ravel(), np.full_like(X.ravel(), t)])
         ).to(device)
         u_pred_array.append(model(xyt).cpu().detach().numpy().reshape(grid_size, grid_size))
-        error.append(torch.mean(wave_equation_residual(model, xyt) ** 2).item())
+
+        x = torch.FloatTensor(np.column_stack([X.ravel()])).to(device)
+        y = torch.FloatTensor(np.column_stack([Y.ravel()])).to(device)
+        t = torch.FloatTensor(np.column_stack([np.full_like(X.ravel(), t)])).to(device)
+        error.append(total_loss(model, x, y, t, device).item())
 
     print(f"Average loss on animated data: {np.mean(error)}")
 

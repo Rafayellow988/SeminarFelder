@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from Residuals import wave_equation_residual
+from Residuals import total_loss
 
 class WaveNet(nn.Module):
     train_error = []
@@ -24,13 +24,13 @@ class WaveNet(nn.Module):
         return self.net(x)
 
     # Train model
-    def fit(self, xyt_train, xyt_test, n_epochs):
+    def fit(self, x_train, y_train, t_train, x_test, y_test, t_test, device, n_epochs):
         optimizer = optim.Adam(self.parameters(), lr=0.001)
         for epoch in range(n_epochs):
             optimizer.zero_grad()
 
-            train_loss = torch.mean(wave_equation_residual(self, xyt_train))
-            test_loss = torch.mean(wave_equation_residual(self, xyt_test))
+            train_loss = total_loss(self, x_train, y_train, t_train, device)
+            test_loss = total_loss(self, x_test, y_test, t_test, device)
 
             train_loss.backward()
             optimizer.step()
