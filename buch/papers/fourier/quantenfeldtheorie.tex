@@ -51,56 +51,7 @@ Im Folgenden ein geschichtlicher Exkurs, wie es dazu kam.
 
 	%https://de.wikipedia.org/wiki/Rayleigh-Jeans-Gesetz#/media/Datei:PlanckWienRayleigh_linear_150dpi_de.png
 
-		
-	\begin{figure}[htbp]
-		\centering
-		\begin{tikzpicture}
-			
-			% Hauptachse (linke y-Achse; Werte von 0 bis 14000)
-			\begin{axis}[
-				name=leftaxis,
-				width=12cm,
-				height=8cm,
-				xlabel={Wellenlänge $\lambda$ in ($\mu$m)},
-				ylabel={Spektrale Strahlung $B_\lambda(\lambda, T)$ in $[W/(m^2 \mu m)]$},
-				xmin=0.1, xmax=25,
-				ymin=0, ymax=14000,
-				legend style={at={(0.97,0.97)}, anchor=north east},
-				grid=both,
-				domain=0.01:26,
-				samples=1000
-				]
-				%W\,m$^{-2}$m$^{-1}
-				% Konstanten (SI)
-				\def\h{6.62607015e-34}       % Plancksche Konstante
-				\def\c{2.99792458e8}         % Lichtgeschwindigkeit
-				\def\kB{1.380649e-23}        % Boltzmann-Konstante
-				\def\T{1000}                 % Temperatur in Kelvin
-				
-				% --- Plancksche Strahlungsformel ---
-				\addplot[black, thick] 
-				expression{
-					(2*pi*\h*\c^2)/((x*1e-6)^5) * 1/(exp(\h*\c/((x*1e-6)*\kB*\T)) - 1) / 1e6
-				};
-				\addlegendentry{Planck}
-				
-				
-				% --- Rayleigh-Jeans-Gesetz (Langwellennähe) ---
-				\addplot[blue, thick, restrict y to domain=0:14000]
-				expression{
-					(2*pi*\c*\kB*\T)/((x*1e-6)^4) / 1e6
-				};
-				\addlegendentry{Rayleigh-Jeans}
-				
-				
-			\end{axis}
-			
-			
-			
-		\end{tikzpicture}
-		\caption{Strahlungsspektren nach Planck und Rayleigh-Jeans bei $T=1000\,\mathrm{K}$}
-	\end{figure}
-		
+	\input{papers/fourier/fig/fig-strahlung.tex}%
 
 	In beiden Formeln kommen diverse Konstanten vor: Pi, die Bolzmann Konstante $k_B$, die Lichtgeschwindigkeit $c$ und $h$. 
 	Er führte eine neue Naturkonstante ein, das Plancksche Wirkungsquantum $h = 6{,}626 \times 10^{-34} \ \text{J\,s}$. 
@@ -236,29 +187,7 @@ Die Lösung dieser Differentialgleichung lautet
 
 Diese Gleichung ist analog zur Gleichung eines Federpendels.
 Es handelt sich hier um ein ``Quanten-Federpendel''.    
-\begin{figure}
-\centering
-\begin{tikzpicture}[>=latex,thick]
-    % Koordinatensystem
-    \draw[->] (-2,0) -- (2,0) node[right] {$x$};
-    \draw[->] (0,-2) -- (0,2) node[above] {$y$};
-    
-    % Feder
-    \draw[thick] (0,1.5) -- (0,1.2);
-    \draw[thick, decorate, decoration={coil, aspect=0.5, segment length=4mm, amplitude=2mm}] (0,1.2) -- (0,-0.5);
-    
-    % Körper
-    \filldraw[blue] (0,-0.5) circle (0.3) node[below] {$m$};
-    
-    % Kräfte
-    \draw[->, thick, red] (0,-0.5) -- (0,-1.5) node[right] {$\vec{F}_G$};
-    \draw[->, thick, green] (0,-0.5) -- (0,0.5) node[right] {$\vec{F}_S$};
-    
-    % Aufhängung
-    \draw[thick] (-0.5,1.5) -- (0.5,1.5);
-\end{tikzpicture}
-\caption{Federpendel}\label{fourier:figure:federpendel}
-\end{figure}
+\input{papers/fourier/fig/fig-federpendel.tex}%
 
 %%
 \subsection{Einführung in Werkzeuge der Quantenmechanik\label{fourier:subsection:werkzeugeQuantenmechanik}}
