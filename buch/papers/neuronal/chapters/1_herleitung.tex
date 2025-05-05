@@ -202,10 +202,10 @@ Nach dem letzten Schritt dieses Algorithmus ist das neuronale Netzwerk fertig tr
 %% TODO: Wie gut ist die Approximierung und von was hängt die Qualität ab?
 
 Als abschliessende Notiz: Im Schritt 2 des Algorithmus werden die Parameterwerte leicht angepasst, so dass J abnimmt.
-Dies wird mit \emph{Gradient Descent} gemacht. Die Formel dafür ist
+Dies wird mit Optimierungsverfahren \emph{Gradient Descent} gemacht. Die Formel dafür ist
 \begin{equation}
     \vartheta_{i+1} = \vartheta_i - \epsilon \nabla_\vartheta J\left(\vartheta_i\right).
 \end{equation}
 Dies funktioniert, da der Gradient von J ausgewertet an \( \vartheta_i \) ein Vektor ist, der in die Richtung des stärksten Anstiegs auf J weist.
-Durch das Minus in der Formel geht man in die entgegen gesetzte Richtung, wo es auf J (wahrscheinlich) abwärts geht. 
+Durch das Minus in der Formel geht man in die entgegen gesetzte Richtung, wo es auf J abwärts geht. 
 Mit \( \epsilon \) wird die ``Schrittgrösse'' gesteuert, um zu verhindern dass man über ein Minimum ``springt''.
