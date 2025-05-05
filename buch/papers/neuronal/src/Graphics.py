@@ -46,10 +46,10 @@ def plot_solution(model, device, t_fixed=0.5):
 # Same as above but updates at every second for t values in [0; 1]
 def animate_solution(model, device):
     error = []
-    grid_size = 100
-    t_values = np.linspace(0, 5, 51)
-    x_vals = np.linspace(-2, 2, grid_size)
-    y_vals = np.linspace(-2, 2, grid_size)
+    grid_size = 1000
+    t_values = np.linspace(0, 10, 51)
+    x_vals = np.linspace(-10, 10, grid_size)
+    y_vals = np.linspace(-10, 10, grid_size)
     X, Y = np.meshgrid(x_vals, y_vals)
 
     u_pred_array = []
@@ -67,7 +67,8 @@ def animate_solution(model, device):
 
     print(f"Average loss on animated data: {np.mean(error)}")
 
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(20, 20))
+
     cbar = None
 
     def update(frame):

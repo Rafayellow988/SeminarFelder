@@ -47,10 +47,10 @@ def initial_condition_loss(model, x_init, y_init, device):
 
 def boundary_condition_loss(model, t_bc, device):
     # x or y are at the boundary values
-    x_min = -2.0
-    x_max = 2.0
-    y_min = -2.0
-    y_max = 2.0
+    x_min = -10.0
+    x_max =  10.0
+    y_min = -10.0
+    y_max =  10.0
 
     n_samples = len(t_bc)
 

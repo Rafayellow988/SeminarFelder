@@ -16,10 +16,10 @@ else:
     print("Training model...")
     # Generate training & testing points
     # Uniformly generated in the x-y-t coordinate system
-    n_train_samples = 5000
-    x_train = torch.FloatTensor(n_train_samples, 1).uniform_(-2, 2)
-    y_train = torch.FloatTensor(n_train_samples, 1).uniform_(-2, 2)
-    t_train = torch.FloatTensor(n_train_samples, 1).uniform_(0, 5)
+    n_train_samples = 10000
+    x_train = torch.FloatTensor(n_train_samples, 1).uniform_(-10, 10)
+    y_train = torch.FloatTensor(n_train_samples, 1).uniform_(-10, 10)
+    t_train = torch.FloatTensor(n_train_samples, 1).uniform_(0, 10)
 
     n_test_samples = 1000
     x_test = torch.FloatTensor(n_test_samples, 1).uniform_(-104, -100)
