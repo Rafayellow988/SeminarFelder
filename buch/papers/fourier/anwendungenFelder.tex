@@ -13,45 +13,85 @@
 \section{Anwendung auf Feld\label{fourier:section:teil0}}
 
 \kopfrechts{Anwendung auf Feld}
-
+%Motivation. E & B Felder enfüllen wellengleichung. noch schreiben!
 Gewöhnliche Differentialgleichungen sind berühmt berüchtigt schwierig zu lösen.
 Schlimmer geht es immer.
 Partielle Differenzialgleichungen enthaltet Ableitungen nach mehreren Variabeln.
-In diesem Abschnitt vereinfachen wir eine partielle in eine Gewöhnliche, mithilfe der Fourierreihe.
-Alle Ableitungen sollten schlussendlich den identischen Nenner besitzen.
+In diesem Abschnitt vereinfachen wir eine Partielle, mithilfe der Fourierreihe, in eine Gewöhnliche.
+Alle Ableitungen sollten schlussendlich den identischen Nenner besitzen. 
+Im unteren Beispiel wäre das die Zeit $\partial t$.
 Als partielle Differentialgleichung verwenden wir die eindimensionale Wellengleichung mit der Lichtgeschwindigkeit als Ausbreitungsgeschwindigkeit. 
+Dieses Modell eignet sich besonders gut, da es auch auf elektromagnetische Felder anwendbar ist!
 
 \begin{equation}
 	\frac{\partial^2 u(x, t)}{\partial t^2} = c^2 \cdot \frac{\partial^2 u(x, t)}{\partial x^2}
 \end{equation}
 
-Wir nehmen an $u(x, t)$ ist eine sich periodisch wiederholende Funktion. 
-Wir führen eine Fourierreihen-Entwicklung durch. 
+Unter der Annahme, dass $u(x, t)$ eine sich periodisch wiederholende Funktion ist, führen wir eine Fourierreihen-Entwicklung durch. 
+Neu besteht $u(x, t)$ aus einer unendlichen Anzahl von Schwingungen:
 
 \begin{equation}
-	u(x,t) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left( a_n(t) \cos(n \omega x) + b_n(t) \sin(n \omega x) \right)
+	u(x,t) = \frac{a_0(t)}{2} + \sum_{n=1}^{\infty} \left( a_n(t) \cos(n \omega x) + b_n(t) \sin(n \omega x) \right)
 \end{equation}
 
-Die Fourier Koeffizienten $a_n(t)$ und $b_n(t)$ sind neu von der Zeit abhängig. 
-$a_0$ ist konstant.
+Alle Fourier Koeffizienten $a_0(t)$, $a_n(t)$ und $b_n(t)$ sind neu von der Zeit abhängig. 
 Nun wird $u(x,t)$ in seiner Summenform in die Wellengleichung eingebaut. 
-Dazu muss fleissig abgeleitet werden, je zwei Mal nach $t$ und $x$.
+Dazu muss $u(x,t)$ je zwei Mal nach $t$ und $x$ abgeleitet werden:
 
 \begin{equation}
-	\frac{\partial^2 u(x,t)}{\partial t^2} = \sum_{n=1}^{\infty} \left( \frac{d^2}{dt^2} a_n(t) \cos(n \omega x) + \frac{d^2}{dt^2} b_n(t) \sin(n \omega x) \right)
+	\frac{\partial^2 u(x,t)}{\partial t^2} = \frac{1}{2} \frac{\partial^2 a_0(t)}{\partial t^2} +  \sum_{n=1}^{\infty} \left( \frac{\partial^2}{\partial t^2} a_n(t) \cos(n \omega x) + \frac{\partial^2}{\partial t^2} b_n(t) \sin(n \omega x) \right)
 \end{equation}
 
 \begin{equation}
 	\frac{\partial^2 u(x,t)}{\partial x^2} = \sum_{n=1}^{\infty} \left( -a_n(t) n^2 \omega^2 \cos(n \omega t) - b_n(t) n^2 \omega^2 \sin(n \omega t) \right)
 \end{equation}
 
-Die Resultate in die Wellengleichung einsetzen.
+
+Von nun an, wird als ableitungsoperator $\frac{d}{dt}$ verwendet, da die Gleichung nur noch von $t$ abhängig ist.
+Die Resultate können jetzt in die Wellengleichung einsetzt werden. 
+
+%\begin{equation}
+%	 \frac{1}{2} \frac{d^2 a_0(t)}{d t^2} + \sum_{n=1}^{\infty} \left( \frac{d^2}{dt^2} a_n(t) \cos(n \omega x) + \frac{d^2}{dt^2} b_n(t) \sin(n \omega x) \right) = c^2  \sum_{n=1}^{\infty} \left( -a_n(t) n^2 \omega^2 \cos(n \omega t) - b_n(t) n^2 \omega^2 \sin(n \omega t) \right) 
+%\end{equation}
+
+
+\begin{multline}
+	\frac{1}{2}\frac{d^2 a_0(t)}{dt^2}
+	+ \sum_{n=1}^{\infty}\Bigl(
+	\frac{d^2 a_n(t)}{dt^2}\cos(n\omega x)
+	+ \frac{d^2 b_n(t)}{dt^2}\sin(n\omega x)
+	\Bigr)
+	= \\[-0.8ex]
+	c^2 \sum_{n=1}^{\infty}\Bigl(
+	-a_n(t)\,n^2\omega^2\cos(n\omega x)
+	-b_n(t)\,n^2\omega^2\sin(n\omega x)
+	\Bigr)
+\end{multline}
+
+
+Diese etwas grosse Gleichung kann nun mithilfe eines Koeffizientenvergleichs gelöst werden. so entstehen folgende drei Gleichungen:
 
 \begin{equation}
-	 \sum_{n=1}^{\infty} \left( \frac{d^2}{dt^2} a_n(t) \cos(n \omega x) + \frac{d^2}{dt^2} b_n(t) \sin(n \omega x) \right) = c^2 \sum_{n=1}^{\infty} \left( -a_n(t) n^2 \omega^2 \cos(n \omega t) - b_n(t) n^2 \omega^2 \sin(n \omega t) \right) 
+	\frac{1}{2} \frac{d^2 a_0(t)}{d t^2} = 0
 \end{equation}
 
-Die Beiden Summenzeichen kürzen sich raus. Mithilfe des Koeffizientenvergleichs, findet man zwei lösungen:
+\begin{equation}
+	\sum_{n=1}^{\infty}
+	\frac{d^2 a_n(t)}{dt^2}\cos(n\omega x)
+	 = c^2 \sum_{n=1}^{\infty}
+	-a_n(t)\,n^2\omega^2\cos(n\omega x)
+	\end{equation}
+
+\begin{equation}
+	\sum_{n=1}^{\infty}
+	\frac{d^2 b_n(t)}{dt^2}\sin(n\omega x) = c^2 \sum_{n=1}^{\infty}
+	-b_n(t)\,n^2\omega^2\sin(n\omega x)
+\end{equation}
+
+Der variable Mittelwert $a_0(t)$ kann somit gleich Null gesetzt werden.
+Die Gleichungen mit $a_n(t)$ und $b_n(t)$ besitzen beidseitig dasselbe Summenzeichen, daher gilt die Gleichung für jedes $n$. 
+Zudem sind die $cos(n\omega x)$ und $sin(n\omega x)$ zu kürzen. 
+Somit entstehen folgende zwei Gleichungen:
 
 \begin{equation}
 	\frac{d^2}{dt^2} a_n(t) + a_n(t) n^2 \omega^2 c^2 = 0
@@ -61,7 +101,7 @@ Die Beiden Summenzeichen kürzen sich raus. Mithilfe des Koeffizientenvergleichs
 Wenn man im physik Unterricht aufgepasst hat, sollte einem diese Form bekannt vorkommen. Die Differentialgleichung vom ungedämpften Federpendel besitz dieselbe Form. 
 
 \begin{equation}
-	\frac{d^2}{dt^2} x(t) + \omega^2 x(t) = 0
+	\frac{d^2}{dt^2} x(t) + x(t) \omega^2  = 0
 \end{equation}
 
 Die lösung von dieser DGL ist einfach eine ungedämpfte schwingung der Form 
@@ -73,7 +113,7 @@ x(t) = A \cos(\omega t) + B \sin(\omega t) \quad \text{oder} \quad x(t) = C \cos
 Dieses Resultat beschreib mit welcher Frequenz und Amplitude eine Masse an einer Feder schwingt. 
 
 Könnte man nun dasselbe mit der resultierenden Lösung der Wellengleichung machen?
-Das Resultat wäre eine unendliche Anzahl von Felderpendeln, da $n$ nach unendlich läuft. 
+Das Resultat wäre eine unendliche Anzahl von Felderpendeln, da $n$ für jede natürliche Zahl steht. 
 Die Kreisfrequenz wäre  $n \omega c$. 
 Dies macht mathematisch Sinn, physikalisch müsste man sich jedoch fragen, was genau hin und her pendelt und ob eine unendliche Frequenz Sinn macht.
 

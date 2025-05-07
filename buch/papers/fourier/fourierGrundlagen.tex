@@ -50,40 +50,14 @@ f(t) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left( a_n \cos\left( \frac{2\pi n}{T
 \end{equation}
 
 
-Die Ausnaheme sind Funktionen mit Sprungstellen, wie in Abbildung \ref{fourier:fourierrechteck}.
+Die Ausnaheme sind Funktionen mit Sprungstellen, wie in Abbildung \ref{fourier:fig:fourierrechteck}.
 Bei dieser Rechteckfunktion wurden die Reihe bis $n = 3$ berechnet. 
 Bei solchen Funktionen tritt das sogenannte Gibbsche Phänomen auf.
 In der Nähe eines Sprungs entsteht ein charakteristischer Überschwinger, der selbst bei unendlich vielen Summanden nicht verschwindet.
 Das Gleichheitszeichen $=$ gilt daher nur eingeschränkt. 
 Nun folgen zwei Bespiele.
 
-
-
-\begin{figure}[H]
-	\centering
-	\begin{tikzpicture}
-		\begin{axis}[
-			axis lines = middle,
-			xlabel = {$t$},
-			ylabel = {$f_1(t)$},		
-			domain=0:6,
-			samples=1000,
-			xtick={0,1,2,3,4,5,6},
-			ytick={0,1},
-			enlargelimits,
-			width=\textwidth,
-			height=5cm
-			]
-			\addplot[thick] {mod(floor(x),2) == 0 ? 1 : 0};
-			\addplot[red, thick] {(1/2) + 
-				(2/pi)*sin(pi * deg(x)) + 
-				(2/(3*pi))*sin(pi *3*deg(x)) +
-				(2/(5*pi))*sin(pi *5*deg(x))};
-		\end{axis}
-	\end{tikzpicture}
-	\caption{Fourierapproximation einer Rechteckfunktion}
-	\label{fourier:fourierrechteck}
-\end{figure}
+\input{papers/fourier/fig/fig-fourier_Rechteck.tex}
 
 \begin{equation}
 	f_1(t) = \frac{1}{2} + \sum_{\substack{n=1 \\ n\ \text{ungerade}}}^{5} \frac{1}{\pi n^2} \sin\left( \pi n t \right)
@@ -96,37 +70,8 @@ Daher ist der gerade Anteil $a_n$ stets Null.
 Zudem wurde noch eine vereinfachung von $b_n$ vorgenommen, da der Term bei geraden $n$ Null wird, summiert man nur über ungerade $n$. 
 
 
-\begin{figure}[H]
-	\centering
-	\begin{tikzpicture}
-		\begin{axis}[
-			axis lines = middle,
-			xlabel = {$t$},
-			ylabel = {$f_2(t)$},		
-			domain=0:6,
-			samples=1000,
-			xtick={0,1,2,3,4,5,6},
-			ytick={-1,0,1},
-			enlargelimits,
-			width=\textwidth,
-			height=5cm
-			]
-			\addplot[black, thick] {
-				abs(mod(x+0.5,2) - 1) * (-2) + 1
-			};
-			
-			\addplot[red, thick, domain=0:6] {
-				(8/pi^2) * (
-				sin(deg(pi*x))/1^2
-				- sin(deg(3*pi*x))/3^2
-				+ sin(deg(5*pi*x))/5^2
-				)
-			};
-		\end{axis}
-	\end{tikzpicture}
-	\caption{Fourierapproximation einer Dreieckfunktion}
-	\label{fourier:fourierdreieck}
-\end{figure}
+\input{papers/fourier/fig/fig-fourier_Dreieck.tex}
+
 
 \begin{equation}
 	f_2(t) = \sum_{\substack{n=1 \\ n\ \text{ungerade}}}^{5} \frac{8}{\pi^2 n^2} \cos(n\pi t)
