@@ -6,20 +6,212 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 0\label{maxwell:section:teil0}}
-\kopfrechts{Teil 0}
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua \cite{maxwell:bibtex}.
-At vero eos et accusam et justo duo dolores et ea rebum.
-Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-dolor sit amet.
+\section{Geschichte und Einführung\label{maxwell:section:teil0}}
+\kopfrechts{Geschichte und Einführung}
+Die Geschichte der Elektrodynamik führt sehr weit zurück.
+Das erste mal, das Elektrizität, wenn auch unbewusst was es wirklich ist, verwendet wurde, war ca. 3100 Jahre v. Chr. im alten Ägypten.
+Dort wurden die Elektroschocks des elektrischen Wels zur Behandlung von Gelenkschmerzen verwendet.
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua.
-At vero eos et accusam et justo duo dolores et ea rebum.  Stet clita
-kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-amet.
 
+Ein wichtiger Meilenstein in der Entdeckung des Magnetismus war die Erfindung des Kompasses im Jahre 200 v. Chr.
+Die Chinesen entdeckten, das sich der natürlich vorkommende Magnetit auf wundersame Weise immer gleich ausrichtet, wenn er frei drehend aufgehängt wird.
+Der Kompass wurde anfangs aber nur für das Wahrsagen verwendet, erst viel später, ca. 850 n. Chr. wurde er zur Navigation eingesetzt und fand seinen Weg im Jahre 1190 nach Europa.
+
+Im Zeitraum von 1269 bis 1767 wurden die Phänomene der Elektrodynamik erstmals genauer beobachtet.
+So beschrieb 1269 der Franzosen Petrus Peregrinus durch Experimente als erster die Polarität von Magneten.
+Während des 17. Jahrhunderts wurde viel mit Reibungselektrizität experimentiert. Der Begriff der ``Elektrizität'' wurde erstmals verwendet und die Unterschiede magnetischer und elektrische Wirkung wurde erkannt.
+Im Jahr 1767 erkannte Joseph Priestley, dass die elektrische Kraft quadratisch zum Abstand abnimmt, ein erster Hinweis auf das Coulom-Gesetz.
+
+Ab dem Jahr 1785 nimmt die Entwicklung der Elektrodynamik richtig fahrt auf.
+Charles Augustin de Coulomb entdeckte und bestätigte durch umfangreiche Experimente 1785, das die Kraft zwischen zwei Ladungen quadratisch zum Abstand ihres Mittelpunktes abnimmt:
+$$
+\vec{F}
+=
+\frac{1}{4 \pi \varepsilon}
+\cdot
+\frac{q_1 q_2}{r^2}
+\cdot
+\hat{r}.
+$$
+Ob er von der Entdeckung Priestleys wusste ist nicht bekannt.
+
+Als Hans Christian Oersted an einem Tag im Jahre 1820 eine Vorlesung in Physik hielt, beobachtete er die Ablenkung einer Kompassnadel durch einen stromdurchflossenen Draht und endteckte somit zufällig die magnetische Wirkung des elektrischen Stromes.
+André-Marie Ampère wurde auf Oersteds Fund aufmerksam und verfolgte dieses Phenomen weiter.
+Er erkannte eine sehr wichtige Eigenschaft: Die Magnetnadel des Kompasses richtet sich immer senkrecht zum stromdurchflossenen Leiter aus.
+Er nahm an, dass die die Ursache, die die Magnetnadel zur Bewegung führt, ein vom Strom im Leiter selbst verursachtes Magnetfeld sei.
+Dies konnte er durch viele Versuche ein wenig später sogar beweisen.
+Ampère fand in diesen Versuchen heraus, dass sich zwei Leiter, in denen die elektrische Stromrichtung gleich ist, anziehen, und dass sie eine Abstossungskraft ausüben, wenn die Stromrichtung entgegengesetzt ist.
+Er formulierte eine Gleichung, die besagt, dass elektrische Ströme magnetische Wirbelfelder hervorrufen, deren Stärke durch die Stromstärke gegeben ist.
+Das Gesetz wird Ampèrsches Gesetz oder auch Durchflutungssatz gennant und wird in Integralform
+$$
+\oint_{C}
+\vec{B}
+\cdot
+d \vec{l}
+=
+\mu_0
+\iint_{S}
+\vec{J}
+\cdot
+d\vec{s}
+=
+\mu_0
+I
+$$
+bzw.
+$$
+\oint_{C}
+\vec{H}
+\cdot
+d\vec{l}
+=
+\iint_{S}
+\vec{J}
+\cdot
+d\vec{s}
+=
+I
+$$
+oder als differentielle Form
+$$
+\nabla
+\times
+\vec{B}
+=
+\mu_0 \vec{J}
+$$
+bzw.
+$$
+\nabla
+\times
+\vec{H}
+=
+\vec{J}
+$$
+formuliert.
+Dies sind sehr wichtige Gleichungen in der Elektrodynamik.
+Jedoch sind sie so nicht ganz vollständig und werden später noch mal überarbeitet.
+
+
+\textit{Exkurs: genaue Herleitung mittels Differentialformen}
+
+Mit Hilfe des Satz von Stokes(referenz zu abschnitt im buch einfügen?)
+$$
+\int_{M} d\omega
+=
+\int_{\d M} \omega
+$$
+können wir die differentielle Form der Ampère-Gleichung herleiten. Definieren eine Einsform $\alpha$, die das H-Feld beschreibt:
+$$
+\alpha
+=
+H_x \, dx + H_y \, dy + H_z \, dz . 
+$$
+Berechnen wir nun die äussere Ableitung von $\alpha$
+\begin{align*}
+	d\alpha 
+	&=
+	\cancel{\frac{\d H_x}{\d x} \, dx \wedge dx} + \frac{\d H_x}{\d x} \, dy \wedge dx + \frac{\d H_x}{\d z} \, dz \wedge dx
+	\\
+	&+
+	\frac{\d H_y}{\d x} \, dx \wedge dy + \cancel{\frac{\d H_y}{\d y} \, dy \wedge dy} + \frac{\d H_y}{\d z} \, dz \wedge dy
+	\\
+	&+
+	\frac{\d H_z}{\d x} \, dx \wedge dz + \frac{\d H_z}{\d y} \, dy \wedge dz + \cancel{\frac{\d H_z}{\d z} \, dz \wedge dz}
+	\\
+	\\
+	d\alpha
+	&=
+	\left(\frac{\d H_y}{\d x} - \frac{\d H_x}{\d y}\right) \, dx \wedge dy
+	\\
+	&+
+	\left(\frac{\d H_z}{\d x} - \frac{\d H_x}{\d z}\right) \, dx \wedge dz
+	\\
+	&+
+	\left(\frac{\d H_z}{\d y} - \frac{\d H_y}{\d z}\right) \, dy \wedge dz
+\end{align*}
+und wenden Stokes an
+$$
+\int_{\d M} H_x \, dx + H_y \, dy + H_z \, dz
+=
+$$
+$$
+\int_{M} \left(\frac{\d H_y}{\d x} - \frac{\d H_x}{\d y}\right) \, dx \wedge dy
++
+\left(\frac{\d H_z}{\d x} - \frac{\d H_x}{\d z}\right) \, dx \wedge dz
++
+\left(\frac{\d H_z}{\d y} - \frac{\d H_y}{\d z}\right) \, dy \wedge dz .
+$$
+Nun kann man die linke Seite der Gleichung in eine normale Integralform und die rechte Seite in eine differentielle Form umschreiben, wobei die Klammerausdrücke rechts die Rotation und die Wedgeprodukte die orientierten Flächenstücke bilden: 
+$$
+\int_{\d A} \vec{H} \cdot d\vec{l}
+=
+\iint_{A} (\nabla \times \vec{H}) \cdot d\vec{s} .
+$$
+Damit lässt sich beweisen, dass
+\begin{align*}
+	\int_{\d A}
+	\vec{H} \cdot d\vec{l}
+	&=
+	\iint_{A}
+	\vec{J} \cdot d\vec{s}
+	\\
+	\iint_{A}
+	(
+	\nabla \times \vec{H}
+	)
+	\cdot
+	d\vec{s}
+	&=
+	\iint_{A}
+	\vec{J} \cdot d\vec{s}
+	\\
+	\nabla \times \vec{H}
+	&=
+	\vec{J} .
+\end{align*}
+gilt.
+
+
+Im Jahre 1821 gelang Michael Faraday ein Experiment, be dem sich ein stromdurchflossener Leiter unter Einfluss eines Dauermagneten um seine Achse drehte.
+Er nannte dies dies ``elektromagnetische Rotation'', was eine sehr wichtige Voraussetzung für die Entwicklung des Elektromotors war.
+
+
+Die Idee, dass man Magnetismus in Elektrizität umwandeln könnte, hatte er bereits 1822.
+Jedoch konnte er erst 1831, nach mehreren gescheiterten Versuchen und einer längeren Pause, in der er sich anderen Untersuchungen widmete, ein erfolgreiches Experiment durchführen.
+Faraday entdeckte die elektromagnetische Induktion!
+
+
+Fünf Jahre später konnte er erfolgreiche Versuche über den nach ihm benannten ``faradayscher Käfig'' erzielen.
+Der faradayscher Käfig hat die Eigenschaft, das in seinem Inneren kein elektrisches Feld vorhanden ist.
+Um das zu erreichen muss der Körper aus elektrisch leitfähigem Material bestehen.
+
+
+Faraday leistete in seinem Leben noch weitere Beiträge im Bereich der Elektrizität und im Magnetismus. 
+Er war einer der Ersten, der nicht an ein Fernwirkungsgesetz glaubte.
+Elektrische Kräfte oder auch die Gravitationskraft sollen durch Kraftlinien und Felder zu Stande kommen, was sich später auch bewahrheitete.
+Aussergewöhnlich war ausserdem auch seine Arbeitsweise.
+Seine veröffentlichten Errungenschaften beinhalteten wenig bis keine mathematischen Beweise, er konnte alles rein durch Experimente verifizieren.
+
+
+\textit{„Faraday sah im Geiste die den ganzen Raum durchdringenden Kraftlinien, wo die Mathematiker fernwirkende Kraftzentren sahen; Faraday sah ein Medium, wo sie nichts als Abstände sahen; Faraday suchte das Wesen der Vorgänge in den reellen Wirkungen, die sich in dem Medium abspielten, jene waren aber damit zufrieden, es in den fernwirkenden Kräften der elektrischen Fluida gefunden zu haben…“}
+
+
+\textit{– James Clerk Maxwell: A Treatise on Electricity and Magnetism. Clarendon Press, 1873.}
+
+
+Carl Friedrich Gauss formulierte im Jahr 1835 ...rein mathematisch-...mittels coulomb und sienem eigenen integralsatz, speziallfall von stokes...Herleitung?
+
+
+
+
+
+
+
+
+Gauss?
+Maxwell
+Heaviside
+relativität mit einstein?
+differentailformen
 
