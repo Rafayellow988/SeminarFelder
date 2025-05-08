@@ -15,26 +15,399 @@ Für die korrekten Vorzeichen benötigen wir den Metrischen Tensor
 g^{ik} = \begin{pmatrix}
 	-1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 
 \end{pmatrix}.
+\label{maxwell:section:teil1:metrik}
 \end{equation}
 
+\subsection{Herleitung Hodgeduale(verweis auf Abschnitt im Buch)}
+Folgend alle Berechungen der Hodgeduale auf 1-/2- und 3-Formen mit $(-+++)$ -Metrik.
+Es gilt für $g^{ik}$ \eqref{maxwell:section:teil1:metrik} und für $ vol(M) = dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3$.
 
-\begin{equation}
-\int_a^b x^2\, dx
-=
-\left[ \frac13 x^3 \right]_a^b
-=
-\frac{b^3-a^3}3.
-\label{maxwell:equation1}
-\end{equation}
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-consectetur, adipisci velit, sed quia non numquam eius modi tempora
-incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+\subsubsection{Auf 1-Formen}
+\begin{align*}
+	\star dx^0 
+	&=
+	s \, dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	dx^0 \wedge \star dx^0 
+	&=
+	dx^0 \wedge s \, dx^1 \wedge dx^2 \wedge dx^3 
+	\\
+	&=
+	s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	&=
+	\underbrace{\langle dx^0, dx^0 \rangle}_{g^{00}} \, vol(M) 
+	\\
+	&= - dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3 \rightarrow s = -1
+	\\
+	\Rightarrow \star dx^0 
+	&=
+	- dx^1 \wedge dx^2 \wedge dx^3
+\\
+\\
+	\star dx^1 
+	&=
+	s \, dx^0 \wedge dx^2 \wedge dx^3
+	\\
+	dx^1 \wedge \star dx^1 
+	&=
+	dx^1 \wedge s \, dx^0 \wedge dx^2 \wedge dx^3 
+	\\
+	&=
+	-s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	&=
+	\underbrace{\langle dx^1, dx^1 \rangle}_{g^{11}} \, vol(M) 
+	\\
+	&=
+	- dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3 \rightarrow s = -1
+	\\
+	\Rightarrow \star dx^1 
+	&=
+	- dx^0 \wedge dx^2 \wedge dx^3
+\\
+\\
+	\star dx^2 
+	&=
+	s \, dx^0 \wedge dx^1 \wedge dx^3
+	\\
+	dx^2 \wedge \star dx^2 
+	&=
+	dx^2 \wedge s \, dx^0 \wedge dx^1 \wedge dx^3 
+	\\
+	&=
+	s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	&=
+	\underbrace{\langle dx^2, dx^2 \rangle}_{g^{22}} \, vol(M) 
+	\\
+	&=
+	dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3 \rightarrow s = 1
+	\\
+	\Rightarrow \star dx^2 
+	&=
+	dx^0 \wedge dx^1 \wedge dx^3
+\\
+\\
+	\star dx^3 
+	&=
+	s \, dx^0 \wedge dx^1 \wedge dx^2
+	\\
+	dx^3 \wedge \star dx^3 
+	&=
+	dx^3 \wedge s \, dx^0 \wedge dx^1 \wedge dx^2 
+	\\
+	&= -s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	&=
+	\underbrace{\langle dx^3, dx^3 \rangle}_{g^{33}} \, vol(M) 
+	\\
+	&=
+	dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3 \rightarrow s = -1
+	\\
+	\Rightarrow \star dx^3 
+	&=
+	-dx^0 \wedge dx^1 \wedge dx^2
+\end{align*}
 
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-fugiat quo voluptas nulla pariatur?
+\subsubsection{Auf 2-Formen}
+\begin{align*}
+	\star \underbrace{(dx^0 \wedge dx^1)}_{\omega}
+	&=
+	s \, dx^2 \wedge dx^3
+	\\
+	\omega \wedge \star \omega
+	&=
+	dx^0 \wedge dx^1 \wedge s \, dx^2 \wedge dx^3
+	\\
+	&=
+	s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	\omega \wedge \star \omega
+	&=
+	\langle \omega, \omega \rangle \, vol(M)
+	\\
+	&=
+	\langle dx^0 \wedge dx^1, dx^0 \wedge dx^1 \rangle \, vol(M)
+	\\
+	&=
+	g^{00} \cdot g^{11} \cdot vol(M)
+	\\
+	&=
+	-1 \cdot 1 \cdot vol(M)
+	\\
+	&=
+	-dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3 \rightarrow s = -1
+	\\
+	\Rightarrow \star(dx^0 \wedge dx^1)
+	&=
+	-dx^2 \wedge dx^3
+\\
+\\
+	\star \underbrace{(dx^1 \wedge dx^2)}_{\omega}
+	&=
+	s \, dx^0 \wedge dx^3
+	\\
+	\omega \wedge \star \omega
+	&=
+	dx^1 \wedge dx^2 \wedge s \, dx^0 \wedge dx^3
+	\\
+	&=
+	s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	\omega \wedge \star \omega
+	&=
+	\langle \omega, \omega \rangle \, vol(M)
+	\\
+	&=
+	\langle dx^1 \wedge dx^2, dx^1 \wedge dx^2 \rangle \, vol(M)
+	\\
+	&=
+	g^{11} \cdot g^{22} \cdot vol(M)
+	\\
+	&=
+	1 \cdot 1 \cdot vol(M)
+	\\
+	&=
+	dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3 \rightarrow s = 1
+	\\
+	\Rightarrow \star(dx^1 \wedge dx^2)
+	&=
+	dx^0 \wedge dx^3
+\\
+\\
+	\star \underbrace{(dx^2 \wedge dx^3)}_{\omega}
+	&=
+	s \, dx^0 \wedge dx^1
+	\\
+	\omega \wedge \star \omega
+	&=
+	dx^2 \wedge dx^3 \wedge s \, dx^0 \wedge dx^1
+	\\
+	&=
+	s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	\omega \wedge \star \omega
+	&=
+	\langle \omega, \omega \rangle \, vol(M)
+	\\
+	&=
+	\langle dx^2 \wedge dx^3, dx^2 \wedge dx^3 \rangle \, vol(M)
+	\\
+	&=
+	g^{22} \cdot g^{33} \cdot vol(M)
+	\\
+	&=
+	1 \cdot 1 \cdot vol(M)
+	\\
+	&=
+	dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3 \rightarrow s = 1
+	\\
+	\Rightarrow \star(dx^2 \wedge dx^3)
+	&=
+	dx^0 \wedge dx^1
+\\
+\\
+	\star \underbrace{(dx^0 \wedge dx^2)}_{\omega}
+	&=
+	s \, dx^1 \wedge dx^3
+	\\
+	\omega \wedge \star \omega
+	&=
+	dx^0 \wedge dx^2 \wedge s \, dx^1 \wedge dx^3
+	\\
+	&=
+	-s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	\omega \wedge \star \omega
+	&=
+	\langle \omega, \omega \rangle \, vol(M)
+	\\
+	&=
+	\langle dx^0 \wedge dx^2, dx^0 \wedge dx^2 \rangle \, vol(M)
+	\\
+	&=
+	g^{00} \cdot g^{22} \cdot vol(M)
+	\\
+	&=
+	-1 \cdot 1 \cdot vol(M)
+	\\
+	&=
+	-dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3 \rightarrow s = 1
+	\\
+	\Rightarrow \star(dx^0 \wedge dx^2)
+	&=
+	dx^1 \wedge dx^3
+\\
+\\
+	\star \underbrace{(dx^0 \wedge dx^3)}_{\omega}
+	&=
+	s \, dx^1 \wedge dx^2
+	\\
+	\omega \wedge \star \omega
+	&=
+	dx^0 \wedge dx^3 \wedge s \, dx^1 \wedge dx^2
+	\\
+	&=
+	s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	\omega \wedge \star \omega
+	&=
+	\langle \omega, \omega \rangle \, vol(M)
+	\\
+	&=
+	\langle dx^0 \wedge dx^3, dx^0 \wedge dx^3 \rangle \, vol(M)
+	\\
+	&=
+	g^{00} \cdot g^{33} \cdot vol(M)
+	\\
+	&=
+	-1 \cdot 1 \cdot vol(M)
+	\\
+	&=
+	-dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3 \rightarrow s = -1
+	\\
+	\Rightarrow \star(dx^0 \wedge dx^3)
+	&=
+	-dx^1 \wedge dx^2
+\\
+\\
+	\star \underbrace{(dx^1 \wedge dx^3)}_{\omega}
+	&=
+	s \, dx^0 \wedge dx^2
+	\\
+	\omega \wedge \star \omega
+	&=
+	dx^1 \wedge dx^3 \wedge s \, dx^0 \wedge dx^2
+	\\
+	&=
+	-s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	\omega \wedge \star \omega
+	&=
+	\langle \omega, \omega \rangle \, vol(M)
+	\\
+	&=
+	\langle dx^1 \wedge dx^3, dx^1 \wedge dx^3 \rangle \, vol(M)
+	\\
+	&=
+	g^{11} \cdot g^{33} \cdot vol(M)
+	\\
+	&=
+	1 \cdot 1 \cdot vol(M)
+	\\
+	&=
+	dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3 \rightarrow s = -1
+	\\
+	\Rightarrow \star(dx^1 \wedge dx^3)
+	&=
+	-dx^0 \wedge dx^2
+\end{align*}
+\subsubsection{Auf 3-Formen}
+\begin{align*}
+	\star \underbrace{dx^0 \wedge dx^1 \wedge dx^2}_{\omega}
+	&=
+	s \, dx^3
+	\\
+	\omega \wedge \star \omega 
+	&=
+	dx^0 \wedge dx^1 \wedge dx^2 \wedge s \, dx^3
+	\\
+	&=
+	s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	\omega \wedge \star \omega
+	&=
+	\langle dx^0 \wedge dx^1 \wedge dx^2 , dx^0 \wedge dx^1 \wedge dx^2 \rangle \, vol(M)
+	\\
+	&=
+	g^{00} \cdot g^{11} \cdot g^{22} \cdot vol(M)
+	\\
+	&=
+	-1 \cdot 1 \cdot 1 \cdot vol(M) \rightarrow s = -1
+	\\
+	\Rightarrow \star (dx^0 \wedge dx^1 \wedge dx^2) 
+	&= - dx^3
+\\
+\\
+	\star \underbrace{dx^0 \wedge dx^1 \wedge dx^3}_{\omega}
+	&=
+	s \, dx^2
+	\\
+	\omega \wedge \star \omega 
+	&=
+	dx^0 \wedge dx^1 \wedge dx^3 \wedge s \, dx^2
+	\\
+	&=
+	-s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	\omega \wedge \star \omega
+	&=
+	\langle dx^0 \wedge dx^1 \wedge dx^3 , dx^0 \wedge dx^1 \wedge dx^3 \rangle \, vol(M)
+	\\
+	&=
+	g^{00} \cdot g^{11} \cdot g^{33} \cdot vol(M)
+	\\
+	&=
+	-1 \cdot 1 \cdot 1 \cdot vol(M) \rightarrow s = 1
+	\\
+	\Rightarrow \star (dx^0 \wedge dx^1 \wedge dx^3) 
+	&= dx^2
+\\
+\\
+	\star \underbrace{dx^0 \wedge dx^2 \wedge dx^23}_{\omega}
+	&=
+	s \, dx^1
+	\\
+	\omega \wedge \star \omega 
+	&=
+	dx^0 \wedge dx^2 \wedge dx^3 \wedge s \, dx^1
+	\\
+	&=
+	s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	\omega \wedge \star \omega
+	&=
+	\langle dx^0 \wedge dx^2 \wedge dx^3 , dx^0 \wedge dx^2 \wedge dx^3 \rangle \, vol(M)
+	\\
+	&=
+	g^{00} \cdot g^{22} \cdot g^{33} \cdot vol(M)
+	\\
+	&=
+	-1 \cdot 1 \cdot 1 \cdot vol(M) \rightarrow s = -1
+	\\
+	\Rightarrow \star (dx^0 \wedge dx^2 \wedge dx^3) 
+	&= - dx^1
+\\
+\\
+	\star \underbrace{dx^1 \wedge dx^2 \wedge dx^3}_{\omega}
+	&=
+	s \, dx^0
+	\\
+	\omega \wedge \star \omega 
+	&=
+	dx^1 \wedge dx^2 \wedge dx^3 \wedge s \, dx^0
+	\\
+	&=
+	-s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	\omega \wedge \star \omega
+	&=
+	\langle dx^1 \wedge dx^2 \wedge dx^3 , dx^1 \wedge dx^2 \wedge dx^3 \rangle \, vol(M)
+	\\
+	&=
+	g^{11} \cdot g^{22} \cdot g^{33} \cdot vol(M)
+	\\
+	&=
+	1 \cdot 1 \cdot 1 \cdot vol(M) \rightarrow s = -1
+	\\
+	\Rightarrow \star (dx^1 \wedge dx^2 \wedge dx^3) 
+	&= - dx^0
+\end{align*}
+
+
+
+
 
 \subsection{De finibus bonorum et malorum
 \label{maxwell:subsection:finibus}}
