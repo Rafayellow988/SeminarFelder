@@ -40,8 +40,8 @@ Um die Reihe aufzustellen, braucht man nur drei Arten von Koeffizienten zu besti
 Mit allen Koeffizienten bestimmt und genügend Zeit um unendlich Summen zu berechnen lassen sich fast alle Funktionen perfekt approximieren.
 Die $a_n$ und $b_n$ skalieren die Amplituden der Schwingungen, in abhängigkeit zu $n>=1$. 
 Je nach Funktion können diese Faktoren durchaus komplizierte funktionen annehmen.
-Generell nimmt die Amplituden mit höherem $n$ ab, ob linear, quadratisch oder mit dem Kehrwert von n lässt sich Allgemein nicht bestimmen.
-Mit jeder iteration der Summe steigt die Frequenz linear an.
+Generell nehmen die Amplituden mit höherem $n$ ab, ob linear, quadratisch oder exponentiell lässt sich Allgemein nicht bestimmen.
+Mit jedem weiteren Summand der Reihe steigt die enthaltene Frequenz linear mit $n$ an.
 Das ist die Fourier-Reihe:
 
 
@@ -51,7 +51,7 @@ f(t) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left( a_n \cos\left( \frac{2\pi n}{T
 
 
 Die Ausnaheme sind Funktionen mit Sprungstellen, wie in Abbildung \ref{fourier:fig:fourierrechteck}.
-Bei dieser Rechteckfunktion wurden die Reihe bis $n = 3$ berechnet. 
+Bei dieser Rechteckfunktion wurden die Reihe bis $n = 5$ berechnet. 
 Bei solchen Funktionen tritt das sogenannte Gibbsche Phänomen auf.
 In der Nähe eines Sprungs entsteht ein charakteristischer Überschwinger, der selbst bei unendlich vielen Summanden nicht verschwindet.
 Das Gleichheitszeichen $=$ gilt daher nur eingeschränkt. 
