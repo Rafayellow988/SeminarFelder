@@ -53,14 +53,14 @@ Laplace-Operator eines Skalarfeldes:
 
 \subsection{Physikalische Grundlage}
 
-Um das Beispiel in der der Helmholtz-Zerlegung zu verstehen, bedarf es an Wissen aus der Akustik. Hierzu werden die 3 notwendigen physikalischen Grössen Schalldruck, Schallschnelle und Intensität erklärt
+Um das Beispiel in der der Helmholtz-Zerlegung zu verstehen, bedarf es an Wissen aus der Akustik. Hierzu werden die 3 notwendigen physikalischen Grössen Schalldruck, Schallschnelle und Intensität erklärt. Vorzugsweise werden die Formeln in dem Freqeunezbereich (Fourier- Transfomierte) aufgeschrieben, da in vielen akustischen Aufgaben mit der komplexen Schreibweise gearbeitet wird.
 
 
 \subsubsection{Schalldruck $p$}
 \begin{itemize}
-\item $P(\mathbf{r})$ die Amplitude des Drucks am Ort $r$ (reelle Grösse).
+\item $P \: (\mathbf{r})$ die Amplitude des Drucks am Ort $r$ (reelle Grösse).
 \item $\omega$ Kreisfrequenz.
-\item $\phi (r)$ die Phase am Ort $r$ (reelle Grösse).
+\item $\phi \: (r)$ die Phase am Ort $r$ (reelle Grösse).
 \end{itemize}
 
 \begin{equation}
@@ -68,10 +68,10 @@ p(r,t) = p(r)e^{j \omega t} = P(r)e^{j( \omega t - \phi(r))}
 \end{equation}
 
 \subsubsection{Schallschnelle  $u$}
-Die Schallschnelle $u$ (Teilchengeschwindigkeit) wird aus dem Druckgradienten $\nabla p$ abgeleitet:  
+Die Schallschnelle $u$ (Teilchengeschwindigkeit) wird aus dem Druckgradienten $\nabla p$ abgeleitet. Für die linearisierte Form $ \rho \frac{\partial u}{\partial t} = - \nabla p$ von harmonischen Felder $u(r,t)$  ergibt sich:
 
 \begin{equation}
-u(r,t) = \frac{1}{\omega p} \nabla p(r,t)
+u(r,t) = \frac{1}{\omega p} \nabla \: p(r,t)
 \end{equation}
 
 \begin{itemize}
