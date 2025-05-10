@@ -157,13 +157,13 @@ Warum genau schauen wir uns den harmonischen Oszillator an?
 In der Quantenelektrodynamik werden die elektromagnetischen Felder als quantisierte harmonische Oszillatoren modelliert, deren Energie ebenfalls in Vielfachen von $\hbar\cdot\omega$ vorliegt.
 Die Zustände des Feldes (Photonenzahlenzustände) werden durch die Schwingungszustände des harmonischen Oszillators beschrieben.
 
-Diese Quantisierung erklärt, warum Licht in Lasern nicht kontinuierlich, sondern in diskreten Paketen (Photonen) emittiert wird. % todo: diesen Satz an anderer passenden Stelle einfügen
+Diese Quantisierung erklärt, warum Licht nicht kontinuierlich, sondern in diskreten Paketen (Photonen) emittiert wird. % todo: diesen Satz an anderer passenden Stelle einfügen
 
 Die Wellengleichung lautet bekanntlich
 \begin{equation}
     \frac{\partial^2 u}{\partial t^2} = c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right).
 \end{equation}
-Wenn nun der y-Anteil als konstant betrachtet wird, sind alle partiellen Ableitungen nach y gleich Null.
+Wenn nun der $y$-Anteil als konstant betrachtet wird, sind alle partiellen Ableitungen nach $y$ gleich Null.
 Dies führt zu der vereinfachten Gleichung
 \begin{equation}
     \frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}.
@@ -173,6 +173,7 @@ Daraus lässt sich die Differentialgleichung
     \ddot{a}(t) = -k^2 a(t)
 \end{equation}
 aufstellen.
+% todo-: Bezug zu 18.3 herstellen.
 $a(t)$ ist hierbei ein Fourier-Koeffizient des elektromagnetischen Wellenfeldes.
 Die Lösung dieser Differentialgleichung lautet
 \begin{equation}
@@ -196,7 +197,7 @@ Die Lösung dieser Differentialgleichung lautet
 
 Diese Gleichung ist analog zur Gleichung eines Federpendels.
 Es handelt sich hier um ein ``Quanten-Federpendel''.    
-\input{papers/fourier/fig/fig-federpendel.tex}%
+\input{papers/fourier/fig/fig-federpendel.tex}%	% todo-: Achsen von Grafik anders wählen, damit keine Verwechslung mit Gleichung; damit gleichgestellt werden kann.
 
 %%
 \subsection{Einführung in Werkzeuge der Quantenmechanik\label{fourier:subsection:werkzeugeQuantenmechanik}}
@@ -207,7 +208,7 @@ Die Bra-Ket-Notation, auch Dirac-Notation genannt, wurde von Paul Dirac eingefü
 Sie dient dazu, Zustände und Operatoren kompakt und elegant darzustellen.
 
 Ein \emph{Ket} $|\psi\rangle$ beschreibt den Zustand eines quantenmechanischen Systems.
-Man kann sich Kets wie Richtungs-Pfeile vorstellen, die angeben, ``wie'' das System gerade ist;
+Man kann sich Kets wie Richtungs-Pfeile oder Vektoren vorstellen, die angeben, ``wie'' das System gerade ist;
 z.B. mit welcher Energie, welchem Spin oder an welchem Ort sich ein Teilchen befindet.
 Ein \emph{Bra} $\langle\psi|$ ist das zugehörige Gegenstück zum Ket.
 Es steht symbolisch für eine Messung oder einen Test auf diesen Zustand.
@@ -226,16 +227,16 @@ Beispiele:
 
 Das \emph{Skalarprodukt}
 \begin{equation}
-  \langle \phi | \psi \rangle = \int\limits_{-\infty}^{+\infty} \phi^*(x)\,\psi(x)\,dx,
+  \langle \varphi | \psi \rangle = \int\limits_{-\infty}^{+\infty} \varphi^*(x)\,\psi(x)\,dx,
 \end{equation}
-ist eine einzige (meist komplexe) Zahl, die angibt, wie ``gleich'' oder ``verschieden'' sich die beiden Zustände $|\phi\rangle$ und $|\psi\rangle$ verhalten.
-Man multipliziert dafür $\phi^*(x)$ (das konjugiert-komplexe von $\phi$) mit $\psi(x)$ und integriert über den gesamten Raum.
+ist eine einzige (meist komplexe) Zahl, die angibt, wie ``gleich'' oder ``verschieden'' sich die beiden Zustände $|\varphi\rangle$ und $|\psi\rangle$ verhalten.
+Man multipliziert dafür $\varphi^*(x)$ (das konjugiert-komplexe von $\varphi$) mit $\psi(x)$ und integriert über den gesamten Raum.
 \begin{itemize}
-	\item Liegen die Zustände genau übereinander, erhält man den Betrag 1 (bei Normierung).
+	\item Liegen die Zustände ``genau übereinander'', erhält man den Betrag 1 (bei Normierung).
 	\item Sind sie orthogonal, also völlig verschieden, ist das Ergebnis 0.
 \end{itemize}
 Kurz gesagt:
-$\langle \phi | \psi \rangle$ misst die Überlappung (den ``Winkel'') zwischen zwei Quantenzuständen.
+$\langle \varphi | \psi \rangle$ misst die Überlappung (den ``Winkel'') zwischen zwei Quantenzuständen.
 
 Die \emph{Norm} eines Zustands ist einfach das Skalarprodukt mit sich selbst:
 \begin{equation}
@@ -260,14 +261,14 @@ Die Bra-Ket-Notation ist nicht nur kompakt, sondern macht viele Rechnungen in de
 In der Quantenmechanik gibt es keine festen Werte für Grössen wie Ort oder Impuls eines Teilchens, sondern nur Wahrscheinlichkeiten und Mittelwerte, wo sich diese befinden oder wie schnell sie sind.
 Im Gegensatz zur klassischen Physik, wo der Impuls $p$ eine klar definierte Zahl ist, wird in der Quantenmechanik der Impuls durch einen sogenannten Operator beschrieben:
 \begin{equation}
-	\hat{p} = \frac{\hbar}{\mathrm{i}} \frac{d}{dx}.
+	\hat{p} = \frac{\hbar}{i} \frac{d}{dx}.
 \end{equation}
 Das bedeutet:
 Man kann nicht einfach sagen ``Das Teilchen hat genau diesen Impuls'', sondern der Impuls ist grundsätzlich unscharf (nicht exakt bestimmbar).
 Ort und Impuls sind sogenannte nicht gleichzeitig messbare Grössen:
 Ihre Operatoren ``vertauschen'' nicht miteinander, was mathematisch ausgedrückt wird durch
 \begin{equation}
-	[\hat{x},\hat{p}] = \hat{x} \hat{p} - \hat{p} \hat{x} = \mathrm{i} \hbar.
+	[\hat{x},\hat{p}] = \hat{x} \hat{p} - \hat{p} \hat{x} = i \hbar.
 \end{equation}
 Diese fehlende Vertauschbarkeit führt direkt zur bekannten Unschärferelation.
 Ihre Herleitung basiert auf einer grundlegenden mathematischen Ungleichung, der sogenannten Cauchy-Schwarz-Ungleichung:
@@ -275,29 +276,29 @@ Ihre Herleitung basiert auf einer grundlegenden mathematischen Ungleichung, der 
 	\vec{a} \bullet \vec{b} = |\vec{a}| |\vec{b}|\cos\alpha \le |\vec{a}| |\vec{b}|.
 \end{equation}
 die besagt, dass das Skalarprodukt zweier Vektoren nie grösser sein kann als das Produkt ihrer Längen.
-Übertragen auf die Wellenfunktionen zweier Quantenzustände $|\phi\rangle$ und $|\chi\rangle$, erhält man
+Übertragen auf die Wellenfunktionen zweier Quantenzustände $|\varphi\rangle$ und $|\chi\rangle$, erhält man
 \begin{equation}
-	|\langle\phi | \chi\rangle|^2 \le \langle\phi | \phi\rangle \langle\chi | \chi\rangle.
+	|\langle\varphi | \chi\rangle|^2 \le \langle\varphi | \varphi\rangle \langle\chi | \chi\rangle.
 \end{equation}
 Diese Relation stellt eine fundamentale Schranke für das Skalarprodukt zweier Zustände dar.
-Der Ausdruck $|\langle\phi|\chi\rangle|^2$ misst die Überlappung der beiden Zustände, also gewissermaßen, wie ähnlich sie sich sind.
-Die Terme $\langle\phi|\phi\rangle$ und $\langle\chi|\chi\rangle$ entsprechen dabei den Quadraten der Längen (Normen) der Zustände.
+Der Ausdruck $|\langle\varphi|\chi\rangle|^2$ misst die Überlappung der beiden Zustände, also gewissermaßen, wie ähnlich sie sich sind.
+Die Terme $\langle\varphi|\varphi\rangle$ und $\langle\chi|\chi\rangle$ entsprechen dabei den Quadraten der Längen (Normen) der Zustände.
 Der Betrag des Skalarprodukts kann also niemals größer werden als das Produkt der Normen, ganz analog zur klassischen Vektoranalysis.
 Das Quadrat auf der linken Seite ergibt sich, weil die Ungleichung eine Aussage über den Betrag des Skalarprodukts ist, während die rechte Seite stets reell und positiv ist.
 Diese Form der Ungleichung bildet die mathematische Grundlage für die Herleitung der Heisenbergschen Unschärferelation.
-Die Zustände $|\phi\rangle$ und $|\chi\rangle$ sind hier in der sogenannten Bra-Ket-Notation geschrieben, einer kompakten Notation für Zustände in der Quantenmechanik, wie sie in Abschnitt~\ref{fourier:subsubsection:braKetNotation} eingeführt wurde.
+Die Zustände $|\varphi\rangle$ und $|\chi\rangle$ sind hier in der Bra-Ket-Notation geschrieben, einer kompakten Notation für Zustände in der Quantenmechanik, wie sie in Abschnitt~\ref{fourier:subsubsection:braKetNotation} eingeführt wurde.
 
 Setzt man
 \begin{equation}
-	|\phi\rangle = (\hat{x} - \langle \hat{x} \rangle) |\psi\rangle \quad |\chi\rangle = (\hat{p} - \langle \hat{p} \rangle) | \psi\rangle,
+	|\varphi\rangle = (\hat{x} - \langle \hat{x} \rangle) |\psi\rangle \quad |\chi\rangle = (\hat{p} - \langle \hat{p} \rangle) | \psi\rangle,
 \end{equation}
 also die Abweichungen von Ort und Impuls gegenüber ihren Mittelwerten ein, so führen die Definitionen
 \begin{equation}
-	\sigma_x^2 = \langle\phi | \phi\rangle \quad \sigma_p^2 = \langle\chi | \chi\rangle
+	\sigma_x^2 = \langle\varphi | \varphi\rangle \text{ und } \sigma_p^2 = \langle\chi | \chi\rangle
 \end{equation}
-für die sogenannten Standardabweichungen --ein Mass für die „Streuung“ oder Unschärfe-- zusammen mit
+für die sogenannten Standardabweichungen --- ein Mass für die „Streuung“ oder Unschärfe --- zusammen mit
 \begin{equation}
-	\langle\psi | [\hat{x},\hat{p}] | \psi\rangle = \mathrm{i}\hbar
+	\langle\psi | [\hat{x},\hat{p}] | \psi\rangle = i\hbar
 \end{equation}
 zur Beziehung:
 \begin{equation}
@@ -310,14 +311,18 @@ und damit schliesslich zur bekannten Form der Unschärferelation:
 
 Hier bedeuten $\sigma_x$ und $\sigma_p$ die Unschärfen (Standardabweichungen) in Ort und Impuls.
 Die Unschärferelation sagt also:
-Je genauer der Ort eines Teilchens bekannt ist (kleines $\sigma_x$), desto unschärfer muss sein Impuls ($\sigma_p$) sein --und umgekehrt.
+Je genauer der Ort eines Teilchens bekannt ist (kleines $\sigma_x$), desto unschärfer muss sein Impuls ($\sigma_p$) sein --- und umgekehrt.
 Das zeigt anschaulich die Wellennatur von Teilchen:
 Ein Teilchen, das genau lokalisiert ist, muss eine breite Wellenverteilung im Impulsraum haben.
 Würde man das $\tfrac{1}{2}$ in der Formel weglassen, erhielte man eine vereinfachte, aber weniger präzise Darstellung des Zusammenhangs.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % todo knma: Ergänzungen anbringen
 
-\subsection{Beweis des Photons\label{fourier:subsection:beweisPhoton}}
+\subsection{Hamilton-Operator\label{fourier:subsection:hamiltonOperator}}
+H, Schrödingergleichung, Eigenwerte sind Energie % todo
+% todo-: Hamilton-Operator (subsection): -H, Schrödingergl., Eigenwerte sind Energie
+
+\subsection{Beweis des Photons\label{fourier:subsection:beweisPhoton}} % todo-: Besserer Titel
 In diesem Abschnitt verwenden wir die bisher eingeführten Grundlagen der Quantenmechanik, um zu zeigen, dass Licht nicht kontinuierlich, sondern in kleinsten Energiepaketen, sogenannten Photonen, übertragen wird.
 
 Wir starten mit der klassischen Hamilton-Funktion, die die Gesamtenergie eines Systems beschreibt:
@@ -330,10 +335,10 @@ wo $T(p)$ die kinetische Energie und $V(x)$ die potenzielle Energie des Teilchen
 
 Durch Schrödinger wird der Impuls p durch
 \begin{equation}
-	\frac{\hbar}{\mathrm{i}} \frac{\partial}{\partial x}
+	\frac{\hbar}{i} \frac{\partial}{\partial x}
 \end{equation}
 ersetzt.
-Wodurch der Hamiltonoperator
+Wodurch der Hamilton-Operator
 \begin{equation}
 	\hat{H} = -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2} + V(x)
 \end{equation}	
@@ -353,7 +358,7 @@ Nach Heisenbergs Unschärferelation (siehe Abschnitt~\ref{fourier:subsubsection:
 \end{equation}
 Die Vertauschungsrelation kann als
 \begin{equation}
-	[x, p] = \hbar id
+	[x, p] = \hbar \text{id}
 \end{equation}
 geschrieben werden.
 
@@ -392,9 +397,9 @@ a = \frac{1}{\sqrt{2}}(Q - iP).
 %% todo: here knma
 Mit der Vertauschungsrelation
 \begin{equation}
-	[P,Q] = -\mathrm{i} \cdot id,
+	[P,Q] = -i \cdot id,
 \end{equation}
-wobei id die Einheitsmatrix ist, lässt sich über den Hamiltonoperator % todo: ist es wirklich der und Satz vervollstängigen
+wobei id die Einheitsmatrix ist, lässt sich über den Hamilton-Operator % todo: ist es wirklich der und Satz vervollstängigen
 %todo blablabla
 \begin{equation}
 	H = \frac{1}{2}(P^2+Q^2)
@@ -426,9 +431,9 @@ wobei id die Einheitsmatrix ist, lässt sich über den Hamiltonoperator % todo: 
 
 % todo: Diese Gleichung mit Erklärungen irgendwo einflechten.
 % question: Wo wäre es sinnvoll?
-Mit dem Hamiltonoperator in der Form
+Mit dem Hamilton-Operator in der Form
 \begin{equation}
-	H = \hbar\omega(N + \frac{1}{2})
+	H = \hbar\omega\Bigl(N + \tfrac12\Bigr)
 \end{equation}
 folgt die Eigenwertgleichung
 \begin{equation}
@@ -436,7 +441,7 @@ folgt die Eigenwertgleichung
   	\quad
 	E_n = \hbar\omega\Bigl(n + \tfrac12\Bigr).
 \end{equation}
-Dabei ist $n = 0,1,2,\dots$ die Besetzungszahl (Photonenzahl beim Lichtfeld).
+Dabei nennt man $n = 0,1,2,\dots$ die Besetzungszahl (Photonenzahl beim Lichtfeld).
 Das zeigt, dass $|\psi_n\rangle$ die stationären Energiezustände sind und die Energiewerte quantisiert in Schritten von $\hbar\omega$ liegen.
 
 % todo: diese Formeln genauer ausführen und in Kapitel einbinden.
@@ -445,7 +450,7 @@ Das zeigt, dass $|\psi_n\rangle$ die stationären Energiezustände sind und die 
 \end{equation}
 Energie
 \begin{equation}
-	H(a^+ | \psi_n\rangle) = ...
+	H(a^+ | \psi_n\rangle) = \cdots
 	= (1 + \epsilon_n) a^+ | \psi_n\rangle % todo ausführen
 \end{equation}
 $(1+\epsilon_n)$ = EW = Energie % todo: direkt darunter
@@ -453,7 +458,7 @@ $(1+\epsilon_n)$ = EW = Energie % todo: direkt darunter
 	a^- |\psi_n\rangle \rightarrow a^-|\psi_n\rangle
 \end{equation}
 \begin{equation}
-	H(a^-|\psi_n\rangle) = ...
+	H(a^-|\psi_n\rangle) = \cdots
 	= (-1 + \epsilon_n) a^- |\psi_n\rangle % todo: ausführen
 \end{equation}
 
