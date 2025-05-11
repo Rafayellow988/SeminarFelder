@@ -11,7 +11,7 @@
 \kopfrechts{Herleitung der Methode}
 
 Im Folgenden wird die Methode zum Lösen von Feldgleichungen mittels eines neuronalen Netzes theoretisch hergeleitet.
-Dies wird anhand des Beispiels der Wellengleichung in zwei räumlichen Dimensionen im Bereich \( x, y \in [-2,2] \) gemacht
+Dies wird anhand des Beispiels der Wellengleichung in zwei räumlichen Dimensionen im Bereich \( x, y \in [-10,10], t \in [0,10] \) gemacht
 \begin{equation}
     \frac{\partial^2 u}{\partial t^2} = c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right).
     \label{neuronal:wellengleichung}
@@ -51,16 +51,12 @@ Das Ziel des Trainings eines neuronalen Netzes ist es, diese Parameter so zu wä
 
 
 \subsection{Formulierung als Optimierungsproblem}\label{neuronal:subsection:optimierungsproblem}
-Durch Subtrahieren der rechten Seite von der Wellengleichung \eqref{neuronal:wellengleichung} erhält man
-\begin{center}
-    \( \frac{\partial^2 u}{\partial t^2} - c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right) = 0. \)
-\end{center}
-Substituiert man nun das neuronale Netz \eqref{neuronal:nn} für \( u \) und quadriert anschliessend, erhält man
+Durch Subtrahieren der rechten Seite von der Wellengleichung \eqref{neuronal:wellengleichung}, anschliessendem substituieren des neuronalen Netzes \eqref{neuronal:nn} für \( u \) und anschliessendem Quadrieren, erhält man
 \begin{equation}
     \left(\frac{\partial^2 \hat{u}}{\partial t^2} - c^2 \left( \frac{\partial^2 \hat{u}}{\partial x^2} + \frac{\partial^2 \hat{u}}{\partial y^2} \right)\right)^2 = 0.
 \end{equation}
 
-Das gleiche Prinzip lässt sich auch auf die Initial- und Randbedingungen anwenden, so erhält man
+Macht man das gleiche mit den Initial- und Randbedingungen, erhält man
 \begin{equation}
     \begin{aligned}
         \left(\sin(\pi x) \sin(\pi y) - \hat{u}(x, y, 0)\right)^2 = 0\\
@@ -70,10 +66,10 @@ Das gleiche Prinzip lässt sich auch auf die Initial- und Randbedingungen anwend
 und
 \begin{equation}
     \begin{aligned}
-        \left(\hat{u}(-2, y, t)\right)^2 = 0\\
-        \left(\hat{u}(2, y, t)\right)^2 = 0\\
-        \left(\hat{u}(x, -2, t)\right)^2 = 0\\
-        \left(\hat{u}(x, 2, t)\right)^2 = 0.
+        \left(\hat{u}(-10, y, t)\right)^2 = 0\\
+        \left(\hat{u}(10, y, t)\right)^2 = 0\\
+        \left(\hat{u}(x, -10, t)\right)^2 = 0\\
+        \left(\hat{u}(x, 10, t)\right)^2 = 0.
     \end{aligned}
 \end{equation}
 
@@ -81,18 +77,18 @@ Durch das Quadrieren wird erreicht, dass die Terme für alle \( x, y, t \) immer
 Somit sind Minima der Terme tiefstens 0 und nicht beliebig klein.\\
 
 Das Training des neuronalen Netzwerks \( \hat{u} \) lässt sich nun als Optimierungsproblem ausdrücken:\\
-Wähle die Parameter \( \vartheta \) des Netzwerks so, dass die Terme für die Wellengleichung, Initialbedingungen und Randbedingungen minimal (d.h. möglichst nahe bei 0) werden.\\
+Wähle die Parameter \( \vartheta \) des Netzwerks so, dass die obigen Terme für die Wellengleichung, Initialbedingungen und Randbedingungen minimal (d.h. möglichst nahe bei 0) werden.\\
 
-Um all diese Terme gleichzeitig zu minimieren, werden diese noch addiert. So bleibt nur ein einziger Term \( L(x, y, t, \vartheta) \) der minimiert werden soll
+Um all diese Terme gleichzeitig zu minimieren, werden diese addiert. So bleibt nur ein einziger Term \( L(x, y, t, \vartheta) \) der minimiert werden soll
 \begin{equation}
     \begin{aligned}
         L(x, y, t, \vartheta) &= \left(\frac{\partial^2 \hat{u}}{\partial t^2} - c^2 \left( \frac{\partial^2 \hat{u}}{\partial x^2} + \frac{\partial^2 \hat{u}}{\partial y^2} \right)\right)^2\\
         &+ \left(\sin(\pi x) \sin(\pi y) - \hat{u}(x, y, 0)\right)^2
         + \left(\frac{\partial \hat{u}(x, y, 0)}{\partial t}\right)^2\\
-        &+ \left(\hat{u}(-2, y, t)\right)^2
-        + \left(\hat{u}(2, y, t)\right)^2
-        + \left(\hat{u}(x, -2, t)\right)^2
-        + \left(\hat{u}(x, 2, t)\right)^2\\
+        &+ \left(\hat{u}(-10, y, t)\right)^2
+        + \left(\hat{u}(10, y, t)\right)^2
+        + \left(\hat{u}(x, -10, t)\right)^2
+        + \left(\hat{u}(x, 10, t)\right)^2\\
         &= 0.
     \end{aligned}
     \label{neuronal:optimierung}
@@ -161,14 +157,13 @@ Der Term \eqref{neuronal:optimierung} hängt aktuell sowohl von den Parametern d
 Da der Term aber nicht in den drei Variablen minimiert werden soll, müssen diese durch konkrete Werte ersetzt werden.
 
 Dies wird mit dem Trainings-Datensatz gemacht, welcher aus x-, y- und t-Werten bestehen muss, für die die Wellengleichung und deren Bedingungen erfüllt sind.
-Gem. Kapitel \ref{neuronal:section:herleitung} sollen x und y in [-2,2] sein.
-Der Bereich von t wird als [0,5] festgelegt, damit der Rechenaufwand nicht zu gross wird.
+Gem. Kapitel \ref{neuronal:section:herleitung} sollen x und y in [-10,10] sein und t in [0,10].
 Innerhalb dieser Bereiche werden gleichverteilte, reelle Zahlen generiert.
 Somit ist der Datensatz
 \begin{center}
-    \( x_1, x_2, \ldots, x_k \in [-2,2] \)\\
-    \( y_1, y_2, \ldots, y_k \in [-2,2] \)\\
-    \( t_1, t_2, \ldots, t_k \in [0,5] \)\\
+    \( x_1, x_2, \ldots, x_k \in [-10,10] \)\\
+    \( y_1, y_2, \ldots, y_k \in [-10,10] \)\\
+    \( t_1, t_2, \ldots, t_k \in [0,10] \)\\
 \end{center}
 
 Die Anzahl Datenpunkte, bzw. der Wert von \( k \) hängt davon ab, wieviele Parameter das neuronale Netzwerk besitzt.
@@ -199,7 +194,6 @@ Die Schritte die der Algorithmus durchläuft sind:
 \end{enumerate}
 
 Nach dem letzten Schritt dieses Algorithmus ist das neuronale Netzwerk fertig trainiert.
-%% TODO: Wie gut ist die Approximierung und von was hängt die Qualität ab?
 
 Als abschliessende Notiz: Im Schritt 2 des Algorithmus werden die Parameterwerte leicht angepasst, so dass J abnimmt.
 Dies wird mit Optimierungsverfahren \emph{Gradient Descent} gemacht. Die Formel dafür ist
@@ -209,3 +203,7 @@ Dies wird mit Optimierungsverfahren \emph{Gradient Descent} gemacht. Die Formel 
 Dies funktioniert, da der Gradient von J ausgewertet an \( \vartheta_i \) ein Vektor ist, der in die Richtung des stärksten Anstiegs auf J weist.
 Durch das Minus in der Formel geht man in die entgegen gesetzte Richtung, wo es auf J abwärts geht. 
 Mit \( \epsilon \) wird die ``Schrittgrösse'' gesteuert, um zu verhindern dass man über ein Minimum ``springt''.
+
+
+\subsection{Qualität der Approximation}\label{neuronal:subsection:qualität_nn}
+%% TODO: Wie gut ist das Modell? Wie bewertet man es?
