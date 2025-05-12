@@ -184,14 +184,14 @@ Somit lässt sich daraus schliessen, dass das Integral des elektrischen Flusses 
 =
 Q_{frei} ,
 \]
-wobei $\rho_{frei}$ die freie Ladungsdichte und $Q_{frei}$ die gesamten freien Ladungen in der Kugel sind. Dies ist auch gerade eine Anwendung vom Gausschen Integralsatz aus der Mathematik.
-Die Gleichung lässt sich natürlich auch mit der elektrischen Feldstärke ausdrücken, da $\vec{D} = \varepsilon \vec{E}$ gilt:
+wobei $\rho_{frei}$ die freie Ladungsdichte und $Q_{frei}$ die gesamten freien Ladungen in der Kugel sind. $\varepsilon_0$ enstpricht der Permitivität im Vakuum. Dies ist auch gerade eine Anwendung vom Gausschen Integralsatz aus der Mathematik.
+Die Gleichung lässt sich natürlich auch mit der elektrischen Feldstärke ausdrücken, da $\vec{D} = \varepsilon_0 \vec{E}$ gilt:
 \[
 \oint_{A=\d V} \vec{E} \cdot d\vec{s}
 =
-\frac{1}{\varepsilon}\int_{V} \rho_{frei}\, dv
+\frac{1}{\varepsilon_0}\int_{V} \rho\, dv
 =
-\frac{Q_{frei}}{\varepsilon} .
+\frac{Q}{\varepsilon_0} .
 \]
 Natürlich lassen sich die Gleichungen auch in differentiellen Form darstellen als
 \begin{align*}
@@ -201,20 +201,96 @@ Natürlich lassen sich die Gleichungen auch in differentiellen Form darstellen a
 	\\
 	\nabla \cdot \vec{E}
 	&=
-	\frac{\rho}{\varepsilon} .
+	\frac{\rho}{\varepsilon_0} .
 \end{align*}
 (https://de.wikipedia.org/wiki/Gaußscher\_Integralsatz, https://de.wikipedia.org/wiki/Carl\_Friedrich\_Gauß)
 
 
-\textit{Exkurs: Herleitung Gausssches Gesetz für elektrische Felder}
+\textit{Exkurs: Herleitung Gaussscher Integralsatz}
+Der Integralsatz von Gauss ist ein Spezialfall des Satzes von Stokes.
+Somit lässt sich das Gausssche Gesetz für elektrische Felder mittels des Satzes von Stokes herleiten.
+Dafür integrieren wir bei
+\[
+\int_{M} d\omega
+=
+\int_{\d M} \omega
+\]
+über das Volumen, bzw. über den Rand des Volumens
+\[
+\int_{V} d\omega
+=
+\int_{\d V} \omega .
+\]
+Wie bereits bei der Umformulierung des Ampère-Gesetz, definieren wir wieder eine Einform
+\[
+\alpha
+=
+E_x \, dx + E_y \, dy + E_z \, dz ,
+\]
+welche dieses Mal dem elektrischen Feld entspricht.
+Da wir einmal über den Rand eines Volumens und einmal über das Volumen selbst integrieren müssen, benötigen wir aber eine Zweiform und eine Dreiform, welche wir bekanntlich mit dem Hodgeoperator und mit der äusseren Ableitung bekommen:
+\begin{align*}
+	\star\alpha
+	&=
+	E_x \, dy \wedge dz + E_y \, dz \wedge dx + E_z \, dx \wedge dy
+	\\
+	\\
+	d\star\alpha
+	&=
+	\frac{\d E_x}{\d x} \, dx \wedge dy \wedge dz +
+	\frac{\d E_y}{\d y} \, dy \wedge dz \wedge dx +
+	\frac{\d E_z}{\d z} \, dz \wedge dx \wedge dy
+	\\ 
+	&=
+	\frac{\d E_x}{\d x} \, dx \wedge dy \wedge dz +
+	\frac{\d E_y}{\d y} \, dx \wedge dy \wedge dz +
+	\frac{\d E_z}{\d z} \, dx \wedge dy \wedge dz
+	\\
+	&=
+	\left(
+	\frac{\d E_x}{\d x} + \frac{\d E_y}{\d y} + \frac{\d E_z}{\d z}
+	\right)
+	dx \wedge dy \wedge dz .
+\end{align*}
+Das kann nun in Stokes eingesetzt werden
+\[
+\int_{\d V}
+E_x \, dy \wedge dz + E_y \, dz \wedge dx + E_z \, dx \wedge dy
+=
+\int_{V}
+\left(
+\frac{\d E_x}{\d x} + \frac{\d E_y}{\d y} + \frac{\d E_z}{\d z}
+\right)
+dx \wedge dy \wedge dz .
+\]
+Wird die Gleichung nun in Vektorform umgeformt, folgt nun der Integralsatz von Gauss:
+\[
+\int_{\d V}
+\vec{E} \cdot d\vec{s}
+=
+\int_{V}
+(\nabla \cdot \vec{E}) \, dv .
+\]
+Wie man gut erkennen kann, entspricht die linke Seite des Integralsatzes genau dem Satz von Gauss für elektrische Felder und der Zusammenhang zwischen der integral- und differentiellen Form ist auch gerade gegeben:
+\begin{align*}
+	\oint_{A=\d V} \vec{E} \cdot d\vec{s}
+	&=
+	\frac{1}{\varepsilon_0}\int_{V} \rho \, dv
+	\\
+	\int_{V}
+	(\nabla \cdot \vec{E}) \, dv
+	&=
+	\frac{1}{\varepsilon_0}\int_{V} \rho \, dv
+	\\
+	\nabla \cdot \vec{E}
+	&=
+	\frac{\rho}{\varepsilon_0}.
+\end{align*} 
 
 
 
-
-
-
-Maxwell
-Heaviside
+folgt noch: Geschichte Maxwell,
+Heaviside,
 relativität mit einstein?
-differentailformen
+differentailformen?
 
