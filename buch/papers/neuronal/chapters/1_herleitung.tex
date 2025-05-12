@@ -38,8 +38,7 @@ und die Randbedingungen
     \end{aligned}
     \label{neuronal:rand}
 \end{equation}
-verwendet.\\
-\\
+verwendet.
 Weiter ist das neuronale Netzwerk gegeben als
 \begin{equation}
     \hat{u}(x, y, t; \vartheta).
@@ -74,10 +73,12 @@ und
 \end{equation}
 
 Durch das Quadrieren wird erreicht, dass die Terme für alle \( x, y, t \) immer positiv sind.
-Somit sind Minima der Terme tiefstens 0 und nicht beliebig klein.\\
+Somit sind Minima der Terme tiefstens 0 und nicht beliebig klein.
+Das Training des neuronalen Netzwerks \( \hat{u} \) lässt sich nun als Optimierungsproblem ausdrücken:
 
-Das Training des neuronalen Netzwerks \( \hat{u} \) lässt sich nun als Optimierungsproblem ausdrücken:\\
-Wähle die Parameter \( \vartheta \) des Netzwerks so, dass die obigen Terme für die Wellengleichung und deren Bedingungen minimal (d.h. möglichst nahe bei 0) werden.\\
+\begin{tcolorbox}[colback=gray!10, colframe=black, boxrule=0.5pt]
+Wähle die Parameter \( \vartheta \) des Netzwerks so, dass die obigen Terme für die Wellengleichung und deren Bedingungen minimal (d.h. möglichst nahe bei 0) werden.
+\end{tcolorbox}
 
 Um all diese Terme gleichzeitig zu minimieren, werden diese addiert. So bleibt nur ein einziger Term \( L(x, y, t, \vartheta) \) der schlussendlich minimiert werden soll
 \begin{equation}
@@ -138,7 +139,7 @@ Je mehr Teilfunktionen und Anzahl Dimensionen in den Teilfunktionen, desto mehr 
 Auf die Frage nach der Anzahl Parameter gibt es keine ``richtige'' Antwort.
 Als Faustregel gilt: Je komplizierter die Funktion die approximiert wird, desto mehr Parameter sollten verwendet werden.
 
-% TODO: Auf Struktur/Anzahl Parameter des verwendeten Netzes für die Wellengleichung eingehen (sobald dieses fertig ist)
+Der konkrete Aufbau vom neuronalen Netzwerk für die Lösung der Wellengleichung wird im Kapitel \ref{neuronal:section:rechenbeispiel} beschrieben.
 
 
 \subsection{Training des neuronalen Netzes}\label{neuronal:subsection:training_nn}
@@ -151,13 +152,14 @@ Hierzu werden drei Dinge benötigt:
 \begin{itemize}
     \item Ein Trainings-Datensatz an x-, y- und t-Werten
     \item Eine Loss-Funktion
-    \item Ein Optimierungsalgorithmus\\
+    \item Einen Optimierungsalgorithmus
 \end{itemize}
 
-\textbf{Trainings-Datensatz}\\
+\paragraph{Trainings-Datensatz}
+
 Aktuell hängt \( L(x, y, t, \vartheta) \) sowohl von den Parametern des Netzes \( \vartheta \), als auch den drei Variablen \( x, y, t \) ab.
 Wie bereits erwähnt, soll aber nicht in den drei Variablen minimiert werden, sondern in \( \vartheta \).
-Daher müssen die Variablen durch konkrete Werte ersetzt werden. \\
+Daher müssen die Variablen durch konkrete Werte ersetzt werden.
 
 Dies wird mit einem Trainings-Datensatz gemacht, welcher aus x-, y- und t-Werten besteht, für die die Wellengleichung und deren Bedingungen erfüllt sind.
 Gem. Kapitel \ref{neuronal:section:herleitung} sollen x und y in [-10,10] sein und t in [0,10].
@@ -169,12 +171,13 @@ Somit ist der Datensatz
     \( t_1, t_2, \ldots, t_k \in [0,10] \)\\
 \end{center}
 
-Die Anzahl Datenpunkte, bzw. der Wert von \( k \) hängt davon ab, wieviele Parameter das neuronale Netzwerk besitzt.
-Je mehr Parameter, desto mehr Datenpunkte werden benötigt.\\
+Die Anzahl Datenpunkte hängt davon ab, wieviele Parameter das neuronale Netzwerk besitzt.
+Je mehr Parameter, desto mehr Datenpunkte werden benötigt.
 
-% TODO: Wieviele Datenpunkte werden verwendet?
+Wie viele Datenpunkte konkret für die Lösung der Wellengleichung verwendet werden, wird im Kapitel \ref{neuronal:section:rechenbeispiel} beschrieben.
 
-\textbf{Loss-Funktion}\\
+\paragraph{Loss-Funktion}
+
 Die Loss-Funktion ist die Summe von \( L(x, y, t, \vartheta) \), über alle Datensatz-Werte und hängt somit nur noch von \( \vartheta \) ab. 
 
 Ausgewertet an einem bestimmten \( \vartheta \) liefert sie eine reelle Zahl als Resultat.
@@ -185,30 +188,36 @@ Diese reelle Zahl ist ein Mass dafür, wie gut das neuronale Netzwerk, mit den v
     \label{neuronal:loss}
 \end{equation}
 
-Anders ausgedrückt ist die Loss-Funktion \( J \) ein Mass für den Fehler, den das Netzwerk macht.\\
+Anders ausgedrückt ist die Loss-Funktion \( J \) ein Mass für den Fehler, den das Netzwerk macht.
 
-\textbf{Optimierungsalgorithmus}\\
+\paragraph{Optimierungsalgorithmus}
+
 Der Optimierungsalgorithmus hat das Ziel, die Loss-Funktion \( J \) zu minimieren.
 Da \( J \) ein hochdimensionales Hyper-Surface ist, ist es sehr unwahrscheinlich dass man analytisch ein Minimum findet.
-Das bedeutet, dass stattdessen ein numerischer Algorithmus verwendet werden muss.\\
+Das bedeutet, dass stattdessen ein numerischer Algorithmus verwendet werden muss.
 
-Die Schritte die der Algorithmus durchläuft sind:
-\begin{enumerate}
-    \item Werte \( J \) an den aktuellen Parameterwerten \( \vartheta_1 \) aus. Dies ergibt eine Zahl \( r_1 \)
-    \item Passe die Parameterwerte leicht an, so dass \( J(\vartheta_2) \) eine Zahl \( r_2 \) mit \( r_2 \leq r_1 \) ergibt
-    \item Wiederhole dies solange, bis J genügend nahe bei 0 ist. (J = 0 würde bedeuten dass das Netzwerk die Wellengleichung an den Punkten des Trainings-Datensatzes perfekt löst.)
-\end{enumerate}
+\begin{tcolorbox}[colback=gray!10, colframe=black, boxrule=0.5pt]
+    Die Schritte die der Algorithmus durchläuft sind:
+    \begin{enumerate}
+        \item Initialisiere \( \vartheta_i \) mit Anfangswerten.
+        \item \textbf{Loop} von \( i = 1 \) bis \( i = k \):
+        \begin{enumerate}
+            \item Berechne neue Parameterwerte: \( \vartheta_{i+1} = \vartheta_i - \epsilon \nabla_\vartheta J\left(\vartheta_i\right) \) (Erklärung unten)
+        \end{enumerate}
+        \item Gebe die Parameter \( \vartheta_k \) zurück.
+    \end{enumerate}
+\end{tcolorbox}
 
-Nach dem letzten Schritt dieses Algorithmus ist das neuronale Netzwerk fertig trainiert.
+Die Anzahl Schleifendurchläufe bzw. \( k \) wird so gewählt, dass \( J(\vartheta_k) \) genügend nahe bei 0 ist.
+Nach dem letzten Schritt dieses Algorithmus ist das neuronale Netzwerk mit den Parametern \( \vartheta_k \) fertig trainiert.
 
-Als abschliessende Notiz: Im Schritt 2 des Algorithmus werden die Parameterwerte leicht angepasst, so dass J abnimmt.
-Dies wird mit Optimierungsverfahren \emph{Gradient Descent} gemacht. Die Formel dafür ist
-\begin{equation}
-    \vartheta_{i+1} = \vartheta_i - \epsilon \nabla_\vartheta J\left(\vartheta_i\right).
-\end{equation}
-Dies funktioniert, da der Gradient von J ausgewertet an \( \vartheta_i \) ein Vektor ist, der in die Richtung des stärksten Anstiegs auf J weist.
-Durch das Minus in der Formel geht man in die entgegen gesetzte Richtung, wo es auf J abwärts geht. 
-Mit \( \epsilon \) wird die ``Schrittgrösse'' gesteuert, um zu verhindern dass man über ein Minimum ``springt''.
+\textbf{Als abschliessende Notiz:} Im Schritt 2 des Algorithmus werden die Parameterwerte neu berechnet.
+Durch die verwendete Formel wird erreicht, dass \( J(\vartheta_{i+1}) \leq J(\vartheta_i) \) ist, d.h. der Fehler des Netzwerks nimmt mit jedem Schritt ab.
+Dies ist das Optimierungsverfahren \emph{Gradient Descent}.
+
+Das funktioniert, da der Gradient von \( J \) ausgewertet an \( \vartheta_i \) ein Vektor ist, der in die Richtung des stärksten Anstiegs auf \( J \), von \(\vartheta_i \) aus, weist.
+Durch das Minus in der Formel geht man in die entgegen gesetzte Richtung, wo es auf \( J \) abwärts geht. 
+Mit \( \epsilon \) wird die ``Schrittgrösse'' gesteuert, um zu verhindern dass man über ein Minimum auf \( J \) ``springt''.
 
 
 \subsection{Qualität der Approximation}\label{neuronal:subsection:qualität_nn}
