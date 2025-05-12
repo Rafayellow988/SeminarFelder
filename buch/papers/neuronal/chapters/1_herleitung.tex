@@ -31,10 +31,10 @@ Zusätzlich werden die folgenden Initialbedingungen
 und die Randbedingungen
 \begin{equation}
     \begin{aligned}
-        u(-2, y, t) = 0\\
-        u(2, y, t) = 0\\
-        u(x, -2, t) = 0\\
-        u(x, 2, t) = 0
+        u(-10, y, t) = 0\\
+        u(10, y, t) = 0\\
+        u(x, -10, t) = 0\\
+        u(x, 10, t) = 0
     \end{aligned}
     \label{neuronal:rand}
 \end{equation}
@@ -77,9 +77,9 @@ Durch das Quadrieren wird erreicht, dass die Terme für alle \( x, y, t \) immer
 Somit sind Minima der Terme tiefstens 0 und nicht beliebig klein.\\
 
 Das Training des neuronalen Netzwerks \( \hat{u} \) lässt sich nun als Optimierungsproblem ausdrücken:\\
-Wähle die Parameter \( \vartheta \) des Netzwerks so, dass die obigen Terme für die Wellengleichung, Initialbedingungen und Randbedingungen minimal (d.h. möglichst nahe bei 0) werden.\\
+Wähle die Parameter \( \vartheta \) des Netzwerks so, dass die obigen Terme für die Wellengleichung und deren Bedingungen minimal (d.h. möglichst nahe bei 0) werden.\\
 
-Um all diese Terme gleichzeitig zu minimieren, werden diese addiert. So bleibt nur ein einziger Term \( L(x, y, t, \vartheta) \) der minimiert werden soll
+Um all diese Terme gleichzeitig zu minimieren, werden diese addiert. So bleibt nur ein einziger Term \( L(x, y, t, \vartheta) \) der schlussendlich minimiert werden soll
 \begin{equation}
     \begin{aligned}
         L(x, y, t, \vartheta) &= \left(\frac{\partial^2 \hat{u}}{\partial t^2} - c^2 \left( \frac{\partial^2 \hat{u}}{\partial x^2} + \frac{\partial^2 \hat{u}}{\partial y^2} \right)\right)^2\\
@@ -88,12 +88,14 @@ Um all diese Terme gleichzeitig zu minimieren, werden diese addiert. So bleibt n
         &+ \left(\hat{u}(-10, y, t)\right)^2
         + \left(\hat{u}(10, y, t)\right)^2
         + \left(\hat{u}(x, -10, t)\right)^2
-        + \left(\hat{u}(x, 10, t)\right)^2\\
-        &= 0.
+        + \left(\hat{u}(x, 10, t)\right)^2.
     \end{aligned}
     \label{neuronal:optimierung}
 \end{equation}
 
+Zu beachten ist, dass \( L \) für alle \( x, y, t \) minimal bzw. möglichst nahe bei 0 sein soll.
+D.h. \( L \) soll nur in \( \vartheta \) minimiert werden.
+Wie man dies erreicht, wird im Kapitel \ref{neuronal:subsection:training_nn} beschrieben.
 
 \subsection{Struktur des neuronalen Netzes}\label{neuronal:subsection:struktur_nn}
 
@@ -144,7 +146,7 @@ Als Faustregel gilt: Je komplizierter die Funktion die approximiert wird, desto 
 Nachdem nun das neuronale Netzwerk als Funktion definiert ist, ist der nächste Schritt die Wahl vom optimalen \( \vartheta \) bzw. die Wahl der optimalen Parametern.
 Dies wird als Training des Netzes bezeichnet.
 
-Wie im Kapitel \ref{neuronal:subsection:optimierungsproblem} beschrieben, soll das Netz den Term \eqref{neuronal:optimierung} minimieren.
+Wie im Kapitel \ref{neuronal:subsection:optimierungsproblem} beschrieben, soll das Netz, bzw. die gewählten Parameter, \( L(x, y, t, \vartheta) \) \eqref{neuronal:optimierung} minimieren.
 Hierzu werden drei Dinge benötigt:
 \begin{itemize}
     \item Ein Trainings-Datensatz an x-, y- und t-Werten
@@ -153,10 +155,11 @@ Hierzu werden drei Dinge benötigt:
 \end{itemize}
 
 \textbf{Trainings-Datensatz}\\
-Der Term \eqref{neuronal:optimierung} hängt aktuell sowohl von den Parametern des Netzes \( \vartheta \), als auch den drei Variablen \( x, y, t \) ab.
-Da der Term aber nicht in den drei Variablen minimiert werden soll, müssen diese durch konkrete Werte ersetzt werden.
+Aktuell hängt \( L(x, y, t, \vartheta) \) sowohl von den Parametern des Netzes \( \vartheta \), als auch den drei Variablen \( x, y, t \) ab.
+Wie bereits erwähnt, soll aber nicht in den drei Variablen minimiert werden, sondern in \( \vartheta \).
+Daher müssen die Variablen durch konkrete Werte ersetzt werden. \\
 
-Dies wird mit dem Trainings-Datensatz gemacht, welcher aus x-, y- und t-Werten bestehen muss, für die die Wellengleichung und deren Bedingungen erfüllt sind.
+Dies wird mit einem Trainings-Datensatz gemacht, welcher aus x-, y- und t-Werten besteht, für die die Wellengleichung und deren Bedingungen erfüllt sind.
 Gem. Kapitel \ref{neuronal:section:herleitung} sollen x und y in [-10,10] sein und t in [0,10].
 Innerhalb dieser Bereiche werden gleichverteilte, reelle Zahlen generiert.
 Somit ist der Datensatz
@@ -172,14 +175,17 @@ Je mehr Parameter, desto mehr Datenpunkte werden benötigt.\\
 % TODO: Wieviele Datenpunkte werden verwendet?
 
 \textbf{Loss-Funktion}\\
-Die Loss-Funktion ist die Summe von \eqref{neuronal:optimierung} über alle Datensatz-Werte und hängt somit nur noch von \( \vartheta \) ab. 
+Die Loss-Funktion ist die Summe von \( L(x, y, t, \vartheta) \), über alle Datensatz-Werte und hängt somit nur noch von \( \vartheta \) ab. 
+
 Ausgewertet an einem bestimmten \( \vartheta \) liefert sie eine reelle Zahl als Resultat.
 Diese reelle Zahl ist ein Mass dafür, wie gut das neuronale Netzwerk, mit den verwendeten Parametern, die Wellengleichung an den x-, y- und t-Werten aus dem Trainings-Datensatzes approximiert
 
 \begin{equation}
     J(\vartheta) = \sum_{i=1}^{k} L(x_i, y_i, t_i, \vartheta).
     \label{neuronal:loss}
-\end{equation}\\
+\end{equation}
+
+Anders ausgedrückt ist die Loss-Funktion \( J \) ein Mass für den Fehler, den das Netzwerk macht.\\
 
 \textbf{Optimierungsalgorithmus}\\
 Der Optimierungsalgorithmus hat das Ziel, die Loss-Funktion \( J \) zu minimieren.
