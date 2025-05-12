@@ -153,7 +153,7 @@
 	 \end{equation}
 	 Dabei bezeichnet $\sigma_{ij}$ die Spannungskomponenten und $f_i$ die Komponenten der Volumenkraft pro Einheit Volumen. 
 	 Die Gleichung fordert, dass die Summe der inneren Spannungsänderungen und der äusseren Volumenkräfte in jedem Punkt verschwindet. Sie gilt für jeden Punkt des Körpers und bildet die Grundlage für die statische Beschreibung des Spannungsfeldes \cite{elastomechanik:Grundlagen der Elastizitaetstheorie}.
-	 \item[\textbf{Isotropes Materialverhalten:}] Für isotrope Materialien (die in alle Richtungen die gleichen mechanischen Eigenschaften haben) vereinfacht sich das elastische Gesetz in Tensorform zu:
+	 \item[\textbf{Isotropes Materialverhalten:}] Für isotrope Materialien (die in alle Richtungen die gleichen mechanischen Eigenschaften haben) reicht die Beschreibung mit zwei Materialkonstanten $\lambda$ und $\mu$ aus.
 	 \begin{equation}
 	 	\sigma_{ij} = 
 	 	\lambda \cdot \delta_{ij} \cdot \varepsilon_{kk} + 2\mu \cdot \varepsilon_{ij},
@@ -169,6 +169,19 @@
 	 $\delta_{ij}$ = Kronecker-Delta 
 	 
 	 $\lambda_{,\mu}$ = Lame’sche Konstanten
+	 
+	 Viele Metalle, wie beispielsweise Stahl, können näherungsweise als isotrope Materialien betrachtet werden.
+	 
+	 \vspace{0.5em}
+	 Bei \textbf{anisotropen Materialien} hingegen sind die mechanischen Eigenschaften richtungsabhängig. 
+	 Die Spannungs-Dehnungs-Beziehung erfordert in diesem Fall einen allgemeinen Elastizitätstensor vierter Stufe:
+		 \begin{equation}
+	 		\sigma_{ij} = 
+	 		C_{ijkl} \cdot \varepsilon_{kl}
+		 \end{equation}
+	 Die Anzahl der unabhängigen Komponenten dieses Tensors kann, je nach Symmetrieeigenschaften, zwischen 21 und 81 liegen. 
+	 Ein typisches Beispiel für anisotropes Verhalten ist Holz, dessen Steifigkeit von der Faserrichtung abhängt.
+	 Für unsere Arbeit wird die Herleitung des anisotropen Materialverhaltens nicht thematisiert, da sie den Rahmen dieser Seminararbeit sprengen würde.
 	 
 	 \item[\textbf{Lame’sche Konstanten ($\lambda_{,\mu}$):}] Die Lame'schen Konstanten werden die Konstanten $\lambda$ und $\mu$ bezeichnet. 
 	 Die sind zwei materialabhängige Parameter, die das mechanische Verhalten eines isotropen elastischen Materials vollständig beschreiben.

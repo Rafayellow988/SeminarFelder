@@ -8,6 +8,27 @@
 %
 \section{Mathematische Herleitung der Feldgleichungen der linearen Elastizitätstheorie}
 \label{elastomechanik:section:herleitung2}
+\subsection{Einsteinsche Summationskonvention}
+In der Tensorrechnung, wie sie in der Elastizitätstheorie verwendet wird, gilt die sogenannte Einsteinsche Summationskonvention. 
+Diese Konvention besagt, dass über zweifach auftretende Indizes in einem Produkt automatisch summiert wird, ein explizites Summenzeichen ist nicht mehr notwendig.
+
+Dies bedeutet beispielsweise:
+	\begin{equation}
+		a_i b_i = 
+		\sum_i a_i b_i
+	\end{equation}
+Die Konvention wird insbesondere bei der Notation von Spannung-Dehnungs-Beziehungen verwendet. Ein zentrales Beispiel in der linearen Elastizität ist:
+	\begin{equation}
+		\sigma_{ij} = 
+		C_{ijkl} \, \varepsilon_{kl}	
+	\end{equation}
+Hier wird über die Indizes $k$ und $l$ summiert (von 1 bis 3). 
+Diese Kurzschreibweise spart Schreibaufwand und erhöht die Übersichtlichkeit komplexer tensorwertiger Gleichungen.
+
+Die Einsteinsche Konvention ist insbesondere in der physikalischen Mechanik, Thermodynamik und Kontinuumsmechanik weit verbreitet.
+
+Im Rahmen dieser Arbeit wird die Einsteinsche Summationskonvention verwendet. 
+Das bedeutet: Wenn in einer Formel ein Index zweimal vorkommt (z. B. $a_ib_i$), ist automatisch über diesen Index zu summieren, ohne dass ein explizites Summenzeichen angegeben wird.
 \subsection{Kinematische Beziehungen und Verzerrungstensor}
 Wir beschreiben die Verformung eines Punktes durch seinen Verschiebungsvektor $u_i(x)$ mit $i$ = 1,2,3 ($x$, $y$, $z$).
 $u_1$ entspricht der Verschiebung in $x$-Richtung, $u_2$ beschreibt die Verschiebung in $y$-Richtung und $u_3$ beschreibt die Verschiebung in $z$-Richtung.
