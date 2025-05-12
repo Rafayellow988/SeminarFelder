@@ -10,19 +10,19 @@
 \kopfrechts{Geschichte und Einführung}
 Die Geschichte der Elektrodynamik führt sehr weit zurück.
 Das erste mal, das Elektrizität, wenn auch unbewusst was es wirklich ist, verwendet wurde, war ca. 3100 Jahre v. Chr. im alten Ägypten.
-Dort wurden die Elektroschocks des elektrischen Wels zur Behandlung von Gelenkschmerzen verwendet.
+Dort wurden die Elektroschocks des elektrischen Wels zur Behandlung von Gelenkschmerzen verwendet\cite{maxwell:History_of_bioelectricity}(ist das richtig mit dem Verweis so?).
 
 Ein wichtiger Meilenstein in der Entdeckung des Magnetismus war die Erfindung des Kompasses im Jahre 200 v. Chr.
 Die Chinesen entdeckten, das sich der natürlich vorkommende Magnetit auf wundersame Weise immer gleich ausrichtet, wenn er frei drehend aufgehängt wird.
-Der Kompass wurde anfangs aber nur für das Wahrsagen verwendet, erst viel später, ca. 850 n. Chr. wurde er zur Navigation eingesetzt und fand seinen Weg im Jahre 1190 nach Europa.
+Der Kompass wurde anfangs aber nur für das Wahrsagen verwendet, erst viel später, ca. 850 n. Chr. wurde er zur Navigation eingesetzt und fand seinen Weg im Jahre 1190 nach Europa(https://en.wikipedia.org/wiki/History\_of\_the\_compass).
 
 Im Zeitraum von 1269 bis 1767 wurden die Phänomene der Elektrodynamik erstmals genauer beobachtet.
 So beschrieb 1269 der Franzosen Petrus Peregrinus durch Experimente als erster die Polarität von Magneten.
 Während des 17. Jahrhunderts wurde viel mit Reibungselektrizität experimentiert. Der Begriff der ``Elektrizität'' wurde erstmals verwendet und die Unterschiede magnetischer und elektrische Wirkung wurde erkannt.
-Im Jahr 1767 erkannte Joseph Priestley, dass die elektrische Kraft quadratisch zum Abstand abnimmt, ein erster Hinweis auf das Coulom-Gesetz.
+Im Jahr 1767 erkannte Joseph Priestley, dass die elektrische Kraft quadratisch zum Abstand abnimmt, ein erster Hinweis auf das Coulomb-Gesetz(https://en.wikipedia.org/wiki/History\_of\_electromagnetic\_theory).
 
 Ab dem Jahr 1785 nimmt die Entwicklung der Elektrodynamik richtig fahrt auf.
-Charles Augustin de Coulomb entdeckte und bestätigte durch umfangreiche Experimente 1785, das die Kraft zwischen zwei Ladungen quadratisch zum Abstand ihres Mittelpunktes abnimmt:
+Charles Augustin de Coulomb entdeckte und bestätigte durch umfangreiche Experimente 1785, das die Kraft zwischen zwei Ladungen quadratisch zum Abstand ihres Mittelpunktes abnimmt(https://en.wikipedia.org/wiki/Charles-Augustin\_de\_Coulomb):
 \[
 \vec{F}
 =
@@ -34,8 +34,8 @@ Charles Augustin de Coulomb entdeckte und bestätigte durch umfangreiche Experim
 \]
 Ob er von der Entdeckung Priestleys wusste ist nicht bekannt.
 
-Als Hans Christian Oersted an einem Tag im Jahre 1820 eine Vorlesung in Physik hielt, beobachtete er die Ablenkung einer Kompassnadel durch einen stromdurchflossenen Draht und endteckte somit zufällig die magnetische Wirkung des elektrischen Stromes.
-André-Marie Ampère wurde auf Oersteds Fund aufmerksam und verfolgte dieses Phenomen weiter.
+Als Hans Christian Ørsted an einem Tag im Jahre 1820 eine Vorlesung in Physik hielt, beobachtete er die Ablenkung einer Kompassnadel durch einen stromdurchflossenen Draht und endteckte somit zufällig die magnetische Wirkung des elektrischen Stromes.
+André-Marie Ampère wurde auf Ørsteds Fund aufmerksam und verfolgte dieses Phenomen weiter.
 Er erkannte eine sehr wichtige Eigenschaft: Die Magnetnadel des Kompasses richtet sich immer senkrecht zum stromdurchflossenen Leiter aus.
 Er nahm an, dass die die Ursache, die die Magnetnadel zur Bewegung führt, ein vom Strom im Leiter selbst verursachtes Magnetfeld sei.
 Dies konnte er durch viele Versuche ein wenig später sogar beweisen.
@@ -43,28 +43,12 @@ Ampère fand in diesen Versuchen heraus, dass sich zwei Leiter, in denen die ele
 Er formulierte eine Gleichung, die besagt, dass elektrische Ströme magnetische Wirbelfelder hervorrufen, deren Stärke durch die Stromstärke gegeben ist.
 Das Gesetz wird Ampèrsches Gesetz oder auch Durchflutungssatz gennant und wird in Integralform
 \[
-\oint_{C}
-\vec{B}
-\cdot
-d \vec{l}
-=
-\mu_0
-\iint_{S}
-\vec{J}
-\cdot
-d\vec{s}
-=
-\mu_0
-I
-\]
-bzw.
-\[
-\oint_{C}
+\oint_{\d A}
 \vec{H}
 \cdot
 d\vec{l}
 =
-\iint_{S}
+\iint_{A}
 \vec{J}
 \cdot
 d\vec{s}
@@ -75,31 +59,24 @@ oder als differentielle Form
 \[
 \nabla
 \times
-\vec{B}
-=
-\mu_0 \vec{J}
-\]
-bzw.
-\[
-\nabla
-\times
 \vec{H}
 =
 \vec{J}
 \]
 formuliert.
 Dies sind sehr wichtige Gleichungen in der Elektrodynamik.
-Jedoch sind sie so nicht ganz vollständig und werden später noch mal überarbeitet.
+Jedoch sind sie so nicht ganz vollständig und werden später noch mal überarbeitet(gleichung könnte evtl noch besser erklärt werden, was das bedeutet, https://de.wikipedia.org/wiki/Hans\_Christian\_Ørsted, https://de.wikipedia.org/wiki/André-Marie\_Ampère).
 
 
-\textit{Exkurs: genaue Herleitung mittels Differentialformen:}
-Mit Hilfe des Satz von Stokes(\ref{buch:green:green:satz:stokes})
+\textit{Exkurs: Herleitung der differentiellen Form.}
+Mit Hilfe des Satzes von Stokes(\ref{buch:green:green:satz:stokes})
 \[
 \int_{M} d\omega
 =
 \int_{\d M} \omega
 \]
-können wir die differentielle Form der Ampère-Gleichung herleiten. Definieren eine Einsform $\alpha$, die das H-Feld beschreibt:
+können wir die differentielle Form der Ampère-Gleichung herleiten.
+Definieren wir eine Einsform $\alpha$, die das H-Feld beschreibt:
 \[
 \alpha
 =
@@ -173,7 +150,6 @@ gilt.
 
 Im Jahre 1821 gelang Michael Faraday ein Experiment, be dem sich ein stromdurchflossener Leiter unter Einfluss eines Dauermagneten um seine Achse drehte.
 Er nannte dies dies ``elektromagnetische Rotation'', was eine sehr wichtige Voraussetzung für die Entwicklung des Elektromotors war.
-
 Die Idee, dass man Magnetismus in Elektrizität umwandeln könnte, hatte er bereits 1822.
 Jedoch konnte er erst 1831, nach mehreren gescheiterten Versuchen und einer längeren Pause, in der er sich anderen Untersuchungen widmete, ein erfolgreiches Experiment durchführen.
 Faraday entdeckte die elektromagnetische Induktion!
@@ -186,22 +162,57 @@ Faraday leistete in seinem Leben noch weitere Beiträge im Bereich der Elektrizi
 Er war einer der Ersten, der nicht an ein Fernwirkungsgesetz glaubte.
 Elektrische Kräfte oder auch die Gravitationskraft sollen durch Kraftlinien und Felder zu Stande kommen, was sich später auch bewahrheitete.
 Aussergewöhnlich war ausserdem auch seine Arbeitsweise.
-Seine veröffentlichten Errungenschaften beinhalteten wenig bis keine mathematischen Beweise, er konnte alles rein durch Experimente verifizieren.
+Seine veröffentlichten Errungenschaften beinhalteten wenig bis keine mathematischen Beweise, er konnte alles rein durch Experimente verifizieren(https://de.wikipedia.org/wiki/Michael\_Faraday).
 
+\begin{center}
 \textit{„Faraday sah im Geiste die den ganzen Raum durchdringenden Kraftlinien, wo die Mathematiker fernwirkende Kraftzentren sahen; Faraday sah ein Medium, wo sie nichts als Abstände sahen; Faraday suchte das Wesen der Vorgänge in den reellen Wirkungen, die sich in dem Medium abspielten, jene waren aber damit zufrieden, es in den fernwirkenden Kräften der elektrischen Fluida gefunden zu haben…“}
 
 \textit{– James Clerk Maxwell: A Treatise on Electricity and Magnetism. Clarendon Press, 1873.}
+\end{center}
 
-Carl Friedrich Gauss formulierte im Jahr 1835 ...rein mathematisch-...mittels coulomb und sienem eigenen integralsatz, speziallfall von stokes...Herleitung?
+Carl Friedrich Gauss war ein sehr bedeutender Mathematiker und Theoretiker.
+Bereits während seiner Lebenszeit wurde er als ``Fürst der Mathematiker'' bezeichnet.
+Nach ihm wurden über 100 mathematische und wissenschaftliche Konzepte benannt, so auch in der Elektrodynamik.
+1825 formulierte er das ``Gaussches Gesetz für elektrische Felder''.
+Dieses Gesetz konnte er durch Coulombs Beobachtungen, dass das elektrische Feld einer Punktladung radial quadratisch abnimmt, folgern.
+Durch diese radiale Abnahme musste auch der elektrisch Fluss durch eine Kugel, in der die Ladung eingeschlossen ist, konstant sein.
+Somit lässt sich daraus schliessen, dass das Integral des elektrischen Flusses über diese Kugeloberfläche genau der darin enthaltenen Ladung entspricht
+\[
+\oint_{A=\d V} \vec{D} \cdot d\vec{s}
+=
+\int_{V} \rho_{frei}\, dv
+=
+Q_{frei} ,
+\]
+wobei $\rho_{frei}$ die freie Ladungsdichte und $Q_{frei}$ die gesamten freien Ladungen in der Kugel sind. Dies ist auch gerade eine Anwendung vom Gausschen Integralsatz aus der Mathematik.
+Die Gleichung lässt sich natürlich auch mit der elektrischen Feldstärke ausdrücken, da $\vec{D} = \varepsilon \vec{E}$ gilt:
+\[
+\oint_{A=\d V} \vec{E} \cdot d\vec{s}
+=
+\frac{1}{\varepsilon}\int_{V} \rho_{frei}\, dv
+=
+\frac{Q_{frei}}{\varepsilon} .
+\]
+Natürlich lassen sich die Gleichungen auch in differentiellen Form darstellen als
+\begin{align*}
+	\nabla \cdot \vec{D}
+	&=
+	\rho
+	\\
+	\nabla \cdot \vec{E}
+	&=
+	\frac{\rho}{\varepsilon} .
+\end{align*}
+(https://de.wikipedia.org/wiki/Gaußscher\_Integralsatz, https://de.wikipedia.org/wiki/Carl\_Friedrich\_Gauß)
+
+
+\textit{Exkurs: Herleitung Gausssches Gesetz für elektrische Felder}
 
 
 
 
 
 
-
-
-Gauss?
 Maxwell
 Heaviside
 relativität mit einstein?
