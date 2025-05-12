@@ -130,7 +130,7 @@ Im Folgenden ein geschichtlicher Exkurs, wie es dazu kam.
 	%Schrödinger
 	Erwin Schrödinger formulierte 1926 eine Gleichung, die das Verhalten von Teilchen als Wellen beschreibt. 
 	Sie bildet die Grundlage der Quantenmechanik. Die Lösung dieser Gleichung ist die Wellenfunktion \( \psi(x, t) \). Sie liefert keine feste Bahn, sondern eine Wahrscheinlichkeitsverteilung für den Aufenthaltsort eines Teilchens.  
-	Die eindimensionale zeitabhängige Schrödingergleichung lautet:
+	Die eindimensionale zeitabhängige Schrödinger-Gleichung lautet:
 	
 	\begin{equation}
 		i \hbar \frac{\partial \psi(x,t)}{\partial t} = -\frac{\hbar^2}{2m} \frac{\partial^2 \psi(x,t)}{\partial x^2} + V(x) \psi(x,t)
@@ -153,6 +153,16 @@ Im Folgenden ein geschichtlicher Exkurs, wie es dazu kam.
 	So wird aus der Quantenmechanik eine Feldtheorie.
 	
 \subsection{Der harmonische Oszillator\label{fourier:subsection:derHarmonischeOszillator}}
+% TODO
+% 7. In 18.4.2 wird harmonische Oszillator behandelt.
+% Es ist aber etwas verwirrend, dass hier bereits die Mischung mit der Wellengleichung gemacht wird.
+% Ich denke, es wäre hier besser, nur den klassischen harmonischen Operator zu zeigen, wie Sie ihn ja auch in der Abbildung dargestellt haben.
+% Wichtig für später ist, dass Sie die Gesamtenergie H = p^2/2m - 1/2 kx^2 durch x und p ausdrücken, weil daraus ja später der Hamilton-Operator wird.
+% Ich möchte davon abraten, hier schon von Wellen zu sprechen, das verwirrt.
+% Für diesen wichtigen Schritt brauchen Sie meines Erachtens einen eigenen Abschnitt, der die Erkenntnisse von 18.3 mit dem harmonischen Oszillator verbindet:
+% Gleichung des harmonischen Oszillators tritt als Gleichung für die Fourier-Koeffzienten auf.
+% Dies ist dann die Basis für die Quantisierung.
+
 Warum genau schauen wir uns den harmonischen Oszillator an?
 In der Quantenelektrodynamik werden die elektromagnetischen Felder als quantisierte harmonische Oszillatoren modelliert, deren Energie ebenfalls in Vielfachen von $\hbar\cdot\omega$ vorliegt.
 Die Zustände des Feldes (Photonenzahlenzustände) werden durch die Schwingungszustände des harmonischen Oszillators beschrieben.
@@ -208,7 +218,7 @@ Die Bra-Ket-Notation, auch Dirac-Notation genannt, wurde von Paul Dirac eingefü
 Sie dient dazu, Zustände und Operatoren kompakt und elegant darzustellen.
 
 Ein \emph{Ket} $|\psi\rangle$ beschreibt den Zustand eines quantenmechanischen Systems.
-Man kann sich Kets wie Richtungs-Pfeile oder Vektoren vorstellen, die angeben, ``wie'' das System gerade ist;
+Man kann sich Kets wie Richtungspfeile oder Vektoren vorstellen, die angeben, ``wie'' das System gerade ist;
 z.B. mit welcher Energie, welchem Spin oder an welchem Ort sich ein Teilchen befindet.
 Ein \emph{Bra} $\langle\psi|$ ist das zugehörige Gegenstück zum Ket.
 Es steht symbolisch für eine Messung oder einen Test auf diesen Zustand.
@@ -285,7 +295,7 @@ Der Ausdruck $|\langle\varphi|\chi\rangle|^2$ misst die Überlappung der beiden 
 Die Terme $\langle\varphi|\varphi\rangle$ und $\langle\chi|\chi\rangle$ entsprechen dabei den Quadraten der Längen (Normen) der Zustände.
 Der Betrag des Skalarprodukts kann also niemals größer werden als das Produkt der Normen, ganz analog zur klassischen Vektoranalysis.
 Das Quadrat auf der linken Seite ergibt sich, weil die Ungleichung eine Aussage über den Betrag des Skalarprodukts ist, während die rechte Seite stets reell und positiv ist.
-Diese Form der Ungleichung bildet die mathematische Grundlage für die Herleitung der Heisenbergschen Unschärferelation.
+Diese Form der Ungleichung bildet die mathematische Grundlage für die Herleitung der heisenbergschen Unschärferelation.
 Die Zustände $|\varphi\rangle$ und $|\chi\rangle$ sind hier in der Bra-Ket-Notation geschrieben, einer kompakten Notation für Zustände in der Quantenmechanik, wie sie in Abschnitt~\ref{fourier:subsubsection:braKetNotation} eingeführt wurde.
 
 Setzt man
@@ -318,9 +328,22 @@ Würde man das $\tfrac{1}{2}$ in der Formel weglassen, erhielte man eine vereinf
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % todo knma: Ergänzungen anbringen
 
-\subsection{Hamilton-Operator\label{fourier:subsection:hamiltonOperator}}
-H, Schrödingergleichung, Eigenwerte sind Energie % todo
+\subsubsection{Hamilton-Operator\label{fourier:subsubsection:hamiltonOperator}}
+H, Schrödinger-Gleichung, Eigenwerte sind Energie % todo
 % todo-: Hamilton-Operator (subsection): -H, Schrödingergl., Eigenwerte sind Energie
+
+% TODO
+% Ich denke, Sie brauchen in dem Abschnitt über die Werkzeuge, noch einen Unterabschnitt über Hamilton-Operator und Schrödinger-Gleichung.
+% Diese brauchen Sie ja dann auf Seite 265 und 266.
+% Sie könnten in 18.4.3 den H-Operator und die Schrödinger-Gleichung darstellen und auch die Tatsache, dass die Eigenwerte die Energie-Niveaus sind.
+% Dies sind ja Aussagen, die ganz allgemein sind.
+% In 18.4.4 können Sie dann spezialisieren auf den Fall des harmonischen Oszillators.
+% Im Moment versuchen Sie alles in 18.4.4 "aufs Mal" zu machen, das ist etwas viel gleichzeitig für den Leser.
+% Ein solcher Unterabschnitt macht dem Leser auch klar, dass Sie er diese Dinge als "Fakten" akzeptieren muss, während Sie in späteren Abschnitten (in 18.4.4) dann daraus etwas ableiten.
+% Sie stellen damit sicher, dass der Leser nicht dadurch blockiert wird, dass er meint, er müsse verstehen, woher der Hamilton-Operator kommt.
+% Er muss ihn nur akzeptieren.
+% Erst in 18.4.4 muss er dann wieder verstehen, wie sie diese Vertauschungsrelationen für a und a^+ bekommen.
+% Er liest also 18.4.3 und 18.4.4 mit einem anderen "Mindset".
 
 \subsection{Beweis des Photons\label{fourier:subsection:beweisPhoton}} % todo-: Besserer Titel
 In diesem Abschnitt verwenden wir die bisher eingeführten Grundlagen der Quantenmechanik, um zu zeigen, dass Licht nicht kontinuierlich, sondern in kleinsten Energiepaketen, sogenannten Photonen, übertragen wird.
