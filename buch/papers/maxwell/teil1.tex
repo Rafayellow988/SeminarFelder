@@ -9,14 +9,32 @@
 \section{Hodge Theorie provisorisch
 \label{maxwell:section:teil1}}
 \kopfrechts{Hodge Theorie provisorisch}
-Für den Teil der Inhomogenen Maxwellgleichungen benötigen wir die Hodge-Duale auf 1-Formen, 2-Formen und 3-Formen.
-Für die korrekten Vorzeichen benötigen wir den Metrischen Tensor
+Für den Teil der Inhomogenen Maxwellgleichungen benötigen wir die Hodge-Duale auf 1-Formen, 2-Formen und 3-Formen im vierdimensionalen Minkowski-Raum.
+Um dabei die korrekten Vorzeichen zu erhalten, muss die Hodge-Dualität mit Hilfe des metrischen Tensors $g^{ik}$  der Minkowski-Metrik verwendet werden.
+
+
+
+\subsection{Minkowski Metrik}
+In der Speziellen Relativitätstheorie (SRT) wird die Minkowski-Metrik verwendet.
+Da es in der SRT keine Krümmung und Gravitation gibt, sind alle Elemente ausserhalb der Diagonale des Metrischen Tensors null und somit ist die Raum-Zeit flach.
+Zwei Signaturen sind üblich.
+Einerseits gibt es die (-+++)-Signatur, bei welcher die Zeitkomponente negativ und die Raumkomponenten positiv gezählt werden.
+Andererseits gibt es die (+ - - -)-Signatur, bei welcher die Zeitkomponente positiv und die Raumkomponenten negativ gezählt werden.
+Beide Signaturen sind gleichwertig, solange man sich auf eine Metrik festlegt und diese konsequent beibehält.
+Im folgenden werden wir uns an die (-+++)-Signatur halten.
+Daher definieren wir den Metrischen Tensor als
 \begin{equation}
-g^{ik} = \begin{pmatrix}
-	-1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 
-\end{pmatrix}.
-\label{maxwell:section:teil1:metrik}
+	g^{ik} = \begin{pmatrix}
+		-1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 
+	\end{pmatrix}.
+	\label{maxwell:section:teil1:metrik}
 \end{equation}
+Der Ausdruck für ein Linienelement in dieser Metrik ist definiert als
+\begin{equation}
+	dl^2 = -c^2dt^2 +dx^2+dy^2+dz^2.
+\end{equation}
+Eine Konsequenz dieser Signatur ist, dass Zeitartige Abstände $ds^2 < 0$ und raumartige Abstände $ds^2 > 0$ sind.
+
 
 \subsection{Herleitung Hodgeduale(verweis auf Abschnitt im Buch)}
 Folgend alle Berechungen der Hodgeduale auf 1-/2- und 3-Formen mit $(-+++)$ -Metrik.
