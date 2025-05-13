@@ -16,10 +16,11 @@ then
 fi
 
 awk 'BEGIN {
-	offsetpage = 10
+	offsetpage = 12
 	startpage = 0
 	identifier = ""
 	chapterno = 0
+	lastchapter = 13
 }
 /newlabel{chapter:/ {
 	s = substr($0, 19, length($0) - 19)
@@ -31,7 +32,7 @@ awk 'BEGIN {
 	s = substr(s, i+2, length(s)-i-2)
 	i = match(s, "}{")
 	newpage = int(substr(s, 1, i))
-	if (chapterno > 7) {
+	if (chapterno > lastchapter) {
 		printf("pdfjam --outfile separata/%s.pdf buch.pdf %d-%d\n", identifier, startpage + offsetpage, newpage + offsetpage - 1)
 	}
 	startpage = newpage
