@@ -137,9 +137,9 @@ in zwei räumlichen und der zeitlichen Dimension approximieren soll, muss die Do
 
 Je mehr Teilfunktionen und Anzahl Dimensionen in den Teilfunktionen, desto mehr trainierbare Parameter besitzt das Modell.
 Auf die Frage nach der Anzahl Parameter gibt es keine ``richtige'' Antwort.
-Als Faustregel gilt: Je komplizierter die Funktion die approximiert wird, desto mehr Parameter sollten verwendet werden.
+Als Faustregel gilt: Je komplizierter die Funktion die approximiert wird, desto mehr Parameter werden benötigt.
 
-Der konkrete Aufbau vom neuronalen Netzwerk für die Lösung der Wellengleichung wird im Kapitel \ref{neuronal:section:rechenbeispiel} beschrieben.
+Die konkrete Struktur vom neuronalen Netzwerk für die Lösung der Wellengleichung wird im Kapitel \ref{neuronal:section:rechenbeispiel} beschrieben.
 
 
 \subsection{Training des neuronalen Netzes}\label{neuronal:subsection:training_nn}
@@ -178,17 +178,20 @@ Wie viele Datenpunkte konkret für die Lösung der Wellengleichung verwendet wer
 
 \paragraph{Loss-Funktion}
 
-Die Loss-Funktion ist die Summe von \( L(x, y, t, \vartheta) \), über alle Datensatz-Werte und hängt somit nur noch von \( \vartheta \) ab. 
-
-Ausgewertet an einem bestimmten \( \vartheta \) liefert sie eine reelle Zahl als Resultat.
-Diese reelle Zahl ist ein Mass dafür, wie gut das neuronale Netzwerk, mit den verwendeten Parametern, die Wellengleichung an den x-, y- und t-Werten aus dem Trainings-Datensatzes approximiert
+Die Loss-Funktion ist die Summe von \( L(x, y, t, \vartheta) \), über alle Datensatz-Werte und hängt somit nur noch von \( \vartheta \) ab.
+Um das Netzwerk zu trainieren, kann nun diese Funktion minimiert werden
 
 \begin{equation}
     J(\vartheta) = \sum_{i=1}^{k} L(x_i, y_i, t_i, \vartheta).
     \label{neuronal:loss}
 \end{equation}
 
+Ausgewertet an einem bestimmten \( \vartheta \) liefert sie eine reelle Zahl als Resultat.
+Diese reelle Zahl ist ein Mass dafür, wie gut das neuronale Netzwerk, mit den verwendeten Parametern, die Wellengleichung an den x-, y- und t-Werten aus dem Trainings-Datensatzes approximiert.
 Anders ausgedrückt ist die Loss-Funktion \( J \) ein Mass für den Fehler, den das Netzwerk macht.
+
+Durch das Minimieren von \( J \) wird das Netzwerk nur darauf trainiert, die Wellengleichung an den Punkten aus dem Trainings-Datensatz zu lösen.
+Warum das Netzwerk aber trotzdem auch an Datenpunkten funktioniert, welche nicht im Trainings-Datensatz waren, wird im Kapitel \ref{neuronal:subsection:qualität_nn} beschrieben.
 
 \paragraph{Optimierungsalgorithmus}
 
@@ -200,16 +203,16 @@ Das bedeutet, dass stattdessen ein numerischer Algorithmus verwendet werden muss
     Die Schritte die der Algorithmus durchläuft sind:
     \begin{enumerate}
         \item Initialisiere \( \vartheta_i \) mit Anfangswerten.
-        \item \textbf{Loop} von \( i = 1 \) bis \( i = k \):
+        \item \textbf{Loop} von \( i = 1 \) bis \( i = m - 1 \):
         \begin{enumerate}
-            \item Berechne neue Parameterwerte: \( \vartheta_{i+1} = \vartheta_i - \epsilon \nabla_\vartheta J\left(\vartheta_i\right) \) (Erklärung unten)
+            \item Berechne neue Parameterwerte: \( \vartheta_{i+1} = \vartheta_i - \epsilon \nabla_\vartheta J\left(\vartheta_i\right) \). (Erklärung unten)
         \end{enumerate}
-        \item Gebe die Parameter \( \vartheta_k \) zurück.
+        \item Gebe die Parameter \( \vartheta_m \) zurück.
     \end{enumerate}
 \end{tcolorbox}
 
-Die Anzahl Schleifendurchläufe bzw. \( k \) wird so gewählt, dass \( J(\vartheta_k) \) genügend nahe bei 0 ist.
-Nach dem letzten Schritt dieses Algorithmus ist das neuronale Netzwerk mit den Parametern \( \vartheta_k \) fertig trainiert.
+Die Anzahl Schleifendurchläufe bzw. \( m \) wird so gewählt, dass \( J(\vartheta_m) \) genügend nahe bei 0 ist.
+Nach dem letzten Schritt dieses Algorithmus ist das neuronale Netzwerk mit den Parametern \( \vartheta_m \) fertig trainiert.
 
 \textbf{Als abschliessende Notiz:} Im Schritt 2 des Algorithmus werden die Parameterwerte neu berechnet.
 Durch die verwendete Formel wird erreicht, dass \( J(\vartheta_{i+1}) \leq J(\vartheta_i) \) ist, d.h. der Fehler des Netzwerks nimmt mit jedem Schritt ab.
@@ -221,4 +224,9 @@ Mit \( \epsilon \) wird die ``Schrittgrösse'' gesteuert, um zu verhindern dass 
 
 
 \subsection{Qualität der Approximation}\label{neuronal:subsection:qualität_nn}
-%% TODO: Wie gut ist das Modell? Wie bewertet man es?
+
+\begin{itemize}
+    \item Wie gut ist das Modell?
+    \item Wieso funktioniert das Modell auch an Datenpunkten welche nicht im Trainings-Datensatz waren?
+    \item Wie bewertet man die Qualität?
+\end{itemize}
