@@ -10,13 +10,19 @@ class WaveNet(nn.Module):
         super(WaveNet, self).__init__()
         self.net = nn.Sequential(
             # Input layer with 3 input units for x, y and t
-            nn.Linear(3, 5),
-            nn.Tanh(),
+            nn.Linear(3, 10),
+            nn.Sigmoid(),
             # First hidden layer
-            nn.Linear(5, 5),
-            nn.Tanh(),
+            nn.Linear(10, 50),
+            nn.Sigmoid(),
+            # Second hidden layer
+            nn.Linear(50, 20),
+            nn.Sigmoid(),
+            # Third hidden layer
+            nn.Linear(20, 10),
+            nn.Sigmoid(),
             # Output layer with a single output unit for the z-coordinate
-            nn.Linear(5, 1)  # Output u(x, y, t)
+            nn.Linear(10, 1)  # Output u(x, y, t)
         )
 
     def forward(self, x):
@@ -37,7 +43,7 @@ class WaveNet(nn.Module):
             self.train_error.append(train_loss.item())
             self.test_error.append(test_loss.item())
 
-            if epoch % 100 == 0:
-                print(f"Epoch {epoch}, Train-Loss: {train_loss.item():.6f}, Test-Loss: {test_loss.item():.6f}")
+            if (epoch + 1) % 100 == 0 or epoch == 0:
+                print(f"Epoch {0 if epoch == 0 else epoch + 1}, Train-Loss: {train_loss.item():.6f}, Test-Loss: {test_loss.item():.6f}")
 
         return self.train_error, self.test_error

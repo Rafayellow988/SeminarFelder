@@ -1,9 +1,15 @@
 import torch
+import boundaries
 import numpy as np
+
+# Analytical solution to the wave equation
+def analytical_solution(x, y, t, c=1.0):
+    omega = np.pi * c * np.sqrt(2)
+    return np.cos(omega * t) * np.sin(np.pi * x) * np.sin(np.pi * y)
 
 # Define the wave equation residual
 # Equation 23.4 in the paper
-def wave_equation_residual(model, x, y, t, device, c=2.0):
+def wave_equation_residual(model, x, y, t, device, c=1.0):
     xyt = torch.cat([x, y, t], dim=1).to(device)
     xyt.requires_grad_(True)
     u = model(xyt)
@@ -21,7 +27,7 @@ def wave_equation_residual(model, x, y, t, device, c=2.0):
     laplacian_u = laplacian_u[:, 0:1] + laplacian_u[:, 1:2]  # d^2u/dx^2 + d^2u/dy^2
 
     residual = u_tt - c ** 2 * laplacian_u  # Equivalent to equation 23.4
-    return residual ** 2
+    return torch.mean(residual ** 2)
 
 
 def initial_condition_loss(model, x_init, y_init, device):
@@ -42,29 +48,23 @@ def initial_condition_loss(model, x_init, y_init, device):
     # Initial velocity is 0 in this example
     loss_disp = torch.mean((u0_pred - u0_true.to(device)) ** 2)
     loss_vel = torch.mean((u0_t - 0.0) ** 2)
-    return loss_disp + loss_vel
+    return torch.mean(loss_disp + loss_vel)
 
 
 def boundary_condition_loss(model, t_bc, device):
-    # x or y are at the boundary values
-    x_min = -10.0
-    x_max =  10.0
-    y_min = -10.0
-    y_max =  10.0
-
     n_samples = len(t_bc)
 
     # Fix x at boundaries
-    x_left = torch.full((n_samples, 1), x_min)
-    x_right = torch.full((n_samples, 1), x_max)
-    y_rand = torch.FloatTensor(n_samples, 1).uniform_(y_min, y_max)
+    x_left = torch.full((n_samples, 1), boundaries.X_MIN)
+    x_right = torch.full((n_samples, 1), boundaries.X_MAX)
+    y_rand = torch.FloatTensor(n_samples, 1).uniform_(boundaries.Y_MIN, boundaries.Y_MAX)
     xyt_left = torch.cat([x_left, y_rand, t_bc], dim=1).to(device)
     xyt_right = torch.cat([x_right, y_rand, t_bc], dim=1).to(device)
 
     # Fix y at boundaries
-    x_rand = torch.FloatTensor(n_samples, 1).uniform_(x_min, x_max)
-    y_bottom = torch.full((n_samples, 1), y_min)
-    y_top = torch.full((n_samples, 1), y_max)
+    x_rand = torch.FloatTensor(n_samples, 1).uniform_(boundaries.X_MIN, boundaries.X_MAX)
+    y_bottom = torch.full((n_samples, 1), boundaries.Y_MIN)
+    y_top = torch.full((n_samples, 1), boundaries.Y_MAX)
     xyt_bottom = torch.cat([x_rand, y_bottom, t_bc], dim=1).to(device)
     xyt_top = torch.cat([x_rand, y_top, t_bc], dim=1).to(device)
 
@@ -81,4 +81,4 @@ def total_loss(model, x, y, t, device):
     bc_loss = boundary_condition_loss(model, t, device)
 
     # You can weight them if needed
-    return residual + ic_loss + bc_loss
+    return 0.8 * residual + 0.1 * ic_loss + 0.1 * bc_loss

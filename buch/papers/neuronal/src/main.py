@@ -1,4 +1,5 @@
 import os
+import boundaries
 from WaveNet import WaveNet
 from Graphics import *
 matplotlib.use('TkAgg')
@@ -17,21 +18,21 @@ else:
     # Generate training & testing points
     # Uniformly generated in the x-y-t coordinate system
     n_train_samples = 10000
-    x_train = torch.FloatTensor(n_train_samples, 1).uniform_(-10, 10)
-    y_train = torch.FloatTensor(n_train_samples, 1).uniform_(-10, 10)
-    t_train = torch.FloatTensor(n_train_samples, 1).uniform_(0, 10)
+    x_train = torch.FloatTensor(n_train_samples, 1).uniform_(boundaries.X_MIN, boundaries.X_MAX)
+    y_train = torch.FloatTensor(n_train_samples, 1).uniform_(boundaries.Y_MIN, boundaries.Y_MAX)
+    t_train = torch.FloatTensor(n_train_samples, 1).uniform_(boundaries.T_MIN, boundaries.T_MAX)
 
     n_test_samples = 1000
     x_test = torch.FloatTensor(n_test_samples, 1).uniform_(-104, -100)
     y_test = torch.FloatTensor(n_test_samples, 1).uniform_(-104, -100)
     t_test = torch.FloatTensor(n_test_samples, 1).uniform_(0, 5)
 
-    train_error, test_error = model.fit(x_train, y_train, t_train, x_test, y_test, t_test, device, 200)
+    train_error, test_error = model.fit(x_train, y_train, t_train, x_test, y_test, t_test, device, n_epochs=200)
     torch.save(model.state_dict(), "wavenet.pth")
     print("\nModel saved to 'wavenet.pth'\n")
 
     error_plot(train_error, test_error)
 
-# Plots
-#plot_solution(model, device, t_fixed=0.5)
-animate_solution(model, device)
+# Animation
+#animate_neural_network(model, device)
+animate_comparison(model, device)
