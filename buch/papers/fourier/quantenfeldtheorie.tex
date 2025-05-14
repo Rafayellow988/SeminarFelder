@@ -30,7 +30,7 @@ Im Folgenden ein geschichtlicher Exkurs, wie es dazu kam.
 	Zum Glück liess sich Planck davon nicht abhalten.
 	1897 wurde er Professor für Physik und beschäftigte sich mit einem dieser ungelösten Probleme, der Schwarzkörperstrahlung, auch bekannt als die Ultraviolette katastrophe. 
 	UV Strahlung umfasst den Wellenbereich von 10 nm bis 400 nm. 
-	In der Abbildung \ref{fourier:fig:strahlungsspektren} befindet sich dieser Bereich auf der linken Seite.
+	In der Abbildung~\ref{fourier:fig:strahlungsspektren} befindet sich dieser Bereich auf der linken Seite.
 	Nach dem Rayleigh-Jeans-Gesetz steigt die abgegebene Strahlung eines Körpers mit der Frequenz immer weiter an. 
 	Bei tiefen Frequenzen stimmt das, aber im ultravioletten Bereich versagt die Theorie komplett. 
 	Sie sagt gigantische Energien voraus, während in Wirklichkeit kaum noch Strahlung messbar ist.
@@ -132,7 +132,7 @@ Im Folgenden ein geschichtlicher Exkurs, wie es dazu kam.
 	Sie bildet die Grundlage der Quantenmechanik. Die Lösung dieser Gleichung ist die Wellenfunktion \( \psi(x, t) \). Sie liefert keine feste Bahn, sondern eine Wahrscheinlichkeitsverteilung für den Aufenthaltsort eines Teilchens.  
 	Die eindimensionale zeitabhängige Schrödinger-Gleichung lautet:
 	
-	\begin{equation}
+	\begin{equation}\label{fourier:equation:zeitabhaengigeSchroedingerGleichung}
 		i \hbar \frac{\partial \psi(x,t)}{\partial t} = -\frac{\hbar^2}{2m} \frac{\partial^2 \psi(x,t)}{\partial x^2} + V(x) \psi(x,t)
 	\end{equation}
 	
@@ -328,8 +328,11 @@ Würde man das $\tfrac{1}{2}$ in der Formel weglassen, erhielte man eine vereinf
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % todo knma: Ergänzungen anbringen
 
-\subsubsection{Hamilton-Operator\label{fourier:subsubsection:hamiltonOperator}}
-H, Schrödinger-Gleichung, Eigenwerte sind Energie % todo
+\subsubsection{Hamilton-Operator und Schrödinger-Gleichung%
+\label{fourier:subsubsection:hamiltonOperatorUndSchroedinger}} 
+In diesem Abschnitt werden der Hamilton-Operator \( \hat{H} \) und die \dots Schrödinger-Gleichung als allgemeingültige Fakten vorgestellt.
+Die Eigenwerte dieser Gleichung entsprechen den Energie-Niveaus des Systems. % todo: Diese Einleitung überarbeiten.
+
 % todo-: Hamilton-Operator (subsection): -H, Schrödingergl., Eigenwerte sind Energie
 
 % TODO
@@ -344,15 +347,47 @@ H, Schrödinger-Gleichung, Eigenwerte sind Energie % todo
 % Er muss ihn nur akzeptieren.
 % Erst in 18.4.4 muss er dann wieder verstehen, wie sie diese Vertauschungsrelationen für a und a^+ bekommen.
 % Er liest also 18.4.3 und 18.4.4 mit einem anderen "Mindset".
-
-\subsection{Beweis des Photons\label{fourier:subsection:beweisPhoton}} % todo-: Besserer Titel
-In diesem Abschnitt verwenden wir die bisher eingeführten Grundlagen der Quantenmechanik, um zu zeigen, dass Licht nicht kontinuierlich, sondern in kleinsten Energiepaketen, sogenannten Photonen, übertragen wird.
-
-Wir starten mit der klassischen Hamilton-Funktion, die die Gesamtenergie eines Systems beschreibt:
+Die klassische Hamilton-Funktion
 \begin{equation}
-	H(x, p) = T(p) + V(x),
+	H(x, p) = T(p) + V(x) = \frac{p^2}{2m} + V(x),
 \end{equation}
-wo $T(p)$ die kinetische Energie und $V(x)$ die potenzielle Energie des Teilchens darstellen.
+beschreibt die Gesamtenergie eines Systems.
+Hierbei stellt $T(p)$ die kinetische Energie und $V(x)$ die potenzielle Energie des Teilchens dar.
+
+
+%%% todo knma: here: Dieser Abschnitt ist in Überarbeitung
+In der Quantenmechanik gelingt der Übergang von der klassischen Hamilton-Funktion zum Hamilton-Operator $\hat H$ durch das sogenannte Korrespondenzprinzip beziehungsweise kanonische Quantisierung.
+Die wesentlichen Schritte sind:
+\begin{itemize}
+\item Grössen werden zu Operatoren übergeführt % todo: evtl. andere Wortwahl
+\begin{equation}
+	x \longmapsto \hat{x}, \qquad p \longmapsto \hat{p}
+\end{equation}
+wobei man in der Ortsdarstellung
+\begin{equation}
+	\hat{x} = x, \hat{p} = -i \hbar \frac{d}{dx}
+\end{equation}
+nimmt.
+\item Vertauschungsrelation
+Die kanonischen Poisson-Klammern $\{x, p\} = 1$ werden ersetzt durch die Kommutatoren
+\begin{equation}
+	[\hat{x}, \hat{p}] = i \hbar.
+\end{equation}
+Damit ist sichergestellt, dass $\hat{x}$ und $\hat{p}$ die ``richtige'' nichtkommutative Struktur besitzen.
+%%%
+
+\end{itemize}
+Der Hamilton-Operator
+\begin{equation}\label{fourier:equation:hamiltonOperator}
+ 	\hat{H} = \frac{\hat p^2}{2m} + V(\hat{x})
+    \quad\longrightarrow\quad
+    \hat{H} = -\frac{\hbar^2}{2m}\,\frac{\mathrm{d}^2}{\mathrm{d}x^2} + V(x)
+\end{equation}
+ist in der Quantenmechanik der Operator, der die gesamte Energie eines Systems (kinetische plus potentielle Energie) darstellt.
+Er taucht in beiden Formen der Schrödinger-Gleichung auf und verbindet damit die energetische Beschreibung des Systems mit seiner zeitlichen Entwicklung.
+% todo: impulsoperator erklären.
+
+In Gleichung~\ref{fourier:equation:zeitabhaengigeSchroedingerGleichung} wurde bereits die zeitabhängige Schrödinger-Gleichung präsentiert. % todo: mal nur platziert wegen Referenz
 
 %%% maybe todo: add some stuff of book quantum mechanics to glue things together
 
@@ -385,6 +420,8 @@ Die Vertauschungsrelation kann als
 \end{equation}
 geschrieben werden.
 
+\subsection{Beweis des Photons\label{fourier:subsection:beweisPhoton}} % todo-: Besserer Titel; unpassende Wortwahl
+In diesem Abschnitt verwenden wir die bisher eingeführten Grundlagen der Quantenmechanik, um zu zeigen, dass Licht nicht kontinuierlich, sondern in kleinsten Energiepaketen, sogenannten Photonen, übertragen wird.
 
 %%%%%%%%%%%%%%%%%%%%% dieser Abschnitt nötig/ an anderem Ort einfügen
 % todo knma: Abschnitt evtl. weg oder an anderem Ort? War in seinen Notizen.
