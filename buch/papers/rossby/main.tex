@@ -6,62 +6,25 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\chapter{Thema\label{chapter:rossby}}
-\kopflinks{Thema}
+\chapter{Rossby Wellen\label{chapter:rossby}}
+\kopflinks{Rossby Wellen}
 \begin{refsection}
 \chapterauthor{Michael Schmid}
 
-\section{Einleitung}
-Das Verständnis großskaliger atmosphärischer Muster ist ein zentrales Thema der Meteorologie. In dieser Arbeit wird das Konzept der Rossby-Wellen behandelt, wobei der Fokus auf den physikalischen Grundlagen liegt. Als Ingenieurstudent wird ein intuitiver Zugang gewählt, der auf komplizierte mathematische Formalismen weitgehend verzichtet.
+\subparagraph{Die Vortizitätsgleichung}
+\begin{equation}
+  \zeta = \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y}
+\end{equation}
 
-\section{Grundlagen: Atmosphäre und Rotation}
+\includegraphics[]{papers/rossby/images/vorticity_plot0.pdf}
 
-\subsection{Die rotierende Erde}
-Die Rotation der Erde beeinflusst Bewegungen in der Atmosphäre maßgeblich über die Corioliskraft, die bewegte Luftmassen ablenkt. In der \textit{f-Ebenen-Approximation} wird zunächst ein konstantes Coriolisparameter \( f \) angenommen.
+\includegraphics[]{papers/rossby/images/vorticity_plot1.pdf}
 
-\subsection{Vortizität und Zirkulation}
-Die Vortizität beschreibt die lokale Drehung eines Luftpakets, während die Zirkulation die Rotation entlang eines geschlossenen Weges misst. Beide Konzepte sind wesentlich für das Verständnis der atmosphärischen Dynamik.
+\includegraphics[]{papers/rossby/images/vorticity_plot2.pdf}
 
-\section{Erhaltungsgesetze}
+\includegraphics[]{papers/rossby/images/vorticity_plot3.pdf}
 
-\subsection{Erhaltung der absoluten Vortizität}
-Für Luftpakete, die sich langsam auf einer rotierenden Erde bewegen, bleibt die absolute Vortizität (Summe aus relativer und planetarer Vortizität) nahezu erhalten.
-
-\subsection{Der Beta-Effekt}
-Da das Coriolisparameter \( f \) mit der geographischen Breite variiert, erleben kleine Nord-Süd-Verschiebungen Änderungen in \( f \). Dies wird durch den \(\beta\)-Parameter beschrieben:
-\[
-\beta = \frac{df}{dy}.
-\]
-
-\section{Rossby-Wellen: Physikalische Idee}
-Bei einer meridionalen Verschiebung eines Luftpakets verändert sich seine planetare Vortizität, was zu einer rücktreibenden Kraft führt. Dies resultiert in oszillatorischen Bewegungen, die sich als großskalige, westwärts wandernde Rossby-Wellen äußern. Längere Wellen bewegen sich dabei schneller als kürzere.
-
-\section{Herleitung der Rossby-Wellen}
-
-\subsection{Quasigeostrophisches Gleichgewicht}
-In großskaligen Strömungen der Atmosphäre stehen Druckgradientenkraft und Corioliskraft im Gleichgewicht (geostrophisches Gleichgewicht). Kleine Störungen entwickeln sich dabei langsam.
-
-\subsection{Vortizitätsgleichung}
-Aus der Erhaltung der absoluten Vortizität und unter Annahme kleiner Störungen ergibt sich eine linearisierte Gleichung, die das Verhalten der Störung beschreibt.
-
-\subsection{Dispersionsrelation}
-Für wellenartige Lösungen der Form \( e^{i(kx + ly - \omega t)} \) ergibt sich die Dispersionsrelation der Rossby-Wellen:
-\[
-\omega = -\beta \frac{k}{k^2 + l^2}.
-\]
-Diese Relation zeigt, dass Rossby-Wellen westwärts wandern und ihre Ausbreitungsgeschwindigkeit von der Wellenlänge abhängt.
-
-\section{Bedeutung in der Meteorologie}
-
-\subsection{Wetterphänomene}
-Rossby-Wellen prägen die Position und Struktur des Jetstreams und beeinflussen die Verlagerung von Hoch- und Tiefdruckgebieten.
-
-\subsection{Blockierende Wetterlagen}
-Unter bestimmten Bedingungen können Rossby-Wellen stationär werden und damit langanhaltende Wetterlagen wie Hitzewellen oder Dauerregen verursachen.
-
-\section{Fazit}
-Rossby-Wellen entstehen aus dem Zusammenspiel der Erddrehung und der Erhaltung der Vortizität. Sie sind entscheidend für das Verständnis der großräumigen atmosphärischen Dynamik und für die Wettervorhersage.
-
+\includegraphics[]{papers/rossby/images/vorticity_plot4.pdf}
 
 \printbibliography[heading=subbibliography]
 \end{refsection}
