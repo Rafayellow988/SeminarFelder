@@ -1,4 +1,4 @@
-include papers/4d/Makefile.inc
+include papers/maxwell/Makefile.inc
 include papers/elastomechanik/Makefile.inc
 include papers/geoalgebra/Makefile.inc
 include papers/diffortho/Makefile.inc
@@ -21,7 +21,7 @@ include papers/ueberschall/Makefile.inc
 include papers/wirbelringe/Makefile.inc
 
 TEXFILES = \
-	$(dependencies-4d) \
+	$(dependencies-maxwell) \
 	$(dependencies-elastomechanik) \
 	$(dependencies-geoalgebra) \
 	$(dependencies-diffortho) \
