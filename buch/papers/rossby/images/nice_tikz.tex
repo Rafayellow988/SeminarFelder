@@ -1,0 +1,62 @@
+\documentclass[border=3pt]{standalone}
+
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+
+\begin{document}
+
+% Axis view angles
+\tdplotsetmaincoords{70}{110}
+
+% Parameters
+\pgfmathsetmacro{\rvec}{8}
+\pgfmathsetmacro{\thetavec}{40}
+\pgfmathsetmacro{\phivec}{45}
+\pgfmathsetmacro{\dthetavec}{20}
+\pgfmathsetmacro{\dphivec}{20}
+\pgfmathsetmacro{\numLines}{6}  % Number of lines per half-sphere
+\pgfsetlayers{main}
+
+\begin{tikzpicture}[tdplot_main_coords]
+
+% Origin and points on spherical shell
+\coordinate (O) at (0,0,0);
+\tdplotsetcoord{A}{\rvec}{\thetavec}{\phivec}
+\tdplotsetcoord{B}{\rvec}{\thetavec + \dthetavec}{\phivec}
+\tdplotsetcoord{C}{\rvec}{\thetavec + \dthetavec}{\phivec + \dphivec}
+\tdplotsetcoord{D}{\rvec}{\thetavec}{\phivec + \dphivec}
+
+% Axes
+\draw[thick,-latex] (O) -- (7,0,0) node[pos=1.1]{$x$};
+\draw[thick,-latex] (O) -- (0,7,0) node[pos=1.05]{$y$};
+\draw[thick,-latex] (O) -- (0,0,6) node[pos=1.05]{$z$};
+
+% Edges
+\draw (O) -- (A);
+\draw (O) -- (B);
+\draw (O) -- (C);
+\draw[dashed] (O) -- (D);
+
+% Arcs
+% \tdplotsetrotatedcoords{\alphaRot}{\betaRot}{\gammaRot}
+% \pgfmathsetmacro{\arclenFront}{\dthetavec / 2}
+% \tdplotdrawarc[tdplot_rotated_coords, thick]{(O)}{\rvec}{0}{\arclenFront}{}{}
+\tdplotsetrotatedcoords{40}{-40}{8}
+\tdplotdrawarc[tdplot_rotated_coords, thick]{(O)}{\rvec}{0}{\dphivec}{}{}
+
+
+
+\tdplotsetthetaplanecoords{\phivec}
+\tdplotdrawarc[tdplot_rotated_coords, thick]{(O)}{\rvec}{\thetavec}{\thetavec + \dthetavec}{}{}
+
+\tdplotsetthetaplanecoords{\phivec + \dphivec}
+\tdplotdrawarc[tdplot_rotated_coords, thick]{(O)}{\rvec}{\thetavec}{\thetavec + \dthetavec}{}{}
+
+% Shaded curved surface
+% \fill[black!50, opacity=0.5] (A) to[bend left=2] (D) to[bend left=6] (C) to[bend right=2.5] (B) to[bend right=4] cycle;
+
+
+
+\end{tikzpicture}
+
+\end{document}

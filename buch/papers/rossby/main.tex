@@ -26,5 +26,32 @@
 
 \includegraphics[]{papers/rossby/images/vorticity_plot4.pdf}
 
+
+\tdplotsetmaincoords{70}{120}
+\usepackage{tikz-3dplot}
+\begin{tikzpicture}[tdplot_main_coords, scale=2]
+
+  % Draw sphere
+  \shade[ball color=blue!20, opacity=0.7] (0,0,0) circle (1);
+  
+  % Axes
+  \draw[->] (0,0,0) -- (1.4,0,0) node[anchor=north east]{$x$};
+  \draw[->] (0,0,0) -- (0,1.4,0) node[anchor=north west]{$y$};
+  \draw[->] (0,0,0) -- (0,0,1.4) node[anchor=south]{$z$};
+  
+  % Latitude and Longitude (equator and meridian)
+  \draw[dashed] (0,0,0) circle (1); % equator
+  \tdplotdrawarc[tdplot_rotated_coords]{(0,0,0)}{1}{0}{180}{}{} % prime meridian
+  
+  % Tangent plane
+  \filldraw[gray!40, opacity=0.7] (-0.4,-0.3,1) -- (0.4,-0.3,1) -- (0.4,0.3,1) -- (-0.4,0.3,1) -- cycle;
+  \draw[->, thick] (0,0,1) -- (0,0,1.4) node[anchor=south]{$\vec{\Omega}$};
+  \draw[->, thick] (0,0,1) -- (0.3,0.3,1) node[anchor=west]{$\beta$};
+  
+  % Label
+  \node at (0.6,0.6,1.05) {tangent $\beta$-plane};
+  
+  \end{tikzpicture}
+
 \printbibliography[heading=subbibliography]
 \end{refsection}
