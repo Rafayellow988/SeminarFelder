@@ -11,16 +11,15 @@
 \kopfrechts{Herleitung der Methode}
 
 Im Folgenden wird die Methode zum Lösen von Feldgleichungen mittels eines neuronalen Netzes theoretisch hergeleitet.
-Dies wird anhand des Beispiels der Wellengleichung in zwei räumlichen Dimensionen im Bereich \( x, y \in [-10,10], t \in [0,10] \) gemacht
+Dies wird anhand des Beispiels der Wellengleichung in zwei räumlichen Dimensionen gemacht.
+Die Gleichung ist
 \begin{equation}
     \frac{\partial^2 u}{\partial t^2} = c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right).
     \label{neuronal:wellengleichung}
 \end{equation}
-
-Wobei \( u(x, y, t) \) die z-Koordinate am Punkt \( (x, y) \) zum Zeitpunkt \( t \) darstellt. 
-Zudem ist \( c \in \mathbb{R} \) eine Konstante und stellt die Verbreitungsgeschwindigkeit der Welle dar.
-
-Zusätzlich werden die folgenden Initialbedingungen
+Die Lösung \( u(x, y, t) \) dieser Gleichung, stellt die Höhe einer Welle am Punkt \( (x, y) \) zum Zeitpunkt \( t \) dar.
+Die Konstante \( c \in \mathbb{R} \) ist die Verbreitungsgeschwindigkeit der Welle.
+Zusätzlich werden die folgenden Anfangsbedingungen
 \begin{equation}
     \begin{aligned}
         u(x, y, 0) &= \sin(\pi x) \sin(\pi y)\\
@@ -39,7 +38,8 @@ und die Randbedingungen
     \label{neuronal:rand}
 \end{equation}
 verwendet.
-Weiter ist das neuronale Netzwerk gegeben als
+Die verwendeten Bereiche sind \( x, y \in [-10,10], t \in [0,10] \).
+Weiter ist das neuronale Netzwerk gegeben als Funktion
 \begin{equation}
     \hat{u}(x, y, t; \vartheta).
     \label{neuronal:nn}
@@ -50,53 +50,65 @@ Das Ziel des Trainings eines neuronalen Netzes ist es, diese Parameter so zu wä
 
 
 \subsection{Formulierung als Optimierungsproblem}\label{neuronal:subsection:optimierungsproblem}
-Durch Subtrahieren der rechten Seite von der Wellengleichung \eqref{neuronal:wellengleichung}, anschliessendem substituieren des neuronalen Netzes \eqref{neuronal:nn} für \( u \) und anschliessendem Quadrieren, erhält man
-\begin{equation}
-    \left(\frac{\partial^2 \hat{u}}{\partial t^2} - c^2 \left( \frac{\partial^2 \hat{u}}{\partial x^2} + \frac{\partial^2 \hat{u}}{\partial y^2} \right)\right)^2 = 0.
-\end{equation}
+Das Training eines neuronalen Netzwerks ist im Wesentlichen ein Optimierungsproblem.
+Die Idee dabei ist, dass man eine Funktion \( L(x, y, t, \vartheta) \) -- durch die Wahl eines geeigneten \( \vartheta \) -- minimiert.
 
-Macht man das gleiche mit den Initial- und Randbedingungen, erhält man
+\( L \) wird aus der Wellengleichung und den Bedingungen aufgebaut. Dazu müssen diese zunächst etwas umgeformt werden.
+Subtrahiert man die rechte Seite von der Wellengleichung \eqref{neuronal:wellengleichung} und quadriert anschliessend, erhält man
+\begin{equation}
+    \left(\frac{\partial^2 u}{\partial t^2} - c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right)\right)^2 = 0.
+    \label{neuronal:wellengleichung_umformuliert}
+\end{equation}
+Macht man das gleiche mit den Anfangs- und Randbedingungen, erhält man
 \begin{equation}
     \begin{aligned}
-        \left(\sin(\pi x) \sin(\pi y) - \hat{u}(x, y, 0)\right)^2 = 0\\
-        \left(\frac{\partial \hat{u}(x, y, 0)}{\partial t}\right)^2 = 0
+        \left(\sin(\pi x) \sin(\pi y) - u(x, y, 0)\right)^2 = 0\\
+        \left(\frac{\partial u(x, y, 0)}{\partial t}\right)^2 = 0
     \end{aligned}
+    \label{neuronal:anfangsbedingung_umformuliert}
 \end{equation}
 und
 \begin{equation}
     \begin{aligned}
-        \left(\hat{u}(-10, y, t)\right)^2 = 0\\
-        \left(\hat{u}(10, y, t)\right)^2 = 0\\
-        \left(\hat{u}(x, -10, t)\right)^2 = 0\\
-        \left(\hat{u}(x, 10, t)\right)^2 = 0.
+        \left(u(-10, y, t)\right)^2 &= 0\\
+        \left(u(10, y, t)\right)^2 &= 0\\
+        \left(u(x, -10, t)\right)^2 &= 0\\
+        \left(u(x, 10, t)\right)^2 &= 0.
     \end{aligned}
+    \label{neuronal:randbedingung_umformuliert}
 \end{equation}
 
-Durch das Quadrieren wird erreicht, dass die Terme für alle \( x, y, t \) immer positiv sind.
-Somit sind Minima der Terme tiefstens 0 und nicht beliebig klein.
-Das Training des neuronalen Netzwerks \( \hat{u} \) lässt sich nun als Optimierungsproblem ausdrücken:
-
-\begin{tcolorbox}[colback=gray!10, colframe=black, boxrule=0.5pt]
-Wähle die Parameter \( \vartheta \) des Netzwerks so, dass die obigen Terme für die Wellengleichung und deren Bedingungen minimal (d.h. möglichst nahe bei 0) werden.
-\end{tcolorbox}
-
-Um all diese Terme gleichzeitig zu minimieren, werden diese addiert. So bleibt nur ein einziger Term \( L(x, y, t, \vartheta) \) der schlussendlich minimiert werden soll
+Addiert man nun die linken Seiten all dieser Gleichungen und substituiert das Netzwerk \( \hat{u} \) für \( u \), kann man damit \( L \) als
 \begin{equation}
     \begin{aligned}
-        L(x, y, t, \vartheta) &= \left(\frac{\partial^2 \hat{u}}{\partial t^2} - c^2 \left( \frac{\partial^2 \hat{u}}{\partial x^2} + \frac{\partial^2 \hat{u}}{\partial y^2} \right)\right)^2\\
+        L(x, y, t, \vartheta) = &\left(\frac{\partial^2 \hat{u}}{\partial t^2} - c^2 \left( \frac{\partial^2 \hat{u}}{\partial x^2} + \frac{\partial^2 \hat{u}}{\partial y^2} \right)\right)^2\\
         &+ \left(\sin(\pi x) \sin(\pi y) - \hat{u}(x, y, 0)\right)^2
         + \left(\frac{\partial \hat{u}(x, y, 0)}{\partial t}\right)^2\\
         &+ \left(\hat{u}(-10, y, t)\right)^2
         + \left(\hat{u}(10, y, t)\right)^2
         + \left(\hat{u}(x, -10, t)\right)^2
-        + \left(\hat{u}(x, 10, t)\right)^2.
+        + \left(\hat{u}(x, 10, t)\right)^2
     \end{aligned}
     \label{neuronal:optimierung}
 \end{equation}
+definieren.
+Für jeden quadrierten Term in \( L \) gilt:
+\begin{itemize}
+    \item Je genauer die Approximation des Netzwerks, desto näher bei 0 ist der Term
+    \item Ist das Netzwerk perfekt (also \( \hat{u} = u \)) ist der Term gleich 0
+\end{itemize}
+Somit gilt, je näher \( L \) bei 0 ist, desto besser ist die Approximation des Netzwerks.
 
-Zu beachten ist, dass \( L \) für alle \( x, y, t \) minimal bzw. möglichst nahe bei 0 sein soll.
-D.h. \( L \) soll nur in \( \vartheta \) minimiert werden.
-Wie man dies erreicht, wird im Kapitel \ref{neuronal:subsection:training_nn} beschrieben.
+Durch das Quadrieren in den Gleichungen \eqref{neuronal:wellengleichung_umformuliert}, \eqref{neuronal:anfangsbedingung_umformuliert} und \eqref{neuronal:randbedingung_umformuliert}, wird erreicht, dass \( L \) minimal 0 ist.
+D.h. \( L = 0 \) kann durch Minimieren von \( L \) erreicht werden.
+Das Training des neuronalen Netzwerks \( \hat{u} \) lässt sich nun als Optimierungsproblem ausdrücken:
+\begin{aufgabe}
+Wähle die Parameter \( \vartheta \) des Netzwerks so, dass \( L(x, y, t, \vartheta) \) minimal wird.
+\end{aufgabe}
+
+Zu beachten ist, dass \( L \) für alle \( x, y, t \) minimal sein soll.
+D.h. \( L \) soll nur mit \( \vartheta \) minimiert werden.
+Wie man dies erreicht, wird im Abschnitt \ref{neuronal:subsection:training_nn} beschrieben.
 
 \subsection{Struktur des neuronalen Netzes}\label{neuronal:subsection:struktur_nn}
 
@@ -104,42 +116,39 @@ Im vorangegangenen Kapitel wurde nicht weiter auf die Struktur des neuronalen Ne
 Diese wird innerhalb dieses Kapitels entwickelt.
 
 Generell können neuronale Netze als Kompositionen von mehreren Teilfunktionen betrachtet werden.
-Dabei besteht jede Teilfunktion \( f_i \) aus einer Affintransformation, gefolgt von einer nicht-linearen Aktivierungsfunktion \( g_i \)
-
+Dabei besteht jede Teilfunktion \( f_i \) aus einer affinen Transformation, gefolgt von einer nicht-linearen Aktivierungsfunktion \( g_i \)
 \begin{align*}
     f_i\colon \mathbb{R}^q & \longrightarrow\mathbb{R}^p \\[-1ex]
     v & \longmapsto g_i(A_iv + b_i)
 \end{align*}
-
 mit \( v \in \mathbb{R}^q, A_i \in \mathbb{R}^{p \times q}, b_i \in \mathbb{R}^p \). 
 Die Elemente aller \( A_i \) und \( b_i \) bilden den Vektor \( \vartheta \) der \emph{trainierbaren Parameter}.
 
-Weiter ist die Aktivierungsfunktion \( g_i\colon \mathbb{R} \longrightarrow\mathbb{R} \), da das Resultat der Affintransformation ein Vektor ist, wird \( g_i \) einzeln auf jeden Vektor-Komponenten angewendet.
-Für \( g_i \) gibt es viele verschiedene Möglichkeiten, eine häufig verwendete Aktivierungsfunktion ist die hyperbolische Tangens \( \tanh() \).
+Weiter ist die Aktivierungsfunktion \( g_i\colon \mathbb{R} \longrightarrow\mathbb{R} \), da das Resultat der affinen Transformation ein Vektor ist, wird \( g_i \) einzeln auf jeden Vektor-Komponenten angewendet.
+Für \( g_i \) gibt es viele verschiedene Möglichkeiten, eine häufig verwendete Aktivierungsfunktion ist der hyperbolische Tangens.
 
 Das gesamte neuronale Netzwerk ist somit gegeben als
 \begin{equation}
     \hat{u}(x, y, t; \vartheta) = f_k(\ldots(f_i(\ldots(f_1(x, y, t))))) = f_k \circ \ldots \circ f_i \ldots \circ f_1(x, y, t).
     \label{neuronal:nn_ausformuliert}
 \end{equation}
+Die Definitions- und Wertebereiche der Teilfunktionen \( f_i \) sind mehr oder weniger frei wählbar.
+Damit es mit den Dimensionen aufgeht, muss jeweils der Wertebereich von \( f_i \) gleich dem Definitionsbereich von \( f_{i+1} \) sein.
+Ebenfalls ist man relativ frei in der Wahl der Anzahl Teilfunktionen.
 
-Die Domänen und Bereiche der Teilfunktionen \( f_i \) sind mehr oder weniger frei wählbar.
-Damit es mit den Dimensionen aufgeht, muss jeweils der Bereich von \( f_i \) gleich der Domäne von \( f_{i+1} \) sein.
-Ebenfalls ist man relativ frei in der Wahl der Anzahl Teilfunktion.
-
-Die einzigen strikten Vorgaben sind die Domäne der ersten Teilfunktion \( f_1 \) und der Bereich der letzten Teilfunktion \( f_k \).
-Da das Netzwerk die Wellenfunktion
+Die einzigen strikten Vorgaben sind der Definitionsbereich der ersten Teilfunktion \( f_1 \) und der Wertebereich der letzten Teilfunktion \( f_k \).
+Diese müssen \( \mathbb{R}^3 \) bzw. \( \mathbb{R} \) sein, damit das Netzwerk die gleichen Bereiche wie die Wellenfunktion
 \begin{align*}
     u\colon \mathbb{R}^3 & \longrightarrow\mathbb{R}
 \end{align*}
-
-in zwei räumlichen und der zeitlichen Dimension approximieren soll, muss die Domäne von \( f_1, \mathbb{R}^3\) sein und der Bereich von \( f_k, \mathbb{R}\).
+in zwei räumlichen und der zeitlichen Dimension hat.
 
 Je mehr Teilfunktionen und Anzahl Dimensionen in den Teilfunktionen, desto mehr trainierbare Parameter besitzt das Modell.
 Auf die Frage nach der Anzahl Parameter gibt es keine ``richtige'' Antwort.
 Als Faustregel gilt: Je komplizierter die Funktion die approximiert wird, desto mehr Parameter werden benötigt.
+Je nach Funktion die approximiert wird, werden sehr schnell sehr viele Parameter benötigt.
 
-Die konkrete Struktur vom neuronalen Netzwerk für die Lösung der Wellengleichung wird im Kapitel \ref{neuronal:section:rechenbeispiel} beschrieben.
+Die konkrete Struktur vom neuronalen Netzwerk für die Lösung der Wellengleichung wird im Abschnitt \ref{neuronal:section:rechenbeispiel} beschrieben.
 
 
 \subsection{Training des neuronalen Netzes}\label{neuronal:subsection:training_nn}
@@ -150,19 +159,19 @@ Dies wird als Training des Netzes bezeichnet.
 Wie im Kapitel \ref{neuronal:subsection:optimierungsproblem} beschrieben, soll das Netz, bzw. die gewählten Parameter, \( L(x, y, t, \vartheta) \) \eqref{neuronal:optimierung} minimieren.
 Hierzu werden drei Dinge benötigt:
 \begin{itemize}
-    \item Ein Trainings-Datensatz an x-, y- und t-Werten
-    \item Eine Loss-Funktion
-    \item Einen Optimierungsalgorithmus
+    \item Ein Trainings-Datensatz an \( x \)-, \( y \)- und \( t \)-Werten
+    \item Eine Fehlerfunktion
+    \item Einen Optimierungsalgorithmus.
 \end{itemize}
 
 \paragraph{Trainings-Datensatz}
 
 Aktuell hängt \( L(x, y, t, \vartheta) \) sowohl von den Parametern des Netzes \( \vartheta \), als auch den drei Variablen \( x, y, t \) ab.
-Wie bereits erwähnt, soll aber nicht in den drei Variablen minimiert werden, sondern in \( \vartheta \).
+Wie bereits erwähnt, soll aber nicht durch Veränderung der drei Variablen minimiert werden, sondern mit \( \vartheta \).
 Daher müssen die Variablen durch konkrete Werte ersetzt werden.
 
-Dies wird mit einem Trainings-Datensatz gemacht, welcher aus x-, y- und t-Werten besteht, für die die Wellengleichung und deren Bedingungen erfüllt sind.
-Gem. Kapitel \ref{neuronal:section:herleitung} sollen x und y in [-10,10] sein und t in [0,10].
+Dies wird mit einem Trainings-Datensatz gemacht, welcher aus \( x \)-, \( y \)- und \( t \)-Werten besteht, für die die Wellengleichung und deren Bedingungen erfüllt sind.
+Gemäss Abschnitt \ref{neuronal:section:herleitung} sollen \( x \) und \( y \) in \( [-10,10] \) sein und \( t \) in \( [0,10] \).
 Innerhalb dieser Bereiche werden gleichverteilte, reelle Zahlen generiert.
 Somit ist der Datensatz
 \begin{center}
@@ -174,44 +183,49 @@ Somit ist der Datensatz
 Die Anzahl Datenpunkte hängt davon ab, wieviele Parameter das neuronale Netzwerk besitzt.
 Je mehr Parameter, desto mehr Datenpunkte werden benötigt.
 
-Wie viele Datenpunkte konkret für die Lösung der Wellengleichung verwendet werden, wird im Kapitel \ref{neuronal:section:rechenbeispiel} beschrieben.
+Wie viele Datenpunkte konkret für die Lösung der Wellengleichung verwendet werden, wird im Abschnitt \ref{neuronal:section:rechenbeispiel} beschrieben.
 
-\paragraph{Loss-Funktion}
+\paragraph{Fehlerfunktion}
 
-Die Loss-Funktion ist die Summe von \( L(x, y, t, \vartheta) \), über alle Datensatz-Werte und hängt somit nur noch von \( \vartheta \) ab.
+Die Fehlerfunktion ist der Mittelwert der Summe von \( L(x, y, t, \vartheta) \), über alle Kombinationen der Datensatz-Werte und hängt somit nur noch von \( \vartheta \) ab.
 Um das Netzwerk zu trainieren, kann nun diese Funktion minimiert werden
 
 \begin{equation}
-    J(\vartheta) = \sum_{i=1}^{k} L(x_i, y_i, t_i, \vartheta).
+    J(\vartheta) = \frac{1}{k^3} \sum_{q=1}^{k} \sum_{r=1}^{k} \sum_{s=1}^{k} L(x_q, y_r, t_s, \vartheta).
     \label{neuronal:loss}
 \end{equation}
-
 Ausgewertet an einem bestimmten \( \vartheta \) liefert sie eine reelle Zahl als Resultat.
-Diese reelle Zahl ist ein Mass dafür, wie gut das neuronale Netzwerk, mit den verwendeten Parametern, die Wellengleichung an den x-, y- und t-Werten aus dem Trainings-Datensatzes approximiert.
-Anders ausgedrückt ist die Loss-Funktion \( J \) ein Mass für den Fehler, den das Netzwerk macht.
+Diese reelle Zahl ist ein Mass dafür, wie gut das neuronale Netzwerk, mit den verwendeten Parametern, die Wellengleichung an den \( x \)-, \( y \)- und \( t \)-Werten aus dem Trainings-Datensatz approximiert.
+Anders ausgedrückt ist die Fehlerfunktion \( J \) ein Mass für den durchschnittlichen Fehler, den das Netzwerk macht.
 
 Durch das Minimieren von \( J \) wird das Netzwerk nur darauf trainiert, die Wellengleichung an den Punkten aus dem Trainings-Datensatz zu lösen.
-Warum das Netzwerk aber trotzdem auch an Datenpunkten funktioniert, welche nicht im Trainings-Datensatz waren, wird im Kapitel \ref{neuronal:subsection:qualität_nn} beschrieben.
+Warum das Netzwerk aber trotzdem auch an Datenpunkten funktioniert, welche nicht im Trainings-Datensatz waren, wird im Abschnitt \ref{neuronal:subsection:qualität_nn} beschrieben.
 
 \paragraph{Optimierungsalgorithmus}
 
-Der Optimierungsalgorithmus hat das Ziel, die Loss-Funktion \( J \) zu minimieren.
-Da \( J \) ein hochdimensionales Hyper-Surface ist, ist es sehr unwahrscheinlich dass man analytisch ein Minimum findet.
+Der Optimierungsalgorithmus hat das Ziel, die Fehlerfunktion \( J \) zu minimieren.
+\( J \) lässt sich aus zwei Gründen nicht analytisch minimieren:
+\begin{enumerate}
+    \item \( J \) hängt von \( \vartheta \in \mathbb{R}^n \). 
+    Es müssten also alle \( n \) partiellen Ableitungen berechnet und nullgesetzt werden. 
+    Da \( n \) eine sehr grosse Zahl ist, lässt sich das resultierende Gleichungssystem kaum lösen.
+    \item Zudem würde das Lösen dieses Gleichungssystem voraussetzen, dass man die Wellengleichung löst.
+\end{enumerate}
 Das bedeutet, dass stattdessen ein numerischer Algorithmus verwendet werden muss.
 
-\begin{tcolorbox}[colback=gray!10, colframe=black, boxrule=0.5pt]
-    Die Schritte die der Algorithmus durchläuft sind:
+\begin{aufgabe}
+    Algorithmus (Gradientabstieg)
     \begin{enumerate}
         \item Initialisiere \( \vartheta_i \) mit Anfangswerten.
         \item \textbf{Loop} von \( i = 1 \) bis \( i = m - 1 \):
-        \begin{enumerate}
-            \item Berechne neue Parameterwerte: \( \vartheta_{i+1} = \vartheta_i - \epsilon \nabla_\vartheta J\left(\vartheta_i\right) \). (Erklärung unten)
-        \end{enumerate}
+        \begin{itemize}
+            \item Berechne neue Parameterwerte: \( \vartheta_{i+1} = \vartheta_i - \varepsilon \nabla_\vartheta J\left(\vartheta_i\right) \). (Erklärung unten)
+        \end{itemize}
         \item Gebe die Parameter \( \vartheta_m \) zurück.
     \end{enumerate}
-\end{tcolorbox}
+\end{aufgabe}
 
-Die Anzahl Schleifendurchläufe bzw. \( m \) wird so gewählt, dass \( J(\vartheta_m) \) genügend nahe bei 0 ist.
+Die Anzahl Schleifendurchläufe \( m \) bzw. das Abbruchskriterium des Algorithmus, wird im Abschnitt \ref{neuronal:subsection:qualität_nn} beschrieben.
 Nach dem letzten Schritt dieses Algorithmus ist das neuronale Netzwerk mit den Parametern \( \vartheta_m \) fertig trainiert.
 
 \textbf{Als abschliessende Notiz:} Im Schritt 2 des Algorithmus werden die Parameterwerte neu berechnet.
@@ -220,7 +234,22 @@ Dies ist das Optimierungsverfahren \emph{Gradient Descent}.
 
 Das funktioniert, da der Gradient von \( J \) ausgewertet an \( \vartheta_i \) ein Vektor ist, der in die Richtung des stärksten Anstiegs auf \( J \), von \(\vartheta_i \) aus, weist.
 Durch das Minus in der Formel geht man in die entgegen gesetzte Richtung, wo es auf \( J \) abwärts geht. 
-Mit \( \epsilon \) wird die ``Schrittgrösse'' gesteuert, um zu verhindern dass man über ein Minimum auf \( J \) ``springt''.
+Mit \( \varepsilon \) wird die ``Schrittgrösse'' gesteuert, um zu verhindern dass man über ein Minimum auf \( J \) ``springt''.
+
+Dieser Algorithmus birgt ein gewisses Risiko. 
+Es gibt keine Garantie dafür dass man damit das globale Minimum von \( J \) findet.
+Da der Algorithmus auf \( J \) mit jedem Schritt ``abwärts'' geht, kann es sein das nur ein lokales Minimum gefunden wird.
+Ist der Algorithmus einmal in der Nähe eines lokalen Minimum, kommt man von dort nicht mehr weg, da man dazu ``aufwärts'' gehen müsste.
+Wenn \( J \) viele lokale Minima besitzt, ist es sogar sehr wahrscheinlich, dass der Algorithmus ein solches findet.
+Dies ist aber nicht unbedingt problematisch.
+Wenn \( J \) am gefundenen lokalen Minimum sehr nahe bei 0 ist, ist der Approximationsfehler des Netzwerks sehr klein.
+Dass nicht das globale Minimum gefunden wurde, spielt keine Rolle, solange der Approximationsfehler in einem akzeptablen Bereich liegt.
+
+Eine weitere Gefahr ist, dass der Gradient an allen Arten von Extrempunkten 0 ist, nicht nur an Minima.
+Wenn der Algorithmus sich genau auf einem Extrempunkt befindet, kommt man von dort nicht mehr weg.
+Jedoch ist es sehr unwahrscheinlich dass dies passiert, denn der Algorithmus müsste sich genau auf dem Extrempunkt befinden.
+Ist dies nicht der Fall und der Algorithmus ist etwas ``neben'' dem Extrempunkt, ist dies bereits kein Problem mehr.
+Denn dort ist der Gradient bereits nicht mehr 0 und da es bei allen Extrempunkten -- ausser Minima -- in mindestens eine Richtung abwärts geht, wird der Algorithmus sich von dort wegbewegen.
 
 
 \subsection{Qualität der Approximation}\label{neuronal:subsection:qualität_nn}
@@ -229,4 +258,5 @@ Mit \( \epsilon \) wird die ``Schrittgrösse'' gesteuert, um zu verhindern dass 
     \item Wie gut ist das Modell?
     \item Wieso funktioniert das Modell auch an Datenpunkten welche nicht im Trainings-Datensatz waren?
     \item Wie bewertet man die Qualität?
+    \item Was ist das Abbruchskriterium bei Gradient Descent?
 \end{itemize}
