@@ -25,14 +25,21 @@
 			height=5cm
 			]
 			\addplot[black, thick] {
-				abs(mod(x+0.5,2) - 1) * (-2) + 1
+				abs(mod(x,2) - 1) * (-2) + 1
 			};
 			
+			%\addplot[red, thick, domain=0:6] {
+			%	(8/pi^2) * (
+			%	sin(deg(pi*x))/1^2
+			%	- sin(deg(3*pi*x))/3^2
+			%	+ sin(deg(5*pi*x))/5^2
+			%	)
+			
 			\addplot[red, thick, domain=0:6] {
-				(8/pi^2) * (
-				sin(deg(pi*x))/1^2
-				- sin(deg(3*pi*x))/3^2
-				+ sin(deg(5*pi*x))/5^2
+				(-8/pi^2) * (
+				  cos(deg(pi*x))/1^2
+				+ cos(deg(3*pi*x))/3^2
+				+ cos(deg(5*pi*x))/5^2
 				)
 			};
 		\end{axis}
