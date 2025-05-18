@@ -2,14 +2,11 @@
 \usepackage{tikz}
 \usepackage{tikz-3dplot}
 
-%--– camera
-\tdplotsetmaincoords{70}{110}
-
 \begin{document}
 
-\tdplotsetmaincoords{60}{110}
+\tdplotsetmaincoords{70}{110}
 %
-\pgfmathsetmacro{\rvec}{.8}
+\pgfmathsetmacro{\rvec}{.5}
 \pgfmathsetmacro{\thetavec}{40}
 \pgfmathsetmacro{\phivec}{60}
 \pgfmathsetmacro{\betar}{0.1}
@@ -17,7 +14,7 @@
 %
 \begin{tikzpicture}[scale=5,tdplot_main_coords]
     \coordinate (O) at (0,0,0);
-    \draw[thick,->] (0,0,0) -- (1,0,0) node[anchor=north east]{$x$};
+    \draw[thick,->] (0,0,0) -- (2,0,0) node[anchor=north east]{$x$};
     \draw[thick,->] (0,0,0) -- (0,1,0) node[anchor=north west]{$y$};
 
     \draw[thick,->] (0,0,0) -- (0,0,1) node[anchor=south]{$z$};
@@ -29,8 +26,28 @@
     \tdplotsetthetaplanecoords{\phivec}
     \tdplotdrawarc[tdplot_rotated_coords]{(0,0,0)}{0.5}{0}%
     {\thetavec}{anchor=south west}{$\theta$}
+
     \draw[dashed,tdplot_rotated_coords] (\rvec,0,0) arc (0:90:\rvec);
-    \draw[dashed] (\rvec,0,0) arc (0:90:\rvec);
+
+    \foreach \phi in {0,10,...,360} {
+        \tdplotsetthetaplanecoords{\phi}
+        \draw[very thin, tdplot_rotated_coords] (\rvec,0,0) arc (0:180:\rvec);
+
+        }
+
+    % \draw[dashed] (\rvec,0,0) arc (0:360:\rvec);
+
+    % \draw[dashed] (\rvec-0.1,0,0.1) arc (0:360:\rvec-0.1);
+    \foreach \theta in {-90,-80,...,90} {
+    % \pgfmathsetmacro{\theta}{10}
+        \pgfmathsetmacro{\rline}{\rvec * cos(\theta)}
+        \pgfmathsetmacro{\zline}{\rvec * sin(\theta)}
+
+        \typeout{rline=\rline}
+        \typeout{zline=\zline}
+        \draw[very thin] (\rline, 0, \zline) arc (0:360:\rline);
+    }
+
     \tdplotsetrotatedcoords{\phivec}{\thetavec}{0}
     \tdplotsetrotatedcoordsorigin{(P)}
     \draw[thick,tdplot_rotated_coords] (-\betar,0,-\betar)
@@ -41,16 +58,7 @@
     -- (\betar,\betar,0);
     \draw[thick,tdplot_rotated_coords] (\betar,0,-\betar)
     -- (\betar,\betar,0);
-    % \draw[thick,tdplot_rotated_coords,->] (0,0,0)
-    % -- (0,0,.5) node[anchor=south]{$z’$};
-    % \draw[-stealth,color=blue,tdplot_rotated_coords] (0,0,0) -- (.2,.2,.2);
-    % \draw[dashed,color=blue,tdplot_rotated_coords] (0,0,0) -- (.2,.2,0);
-    % \draw[dashed,color=blue,tdplot_rotated_coords] (.2,.2,0) -- (.2,.2,.2);
-    % \tdplotdrawarc[tdplot_rotated_coords,color=blue]{(0,0,0)}{0.2}{0}%
-    % {45}{anchor=north west,color=black}{$\phi’$}
-    % \tdplotsetrotatedthetaplanecoords{45}
-    % \tdplotdrawarc[tdplot_rotated_coords,color=blue]{(0,0,0)}{0.2}{0}%
-    %     {55}{anchor=south west,color=black}{$\theta’$}
+
 \end{tikzpicture}
 
 
