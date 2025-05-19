@@ -15,3 +15,93 @@
     \item Aufbau der Netze und Trainings-Datensätze beschreiben
     \item In diesem Kapitel Code beschreiben/dokumentieren
 \end{itemize}
+
+\subsection{Wellengleichung}\label{neuronal:subsection:wellengleichung}
+Die Gleichung ist
+\begin{equation}
+    \frac{\partial^2 u}{\partial t^2} = c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right).
+    \label{neuronal:wellengleichung}
+\end{equation}
+Die Lösung \( u(x, y, t) \) dieser Gleichung, stellt die Höhe einer Welle am Punkt \( (x, y) \) zum Zeitpunkt \( t \) dar.
+Die Konstante \( c \in \mathbb{R} \) ist die Verbreitungsgeschwindigkeit der Welle.
+Zusätzlich werden die folgenden Anfangsbedingungen
+\begin{equation}
+    \begin{aligned}
+        u(x, y, 0) &= \sin(\pi x) \sin(\pi y)\\
+        \frac{\partial u(x, y, 0)}{\partial t} &= 0
+    \end{aligned}
+    \label{neuronal:initial}
+\end{equation}
+und die Randbedingungen
+\begin{equation}
+    \begin{aligned}
+        u(-10, y, t) = 0\\
+        u(10, y, t) = 0\\
+        u(x, -10, t) = 0\\
+        u(x, 10, t) = 0
+    \end{aligned}
+    \label{neuronal:rand}
+\end{equation}
+verwendet.
+Die verwendeten Bereiche sind \( x, y \in [-10,10], t \in [0,10] \).
+
+\( L \) wird aus der Wellengleichung und den Bedingungen aufgebaut. Dazu müssen diese zunächst etwas umgeformt werden.
+Subtrahiert man die rechte Seite von der Wellengleichung \eqref{neuronal:wellengleichung} und quadriert anschliessend, erhält man
+\begin{equation}
+    \left(\frac{\partial^2 u}{\partial t^2} - c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right)\right)^2 = 0.
+    \label{neuronal:wellengleichung_umformuliert}
+\end{equation}
+Macht man das gleiche mit den Anfangs- und Randbedingungen, erhält man
+\begin{equation}
+    \begin{aligned}
+        \left(\sin(\pi x) \sin(\pi y) - u(x, y, 0)\right)^2 = 0\\
+        \left(\frac{\partial u(x, y, 0)}{\partial t}\right)^2 = 0
+    \end{aligned}
+    \label{neuronal:wellen_anfangsbedingung_umformuliert}
+\end{equation}
+und
+\begin{equation}
+    \begin{aligned}
+        \left(u(-10, y, t)\right)^2 &= 0\\
+        \left(u(10, y, t)\right)^2 &= 0\\
+        \left(u(x, -10, t)\right)^2 &= 0\\
+        \left(u(x, 10, t)\right)^2 &= 0.
+    \end{aligned}
+    \label{neuronal:wellen_randbedingung_umformuliert}
+\end{equation}
+
+Addiert man nun die linken Seiten all dieser Gleichungen und substituiert das Netzwerk \( \hat{u} \) für \( u \), kann man damit \( L \) als
+\begin{equation}
+    \begin{aligned}
+        L(x, y, t, \vartheta) = &\left(\frac{\partial^2 \hat{u}}{\partial t^2} - c^2 \left( \frac{\partial^2 \hat{u}}{\partial x^2} + \frac{\partial^2 \hat{u}}{\partial y^2} \right)\right)^2\\
+        &+ \left(\sin(\pi x) \sin(\pi y) - \hat{u}(x, y, 0)\right)^2
+        + \left(\frac{\partial \hat{u}(x, y, 0)}{\partial t}\right)^2\\
+        &+ \left(\hat{u}(-10, y, t)\right)^2
+        + \left(\hat{u}(10, y, t)\right)^2
+        + \left(\hat{u}(x, -10, t)\right)^2
+        + \left(\hat{u}(x, 10, t)\right)^2
+    \end{aligned}
+    \label{neuronal:optimierung}
+\end{equation}
+definieren.
+Für jeden quadrierten Term in \( L \) gilt:
+\begin{itemize}
+    \item Je genauer die Approximation des Netzwerks, desto näher bei 0 ist der Term
+    \item Ist das Netzwerk perfekt (also \( \hat{u} = u \)) ist der Term gleich 0
+\end{itemize}
+Somit gilt, je näher \( L \) bei 0 ist, desto besser ist die Approximation des Netzwerks.
+
+Durch das Quadrieren in den Gleichungen \eqref{neuronal:wellengleichung_umformuliert}, \eqref{neuronal:anfangsbedingung_umformuliert} und \eqref{neuronal:randbedingung_umformuliert}, wird erreicht, dass \( L \) minimal 0 ist.
+D.h. \( L = 0 \) kann durch Minimieren von \( L \) erreicht werden.
+Das Training des neuronalen Netzwerks \( \hat{u} \) lässt sich nun als Optimierungsproblem ausdrücken:
+\begin{aufgabe}
+Wähle die Parameter \( \vartheta \) des Netzwerks so, dass \( L(x, y, t, \vartheta) \) minimal wird.
+\end{aufgabe}
+
+Zu beachten ist, dass \( L \) für alle \( x, y, t \) minimal sein soll.
+D.h. \( L \) soll nur mit \( \vartheta \) minimiert werden.
+Wie man dies erreicht, wird im Abschnitt \ref{neuronal:subsection:training_nn} beschrieben.
+
+
+
+

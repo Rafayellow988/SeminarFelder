@@ -11,83 +11,68 @@
 \kopfrechts{Herleitung der Methode}
 
 Im Folgenden wird die Methode zum Lösen von Feldgleichungen mittels eines neuronalen Netzes theoretisch hergeleitet.
-Dies wird anhand des Beispiels der Wellengleichung in zwei räumlichen Dimensionen gemacht.
-Die Gleichung ist
+Dazu wird zunächst eine generelle Form für Feldgleichungen bzw. partielle Differentialgleichungen benötigt.
+Die Feldgleichung ist
 \begin{equation}
-    \frac{\partial^2 u}{\partial t^2} = c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right).
-    \label{neuronal:wellengleichung}
+\mathcal{D}[\varphi(x, t)] = 0, \quad x \in \Omega, t \in [0,T]
 \end{equation}
-Die Lösung \( u(x, y, t) \) dieser Gleichung, stellt die Höhe einer Welle am Punkt \( (x, y) \) zum Zeitpunkt \( t \) dar.
-Die Konstante \( c \in \mathbb{R} \) ist die Verbreitungsgeschwindigkeit der Welle.
-Zusätzlich werden die folgenden Anfangsbedingungen
+mit der Randbedingung
 \begin{equation}
-    \begin{aligned}
-        u(x, y, 0) &= \sin(\pi x) \sin(\pi y)\\
-        \frac{\partial u(x, y, 0)}{\partial t} &= 0
-    \end{aligned}
-    \label{neuronal:initial}
+\mathcal{B}[\varphi(x, t)] = 0, \quad x \in \partial \Omega, t \in [0,T]
 \end{equation}
-und die Randbedingungen
+und den Anfangsbedingungen
 \begin{equation}
     \begin{aligned}
-        u(-10, y, t) = 0\\
-        u(10, y, t) = 0\\
-        u(x, -10, t) = 0\\
-        u(x, 10, t) = 0
+        \varphi(x, t = 0) &= f(x), \quad x \in \Omega \\
+        \partial_t \varphi(x, t = 0) &= g(x), \quad x \in \Omega.
     \end{aligned}
-    \label{neuronal:rand}
 \end{equation}
-verwendet.
-Die verwendeten Bereiche sind \( x, y \in [-10,10], t \in [0,10] \).
-Weiter ist das neuronale Netzwerk gegeben als Funktion
-\begin{equation}
-    \hat{u}(x, y, t; \vartheta).
-    \label{neuronal:nn}
-\end{equation}
-Das Netz hängt von den gleichen Variablen ab wie \( u \).
-Zusätzlich besitzt es einen Vektor \( \vartheta \in \mathbb{R}^n \) der n \emph{trainierbaren Parameter}.
-Das Ziel des Trainings eines neuronalen Netzes ist es, diese Parameter so zu wählen, dass das Netz die gesuchte Funktion (hier \( u \)) möglichst gut approximiert.
-
+Wobei:
+\begin{itemize}
+    \item $\varphi(x)$ das gesuchte Feld ist,
+    \item $\mathcal{D}$ ein Differentialoperator auf $\phi$ ist,
+    \item $\Omega$ der Bereich des Feldes ist,
+    \item $\partial \Omega$ der Rand des Feldes ist,
+    \item $[0,T]$ das Zeitintervall des Feldes ist.
+\end{itemize}
+Das Ziel ist es, die Lösung $\varphi(x, t)$ mit dem neuronalen Netzwerk $\hat{\varphi}(x, t; \vartheta)$ zu approximieren.
+Das Netzwerk besitzt einen Vektor \( \vartheta \in \mathbb{R}^n \) der \emph{trainierbaren Parameter}.
+Durch das Training des neuronalen Netzwerks, werden die Parameter $\vartheta$ so gewählt, dass die gesuchte Funktion $\varphi(x, t)$ möglichst gut approximiert wird.
 
 \subsection{Formulierung als Optimierungsproblem}\label{neuronal:subsection:optimierungsproblem}
 Das Training eines neuronalen Netzwerks ist im Wesentlichen ein Optimierungsproblem.
-Die Idee dabei ist, dass man eine Funktion \( L(x, y, t, \vartheta) \) -- durch die Wahl eines geeigneten \( \vartheta \) -- minimiert.
+Die Idee dabei ist, dass man eine Funktion \( L(x, t, \vartheta) \) -- durch die Wahl eines geeigneten \( \vartheta \) -- minimiert.
 
-\( L \) wird aus der Wellengleichung und den Bedingungen aufgebaut. Dazu müssen diese zunächst etwas umgeformt werden.
-Subtrahiert man die rechte Seite von der Wellengleichung \eqref{neuronal:wellengleichung} und quadriert anschliessend, erhält man
+\( L \) wird aus der Feldgleichung und den Bedingungen aufgebaut. Dazu müssen diese aber etwas umgeformt werden.
+In allen Gleichungen, muss zuerst alles auf eine Seite (wo dies noch nicht bereits der Fall ist) und anschliessend wird quadriert.
+Für die Feldgleichung ergibt dies
 \begin{equation}
-    \left(\frac{\partial^2 u}{\partial t^2} - c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right)\right)^2 = 0.
-    \label{neuronal:wellengleichung_umformuliert}
+    \left(\mathcal{D}[\varphi(x, t)]\right)^2 = 0.
+    \label{neuronal:feldgleichung_umformuliert}
 \end{equation}
 Macht man das gleiche mit den Anfangs- und Randbedingungen, erhält man
 \begin{equation}
     \begin{aligned}
-        \left(\sin(\pi x) \sin(\pi y) - u(x, y, 0)\right)^2 = 0\\
-        \left(\frac{\partial u(x, y, 0)}{\partial t}\right)^2 = 0
+        \left(f(x) - \varphi(x, t = 0)\right)^2 = 0\\
+        \left(g(x) - \partial_t \varphi(x, t = 0)\right)^2 = 0
     \end{aligned}
     \label{neuronal:anfangsbedingung_umformuliert}
 \end{equation}
 und
 \begin{equation}
     \begin{aligned}
-        \left(u(-10, y, t)\right)^2 &= 0\\
-        \left(u(10, y, t)\right)^2 &= 0\\
-        \left(u(x, -10, t)\right)^2 &= 0\\
-        \left(u(x, 10, t)\right)^2 &= 0.
+        \left(\mathcal{B}[\varphi(x, t)]\right)^2 &= 0.
     \end{aligned}
     \label{neuronal:randbedingung_umformuliert}
 \end{equation}
 
-Addiert man nun die linken Seiten all dieser Gleichungen und substituiert das Netzwerk \( \hat{u} \) für \( u \), kann man damit \( L \) als
+Addiert man nun die linken Seiten all dieser Gleichungen und substituiert das Netzwerk \( \hat{\phi} \) für \( \phi \), kann man damit \( L \) als
 \begin{equation}
     \begin{aligned}
-        L(x, y, t, \vartheta) = &\left(\frac{\partial^2 \hat{u}}{\partial t^2} - c^2 \left( \frac{\partial^2 \hat{u}}{\partial x^2} + \frac{\partial^2 \hat{u}}{\partial y^2} \right)\right)^2\\
-        &+ \left(\sin(\pi x) \sin(\pi y) - \hat{u}(x, y, 0)\right)^2
-        + \left(\frac{\partial \hat{u}(x, y, 0)}{\partial t}\right)^2\\
-        &+ \left(\hat{u}(-10, y, t)\right)^2
-        + \left(\hat{u}(10, y, t)\right)^2
-        + \left(\hat{u}(x, -10, t)\right)^2
-        + \left(\hat{u}(x, 10, t)\right)^2
+        L(x, \vartheta) = &\left(\mathcal{D}[\hat{\varphi}(x, t; \vartheta)]\right)^2\\
+        &+ \left(f(x) - \hat{\varphi}(x, 0; \vartheta)\right)^2
+        + \left(g(x) - \partial_t \hat{\varphi}(x, 0; \vartheta)\right)^2\\
+        &+ \left(\mathcal{B}[\hat{\varphi}](x, t; \vartheta)\right)^2
     \end{aligned}
     \label{neuronal:optimierung}
 \end{equation}
@@ -95,18 +80,17 @@ definieren.
 Für jeden quadrierten Term in \( L \) gilt:
 \begin{itemize}
     \item Je genauer die Approximation des Netzwerks, desto näher bei 0 ist der Term
-    \item Ist das Netzwerk perfekt (also \( \hat{u} = u \)) ist der Term gleich 0
+    \item Ist das Netzwerk perfekt (also \( \hat{\varphi} = \varphi \)) ist der Term gleich 0
 \end{itemize}
 Somit gilt, je näher \( L \) bei 0 ist, desto besser ist die Approximation des Netzwerks.
 
-Durch das Quadrieren in den Gleichungen \eqref{neuronal:wellengleichung_umformuliert}, \eqref{neuronal:anfangsbedingung_umformuliert} und \eqref{neuronal:randbedingung_umformuliert}, wird erreicht, dass \( L \) minimal 0 ist.
+Durch das Quadrieren in den Gleichungen \eqref{neuronal:feldgleichung_umformuliert}, \eqref{neuronal:anfangsbedingung_umformuliert} und \eqref{neuronal:randbedingung_umformuliert}, wird erreicht, dass \( L \) minimal 0 ist.
 D.h. \( L = 0 \) kann durch Minimieren von \( L \) erreicht werden.
-Das Training des neuronalen Netzwerks \( \hat{u} \) lässt sich nun als Optimierungsproblem ausdrücken:
+Das Training des neuronalen Netzwerks \( \hat{\varphi} \) lässt sich nun als Optimierungsproblem ausdrücken:
 \begin{aufgabe}
-Wähle die Parameter \( \vartheta \) des Netzwerks so, dass \( L(x, y, t, \vartheta) \) minimal wird.
+Wähle die Parameter \( \vartheta \) des Netzwerks so, dass \( L(x, t, \vartheta) \) minimal wird.
 \end{aufgabe}
-
-Zu beachten ist, dass \( L \) für alle \( x, y, t \) minimal sein soll.
+Zu beachten ist, dass \( L \) für alle \( x, t \) minimal sein soll.
 D.h. \( L \) soll nur mit \( \vartheta \) minimiert werden.
 Wie man dies erreicht, wird im Abschnitt \ref{neuronal:subsection:training_nn} beschrieben.
 
