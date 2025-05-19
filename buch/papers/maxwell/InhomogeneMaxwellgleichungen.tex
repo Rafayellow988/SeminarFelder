@@ -9,7 +9,7 @@
 \section{Inhomogene Maxwellgleichungen
 	\label{maxwell:section:InhomogeneMaxwellgleichungen}}
 \kopfrechts{Inhomogene Maxwellgleichungen}
-(Teil dF = 0 kommt dann vorher und auch die "Herleitung" davon)
+(Teil $dF = 0$ kommt dann vorher und auch die "Herleitung" davon)
 
 Den Faraday-Tensor haben wir definiert als
 
@@ -19,9 +19,9 @@ Den Faraday-Tensor haben wir definiert als
 	\end{pmatrix}.
 %	\label{maxwell:section:teil1:metrik}
 \end{equation}
-Wir haben dabei festgestellt, dass die äussere Ableitung von F verschwindet, da F eine geschlossene 2-Form ist.
-Um nun die inhomogenen Maxwellgleichungen bestimmen zu können müssen wir den Hodgeoperator ($\star$) auf F anwenden.
-Wir erinnern uns, dass F ausgeschrieben mit Wedgeprodukten definiert ist als
+Wir haben dabei festgestellt, dass die äussere Ableitung von $F$ verschwindet, da $F$ eine geschlossene 2-Form ist.
+Um nun die inhomogenen Maxwellgleichungen bestimmen zu können müssen wir den Hodgeoperator auf $F$ anwenden.
+Wir erinnern uns, dass $F$ ausgeschrieben mit Wedgeprodukten definiert ist als
 
 \begin{align*}
 	F = 
@@ -29,19 +29,19 @@ Wir erinnern uns, dass F ausgeschrieben mit Wedgeprodukten definiert ist als
 	&+ B_z \, dx \wedge dy - B_y \, dx \wedge dz + B_x \, dy \wedge dz.\\
 \end{align*}
 
-Der Hodgeoperator bildet eine k-Form auf eine (n-k)-Form ab und somit wird aus $\star F$ wieder eine 2-Form
+Der Hodgeoperator bildet eine $k$-Form auf eine $(n-k)$-Form ab und somit wird aus $\ast F$ wieder eine 2-Form
 
 \begin{align*}
-	\star F =
-	& - E_{x} \, \star(dt \wedge dx) - E_{y} \, \star(dt \wedge dy) - E_{z} \, \star(dt \wedge dz) \\
-	& + B_z \, \star(dx \wedge dy) - B_y \, \star(dx \wedge dz) + B_x \, \star(dy \wedge dz)\\
+	\ast F =
+	& - E_{x} \, \ast(dt \wedge dx) - E_{y} \, \ast(dt \wedge dy) - E_{z} \, \ast(dt \wedge dz) \\
+	& + B_z \, \ast(dx \wedge dy) - B_y \, \ast(dx \wedge dz) + B_x \, \ast(dy \wedge dz)\\
 	= 
 	& \, E_{x} \, dy \wedge dz - E_{y} \, dx \wedge dz + E_{z} \, dx \wedge dy \\
 	& + B_z \, dt \wedge dz + B_y \, dt \wedge dy + B_x \, dt \wedge dx.\\
 \end{align*}
-Die erhaltene 2-form kann nun wieder als Matrix
+Die erhaltene 2-Form kann nun wieder als Matrix
 \begin{equation}
-	\star F = \begin{pmatrix}
+	\ast F = \begin{pmatrix}
 		0 & B_x & B_y & B_z \\ -B_x & 0 & E_z & -E_y \\ -B_y & -E_z & 0 & E_x \\ -B_z & E_y & -E_x & 0 
 	\end{pmatrix}
 	%	\label{maxwell:section:teil1:metrik}
@@ -50,7 +50,7 @@ geschrieben werden.
 
 Nun wenden wir die äussere Ableiung darauf an und erhalten
 \begin{align*}
-	d(\star F) = \,
+	d(\ast F) = \,
 	& d (E_{x} \, dy \wedge dz - E_{y} \, dx \wedge dz + E_{z} \, dx \wedge dy + B_z \, dt \wedge dz + B_y \, dt \wedge dy + B_x \, dt \wedge dx)\\
 	=
 	& \frac{\partial E_x}{\partial t} dt \wedge dy \wedge dz + \frac{\partial E_x}{\partial x} dx \wedge dy \wedge dz -
@@ -72,7 +72,7 @@ Nun wenden wir die äussere Ableiung darauf an und erhalten
 \end{align*}
 Wenden wir nun noch mal den Hodge-Operator auf die erhaltene 3-Form an, erhalten wir
 \begin{align*}
-	\star d \star F = 
+	\ast d \ast F = 
 	&\left( \frac{\partial E_x}{\partial x} + \frac{\partial E_y}{\partial y} + \frac{\partial E_z}{\partial z} \right) (-dt) +
 	\left(\frac{\partial E_x}{\partial t} + \frac{\partial B_y}{\partial z} - \frac{\partial B_z}{\partial y} \right) (-dx)\\
 	&\left( -\frac{\partial E_y}{\partial t} + \frac{\partial B_x}{\partial z} - \frac{\partial B_z}{\partial x} \right) dy +
