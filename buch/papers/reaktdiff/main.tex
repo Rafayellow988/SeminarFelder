@@ -6,34 +6,32 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\chapter{Thema\label{chapter:reaktdiff}}
+\chapter{Reaktionsdiffusionsgleichung\label{chapter:reaktdiff}}
 \kopflinks{Thema}
 \begin{refsection}
 \chapterauthor{Lukas Schöpf}
 
-Ein paar Hinweise für die korrekte Formatierung des Textes
-\begin{itemize}
-\item
-Absätze werden gebildet, indem man eine Leerzeile einfügt.
-Die Verwendung von \verb+\\+ ist nur in Tabellen und Arrays gestattet.
-\item
-Die explizite Platzierung von Bildern ist nicht erlaubt, entsprechende
-Optionen werden gelöscht. 
-Verwenden Sie Labels und Verweise, um auf Bilder hinzuweisen.
-\item
-Beginnen Sie jeden Satz auf einer neuen Zeile. 
-Damit ermöglichen Sie dem Versionsverwaltungssysteme, Änderungen
-in verschiedenen Sätzen von verschiedenen Autoren ohne Konflikt 
-anzuwenden.
-\item 
-Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
-Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
-\end{itemize}
+In diesem Kapitel wird die Reaktionsdiffusionsgleichung
+%\cite{reaktdiff:reaktionsdiffwikipedia}
+\begin{equation}
+\label{reaktdiff:equation:reaktdiff}
+\frac{\partial c}{\partial t} = D \Delta c + f(c)
+\end{equation}
+untersucht.
+Sie ist eine nicht lineare partielle Differentialgleichung des zweiten Grades.
+Die Reaktionsdiffusionsgleichung beschreibt die zeitliche und Räumliche entwicklung von der grösse \(c\).
 
-\input{papers/reaktdiff/teil0.tex}
-\input{papers/reaktdiff/teil1.tex}
-\input{papers/reaktdiff/teil2.tex}
-\input{papers/reaktdiff/teil3.tex}
+\(c(x,t)\) ist ein Vektor und beschreibt die Konzentration eines Stoffes an einem Ort \(x\) zu einem gegebenen Zeitpunkt \(t\).
+Die Gleichung \ref{reaktdiff:equation:reaktdiff} besteht aus einem Diffusionsterm und einem Reaktionsterm.
+Der Diffusionsterm \(D \Delta c\) beschreibt die räumliche Ausbreitung von \(c\) wobei \(D\) der Diffusionskoefizient eines Stoffes ist.
+Der Reaktionsterm \(f(c)\) beschreibt die Reaktion des Stoffes.
+Er erlaubt die umwandlung von einem Stoff beschrieben in \(c\) in andere Stoffe.
+
+Der Reaktionsterm kann je nach Anwendung verschiedene Formen annehmen.
+
+\input{papers/reaktdiff/Mathe.tex}
+\input{papers/reaktdiff/Turing.tex}
+\input{papers/reaktdiff/BZ.tex}
 
 \printbibliography[heading=subbibliography]
 \end{refsection}
