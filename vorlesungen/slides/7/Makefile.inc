@@ -8,5 +8,6 @@ chapter7 =								\
 	../slides/7/transport.tex					\
 	../slides/7/kartesisch.tex					\
 	../slides/7/polar.tex						\
-	../slides/7/kugel.tex	
+	../slides/7/kugel.tex						\
+	../slides/7/cover.tex	
 
