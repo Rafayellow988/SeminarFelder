@@ -46,7 +46,7 @@
 \hsize=13.6cm
 
 \begin{scope}
-\clip (0,0) rectangle({\bogenbreite},{0.53*\bogenhoehe});
+\clip (0,0) rectangle({\bogenbreite},{0.47*\bogenhoehe});
 
 \coordinate (A) at (0,0);
 \coordinate (B) at ({0.9*\bogenbreite},0);
@@ -60,8 +60,15 @@
 
 \begin{scope}
 %\clip (D) -- (E) -- (F) -- (G) -- (H) -- cycle;
+
 \node at ({0.75*\bogenbreite},8.0)
-	{\includegraphics[width=23cm]{vektorfeld.jpeg}};
+	{\includegraphics[width=33cm]{frontimage.jpg}};
+\end{scope}
+
+\begin{scope}
+\clip (0,0) -- ({0.5*\bogenbreite},0) -- ++(0,{0.5*\bogenhoehe}) -- (0,{0.5*\bogenhoehe}) -- cycle;
+\node at ({0.25*\bogenbreite},8.0)
+	{\includegraphics[width=33cm]{backimage.jpg}};
 \end{scope}
 
 \end{scope}
