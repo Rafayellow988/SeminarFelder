@@ -31,3 +31,16 @@ back.pdf:	back.tex buchcover.pdf
 back.jpg:	back.pdf
 	magick -density 150 back.pdf back.jpg
 
+ruecken1.pdf:	ruecken1.tex
+	pdflatex ruecken1.tex
+
+ruecken2.pdf:	ruecken2.tex
+	pdflatex ruecken2.tex
+
+ruecken2.png:	ruecken2.pdf Makefile
+	magick -density 300 ruecken2.pdf -alpha set -background none \
+		-channel A -sparse-color barycentric "0,0 none %[w],0 white" \
+		+channel ruecken2.png
+ruecken1.png:	ruecken1.pdf ruecken2.png Makefile
+	magick -density 300 ruecken1.pdf ruecken2.png -composite ruecken1.png
+

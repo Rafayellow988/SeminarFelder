@@ -17,7 +17,7 @@
 \usepackage{txfonts}
 \usepackage{ifthen}
 \usepackage{qrcode}
-\usetikzlibrary{math}
+\usetikzlibrary{math,fadings}
 \geometry{papersize={417mm,278mm},total={417mm,278mm},top=72.27pt, bottom=0pt, left=72.27pt, right=0pt}
 \newboolean{guidelines}
 \setboolean{guidelines}{true}
@@ -40,7 +40,6 @@
 	\bogenhoehe = 2 * \einschlag + \hoehe;
 }
 
-%\clip (0,0) circle (6);
 
 \draw[fill=blue] (0,0) rectangle ({\bogenbreite},{\bogenhoehe});
 \hsize=13.6cm
@@ -59,17 +58,22 @@
 
 
 \begin{scope}
-
 \node at ({0.75*\bogenbreite},8.0)
 	{\includegraphics[width=38cm]{frontimage.jpg}};
 \end{scope}
 
 \begin{scope}
-\clip (0,0) -- ({0.5*\bogenbreite},0) -- ++(0,{0.5*\bogenhoehe})
+\clip (0,0) -- ({0.5*\bogenbreite},0) -- ++(0,{0.54*\bogenhoehe})
 	-- (0,{0.5*\bogenhoehe}) -- cycle;
 \node at ({0.22*\bogenbreite},8.3)
 	{\includegraphics[width=38cm]{backimage.jpg}};
 \end{scope}
+
+%
+% 3.336cm = (2*(\einschlag+\breite+\gelenk)+\ruecken)*0.08
+%
+\node at ({0.5*\bogenbreite},{0.24*\bogenhoehe})
+	{\includegraphics[width=3.336cm]{ruecken1.png}};
 
 \end{scope}
 
@@ -129,8 +133,8 @@ einem Softwarepaket wie OpenFOAM berechnet werden, wie es in Kapitel~24
 vorgestellt wird.
 Der Buchdeckel zeigt die %Ost-Westkomponente der
 Strömungsgeschwindigkeit
-des Windes auf 5m Höhe über Grund bei Ostwind, auf der Rückseite wurde
-mit einer Westströmung gerechnet.
+des Windes auf 5\,m Höhe über Grund bei Ostwind, auf der Rückseite (unten)
+wurde mit einer Westströmung gerechnet.
 
 %Zum Umschlagbild: Eine Wendeltreppe entsteht aus horizontalen Treppenstufen,
 %die spiralförmig um die vertikale Achse angeordnet sind.
