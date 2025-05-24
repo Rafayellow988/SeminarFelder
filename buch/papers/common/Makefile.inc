@@ -8,7 +8,7 @@
 PAPERFILES = \
 	papers/part2.tex \
 	papers/uebersicht.tex \
-	papers/4d/main.tex \
+	papers/maxwell/main.tex \
 	papers/elastomechanik/main.tex \
 	papers/geoalgebra/main.tex \
 	papers/diffortho/main.tex \
@@ -157,10 +157,10 @@ $(workdir)/$(seminar)21-blx.bbl:	$(workdir)/$(seminar)21-blx.aux
 	cd $(workdir); bibtex $(seminar)21-blx
 
 $(workdir)/buch22-blx.bbl:	$(workdir)/buch22-blx.aux
-	cd $(workdir) bibtex buch22-blx
+	cd $(workdir); bibtex buch22-blx
 
 $(workdir)/$(seminar)22-blx.bbl:	$(workdir)/$(seminar)22-blx.aux
-	cd $(workdir) bibtex $(seminar)22-blx
+	cd $(workdir); bibtex $(seminar)22-blx
 
 BLXFILES = $(workdir)/buch.bbl \
 	$(workdir)/buch1-blx.bbl \
@@ -213,7 +213,7 @@ SBLXFILES = $(workdir)/$(seminar).bbl\
 
 
 PAPER_DIRECTORIES = \
-	4d \
+	maxwell \
 	elastomechanik \
 	geoalgebra \
 	diffortho \
@@ -236,7 +236,7 @@ PAPER_DIRECTORIES = \
 	wirbelringe \
 	
 PAPER_MAKEFILEINC = \
-	papers/4d/Makefile.inc \
+	papers/maxwell/Makefile.inc \
 	papers/elastomechanik/Makefile.inc \
 	papers/geoalgebra/Makefile.inc \
 	papers/diffortho/Makefile.inc \

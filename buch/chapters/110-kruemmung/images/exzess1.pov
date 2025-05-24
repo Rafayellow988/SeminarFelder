@@ -6,6 +6,7 @@
 #include "../../../common/common.inc"
 
 #declare T = 0.6;
+#declare zoffset = <0, 0.10, 0>;
 
 #include "common.inc"
 

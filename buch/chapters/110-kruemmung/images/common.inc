@@ -76,7 +76,7 @@ intersection {
 	}
 }
 
-place_camera(R * M + <33, 20, 50>, R * M, 16/9, 0.03)
+place_camera(R * M + <33, 20, 50>, R * M + zoffset, 16/9, 0.03)
 lightsource(R * M + <20, 50, 40>, 1, White)
 
 #declare pl = 0.17 * acos(d) * R;
