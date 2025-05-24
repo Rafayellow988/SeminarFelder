@@ -72,9 +72,9 @@
 \captionsetup{labelformat=empty}
 
 %Title Page
-\title{Riemannsche Zeta Funktion}
+\title{Der Satz von Poincaré-Bendixson}
 \author{Raphael Unterer}
-\institute{Mathematisches Seminar 2022: Spezielle Funktionen}
+\institute{Mathematisches Seminar 2025: Felder}
 
 \newcommand*{\HL}{\textcolor{mainColor}}
 \newcommand*{\RD}{\textcolor{red}}
@@ -108,29 +108,20 @@
 		\titlepage
 	\end{frame}
 
-	%Inhaltsverzeichnis
-% 	\begin{frame}
-% 		\frametitle{Inhalt}
-% 		\tableofcontents
-% 	\end{frame}
-
 	\section{Motivation}
 
     \begin{frame}
-        \frametitle{Summe aller Natürlichen Zahlen}
-        \begin{equation*}
-            \sum_{n=1}^{\infty} n
-            =
-            1 + 2 + 3 + \ldots + \infty
-            =
-            - \frac{1}{12}
-        \end{equation*}
+        \frametitle{Recharge Oscillator}
+        \begin{align*}
+            \dot{x} &= -x + \gamma \left(bx + y\right) - \epsilon \left(bx + y\right)^3, \\
+            \dot{y} &= -ry - \alpha b x.
+        \end{align*}
     \end{frame}
     \begin{frame}
         \frametitle{Summe aller Natürlichen Zahlen}
-        \begin{center}
-            \includegraphics[width=0.7\textwidth]{../images/youtube_screenshot.png}
-        \end{center}
+        % \begin{center}
+        %     \includegraphics[width=0.7\textwidth]{../images/youtube_screenshot.png}
+        % \end{center}
     \end{frame}
     \begin{frame}
         \frametitle{Riemannsche Zeta Funktion}
@@ -167,9 +158,9 @@
     \section{Analytische Fortsetzung}
     \begin{frame}
         \frametitle{Plan für die Analytische Fortsetzung von $\zeta(s)$}
-        \begin{center}
-            \input{../images/continuation_overview.tikz.tex}
-        \end{center}
+        % \begin{center}
+        %     \input{../images/continuation_overview.tikz.tex}
+        % \end{center}
     \end{frame}
     \begin{frame}
         \frametitle{Fortsetzung auf $\Re(s) > 0$}
@@ -330,9 +321,9 @@
     \end{frame}
     \begin{frame}
         \frametitle{Primzahlfunktion}
-        \begin{center}
-           \scalebox{0.5}{\input{../images/primzahlfunktion.pgf}}
-        \end{center}
+        % \begin{center}
+        %    \scalebox{0.5}{\input{../images/primzahlfunktion.pgf}}
+        % \end{center}
     \end{frame}
 
 
@@ -340,28 +331,28 @@
 
     \begin{frame}
         \frametitle{Farbcodierung}
-        \begin{center}
-            \scalebox{0.6}{\input{zeta_color_plot.pgf}}
-        \end{center}
+        % \begin{center}
+        %     \scalebox{0.6}{\input{zeta_color_plot.pgf}}
+        % \end{center}
     \end{frame}
 
     \begin{frame}
         \frametitle{Konstanter Realteil $\Re(s)=-1$ und $\Im(s)=0\ldots40$}
-        \begin{center}
-            \scalebox{0.6}{\input{../images/zeta_re_-1_plot.pgf}}
-        \end{center}
+        % \begin{center}
+        %     \scalebox{0.6}{\input{../images/zeta_re_-1_plot.pgf}}
+        % \end{center}
     \end{frame}
     \begin{frame}
         \frametitle{Konstanter Realteil $\Re(s)=0$ und $\Im(s)=0\ldots40$}
-        \begin{center}
-            \scalebox{0.6}{\input{../images/zeta_re_0_plot.pgf}}
-        \end{center}
+        % \begin{center}
+        %     \scalebox{0.6}{\input{../images/zeta_re_0_plot.pgf}}
+        % \end{center}
     \end{frame}
     \begin{frame}
         \frametitle{Konstanter Realteil $\Re(s)=0.5$ und $\Im(s)=0\ldots40$}
-        \begin{center}
-            \scalebox{0.6}{\input{../images/zeta_re_0.5_plot.pgf}}
-        \end{center}
+        % \begin{center}
+        %     \scalebox{0.6}{\input{../images/zeta_re_0.5_plot.pgf}}
+        % \end{center}
     \end{frame}
 
 \end{document}

@@ -1,0 +1,10 @@
+*.bcf
+*latexmk
+*fls
+*nav
+*out
+*xml
+*snm
+*gz
+*toc
+presentation/presentation.pdf
