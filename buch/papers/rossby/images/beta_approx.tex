@@ -4,10 +4,10 @@
 
 \begin{document}
 
-\tdplotsetmaincoords{70}{110}
+\tdplotsetmaincoords{70}{115}
 %
 \pgfmathsetmacro{\rvec}{.5}
-\pgfmathsetmacro{\thetavec}{40}
+\pgfmathsetmacro{\thetavec}{50}
 \pgfmathsetmacro{\phivec}{60}
 \pgfmathsetmacro{\betar}{0.1}
 
@@ -16,8 +16,8 @@
     \coordinate (O) at (0,0,0);
     \draw[thick,->] (0,0,0) -- (2,0,0) node[anchor=north east]{$x$};
     \draw[thick,->] (0,0,0) -- (0,1,0) node[anchor=north west]{$y$};
-
     \draw[thick,->] (0,0,0) -- (0,0,1) node[anchor=south]{$z$};
+
     \tdplotsetcoord{P}{\rvec}{\thetavec}{\phivec}
     \draw[-stealth,color=red] (O) -- (P);
     \draw[dashed, color=red] (O) -- (Pxy);
@@ -29,24 +29,24 @@
 
     \draw[dashed,tdplot_rotated_coords] (\rvec,0,0) arc (0:90:\rvec);
 
-    \foreach \phi in {0,10,...,360} {
-        \tdplotsetthetaplanecoords{\phi}
-        \draw[very thin, tdplot_rotated_coords] (\rvec,0,0) arc (0:180:\rvec);
+    % \foreach \phi in {0,45,...,360} {
+    %     \tdplotsetthetaplanecoords{\phi}
+    %     \draw[very thin, tdplot_rotated_coords] (\rvec,0,0) arc (0:180:\rvec);
 
-        }
+    %     }
 
     % \draw[dashed] (\rvec,0,0) arc (0:360:\rvec);
 
     % \draw[dashed] (\rvec-0.1,0,0.1) arc (0:360:\rvec-0.1);
-    \foreach \theta in {-90,-80,...,90} {
-    % \pgfmathsetmacro{\theta}{10}
-        \pgfmathsetmacro{\rline}{\rvec * cos(\theta)}
-        \pgfmathsetmacro{\zline}{\rvec * sin(\theta)}
+    % \foreach \theta in {0,45,...,360} {
+    % % \pgfmathsetmacro{\theta}{10}
+    %     \pgfmathsetmacro{\rline}{\rvec * cos(\theta)}
+    %     \pgfmathsetmacro{\zline}{\rvec * sin(\theta)}
 
-        \typeout{rline=\rline}
-        \typeout{zline=\zline}
-        \draw[very thin] (\rline, 0, \zline) arc (0:360:\rline);
-    }
+    %     \typeout{rline=\rline}
+    %     \typeout{zline=\zline}
+    %     \draw[very thin] (\rline, 0, \zline) arc (0:360:\rline);
+    % }
 
     \tdplotsetrotatedcoords{\phivec}{\thetavec}{0}
     \tdplotsetrotatedcoordsorigin{(P)}

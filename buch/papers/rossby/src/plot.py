@@ -6,11 +6,20 @@ import time
 import os
 import plotly.io as pio
 import plotly.figure_factory as ff
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.pyplot as plt
 
 
 class Plot_Sphere:
     def __init__(
-        self, theta, phi, fields=None, plot_coastlines=True, plot_lonlat_lines=True
+        self,
+        theta,
+        phi,
+        fields=None,
+        plot_coastlines=True,
+        plot_lonlat_lines=True,
+        stride_longitudes=1,
+        stride_latitudes=1,
     ):
         self.theta = theta
         self.phi = phi
@@ -19,6 +28,8 @@ class Plot_Sphere:
         self.plot_lonlat_lines = plot_lonlat_lines
         self.n_longitudes = len(phi)
         self.n_latitudes = len(theta)
+        self.stride_longitudes = stride_longitudes
+        self.stride_latitudes = stride_latitudes
 
     # Function to get coastline data
     def get_coastline(self):
@@ -42,7 +53,8 @@ class Plot_Sphere:
 
         # Longitude lines (meridians)
         longitude_lines = []
-        for p in self.phi:
+
+        for p in self.phi[:: self.stride_longitudes]:
             x_line = np.sin(self.theta) * np.cos(p)
             y_line = np.sin(self.theta) * np.sin(p)
             z_line = np.cos(self.theta)
@@ -58,7 +70,9 @@ class Plot_Sphere:
 
         # Latitude lines (parallels)
         latitude_lines = []
-        for t in np.linspace(-np.pi / 2, np.pi / 2, self.n_latitudes):
+        for t in np.linspace(
+            -np.pi / 2, np.pi / 2, self.n_latitudes // self.stride_latitudes
+        ):
             x_line = np.cos(t) * np.cos(self.phi)
             y_line = np.cos(t) * np.sin(self.phi)
             z_line = np.full_like(self.phi, np.sin(t))
@@ -153,8 +167,8 @@ class Plot_Sphere:
 
         return fig
 
-    def plot_sphere(self):
-        traces = self.plot_sphere_static() + [self.plot_sphere_surface(None)]
+    def plot_sphere(self, vaules=None):
+        traces = self.plot_sphere_static() + [self.plot_sphere_surface(vaules)]
         return traces
 
     def animate_sphere_multiple_figs(self):
@@ -179,10 +193,12 @@ class Plot_Sphere:
                 x=x,
                 y=y,
                 z=z,
-                surfacecolor=magnitude,
-                colorscale="Viridis",
-                opacity=1,
+                surfacecolor=np.ones_like(z),  # or any constant array
+                colorscale=[[0, "white"], [1, "white"]],
+                cmin=0,
+                cmax=1,
                 showscale=False,
+                opacity=1,
             )
         else:
             traces = []
@@ -207,16 +223,13 @@ class Plot_Sphere:
                 traces.append(trace)
             return traces
 
-
-    # Simple Euler method for one streamline
     def euler_streamline(self, x0, y0, f, steps=50, h=0.1):
         x_vals, y_vals = [x0], [y0]
         for _ in range(steps):
             vx, vy = f(x_vals[-1], y_vals[-1])
-            x_vals.append(x_vals[-1] + vx*h)
-            y_vals.append(y_vals[-1] + vy*h)
+            x_vals.append(x_vals[-1] + vx * h)
+            y_vals.append(y_vals[-1] + vy * h)
         return x_vals, y_vals
-
 
     def streamline(self, values):
         figs = []
@@ -359,6 +372,98 @@ class Plot_Sphere:
 
         return fig
 
+    def make_rotating_figs(self, traces, n=8):
+        figs = []
+        for i in range(n):
+            angle = -2 * np.pi * i / n
+            camera = dict(eye=dict(x=2 * np.cos(angle), y=2 * np.sin(angle), z=0.8))
+
+            fig = go.Figure(data=traces)
+            fig.update_layout(
+                scene=dict(
+                    xaxis=dict(visible=False),
+                    yaxis=dict(visible=False),
+                    zaxis=dict(visible=False),
+                    camera=camera,
+                ),
+                margin=dict(l=0, r=0, b=0, t=0),
+                showlegend=False,
+                width=1000,
+                height=1000,
+                uirevision="keep",
+            )
+            figs.append(fig)
+        return figs
+
+    def plot_lon_lat_lines_plt(self, ax, n_latitudes, n_longitudes, theta, phi):
+        # Longitude lines (meridians)
+        r = 1.01
+        for p in np.linspace(0, 2 * np.pi, n_latitudes):
+            x_line = r * np.sin(theta) * np.cos(p)
+            y_line = r * np.sin(theta) * np.sin(p)
+            z_line = r * np.cos(theta)
+            ax.plot(x_line, y_line, z_line, color="black", linewidth=0.5)
+
+        # Latitude lines (parallels)
+        for t in np.linspace(-np.pi / 2, np.pi / 2, n_longitudes):
+            x_line = r * np.cos(t) * np.cos(phi)
+            y_line = r * np.cos(t) * np.sin(phi)
+            z_line = r * np.full_like(phi, np.sin(t))
+            ax.plot(x_line, y_line, z_line, color="black", linewidth=0.5)
+
+    def plot_coastline_plt(self, ax):
+        coastline_data = self.get_coastline()
+        r = 1.01
+        for coords in coastline_data:
+            lon, lat = coords
+            lon = np.radians(lon)
+            lat = np.radians(lat)
+            x_coast = r * np.cos(lat) * np.cos(lon)
+            y_coast = r * np.cos(lat) * np.sin(lon)
+            z_coast = r * np.sin(lat)
+            ax.plot(x_coast, y_coast, z_coast, color="black", linewidth=0.5)
+
+    def plot_sphere_with_quiver(self, values=None):
+        fig = plt.figure(figsize=(8, 8))
+        ax = fig.add_subplot(111, projection="3d")
+        ax.set_box_aspect([1, 1, 1])
+        ax.axis("off")
+        theta_grid, phi_grid = np.meshgrid(self.theta, self.phi)
+        r = 0.9
+        # Sphere grid
+        x = r * np.sin(theta_grid) * np.cos(phi_grid)
+        y = r * np.sin(theta_grid) * np.sin(phi_grid)
+        z = r * np.cos(theta_grid)
+
+        # White sphere
+        ax.plot_surface(
+            x, y, z, color="white", rstride=1, cstride=1, alpha=1, edgecolor="none"
+        )
+
+        # Lines & coast
+        self.plot_lon_lat_lines_plt(
+            ax, self.n_latitudes, self.n_longitudes, self.theta, self.phi
+        )
+        self.plot_coastline_plt(ax)
+
+        if values is not None:
+            # Quiver
+            for xq, yq, zq, u, v, w in values:
+                ax.quiver(
+                    xq,
+                    yq,
+                    zq,
+                    u,
+                    v,
+                    w,
+                    length=0.1,
+                    normalize=True,
+                    color="blue",
+                    linewidth=0.5,
+                )
+
+        plt.show()
+
     def export_frames(self, fig, folder="frames"):
         os.makedirs(folder, exist_ok=True)
         for i, frame in enumerate(fig.frames):
@@ -377,3 +482,9 @@ class Plot_Sphere:
         """
         )
         print(f"Saved sped-up video as '{output}'")
+
+    def save_figs(self, figs, folder="../images/rotating_earth"):
+        os.makedirs(folder, exist_ok=True)
+        for i, fig in enumerate(figs):
+            pio.write_image(fig, f"{folder}/fig_{i:02d}.pdf", format="pdf", width=1000, height=1000)
+        print(f"Saved {len(figs)} figures to '{folder}/'")

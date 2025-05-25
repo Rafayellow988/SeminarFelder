@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1747591123 "/home/nunigan/Documents/SeminarFelder/buch/papers/rossby/images/beta_approx.tex" "beta_approx.pdf" "beta_approx" 1747591123
-  "/dev/null" 1747552448 0 d41d8cd98f00b204e9800998ecf8427e ""
+["pdflatex"] 1748194837 "/home/nunigan/Documents/SeminarFelder/buch/papers/rossby/images/beta_approx.tex" "beta_approx.pdf" "beta_approx" 1748194838
+  "/dev/null" 1748066478 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/etc/texmf/web2c/texmf.cnf" 1700665483 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/nunigan/Documents/SeminarFelder/buch/papers/rossby/images/beta_approx.tex" 1747591122 2066 0e8f8a9c55e7b4d73bdac3d33bbcef05 ""
+  "/home/nunigan/Documents/SeminarFelder/buch/papers/rossby/images/beta_approx.tex" 1748194837 2088 40197b9b338fb8b534cf72fb3f3f8267 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/share/texlive/texmf-dist/tex/generic/iftex/ifluatex.sty" 1572645307 492 1994775aa15b0d1289725a0b1bbc2d4c ""
@@ -101,8 +101,8 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1700665496 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1710829457 2800482 0eb68d919f3fa151c0aadaa12f1cf5bb ""
-  "beta_approx.aux" 1747591123 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
-  "beta_approx.tex" 1747591122 2066 0e8f8a9c55e7b4d73bdac3d33bbcef05 ""
+  "beta_approx.aux" 1748194837 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "beta_approx.tex" 1748194837 2088 40197b9b338fb8b534cf72fb3f3f8267 ""
   (generated)
   "beta_approx.aux"
   "beta_approx.log"
