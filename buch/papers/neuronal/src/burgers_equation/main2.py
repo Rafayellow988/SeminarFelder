@@ -103,6 +103,8 @@ else:
         grads = tape.gradient(loss, model.trainable_weights)
         opt.apply_gradients(zip(grads, model.trainable_weights))
         loss_history.append(loss)
+        if epoch + 1 == epochs:
+            print("\nFinal unweighed loss: "+str(loss)+"\n")
 
     model.save('burgers_net.h5')
 
