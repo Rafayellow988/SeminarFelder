@@ -23,11 +23,11 @@ Sie kann benutzt werden um die Ausbreitung von Populationen zu beschreiben.
 \label{reaktdiff:subsection:fkppmathe}}
 Aus der Gleichung können die Stationärlösungen abgeleitet werden.
 Setzten wir \(\frac{\partial c}{\partial t} = 0\) und \(\Delta c = 0\) erhalten wir die Stationärlösungen
-\begin{equation}
+\begin{equation*}
 \label{reaktdiff:equation:stationaer}
 0 = rc(1-c).
-\end{equation}
-Die Lösungen der Gleichung \ref{reaktdiff:equation:stationaer} sind \(c = 0\) und \(c = 1\).
+\end{equation*}
+Die Lösungen der Gleichung sind \(c = 0\) und \(c = 1\).
 Um nun das verhalten dieser Lösungen zu untersuchen, fügen wir eine kleine Störung \(\epsilon\) hinzu wobei \(\epsilon \ll 1\).
 
 Für den Fall \(c = 0\) erhalten wir
@@ -67,7 +67,7 @@ Setzen wir diese Ableitungen in die Gleichung \ref{reaktdiff:equation:störung0v
 \label{reaktdiff:equation:störung0vereinfachk}
 \dot{c}_k(t) e^{ikx} = -D k^2 c_k(t) e^{ikx} + r c_k(t) e^{ikx}.
 \end{equation}
-Teilen wir die Gleichung \ref{reaktdiff:equation:störung0vereinfachk} durch \(e^{ikx}\) und \(c_k(t)\) erhalten wir
+Teilen wir die Gleichung \ref{reaktdiff:equation:störung0vereinfachk} durch \(e^{ikx}\) erhalten wir
 \begin{equation}
 \label{reaktdiff:equation:störung0vereinfachk2}
 \dot{c}_k(t) = -D k^2 c_k(t) + r c_k(t).
@@ -110,7 +110,7 @@ Für die Lösung benötigen wir die Ableitungen
 \begin{align*}
 \frac{\partial c}{\partial t} &= \frac{\partial C}{\partial z}\frac{\partial z}{\partial t} = -vC'(z),
 \\
-\frac{\partial^2 c}{\partial t^2} &= C''(z).
+\frac{\partial^2 c}{\partial x^2} &= C''(z).
 \end{align*}
 Setzen wir die Ableitungen in die Fisher-KPP-Gleichung \ref{reaktdiff:equation:fkpp} ein, erhalten wir
 \begin{equation}
@@ -143,7 +143,7 @@ Die Simulation zeigt eine Welle die sich mit konstanter Geschwindigkeit ausbreit
 Die Welle hat eine Geschwindigkeit von \(v = 2\sqrt{rD}\).
 Denoch regt die Simulation zum Nachdenken an.
 Was wäre nun wenn es einen zweiten Stoff gäbe, welches die Reaktion beeinflusst?
-
+% besser 1D
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{papers/reaktdiff/images/Fisher_KPP/fisher_kpp_2d_wave_comparison.pdf}
