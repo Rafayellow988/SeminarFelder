@@ -6,53 +6,164 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 1
+\section{Musterbildung in Reaktionsdiffusionssystemen
 \label{reaktdiff:section:teil1}}
 \kopfrechts{Problemstellung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
+In diesem Abschnitt wird die Reaktionsdiffusionsgleichung mit zwei Komponenten
+untersucht.
+Hierführ werden Turing-Muster betrachtet.
+Turing-Muster findet man häufig in der Natur zum Beispiel als Fellmuster bei Tieren oder  das Muster unserer Fingerabdrücke.
+Sie sind nach dem Mathematiker Alan Turing benannt, der sie 1952 in seinem Artikel \textit{The Chemical Basis of Morphogenesis} beschrieb.
+Er untersuchte Systeme, die aus zwei Komponenten bestehen, einem Inhibitor und einem Aktivator.
+Diese Kapitel basiert auf \cite{reaktdiff:be150_turing_patterns}\cite{reaktdiff:hoyle2006pattern}.
+
+\subsection{Lineare Stabilitätsanalyse ohne Diffusion
+\label{reaktdiff:subsection:mathe}}
+Als Basis haben wir zwei Komponenten \(u\) und \(v\).
+Die Reaktionsdiffusionsgleichungen für \(u\) und \(v\) lauten
+\begin{align}
+    \label{reaktdiff:equation:reaktdiff2}
+    \frac{\partial u}{\partial t} &= D_u \Delta u + f(u,v)\\
+    \frac{\partial v}{\partial t} &= D_v \Delta v + g(u,v)
+\end{align}
+wobei \(D_u, D_v > 0\) die Diffusionskoeffizienten der Komponenten \(u\) und \(v\) sind.
+
+Als erstes wird eine lineare Stabilitätsanalyse ohne Diffusion durchgeführt.
+Hierführ betrachten wir die Gleichungen
+\begin{align}
+    \label{reaktdiff:equation:reaktdiff2ohneDiff}
+    \frac{\partial u}{\partial t} &= f(u,v)\\
+    \frac{\partial v}{\partial t} &= g(u,v).
+\end{align}
+Im fokus liegt die Stationärlösung \(u_0, v_0\) der Gleichungen \ref{reaktdiff:equation:reaktdiff2ohneDiff}, das heisst das \(f(u_0,v_0) = g(u_0,v_0) = 0\).
+Nun wird eine kleine Störung \(\epsilon\) zu \(u_0\) und \(v_0\) hinzugefügt.
+\begin{align}
+    \delta u &= u_0 + \epsilon u\\
+    \delta v &= v_0 + \epsilon v.
+\end{align}
+Die Störung \(\epsilon\) ist klein, das heisst \(\epsilon \ll 1\).
+Jetzt kann man die Reaktionsterme linearisiern.
+Sie werden zu
+\begin{align}
+    f(u,v) &\approx f(u_0,v_0) + f_u \delta u + f_v\delta v\\
+    g(u,v) &\approx g(u_0,v_0) + g_u \delta u + g_v\delta v.
+\end{align}
+Hierbei sind \(f_u, f_v, g_u, g_v\) die partiellen Ableitungen von \(f\) und \(g\) bezüglich \(u\) und \(v\).
+Die Terme \(f(u_0,v_0)\) und \(g(u_0,v_0)\) sind Null, da \(u_0\) und \(v_0\) Stationärlösungen sind.
+Nun können die Gleichungen \ref{reaktdiff:equation:reaktdiff2ohneDiff} umgeschrieben werden zu
+\begin{align}
+    \label{reaktdiff:equation:reaktdiff2ohneDifflinearisiert1}
+    \frac{d \delta u}{dt} &= f_u \delta u + f_v \delta v\\
+    \label{reaktdiff:equation:reaktdiff2ohneDifflinearisiert2}
+    \frac{d \delta v}{dt} &= g_u \delta u + g_v \delta v.
+\end{align}
+Diese Gleichungen sind lineare partielle Differentialgleichungen.
+Wenn man sie als Matrixform screibt, erhält man
 \begin{equation}
-\int_a^b x^2\, dx
-=
-\left[ \frac13 x^3 \right]_a^b
-=
-\frac{b^3-a^3}3.
-\label{reaktdiff:equation1}
+    \label{reaktdiff:equation:reaktdiff2ohneDiffmatrix}
+    \frac{d}{dt} \begin{pmatrix}
+        \delta u\\
+        \delta v
+    \end{pmatrix} = 
+    J 
+    \begin{pmatrix}
+        \delta u\\
+        \delta v
+    \end{pmatrix}
+    , \quad
+    J =
+    \begin{pmatrix}
+        f_u & f_v\\
+        g_u & g_v
+    \end{pmatrix}.
 \end{equation}
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-consectetur, adipisci velit, sed quia non numquam eius modi tempora
-incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
 
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-fugiat quo voluptas nulla pariatur?
+Die Matrix \(J\) ist die Jacobi-Matrix der Reaktionsgleichungen.
+Damit die Gleichung stabil ist, müssen die Eigenwerte der Matrix \(J\) negative Realteile haben.
+Das heisst dass die Spur \(\text{Tr}(J) < 0\) und die Determinante \(\det(J) > 0\) sein muss.
+Das ist die Bedingung für die Stabilität der Stationärlösung \(u_0, v_0\).
 
-\subsection{De finibus bonorum et malorum
-\label{reaktdiff:subsection:finibus}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga \eqref{reaktdiff:equation1}.
+\subsection{Lineare Stabilitätsanalyse mit Diffusion
+\label{reaktdiff:section:matheDiff}}
+Nun wird die Diffusion in die Gleichungen \ref{reaktdiff:equation:reaktdiff2ohneDifflinearisiert2} und \ref{reaktdiff:equation:reaktdiff2ohneDifflinearisiert1} eingeführt.
+Die Gleichungen werden zu
+\begin{align}
+    \label{reaktdiff:equation:reaktdiff2mitDiff}
+    \frac{d \delta u}{dt} &= D_u \Delta \delta u + 
+    f_u \delta u + f_v \delta v\\
+    \frac{d \delta v}{dt} &= D_v \Delta \delta v + 
+    g_u \delta u + g_v \delta v.
+\end{align}
+Mit Diffusion wollen wir die Störungsentwicklung mit hilfe von Fourier untersuchen.
+Dazu setzen wir \(\delta u(x,t) = c_k(t) e^{ikx}\) und \(\delta v(x,t) = d_k(t) e^{ikx}\) ein.
+Die Ableitungen werden zu
+\begin{align*}
+    \frac{\partial \delta u}{\partial t} &= \dot{c}_k(t) e^{ikx},\\
+    \Delta \delta u &= -k^2 c_k(t) e^{ikx},\\
+    \frac{\partial \delta v}{\partial t} &= \dot{d}_k(t) e^{ikx},\\
+    \Delta \delta v &= -k^2 d_k(t) e^{ikx}.
+\end{align*}
+Setzen wir diese Ableitungen in die Gleichungen \ref{reaktdiff:equation:reaktdiff2mitDiff} ein, erhalten wir
+\begin{align}
+    \label{reaktdiff:equation:reaktdiff2mitDiffFourier}
+    \dot{c}_k(t) e^{ikx} &= -D_u k^2 c_k(t) e^{ikx} + 
+    f_u c_k(t) e^{ikx} + f_v d_k(t) e^{ikx}\\
+    \dot{d}_k(t) e^{ikx} &= -D_v k^2 d_k(t) e^{ikx} + 
+    g_u c_k(t) e^{ikx} + g_v d_k(t) e^{ikx}.
+\end{align}
+Aus dieser Gleichung können wir sehen das die \(c_k(t)\) und \(d_k(t)\) die Form \(c_k(t) = c_k(0) e^{\lambda t}\) und \(d_k(t) = d_k(0) e^{\lambda t}\) haben.
+Kürzen wir die Gleichung durch \(e^{ikx}\) und \(c_k(t)\) und \(d_k(t)\) erhalten wir die Gleichungen
+\begin{align}
+    \label{reaktdiff:equation:reaktdiff2mitDiffFourierk}
+    \lambda = J - k^2 D, \quad 
+    J =
+    \begin{pmatrix}
+        f_u & f_v\\
+        g_u & g_v
+    \end{pmatrix}, \quad
+    D =
+    \begin{pmatrix}
+        D_u & 0\\
+        0 & D_v
+    \end{pmatrix}.
+\end{align}
+Um die Gleichungen übersichtlicher zu schreiben, wird die Jacobi-Matrix \(J\) und die Diffusionsmatrix \(D\) in eine Matrix
+\begin{equation}
+    \label{reaktdiff:equation:reaktdiff2mitDiffFourierkA}
+    A =
+    \begin{pmatrix}
+        f_u - D_u k^2 & f_v\\
+        g_u & g_v - D_v k^2
+    \end{pmatrix}
+\end{equation}
+zusammengefasst.
+Das Ziel ist es nun die Eigenwerte der Matrix \(A\) zu bestimmen.
+Um die Eigenwerte zu bestimmen muss man die Gleichung
+\begin{equation}
+    \det(A - \lambda I) = 0
+\label{reaktdiff:equation:reaktdiff2mitDiffFourierkAeig}
+\end{equation}
+lösen, wobei \(I\) die Einheitsmatrix ist.
+Das ergibt eine quadratische Gleichung in \(\lambda\):
+\begin{equation}
+    \lambda^2 - \text{Tr}(A) \lambda + \det(A) = 0.
+\label{reaktdiff:equation:reaktdiff2mitDiffFourierkAeig2}
+\end{equation}
+Die Eigenwerte der Matrix \(A\) sind die Lösungen der Gleichung
+\begin{equation}
+    \lambda = \frac{1}{2} \left( \text{Tr}(A) \pm 
+    \sqrt{\text{Tr}(A)^2 - 4 \det(A)} \right).
+\label{reaktdiff:equation:reaktdiff2mitDiffFourierkAeig3}
+\end{equation}
+Somit hat man eine Formel mit der man für eine bestimmte Wellenzahl \(k\) die eingen werte \(\lambda\) bestimmen kann.
+Aus der Gleichung \ref{reaktdiff:equation:reaktdiff2mitDiffFourierkAeig3} erhält man zwei Eigenwerte \(\lambda_1\) und \(\lambda_2\).
+Wenn nun einer dieser Eigenwerte einen positiven Realteil hat, wird die Stationärlösung instabil.
+Diese Instabilität ist verantworlich für die Musterbildung
 
-Et harum quidem rerum facilis est et expedita distinctio
-\ref{reaktdiff:section:teil2}.
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-impedit quo minus id quod maxime placeat facere possimus, omnis
-voluptas assumenda est, omnis dolor repellendus
-\ref{reaktdiff:section:teil3}.
-Temporibus autem quibusdam et aut officiis debitis aut rerum
-necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-molestiae non recusandae.
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus
-asperiores repellat.
 
+\section{Bedingung für die Musterbildung
+\label{reaktdiff:section:diffusioninduzierteInstabilitaet}}
+Was in den vorhergehenden Abschnitten gezweigt wurde, ist das ein System ohne Diffusion stabil sein kann, aber mit Diffusion instabil wird.
+Diese durch Diffusion induzierte Instabilität wird auch Turing-Instabilität genannt.
+Sie ist die Grundlage für die Musterbildung in Reaktionsdiffusionssystemen.
 
