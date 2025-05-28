@@ -23,8 +23,8 @@ Als Basis haben wir zwei Komponenten \(u\) und \(v\).
 Die Reaktionsdiffusionsgleichungen für \(u\) und \(v\) lauten
 \begin{align}
     \label{reaktdiff:equation:reaktdiff2}
-    \frac{\partial u}{\partial t} &= D_u \Delta u + f(u,v)\\
-    \frac{\partial v}{\partial t} &= D_v \Delta v + g(u,v)
+    \frac{du}{dt} &= D_u \Delta u + f(u,v)\\
+    \frac{dv}{dt} &= D_v \Delta v + g(u,v)
 \end{align}
 wobei \(D_u, D_v > 0\) die Diffusionskoeffizienten der Komponenten \(u\) und \(v\) sind.
 
@@ -32,8 +32,8 @@ Als erstes wird eine lineare Stabilitätsanalyse ohne Diffusion durchgeführt.
 Hierführ betrachten wir die Gleichungen
 \begin{align}
     \label{reaktdiff:equation:reaktdiff2ohneDiff}
-    \frac{\partial u}{\partial t} &= f(u,v)\\
-    \frac{\partial v}{\partial t} &= g(u,v).
+    \frac{du}{dt} &= f(u,v)\\
+    \frac{dv}{dt} &= g(u,v).
 \end{align}
 Im fokus liegt die Stationärlösung \(u_0, v_0\) der Gleichungen \ref{reaktdiff:equation:reaktdiff2ohneDiff}, das heisst das \(f(u_0,v_0) = g(u_0,v_0) = 0\).
 Nun wird eine kleine Störung \(\epsilon\) zu \(u_0\) und \(v_0\) hinzugefügt.
@@ -98,9 +98,9 @@ Mit Diffusion wollen wir die Störungsentwicklung mit hilfe von Fourier untersuc
 Dazu setzen wir \(\delta u(x,t) = c_k(t) e^{ikx}\) und \(\delta v(x,t) = d_k(t) e^{ikx}\) ein.
 Die Ableitungen werden zu
 \begin{align*}
-    \frac{\partial \delta u}{\partial t} &= \dot{c}_k(t) e^{ikx},\\
+    \frac{d\delta u}{d t} &= \dot{c}_k(t) e^{ikx},\\
     \Delta \delta u &= -k^2 c_k(t) e^{ikx},\\
-    \frac{\partial \delta v}{\partial t} &= \dot{d}_k(t) e^{ikx},\\
+    \frac{d\delta v}{d t} &= \dot{d}_k(t) e^{ikx},\\
     \Delta \delta v &= -k^2 d_k(t) e^{ikx}.
 \end{align*}
 Setzen wir diese Ableitungen in die Gleichungen \ref{reaktdiff:equation:reaktdiff2mitDiff} ein, erhalten wir
@@ -166,14 +166,56 @@ Diese Instabilität ist verantworlich für die Musterbildung
 Was in den vorhergehenden Abschnitten gezweigt wurde, ist das ein System ohne Diffusion stabil sein kann, aber mit Diffusion instabil wird.
 Diese durch Diffusion induzierte Instabilität wird auch Turing-Instabilität genannt.
 Sie ist die Grundlage für die Musterbildung in Reaktionsdiffusionssystemen.
+Nun kann man aus den gemachten berechungen Bedingungen für die Musterbildung ableiten.
+Einerseits muss die Stationärlösung stabil sein, das heisst die Spur der Jacobi-Matrix \(J\) muss negativ sein und die Determinante der Jacobi-Matrix \(J\) muss positiv sein.
+Somit gilt
+\begin{align*}
+    \text{Tr}(J) &= f_u + g_v < 0, \\
+    \det(J) &= f_u g_v - f_v g_u > 0.
+\end{align*}
+Andererseits muss die Diffusion so gewählt sein, dass die Eigenwerte der Matrix \(A\) mit der Wellenzahl \(k\) einen positiven Realteil haben.
+Das heisst die Spur der Matrix \(A\) muss negativ sein und die Determinante der Matrix \(A\) muss positiv sein.
+Somit gilt
+\begin{align}
+    \text{Tr}(A) &= f_u  + g_v - k^2(D_v + D_u)  < 0, \\
+    \det(A) &= D_uD_vk^4 - (D_vf_u + D_ug_v)k^2 + f_u g_v - f_v g_u > 0.
+    \label{reaktdiff:equation:reaktdiffbedingunen}
+\end{align}
+Man sieht das \(\det(A)\) ein Polynom 2. Grades in \(k^2\) ist.
+Ausserdem representiert sie eine Parabel, die nach oben geöffnet ist, da der Koeffizient \(D_uD_v > 0\) ist.
+Somit können wir die mininmale Wellenzahl \(k\) bestimmen, bei der die Determinante positiv ist.
+Dafür leiten wir die Determinante nach \(k^2\) ab und setzen sie gleich Null.
+Somit erhalten wir
+\begin{equation*}
+    \frac{d}{dk^2} \det(A) = 2D_uD_vk^2 - D_v f_u - D_u g_v = 0.
+\end{equation*}
+Die minimale Wellenzahl \(k\) ist also
+\begin{equation*}
+    k^2_{\text{min}} = \frac{D_vf_u + D_ug_v}{D_uD_v}.
+\end{equation*}
+Die minimale Wellenzahl \(k_{\text{min}}\) wird nun in die Gleichung für die Determinante der Matrix \(A\) \ref{reaktdiff:equation:reaktdiffbedingunen} eingesetzt.
+Somit erhält man einen Ausdruck für den minimalwert Determinante welcher lautet
+\begin{equation*}
+    \det(A) = \frac{(D_vf_u + D_ug_v)^2}{D_uD_v} - f_u g_v - f_v g_u.
+\end{equation*}
+Die Detrminante der Matrix \(A\) ist also positiv, wenn
+\begin{equation*}
+    \frac{(D_vf_u + D_ug_v)^2}{D_uD_v} - f_u g_v - f_v g_u > 0.
+\end{equation*}
 
-Aktivator und Inhibitor.
 
-Bedingungen für \(f_u\), \(g_v\),\(D_u\), \(D_v\) und die Wellenzahl \(k\) für die Musterbildung.
 
-\begin{equation}
-    f_u + g_v < 0, \quad
-    det(J) = f_u g_v - f_v g_u > 0, \quad
-    D_vf_u + D_u g_v > 0, \quad
-    (D_v f_u - D_u g_v)^2 - 4 D_u D_v det J < 0
-\end{equation}
+% Aktivator und Inhibitor.
+
+% Bedingungen für \(f_u\), \(g_v\),\(D_u\), \(D_v\) und die Wellenzahl \(k\) für die Musterbildung.
+
+% \begin{equation*}
+%     f_u + g_v < 0, \quad
+%     det(J) = f_u g_v - f_v g_u > 0, \quad
+%     D_vf_u + D_u g_v > 0, \quad
+%     (D_v f_u - D_u g_v)^2 - 4 D_u D_v det J < 0
+% \end{equation*}
+
+% Beispiel mit zb FitzHugh-Nagumo Gleichungen, herleitung der Bedingungen.
+
+
