@@ -155,7 +155,7 @@ Die Eigenwerte der Matrix \(A\) sind die Lösungen der Gleichung
     \sqrt{\text{Tr}(A)^2 - 4 \det(A)} \right).
 \label{reaktdiff:equation:reaktdiff2mitDiffFourierkAeig3}
 \end{equation}
-Somit hat man eine Formel mit der man für eine bestimmte Wellenzahl \(k\) die eingen werte \(\lambda\) bestimmen kann.
+Somit hat man eine Formel mit der man für eine bestimmte Wellenzahl \(k\) die Eigenwerte \(\lambda\) bestimmen kann.
 Aus der Gleichung \ref{reaktdiff:equation:reaktdiff2mitDiffFourierkAeig3} erhält man zwei Eigenwerte \(\lambda_1\) und \(\lambda_2\).
 Wenn nun einer dieser Eigenwerte einen positiven Realteil hat, wird die Stationärlösung instabil.
 Diese Instabilität ist verantworlich für die Musterbildung
@@ -171,3 +171,9 @@ Aktivator und Inhibitor.
 
 Bedingungen für \(f_u\), \(g_v\),\(D_u\), \(D_v\) und die Wellenzahl \(k\) für die Musterbildung.
 
+\begin{equation}
+    f_u + g_v < 0, \quad
+    det(J) = f_u g_v - f_v g_u > 0, \quad
+    D_vf_u + D_u g_v > 0, \quad
+    (D_v f_u - D_u g_v)^2 - 4 D_u D_v det J < 0
+\end{equation}
