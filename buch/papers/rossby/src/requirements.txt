@@ -1,8 +1,13 @@
 cartopy
 numpy
 plotly
-dash==2.18.2
+dash
 dash-bootstrap-components
 kaleido
-ipylernel
+ipykernel
 pyqt5
+xarray
+matplotlib
+cdsapi
+netcdf4
+h5netcdf

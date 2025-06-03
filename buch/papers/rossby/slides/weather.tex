@@ -1,40 +1,44 @@
 % !TEX root = presentation.tex
 %LTeX: language=de-CH
 
-% \begin{frame}
-%   \frametitle{Forecast: 01-May-2025 at 00:00, Level 850 hPa}
-%   \includegraphics[width=\textwidth]{../images/weather/data_2025_5_1_00:00_850.pdf}
-% \end{frame}
-% \begin{frame}
-%   \frametitle{Forecast: 01-May-2025 at 00:00, Level 500 hPa}
-%   \includegraphics[width=\textwidth]{../images/weather/data_2025_5_1_00:00_500.pdf}
-% \end{frame}
-% \begin{frame}
-%   \frametitle{Forecast: 01-May-2025 at 00:00, Level 200 hPa}
-%   \includegraphics[width=\textwidth]{../images/weather/data_2025_5_1_00:00_200.pdf}
-% \end{frame}
+% \section{Einleitung}
+
+\begin{frame}
+  \frametitle{Forecast: 01-May-2025 at 00:00, Level 850 hPa}
+  \includegraphics[width=\textwidth]{../images/weather/data_2025_5_1_00:00_850.pdf}
+\end{frame}
+\begin{frame}
+  \frametitle{Forecast: 01-May-2025 at 00:00, Level 500 hPa}
+  \includegraphics[width=\textwidth]{../images/weather/data_2025_5_1_00:00_500.pdf}
+\end{frame}
+\begin{frame}
+  \frametitle{Forecast: 01-May-2025 at 00:00, Level 200 hPa}
+  \includegraphics[width=\textwidth]{../images/weather/data_2025_5_1_00:00_200.pdf}
+\end{frame}
 
 % In your document body:
 
-\foreach \level in {850,500,200} {
-\foreach \day in {1,...,10} {
-  \foreach \time in {00:00,12:00} {
+\foreach \level in {500} {
+  \foreach \day in {1,...,10} {
+    \foreach \time in {00:00,12:00} {
       \begin{frame}
         \frametitle{Forecast: \day-May-2025 at \time, Level \level hPa}
-        \includegraphics[width=\textwidth]{../images/weather/data_2025_5_\day_\time_\level.pdf}
+        \includegraphics[width=\textwidth]{../images/weather/data_2025_5_\day_\time_\level.png}
       \end{frame}
     }
   }
 }
 
+
+
 % In your document body:
-\foreach \level in {850,500,200} {
+\foreach \level in {500} {
 \foreach \day in {1,...,10} {
   \foreach \time in {00:00,12:00} {
-      \begin{frame}
+      \begin{frame}[plain]
         \frametitle{Forecast: \day-May-2025 at \time, Level \level hPa}
         \begin{center}
-          \includegraphics[width=0.5\textwidth]{../images/weather/data_2025_5_\day_\time_\level_polar.pdf}
+          \includegraphics[width=0.5\textwidth]{../images/weather/data_2025_5_\day_\time_\level_polar.png}
         \end{center}
       \end{frame}
     }
@@ -45,9 +49,62 @@
                 11,12,13,14,15,16,17,18,19,20,
                 21,22,23,24,25,26,27,28,29,30,
                 31} {
-  \begin{frame}
+  \begin{frame}[plain]
     \begin{center}
       \includegraphics[width=0.5\textwidth]{../images/rotating_earth/fig_\n.pdf}
     \end{center}
   \end{frame}
+}
+
+% In your document body:
+\foreach \level in {500} {
+\foreach \day in {20,...,31} {
+  \foreach \time in {12:00} {
+      \begin{frame}[plain]
+        \frametitle{Forecast: \day-July-2010 at \time, Level \level hPa}
+        \begin{center}
+          \includegraphics[width=0.5\textwidth]{../images/weather/data_2010_7_\day_\time_\level_polar.png}
+        \end{center}
+      \end{frame}
+    }
+  }
+}
+
+\foreach \level in {500} {
+\foreach \day in {1,...,10} {
+  \foreach \time in {12:00} {
+      \begin{frame}[plain]
+        \frametitle{Forecast: \day-August-2010 at \time, Level \level hPa}
+        \begin{center}
+          \includegraphics[width=0.5\textwidth]{../images/weather/data_2010_8_\day_\time_\level_polar.png}
+        \end{center}
+      \end{frame}
+    }
+  }
+}
+
+\foreach \level in {500} {
+\foreach \day in {20,...,31} {
+  \foreach \time in {12:00} {
+      \begin{frame}[plain]
+        \frametitle{Forecast: \day-July-2010 at \time, Level \level hPa}
+        \begin{center}
+          \includegraphics[width=\textwidth]{../images/weather/data_2010_7_\day_\time_\level.png}
+        \end{center}
+      \end{frame}
+    }
+  }
+}
+
+\foreach \level in {500} {
+\foreach \day in {1,...,10} {
+  \foreach \time in {12:00} {
+      \begin{frame}[plain]
+        \frametitle{Forecast: \day-August-2010 at \time, Level \level hPa}
+        \begin{center}
+          \includegraphics[width=\textwidth]{../images/weather/data_2010_8_\day_\time_\level.png}
+        \end{center}
+      \end{frame}
+    }
+  }
 }
