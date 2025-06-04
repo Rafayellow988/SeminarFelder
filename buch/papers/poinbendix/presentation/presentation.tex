@@ -22,6 +22,7 @@
 \usepackage{scrextend}
 
 \usepackage{tikz}
+\usepackage{pgf}
 
 \usepackage{algorithmic}
 
@@ -200,6 +201,34 @@
     % Wir brauchen dass, da unser ENSO model sehr stark vereinfacht ist.
 
     \section{Anwendung und Relevanz}
+
+    \begin{frame}
+    \frametitle{Lösungen Recharge Oszillator bei unterschiedlichen Anfangswerten}
+        \begin{center}
+            \input{../images/recharge_oscillator.pgf}
+        \end{center}
+    \end{frame}
+
+    \begin{frame}
+    \frametitle{Lösungen Recharge Oszillator bei variierendem $\alpha$}
+        \begin{center}
+            \input{../images/recharge_oscillator_alpha.pgf}
+        \end{center}
+    \end{frame}
+
+    \begin{frame}
+    \frametitle{Lösungen Recharge Oszillator bei variierendem $\gamma$}
+        \begin{center}
+            \input{../images/recharge_oscillator_gamma.pgf}
+        \end{center}
+    \end{frame}
+
+    \begin{frame}
+    \frametitle{Verhalten in 3D: Beispiel Lorenz System}
+        \begin{center}
+            \includegraphics[width=.7\textwidth]{../images/animation_thumbnail.jpg}
+        \end{center}
+    \end{frame}
     % Plots von ENSO. Lösungen konvergieren.
     % Idee: Plot wo unterwegs die Gleichung (Konstanten) ändert -> bleibt trotzdem auf einem ähnlichen Orbit
     % Link zum Sonnensystem herstellen!
