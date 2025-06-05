@@ -4,6 +4,12 @@
 % \section{Einleitung}
 
 \begin{frame}
+  \frametitle{Karte}
+  \includegraphics[width=\textwidth]{../images/weather/map.pdf}
+\end{frame}
+
+
+\begin{frame}
   \frametitle{Forecast: 01-May-2025 at 00:00, Level 850 hPa}
   \includegraphics[width=\textwidth]{../images/weather/data_2025_5_1_00:00_850.pdf}
 \end{frame}
@@ -23,7 +29,7 @@
     \foreach \time in {00:00,12:00} {
       \begin{frame}
         \frametitle{Forecast: \day-May-2025 at \time, Level \level hPa}
-        \includegraphics[width=\textwidth]{../images/weather/data_2025_5_\day_\time_\level.png}
+        \includegraphics[width=\textwidth]{../images/weather/data_2025_5_\day_\time_\level.pdf}
       \end{frame}
     }
   }
@@ -38,60 +44,7 @@
       \begin{frame}[plain]
         \frametitle{Forecast: \day-May-2025 at \time, Level \level hPa}
         \begin{center}
-          \includegraphics[width=0.5\textwidth]{../images/weather/data_2025_5_\day_\time_\level_polar.png}
-        \end{center}
-      \end{frame}
-    }
-  }
-}
-
-% In your document body:
-\foreach \level in {500} {
-\foreach \day in {20,...,31} {
-  \foreach \time in {12:00} {
-      \begin{frame}[plain]
-        \frametitle{Forecast: \day-July-2010 at \time, Level \level hPa}
-        \begin{center}
-          \includegraphics[width=0.5\textwidth]{../images/weather/data_2010_7_\day_\time_\level_polar.png}
-        \end{center}
-      \end{frame}
-    }
-  }
-}
-
-\foreach \level in {500} {
-\foreach \day in {1,...,10} {
-  \foreach \time in {12:00} {
-      \begin{frame}[plain]
-        \frametitle{Forecast: \day-August-2010 at \time, Level \level hPa}
-        \begin{center}
-          \includegraphics[width=0.5\textwidth]{../images/weather/data_2010_8_\day_\time_\level_polar.png}
-        \end{center}
-      \end{frame}
-    }
-  }
-}
-
-\foreach \level in {500} {
-\foreach \day in {20,...,31} {
-  \foreach \time in {12:00} {
-      \begin{frame}[plain]
-        \frametitle{Forecast: \day-July-2010 at \time, Level \level hPa}
-        \begin{center}
-          \includegraphics[width=\textwidth]{../images/weather/data_2010_7_\day_\time_\level.png}
-        \end{center}
-      \end{frame}
-    }
-  }
-}
-
-\foreach \level in {500} {
-\foreach \day in {1,...,10} {
-  \foreach \time in {12:00} {
-      \begin{frame}[plain]
-        \frametitle{Forecast: \day-August-2010 at \time, Level \level hPa}
-        \begin{center}
-          \includegraphics[width=\textwidth]{../images/weather/data_2010_8_\day_\time_\level.png}
+          \includegraphics[width=0.5\textwidth]{../images/weather/data_2025_5_\day_\time_\level_polar.pdf}
         \end{center}
       \end{frame}
     }
