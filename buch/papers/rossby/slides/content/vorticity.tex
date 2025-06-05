@@ -11,7 +11,7 @@
 			      \]
 			\item Für eine zweidimensionale Strömung \( \vec{u} = (u(x,y), v(x,y)) \) ist nur die \(z\)-Komponente relevant:
 			      \[
-				      \zeta = \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y}
+				      \zeta = \dfrac{\partial v}{\partial x} - \frac{\partial u}{\partial y}
 			      \]
 			\item \(\zeta > 0\): Zyklonale Rotation (gegen den Uhrzeigersinn)
 			\item \(\zeta < 0\): Antizyklonale Rotation (im Uhrzeigersinn)
@@ -30,7 +30,7 @@
 			\item \( \vec{u} = (2, 0) \)
 			\item Uniform horizontal flow
 			\item No shear or curvature
-			\item \( \zeta = 0 \)
+			\item \( \zeta = \dfrac{\partial v}{\partial x} - \dfrac{\partial u}{\partial y} = 0-0= 0 \)
 		\end{itemize}
 
 		\column{0.5\textwidth}
@@ -43,8 +43,8 @@
 		\column{0.5\textwidth}
 		\begin{itemize}
 			\item \( \vec{u} = (y, 0) \)
-			\item Horizontal shear: \( \frac{\partial u}{\partial y} = 1 \)
-			\item \( \zeta = -1 \)
+			\item Horizontal shear: \( \dfrac{\partial u}{\partial y} = 1 \)
+			\item \( \zeta = \dfrac{\partial v}{\partial x} - \dfrac{\partial u}{\partial y} = 0-1= -1 \)
 		\end{itemize}
 
 		\column{0.5\textwidth}
@@ -57,9 +57,10 @@
 		\column{0.5\textwidth}
 		\begin{itemize}
 			\item \( \vec{u} = (y^2, 0) \)
-			\item \( \zeta = -2y \)
 			\item Antisymmetric vorticity field
 			\item Stronger at larger \( |y| \)
+			\item \( \zeta = \dfrac{\partial v}{\partial x} - \dfrac{\partial u}{\partial y} = 0-2y = -2y \)
+
 		\end{itemize}
 
 		\column{0.5\textwidth}
@@ -73,7 +74,7 @@
 		\begin{itemize}
 			\item \( \vec{u} = (-y, x) \)
 			\item Pure rotation, counter-clockwise
-			\item \( \zeta = 2 \)
+			\item \( \zeta =  \dfrac{\partial v}{\partial x} - \dfrac{\partial u}{\partial y} = 1-(-1)=2 \)
 		\end{itemize}
 
 		\column{0.5\textwidth}
@@ -87,7 +88,7 @@
 		\begin{itemize}
 			\item \( \vec{u} = (y, -x) \)
 			\item Clockwise rotation
-			\item \( \zeta = -2 \)
+			\item \( \zeta = \dfrac{\partial v}{\partial x} - \dfrac{\partial u}{\partial y} = -1-1=-2 \)
 		\end{itemize}
 
 		\column{0.5\textwidth}
@@ -96,46 +97,58 @@
 \end{frame}
 
 \begin{frame}{Absolute Vortizität}
-  \begin{columns}
-    \column{0.99\textwidth}
-    \begin{itemize}
-      \item In einem rotierenden Bezugssystem (wie der Erde) ergibt sich die \textbf{absolute Vortizität} zu:
-      \[
-        \eta = f + \zeta
-      \]
-      \item \( \zeta \): relative Vortizität (durch Scherung und Krümmung der Strömung)
-      \item \( f = 2\Omega \sin\phi \): Coriolis-Parameter, abhängig von der geografischen Breite
-      \item Bedeutend für großräumige geophysikalische Strömungen (z.\,B. Rossby-Wellen, Erhaltung der potenziellen Vortizität)
-    \end{itemize}
+	\begin{columns}
+		\column{0.99\textwidth}
+		\begin{itemize}
+			\item In einem rotierenden Bezugssystem (wie der Erde) ergibt sich die \textbf{absolute Vortizität} zu:
+			      \[
+				      \eta = f + \zeta
+			      \]
+			\item \( \zeta \): relative Vortizität (durch Scherung und Krümmung der Strömung)
+			\item \( f = 2\Omega \sin\phi \): Coriolis-Parameter, abhängig von der geografischen Breite
+			\item Bedeutend für grossräumige geophysikalische Strömungen (z.\,B. Rossby-Wellen, Erhaltung der potenziellen Vortizität)
+		\end{itemize}
 
-    \column{0.4\textwidth}
-    \vspace{2cm}
-  \end{columns}
+		\column{0.4\textwidth}
+		\vspace{2cm}
+	\end{columns}
 \end{frame}
 
 
 \begin{frame}{Konservierung der potentiellen Vortizität}
-  \begin{columns}
-    \column{0.99\textwidth}
-    \begin{itemize}
-      \item Die \textbf{potenzielle Vortizität (PV)} ist definiert als:
-      \[
-        q = \frac{\eta}{H} = \frac{f + \zeta}{H}
-      \]
-      \item \( \eta \): absolute Vortizität, bestehend aus \( f + \zeta \)
-      \item \( H \): effektive Schichtdicke (z.\,B. Troposphärenhöhe oder isentrope Dicke)
-      \item In einer reibungsfreien, adiabatischen Atmosphäre gilt:
-      \[
-        \frac{Dq}{Dt} = 0
-      \]
-      \item \textbf{Folge:} PV ist entlang von Teilchenbahnen erhalten → zentrale Größe in der großskaligen Dynamik
-    \end{itemize}
+	\begin{columns}
+		\column{0.99\textwidth}
+		\begin{itemize}
+			\item Die \textbf{potenzielle Vortizität (PV)} ist definiert als:
+			      \[
+				      q = \frac{\eta}{H} = \frac{f + \zeta}{H}
+			      \]
+			\item \( \eta \): absolute Vortizität, bestehend aus \( f + \zeta \)
+			\item \( H \): effektive Schichtdicke (z.\,B. Troposphärenhöhe oder isentrope Dicke)
+			\item In einer reibungsfreien, adiabatischen Atmosphäre gilt:
+			      \[
+				      \frac{Dq}{Dt} = 0
+			      \]
+			\item \textbf{Folge:} PV ist entlang von Teilchenbahnen erhalten → zentrale Grösse in der grossskaligen Dynamik
+		\end{itemize}
 
-    \column{0.4\textwidth}
-    \vspace{2cm}
-  \end{columns}
+		\column{0.4\textwidth}
+		\vspace{2cm}
+	\end{columns}
 \end{frame}
 
+
+\begin{frame}{Warum ist PV-Erhaltung wichtig für Rossby-Wellen?}
+	\begin{itemize}
+		\item Rossby-Wellen entstehen durch meridionale Bewegung von Luftpaketen (nach Norden oder Süden)
+		\item Dabei ändert sich der Coriolis-Parameter: \( f = 2\Omega \sin\phi \)
+		\item \textbf{PV-Erhaltung:} \[ q = \frac{f + \zeta}{H} = \text{konstant} \]
+		\item Wenn ein Luftpaket nach Norden wandert: \( f \uparrow \Rightarrow \zeta \downarrow \)
+		\item Folge: Luftpaket rotiert weniger → Rückstellkraft → beginnt zu oszillieren
+		\item \textbf{Diese Oszillation ist die Rossby-Welle}
+		\item Ohne PV-Erhaltung gäbe es keine Rückstellmechanismus → keine Welle
+	\end{itemize}
+\end{frame}
 
 
 % \begin{frame}{Barotrope Vorticity-Gleichung}
@@ -164,3 +177,27 @@
 %       \end{itemize}
 %     \end{itemize}
 %     \end{frame}
+
+% 	\begin{frame}{Physikalische Bedeutung und Wellendispersion}
+% 		\begin{itemize}
+% 		  \item \textbf{Barotrope Vorticity-Gleichung:}
+% 		  \[
+% 			\frac{\partial}{\partial t}(\nabla^2 \psi) + \beta \frac{\partial \psi}{\partial x} = 0
+% 		  \]
+% 		  \item \( \nabla^2 \psi \): relative Vortizität
+% 		  \item \( \beta \frac{\partial \psi}{\partial x} \): Änderung der planetaren Vortizität durch meridionale Bewegung → Rückstellkraft
+% 		  \item \textbf{Dispersionsrelation:}
+% 		  \[
+% 			\omega = -\beta \frac{k}{k^2 + l^2}
+% 		  \]
+% 		  \item \textbf{Phasengeschwindigkeit:} \( c_p = \frac{\omega}{k} = -\beta \frac{1}{k^2 + l^2} \)
+% 		  \item \textbf{Gruppengeschwindigkeit:}
+% 		  \[
+% 			c_g = \nabla_k \omega = \left(
+% 			  \frac{\partial \omega}{\partial k}, \frac{\partial \omega}{\partial l}
+% 			\right)
+% 		  \]
+% 		  \item \textbf{Folge:} Rossby-Wellen sind \textbf{dispersiv} – verschiedene Wellenlängen breiten sich mit unterschiedlicher Geschwindigkeit aus
+% 		\end{itemize}
+% 		\end{frame}
+		

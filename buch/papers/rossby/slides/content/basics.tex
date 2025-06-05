@@ -11,7 +11,7 @@
 				      \item Geschwindigkeit abhängig von der Breite: \(u = U_0 \cdot \sin^2(\theta)\)
 				      \item Keine Druckgradienten oder vertikale Struktur
 			      \end{itemize}
-			\item Dieses idealisierte Feld dient als Basis zur Untersuchung großskaliger atmosphärischer Prozesse.
+			\item Dieses idealisierte Feld dient als Basis zur Untersuchung grossskaliger atmosphärischer Prozesse.
 			\item Zonale Winde treten z.\,B. in der Realität als \textbf{Jetstreams} auf.
 		\end{itemize}
 
@@ -67,6 +67,35 @@
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{Beispiel: Corioliskraft beim Velofahren}
+	\textbf{Gegeben:}
+	\begin{itemize}
+	  \item Geschwindigkeit: \( \vec{v} = 8.33\,\mathrm{m/s} \) (30 km/h)
+	  \item Masse: \( m = 80\,\mathrm{kg} \)
+	  \item Breite: \( \varphi = 47^\circ \) (Zürich)
+	  \item Erdrotation:
+	  \[
+	  23\,\mathrm{h}\,56\,\mathrm{min}\,4\,\mathrm{s} \quad\Rightarrow\quad
+	  \vec{\Omega} = \frac{2\pi}{86164\,\mathrm{s}} \approx 7.292 \times 10^{-5}\,\mathrm{rad/s}
+	  \]
+	\end{itemize}
+	
+	\vspace{0.3cm}
+	\textbf{Formel:}
+	\[
+	F_C = 2 m \vec{v} \vec{\Omega} \sin(\varphi)
+	\]
+	
+	\vspace{0.3cm}
+	\textbf{Einsetzen:}
+	\[
+	F_C \approx 2 \cdot 80 \cdot 8.33 \cdot 7.292 \times 10^{-5} \cdot \sin(47^\circ)
+	\approx 0.070\, \mathrm{N}
+	\]
+
+	\end{frame}
+	
+
 \begin{frame}{Breitenabhängigkeit und Coriolis-Parameter}
 	\begin{itemize}
 		\item Der \textbf{Coriolis-Parameter} beschreibt die Breitenabhängigkeit:
@@ -99,35 +128,35 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Numerische Simulation der Corioliskraft}
-	\begin{itemize}
-		\item \textbf{Rotation der Erde:}
-		      \[
-			      \Omega = 7.2921 \cdot 10^{-5} \ \text{rad/s}, \quad f = 2 \Omega \sin(\phi)
-		      \]
-		      Der Coriolisparameter \( f \) steigt mit der geographischen Breite \(\phi\), ist bei \(\phi = 0^\circ\) null.
+% \begin{frame}{Numerische Simulation der Corioliskraft}
+% 	\begin{itemize}
+% 		\item \textbf{Rotation der Erde:}
+% 		      \[
+% 			      \Omega = 7.2921 \cdot 10^{-5} \ \text{rad/s}, \quad f = 2 \Omega \sin(\phi)
+% 		      \]
+% 		      Der Coriolisparameter \( f \) steigt mit der geographischen Breite \(\phi\), ist bei \(\phi = 0^\circ\) null.
 
-		\item \textbf{Initialisierung:}
-		      \[
-			      v = 1 \, (\text{Nord}), \quad u = 0 \, (\text{Ost}), \quad dx = dy = 0
-		      \]
-		      Alle Luftpakete starten mit rein meridionaler Geschwindigkeit.
+% 		\item \textbf{Initialisierung:}
+% 		      \[
+% 			      v = 1 \, (\text{Nord}), \quad u = 0 \, (\text{Ost}), \quad dx = dy = 0
+% 		      \]
+% 		      Alle Luftpakete starten mit rein meridionaler Geschwindigkeit.
 
-		\item \textbf{Zeitschritte:} (Euler-Verfahren)
-		      \[
-			      u_{t+1} = u_t + f \cdot v_t \cdot \Delta t,\quad
-			      v_{t+1} = v_t - f \cdot u_t \cdot \Delta t
-		      \]
-		      \[
-			      dx += u_{t+1} \cdot \Delta t,\quad dy += v_{t+1} \cdot \Delta t
-		      \]
-		      Die Bewegung wird durch die Corioliskraft kontinuierlich abgelenkt.
-	\end{itemize}
-\end{frame}
+% 		\item \textbf{Zeitschritte:} (Euler-Verfahren)
+% 		      \[
+% 			      u_{t+1} = u_t + f \cdot v_t \cdot \Delta t,\quad
+% 			      v_{t+1} = v_t - f \cdot u_t \cdot \Delta t
+% 		      \]
+% 		      \[
+% 			      dx += u_{t+1} \cdot \Delta t,\quad dy += v_{t+1} \cdot \Delta t
+% 		      \]
+% 		      Die Bewegung wird durch die Corioliskraft kontinuierlich abgelenkt.
+% 	\end{itemize}
+% \end{frame}
 
 
 \begin{frame}
-	\frametitle{Tilted Earth with 3D Spin}
+	\frametitle{$\beta$-Ebene Approximation}
 	\begin{center}
 		\begin{tikzpicture}[scale=2]
 			% Tilted group (Earth and axes)
@@ -168,14 +197,14 @@
 % 	\begin{itemize}
 % 		\item Die Corioliskraft lenkt Luftmassen ab und hängt von der geographischen Breite ab.
 % 		\item Ihre Breitenänderung ist die physikalische Grundlage für Rossby-Wellen.
-% 		\item Ohne Corioliskraft gäbe es keine großskaligen planetaren Wellen wie Jetstreams.
+% 		\item Ohne Corioliskraft gäbe es keine grossskaligen planetaren Wellen wie Jetstreams.
 % 	\end{itemize}
 % \end{frame}
 
 \begin{frame}{Was ist die \(\beta\)-Ebene?}
 	\begin{itemize}
 		\item Die \textbf{\(\beta\)-Ebene} ist eine lokale Approximation der Erdkugel nahe einer bestimmten Breite \(\phi_0\).
-		\item Ziel: Vereinfachung der Corioliskraft für mathematische Modelle großskaliger Strömungen.
+		\item Ziel: Vereinfachung der Corioliskraft für mathematische Modelle grossskaliger Strömungen.
 		\item Der Coriolisparameter \(f\) wird linearisiert:
 		      \[
 			      f(y) = f_0 + \beta y
@@ -206,8 +235,8 @@
 % \begin{frame}{Zusammenfassung \(\beta\)-Ebene}
 % 	\begin{itemize}
 % 		\item Lokale Näherung, um Breitenabhängigkeit von \(f\) zu berücksichtigen.
-% 		\item Ideal für theoretische Untersuchungen von großskaliger Dynamik.
-% 		\item Grundlage für das Verständnis von Rossby-Wellen, atmosphärischer Stabilität und großräumiger Zirkulation.
+% 		\item Ideal für theoretische Untersuchungen von grossskaliger Dynamik.
+% 		\item Grundlage für das Verständnis von Rossby-Wellen, atmosphärischer Stabilität und grossräumiger Zirkulation.
 % 	\end{itemize}
 % \end{frame}
 
@@ -269,7 +298,7 @@
 % 		\item Die \textbf{Corioliskraft} nimmt mit der Breite zu → \(\beta\)-Effekt.
 % 		\item Die \textbf{absolute Vorticity} ist entlang eines Stromfadens erhalten.
 % 		\item Kleine Störungen führen zu \textbf{planetaren Wellen} mit westwärts gerichteter Ausbreitung.
-% 		\item Diese Wellen heißen \textbf{Rossby-Wellen} und sind fundamental für die großräumige atmosphärische Dynamik.
+% 		\item Diese Wellen heissen \textbf{Rossby-Wellen} und sind fundamental für die grossräumige atmosphärische Dynamik.
 % 	\end{itemize}
 % \end{frame}
 
