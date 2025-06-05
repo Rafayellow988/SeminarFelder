@@ -157,6 +157,33 @@
     \end{frame}
 
 	\section{Poincaré-Bendixson}
+
+    \begin{frame}
+    \frametitle{Nullklinen}
+        Wir betrachten das System
+
+        \begin{align*}
+            \dot{x} &= y - x^2 \\
+            \dot{y} &= x - 2
+        \end{align*}
+        \pause
+        $x$-Nullkline:
+        \begin{equation*}
+            y = x^2
+        \end{equation*}
+        \pause
+        $y$-Nullkline:
+        \begin{equation*}
+            x = 2
+        \end{equation*}
+    \end{frame}
+    \begin{frame}
+    \frametitle{Nullklinen: Unterteilung in Sektoren}
+        \begin{center}
+            \includegraphics[width=0.7\textwidth]{../images/nullklinen.pdf}
+        \end{center}
+    \end{frame}
+
     \begin{frame}
     \frametitle{Limesmengen}
         Dynamisches System $\Phi_t(p)$ hat die Alpha- und Omega-Limesmenge:
@@ -179,7 +206,9 @@
         \begin{enumerate}
             \item $\omega(p)$ ist eine Singularität
         \end{enumerate}
-        %TODO Plot
+        \begin{center}
+            \input{../images/fixed_point_omega_set.pgf}
+        \end{center}
     \end{frame}
     \begin{frame}
     \frametitle{Poincaré-Bendixson: Fall 2}
@@ -187,7 +216,9 @@
             \setcounter{enumi}{1}
             \item $\omega(p)$ ist ein geschlossener Orbit
         \end{enumerate}
-        %TODO Plot
+        \begin{center}
+            \input{../images/recharge_oscillator_fall_2.pgf}
+        \end{center}
     \end{frame}
     \begin{frame}
     \frametitle{Poincaré-Bendixson: Spezialfall 3}
