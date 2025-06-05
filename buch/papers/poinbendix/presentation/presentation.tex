@@ -135,7 +135,7 @@
         \frametitle{Modellierung als dynamisches System}
         Recharge Oscillator Modell:
         \begin{align*}
-            \frac{dT_e}{dt} &= -cT_e + \gamma \left(bT_E + h_W\right) - \epsilon \left(bT_E + h_W\right)^3, \\
+            \frac{dT_E}{dt} &= -cT_E + \gamma \left(bT_E + h_W\right) - \epsilon \left(bT_E + h_W\right)^3, \\
             \frac{dh_W}{dt} &= -rh_W - \alpha b T_E.
         \end{align*}
         \pause
@@ -189,17 +189,9 @@
         Dynamisches System $\Phi_t(p)$ hat die Alpha- und Omega-Limesmenge:
 
         \begin{align*}
-            \alpha(p) &= \lim_{t\to-\infty} \Phi_t(p) = Y \\
-            \omega(p) &= \lim_{t\to\infty} \Phi_t(p) = Y
+            \alpha(p) &= \lim_{t\to-\infty} \Phi_t(p) \\
+            \omega(p) &= \lim_{t\to\infty} \Phi_t(p)
         \end{align*}
-    \end{frame}
-    \begin{frame}
-    \frametitle{Voraussetzungen für Poincaré-Bendixson}
-        \begin{itemize}
-            \item Dynamisches System $\Phi_t(p) \in \Xi^r(\mathbb{R}^2)$
-            \item Finite Anzahl Singularitäten
-            \item Anfangspunkt $p \in \mathbb{R}^2$
-        \end{itemize}
     \end{frame}
     \begin{frame}
     \frametitle{Poincaré-Bendixson: Fall 1}
@@ -227,6 +219,27 @@
             \item $\omega(p)$ ist ein geschlossener Orbit welcher Singularitäten verbindet
         \end{enumerate}
         %TODO Plot
+    \end{frame}
+
+    \begin{frame}
+    \frametitle{Beispiel aus Nullklinen passt nicht ins Schema?}
+        \begin{center}
+            \includegraphics[width=0.7\textwidth]{../images/nullklinen.pdf}
+        \end{center}
+    \end{frame}
+    \begin{frame}
+    \frametitle{Kugeloberfläche}
+        \begin{center}
+            \includegraphics[width=0.7\textwidth]{../images/kugel_animation_thumbnail.jpg}
+        \end{center}
+    \end{frame}
+    \begin{frame}
+    \frametitle{Voraussetzungen für Poincaré-Bendixson}
+        \begin{itemize}
+            \item Dynamisches System $\Phi_t(p) \in \Xi^r(\mathbb{S}^2)$
+            \item Finite Anzahl Singularitäten
+            \item Anfangspunkt $p \in \mathbb{S}^2$
+        \end{itemize}
     \end{frame}
     %Idee: 2D schränkt mögliche Lösungen stark ein. Das kann formuliert werden mit Poinbendix.
     % Wir brauchen dass, da unser ENSO model sehr stark vereinfacht ist.
@@ -257,7 +270,7 @@
     \begin{frame}
     \frametitle{Verhalten in 3D: Beispiel Lorenz System}
         \begin{center}
-            \includegraphics[width=.7\textwidth]{../images/animation_thumbnail.jpg}
+            \includegraphics[width=.7\textwidth]{../images/lorenz_animation_thumbnail.jpg}
         \end{center}
     \end{frame}
     % Plots von ENSO. Lösungen konvergieren.
