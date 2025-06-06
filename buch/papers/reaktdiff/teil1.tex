@@ -38,8 +38,8 @@ Hierführ betrachten wir die Gleichungen
 Im fokus liegt die Stationärlösung \(u_0, v_0\) der Gleichungen \ref{reaktdiff:equation:reaktdiff2ohneDiff}, das heisst das \(f(u_0,v_0) = g(u_0,v_0) = 0\).
 Nun wird eine kleine Störung \(\epsilon\) zu \(u_0\) und \(v_0\) hinzugefügt.
 \begin{align}
-    \delta u &= u_0 + \epsilon u\\
-    \delta v &= v_0 + \epsilon v.
+    \delta u &= \epsilon u - u_0 \\
+    \delta v &= \epsilon v - v_0.
 \end{align}
 Die Störung \(\epsilon\) ist klein, das heisst \(\epsilon \ll 1\).
 Jetzt kann man die Reaktionsterme linearisiern.
@@ -80,8 +80,25 @@ Wenn man sie als Matrixform screibt, erhält man
 
 Die Matrix \(J\) ist die Jacobi-Matrix der Reaktionsgleichungen.
 Damit die Gleichung stabil ist, müssen die Eigenwerte der Matrix \(J\) negative Realteile haben.
-Das heisst dass die Spur \(\text{Tr}(J) < 0\) und die Determinante \(\det(J) > 0\) sein muss.
-Das ist die Bedingung für die Stabilität der Stationärlösung \(u_0, v_0\).
+Hierbei ist es ausreichend dass die Spur \(\text{Tr}(J) < 0\) und die Determinante \(\det(J) > 0\) sind.
+Das kann man zeigen, indem
+\begin{equation}
+    \det(A - \lambda I) = 0
+\end{equation}
+gelöst wird, wobei \(I\) die Einheitsmatrix ist.
+Die Eigenwerte der Matrix \(J\) sind die Lösungen der Gleichung
+\begin{equation}
+    \lambda^2 - \text{Tr}(J) \lambda + \det(J) = 0.
+\label{reaktdiff:equation:reaktdiff2ohneDifflinearisiert3}
+\end{equation}
+Die Eigenwerte der Matrix \(J\) sind die Lösungen der Gleichung
+\begin{equation}
+    \lambda_{1,2} = \frac{1}{2} \left( \text{Tr}(J) \pm 
+    \sqrt{\text{Tr}(J)^2 - 4 \det(J)} \right).
+\label{reaktdiff:equation:reaktdiff2ohneDifflinearisiert4}
+\end{equation}
+Hier sieht man das der Wert unter der Wurzel immmer kleiner ist als die Spur der Matrix \(J\) wenn die Determinante positiv ist.
+Somit muss die Spur der Matrix \(J\) negativ sein, damit die Eigenwerte negative Realteile haben.
 
 \subsection{Lineare Stabilitätsanalyse mit Diffusion
 \label{reaktdiff:section:matheDiff}}
@@ -178,12 +195,19 @@ Das heisst die Spur der Matrix \(A\) muss negativ sein und die Determinante der 
 Somit gilt
 \begin{align}
     \text{Tr}(A) &= f_u  + g_v - k^2(D_v + D_u)  < 0, \\
-    \det(A) &= D_uD_vk^4 - (D_vf_u + D_ug_v)k^2 + f_u g_v - f_v g_u > 0.
+    \det(A) &= D_uD_vk^4 - (D_vf_u + D_ug_v)k^2 + f_u g_v - f_v g_u < 0.
     \label{reaktdiff:equation:reaktdiffbedingunen}
 \end{align}
+Da \(D_v,D_u > 0\) und der letzte Teil der Determinante positiv ist, muss der Ausdruck\(D_vf_u + D_ug_v\) positiv sein, damit die Determinante der Matrix \(A\) negativ ist.
+Da \(f_u > 0\) und \(g_v < 0\) ist, muss auch
+\begin{equation}
+    \frac{D_v}{D_u}f_u > g_v
+\end{equation}
+damit die Determinante der Matrix \(A\) negativ ist.
+
 Man sieht das \(\det(A)\) ein Polynom 2. Grades in \(k^2\) ist.
 Ausserdem representiert sie eine Parabel, die nach oben geöffnet ist, da der Koeffizient \(D_uD_v > 0\) ist.
-Somit können wir die mininmale Wellenzahl \(k\) bestimmen, bei der die Determinante positiv ist.
+Somit können wir die mininmale Wellenzahl \(k\) bestimmen, bei der die Determinante negativ ist.
 Dafür leiten wir die Determinante nach \(k^2\) ab und setzen sie gleich Null.
 Somit erhalten wir
 \begin{equation*}
@@ -202,7 +226,11 @@ Die Determinante der Matrix \(A\) ist also positiv, wenn
 \begin{equation*}
     \frac{(D_vf_u + D_ug_v)^2}{D_uD_v} - f_u g_v - f_v g_u > 0.
 \end{equation*}
-
+oder umgestellt
+\begin{equation*}
+    D_ug_v+D_vf_u < 2\sqrt{D_uD_v(f_u g_v - f_v g_u)}.
+\end{equation*}
+Das ist ein weiterer Bedingung für die Musterbildung in Reaktionsdiffusionssystemen.
 
 
 % Aktivator und Inhibitor.
