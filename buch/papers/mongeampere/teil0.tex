@@ -8,18 +8,20 @@
 %
 \section{Teil 0\label{mongeampere:section:teil0}}
 \kopfrechts{Teil 0}
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua \cite{mongeampere:bibtex}.
-At vero eos et accusam et justo duo dolores et ea rebum.
-Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-dolor sit amet.
-
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua.
-At vero eos et accusam et justo duo dolores et ea rebum.  Stet clita
-kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-amet.
-
+Die Monge-Ampèresche Gleichung
+\begin{equation}
+  \det D^2 u = f(x, u, \nabla u)
+  \label{mongeampere:eq:mongeampere}
+\end{equation}
+wobei $D$ die Hessche Matrix
+\begin{equation}
+  D^2 u =
+  \begin{pmatrix}
+    \pdv[2]{u}{x_1} & \dots &\pdv{u}{x_1}{x_n} \\
+  \vdots & \ddots & \vdots \\
+  \pdv{u}{x_n}{x_1} & \dots &\pdv[2]{u}{x_n} \\
+  \end{pmatrix}
+  \label{mongeampere:eq:hess}
+\end{equation}
+ist.
 
