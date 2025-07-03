@@ -43,13 +43,13 @@ Als Beispiel für den Differentialoperator $\mathcal{D}$, dieser könnte z.B.
 \end{equation*}
 sein. Setzt man das nun in die Gleichung \eqref{neuronal:generelle_feldgleichung} ein, entspricht dies der Wellengleichung in zwei Dimensionen.
 
-Das Ziel dieses Papers ist es, die Lösung $\varphi(x, t)$ mit einem neuronalen Netzwerk $\hat{\varphi}(x, t; \vartheta)$ zu approximieren.
+Das Ziel ist es, die Lösung $\varphi(x, t)$ mit einem neuronalen Netzwerk $\hat{\varphi}(x, t; \vartheta)$ zu approximieren.
 Das Netzwerk besitzt einen Vektor \( \vartheta \in \mathbb{R}^n \) der \emph{trainierbaren Parameter}.
 Diese sollen so gewählt werden, dass die gesuchte Funktion $\varphi(x, t)$ möglichst gut durch das neuronale Netzwerk $\hat{\varphi}(x, t; \vartheta)$ approximiert wird.
 
 
 \subsection{Struktur des neuronalen Netzes}\label{neuronal:subsection:struktur_nn}
-Bevor wir mit dem Approximieren der Feldgleichung fortfahren, muss noch geklärt werden was ein neuronales Netzwerk ist.
+Bevor wir mit dem Approximieren der Lösung von Feldgleichungen fortfahren, muss noch geklärt werden was ein neuronales Netzwerk ist.
 Generell sind neuronale Netze Kompositionen von mehreren Teilfunktionen
 \begin{equation}
     \hat{\varphi}(x, t; \vartheta) = f_k(\ldots(f_i(\ldots(f_1(x, y, t))))) = f_k \circ \ldots \circ f_i \ldots \circ f_1(x, t).
@@ -63,7 +63,7 @@ Dabei besteht jede Teilfunktion \( f_i \) aus einer affinen Transformation, gefo
 mit \( v \in \mathbb{R}^q, A_i \in \mathbb{R}^{p \times q}, b_i \in \mathbb{R}^p \). 
 Die Elemente aller \( A_i \) und \( b_i \) bilden den Vektor \( \vartheta \) der \emph{trainierbaren Parameter}.
 Weiter ist die Aktivierungsfunktion \( g_i\colon \mathbb{R} \longrightarrow\mathbb{R} \), da das Resultat der affinen Transformation ein Vektor ist, wird \( g_i \) einzeln auf jeden Vektor-Komponenten angewendet.
-Für \( g_i \) gibt es viele verschiedene Möglichkeiten, z.B. den Sinus oder den hyperbolischen Tangens.
+Für \( g_i \) gibt es viele Möglichkeiten, z.B. den hyperbolischen Tangens.
 Was verwendet wird hängt stark von der Funktion ab, die man approximieren möchte.
 
 Die Definitions- und Wertebereiche der Teilfunktionen \( f_i \) sind mehr oder weniger frei wählbar.
@@ -82,8 +82,9 @@ Im Abschnitt \ref{neuronal:section:rechenbeispiel} werden konkrete Definitionen 
 
 
 \subsection{Formulierung als Optimierungsproblem}\label{neuronal:subsection:optimierungsproblem}
-Die Wahl der Parameter $\vartheta$ des Netzwerks wird als Training des Netzwerks bezeichnet.
-Dies ist im Wesentlichen ein Minimierungsproblem.
+Nachdem nun geklärt ist, was ein neuronales Netzwerk ist, kommen wir zurück zum Lösen von Feldgleichungen.
+Wie schon erwähnt, soll $\vartheta$ so gewählt werden, dass die gesuchte Funktion möglichst gut approximiert wird.
+Die Wahl von $\vartheta$ ist im Wesentlichen ein Minimierungsproblem.
 Die Idee dabei ist, dass man eine Funktion \( L(\vartheta) \) findet, welche den Approximationsfehler des Netzwerks misst.
 Anschliessend wird $L(\vartheta)$ -- bzw. der Approximationsfehler -- minimiert.
 Das $\vartheta$ am Minimum ist dann geeignet für die Approximation.
@@ -112,35 +113,33 @@ und
 \end{equation}
 Als nächstes wird das neuronale Netzwerk $\hat{\varphi}$ für $\varphi$ substituiert
 \begin{equation}
-    \left(\mathcal{D}(\hat{\varphi}(x, t; \vartheta))\right)^2 \approx 0
+    \left(\mathcal{D}(\hat{\varphi}(x, t; \vartheta))\right)^2
     \label{neuronal:feldgleichung_umformuliert_netz}
 \end{equation}
 \begin{equation}
     \begin{aligned}
-        \left(f(x) - \hat{\varphi}(x, t = 0; \vartheta)\right)^2 \approx 0\\
-        \left(g(x) - \partial_t \hat{\varphi}(x, t = 0; \vartheta)\right)^2 \approx 0
+        \left(f(x) - \hat{\varphi}(x, t = 0; \vartheta)\right)^2\\
+        \left(g(x) - \partial_t \hat{\varphi}(x, t = 0; \vartheta)\right)^2
     \end{aligned}
     \label{neuronal:anfangsbedingung_umformuliert_netz}
 \end{equation}
 \begin{equation}
     \begin{aligned}
-        \left(\mathcal{B}(\hat{\varphi}(x, t; \vartheta))\right)^2 &\approx 0.
+        \left(\mathcal{B}(\hat{\varphi}(x, t; \vartheta))\right)^2.
     \end{aligned}
     \label{neuronal:randbedingung_umformuliert_netz}
 \end{equation}
-Ziel ist es $\vartheta$ so zu wählen, dass alle Gleichungen möglichst aufgehen -- d.h. möglichst gleich 0 sind.
-Anders ausgedrückt soll $\vartheta$ so gewählt werden, dass die linken Seiten der Gleichungen minimal werden.
-Aus diesem Grund wurden die Gleichungen quadriert, denn so sind diese minimal 0.
+Ziel ist es $\vartheta$ so zu wählen, dass alle Terme möglichst gleich 0 sind.
+Anders ausgedrückt soll $\vartheta$ so gewählt werden, dass die Terme minimal werden.
 
-Zu beachten ist, dass die Gleichungen mit dem gewählten $\vartheta$ für alle $x, t$ minimal sein sollen.
-D.h. bevor $L(\vartheta)$ definiert werden kann, müssen $x$ und $t$ zuerst diskretiert werden.
+Zu beachten ist, dass die Terme mit dem gewählten $\vartheta$ für alle $x, t$ minimal sein sollen.
+Das bedeutet, bevor $L(\vartheta)$ definiert werden kann, müssen $x$ und $t$ diskretiert werden.
 
 \subsection{Diskretierung}\label{neuronal:subsection:diskretierung}
-Zur Diskretierung werden drei Datensätze benötigt.
-Diese sind
+Zur Diskretierung werden drei Datensätze benötigt
 \begin{equation}
     \begin{aligned}
-        F &= \{\, (x, t) \,|\, x \in \Omega \setminus \partial \Omega\,, t > 0 \,\}\\
+        F &= \{\, (x, t) \,|\, x \in \Omega \setminus \partial \Omega\,, t \in (0,T] \,\}\\
         A &= \{\, (x, t) \,|\, x \in \Omega \setminus \partial \Omega\,, t = 0 \,\}\\
         B &= \{\, (x, t) \,|\, x \in \partial \Omega\,, t \in [0, T] \,\}.
     \end{aligned}
@@ -152,27 +151,27 @@ Es gilt/gelten:
     \item Die Anfangsbedingungen für die Punkte in $A$
     \item Die Randbedingungen für die Punkte in $B$
 \end{itemize}
-Nun werden die linken Seiten der Gleichungen \eqref{neuronal:feldgleichung_umformuliert_netz}, \eqref{neuronal:anfangsbedingung_umformuliert_netz}, \eqref{neuronal:randbedingung_umformuliert_netz} über die Datensätze summiert und gemittelt
+Nun werden die linken Seiten der Terme \eqref{neuronal:feldgleichung_umformuliert_netz}, \eqref{neuronal:anfangsbedingung_umformuliert_netz}, \eqref{neuronal:randbedingung_umformuliert_netz} über die Datensätze summiert und gemittelt
 \begin{equation}
-    \frac{1}{k} \sum_{F}^{} \left(\mathcal{D}(\hat{\varphi}(x_i, t_i; \vartheta))\right)^2 \approx 0
+    \frac{1}{k} \sum_{F}^{} \left(\mathcal{D}(\hat{\varphi}(x_i, t_i; \vartheta))\right)^2
     \label{neuronal:feldgleichung_umformuliert_netz_disk}
 \end{equation}
 \begin{equation}
     \begin{aligned}
-        \frac{1}{k} \sum_{A}^{} \left(f(x_i) - \hat{\varphi}(x_i, t_i = 0; \vartheta)\right)^2 \approx 0\\
-        \frac{1}{k} \sum_{A}^{} \left(g(x_i) - \partial_t \hat{\varphi}(x_i, t_i = 0; \vartheta)\right)^2 \approx 0
+        \frac{1}{k} \sum_{A}^{} \left(f(x_i) - \hat{\varphi}(x_i, t_i = 0; \vartheta)\right)^2\\
+        \frac{1}{k} \sum_{A}^{} \left(g(x_i) - \partial_t \hat{\varphi}(x_i, t_i = 0; \vartheta)\right)^2
     \end{aligned}
     \label{neuronal:anfangsbedingung_umformuliert_netz_disk}
 \end{equation}
 \begin{equation}
     \begin{aligned}
-        \frac{1}{k} \sum_{B}^{} \left(\mathcal{B}(\hat{\varphi}(x_i, t_i; \vartheta))\right)^2 &\approx 0.
+        \frac{1}{k} \sum_{B}^{} \left(\mathcal{B}(\hat{\varphi}(x_i, t_i; \vartheta))\right)^2 &.
     \end{aligned}
     \label{neuronal:randbedingung_umformuliert_netz_disk}
 \end{equation}
-Diese Gleichungen hängen nun nur noch von $\vartheta$ ab.
+Diese Terme hängen nun nur noch von $\vartheta$ ab und sollen nach wie vor möglichst gleich 0 sein.
 Somit kommen wir zurück zur Formulierung als Optimierungsproblem.
-Wie im vorherigen Abschnitt \ref{neuronal:subsection:optimierungsproblem} angesprochen, soll eine Funktion $L(\vartheta)$ gefunden/definiert werden, welche den Approximationsfehler misst.
+Wie im vorherigen Abschnitt \ref{neuronal:subsection:optimierungsproblem} beschrieben, soll eine Funktion $L(\vartheta)$ gefunden/definiert werden, welche den Approximationsfehler misst.
 Addiert man die linken Seiten der obigen Gleichungen, kann damit \( L \) als
 \begin{equation}
     \begin{aligned}
@@ -184,14 +183,15 @@ Addiert man die linken Seiten der obigen Gleichungen, kann damit \( L \) als
     \label{neuronal:optimierung}
 \end{equation}
 definiert werden.
-
-Für jede der Summen in \( L \) gilt:
+Für jede der drei Summen in \( L \) gilt:
 \begin{itemize}
-    \item Je genauer die Approximation des Netzwerks, desto näher bei 0 ist die Summe
+    \item Je genauer die Approximation des Netzwerks, desto näher bei 0
     \item Ist die Approximation perfekt (also \( \hat{\varphi} = \varphi \)) ist die Summe gleich 0
 \end{itemize}
 Dies bedeutet, je näher \( L \) bei 0 ist, desto besser ist die Approximation des Netzwerks.
 $L$ ist daher tatsächlich ein Mass für den Approximationsfehler des Netzwerks.
+Genauer gesagt, ist $L$ der mittlere Fehler über alle Datenpunkte der Diskretierung.
+
 Die Wahl der Parameter des neuronalen Netzwerks ist nun ein Minimierungsproblem.
 \begin{aufgabe}
     Minimiere $L(\vartheta)$, das $\vartheta$ am Minimum ist geeignet für die Approximation.
