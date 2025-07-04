@@ -1,0 +1,29 @@
+%
+% 3_weiteres.tex -- Diskussion & weitere Anwendungsmöglichkeiten
+%
+% (c) 2025 Roman Cvijanovic & Nicola Dall'Acqua, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+
+\section{Diskussion\label{neuronal:section:diskussion}}
+\kopfrechts{Diskussion}
+
+Der grosser Vorteil dieser Methode ist ihre breite Anwendbarkeit.
+Sie kann grundsätzlich auf beliebige Feldgleichungen angewendet werden, unabhängig davon, wie komplex diese sind.
+Klassische Verfahren wie die Finite-Differenzen- oder Finite-Elemente-Methode sind oft auf bestimmte Gleichungstypen beschränkt und stoßen insbesondere bei hochgradig nichtlinearen oder hochdimensionalen Problemen an ihre Grenzen.
+
+Neuronale Netzwerke bieten durch das \emph{Universal Approximation Theorem} die theoretische Grundlage, beliebige stetige Funktionen mit beliebiger Genauigkeit zu approximieren \cite{neuronal:universal_approximation_theorem}. 
+Damit sind sie theoretisch in der Lage, Lösungen für jede beliebige Feldgleichung zu approximieren, unabhängig von deren Komplexität.
+
+In der Praxis zeigen neuronale Netzwerke vielversprechende Ergebnisse bei der Lösung von Feldgleichungen \cite{neuronal:pinns}. 
+Dennoch steht die Methode noch am Anfang ihrer Entwicklung. 
+Es gibt noch viele offene Fragen, etwa zur Effizienz gegenüber klassischen Verfahren.
+Die bisher veröffentlichten Studien zeigen jedoch, dass diese Methode vielversprechend ist.
+Für eine abschließende Bewertung der Methode ist es aber noch zu früh. 
+
+Abgesehen von dieser generellen Einschätzung der Methode noch ein Punkt zur Wellengleichung.
+Die Lösung der Wellengleichung ist periodisch und neuronale Netzwerke haben Schwierigkeiten beim Approximieren von periodischen Funktionen.
+Dieses Problem lässt sich mit \emph{Fourier Features} lösen \cite{neuronal:fourier_features}.
+Die Idee davon ist, die Datenpunkte der Diskretierung mit Sinus- und Cosinusförmigen Funktionen zu transformieren, um periodische Strukturen besser erfassen zu können.

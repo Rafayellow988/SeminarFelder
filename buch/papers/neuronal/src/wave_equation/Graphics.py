@@ -12,14 +12,15 @@ from Residuals import analytical_solution, wave_equation_residual, initial_condi
 matplotlib.use('TkAgg')
 
 # Plots train & test error over training epochs
-def error_plot(train_error):
+def error_plot(train_error, test_error):
     epochs = range(1, len(train_error) + 1)
 
     plt.figure(figsize=(10, 6))
     plt.plot(epochs, train_error, label='Training Error')
+    plt.plot(epochs, test_error, label='Testing Error')
     plt.xlabel('Epoch')
     plt.ylabel('Error')
-    plt.title('Train Error over Epochs')
+    plt.title('Errors over Epochs')
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
@@ -89,7 +90,7 @@ def animate_comparison(model, device):
             np.column_stack([X.ravel(), Y.ravel(), np.full_like(X.ravel(), t)])
         ).to(device)
 
-        u_pred = model(xyt).cpu().detach().numpy().reshape(grid_size, grid_size)
+        u_pred = model(xyt, device).cpu().detach().numpy().reshape(grid_size, grid_size)
         u_pred_array.append(u_pred)
 
         # Analytical solution
