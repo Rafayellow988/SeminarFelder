@@ -79,7 +79,19 @@ Je mehr Teilfunktionen und Anzahl Dimensionen in den Teilfunktionen, desto mehr 
 Grundsätzlich gilt, je komplizierter die Funktion, die approximiert wird, desto mehr Parameter werden benötigt.
 
 Im Abschnitt \ref{neuronal:section:rechenbeispiel} werden konkrete Definitionen für neuronale Netzwerke zur Lösung der Wellengleichung und Burgers-Gleichung beschrieben.
+Der Source-Code dieser Netzwerke ist im Github Repository des Seminars abgelegt \cite{neuronal:github_source_code}.
 
+Nachfolgend ein kurzes Beispiel wie ein neuronales Netzwerk mit zwei Teilfunktionen mit der Python-Bibliothek PyTorch implementiert wird:
+\begin{lstlisting}
+# Definition des Netzwerks
+t1 = nn.Linear(2, 10) # Dimension Input: R^2, Dimension Output: R^10
+t2 = nn.Linear(10, 1)
+activation = nn.Tanh()
+
+# Auswerten an einem gegebenen Input x
+x = activation(t1(x))
+out = activation(t2(x))
+\end{lstlisting}
 
 \subsection{Formulierung als Optimierungsproblem}\label{neuronal:subsection:optimierungsproblem}
 Nachdem nun geklärt ist, was ein neuronales Netzwerk ist, kommen wir zurück zum Lösen von Feldgleichungen.
@@ -217,6 +229,7 @@ Das bedeutet, dass stattdessen ein numerischer Algorithmus verwendet werden muss
         \end{itemize}
         \item Gebe die Parameter \( \vartheta_m \) zurück.
     \end{enumerate}
+    \label{neuronal:gradient_descent}
 \end{aufgabe}
 
 Die Anzahl Schleifendurchläufe \( m \), bzw. das Abbruchskriterium des Algorithmus, hängt stark vom konkreten Problem ab, das gelöst wird.
@@ -247,3 +260,14 @@ Jedoch ist es sehr unwahrscheinlich dass dies passiert, denn der Algorithmus mü
 Ist dies nicht der Fall und der Algorithmus ist etwas ``neben'' dem Extrempunkt, ist dies bereits kein Problem mehr.
 Denn dort ist der Gradient bereits nicht mehr 0 und da es bei allen Extrempunkten -- ausser Minima -- in mindestens eine Richtung abwärts geht, wird der Algorithmus sich von dort wegbewegen.
 
+
+\subsection{Qualitätsbewertung}\label{neuronal:subsection:qualitaetsbewertung}
+Zur Bewertung der Qualität der Approximation steht zunächst einmal der Wert von $L(\vartheta)$ nach Abschluss des Optimierungsalgorithmus zur Verfügung.
+Dies gibt Aufschluss über den mittleren Approximationsfehler bei den Datenpunkten aus der Diskretierung.
+
+Eine weitere Möglichkeit ist es, je einen Teil der drei Datensätze aus \ref{neuronal:subsection:diskretierung} nicht im Optimierungsalgorithmus zu verwenden, bzw. vorher abzutrennen.
+Anschliessend definiert man eine neue Funktion $L^1(\vartheta)$ analog zu \eqref{neuronal:optimierung}, mit dem Unterschied dass nun über die abgetrennten (Teil-)Datensätze summiert wird.
+Da diese Funktion nie explizit vom Optimierungsalgorithmus minimiert wurde, ist sie ein Mass für den mittleren Approximationsfehler bei Datenpunkten, die nicht in der Diskretierung verwendet wurden.
+
+Eine letzte Möglichkeit zur Bewertung der Qualität ist der direkte Vergleich mit Lösungen, welche durch andere Verfahren gefunden wurden.
+Gibt es z.B. eine analytische Lösung zur Feldgleichung oder hat man eine Lösung durch die Finite-Elemente-Methode erhalten, kann damit verglichen werden.

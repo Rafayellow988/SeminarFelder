@@ -74,15 +74,43 @@ und Randbedingung
 werden verwendet.
 Die Bereiche sind \( x \in [-1,1], t \in [0,1] \).
 
-Das neuronale Netzwerk für die Burgers-Gleichung besteht aus insgesamt 10 Teilfunktionen.
-Die Bereiche der ersten und letzten Teilfunktionen sind $f_1: \mathbb{R}^2 \longrightarrow \mathbb{R}^{20}$ und $f_{10}: \mathbb{R}^{20} \longrightarrow \mathbb{R}$.
-Alle anderen Teilfunktionen haben die Bereiche $f_i: \mathbb{R}^{20} \longrightarrow \mathbb{R}^{20}$.
-Somit besitzt das Netzwerk insgesamt 3021 Parameter.
-Als Aktivierungsfunktion wird in jeder Teilfunktion der hyperbolische Tangens verwendet.
-Einzig in $f_{10}$ wird keine Aktivierungsfunktion verwendet.
-Grund dafür ist, dass der hyperbolische Tangens den Wertebereich $(-1,1)$ hat.
+Das neuronale Netzwerk zur Lösung ist folgendermassen aufgebaut:
+\begin{itemize}
+    \item 10 Teilfunktionen
+    \item $f_1: \mathbb{R}^2 \longrightarrow \mathbb{R}^{20}$ und $f_{10}: \mathbb{R}^{20} \longrightarrow \mathbb{R}$
+    \item Alle anderen: $\mathbb{R}^{20} \longrightarrow \mathbb{R}^{20}$
+    \item Aktivierungsfunktion: Hyperbolischer Tangens
+\end{itemize}
+Somit besitzt das Netzwerk insgesamt 3441 Parameter.
+In $f_{10}$ wird keine Aktivierungsfunktion verwendet, Grund dafür ist, dass der hyperbolische Tangens den Wertebereich $(-1,1)$ hat.
 Das neuronale Netzwerk soll aber, zur Approximation der Burgers-Gleichung, den Wertebereich $\mathbb{R}$ haben.
 
-Die Datensätze sind \ldots
+Wie im Abschnitt \ref{neuronal:subsection:diskretierung} beschrieben, werden ingesamt drei Datensätze verwendet.
+Der Datensatz $F$, bei dem die Burgers-Gleichung gilt, besteht aus insgesamt 10'000 Datenpunkten.
+Die Datensätze $A$ und $B$, bei dem die Anfangsbedingung bzw. die Randbedingungen gelten, bestehen aus je 50 Punkten.
 
-Das Resultat ist \ldots
+Der Optimierungsalgorithmus \ref{neuronal:gradient_descent} hat 15'000 Schleifendurchläufe durchlaufen um die Parameter für die Approximierung zu finden.
+Der Wert von $L(\vartheta)$ am Ende der Optimierung ist 0.000238.
+Somit ist der mittlere Approximationsfehler des Netzwerks sehr tief.
+Der Verlauf des Approximationsfehlers während der Optimierung ist in der Abbildung \ref{fig:fehler_burgers} dargestellt.
+Der Testfehler ist \ldots
+
+\begin{figure}
+    \centering
+    \hspace*{-0.1\textwidth}
+    \includegraphics[width=0.7\textwidth]{papers/neuronal/images/train_error_burgers_net.png}
+    \caption{Verlauf Approximationsfehler Burgers-Gleichung}
+    \label{fig:fehler_burgers}
+\end{figure}
+
+Wertet man das neuronale Netzwerk über die Bereiche von $x$ und $t$ aus, ergibt sich ein Plot der Lösung des neuronalen Netzwerks.
+Dies ist in der Abbildung \ref{fig:loesung_burgers} dargestellt.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{papers/neuronal/images/prediction_burgers_net.png}
+    \caption{Lösungs-Plot Burgers-Gleichung}
+    \label{fig:loesung_burgers}
+\end{figure}
+
+Der gesamte Code zur Umsetzung ist im Github Repository des Seminars abgelegt \cite{neuronal:github_source_code}.
