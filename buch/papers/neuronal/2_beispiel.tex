@@ -17,6 +17,7 @@ Der Ablauf ist analog zum Abschnitt \ref{neuronal:section:herleitung}:
     \item Generiere Datensätze für die Diskretierung
     \item Baue die Funktion $L(\vartheta)$ auf
     \item Minimiere $L(\vartheta)$
+    \item Qualitätsbewertung mit $L(\vartheta)$ und $L^1(\vartheta)$
 \end{enumerate}
 
 \subsection{Wellengleichung}\label{neuronal:subsection:wellengleichung}
@@ -86,25 +87,24 @@ In $f_{10}$ wird keine Aktivierungsfunktion verwendet, Grund dafür ist, dass de
 Das neuronale Netzwerk soll aber, zur Approximation der Burgers-Gleichung, den Wertebereich $\mathbb{R}$ haben.
 
 Wie im Abschnitt \ref{neuronal:subsection:diskretierung} beschrieben, werden ingesamt drei Datensätze verwendet.
-Der Datensatz $F$, bei dem die Burgers-Gleichung gilt, besteht aus insgesamt 10'000 Datenpunkten.
-Die Datensätze $A$ und $B$, bei dem die Anfangsbedingung bzw. die Randbedingungen gelten, bestehen aus je 50 Punkten.
+Der Datensatz $F$, bei dem die Burgers-Gleichung gilt, besteht aus insgesamt 5000 Datenpunkten.
+Die Datensätze $A$ und $B$, bei dem die Anfangsbedingung bzw. die Randbedingungen gelten, bestehen aus je 2000 Datenpunkten.
+Je $\frac{1}{5}$ der Datenpunkte wurden für die Funktion $L^1(\vartheta)$ abgetrennt und nicht im Optimierungsalgorithmus verwendet (siehe Abschnitt \ref{neuronal:subsection:qualitaetsbewertung}).
 
 Der Optimierungsalgorithmus \ref{neuronal:gradient_descent} hat 15'000 Schleifendurchläufe durchlaufen um die Parameter für die Approximierung zu finden.
-Der Wert von $L(\vartheta)$ am Ende der Optimierung ist 0.000238.
-Somit ist der mittlere Approximationsfehler des Netzwerks sehr tief.
-Der Verlauf des Approximationsfehlers während der Optimierung ist in der Abbildung \ref{fig:fehler_burgers} dargestellt.
-Der Testfehler ist \ldots
+Die Werte von $L(\vartheta)$ und $L^1(\vartheta)$ am Ende der Optimierung sind 0.000793 und 0.001181.
+Somit sind die mittleren Approximationsfehler des Netzwerks sehr tief.
+Der Verlauf der Approximationsfehlers während der Optimierung ist in der Abbildung \ref{fig:fehler_burgers} dargestellt.
 
 \begin{figure}
     \centering
     \hspace*{-0.1\textwidth}
-    \includegraphics[width=0.7\textwidth]{papers/neuronal/images/train_error_burgers_net.png}
+    \includegraphics[width=0.7\textwidth]{papers/neuronal/images/approximation_error_burgers.png}
     \caption{Verlauf Approximationsfehler Burgers-Gleichung}
     \label{fig:fehler_burgers}
 \end{figure}
 
-Wertet man das neuronale Netzwerk über die Bereiche von $x$ und $t$ aus, ergibt sich ein Plot der Lösung des neuronalen Netzwerks.
-Dies ist in der Abbildung \ref{fig:loesung_burgers} dargestellt.
+Wertet man das neuronale Netzwerk über die Bereiche von $x$ und $t$ aus, ergibt sich ein Plot der Lösung des neuronalen Netzwerks (siehe \ref{fig:loesung_burgers}).
 
 \begin{figure}
     \centering

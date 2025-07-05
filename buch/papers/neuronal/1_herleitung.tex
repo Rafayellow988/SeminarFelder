@@ -45,17 +45,16 @@ sein. Setzt man das nun in die Gleichung \eqref{neuronal:generelle_feldgleichung
 
 Das Ziel ist es, die Lösung $\varphi(x, t)$ mit einem neuronalen Netzwerk $\hat{\varphi}(x, t; \vartheta)$ zu approximieren.
 Das Netzwerk besitzt einen Vektor \( \vartheta \in \mathbb{R}^n \) der \emph{trainierbaren Parameter}.
-Diese sollen so gewählt werden, dass die gesuchte Funktion $\varphi(x, t)$ möglichst gut durch das neuronale Netzwerk $\hat{\varphi}(x, t; \vartheta)$ approximiert wird.
+Diese sollen so gewählt werden, dass die gesuchte Funktion $\varphi(x, t)$ durch das neuronale Netzwerk $\hat{\varphi}(x, t; \vartheta)$ approximiert wird.
 
 
 \subsection{Struktur des neuronalen Netzes}\label{neuronal:subsection:struktur_nn}
-Bevor wir mit dem Approximieren der Lösung von Feldgleichungen fortfahren, muss noch geklärt werden was ein neuronales Netzwerk ist.
-Generell sind neuronale Netze Kompositionen von mehreren Teilfunktionen
+Neuronale Netze sind Kompositionen von mehreren Teilfunktionen
 \begin{equation}
     \hat{\varphi}(x, t; \vartheta) = f_k(\ldots(f_i(\ldots(f_1(x, y, t))))) = f_k \circ \ldots \circ f_i \ldots \circ f_1(x, t).
     \label{neuronal:nn_ausformuliert}
 \end{equation}
-Dabei besteht jede Teilfunktion \( f_i \) aus einer affinen Transformation, gefolgt von einer nicht-linearen Aktivierungsfunktion \( g_i \)
+Jede Teilfunktion \( f_i \) besteht aus einer affinen Transformation, gefolgt von einer nicht-linearen Aktivierungsfunktion \( g_i \)
 \begin{align*}
     f_i\colon \mathbb{R}^q & \longrightarrow\mathbb{R}^p \\[-1ex]
     v & \longmapsto g_i(A_iv + b_i)
@@ -64,11 +63,11 @@ mit \( v \in \mathbb{R}^q, A_i \in \mathbb{R}^{p \times q}, b_i \in \mathbb{R}^p
 Die Elemente aller \( A_i \) und \( b_i \) bilden den Vektor \( \vartheta \) der \emph{trainierbaren Parameter}.
 Weiter ist die Aktivierungsfunktion \( g_i\colon \mathbb{R} \longrightarrow\mathbb{R} \), da das Resultat der affinen Transformation ein Vektor ist, wird \( g_i \) einzeln auf jeden Vektor-Komponenten angewendet.
 Für \( g_i \) gibt es viele Möglichkeiten, z.B. den hyperbolischen Tangens.
-Was verwendet wird hängt stark von der Funktion ab, die man approximieren möchte.
+Welche Funktion verwendet wird hängt stark von der Funktion ab, die man approximieren möchte.
 
 Die Definitions- und Wertebereiche der Teilfunktionen \( f_i \) sind mehr oder weniger frei wählbar.
 Damit es mit den Dimensionen aufgeht, muss jeweils der Wertebereich von \( f_i \) gleich dem Definitionsbereich von \( f_{i+1} \) sein.
-Ebenfalls ist man relativ frei in der Wahl der Anzahl Teilfunktionen.
+Zudem ist die Wahl der Anzahl Teilfunktionen nicht strikt definiert.
 Die einzigen strikten Vorgaben sind der Definitionsbereich der ersten Teilfunktion \( f_1 \) und der Wertebereich der letzten Teilfunktion \( f_k \).
 Diese müssen \( \mathbb{R}^2 \) bzw. \( \mathbb{R} \) sein, damit das Netzwerk die gleichen Bereiche wie die Lösung der Feldgleichung
 \begin{align*}
@@ -182,7 +181,6 @@ Nun werden die linken Seiten der Terme \eqref{neuronal:feldgleichung_umformulier
     \label{neuronal:randbedingung_umformuliert_netz_disk}
 \end{equation}
 Diese Terme hängen nun nur noch von $\vartheta$ ab und sollen nach wie vor möglichst gleich 0 sein.
-Somit kommen wir zurück zur Formulierung als Optimierungsproblem.
 Wie im vorherigen Abschnitt \ref{neuronal:subsection:optimierungsproblem} beschrieben, soll eine Funktion $L(\vartheta)$ gefunden/definiert werden, welche den Approximationsfehler misst.
 Addiert man die linken Seiten der obigen Gleichungen, kann damit \( L \) als
 \begin{equation}
@@ -262,7 +260,7 @@ Denn dort ist der Gradient bereits nicht mehr 0 und da es bei allen Extrempunkte
 
 
 \subsection{Qualitätsbewertung}\label{neuronal:subsection:qualitaetsbewertung}
-Zur Bewertung der Qualität der Approximation steht zunächst einmal der Wert von $L(\vartheta)$ nach Abschluss des Optimierungsalgorithmus zur Verfügung.
+Zur Bewertung der Qualität der Approximation steht zunächst der Wert von $L(\vartheta)$ nach Abschluss des Optimierungsalgorithmus zur Verfügung.
 Dies gibt Aufschluss über den mittleren Approximationsfehler bei den Datenpunkten aus der Diskretierung.
 
 Eine weitere Möglichkeit ist es, je einen Teil der drei Datensätze aus \ref{neuronal:subsection:diskretierung} nicht im Optimierungsalgorithmus zu verwenden, bzw. vorher abzutrennen.
@@ -270,4 +268,4 @@ Anschliessend definiert man eine neue Funktion $L^1(\vartheta)$ analog zu \eqref
 Da diese Funktion nie explizit vom Optimierungsalgorithmus minimiert wurde, ist sie ein Mass für den mittleren Approximationsfehler bei Datenpunkten, die nicht in der Diskretierung verwendet wurden.
 
 Eine letzte Möglichkeit zur Bewertung der Qualität ist der direkte Vergleich mit Lösungen, welche durch andere Verfahren gefunden wurden.
-Gibt es z.B. eine analytische Lösung zur Feldgleichung oder hat man eine Lösung durch die Finite-Elemente-Methode erhalten, kann damit verglichen werden.
+Gibt es zum Beispiel eine analytische Lösung zur Feldgleichung oder hat man eine Lösung durch die Finite-Elemente-Methode erhalten, kann damit verglichen werden.
