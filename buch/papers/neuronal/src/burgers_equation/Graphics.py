@@ -7,11 +7,13 @@ matplotlib.use('TkAgg')
 
 def error_plot(train_error, test_error):
     plt.figure(figsize=(6, 3))
-    plt.semilogy(train_error)
-    plt.semilogy(test_error)
+    plt.semilogy(train_error, label="L(theta)")
+    plt.semilogy(test_error, label="L^1(theta)")
     plt.xlabel("Epoch")
-    plt.ylabel("Loss")
-    plt.title("Training Loss")
+    plt.ylabel("Error")
+    plt.title("Verlauf Approximationsfehler")
+    plt.legend()
+    plt.grid(True)
     plt.tight_layout()
     plt.show()
 
