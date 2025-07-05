@@ -2,6 +2,7 @@ import torch.nn as nn
 import torch.optim as optim
 import torch
 from Residuals import burgers_equation_residual, initial_boundary_loss, initial_condition_loss, boundary_condition_loss
+from Data import get_train, get_test
 
 class BurgersNet(nn.Module):
     def __init__(self, hidden_layers=8, neurons=20):
@@ -12,22 +13,28 @@ class BurgersNet(nn.Module):
         layers += [nn.Linear(neurons, 1)]
         self.model = nn.Sequential(*layers)
 
-        self.loss_history = []
+        self.train_errors = []
+        self.test_errors = []
 
     def forward(self, t, x):
         input = torch.cat([t, x], dim=1)
         return self.model(input)
 
-    def fit(self, x_d, t_d, x_c, t_c, u_d, epochs):
+    def fit(self, device, epochs):
         opt = optim.Adam(self.parameters(), lr=5e-4)
+
+        x_d, t_d, x_c, t_c, u_d = get_train(device)
+        x_d_test, t_d_test, x_c_test, t_c_test, u_d_test = get_test(device)
 
         for epoch in range(epochs):
             opt.zero_grad()
-            loss = burgers_equation_residual(self, t_c, x_c) + initial_boundary_loss(self, u_d, t_d, x_d)
-            loss.backward()
+            train_loss = burgers_equation_residual(self, t_c, x_c) + initial_boundary_loss(self, u_d, t_d, x_d)
+            test_loss = burgers_equation_residual(self, t_c_test, x_c_test) + initial_boundary_loss(self, u_d_test, t_d_test, x_d_test)
+            train_loss.backward()
             opt.step()
-            self.loss_history.append(loss.item())
+            self.train_errors.append(train_loss.item())
+            self.test_errors.append(test_loss.item())
             if (epoch + 1) % 1000 == 0 or epoch == 0:
-                print(f"Epoch {0 if epoch == 0 else epoch + 1}, Train-Loss: {loss.item():.6f}")
+                print(f"Epoch {0 if epoch == 0 else epoch + 1}, Train-Loss: {train_loss.item():.6f}, Test-Loss: {test_loss.item():.6f}")
 
-        return self.loss_history
+        return self.train_errors, self.test_errors

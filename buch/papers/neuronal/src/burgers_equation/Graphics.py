@@ -5,9 +5,10 @@ import torch
 
 matplotlib.use('TkAgg')
 
-def error_plot(loss_history):
+def error_plot(train_error, test_error):
     plt.figure(figsize=(6, 3))
-    plt.semilogy(loss_history)
+    plt.semilogy(train_error)
+    plt.semilogy(test_error)
     plt.xlabel("Epoch")
     plt.ylabel("Loss")
     plt.title("Training Loss")
