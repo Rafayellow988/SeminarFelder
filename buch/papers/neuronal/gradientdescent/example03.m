@@ -1,36 +1,42 @@
-% Definieren der Funktion und ihrer Ableitung
-f = @(x) x.^4 - 3*x.^3 + 2;
-f_prime = @(x) 4*x.^3 - 9*x.^2;
+% Example 3: Poorly Chosen Gradient Descent Near a Minimum
 
-% Initialisierung
-x = 0;
-learning_rate = 0.01;
-num_iterations = 100;
+% Define the function f(x) = x^4 - 4x^2 + 3
+f = @(x) x.^4 - 4*x.^2 + 3;
 
-% Arrays zum Speichern der Werte
-x_history = zeros(1, num_iterations + 1);
-f_history = zeros(1, num_iterations + 1);
-x_history(1) = x;
-f_history(1) = f(x);
+% Define the gradient of f(x)
+grad_f = @(x) 4*x.^3 - 8*x;
 
-% Gradientenabstieg
-for i = 1:num_iterations
-    x = x - learning_rate * f_prime(x);
-    x_history(i + 1) = x;
-    f_history(i + 1) = f(x);
-end
+% Range of x
+x = linspace(-2.5, 2.5, 1000);
+y = f(x);
 
-% Plotten der Funktion und des Abstiegsverlaufs
+% Plot the function
 figure;
-plot(x_history, f_history, 'ro-', 'LineWidth', 2, 'MarkerSize', 5);
+plot(x, y, 'b-', 'LineWidth', 2);
 hold on;
-x_plot = linspace(-1, 3, 400);
-y_plot = f(x_plot);
-plot(x_plot, y_plot, 'b-', 'LineWidth', 1);
-hold off;
-grid on;
 xlabel('x');
 ylabel('f(x)');
-title('Gradientenabstieg für f(x) = x^4 - 3x^3 + 2');
-legend('Abstiegspfad', 'f(x)', 'Location', 'northeast');
+title('Poorly Chosen Gradient Descent Near a Minimum');
+grid on;
+
+% Initial point for gradient descent
+x0 = 1.5;
+x_current = x0;
+learning_rate = 1; % Large learning rate
+max_iterations = 10;
+trajectory = x_current;
+
+for iter = 1:max_iterations
+    grad = grad_f(x_current);
+    x_next = x_current - learning_rate * grad;
+    trajectory(end+1) = x_next;
+    if abs(x_next - x_current) < 1e-6
+        break;
+    end
+    x_current = x_next;
+end
+
+% Plot the trajectory
+plot(trajectory, f(trajectory), 'ro-', 'LineWidth', 1.5, 'MarkerSize', 5);
+hold off;
 pause;
