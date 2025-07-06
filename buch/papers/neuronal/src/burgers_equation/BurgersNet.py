@@ -2,7 +2,7 @@ import torch.nn as nn
 import torch.optim as optim
 import torch
 from Residuals import burgers_equation_residual, initial_boundary_loss, initial_condition_loss, boundary_condition_loss
-from Data import get_train, get_test
+from Data import get_data, get_test
 
 class BurgersNet(nn.Module):
     def __init__(self, hidden_layers=8, neurons=20):
@@ -23,8 +23,9 @@ class BurgersNet(nn.Module):
     def fit(self, device, epochs):
         opt = optim.Adam(self.parameters(), lr=5e-4)
 
-        x_d, t_d, x_c, t_c, u_d = get_train(device)
-        x_d_test, t_d_test, x_c_test, t_c_test, u_d_test = get_test(device)
+        train_data, test_data = get_data(device)
+        x_d, t_d, x_c, t_c, u_d = train_data[0], train_data[1], train_data[2], train_data[3], train_data[4]
+        x_d_test, t_d_test, x_c_test, t_c_test, u_d_test = test_data[0], test_data[1], test_data[2], test_data[3], test_data[4]
 
         for epoch in range(epochs):
             opt.zero_grad()
