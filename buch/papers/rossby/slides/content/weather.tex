@@ -8,6 +8,13 @@
 	\includegraphics[width=\textwidth]{../images/weather/map.pdf}
 \end{frame}
 
+\begin{frame}
+	\frametitle{Forecast: 01-May-2025 at 00:00, Level 850 hPa}
+	\includegraphics[width=\textwidth]{../images/weather/data_2025_5_1_00:00_850.pdf}
+\end{frame}
+
+
+
 \begin{frame}{ERA5-Analyse: Jetstream am Mai 2025}
 	\begin{itemize}
 		\item Datenquelle: \textbf{ERA5 Reanalysis} (ECMWF) via CDS API
@@ -24,35 +31,7 @@
 		      \end{itemize}
 	\end{itemize}
 \end{frame}
-\begin{frame}{Warum 850, 500 und 200 hPa?}
-	\vspace{-0.3cm}
-	\begin{itemize}
-		\item Standard-Druckniveaus in der Meteorologie
-		\item Repräsentieren typische Höhenbereiche der Troposphäre mit jeweils spezifischer dynamischer Bedeutung
-	\end{itemize}
 
-	\vspace{0.2cm}
-	\begin{table}[h]
-		\centering
-		\begin{tabular}{|c|c|p{7cm}|}
-			\hline
-			\textbf{Niveau} & \textbf{Höhe (ca.)} & \textbf{Bedeutung}                                                                    \\
-			\hline
-			850 hPa         & ~1.5 km             & Untere Troposphäre: Temperatur, Feuchtigkeit, Hebung, Konvektion, Bodeninversion      \\
-			\hline
-			500 hPa         & ~5.5 km             & Mittlere Troposphäre: Vorticity, Tröge/Rücken, synoptische Dynamik, Luftmassengrenzen \\
-			\hline
-			200 hPa         & ~12 km              & Obere Troposphäre: Jetstream, Divergenzfelder, Rossby-Wellen, barokline Kopplung      \\
-			\hline
-		\end{tabular}
-	\end{table}
-\end{frame}
-
-
-\begin{frame}
-	\frametitle{Forecast: 01-May-2025 at 00:00, Level 850 hPa}
-	\includegraphics[width=\textwidth]{../images/weather/data_2025_5_1_00:00_850.pdf}
-\end{frame}
 \begin{frame}
 	\frametitle{Forecast: 01-May-2025 at 00:00, Level 500 hPa}
 	\includegraphics[width=\textwidth]{../images/weather/data_2025_5_1_00:00_500.pdf}
@@ -62,9 +41,36 @@
 	\includegraphics[width=\textwidth]{../images/weather/data_2025_5_1_00:00_200.pdf}
 \end{frame}
 
+% \begin{frame}{Warum 850, 500 und 200 hPa?}
+% 	\vspace{-0.3cm}
+% 	\begin{itemize}
+% 		\item Standard-Druckniveaus in der Meteorologie
+% 		\item Repräsentieren typische Höhenbereiche der Troposphäre mit jeweils spezifischer dynamischer Bedeutung
+% 	\end{itemize}
+
+% 	\vspace{0.2cm}
+% 	\begin{table}[h]
+% 		\centering
+% 		\begin{tabular}{|c|c|p{7cm}|}
+% 			\hline
+% 			\textbf{Niveau} & \textbf{Höhe (ca.)} & \textbf{Bedeutung}                                                                    \\
+% 			\hline
+% 			850 hPa         & ~1.5 km             & Untere Troposphäre: Temperatur, Feuchtigkeit, Hebung, Konvektion, Bodeninversion      \\
+% 			\hline
+% 			500 hPa         & ~5.5 km             & Mittlere Troposphäre: Vorticity, Tröge/Rücken, synoptische Dynamik, Luftmassengrenzen \\
+% 			\hline
+% 			200 hPa         & ~12 km              & Obere Troposphäre: Jetstream, Divergenzfelder, Rossby-Wellen, barokline Kopplung      \\
+% 			\hline
+% 		\end{tabular}
+% 	\end{table}
+% \end{frame}
+
+
+
+
 % In your document body:
 
-\foreach \level in {200} {
+\foreach \level in {500} {
 		\foreach \day in {1,...,10} {
 				\foreach \time in {00:00,12:00} {
 						\begin{frame}
@@ -78,7 +84,7 @@
 
 
 % In your document body:
-\foreach \level in {200} {
+\foreach \level in {500} {
 		\foreach \day in {1,...,10} {
 				\foreach \time in {00:00,12:00} {
 						\begin{frame}[plain]

@@ -11,8 +11,6 @@
 				      \item Geschwindigkeit abhängig von der Breite: \(u = U_0 \cdot \sin^2(\theta)\)
 				      \item Keine Druckgradienten oder vertikale Struktur
 			      \end{itemize}
-			\item Dieses idealisierte Feld dient als Basis zur Untersuchung grossskaliger atmosphärischer Prozesse.
-			\item Zonale Winde treten z.\,B. in der Realität als \textbf{Jetstreams} auf.
 		\end{itemize}
 
 		\column{0.45\textwidth}
@@ -31,7 +29,6 @@
 				      \item Reine Nord-Süd-Strömung (\(u = 0\))
 				      \item Geschwindigkeit abhängig von der Breite: \(v = V_0 \cdot \cos(\theta)\)
 			      \end{itemize}
-			\item Die Darstellung ist idealisiert, ohne Rückkopplung durch Coriolis oder Druckgradienten.
 		\end{itemize}
 
 		\column{0.45\textwidth}
@@ -70,31 +67,31 @@
 \begin{frame}{Beispiel: Corioliskraft beim Velofahren}
 	\textbf{Gegeben:}
 	\begin{itemize}
-	  \item Geschwindigkeit: \( \vec{v} = 8.33\,\mathrm{m/s} \) (30 km/h)
-	  \item Masse: \( m = 80\,\mathrm{kg} \)
-	  \item Breite: \( \varphi = 47^\circ \) (Zürich)
-	  \item Erdrotation:
-	  \[
-	  23\,\mathrm{h}\,56\,\mathrm{min}\,4\,\mathrm{s} \quad\Rightarrow\quad
-	  \vec{\Omega} = \frac{2\pi}{86164\,\mathrm{s}} \approx 7.292 \times 10^{-5}\,\mathrm{rad/s}
-	  \]
+		\item Geschwindigkeit: \( \vec{v} = 8.33\,\mathrm{m/s} \) (30 km/h)
+		\item Masse: \( m = 80\,\mathrm{kg} \)
+		\item Breite: \( \varphi = 47^\circ \) (Zürich)
+		\item Erdrotation:
+		      \[
+			      23\,\mathrm{h}\,56\,\mathrm{min}\,4\,\mathrm{s} \quad\Rightarrow\quad
+			      \vec{\Omega} = \frac{2\pi}{86164\,\mathrm{s}} \approx 7.292 \times 10^{-5}\,\mathrm{rad/s}
+		      \]
 	\end{itemize}
-	
+
 	\vspace{0.3cm}
 	\textbf{Formel:}
 	\[
-	F_C = 2 m \vec{v} \vec{\Omega} \sin(\varphi)
+		F_C = 2 m \vec{v} \vec{\Omega} \sin(\varphi)
 	\]
-	
+
 	\vspace{0.3cm}
 	\textbf{Einsetzen:}
 	\[
-	F_C \approx 2 \cdot 80 \cdot 8.33 \cdot 7.292 \times 10^{-5} \cdot \sin(47^\circ)
-	\approx 0.070\, \mathrm{N}
+		F_C \approx 2 \cdot 80 \cdot 8.33 \cdot 7.292 \times 10^{-5} \cdot \sin(47^\circ)
+		\approx 0.070\, \mathrm{N}
 	\]
 
-	\end{frame}
-	
+\end{frame}
+
 
 \begin{frame}{Breitenabhängigkeit und Coriolis-Parameter}
 	\begin{itemize}
@@ -204,7 +201,7 @@
 \begin{frame}{Was ist die \(\beta\)-Ebene?}
 	\begin{itemize}
 		\item Die \textbf{\(\beta\)-Ebene} ist eine lokale Approximation der Erdkugel nahe einer bestimmten Breite \(\phi_0\).
-		\item Ziel: Vereinfachung der Corioliskraft für mathematische Modelle grossskaliger Strömungen.
+		\item Ziel: Vereinfachung der Corioliskraft für mathematische Modelle.
 		\item Der Coriolisparameter \(f\) wird linearisiert:
 		      \[
 			      f(y) = f_0 + \beta y
