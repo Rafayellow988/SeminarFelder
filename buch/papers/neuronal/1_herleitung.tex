@@ -80,10 +80,10 @@ Grundsätzlich gilt, je komplizierter die Funktion, die approximiert wird, desto
 Im Abschnitt \ref{neuronal:section:rechenbeispiel} werden konkrete Definitionen für neuronale Netzwerke zur Lösung der Wellengleichung und Burgers-Gleichung beschrieben.
 Der Source-Code dieser Netzwerke ist im Github Repository des Seminars abgelegt \cite{neuronal:github_source_code}.
 
-Nachfolgend ein kurzes Beispiel wie ein neuronales Netzwerk mit zwei Teilfunktionen mit der Python-Bibliothek PyTorch implementiert wird:
+Nachfolgend ein Beispiel wie ein neuronales Netzwerk mit zwei Teilfunktionen mit der Python-Bibliothek PyTorch implementiert wird:
 \begin{lstlisting}
 # Definition des Netzwerks
-t1 = nn.Linear(2, 10) # Dimension Input: R^2, Dimension Output: R^10
+t1 = nn.Linear(2, 10) # Affine Transformation mit Input: R^2, Output: R^10
 t2 = nn.Linear(10, 1)
 activation = nn.Tanh()
 
@@ -175,7 +175,7 @@ Nun werden die Terme \eqref{neuronal:feldgleichung_umformuliert_netz}, \eqref{ne
 \end{equation}
 \begin{equation}
     \begin{aligned}
-        \frac{1}{k} \sum_{B}^{} \left(\mathcal{B}(\hat{\varphi}(x_i, t_i; \vartheta))\right)^2 &.
+        \frac{1}{k} \sum_{B}^{} \left(\hat{\varphi}(x_i, t_i; \vartheta)\right)^2 &.
     \end{aligned}
     \label{neuronal:randbedingung_umformuliert_netz_disk}
 \end{equation}
@@ -184,10 +184,10 @@ Wie im vorherigen Abschnitt \ref{neuronal:subsection:optimierungsproblem} beschr
 Addiert man die linken Seiten der obigen Terme, kann damit \( L \) als
 \begin{equation}
     \begin{aligned}
-        L(\vartheta) =\quad &\frac{1}{k} \sum_{F}^{} \left(\mathcal{D}[\hat{\varphi}(x_i, t_i; \vartheta)]\right)^2\\
+        L(\vartheta) =\quad &\frac{1}{k} \sum_{F}^{} \left(\mathcal{D}(\hat{\varphi}(x_i, t_i; \vartheta))\right)^2\\
         + &\frac{1}{k} \sum_{A}^{} \left(\left(f(x_i) - \hat{\varphi}(x_i, t_i = 0; \vartheta)\right)^2
         + \left(g(x_i) - \partial_t \hat{\varphi}(x_i, t_i = 0; \vartheta)\right)^2\right)\\
-        + &\frac{1}{k} \sum_{B}^{} \left(\mathcal{B}[\hat{\varphi}](x_i, t_i; \vartheta)\right)^2
+        + &\frac{1}{k} \sum_{B}^{} \left(\hat{\varphi}(x_i, t_i; \vartheta)\right)^2
     \end{aligned}
     \label{neuronal:optimierung}
 \end{equation}
@@ -229,8 +229,9 @@ Das bedeutet, dass stattdessen ein numerischer Algorithmus verwendet werden muss
     \label{neuronal:gradient_descent}
 \end{aufgabe}
 
-Die Anzahl Schleifendurchläufe \( m \), bzw. das Abbruchskriterium des Algorithmus, hängt stark vom konkreten Problem ab, das gelöst wird.
-Im Abschnitt \ref{neuronal:section:rechenbeispiel} wird beschrieben, wie dies bei der Wellengleichung und Burgers-Gleichung aussieht.
+Die Anzahl Schleifendurchläufe \( m \), bzw. das Abbruchskriterium des Algorithmus, ist nicht strikt vorgegeben.
+Innerhalb dieses Papers wurde, in jedem Durchlauf des Algorithmus, der aktuellen Wert $L(\vartheta_i)$ berechnet.
+Der Algorithmus wurde beendet, sobald der Wert von $L$ sich über mehrere Durchläufe nur wenig verändert hat.
 
 Nach dem letzten Schritt dieses Algorithmus ist das neuronale Netzwerk mit den Parametern \( \vartheta_m \) fertig trainiert.
 
