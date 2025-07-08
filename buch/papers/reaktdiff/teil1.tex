@@ -15,6 +15,8 @@ Hierführ werden Turing-Muster betrachtet.
 Turing-Muster findet man häufig in der Natur zum Beispiel als Fellmuster bei Tieren oder  das Muster unserer Fingerabdrücke.
 Sie sind nach dem Mathematiker Alan Turing benannt, der sie 1952 in seinem Artikel \textit{The Chemical Basis of Morphogenesis} beschrieb.
 Er untersuchte Systeme, die aus zwei Komponenten bestehen, einem Inhibitor und einem Aktivator.
+Turing stellte für die entstehung der Turing-Muster eine Bedingung, die sogennante Turing Bedingung.
+Sie besagt das ein System, in welchem Turing-Muster entstehen können, in abwesenheit von Diffusion stabil sein muss und mit Diffusion instabil wird.
 Diese Kapitel basiert auf \cite{reaktdiff:turing_patterns_2019} \cite{reaktdiff:hoyle2006pattern}.
 
 \subsection{Lineare Stabilitätsanalyse ohne Diffusion
@@ -28,12 +30,13 @@ Die Reaktionsdiffusionsgleichungen für \(u\) und \(v\) lauten
 \end{align}
 wobei \(D_u, D_v > 0\) die Diffusionskoeffizienten der Komponenten \(u\) und \(v\) sind.
 
-Als erstes wird eine lineare Stabilitätsanalyse ohne Diffusion durchgeführt.
-Hierführ betrachten wir die Gleichungen
+Als erstes wird der erste Teil der Turing-Bedingung untersucht welche besagt das ein System ohne Diffusion Stabil sein muss.
+Hierfür wird eine lineare Stabilitätsanalyse ohne Diffusion durchgeführt.
+Man betrachte die Gleichungen
 \begin{align}
     \label{reaktdiff:equation:reaktdiff2ohneDiff}
-    \frac{du}{dt} &= f(u,v)\\
-    \frac{dv}{dt} &= g(u,v).
+    \frac{du}{dt} &= f(u_0,v_0)\\
+    \frac{dv}{dt} &= g(u_0,v_0).
 \end{align}
 Im fokus liegt die Stationärlösung \(u_0, v_0\) der Gleichungen \ref{reaktdiff:equation:reaktdiff2ohneDiff}, das heisst das \(f(u_0,v_0) = g(u_0,v_0) = 0\).
 Nun wird eine kleine Störung \(\epsilon\) zu \(u_0\) und \(v_0\) hinzugefügt.
@@ -43,6 +46,7 @@ Nun wird eine kleine Störung \(\epsilon\) zu \(u_0\) und \(v_0\) hinzugefügt.
 \end{align}
 Die Störung \(\epsilon\) ist klein, das heisst \(\epsilon \ll 1\).
 Jetzt kann man die Reaktionsterme linearisiern.
+Hierfür nutzt man die Taylorentwicklung bis zum linearen Term.
 Sie werden zu
 \begin{align}
     f(u,v) &\approx f(u_0,v_0) + f_u \delta u + f_v\delta v\\
@@ -58,6 +62,7 @@ Nun können die Gleichungen \ref{reaktdiff:equation:reaktdiff2ohneDiff} umgeschr
     \frac{d \delta v}{dt} &= g_u \delta u + g_v \delta v.
 \end{align}
 Diese Gleichungen sind lineare partielle Differentialgleichungen.
+Die Frage ist nun wie sich die Störungen \(\delta u\) und \(\delta v\) mit der Zeit entwickeln, werden sie grösser oder kleiner.
 Wenn man sie als Matrixform screibt, erhält man
 \begin{equation}
     \label{reaktdiff:equation:reaktdiff2ohneDiffmatrix}
@@ -111,25 +116,40 @@ Die Gleichungen werden zu
     \frac{d \delta v}{dt} &= D_v \Delta \delta v + 
     g_u \delta u + g_v \delta v.
 \end{align}
+Damit die Turing-Bedingung für die Musterbildung erfüllt ist muss dieses System instabil sein.
 Mit Diffusion wollen wir die Störungsentwicklung mit hilfe von Fourier untersuchen.
-Dazu setzen wir \(\delta u(x,t) = c_k(t) e^{ikx}\) und \(\delta v(x,t) = d_k(t) e^{ikx}\) ein.
+Dazu setzen wir \(\delta u(x,t) = c_k(t) e^{ikx} e^{\lambda t}\) und \(\delta v(x,t) = d_k(t) e^{ikx} e^{\lambda t}\) ein.
 Die Ableitungen werden zu
 \begin{align*}
-    \frac{d\delta u}{d t} &= \dot{c}_k(t) e^{ikx},\\
-    \Delta \delta u &= -k^2 c_k(t) e^{ikx},\\
-    \frac{d\delta v}{d t} &= \dot{d}_k(t) e^{ikx},\\
-    \Delta \delta v &= -k^2 d_k(t) e^{ikx}.
+    \frac{\partial\,\delta u}{\partial t} &= \sum_k \lambda\, c_k e^{i k x} e^{\lambda t}, &
+    \Delta \delta u &= \sum_k -k^2 c_k e^{i k x} e^{\lambda t} \\
+    \frac{\partial\,\delta v}{\partial t} &= \sum_k \lambda\, d_k e^{i k x} e^{\lambda t}, &
+    \Delta \delta v &= \sum_k -k^2 d_k e^{i k x} e^{\lambda t}
 \end{align*}
 Setzen wir diese Ableitungen in die Gleichungen \ref{reaktdiff:equation:reaktdiff2mitDiff} ein, erhalten wir
-\begin{align}
-    \label{reaktdiff:equation:reaktdiff2mitDiffFourier}
-    \dot{c}_k(t) e^{ikx} &= -D_u k^2 c_k(t) e^{ikx} + 
-    f_u c_k(t) e^{ikx} + f_v d_k(t) e^{ikx}\\
-    \dot{d}_k(t) e^{ikx} &= -D_v k^2 d_k(t) e^{ikx} + 
-    g_u c_k(t) e^{ikx} + g_v d_k(t) e^{ikx}.
-\end{align}
-Aus dieser Gleichung können wir sehen das die \(c_k(t)\) und \(d_k(t)\) die Form \(c_k(t) = c_k(0) e^{\lambda t}\) und \(d_k(t) = d_k(0) e^{\lambda t}\) haben.
-Kürzen wir die Gleichung durch \(e^{ikx}\) und \(c_k(t)\) und \(d_k(t)\) erhalten wir die Gleichungen
+    \begin{align*}
+        \lambda c_k &= -D_u k^2 c_k + f_u c_k + f_v d_k \\
+        \lambda d_k &= -D_v k^2 d_k + g_u c_k + g_v d_k
+    \end{align*}
+Die Gleichungen kann man wieder in Matrixform schreiben.
+Somit erhält man
+\begin{equation*}
+    \lambda
+    \begin{pmatrix}
+    c_k \\
+    d_k
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        f_u - D_u k^2 & f_v \\
+        g_u & g_v - D_v k^2
+    \end{pmatrix}
+    \begin{pmatrix}
+    c_k \\
+    d_k
+    \end{pmatrix}
+\end{equation*}
+Kürzen wir die Gleichung durch \(c_k(t)\) und \(d_k(t)\) erhalten wir die Gleichungen
 \begin{align}
     \label{reaktdiff:equation:reaktdiff2mitDiffFourierk}
     \lambda = J - k^2 D, \quad 
@@ -147,13 +167,14 @@ Kürzen wir die Gleichung durch \(e^{ikx}\) und \(c_k(t)\) und \(d_k(t)\) erhalt
 Um die Gleichungen übersichtlicher zu schreiben, wird die Jacobi-Matrix \(J\) und die Diffusionsmatrix \(D\) in eine Matrix
 \begin{equation}
     \label{reaktdiff:equation:reaktdiff2mitDiffFourierkA}
-    A =
+    A(k) =
     \begin{pmatrix}
         f_u - D_u k^2 & f_v\\
         g_u & g_v - D_v k^2
     \end{pmatrix}
 \end{equation}
 zusammengefasst.
+Damit dieses System nun instabil ist muss der Realanteil der Eigenwerte der Matrix \(A\) positiv sein.
 Das Ziel ist es nun die Eigenwerte der Matrix \(A\) zu bestimmen.
 Um die Eigenwerte zu bestimmen muss man die Gleichung
 \begin{equation}
@@ -181,8 +202,6 @@ Diese Instabilität ist verantworlich für die Musterbildung
 \section{Bedingung für die Musterbildung
 \label{reaktdiff:section:diffusioninduzierteInstabilitaet}}
 Was in den vorhergehenden Abschnitten gezweigt wurde, ist das ein System ohne Diffusion stabil sein kann, aber mit Diffusion instabil wird.
-Diese durch Diffusion induzierte Instabilität wird auch Turing-Instabilität genannt.
-Sie ist die Grundlage für die Musterbildung in Reaktionsdiffusionssystemen.
 Nun kann man aus den gemachten berechungen Bedingungen für die Musterbildung ableiten.
 Einerseits muss die Stationärlösung stabil sein, das heisst die Spur der Jacobi-Matrix \(J\) muss negativ sein und die Determinante der Jacobi-Matrix \(J\) muss positiv sein.
 Somit gilt
@@ -191,21 +210,21 @@ Somit gilt
     \det(J) &= f_u g_v - f_v g_u > 0.
 \end{align*}
 Andererseits muss die Diffusion so gewählt sein, dass die Eigenwerte der Matrix \(A\) mit der Wellenzahl \(k\) einen positiven Realteil haben.
-Das heisst die Spur der Matrix \(A\) muss negativ sein und die Determinante der Matrix \(A\) muss positiv sein.
+Das geht wenn die Determinante der Matrix \(A\) negativ ist oder wenn die Spur negativ ist.
 Somit gilt
 \begin{align}
     \text{Tr}(A) &= f_u  + g_v - k^2(D_v + D_u)  < 0, \\
     \det(A) &= D_uD_vk^4 - (D_vf_u + D_ug_v)k^2 + f_u g_v - f_v g_u < 0.
     \label{reaktdiff:equation:reaktdiffbedingunen}
 \end{align}
-Da \(D_v,D_u > 0\) und der letzte Teil der Determinante positiv ist, muss der Ausdruck\(D_vf_u + D_ug_v\) positiv sein, damit die Determinante der Matrix \(A\) negativ ist.
+Da \(D_v,D_u > 0\) und der letzte Teil der Determinante positiv ist, muss der Ausdruck \(D_vf_u + D_ug_v\) positiv sein, damit die Determinante der Matrix \(A\) negativ ist.
 Da \(f_u > 0\) und \(g_v < 0\) ist, muss auch
 \begin{equation}
     \frac{D_v}{D_u}f_u > g_v
 \end{equation}
 damit die Determinante der Matrix \(A\) negativ ist.
 
-Man sieht das \(\det(A)\) ein Polynom 2. Grades in \(k^2\) ist.
+Man sieht das die Deteminante von \(A\) ein Polynom 2. Grades in \(k^2\) ist.
 Ausserdem representiert sie eine Parabel, die nach oben geöffnet ist, da der Koeffizient \(D_uD_v > 0\) ist.
 Somit können wir die mininmale Wellenzahl \(k\) bestimmen, bei der die Determinante negativ ist.
 Dafür leiten wir die Determinante nach \(k^2\) ab und setzen sie gleich Null.
