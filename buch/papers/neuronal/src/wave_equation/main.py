@@ -17,15 +17,22 @@ else:
     print("Training model...")
     # Generate training & testing points
     # Uniformly generated in the x-y-t coordinate system
-    n_train_samples = 10000
-    x_train = torch.FloatTensor(n_train_samples, 1).uniform_(boundaries.X_MIN, boundaries.X_MAX)
-    y_train = torch.FloatTensor(n_train_samples, 1).uniform_(boundaries.Y_MIN, boundaries.Y_MAX)
-    t_train = torch.FloatTensor(n_train_samples, 1).uniform_(boundaries.T_MIN, boundaries.T_MAX)
+    n_samples = 12500
+    x = torch.FloatTensor(n_samples, 1).uniform_(boundaries.X_MIN, boundaries.X_MAX)
+    y = torch.FloatTensor(n_samples, 1).uniform_(boundaries.Y_MIN, boundaries.Y_MAX)
+    t = torch.FloatTensor(n_samples, 1).uniform_(boundaries.T_MIN, boundaries.T_MAX)
 
-    n_test_samples = 3000
-    x_test = torch.FloatTensor(n_test_samples, 1).uniform_(boundaries.X_MIN, boundaries.X_MAX)
-    y_test = torch.FloatTensor(n_test_samples, 1).uniform_(boundaries.Y_MIN, boundaries.Y_MAX)
-    t_test = torch.FloatTensor(n_test_samples, 1).uniform_(boundaries.T_MIN, boundaries.T_MAX)
+    indices = torch.randperm(n_samples)
+    split_idx = int(n_samples * 0.8)
+    train_indices = indices[:split_idx]
+    test_indices = indices[split_idx:]
+
+    x_train = x[train_indices]
+    x_test = x[test_indices]
+    y_train = y[train_indices]
+    y_test = y[test_indices]
+    t_train = t[train_indices]
+    t_test = t[test_indices]
 
     train_error, test_error = model.fit(x_train, y_train, t_train, x_test, y_test, t_test, device, n_epochs=100)
     torch.save(model.state_dict(), "wavenet.pth")
