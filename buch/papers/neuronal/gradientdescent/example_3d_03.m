@@ -21,12 +21,12 @@ hold on;
 colormap(flipud(cool(256) * 0.6)); % Multiply by 0.6 to reduce intensity more
 
 % Add colorbar for reference
-colorbar;
+colorbar('FontSize', 40);
 
 % Label the axes
-xlabel('θ1','FontSize', 12);
-ylabel('θ2','FontSize', 12);
-zlabel('L(θ)','FontSize', 12);
+xlabel('θ1','FontSize', 40);
+ylabel('θ2','FontSize', 40);
+zlabel('L(θ)','FontSize', 40);
 % title('Back Half of 3D Convex Loss Function with Path and Highlighted Minima');
 
 % Define the starting point and the path
@@ -88,10 +88,11 @@ plot3(0.5, 1, 1, 'go', 'MarkerSize', 8, 'LineWidth', 1, 'MarkerFaceColor', 'g');
 
 % Highlight the minima at (4, 0, 0) by overlaying a distinct marker
 plot3(0.05, 0, 0.05, 'ro', 'MarkerSize', 8, 'LineWidth', 1, 'MarkerFaceColor', 'r'); % Minima marked with a larger red cross
+plot3(0.25, 0, 0.05, 'ro', 'MarkerSize', 8, 'LineWidth', 1, 'MarkerFaceColor', 'r'); % Minima marked with a larger red cross
 
 % Add a legend
 % legend('Loss Function', 'Path', 'Start', 'Minima', 'Location', 'northwest');
-legend('Loss Function', 'Start', 'Minima', 'Location', 'northwest','FontSize', 20);
+legend('Loss Function', 'Start', 'Minima', 'Gradientabstieg','Location', 'northwest','FontSize', 40);
 
 % Set the view angle for better visualization
 view(3);

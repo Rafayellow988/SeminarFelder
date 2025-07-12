@@ -235,34 +235,64 @@ Das bedeutet, dass stattdessen ein numerischer Algorithmus verwendet werden muss
     \label{neuronal:gradient_descent}
 \end{aufgabe}
 
-Die Anzahl der Schleifendurchläufe \( m \), beziehungsweise das Abbruchkriterium des Algorithmus, ist nicht strikt vorgegeben.
-Innerhalb dieses Papers wurde in jedem Durchlauf des Algorithmus der aktülle Wert \( L(\vartheta_i) \) berechnet.
-Der Algorithmus wurde beendet, sobald der Wert von \( L \) sich über mehrere Durchläufe nur wenig verändert hat.
+Die Anzahl der Schleifendurchläufe \( m \), also das Abbruchkriterium des Algorithmus, ist nicht streng festgelegt.
+In dieser Arbeit wird in jedem Durchlauf des Algorithmus der aktuelle Wert \( L(\vartheta_i) \) berechnet.
+Der Algorithmus wird beendet, sobald sich der Wert von \( L \) über mehrere Iterationen nur noch minimal ändert.
+Abbildung~\ref{fig:gradientenabstieg_beispiel} veranschaulicht ein exemplarisches Beispiel eines Gradientenabstiegs.
+Der Startpunkt wurde willkürlich im grünen Punkt gewählt.
+Der rote Punkt markiert das lokale Minimum, während die schwarz gestrichelte Kurve den Verlauf des Gradientenabstiegs darstellt.
+Gemäß dem oben beschriebenen Algorithmus~\ref{neuronal:gradient_descent} wird der Fehler in Richtung dieses lokalen Minimums optimiert.
 
-Nach dem letzten Schritt dieses Algorithmus ist das neuronale Netzwerk mit den Parametern \( \vartheta_m \) fertig trainiert.
+Nach Abschluss dieses Algorithmus ist das neuronale Netzwerk mit den Parametern \( \vartheta_m \) vollständig trainiert.
 
-\textbf{Als abschliessende Notiz:} Im Schritt 2 des Algorithmus werden die Parameterwerte neu berechnet.
-Durch die verwendete Formel wird erreicht, dass \( L(\vartheta_{i+1}) \leq L(\vartheta_i) \) ist, das heisst, der Fehler des Netzwerks nimmt mit jedem Schritt ab.
-Dies ist das Optimierungsverfahren \emph{Gradientenabstieg}.
+\begin{figure}[H]
+    \centering
+    \hspace*{-0.1\textwidth}
+    \includegraphics[width=0.9\textwidth]{papers/neuronal/images/gd_close_to_minima_long_distances_with_line.png}
+    \caption{Beispiel eines Gradientenabstiegs zu einem lokalen Minimum}
+    \label{fig:gradientenabstieg_beispiel}
+\end{figure}
 
-Das funktioniert, da der Gradient von \( L \) ausgewertet an \( \vartheta_i \) ein Vektor ist, der in die Richtung des stärksten Anstiegs auf \( L \), von \(\vartheta_i \) aus, weist.
-Durch das Minus in der Formel geht man in die entgegengesetzte Richtung, wo es auf \( L \) abwärts verläuft. 
-Mit \( \varepsilon \) wird die ``Schrittgrösse'' gesteuert, um zu verhindern, dass man über ein Minimum auf \( L \) ``springt''.
 
-Dieser Algorithmus birgt ein inhärentes Risiko.
-Es gibt keine Garantie dafür, dass das globale Minimum der Funktion \( L \) gefunden wird.
-Da der Algorithmus in jedem Schritt eine Abwärtsbewegung auf der Funktion \( L \) vollzieht, besteht die Möglichkeit, dass lediglich ein lokales Minimum erreicht wird.
-Befindet sich der Algorithmus in unmittelbarer Nähe eines lokalen Minimums, kann er dieses nicht mehr verlassen, da ein Anstieg erforderlich wäre, um sich von dort zu entfernen.
-Wenn die Funktion \( L \) zahlreiche lokale Minima aufweist, ist es sogar sehr wahrscheinlich, dass der Algorithmus eines davon findet.
-Dies muss jedoch nicht unbedingt als problematisch angesehen werden.
-Solange der Approximationsfehler des Netzwerks an dem gefundenen lokalen Minimum sehr nahe an 0 ist, spielt es keine Rolle, dass nicht das globale Minimum erreicht wurde. 
-Der Fehler muss sich lediglich in einem akzeptablen Bereich befinden.
+\subsubsection{Optimierungsverfahren und seine Grenzen}\label{neuronal:subsubsection:optimierungsverfahren_grenzen}
 
-Eine weitere Gefahr besteht darin, dass der Gradient an allen Arten von Extrempunkten, nicht nur an Minima, den Wert 0 annimmt.
-Wenn der Algorithmus sich exakt auf einem Extrempunkt befindet, kann er sich von dort nicht mehr fortbewegen.
-Allerdings ist es äusserst unwahrscheinlich, dass dieser Fall eintritt, da der Algorithmus sich exakt auf dem Extrempunkt befinden müsste.
-Ist dies nicht der Fall und der Algorithmus befindet sich lediglich in der Nähe eines Extrempunkts, stellt dies kein Problem dar.
-Denn dort ist der Gradient bereits nicht mehr 0, und da es bei allen Extrempunkten -- mit Ausnahme der Minima -- in mindestens eine Richtung abwärts geht, wird der Algorithmus sich von dort wegbewegen.
+Der Algorithmus passt die Parameter des neuronalen Netzwerks schrittweise an, um die Verlustfunktion \( L(\vartheta) \) zu minimieren. Die Schrittweite wird durch den Parameter \( \varepsilon \) gesteuert, um ein Überspringen des Minimums zu vermeiden.
+
+Die Hauptgrenzen des Verfahrens sind:
+\begin{itemize}
+    \item \textbf{Lokale Minima:} Der Algorithmus kann in einem lokalen Minimum stecken bleiben, insbesondere bei Funktionen mit vielen lokalen Minima.
+    \item \textbf{Sattelpunkte und Maxima:} Der Algorithmus kann auf Sattelpunkten oder Maxima landen, wo der Gradient null ist und keine weitere Bewegung möglich ist.
+    \item \textbf{Approximationsfehler:} Der gefundene Punkt muss einen akzeptablen Approximationsfehler aufweisen. Ein lokales Minimum mit geringem Fehler ist oft ausreichend.
+\end{itemize}
+
+Um diese Einschränkungen zu überwinden, können folgende Strategien angewendet werden:
+\begin{itemize}
+    \item \textbf{Dynamische Anpassung der Lernrate:} Eine Anpassung von \( \varepsilon \) kann helfen, lokale Minima zu vermeiden.
+    \item \textbf{Fortgeschrittene Optimierungsalgorithmen:} Methoden wie Momentum oder Adam können die Konvergenz verbessern und das Risiko, in lokalen Minima stecken zu bleiben, verringern.
+\end{itemize}
+
+% \textbf{Als abschliessende Notiz:} Im Schritt 2 des Algorithmus werden die Parameterwerte neu berechnet.
+% Durch die verwendete Formel wird erreicht, dass \( L(\vartheta_{i+1}) \leq L(\vartheta_i) \) ist, das heisst, der Fehler des Netzwerks nimmt mit jedem Schritt ab.
+% Dies ist das Optimierungsverfahren \emph{Gradientenabstieg}.
+%
+% Das funktioniert, da der Gradient von \( L \) ausgewertet an \( \vartheta_i \) ein Vektor ist, der in die Richtung des stärksten Anstiegs auf \( L \), von \(\vartheta_i \) aus, weist.
+% Durch das Minus in der Formel geht man in die entgegengesetzte Richtung, wo es auf \( L \) abwärts verläuft. 
+% Mit \( \varepsilon \) wird die ``Schrittgrösse'' gesteuert, um zu verhindern, dass man über ein Minimum auf \( L \) ``springt''.
+%
+% Dieser Algorithmus birgt ein inhärentes Risiko.
+% Es gibt keine Garantie dafür, dass das globale Minimum der Funktion \( L \) gefunden wird.
+% Da der Algorithmus in jedem Schritt eine Abwärtsbewegung auf der Funktion \( L \) vollzieht, besteht die Möglichkeit, dass lediglich ein lokales Minimum erreicht wird.
+% Befindet sich der Algorithmus in unmittelbarer Nähe eines lokalen Minimums, kann er dieses nicht mehr verlassen, da ein Anstieg erforderlich wäre, um sich von dort zu entfernen.
+% Wenn die Funktion \( L \) zahlreiche lokale Minima aufweist, ist es sogar sehr wahrscheinlich, dass der Algorithmus eines davon findet.
+% Dies muss jedoch nicht unbedingt als problematisch angesehen werden.
+% Solange der Approximationsfehler des Netzwerks an dem gefundenen lokalen Minimum sehr nahe an 0 ist, spielt es keine Rolle, dass nicht das globale Minimum erreicht wurde. 
+% Der Fehler muss sich lediglich in einem akzeptablen Bereich befinden.
+%
+% Eine weitere Gefahr besteht darin, dass der Gradient an allen Arten von Extrempunkten, nicht nur an Minima, den Wert 0 annimmt.
+% Wenn der Algorithmus sich exakt auf einem Extrempunkt befindet, kann er sich von dort nicht mehr fortbewegen.
+% Allerdings ist es äusserst unwahrscheinlich, dass dieser Fall eintritt, da der Algorithmus sich exakt auf dem Extrempunkt befinden müsste.
+% Ist dies nicht der Fall und der Algorithmus befindet sich lediglich in der Nähe eines Extrempunkts, stellt dies kein Problem dar.
+% Denn dort ist der Gradient bereits nicht mehr 0, und da es bei allen Extrempunkten -- mit Ausnahme der Minima -- in mindestens eine Richtung abwärts geht, wird der Algorithmus sich von dort wegbewegen.
 
 \subsection{Qualitätsbewertung}\label{neuronal:subsection:qualitätsbewertung}
 Für die Beurteilung der Qualität der Approximation bietet sich zunächst der Wert von \( L(\vartheta) \) nach Abschluss des Optimierungsalgorithmus an.
