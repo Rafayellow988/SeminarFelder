@@ -1,23 +1,49 @@
 \section{Der Satz von Poincaré-Bendixson} \label{poinbendix:section:poinbendix}
 
-%TODO def omega and alpha set
-%TODO def 2D Kugeloberfläche S
-
-
 \begin{satz}[Poincaré-Bendixson]
 \label{poinbendix:satz:poinbendix}
-$\Phi_t(p) \in \Xi^r(\mathbb{S}^2)$ sei ein $r$-Fach differenzierbares, zweidimensionales dynamisches System mit Startpunkt $p \in \mathbb{S}$.
+$\Phi_t(p) \in \Xi^r(\mathbb{S}^2)$ sei ein $r$-Fach differenzierbares, zweidimensionales dynamisches System mit Startpunkt $p \in \mathbb{S}^2$.
 Dann gilt für das Omega-Limit Set $\omega(p)$ eine der folgenden Optionen:
 \begin{enumerate}
-\item $\omega(p)$ ist eine Singularität
+\item $\omega(p)$ ist eine Nullstelle
 \item $\omega(p)$ ist ein geschlossener Orbit
 \item $\omega(p)$ ist ein geschlossener Orbit welcher Singularitäten verbindet
 \end{enumerate}
 \end{satz}
 
-In den folgenden Abschnitten wird für jeden Fall jeweils ein Beispiel gezeigt.
+Dies gilt auf der Kugeloberfläche $\mathbb{S}^2$.\cite{poinbendix:melo}
+Bis anhin haben wir aber mehrheitlich über planare Fälle gesprochen, weshalb der nächste Abschnitt darauf eingeht wieso wir hier die Kugeloberfläche nehmen.
+In den darauffolgenden Abschnitten wird für dann jeden Fall jeweils ein Beispiel gezeigt.
 
-\subsection{Fall 1: $\omega(p)$ ist eine Singularität} \label{poinbendix:subsection:fall1}
-\subsection{Fall 2: $\omega(p)$ ist ein geschlossener Orbit} \label{poinbendix:subsection:fall2}
-\subsection{Fall 3: $\omega(p)$ ist ein geschlossener Orbit welcher Singularitäten verbindet} \label{poinbendix:subsection:fall3}
+\subsection{Kugeloberfläche und Ebene} \label{poinbendix:subsection:kugeloberflaeche}
+
+Im Beispiel \ref{buch:koordinaten:diffmannig:beispiel:stereographisch} wird die stereographische Projektion eingeführt, welche ein planares Polarkoordinatensystem auf die Kugeloberfläche projiziert.
+In Abbildung \ref{buch:koordinaten:diffmannig:fig:stereographisch} sieht man, dass dabei der Punkt auf dem Nordpol der Kugeloberfläche ins unendliche auf der Ebene abgebildet wird.
+Somit ergibt sich für den Fall einer Nullstelle auf dem Nordpol eine divergierende Bahnkurve auf der Ebene.
+
+Auch wenn die Formulierung auf der Kugeloberfläche etwas eleganter ist, gilt der Satz von Poincaré-Bendixson sowohl auf der Ebene $\mathbb{R}^2$ wie auch auf der Kugeloberfläche $\mathbb{S}^2$.
+Allerdings gilt er nicht auf allen zweidimensionalen Abbildungen, so können zum Beispiel auf dem Torus Bahnkurven auftreten welche nicht wirklich periodisch sind, aber auch nicht auf eine Singularität fallen.\cite{poinbendix:wiki}
+
+
+\subsection{Fall 1: $\omega(p)$ ist eine Nullstelle} \label{poinbendix:subsection:fall1}
+
+\begin{figure}
+    \centering
+    \input{papers/poinbendix/images/fixed_point_omega_set.pgf}
+    \caption{Lösungen des Differentialgleichungssystems %\ref{TODO}
+    Diverse Anfangspunkte haben die selbe Omega-Limesmenge auf der Nullstelle $(0,0)$.}
+    \label{poinbendix:fig:fixed_point_omega_set}
+\end{figure}
+
+\subsection{Fall 2: $\omega(p)$ ist ein Geschlossener Orbit} \label{poinbendix:subsection:fall2}
+
+\begin{figure}
+\centering
+    \input{papers/poinbendix/images/recharge_oscillator_fall_2.pgf}
+    \caption{Lösungen des Differentialgleichungssystems %\ref{TODO}
+    Diverse Anfangspunkte haben den selben periodischer Orbit als Omega-Limesmenge.}
+\label{poinbendix:fig:fixed_point_omega_set}
+\end{figure}
+
+\subsection{Fall 3: $\omega(p)$ ist ein Geschlossener Orbit welcher Singularitäten verbindet} \label{poinbendix:subsection:fall3}
 
