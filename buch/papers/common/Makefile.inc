@@ -157,10 +157,10 @@ $(workdir)/$(seminar)21-blx.bbl:	$(workdir)/$(seminar)21-blx.aux
 	cd $(workdir); bibtex $(seminar)21-blx
 
 $(workdir)/buch22-blx.bbl:	$(workdir)/buch22-blx.aux
-	cd $(workdir) bibtex buch22-blx
+	cd $(workdir); bibtex buch22-blx
 
 $(workdir)/$(seminar)22-blx.bbl:	$(workdir)/$(seminar)22-blx.aux
-	cd $(workdir) bibtex $(seminar)22-blx
+	cd $(workdir); bibtex $(seminar)22-blx
 
 BLXFILES = $(workdir)/buch.bbl \
 	$(workdir)/buch1-blx.bbl \
