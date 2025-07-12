@@ -7,23 +7,23 @@
 % !TEX encoding = UTF-8
 %
 
-\section{Diskussion\label{neuronal:section:diskussion}}
+\section{Diskussion}\label{neuronal:section:diskussion}
 \kopfrechts{Diskussion}
 
-Der grosser Vorteil dieser Methode ist ihre breite Anwendbarkeit.
-Sie kann grundsätzlich auf beliebige Feldgleichungen angewendet werden, unabhängig davon, wie komplex diese sind.
-Klassische Verfahren wie die Finite-Differenzen- oder Finite-Elemente-Methode sind oft auf bestimmte Gleichungstypen beschränkt und stoßen insbesondere bei stark nichtlinearen oder hochdimensionalen Problemen an ihre Grenzen.
+Der bedeutendste Vorzug dieser Methode liegt in ihrer breiten Anwendbarkeit.
+Sie kann grundsätzlich auf beliebige Feldgleichungen angewendet werden, unabhängig von deren Komplexität.
+Im Gegensatz dazu sind klassische Verfahren wie die Finite-Differenzen- oder Finite-Elemente-Methode oft auf bestimmte Gleichungstypen beschränkt und stossen insbesondere bei stark nichtlinearen oder hochdimensionalen Problemen an ihre Grenzen.
 
-Neuronale Netzwerke bieten durch das \emph{Universal Approximation Theorem} die theoretische Grundlage, beliebige stetige Funktionen mit beliebiger Genauigkeit zu approximieren \cite{neuronal:universal_approximation_theorem}. 
-Damit sind sie theoretisch in der Lage, Lösungen für jede beliebige Feldgleichung zu approximieren, unabhängig von deren Komplexität.
+Neuronale Netzwerke bieten durch das \emph{Universal Approximation Theorem} die theoretische Grundlage, um beliebige stetige Funktionen mit beliebiger Genauigkeit zu approximieren \cite{neuronal:universal_approximation_theorem}.
+Dies befähigt sie theoretisch dazu, Lösungen für jede beliebige Feldgleichung zu approximieren, unabhängig von deren Komplexität.
 
-In der Praxis zeigen neuronale Netzwerke vielversprechende Ergebnisse bei der Lösung von Feldgleichungen \cite{neuronal:pinns}. 
-Dennoch steht die Methode noch am Anfang ihrer Entwicklung. 
-Es gibt noch viele offene Fragen, etwa zur Effizienz und Genauigkeit gegenüber klassischen Verfahren.
-Die bisher veröffentlichten Studien zeigen jedoch, dass diese Methode nicht unversprechend ist.
-Für eine abschließende Bewertung ist es aber noch zu früh. 
+In der Praxis haben neuronale Netzwerke vielversprechende Ergebnisse bei der Lösung von Feldgleichungen gezeigt \cite{neuronal:pinns}.
+Dennoch befindet sich die Methode noch in einem frühen Entwicklungsstadium.
+Es bestehen zahlreiche offene Fragen, insbesondere hinsichtlich ihrer Effizienz und Genauigkeit im Vergleich zu klassischen Verfahren.
+Die bisher veröffentlichten Studien deuten jedoch darauf hin, dass diese Methode vielversprechend ist.
+Für eine abschliessende Bewertung ist es jedoch noch zu früh.
 
-Abgesehen von dieser generellen Einschätzung der Methode noch ein Punkt zur Wellengleichung.
-Die Lösung der Wellengleichung ist periodisch und neuronale Netzwerke haben Schwierigkeiten beim Approximieren von periodischen Funktionen.
-Dieses Problem lässt sich mit \emph{Fourier Features} lösen \cite{neuronal:fourier_features}.
-Die Idee ist, die Datenpunkte der Diskretierung mit Sinus- und Cosinus-Funktionen zu transformieren, um periodische Strukturen besser erfassen zu können.
+Neben dieser allgemeinen Einschätzung der Methode sei ein spezifischer Aspekt der Wellengleichung erwähnt.
+Die Lösung der Wellengleichung ist periodisch, und neuronale Netzwerke haben bekanntermassen Schwierigkeiten beim Approximieren von periodischen Funktionen.
+Dieses Problem kann durch die Verwendung von \emph{Fourier Features} gelöst werden \cite{neuronal:fourier_features}.
+Die grundlegende Idee besteht darin, die Datenpunkte der Diskretisierung mit Sinus- und Cosinus-Funktionen zu transformieren, um periodische Strukturen besser erfassen zu können.
