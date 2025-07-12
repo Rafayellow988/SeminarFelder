@@ -1,24 +1,71 @@
 
 \section{Wedgeprodukt
-\label{geoalgebra:section:wedgeproduct}}
+\label{geoalgebra:section:wedgeprodukt}}
 \kopfrechts{Wedgeprodukt}
 
-Das \emph{Wedgeprodukt} bietet die grundlegende Operation der geometrischen Algebra. Angenommen, wir haben die
+Im Rahmen der Geometrischen Algebra möchten wir eine neue Operation
+definieren, das \emph{Wedgeprodukt} $\wedge$.
+Es ist die grundlegende Operation der geometrischen
+Algebra.
+Angenommen, wir haben die
 zwei Vektoren $\mathbf{v_1}, \mathbf{v_2}$ und bilden das Wedgeprodukt
 \begin{equation}
   B = \mathbf{v_1} \wedge \mathbf{v_2}
-\end{equation}}
+\end{equation}
 erhalten wir ein neues mathematisches Konzept, den \emph{Bivektor} $B$.
+Ein Bivektor unterscheidet sich elementar von einem Vektor (siehe \ref{geoalgebra:section:bivektoren}).
 
 \subsection{Definition}
 Um das Wedgeprodukt definieren zu können, benötigen wir einige wenige Axiome, d.h. grundlegende Annahmen, die wir treffen,
 um uns eine Algebra darauf aufzubauen. Somit definieren wir
 
 \begin{satz}
-e_i \wedge e_i = 0
+  Das Wedgeprodukt zwischen einem Vektor und sich selbst ist 0.
+
+  $
+  \mathbf{v_i} \wedge \mathbf{v_i} = 0
+  $
+\end{satz}
+und
+\begin{satz}
+Das Wedgeprodukt ist antikommutativ.
+
+  $
+  \mathbf{v_i} \wedge \mathbf{v_j} = -\mathbf{v_j} \wedge \mathbf{v_i}
+  $
+\end{satz}
+und
+\begin{satz}
+Das Distributivgesetz gilt.
+
+  $
+  \mathbf{v_i} \wedge (\mathbf{v_j} + \mathbf{v_k}) = \mathbf{v_i} \wedge \mathbf{v_j} + \mathbf{v_i} \wedge \mathbf{v_k}
+  $
 \end{satz}
 
-\begin{satz}
-e_i \wedge e_j = -e_j \wedge e_i
-\end{satz}
-Das Wedgeprodukt ist also \emph{antikommutativ}.
+Mit diesen Axiomen können wir bereits das Wedgeprodukt zwischen zwei
+Vektoren in der zweiten Dimension herleiten.
+Dazu machen wir uns zu nutze, dass wir jeden Vektor als
+Linearkombination von den Einheitsvektoren beschreiben können.
+Es gilt
+\begin{align}
+  \mathbf{v} &= \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} \\
+    &= v_1 \mathbf{e_1} + v_2 \mathbf{e_2}
+\end{align}
+
+\begin{definition}
+  Wir betrachten die beiden (zweidimensionalen) Vektoren $\mathbf{u},
+  \mathbf{v}$.
+  Das Wedgeprodukt dazwischen ist
+
+  \begin{equation}
+    \begin{aligned}
+    \mathbf{u} \wedge \mathbf{v} &= (u_1 e_1 + u_2 e_2) \wedge
+    (v_1 e_1 + v_2 e_2) \\
+    &= u_1 e_1 \wedge (v_1 e_1 + v_2 e_2) + u_2 e_2 \wedge (v_1 e_1 + v_2 e_2) \\
+    &= u_1 e_1 \wedge v_1 e_1 + u_1 e_1 \wedge v_2 e_2 + u_2 e_2 \wedge v_1 e_1 + u_2 e_2 \wedge v_2 e_2 \\
+    &= u_1 v_1 (\underbrace{e_1 \wedge e_1}_{0}) + u_1 v_2 (e_1 \wedge e_2) + u_2 v_1 (e_2 \wedge e_1) + u_2 v_2 (\underbrace{e_2 \wedge e_2}_{0}) \\
+    &= (u_1 v_2 - u_2 v_1) e_1 \wedge e_2
+    \end{aligned}
+  \end{equation}
+\end{definition}
