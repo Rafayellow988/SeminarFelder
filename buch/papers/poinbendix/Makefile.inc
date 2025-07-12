@@ -7,8 +7,9 @@ dependencies-poinbendix =						\
 	papers/poinbendix/packages.tex					\
 	papers/poinbendix/main.tex					\
 	papers/poinbendix/references.bib				\
-	papers/poinbendix/teil0.tex					\
-	papers/poinbendix/teil1.tex					\
-	papers/poinbendix/teil2.tex					\
-	papers/poinbendix/teil3.tex
+	papers/poinbendix/einleitung.tex					\
+	papers/poinbendix/motivation.tex					\
+	papers/poinbendix/nullklinen.tex					\
+	papers/poinbendix/poinbendix.tex					\
+	papers/poinbendix/diskussion.tex
 
