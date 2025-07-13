@@ -27,6 +27,37 @@ Allerdings gilt er nicht auf allen zweidimensionalen Abbildungen, so können zum
 
 \subsection{Fall 1: $\omega(p)$ ist eine Nullstelle} \label{poinbendix:subsection:fall1}
 
+Der erste Fall ist intuitiv am einfachsten zu verstehen.
+Sobald auf einer Bahnkurve eine Nullstelle auftritt, bleibt die Kurve für alle Zeiten stehen.
+Die eindimensionale Version von Fall 1  wurde bereits im Beispiel \ref{poinbendix:beispiel:1dlimesmengen} über die Limesmengen gezeigt.
+
+\begin{beispiel}
+Wir betrachten das folgende Differentialgleichungssystem:
+\begin{align*}
+    \dot{x} &= -x + y(1-x^2-y^2) \\
+    \dot{y} &= -y - x(1-x^2-y^2).
+\end{align*}
+Nullstellen sind Punkte wo beide Ableitungen Null sind.
+Zunächst substituieren wir den Klammerausdruck durch $a = (1-x^2-y^2)$ und setzen die Ableitung nach $x$ gleich Null
+\begin{align*}
+    -x + ya &= 0 \\
+    ya &= x.
+\end{align*}
+Nun setzen wir dieses Resultat in die Ableitung nach $y$ und setzen es gleich Null
+\begin{align*}
+    -y - ya^2 &= 0 \\
+    y(a^2+1) &= 0.
+\end{align*}
+Nach dieser Untersuchung sehen wir, dass es nur eine reelle Nullstelle $x=y=0$ geben kann, da $a^2 + 1$ im reellen nie Null werden kann.
+
+Dieses Beispiel wurde gewählt da sehr schöne Bahnkurven entstehen.
+Wie diese Bahnkurven aussehen können sieht man in Abbildung \ref{poinbendix:fig:fixed_point_omega_set}.
+\end{beispiel}
+
+Zu beachten gilt es, dass Satz von Poincaré-Bendixson nur eine Aussage zu möglichen Lösungen ab einem Startpunkt $p$ macht.
+Dies würde unterschiedliche Fälle erlauben für ein einzelnes Differentialgleichungssystem.
+Das obige Beispiel zeigt aber einen häufigen Fall, dass nämlich diverse Startpunkte $p$ denselben Nullpunkt als Omega Limesmenge haben.
+
 \begin{figure}
     \centering
     \input{papers/poinbendix/images/fixed_point_omega_set.pgf}
@@ -42,7 +73,7 @@ Allerdings gilt er nicht auf allen zweidimensionalen Abbildungen, so können zum
     \input{papers/poinbendix/images/recharge_oscillator_fall_2.pgf}
     \caption{Lösungen des Differentialgleichungssystems %\ref{TODO}
     Diverse Anfangspunkte haben den selben periodischer Orbit als Omega-Limesmenge.}
-\label{poinbendix:fig:fixed_point_omega_set}
+\label{poinbendix:fig:fall_2}
 \end{figure}
 
 \subsection{Fall 3: $\omega(p)$ ist ein Geschlossener Orbit welcher Singularitäten verbindet} \label{poinbendix:subsection:fall3}
