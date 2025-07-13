@@ -56,7 +56,7 @@ Wie diese Bahnkurven aussehen können sieht man in Abbildung \ref{poinbendix:fig
 
 Zu beachten gilt es, dass Satz von Poincaré-Bendixson nur eine Aussage zu möglichen Lösungen ab einem Startpunkt $p$ macht.
 Dies würde unterschiedliche Fälle erlauben für ein einzelnes Differentialgleichungssystem.
-Das obige Beispiel zeigt aber einen häufigen Fall, dass nämlich diverse Startpunkte $p$ denselben Nullpunkt als Omega Limesmenge haben.
+Das obige Beispiel zeigt aber einen häufigen Fall, dass nämlich diverse Startpunkte $p$ dieselbe Nullstelle als Omega Limesmenge haben.
 
 \begin{figure}
     \centering
@@ -71,43 +71,60 @@ Das obige Beispiel zeigt aber einen häufigen Fall, dass nämlich diverse Startp
 Den zweiten Fall haben wir im Abschnitt zu den Nullklinen \ref{poinbendix:subsection:nullklinen} bereits angedeutet.
 Bahnkurven werden dabei eingefangen und da sie sich nicht kreuzen können, bleiben sie auf alle Zeiten periodisch.
 
-\begin{beispiel}
+\begin{beispiel} \label{poinbendix:beispiel:fall2_1}
 Das Gleichungssystem
 \begin{align*}
     \dot{x} &= y \\
     \dot{y} &= x
 \end{align*}
 erzeugt dabei kreisrunde Orbitale um den Nullpunkt herum.
-Der Nullpunkt stellt also eine weitere Omega-Limesmenge dar, und zwar vom Punkt $p = (0,0)$.
+Der Nullpunkt ist also eine Nullstelle und stellt damit eine weitere Omega-Limesmenge dar.
 Die ganze Situation ist in Abbildung \ref{poinbendix:fig:fall_2} zu sehen.
 \end{beispiel}
-
-Es gibt aber auch die Möglichkeit, dass verschiedene Bahnkurven auf den selben Orbit konvergieren, wie im folgenden Beispiel gezeigt wird.
-
-\begin{beispiel}
-Das Gleichungssystem
-% \begin{align*}
-%     \dot{x} &= y \\ 
-%     \dot{y} &= x
-% \end{align*} %TODO Replace by correct formula
-beschreibt ist eine vereinfachte Variante des Recharge Osziallator Models.
-Dieser Oszillator konvergiert von verschiedensten Startpunkten auf den gleichen Orbit, wie in Abbildung \ref{poinbendix:fig:recharge_oszillator_fall_2} gezeigt.
-
-\begin{figure}
-\centering
-    \input{papers/poinbendix/images/recharge_oszillator_fall_2.pgf}
-    \caption{Lösungen des Differentialgleichungssystems %\ref{TODO}
-    Anfangspunkte in unterschiedlicher Distanz zum Nullpunkt $(0,0)$ haben den selben periodischen Orbit als Omega-Limesmenge.}
-\label{poinbendix:fig:fall_2}
-\end{figure}
 
 \begin{figure}
 \centering
     \input{papers/poinbendix/images/fall_2.pgf}
-    \caption{Lösungen des Differentialgleichungssystems %\ref{TODO}
-    Diverse Anfangspunkte haben den selben periodischer Orbit als Omega-Limesmenge.}
+    \caption{Lösungen des Differentialgleichungssystems von Beispiel \ref{poinbendix:beispiel:fall2_1}.
+    Anfangspunkte mit unterschiedlichem Radius haben unterschiedliche Orbitale als Omega Limesmengen.}
 \label{poinbendix:fig:fall_2}
 \end{figure}
 
+Es gibt aber auch die Möglichkeit, dass verschiedene Bahnkurven auf den selben Orbit konvergieren, wie im folgenden Beispiel gezeigt wird.
+
+\begin{beispiel} \label{poinbendix:beispiel:fall2_2}
+Das polare Gleichungssystem
+\begin{align*}
+    \dot{r}       &= r(b-r^2) \\
+    \dot{\varphi} &= -1
+\end{align*}
+kann als Illustration der Hopf-Bifurkation verwendet werden.
+Schaut man sich die Ableitung des Radius $r$ genauer an, erkennt man, dass diese bei $b = r^2$ verschwindet.
+Dies ist also eine Nullkline.
+Da die Ableitung zum Winkel $\varphi$ konstant ist, entsteht daher ein stabiler Zyklus mit Radius $\sqrt{b} \forall b > 0$.
+Dies sieht man in Abbildung \ref{poinbendix:fig:fall_2_2}.
+
+Sobald allerdings $b < 0$ ist, ist die Ableitung zum Radius immer negativ, d.h. alle Startpunkte konvergieren gegen den Nullpunkt.
+Diese wäre ein weiteres Beispiel für den Fall 1.
+\end{beispiel}
+
+\begin{figure}
+\centering
+    \input{papers/poinbendix/images/fall_2_polar.pgf}
+    \caption{Lösungen des Differentialgleichungssystems aus Beispiel \ref{poinbendix:beispiel:fall2_2}.
+    Anfangspunkte in unterschiedlicher Distanz zum Nullpunkt $(0,0)$ haben den selben periodischen Orbit als Omega-Limesmenge.}
+\label{poinbendix:fig:fall_2_2}
+\end{figure}
+
 \subsection{Fall 3: $\omega(p)$ ist ein Geschlossener Orbit welcher Singularitäten verbindet} \label{poinbendix:subsection:fall3}
-%TODO Beschreibung und Beispiel mit Formeln und Plot
+%TODO Beschreibung und Beispiel
+\begin{align*}
+    \dot{r}       &= r(1-r^2) \\
+    \dot{\varphi} &= -1 + ar(2-r) \sin 3\varphi
+\end{align*}
+\begin{figure}
+\centering
+    \input{papers/poinbendix/images/fall_3_polar.pgf}
+    \caption{TODO} %TODO
+\label{poinbendix:fig:fall_2_2}
+\end{figure}
