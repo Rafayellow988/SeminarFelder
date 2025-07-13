@@ -1,9 +1,9 @@
 import numpy as np
 from scipy.integrate import solve_ivp
 import matplotlib.pyplot as plt
-from enable_export import enable_export, set_plot_settings
+from enable_export import enable_export, set_polar_plot_settings
 
-enable_export()
+# enable_export()
 
 # def run_simplified_recharge_oszillator(t, z):
 #     x, y = z
@@ -22,7 +22,6 @@ def run_polar_fall_2(t, z):
 # Time span and initial conditions
 t_span = [0, 100]
 t_eval = np.linspace(*t_span, 1000)
-# initial_conditions = [[0, 0], [0.2, 0.7], [1, -1], [-2, 0]]
 initial_conditions = [
     [2, 0],
     [3, -np.pi],
@@ -36,8 +35,7 @@ for z0 in initial_conditions:
     sol = solve_ivp(run_polar_fall_2, t_span, z0, t_eval=t_eval)
     ax.plot(sol.y[1], sol.y[0], linewidth=0.5)
 
-ax.set_rticks([0.5, 1, 2, 3])  # Less radial ticks
-ax.set_rmax(3)
+set_polar_plot_settings(fig, ax, 4, 4)
 # plt.show()
 fig.savefig("../images/fall_2_polar.pgf")
 
@@ -74,5 +72,6 @@ for z0 in poles:
     ax.plot(z0[1], z0[0], "x:k", ms=10)
 ax.set_rticks([0.5, 1, 2, 3])  # Less radial ticks
 ax.set_rmax(3)
+set_polar_plot_settings(fig, ax, 4, 4)
 # plt.show()
 fig.savefig("../images/fall_3_polar.pgf")

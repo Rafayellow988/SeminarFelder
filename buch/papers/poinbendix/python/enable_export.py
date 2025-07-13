@@ -37,3 +37,8 @@ def set_plot_settings(fig, ax, width=4.5, height=2.5): # Call after plot generat
     ax.set_ylim(bottom=ax.get_ylim()[0] - 0.05, top=ax.get_ylim()[1] + 0.05)
             
     fig.set_size_inches(w=width, h=height)
+
+def set_polar_plot_settings(fig, ax, width=4.5, height=2.5): # Call after plot generated!
+    ax.set_rticks([0.5, 1, 2, 3])  # Less radial ticks
+    ax.set_rmax(3)
+    fig.set_size_inches(w=width, h=height)
