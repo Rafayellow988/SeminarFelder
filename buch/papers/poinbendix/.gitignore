@@ -10,3 +10,5 @@
 *SAVE-ERROR
 *pyc
 presentation/presentation.pdf
+*uv.lock
+*.python*

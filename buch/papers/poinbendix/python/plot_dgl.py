@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.integrate import solve_ivp
 import matplotlib.pyplot as plt
-from enable_export import enable_export
+from enable_export import enable_export, set_plot_settings
 
 enable_export()
 
@@ -39,20 +39,18 @@ fig, ax = plt.subplots()
 for z0 in initial_conditions:
     sol = solve_ivp(ro.run, t_span, z0, t_eval=t_eval)
     if np.sum(np.diff(sol.y[0])) == 0:
-        ax.plot(sol.y[0], sol.y[1], ".")
-    ax.plot(sol.y[0], sol.y[1])
+        ax.plot(sol.y[0], sol.y[1], ".", linewidth=0.5)
+    ax.plot(sol.y[0], sol.y[1], linewidth=0.5)
 
-plt.grid()
-fig.set_size_inches(w=4.5, h=2.5)
+set_plot_settings(fig, ax)
 fig.savefig("../images/recharge_oscillator.pgf")
 
 fig, ax = plt.subplots()
 for z0 in initial_conditions:
     sol = solve_ivp(ro.run, t_span, z0, t_eval=t_eval)
-    ax.plot(sol.y[0], sol.y[1])
+    ax.plot(sol.y[0], sol.y[1], linewidth=0.5)
 
-plt.grid()
-fig.set_size_inches(w=4.5, h=2.5)
+set_plot_settings(fig, ax)
 fig.savefig("../images/recharge_oscillator_fall_2.pgf")
 
 # Experiment 2: wiggle on parameter alpha
@@ -62,10 +60,9 @@ fig, ax = plt.subplots()
 for alph in alphas:
     ro = RechargeOscillator(alph, epsilon, b, gamma, r)
     sol = solve_ivp(ro.run, t_span, z0, t_eval=t_eval)
-    ax.plot(sol.y[0], sol.y[1], label=f"$\\alpha={alph:.3f}$")
-plt.grid()
+    ax.plot(sol.y[0], sol.y[1], label=f"$\\alpha={alph:.3f}$", linewidth=0.5)
 plt.legend()
-fig.set_size_inches(w=4.5, h=2.5)
+set_plot_settings(fig, ax)
 fig.savefig("../images/recharge_oscillator_alpha.pgf")
 
 # Experiment 3: wiggle on parameter gamma
@@ -75,10 +72,9 @@ fig, ax = plt.subplots()
 for gamm in gammas:
     ro = RechargeOscillator(alpha, epsilon, b, gamm, r)
     sol = solve_ivp(ro.run, t_span, z0, t_eval=t_eval)
-    ax.plot(sol.y[0], sol.y[1], label=f"$\\gamma={gamm:.3f}$")
-plt.grid()
+    ax.plot(sol.y[0], sol.y[1], label=f"$\\gamma={gamm:.3f}$", linewidth=0.5)
 plt.legend()
-fig.set_size_inches(w=4.5, h=2.5)
+set_plot_settings(fig, ax)
 fig.savefig("../images/recharge_oscillator_gamma.pgf")
 
 def fixed_point_omega_set(t, z):
@@ -93,10 +89,8 @@ fig, ax = plt.subplots()
 for z0 in initial_conditions:
     sol = solve_ivp(fixed_point_omega_set, t_span, z0, t_eval=t_eval)
     if np.sum(np.diff(sol.y[0])) == 0:
-        ax.plot(sol.y[0], sol.y[1], ".")
-    ax.plot(sol.y[0], sol.y[1])
+        ax.plot(sol.y[0], sol.y[1], ".", linewidth=0.5)
+    ax.plot(sol.y[0], sol.y[1], linewidth=0.5)
 
-plt.grid()
-plt.show()
-fig.set_size_inches(w=4.5, h=2.5)
+set_plot_settings(fig, ax)
 fig.savefig("../images/fixed_point_omega_set.pgf")
