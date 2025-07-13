@@ -9,5 +9,6 @@ dependencies = [
     "ipython>=9.4.0",
     "matplotlib==3.7.1",
     "numpy<=1.26",
+    "pyqt5>=5.15.11",
     "scipy>=1.16.0",
 ]

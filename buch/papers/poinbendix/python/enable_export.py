@@ -11,7 +11,7 @@ def enable_export():
         "pgf.preamble": "\\usepackage{bm}\n\\usepackage{amsmath}\n\\usepackage{xcolor}\n\\usepackage{tgtermes}",
     })
 
-def set_plot_settings(fig, ax): # Call after plot generated!
+def set_plot_settings(fig, ax, width=4.5, height=2.5): # Call after plot generated!
     # Set up a very faint grid
     ax.grid(True, which='both', linestyle=':', linewidth=0.25, color='gray')
 
@@ -36,4 +36,4 @@ def set_plot_settings(fig, ax): # Call after plot generated!
     ax.set_xlim(left=ax.get_xlim()[0] - 0.05, right=ax.get_xlim()[1] + 0.05)
     ax.set_ylim(bottom=ax.get_ylim()[0] - 0.05, top=ax.get_ylim()[1] + 0.05)
             
-    fig.set_size_inches(w=4.5, h=2.5)
+    fig.set_size_inches(w=width, h=height)

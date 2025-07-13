@@ -31,7 +31,7 @@ Der erste Fall ist intuitiv am einfachsten zu verstehen.
 Sobald auf einer Bahnkurve eine Nullstelle auftritt, bleibt die Kurve für alle Zeiten stehen.
 Die eindimensionale Version von Fall 1  wurde bereits im Beispiel \ref{poinbendix:beispiel:1dlimesmengen} über die Limesmengen gezeigt.
 
-\begin{beispiel}
+\begin{beispiel} \label{poinbendix:beispiel:fall1}
 Wir betrachten das folgende Differentialgleichungssystem:
 \begin{align*}
     \dot{x} &= -x + y(1-x^2-y^2) \\
@@ -61,20 +61,53 @@ Das obige Beispiel zeigt aber einen häufigen Fall, dass nämlich diverse Startp
 \begin{figure}
     \centering
     \input{papers/poinbendix/images/fixed_point_omega_set.pgf}
-    \caption{Lösungen des Differentialgleichungssystems %\ref{TODO}
+    \caption{Lösungen des Differentialgleichungssystems aus Beispiel \ref{poinbendix:beispiel:fall1}.
     Diverse Anfangspunkte haben die selbe Omega-Limesmenge auf der Nullstelle $(0,0)$.}
     \label{poinbendix:fig:fixed_point_omega_set}
 \end{figure}
 
 \subsection{Fall 2: $\omega(p)$ ist ein Geschlossener Orbit} \label{poinbendix:subsection:fall2}
 
+Den zweiten Fall haben wir im Abschnitt zu den Nullklinen \ref{poinbendix:subsection:nullklinen} bereits angedeutet.
+Bahnkurven werden dabei eingefangen und da sie sich nicht kreuzen können, bleiben sie auf alle Zeiten periodisch.
+
+\begin{beispiel}
+Das Gleichungssystem
+\begin{align*}
+    \dot{x} &= y \\
+    \dot{y} &= x
+\end{align*}
+erzeugt dabei kreisrunde Orbitale um den Nullpunkt herum.
+Der Nullpunkt stellt also eine weitere Omega-Limesmenge dar, und zwar vom Punkt $p = (0,0)$.
+Die ganze Situation ist in Abbildung \ref{poinbendix:fig:fall_2} zu sehen.
+\end{beispiel}
+
+Es gibt aber auch die Möglichkeit, dass verschiedene Bahnkurven auf den selben Orbit konvergieren, wie im folgenden Beispiel gezeigt wird.
+
+\begin{beispiel}
+Das Gleichungssystem
+% \begin{align*}
+%     \dot{x} &= y \\ 
+%     \dot{y} &= x
+% \end{align*} %TODO Replace by correct formula
+beschreibt ist eine vereinfachte Variante des Recharge Osziallator Models.
+Dieser Oszillator konvergiert von verschiedensten Startpunkten auf den gleichen Orbit, wie in Abbildung \ref{poinbendix:fig:recharge_oszillator_fall_2} gezeigt.
+
 \begin{figure}
 \centering
-    \input{papers/poinbendix/images/recharge_oscillator_fall_2.pgf}
+    \input{papers/poinbendix/images/recharge_oszillator_fall_2.pgf}
+    \caption{Lösungen des Differentialgleichungssystems %\ref{TODO}
+    Anfangspunkte in unterschiedlicher Distanz zum Nullpunkt $(0,0)$ haben den selben periodischen Orbit als Omega-Limesmenge.}
+\label{poinbendix:fig:fall_2}
+\end{figure}
+
+\begin{figure}
+\centering
+    \input{papers/poinbendix/images/fall_2.pgf}
     \caption{Lösungen des Differentialgleichungssystems %\ref{TODO}
     Diverse Anfangspunkte haben den selben periodischer Orbit als Omega-Limesmenge.}
 \label{poinbendix:fig:fall_2}
 \end{figure}
 
 \subsection{Fall 3: $\omega(p)$ ist ein Geschlossener Orbit welcher Singularitäten verbindet} \label{poinbendix:subsection:fall3}
-
+%TODO Beschreibung und Beispiel mit Formeln und Plot
