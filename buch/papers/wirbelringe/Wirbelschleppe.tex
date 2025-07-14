@@ -1,0 +1,29 @@
+\section{Wirbelschleppe}
+An einem nebligen Tag kann man sie an einem Flughafen gut beobachten. 
+Die Rede ist von den Wirbelschleppen hinter den Enden der Tragflächen eines Flugzeugs.
+Aber wieso entstehen sie eigentlich? 
+Wo genau starten sie und wo ist deren Ende?
+Wieso schauert es Kleinflugzeug-Piloten, wenn sie diesen Begriff hören?
+All das und mehr klären wir in diesem Abschnitt mit ein wenig Mathematik.
+
+\subsection{Entstehung}
+Wirbelschleppen bilden sich genau am Ende der Tragfläche aufgrund des Druckunterschieds, welcher das Flugzeug in erster Linie Fliegen lässt.
+Um deren Entstehung genauer anschauen zu können gibt es nun einen kleinen Theorieausschnitt aus der Aviatik:
+Setzt sich ein Flugzeug in Bewegung, so entsteht um die Flügeltragflächen ein Luftstrom.
+Ein weitverbreiteter Irrglaube besagt, dass die Luft, welche über den Flügel geht "länger" hat und deshalb schneller sein muss.
+Dies ist jedoch nicht ganz korrekt.
+Es ist vielmehr die \textbf{Fläche} eines einzelnen, gedachten Luftstroms, welche auf dem Flügel verkleinert wird.% TODO: Genauere Erklärung noch anfügen!
+Wenn man dann mittels Kontinuitätsgleichung
+\[v_{oben}A_{oben} = v_{unten}A_{unten}\]
+die Geschwindigkeiten der beiden gedachten Luftströme vergleicht, muss der Luftstrom mit Geschwindigkeit $v_{oben}$ schneller sein als $v_{unten}$.
+Dies hat jetzt zur Folge, dass laut dem Satz von Bernoulli 
+\[p+\frac{1}{2}\rho v^2+\rho gh=konstant\]
+der Druck $p_{oben}$ kleiner sein muss als der Druck $p_{unten}$.
+Denn zwei punkte, einer auf der Oberseite des Flügels und einer auf der Unterseite können folgendermassen gleichgesetzt werden
+\[p_{oben}+\frac{1}{2}\rho v^2_{oben} + \rho gh_1 = p_{unten}+\frac{1}{2}\rho v^2_{unten}+\rho gh_2.\]
+Jetzt kann angenommen werden, dass der Höhenunterschied zwischen den beiden Punkten ob/unter dem Flügel vernachlässigbar klein ist also \(h_1\approx h_2\).
+Zudem ist die Dichte der Luft an beiden Punkten ungefähr gleich weshalb sich der Term zu folgendem vereinfacht
+\[p_{oben}+\frac{1}{2}\rho v^2_{oben} = p_{unten}+\frac{1}{2}\rho v^2_{unten}.\]
+Dann noch umgestellt nach $p_{oben}$ und $p_{unten}$
+\[p_{oben}-p_{unten} = \frac{1}{2}\rho( v^2_{unten}-v^2_{oben})\]
+und man kann erkennen, dass wenn $v_{unten} < v_{oben}$ muss $p_{unten} > p_{oben}$ sein.
