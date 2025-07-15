@@ -9,10 +9,34 @@
 \section{Anwendungsbeispiel
 \label{openfoam:section:teil3}}
 \kopfrechts{Anwendungsbeispiel}
-Testtext
+Wie wir gesehen haben, kann OpenFOAM, mit genügend Geduld, mehr oder weniger alles. 
+Wir werden jetzt an einem praktischen Beispiel zeigen, wie man eine eigene Simulation erstellt.
 
-\subsection{De finibus bonorum et malorum
-\label{openfoam:subsection:malorum}}
+Für ein anschauliches Beispiel haben wir ein Objekt gewählt, dass alle Studenten der OST-Rapperswil kennen: den Campus selbst.
+Das Ziel der Simulation ist, zu sehen, wie der Wind um die Gebäude strömt und mit ihnen interagiert.
 
+Als erstes brauchen wir ein geeignetes 3d Objekt, in unserem Fall wurden die Gebäude in Onshape erstellt, und mit einer (dünnen) Bodenplatte verbunden, damit alle Gebäude in einem File zusammengefasst sind.
+%hint, open foam arbeite in Meter, wenn das Objekt in mm exportiert wurde, faktor 1000 zu gross
+Dieses 3D file bildet die Grundlage unsere Simulation.
 
+%Bild Ordnerstruktur_Leer
+
+\subsection{Mesh generating\label{openfoam:section:Mesh generating}}
+%Bild Snappy fein und grob 
+\subsection{Parameter\label{openfoam:section:Parameter}}
+Mit den Parameter werden alle Simulationsspezifischen Einstellungen vorgenommen.
+\subsection{Numerische Parameter\label{openfoam:section:Numerische Parameter}}
+Zeitschritte usw "system"
+\subsection{Physikalische Parameter\label{openfoam:section:Physikalische Parameter}}
+viskosität, dichte ect "constant"
+\subsection{Anfangsbedingungen Parameter\label{openfoam:section:Anfangsbedingungen Parameter}}
+Strömungsrichtung, geschwinigkeiten usw, "O" Ordner
+\subsection{Simulation\label{openfoam:section:Simulation}}
+%Bild Ordnerstruktur_Simuliert
+%Bild vorschlag_Wind_Westen_10m_blocky?
+\subsection{Postprocessing\label{openfoam:section:Postprocessing}}
+%Bild vorschlag_Wind_Osten_5m oder Westen, evt interessant mehrere 5/10/15m
+
+%https://doc.openfoam.com/2306/quickstart/
+%https://www.openfoam.com/documentation/user-guide Dokumentation
 
