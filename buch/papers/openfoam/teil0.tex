@@ -26,9 +26,6 @@ OpenFOAM wird seit 2004 hauptsächlich von OpenCFD Ltd entwickelt, es wird jedoc
 Die getesteten Releases werden alle 6 Monate herausgegeben. \cite{openfoam:greenshieldsweller2022}
 
 \subsection{Was macht OpenFOAM?}
-Wie in \ref{openfoam:section:WasIstOpenFoam} erwähnt ist OpenFOAM eine Software für das lösen von Strömungsmechanischen Problemen.
-OpenFOAM kann also die Bewegung und Kräfte die durch Flüssigkeiten ausgehen berechnen, 
-dies ist heute aber auch noch mit Wärmetransfer also Thermodynamik, Chemische Prozesse wie Verbrennung
-und die Wechselwirkung von Festkörpern und Flüssigkeiten zu erweitern. 
-All diese Prozesse kann eine CFD Software mittels Numerischen Methoden näherungsweise simulieren. 
- \cite{openfoam:greenshieldsweller2022} 
+Zum Simulieren Strömungsmechanischer Probleme muss man die Partiellen Differenziellen Gleichungen (v.a Erhaltungssätze) die das Verhalten des Mediums beschreiben, ausgehend von Initial- und Grenzbedingungen, lösen.
+Dabei beschreiben die Differenziellen Gleichungen Felder für die Simulationsgrößen wie Geschwindigkeit, Druck, Temperatur, Dichte und je nach Anwendung noch viele mehr. OpenFOAM nutzt die Manipulation von solchen Feldern um eine Numerische Lösung zu finden. Daher kommt auch das Akronym FOAM dies steht für Field Operation And  Manipulation.
+
