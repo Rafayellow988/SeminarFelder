@@ -2,12 +2,67 @@
 \section{Bivektoren
 \label{geoalgebra:section:bivektoren}}
 \kopfrechts{Bivektoren}
-Durch das Wedgeprodukt zwischen $\mathbf{v_1}$ und $\mathbf{v_2}$ erhalten wir
+\subsection{Idee}
+\label{geoalgebra:section:bivektoren:idee}
+Durch das Wedgeprodukt zwischen $\color{red}\mathbf{v_1}$ und $\color{blue}\mathbf{v_2}$ erhalten wir
 den
-Bivektor $\mathbf{v_1} \wedge \mathbf{v_2}$. Einen Bivektor können wir uns als \emph{gerichtete Fläche}, die zwischen den beiden Vektoren aufgespannt
-wird, vorstellen (siehe \autoref{geoalgebra:fig:bivektor-gegenuhrzeigersinn}).
+Bivektor $\color{red}\mathbf{v_1} \color{black}\wedge \color{blue}\mathbf{v_2}$. Einen Bivektor können wir uns als \emph{gerichtete Fläche}, die zwischen den beiden Vektoren aufgespannt
+wird, vorstellen (siehe \autoref{geoalgebra:fig:bivektor-als-flaeche}).
+\begin{figure}
+  \begin{center}
+\begin{tikzpicture}
+  \draw[step=.5cm,gray,very thin] (-0.25,-0.25) grid (5.25,4.25);
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (3,1);
+  \coordinate (B) at (2,3);
+  \coordinate (C) at ($(A)+(B)$);
+
+  \fill[blue!30,opacity=0.7] (O) -- (A) -- (C) -- (B) -- cycle;
+
+  \draw[thick,->,red] (O) -- (A) node[midway,below] {$\mathbf{v_1}$};
+  \draw[thick,->,blue] (O) -- (B) node[midway,left] {$\mathbf{v_2}$};
+  \draw[dashed] (A) -- (C);
+  \draw[dashed] (B) -- (C);
+
+  \node (K) at ($0.25*(O)+0.25*(A)+0.25*(B)+0.25*(C)$)
+    {$\color{red}\mathbf{v_1} \color{black}\wedge \color{blue}\mathbf{v_2}$};
+  \draw[thick,->] (K) ++(0.6,0) arc (0:270:0.6);
+\end{tikzpicture}
+  \end{center}
+  \caption{Bivektor als gerichtete Fläche}\label{geoalgebra:fig:bivektor-als-flaeche}
+\end{figure}
+
+\subsection{Bivektoren als gerichtete Fläche}
+Es ist wichtig, dass wir uns die Idee einer \emph{gerichteten Fläche}
+verinnerlichen. Wie wir bereits in \ref{geoalgebra:section:bivektoren:idee} gesehen haben,
+gibt das Wedgeprodukt $\color{red}\mathbf{v_1} \color{black}\wedge \color{blue}\mathbf{v_2}$
+einen Bivektor, der die Fläche zwischen den beiden Vektoren als
+eine \emph{im Gegenuhrzeigersinn rotierte Fläche} repräsentiert.
+Wir können uns vorstellen, als ob wir den Vektor $\color{red}\mathbf{v_1}$
+am Vektor $\color{blue}\mathbf{v_2}$ ``aufspannen'' (siehe \autoref{geoalgebra:fig:aufspannende-flaeche-v1-v2})
+
 \begin{figure}
 \begin{center}
+\begin{tikzpicture}
+  \draw[step=.5cm,gray,very thin] (-0.25,-0.25) grid (5.25,4.25);
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (3,1);
+  \coordinate (B) at (2,3);
+  \coordinate (C) at ($(A)+(B)$);
+  \coordinate (M_AC) at ($0.5*(A)+0.5*(C)$);
+  \coordinate (M_OB) at ($0.5*(O)+0.5*(B)$);
+
+  \fill[blue!30,opacity=0.7] (O) -- (A) -- (M_AC) -- (M_OB) -- cycle;
+
+  \draw[thick,->,red] (O) -- (A) node[midway,below] {$\mathbf{v_1}$};
+  \draw[thick,->,blue] (O) -- (B) node[midway,left] {$\mathbf{v_2}$};
+  \draw[dashed] (A) -- (C);
+  \draw[dashed] (B) -- (C);
+
+  \node (K) at ($0.25*(O)+0.25*(A)+0.25*(B)+0.25*(C)$)
+    {$\color{red}\mathbf{v_1} \color{black}\wedge \color{blue}\mathbf{v_2}$};
+  \draw[thick,->] (K) ++(0.6,0) arc (0:270:0.6);
+\end{tikzpicture}
 \begin{tikzpicture}
   \draw[step=.5cm,gray,very thin] (-0.25,-0.25) grid (5.25,4.25);
   \coordinate (0) at (0, 0);
@@ -25,7 +80,49 @@ wird, vorstellen (siehe \autoref{geoalgebra:fig:bivektor-gegenuhrzeigersinn}).
 \draw[thick,->] (K) ++(0.6,0) arc (0:270:0.6);
 \end{tikzpicture}
 \end{center}
+  \caption{Vektor $\color{red}\mathbf{v_1}$ wird an $\color{blue}\mathbf{v_2}$ aufgespannt}\label{geoalgebra:fig:aufspannende-flaeche-v1-v2}
+\end{figure}
+
+
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}
+  \draw[step=.5cm,gray,very thin] (-0.25,-0.25) grid (5.25,4.25);
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (3,1);
+  \coordinate (B) at (2,3);
+  \coordinate (C) at ($(A)+(B)$);
+  \coordinate (M_BC) at ($0.5*(B)+0.5*(C)$);
+  \coordinate (M_OA) at ($0.5*(O)+0.5*(A)$);
+
+  \fill[red!30,opacity=0.7] (O) -- (A) -- (M_OA) -- (M_BC) -- (B) -- cycle;
+
+  \draw[thick,->,red] (O) -- (A) node[midway,below] {$\mathbf{v_1}$};
+  \draw[thick,->,blue] (O) -- (B) node[midway,left] {$\mathbf{v_2}$};
+  \draw[dashed] (A) -- (C);
+  \draw[dashed] (B) -- (C);
+
+  \node (K) at ($0.25*(O)+0.25*(A)+0.25*(B)+0.25*(C)$)
+    {$\color{blue}\mathbf{v_2} \color{black}\wedge \color{red}\mathbf{v_1}$};
+  \draw[thick,->] (K) ++(0.6,0) arc (0:-270:0.6);
+\end{tikzpicture}
+\begin{tikzpicture}
+  \draw[step=.5cm,gray,very thin] (-0.25,-0.25) grid (5.25,4.25);
+  \coordinate (0) at (0, 0);
+  \coordinate (A) at (3, 1);
+  \coordinate (B) at (2, 3);
+  \coordinate (C) at ($(A) + (B)$);
+  \fill[red!30, opacity=0.7] (0) -- (A) -- (C) -- (B) -- cycle;
+
+  \draw[thick, ->, red] (0) -- (A) node[midway,below] {$\mathbf{v_1}$};
+  \draw[thick, ->, blue] (0) -- (B) node[midway,left] {$\mathbf{v_2}$};
+  \draw[dashed] (A) -- (C);
+  \draw[dashed] (B) -- (C);
+  \node (K) at ($0.25*(O)+0.25*(A)+0.25*(B)+0.25*(C)$)
+    {$\color{blue}\mathbf{v_2} \color{black}\wedge \color{red}\mathbf{v_1}$};
+  \draw[thick,->] (K) ++(0.6,0) arc (0:-270:0.6);
+\end{tikzpicture}
+\end{center}
   \caption{Bivektor mit Richtung im
   Gegenuhrzeigersinn}\label{geoalgebra:fig:bivektor-gegenuhrzeigersinn}
 \end{figure}
-
