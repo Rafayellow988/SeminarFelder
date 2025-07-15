@@ -4,17 +4,24 @@
 
 Um das Verhalten von Wirbelringen besser zu verstehen, sind die sogenannten helmholzschen Wirbelsätze sehr nützlich. 
 Mitte 19. Jahrhundert formulierte der Deutsche Physiker Hermann von Helmholtz 3 Wirbelsätze und veröffentlichte diese im Journal für die reine und angewandte Mathematik\cite{Wirbelringe:JournalHelmholz}.
-In dieser definiert er auch gleich auch Hilfslinien, um die Wirbelbewegungen, besser beschreiben zu können:
+In dieser definiert er auch gleich auch Linien, um die Wirbelbewegungen, besser beschreiben zu können:
 
 \subsubsection*{Wirbellinien}
 
 Wirbellinien sind die „Mittelachse“ eines Wirbels. 
 Um diese Achse rotieren die Teile, welche teil eines Wirbels sind. 
 Diese hat an sich kein Volumen, allerdings kann es sein das Teilchen auf dieser Achse zu liegen kommen. 
+Diese Linie kann an einem echten Wirbel beobachtet werden. 
+In der Praxis ist eine Wirbellinie nicht gerade, sondern gekrümmt oder sogar spiralenähnlich. 
+Ein idealer Wirbelring besitzt eine Wirbellinie in der Form eines Kreises.
+Des Weiteren ist eine sehr wichtige Eigenschaft, dass Wirbellinien nur auf einer Grenzfläche enden können. 
+Siehe Kapitel \ref{paper:Wirbelringe:Grenzflaechen}
 
 \subsubsection*{Wirbelfäden}
 
-
+Ein Wirbelfaden ist ein Zylinder, welcher eine Wirbellinie als Zentrum des Zylinders hat. 
+Schneidet man nun diesen Zylinder senkrecht zu der Wirbellinie, ergibt sich ein einzelner Wirbel. 
+Wirbelfäden werden auch Wirbelröhren genannt.
 
 \subsection{Erster Helmholzscher Wirbelsatz}
 
@@ -22,9 +29,9 @@ Diese hat an sich kein Volumen, allerdings kann es sein das Teilchen auf dieser 
     In Abwesenheit von wirbel anfachenden äusseren Kräften bleiben wirbelfreie Strömungsgebiete wirbelfrei.
 \end{displayquote}
 
-Teilchen die, ruhen bleiben in ruhe.
-
-\input{papers/wirbelringe/fig/cube_still_particles.tex}
+Kurz gesagt, Teilchen die ruhen, bleiben in Ruhe. 
+Siehe Abbildung \ref{buch:papers:Wirbelringe:fig:Helmholtz_1}. 
+Alle Teilchen (in Blau) bewegen sich nicht da das System abgeschlossen ist und diese sich nicht bewegen.
 
 \subsection{Zweiter Helmholzscher Wirbelsatz}
 
@@ -32,14 +39,34 @@ Teilchen die, ruhen bleiben in ruhe.
     Fluidelemente, die auf einer Wirbellinie liegen, verbleiben auf dieser Wirbellinie.
 \end{displayquote}
 
-\input{papers/wirbelringe/fig/cube_still_particles_rotation.tex}
+Dies gilt auch, wenn sich diese Wirbellinie fortbewegt. 
+Allerdings heisst das nicht das Teilchen die sich nicht von Anfang an auf einer Wirbellinie befinden, dort nicht mehr hingelangen können  
+Siehe Abbildung \ref{buch:papers:Wirbelringe:fig:Helmholtz_2}. 
+Alle Teilchen (in Blau) bewegen sich nicht, da sich die Wirbellinie (relativ zu den Systemgrenzen) nicht bewegt.
 
 \subsection{Dritter Helmholzscher Wirbelsatz}
 
 \begin{displayquote}
-    Fluidelemente, die auf einer Wirbellinie liegen, verbleiben auf dieser Wirbellinie.
+    Die Zirkulation entlang einer Wirbelröhre ist konstant. 
 \end{displayquote}
 
-\input{papers/wirbelringe/fig/cube_constant_rotation.tex}
+Dieser Wirbelsatz kann mit dem Integral 
+\[
+\Gamma
+= 
+\oint_{c} \vec{v} \cdot d \vec{l}
+=
+\text{const}
+\]
+zusammengefasst werden. 
+Wobei \(\Gamma\) die Zirkulation des jeweiligen Flächenstücks der Gesamtwirbelröhre ist, c der Umfang des jeweiligen Flächenstücks und \(\vec{v}\) die Geschwindigkeit der rotierenden Partikel. 
+Siehe Abbildung \ref{buch:papers:Wirbelringe:fig:Helmholtz_3}. 
+\input{papers/wirbelringe/fig/Helmholz_wirbelsätze.tex}
 
-\subsection{Verhalten an Grenzflächen}
+\subsection{Verhalten an Grenzflächen\label{paper:Wirbelringe:Grenzflaechen}}
+
+Mit den Obigen Regel kann das Verhalten von Wirbelringen nun einfacher nachvollzogen werden. 
+Allerdings können noch nicht alle verhalten begründet werden. 
+Bisher wurde nur das Verhalten im Freien Raum betrachtet und Grenzflächen ignoriert. 
+Allerdings sind diese wichtig, da in der Realität, immer solche Grenzflächen vorhanden sind. 
+Grenzflächen entstehen immer dort wo es Übergänge von Materialien gibt oder am Rand des Systems.
