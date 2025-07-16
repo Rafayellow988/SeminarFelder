@@ -1,0 +1,32 @@
+\section{Slug Modell}
+In diesem Kapitel werden wir uns das Slug Modell etwas genauer unter die Lupe nehmen, um die Entstehung eines Wirbelrings etwas genauer zu verstehen.
+Die genaue mathematische Beschreibung des Entstehungsprozesses ist sehr komplex und würde den Rahmen dieses Kapitels sprengen.
+Dafür kann mittels Slug Modell dieser Prozess relativ genau angenähert werden.
+
+\subsection{Grundlegende Idee}
+Im Slug Modell wird der Impulsaustritt eines Fluidvolumens (eines Fluid-Slug) aus einer Öffnung beschrieben.
+Man kann sich dies als Zylinder aus Flüssigkeit vorstellen, welcher innert kürzester Zeit aus einer Öffnung geschoben wird.
+Dabei definieren wir folgende Grössen:
+\begin{itemize}
+    \item Zirkulation $\Gamma$
+    \item Wirbelstärke $\omega$
+    \item Slug Geschwindigkeit $u_p(t)$
+    \item Slug Durchmesser $D$
+    \item Slug Länge $L$
+\end{itemize}
+Tritt nun das Slug aus dem Zylinder aus, so trifft die Aussenseite des Slugs auf das stehende Fluid (bspw. Luft oder Wasser) ausserhalb.
+Dies bewirkt aufgrund der Geschwindigkeitsdifferenz zwischen dem Inneren des Slugs und dem stehenden Fluid aussen eine Scherung.
+Die Scherung hat zur Folge, dass sich das Slug beginnt \glqq Aufzurollen\grqq und somit einen Wirbel formt. 
+Dieser Wirbelring hat eine Wirbelstärke $\omega$, welche die Divergenz der Lokalen Geschwindigkeit eines Fluidteilchens ist
+\[
+\omega = \nabla \times \vec{u}.
+\]
+Integriert man jetzt $\omega$ über eine Fläche $A$ so erhält man die gesamte Zirkulation $\Gamma$ des entstandenen Wirbelrings
+\[
+\Gamma = \iint_{A} \omega\cdot\mathrm{d}\mathbf{A}.
+\]
+Eben genannte Zirkulation kann man mit dem Slugmodell auch approximativ mit der Formel
+\[
+\Gamma \approx \frac{1}{2}UL
+\]
+berechnen.
