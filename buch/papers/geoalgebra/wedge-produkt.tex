@@ -15,7 +15,7 @@ zwei Vektoren $\mathbf{v_1}, \mathbf{v_2}$ und bilden das Wedgeprodukt
 erhalten wir ein neues mathematisches Konzept, den \emph{Bivektor} $B$.
 Ein Bivektor unterscheidet sich elementar von einem Vektor (siehe \ref{geoalgebra:section:bivektoren}).
 
-\subsection{Definition}
+\subsection{Definition in zwei Dimensionen}
 Um das Wedgeprodukt definieren zu können, benötigen wir einige wenige Axiome, d.h. grundlegende Annahmen, die wir treffen,
 um uns eine Algebra darauf aufzubauen. Somit definieren wir
 
@@ -79,6 +79,46 @@ Das Wedgeprodukt in zwei Dimensionen kann auch als Determinante
   \mathbf{e_1} \wedge \mathbf{e_2}
 \end{equation}
 beschrieben werden.
+
+\subsection{Das Wedgeprodukt in höheren Dimensionen}
+Zunächst wollen wir uns nochmals unser bereits bekanntes
+Vektorprodukt ansehen.
+\begin{definition}
+  Wir betrachten die beiden dreidimensionalen Vektoren $\mathbf{a}, \mathbf{b}$
+  und bilden das Kreuzprodukt
+  \begin{equation}
+    \mathbf{a} \times \mathbf{b} = \begin{pmatrix} a_2 b_3 - a_3 b_2 \\ a_3 b_1 - a_1 b_3 \\ a_1 b_2 - a_2 b_1 \end{pmatrix}
+    \label{geoalgebra:eq:vektorprodukt}
+  \end{equation}
+  
+\end{definition}
+
+Das Wedgeprodukt funktioniert nicht nur in der zweiten, sondern
+in jeder beliebiger Dimension. Im folgenden möchten wir kurz
+das Wedgeprodukt zwischen zwei dreidimensionalen Vektoren
+herleiten.
+
+\begin{definition}
+Wir betrachten die \emph{dreidimensionalen} Vektoren $\mathbf{a}, \mathbf{b}$.
+Das Wedgeprodukt dazwischen ist
+  \newcommand{\eone}{\mathbf{e_1}}
+  \newcommand{\etwo}{\mathbf{e_2}}
+  \newcommand{\ethree}{\mathbf{e_3}}
+\begin{equation}
+  \begin{aligned}
+      \mathbf{a} \wedge \mathbf{b} &= (a_1 \eone + a_2 \etwo + a_3 \ethree) \wedge (b_1 \eone + b_2 \etwo + b_3 \ethree) \\
+      &= a_1 \eone \wedge (b_1 \eone + b_2 \etwo + b_3 \ethree) \\
+      &\quad+ a_2 \etwo \wedge (b_1 \eone + b_2 \etwo + b_3 \ethree) \\
+      &\quad+ a_3 \ethree \wedge (b_1 \eone + b_2 \etwo + b_3 \ethree) \\
+      &= (a_1 b_2 - a_2 b_1) \eone \wedge \etwo \\
+      &\quad+ (a_2 b_3 - a_3 b_2) \etwo \wedge \ethree \\
+      &\quad+ (a_3 b_1 - a_1 b_3) \ethree \wedge \eone
+  \end{aligned}
+\end{equation}
+.
+\end{definition}
+Wir stellen fest, dass die Koeffizienten hinter den drei entstandenen Wedgeprodukten
+gleich sind, wie die Komponenten des Vektorprodukts (siehe \autoref{geoalgebra:eq:vektorprodukt}).
 
 \subsection{Rückblick}
 Hier wollen wir einen kurzen Rückblick vornehmen. Wir haben zunächst
