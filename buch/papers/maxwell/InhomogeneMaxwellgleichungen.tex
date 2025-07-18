@@ -15,7 +15,7 @@ Den Faraday-Tensor haben wir definiert als
 
 \begin{equation}
 	F = \begin{pmatrix}
-		0 & -E_x & -E_y & -E_z \\ E_x & 0 & B_z & -B_y \\ E_y & -B_z & 0 & B_x \\ E_z & B_y & -B_x & 0 
+		0 & -E_1 & -E_2 & -E_3 \\ E_1 & 0 & B_3 & -B_2 \\ E_2 & -B_3 & 0 & B_1 \\ E_3 & B_2 & -B_1 & 0 
 	\end{pmatrix}.
 %	\label{maxwell:section:teil1:metrik}
 \end{equation}
@@ -25,24 +25,25 @@ Wir erinnern uns, dass $F$ ausgeschrieben mit Wedgeprodukten definiert ist als
 
 \begin{align*}
 	F = 
-	&- E_x \, dt \wedge dx - E_y \, dt \wedge dy - E_z \, dt \wedge dz \\
-	&+ B_z \, dx \wedge dy - B_y \, dx \wedge dz + B_x \, dy \wedge dz.\\
+	&- E_1 \, dx^0 \wedge dx^1 - E_2 \, dx^0 \wedge dx^2 - E_3 \, dx^0 \wedge dx^3 \\
+	&+ B_3 \, dx^1 \wedge dx^2 - B_2 \, dx^1 \wedge dx^3 + B_1 \, dx^2 \wedge dx^3.\\
 \end{align*}
 
-Der Hodgeoperator bildet eine $k$-Form auf eine $(n-k)$-Form ab und somit wird aus $\ast F$ wieder eine 2-Form
+Der Hodgeoperator bildet eine $k$-Form auf eine $(n-k)$-Form ab und somit wird aus $\ast F$ wieder eine 2-Form.
+Die Hodge-Duale können aus der Tabelle (WIE VERWEISEN??) entnommen werden.
 
 \begin{align*}
 	\ast F =
-	& - E_{x} \, \ast(dt \wedge dx) - E_{y} \, \ast(dt \wedge dy) - E_{z} \, \ast(dt \wedge dz) \\
-	& + B_z \, \ast(dx \wedge dy) - B_y \, \ast(dx \wedge dz) + B_x \, \ast(dy \wedge dz)\\
+	& - E_{1} \, \ast(dx^0 \wedge dx^1) - E_{2} \, \ast(dx^0 \wedge dx^2) - E_{3} \, \ast(dx^0 \wedge dx^3) \\
+	& + B_3 \, \ast(dx^1 \wedge dx^2) - B_2 \, \ast(dx^1 \wedge dx^3) + B_1 \, \ast(dx^2 \wedge dx^3)\\
 	= 
-	& \, E_{x} \, dy \wedge dz - E_{y} \, dx \wedge dz + E_{z} \, dx \wedge dy \\
-	& + B_z \, dt \wedge dz + B_y \, dt \wedge dy + B_x \, dt \wedge dx.\\
+	& \, E_{1} \, dx^2 \wedge dx^3 - E_{2} \, dx^1 \wedge dx^3 + E_{3} \, dx^1 \wedge dx^2 \\
+	& + B_3 \, dx^0 \wedge dx^3 + B_2 \, dx^0 \wedge dx^2 + B_1 \, dx^0 \wedge dx^1.\\
 \end{align*}
 Die erhaltene 2-Form kann nun wieder als Matrix
 \begin{equation}
 	\ast F = \begin{pmatrix}
-		0 & B_x & B_y & B_z \\ -B_x & 0 & E_z & -E_y \\ -B_y & -E_z & 0 & E_x \\ -B_z & E_y & -E_x & 0 
+		0 & B_1 & B_2 & B_3 \\ -B_1 & 0 & E_3 & -E_2 \\ -B_2 & -E_3 & 0 & E_1 \\ -B_3 & E_2 & -E_1 & 0 
 	\end{pmatrix}
 	%	\label{maxwell:section:teil1:metrik}
 \end{equation}
@@ -51,37 +52,96 @@ geschrieben werden.
 Nun wenden wir die äussere Ableiung darauf an und erhalten
 \begin{align*}
 	d(\ast F) = \,
-	& d (E_{x} \, dy \wedge dz - E_{y} \, dx \wedge dz + E_{z} \, dx \wedge dy + B_z \, dt \wedge dz + B_y \, dt \wedge dy + B_x \, dt \wedge dx)\\
+	& d (E_{1} \, dx^2 \wedge dx^3 - E_{2} \, dx^1 \wedge dx^3 + E_{3} \, dx^1 \wedge dx^2 + B_3 \, dx^0 \wedge dx^3 + B_2 \, dx^0 \wedge dx^2 + B_1 \, dx^0 \wedge dx^1)\\
 	=
-	& \frac{\partial E_x}{\partial t} dt \wedge dy \wedge dz + \frac{\partial E_x}{\partial x} dx \wedge dy \wedge dz -
-	\frac{\partial E_y}{\partial t} dt \wedge dx \wedge dz -
-	\frac{\partial E_y}{\partial y} dy \wedge dx \wedge dz +\\
-	& \frac{\partial E_z}{\partial t} dt \wedge dx \wedge dy +
-	\frac{\partial E_z}{\partial z} dz \wedge dx \wedge dy +
-	\frac{\partial B_z}{\partial x} dx \wedge dt \wedge dz +
-	\frac{\partial B_z}{\partial y} dy \wedge dt \wedge dz +\\
-	& \frac{\partial B_y}{\partial x} dx \wedge dt \wedge dy +
-	\frac{\partial B_y}{\partial z} dz \wedge dt \wedge dy +
-	\frac{\partial B_x}{\partial y} dy \wedge dt \wedge dx +
-	\frac{\partial B_x}{\partial z} dz \wedge dt \wedge dx\\
+	& \frac{\partial E_1}{\partial x^0} dx^0 \wedge dx^2 \wedge dx^3 + \frac{\partial E_1}{\partial x^1} dx^1 \wedge dx^2 \wedge dx^3 -
+	\frac{\partial E_2}{\partial x^0} dx^0 \wedge dx^1 \wedge dx^3 -
+	\frac{\partial E_2}{\partial x^2} dx^2 \wedge dx^1 \wedge dx^3 +\\
+	& \frac{\partial E_3}{\partial x^0} dx^0 \wedge dx^1 \wedge dx^2 +
+	\frac{\partial E_3}{\partial x^3} dx^3 \wedge dx^1 \wedge dx^2 +
+	\frac{\partial B_3}{\partial x^1} dx^1 \wedge dx^0 \wedge dx^3 +
+	\frac{\partial B_3}{\partial x^2} dx^2 \wedge dx^0 \wedge dx^3 +\\
+	& \frac{\partial B_2}{\partial x^1} dx^1 \wedge dx^0 \wedge dx^2 +
+	\frac{\partial B_2}{\partial x^3} dx^3 \wedge dx^0 \wedge dx^2 +
+	\frac{\partial B_1}{\partial x^2} dx^2 \wedge dx^0 \wedge dx^1 +
+	\frac{\partial B_1}{\partial x^3} dx^3 \wedge dx^0 \wedge dx^1\\
 	=
-	&\left( \frac{\partial E_x}{\partial x} + \frac{\partial E_y}{\partial y} + \frac{\partial E_z}{\partial z} \right) dx \wedge dy \wedge dz +
-	\left(\frac{\partial E_x}{\partial t} + \frac{\partial B_y}{\partial z} - \frac{\partial B_z}{\partial y} \right) dt \wedge dy \wedge dz\\
-	&\left( -\frac{\partial E_y}{\partial t} + \frac{\partial B_x}{\partial z} - \frac{\partial B_z}{\partial x} \right) dt \wedge dx \wedge dz +
-	\left( \frac{\partial E_z}{\partial t} + \frac{\partial B_x}{\partial y} - \frac{\partial B_y}{\partial x} \right) dt \wedge dx \wedge dy. 
+	&\left( \frac{\partial E_1}{\partial x^1} + \frac{\partial E_2}{\partial x^2} + \frac{\partial E_3}{\partial x^3} \right) dx^1 \wedge dx^2 \wedge dx^3 +
+	\left(\frac{\partial E_1}{\partial x^0} + \frac{\partial B_2}{\partial x^3} - \frac{\partial B_3}{\partial x^2} \right) dx^0 \wedge dx^2 \wedge dx^3\\
+	&\left( -\frac{\partial E_2}{\partial x^0} + \frac{\partial B_1}{\partial x^3} - \frac{\partial B_3}{\partial x^1} \right) dx^0 \wedge dx^1 \wedge dx^3 +
+	\left( \frac{\partial E_3}{\partial x^0} + \frac{\partial B_1}{\partial x^2} - \frac{\partial B_2}{\partial x^1} \right) dx^0 \wedge dx^1 \wedge dx^2. 
 \end{align*}
-Wenden wir nun noch mal den Hodge-Operator auf die erhaltene 3-Form an, erhalten wir
+Wenden wir nun noch einmal den Hodge-Operator auf die erhaltene 3-Form an, erhalten wir
 \begin{align*}
 	\ast d \ast F = 
-	&\left( \frac{\partial E_x}{\partial x} + \frac{\partial E_y}{\partial y} + \frac{\partial E_z}{\partial z} \right) (-dt) +
-	\left(\frac{\partial E_x}{\partial t} + \frac{\partial B_y}{\partial z} - \frac{\partial B_z}{\partial y} \right) (-dx)\\
-	&\left( -\frac{\partial E_y}{\partial t} + \frac{\partial B_x}{\partial z} - \frac{\partial B_z}{\partial x} \right) dy +
-	\left( \frac{\partial E_z}{\partial t} + \frac{\partial B_x}{\partial y} - \frac{\partial B_y}{\partial x} \right) (-dz).\\
+	&\left( \frac{\partial E_1}{\partial x^1} + \frac{\partial E_2}{\partial x^2} + \frac{\partial E_3}{\partial x^3} \right) (-dx^0) +
+	\left(\frac{\partial E_1}{\partial x^0} + \frac{\partial B_2}{\partial x^3} - \frac{\partial B_3}{\partial x^2} \right) (-dx^1)\\
+	&\left( -\frac{\partial E_2}{\partial x^0} + \frac{\partial B_1}{\partial x^3} - \frac{\partial B_3}{\partial x^1} \right) dx^2 +
+	\left( \frac{\partial E_3}{\partial x^0} + \frac{\partial B_1}{\partial x^2} - \frac{\partial B_2}{\partial x^1} \right) (-dx^3).\\
 	=
-	&\left( -\frac{\partial E_x}{\partial x} -\frac{\partial E_y}{\partial y} - \frac{\partial E_z}{\partial z} \right) dt +
-	\left(-\frac{\partial E_x}{\partial t} - \frac{\partial B_y}{\partial z} + \frac{\partial B_z}{\partial y} \right) dx\\
-	&\left( -\frac{\partial E_y}{\partial t} + \frac{\partial B_x}{\partial z} - \frac{\partial B_z}{\partial x} \right) dy +
-	\left( -\frac{\partial E_z}{\partial t} - \frac{\partial B_x}{\partial y} + \frac{\partial B_y}{\partial x} \right) dz.
+	&\left( -\frac{\partial E_1}{\partial x^1} -\frac{\partial E_2}{\partial x^2} - \frac{\partial E_3}{\partial x^3} \right) dx^0 +
+	\left(-\frac{\partial E_1}{\partial x^0} - \frac{\partial B_2}{\partial x^3} + \frac{\partial B_3}{\partial x^2} \right) dx^1\\
+	&\left( -\frac{\partial E_2}{\partial x^0} + \frac{\partial B_1}{\partial x^3} - \frac{\partial B_3}{\partial x^1} \right) dx^2 +
+	\left( -\frac{\partial E_3}{\partial x^0} - \frac{\partial B_1}{\partial x^2} + \frac{\partial B_2}{\partial x^1} \right) dx^3.
 \end{align*}
 
 Weiter vereinfachen und nachvollziehen...
+
+\subsection{Das ganze mit Si-Einheiten}
+\begin{equation}
+	F = \begin{pmatrix}
+		0 & -E_1/c & -E_2/c & -E_3/c \\ E_1/c & 0 & B_3 & -B_2 \\ E_2/c & -B_3 & 0 & B_1 \\ E_3/c & B_2 & -B_1 & 0 
+	\end{pmatrix}.
+\end{equation}
+
+\begin{align*}
+	\ast F =
+	& - \frac{E_{1}}{c} \, \ast(dx^0 \wedge dx^1) - \frac{E_{2}}{c} \, \ast(dx^0 \wedge dx^2) - \frac{E_{3}}{c} \, \ast(dx^0 \wedge dx^3) \\
+	& + B_3 \, \ast(dx^1 \wedge dx^2) - B_2 \, \ast(dx^1 \wedge dx^3) + B_1 \, \ast(dx^2 \wedge dx^3)\\
+	= 
+	& \, \frac{E_{1}}{c} \, dx^2 \wedge dx^3 - \frac{E_{2}}{c} \, dx^1 \wedge dx^3 + \frac{E_{3}}{c} \, dx^1 \wedge dx^2 \\
+	& + B_3 \, dx^0 \wedge dx^3 + B_2 \, dx^0 \wedge dx^2 + B_1 \, dx^0 \wedge dx^1.\\
+\end{align*}
+Die erhaltene 2-Form kann nun wieder als Matrix
+\begin{equation}
+	\ast F = \begin{pmatrix}
+		0 & B_1 & B_2 & B_3 \\ -B_1 & 0 & E_3/c & -E_2/c \\ -B_2 & -E_3/c & 0 & E_1/c \\ -B_3 & E_2/c & -E_1/c & 0 
+	\end{pmatrix}
+	%	\label{maxwell:section:teil1:metrik}
+\end{equation}
+geschrieben werden.
+
+\begin{align*}
+	d(\ast F) = \,
+	& d \left(\frac{E_{1}}{c} \, dx^2 \wedge dx^3 -\frac{E_{2}}{c} \, dx^1 \wedge dx^3 + \frac{E_{3}}{c} \, dx^1 \wedge dx^2 + B_3 \, dx^0 \wedge dx^3 + B_2 \, dx^0 \wedge dx^2 + B_1 \, dx^0 \wedge dx^1\right)\\
+	=
+	& \frac{1}{c}\frac{\partial E_1}{\partial x^0} dx^0 \wedge dx^2 \wedge dx^3 + \frac{1}{c}\frac{\partial E_1}{\partial x^1} dx^1 \wedge dx^2 \wedge dx^3 -
+	\frac{1}{c}\frac{\partial E_2}{\partial x^0} dx^0 \wedge dx^1 \wedge dx^3 -
+	\frac{1}{c}\frac{\partial E_2}{\partial x^2} dx^2 \wedge dx^1 \wedge dx^3 +\\
+	& \frac{1}{c}\frac{\partial E_3}{\partial x^0} dx^0 \wedge dx^1 \wedge dx^2 +
+	\frac{1}{c}\frac{\partial E_3}{\partial x^3} dx^3 \wedge dx^1 \wedge dx^2 +
+	\frac{\partial B_3}{\partial x^1} dx^1 \wedge dx^0 \wedge dx^3 +
+	\frac{\partial B_3}{\partial x^2} dx^2 \wedge dx^0 \wedge dx^3 +\\
+	& \frac{\partial B_2}{\partial x^1} dx^1 \wedge dx^0 \wedge dx^2 +
+	\frac{\partial B_2}{\partial x^3} dx^3 \wedge dx^0 \wedge dx^2 +
+	\frac{\partial B_1}{\partial x^2} dx^2 \wedge dx^0 \wedge dx^1 +
+	\frac{\partial B_1}{\partial x^3} dx^3 \wedge dx^0 \wedge dx^1\\
+	=
+	&\left( \frac{1}{c}\frac{\partial E_1}{\partial x^1} + \frac{1}{c}\frac{\partial E_2}{\partial x^2} + \frac{1}{c}\frac{\partial E_3}{\partial x^3} \right) dx^1 \wedge dx^2 \wedge dx^3 +
+	\left(\frac{1}{c}\frac{\partial E_1}{\partial x^0} + \frac{\partial B_2}{\partial x^3} - \frac{\partial B_3}{\partial x^2} \right) dx^0 \wedge dx^2 \wedge dx^3\\
+	&\left( -\frac{1}{c}\frac{\partial E_2}{\partial x^0} + \frac{\partial B_1}{\partial x^3} - \frac{\partial B_3}{\partial x^1} \right) dx^0 \wedge dx^1 \wedge dx^3 +
+	\left( \frac{1}{c}\frac{\partial E_3}{\partial x^0} + \frac{\partial B_1}{\partial x^2} - \frac{\partial B_2}{\partial x^1} \right) dx^0 \wedge dx^1 \wedge dx^2. 
+\end{align*}
+Wenden wir nun noch einmal den Hodge-Operator auf die erhaltene 3-Form an, erhalten wir
+\begin{align*}
+	\ast d \ast F = 
+	&\left( \frac{1}{c}\frac{\partial E_1}{\partial x^1} + \frac{1}{c}\frac{\partial E_2}{\partial x^2} + \frac{1}{c}\frac{\partial E_3}{\partial x^3} \right) (-dx^0) +
+	\left(\frac{1}{c}\frac{\partial E_1}{\partial x^0} + \frac{\partial B_2}{\partial x^3} - \frac{\partial B_3}{\partial x^2} \right) (-dx^1)\\
+	&\left( -\frac{1}{c}\frac{\partial E_2}{\partial x^0} + \frac{\partial B_1}{\partial x^3} - \frac{\partial B_3}{\partial x^1} \right) dx^2 +
+	\left( \frac{1}{c}\frac{\partial E_3}{\partial x^0} + \frac{\partial B_1}{\partial x^2} - \frac{\partial B_2}{\partial x^1} \right) (-dx^3).\\
+	=
+	&\left( -\frac{1}{c}\frac{\partial E_1}{\partial x^1} -\frac{1}{c}\frac{\partial E_2}{\partial x^2} - \frac{1}{c}\frac{\partial E_3}{\partial x^3} \right) dx^0 +
+	\left(-\frac{1}{c}\frac{\partial E_1}{\partial x^0} - \frac{\partial B_2}{\partial x^3} + \frac{\partial B_3}{\partial x^2} \right) dx^1\\
+	&\left( -\frac{1}{c}\frac{\partial E_2}{\partial x^0} + \frac{\partial B_1}{\partial x^3} - \frac{\partial B_3}{\partial x^1} \right) dx^2 +
+	\left( -\frac{1}{c}\frac{\partial E_3}{\partial x^0} - \frac{\partial B_1}{\partial x^2} + \frac{\partial B_2}{\partial x^1} \right) dx^3.
+\end{align*}
