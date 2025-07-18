@@ -145,3 +145,64 @@ Wenden wir nun noch einmal den Hodge-Operator auf die erhaltene 3-Form an, erhal
 	&\left( -\frac{1}{c}\frac{\partial E_2}{\partial x^0} + \frac{\partial B_1}{\partial x^3} - \frac{\partial B_3}{\partial x^1} \right) dx^2 +
 	\left( -\frac{1}{c}\frac{\partial E_3}{\partial x^0} - \frac{\partial B_1}{\partial x^2} + \frac{\partial B_2}{\partial x^1} \right) dx^3.
 \end{align*}
+Damit wir nun wieder auf etwas physikalisch Sinnvolles kommen, ersetzen wir alle $dx^0$ mit $cdt$, $dx^1$ mit $dx$, $dx^2$ mit $dy$ und $dx^3$ mit $dz$
+\begin{align*}
+	\ast d \ast F = 
+	&\left( -\frac{1}{c}\frac{\partial E_1}{\partial x} -\frac{1}{c}\frac{\partial E_2}{\partial y} - \frac{1}{c}\frac{\partial E_3}{\partial z} \right) cdt +
+	\left(-\frac{1}{c}\frac{\partial E_1}{\partial ct} - \frac{\partial B_2}{\partial z} + \frac{\partial B_3}{\partial y} \right) dx\\
+	&\left( -\frac{1}{c}\frac{\partial E_2}{\partial ct} + \frac{\partial B_1}{\partial z} - \frac{\partial B_3}{\partial x} \right) dy +
+	\left( -\frac{1}{c}\frac{\partial E_3}{\partial ct} - \frac{\partial B_1}{\partial y} + \frac{\partial B_2}{\partial x} \right) dz.
+\end{align*}
+
+\begin{align*}
+	\ast d \ast F = 
+	&\left( -\frac{\partial E_1}{\partial x} -\frac{\partial E_2}{\partial y} - \frac{\partial E_3}{\partial z} \right) dt +
+	\left(-\frac{1}{c^2}\frac{\partial E_1}{\partial t} - \frac{\partial B_2}{\partial z} + \frac{\partial B_3}{\partial y} \right) dx\\
+	&\left( -\frac{1}{c^2}\frac{\partial E_2}{\partial t} + \frac{\partial B_1}{\partial z} - \frac{\partial B_3}{\partial x} \right) dy +
+	\left( -\frac{1}{c^2}\frac{\partial E_3}{\partial t} - \frac{\partial B_1}{\partial y} + \frac{\partial B_2}{\partial x} \right) dz.
+\end{align*}
+Damit wir nun den erhaltenen Ausdruck auch interpretieren können definieren wir die Viererstromdichte als
+\begin{equation}
+	J = -c\rho dx^0 + J_1 dx^1 + J_2 dx^2 +J_3 dx^3.
+\end{equation}
+Schreiben wir auch diese 1-Form in physikalisch sinnvollen Einheiten erhalten wir 
+\begin{equation}
+	J = -c^2\rho dt + J_1 dx + J_2 dy + J_3 dz.
+\end{equation}
+Multiplizieren wir zu $J$ noch ein $\mu_0$ erhalten wir den Ausdruck
+\begin{equation}
+	\mu_0 J = -\frac{\rho}{\varepsilon_0}dt + \mu_0 (J_1 dx +  J_2 dy +  J_3 dz),
+\end{equation}
+weil im Vakuum $c = \frac{1}{\sqrt{\varepsilon_0 \mu_0}}$ gilt. Setzen wir nun die beiden Teile der Gleichung zusammen ergibt sich
+\begin{equation}
+	\ast d \ast F = \mu_0 J
+\end{equation}
+Jetzt können wir die einzelnen Teile vergleichen und wissen bereits, dass es sich um vier unabhängige Gleichungen handeln muss, nämlich eine für jede Basis-1-Form.
+
+Betrachten wir nur den Teil mit der Zeitkomponente $dt$, resultiert die Gleichung
+\begin{equation}
+	\frac{\partial E_1}{\partial x} +\frac{\partial E_2}{\partial y} + \frac{\partial E_3}{\partial z} = \frac{\rho}{\varepsilon_0},
+\end{equation}
+welche als das Gausssche Gesetz der Elektrostatik bekannt ist.
+Weil es sich um Differentialformen handelt, wird hier nicht der Nabla-Operator verwendet für die Divergenz der elektrischen Feldstärke.
+
+Vergleichen wir nun die anderen Komponenten $dx,dy,dz$ von beiden Seiten erhalten wir die drei Gleichungen
+\begin{equation}
+	-\frac{1}{c^2}\frac{\partial E_1}{\partial t} - \frac{\partial B_2}{\partial z} + \frac{\partial B_3}{\partial y} = \mu_0 J_1
+\end{equation}
+\begin{equation}
+	-\frac{1}{c^2}\frac{\partial E_2}{\partial t} + \frac{\partial B_1}{\partial z} - \frac{\partial B_3}{\partial x} = \mu_0 J_2\\
+\end{equation}
+\begin{equation}
+	 -\frac{1}{c^2}\frac{\partial E_3}{\partial t} - \frac{\partial B_1}{\partial y} + \frac{\partial B_2}{\partial x} = \mu_0 J_3.
+\end{equation}
+Schreiben wir erneut $c$ mit der Permittivität und Permeabilität des Vakuums erhalten wir die Gleichungen
+\begin{equation}
+	 - \frac{\partial B_2}{\partial z} + \frac{\partial B_3}{\partial y} = \mu_0 J_1 + \varepsilon_0\mu_0\frac{\partial E_1}{\partial t}
+\end{equation}
+\begin{equation}
+ 	\frac{\partial B_1}{\partial z} - \frac{\partial B_3}{\partial x} = \mu_0 J_2	+ \varepsilon_0\mu_0\frac{\partial E_2}{\partial t}
+\end{equation}
+\begin{equation}
+	 - \frac{\partial B_1}{\partial y} + \frac{\partial B_2}{\partial x} = \mu_0 J_3 + \varepsilon_0\mu_0\frac{\partial E_3}{\partial t}.
+\end{equation}
