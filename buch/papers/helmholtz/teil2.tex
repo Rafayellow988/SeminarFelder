@@ -53,8 +53,34 @@ Bei näherer Betrachtung ist zu erkennen, dass die Gleichung \eqref{helmholtz:eq
 \end{itemize}
 
 
-\subsection{Greenscher Ansatz wird vielleicht wegfallen}
-Hierzu müssen jedoch die Potentiale $\Phi $ und $\mathbf{\Psi}$ berechnet werden. Um die Berechnung vornehmen zu können wird die Greenschen Funktion des Laplace -Peratos zur Hilfe genommen. 
+\subsection{Greenscher Ansatz}
+Ein möglicher Ansatz, um die partielle Differential Gleichung zu lösen ist der Dirac delta Funktion. Integralform einer Matrixmultiplikation. Es wird die Funktion $\mathbf{F}$, welche in diesem Fall ein Vektor darstellt mit der Deltafunktion multipliziert.
+
+\begin{equation}
+\Delta F = -4 \pi \rho 
+\label{helmholtz:DGL_idee}
+\end{equation}
+
+\begin{equation}
+\underbrace{\frac{1}{4 \pi} \Delta F}_{invertiert} = \rho 
+\label{helmholtz:DGL_idee_umformung}
+\end{equation}
+
+\begin{tabular}{ll}
+  & Idee in Matrix \\
+$\Delta F = -4 \pi \rho$  & $Au = f$ \\
+$\underbrace{\frac{1}{4 \pi} \Delta F}_{invertiert} = \rho$ & $A^{-1}Au = A^{-1}f$  \\
+s & $u = A^{-1}f$  \\
+\end{tabular}
+
+\begin{equation}
+\delta (\mathbf{x} - \mathbf{x'}) = \frac{1}{4 \pi} \nabla^2 \frac{1}{|\mathbf{x} - \mathbf{x'}|}
+\label{helmholtz:dirac}
+\end{equation}
+
+Einheitsmatrix mal Vektor gleich Matrix. 
+
+
 
 \begin{equation}
 \mathbf{F}(\mathbf{r}) = -\frac{1}{4\pi} \int_V \mathbf{F}(\mathbf{r}') \nabla^2 \left( \frac{1}{|\mathbf{r} - \mathbf{r}'|} \right) dV'
@@ -63,7 +89,7 @@ Hierzu müssen jedoch die Potentiale $\Phi $ und $\mathbf{\Psi}$ berechnet werde
 Die Identität
 
 \begin{equation}
-\nabla^2 \mathbf{\Psi}=\nabla \Big( \nabla \cdot \mathbf{\Psi} \Big)-\nabla \times \Big(\nabla \times \mathbf{\Psi} \Big)
+\nabla^2 \mathbf{\Psi}= \underbrace{\nabla \Big( \nabla \cdot \mathbf{\Psi} \Big)}_{\text{Gradient}} -\underbrace{\nabla \times \Big(\nabla \times \mathbf{\Psi} \Big)}_{\text{Rotation}}
 \end{equation}
 
 Das Vektorfeld $\mathbf{F}$ kann nun geschrieben werden als:
