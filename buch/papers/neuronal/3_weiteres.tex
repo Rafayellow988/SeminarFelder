@@ -10,20 +10,15 @@
 \section{Diskussion}\label{neuronal:section:diskussion}
 \kopfrechts{Diskussion}
 
-Der bedeutendste Vorzug dieser Methode liegt in ihrer breiten Anwendbarkeit.
+Der grosse Vorteil dieser Methode liegt in ihrer breiten Anwendbarkeit.
 Sie kann grundsätzlich auf beliebige Feldgleichungen angewendet werden, unabhängig von deren Komplexität.
 Im Gegensatz dazu sind klassische Verfahren wie die Finite-Differenzen- oder Finite-Elemente-Methode oft auf bestimmte Gleichungstypen beschränkt und stossen insbesondere bei stark nichtlinearen oder hochdimensionalen Problemen an ihre Grenzen.
 
 Neuronale Netzwerke bieten durch das \emph{Universal Approximation Theorem} die theoretische Grundlage, um beliebige stetige Funktionen mit beliebiger Genauigkeit zu approximieren \cite{neuronal:universal_approximation_theorem}.
-Dies befähigt sie theoretisch dazu, Lösungen für jede beliebige Feldgleichung zu approximieren, unabhängig von deren Komplexität.
+Dies befähigt sie theoretisch dazu, Lösungen für jede beliebige Feldgleichung zu approximieren.
 
-In der Praxis haben neuronale Netzwerke vielversprechende Ergebnisse bei der Lösung von Feldgleichungen gezeigt \cite{neuronal:pinns}.
-Dennoch befindet sich die Methode noch in einem frühen Entwicklungsstadium.
-Es bestehen zahlreiche offene Fragen, insbesondere hinsichtlich ihrer Effizienz und Genauigkeit im Vergleich zu klassischen Verfahren.
-Die bisher veröffentlichten Studien deuten jedoch darauf hin, dass diese Methode vielversprechend ist.
-Für eine abschliessende Bewertung ist es jedoch noch zu früh.
+In der Praxis zeigen neuronale Netzwerke vielversprechende Ergebnisse beim Lösen von Feldgleichungen \cite{neuronal:pinns}.
+Jedoch befindet sich die Methode noch in einem frühen Entwicklungsstadium.
+Es gibt viele offene Fragen, insbesondere hinsichtlich der Effizienz und Genauigkeit im Vergleich zu klassischen Verfahren.
+Für eine abschliessende Bewertung ist es somit noch zu früh.
 
-Neben dieser allgemeinen Einschätzung der Methode sei ein spezifischer Aspekt der Wellengleichung erwähnt.
-Die Lösung der Wellengleichung ist periodisch, und neuronale Netzwerke haben bekanntermassen Schwierigkeiten beim Approximieren von periodischen Funktionen.
-Dieses Problem kann durch die Verwendung von \emph{Fourier Features} gelöst werden \cite{neuronal:fourier_features}.
-Die grundlegende Idee besteht darin, die Datenpunkte der Diskretisierung mit Sinus- und Cosinus-Funktionen zu transformieren, um periodische Strukturen besser erfassen zu können.
