@@ -42,7 +42,7 @@ awk 'BEGIN {
 	identifier = newidentifier
 }
 END {
-	printf("pdfjam --outfile separata/%s.pdf buch.pdf %d-\n", identifier, startpage + offsetpage)
+	printf("pdfjam --outfile separata/%s-%s.pdf buch.pdf %d-\n", identifier, '"${datesuffix}"', startpage + offsetpage)
 }' build/buch.aux | bash
 
 
