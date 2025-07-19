@@ -11,24 +11,96 @@
 \begin{refsection}
 \chapterauthor{Sebastian Eggli und Damian Birchler}
 
-Ein paar Hinweise für die korrekte Formatierung des Textes
-\begin{itemize}
-\item
-Absätze werden gebildet, indem man eine Leerzeile einfügt.
-Die Verwendung von \verb+\\+ ist nur in Tabellen und Arrays gestattet.
-\item
-Die explizite Platzierung von Bildern ist nicht erlaubt, entsprechende
-Optionen werden gelöscht. 
-Verwenden Sie Labels und Verweise, um auf Bilder hinzuweisen.
-\item
-Beginnen Sie jeden Satz auf einer neuen Zeile. 
-Damit ermöglichen Sie dem Versionsverwaltungssysteme, Änderungen
-in verschiedenen Sätzen von verschiedenen Autoren ohne Konflikt 
-anzuwenden.
-\item 
-Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
-Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
-\end{itemize}
+\subsection{Einleitung}
+
+\subsubsection{Warum CFD-Simulation?}
+
+Für kostspielige Bauteile oder Bauteil die ein grosses optimierungspotenzial haben,
+loht es sich deren Funktionstüchtigkeit vorgängig mittels CFD Simulationen zu überprüfen.
+Ein Beispiel dafür könnte ein Turbinenrad eine Wasserkraftanlage sein,
+da dies einerseits ein sehr kostspieliges Bauteil ist (meist mehrere Mio. CHF),
+und andererseits viel Möglichkeiten für Parametrisierte Optimierung bietet.
+
+\subsubsection{Das Problem der Turbulenz}
+
+Das Konzept der turbulenten und laminaren Strömungen sollte bereits aus den Grundlagen der Fluiddynamik bekannt sein, darum wird hier nicht näher auf die unterschied eingegangen.
+Es ist jedoch wichtig zu verstehen das bei turbulenten Strömungen Wirbel, auch Eddys genannt, von verschiedenen Grössen und zeitlicher Dauer entstehen.
+Und genau da liegen die Herausforderungen von Simulationen turbulenter Strömungen,
+denn um alle diese Wirbel zu simulieren müsste man eine Simulation mit unendlich feinem Mesh und unendlich kleine Zeitschritten machen.
+Dies ist auch mit modernen Rechenressourcen nicht zu bewerkstelligen.
+Daher lässt sich auch schliessen das Simulationen von turbulenten Strömungen per se immer nur eine Näherung an die Realität sind.
+Denn es wird immer kleine und/oder kurze Wirbel geben, die durch die Simulation nicht aufgelöst werden können,
+und da diese nicht aufgelösten Wirbel in echt auch Energie umwandeln, kann eine turbulente Strömung numerisch nicht Simuliert werden.
+
+\subsubsection{Praktische anwendungsbeispiele}
+
+Um dem Leser oder der Leserin ein möglichst Praxis relevantes Verständnis der Problematik zu vermitteln werden im nachfolgenden teil viele Beispiele von CFD-Simulationen gezeigt.
+Dabei wird ausschliesslich die in Grafik~\ref{fig:SimDomain} gezeigte Geometrie verwendet.
+Die Geometrie ist immer vollständig mit Wasser (25C°) gefüllt,
+auf der linken Seite ist ein Einlass mit 10m/s definiert auf der rechten Seite ein Auslass mit relativem druck null.
+Das Mesh ist so gewählt das es in der Tiefe nur ein Element hat, bzw. so dass die Simulation einer zweidimensionalen Simulation entspricht.
+
+\begin{figure}
+    \includegraphics[width=\textwidth]{.images/domain.png}
+    \caption{Simulationsgeometrie}
+    \label{fig:SimDomain}
+\end{figure}
+
+\textit{(Mesh bezeichnet die Unterteilung des zu Simulierenden Volumen in einzelne Zellen, in denen die Navier Stokes Gleichungen gelöst werden)}
+
+\subsection{Reynoldsaveraging als «Lösung» des Zeitlichen Problems}
+
+Um das Problem der nicht unendlich kleinen Zeitschritte zu mindern, wurde Reynoldsaveraging entwickelt was die Effekte der kurzen Eddys zwischen zwei Zeitschritten im sogenannten Reynoldsspannungstensor zusammenfasst.
+Welcher dann durch ein Turbulenzmodelle beschrieben wird kann.
+Durch die Verwendung eines Turbulenzmodells werden aber weitere (meist 2 oder 3) Felder zur Simulation hinzugefügt. Was zu zusätzlicher Simulationszeit führt.
+Im Inkompressiblen und Isothermen fall kann eine Simulation mit eine Turbulenzmodell mit drei Feldern gut einmal doppelt so lange dauern wie eine Simulation ohne Turbulenzmodell.
+
+\subsubsection{Verscheiden Turbulenzmodelle}
+
+Das wohl meistverbreitete Turbulenzmodell ist das k-\epsilon Modell das mit zwei Feldern auskommt. Das k Feld für die Turbulente kinetische Energie, und das epsilon Feld für die Eddy Viskosität, was aufgrund der Turbulenzen eine hypotetische Viskosität darstellt.
+Folgen eine nicht komplete liste von Trubulenzmodellen für RANS:
+-	K-\epsilon
+-	Quadratisch/Kubisch K-\epsilon
+-	K-\omega
+-	Shear Stress Transport (SST)
+-	RANS-LES kombinierte Modell (>=4 Felder)
+
+Jedes dieser Turbulenzmodell hat seine Eigenheiten und spezifische Einsatz Bereiche.
+So ist das K-\epsilon Modell zum Beispiel nicht geeignet für schwach turbulente Strömungen,
+wo es die Effekte der Verwirbelungen tendenziell überschätzt.~\ref{fig:k-e}
+Hingegen ist das k-\omega Modell in diesen Bereichen besser geeignet.~\ref{fig:k-w}
+Das SST-Modell kombiniert die beiden Modell so das im Wandbereich,
+wo die misten Turbulenzen auftreten, k-\epsilon verwendet wird und um mittleren Bereich k-\omega.~\ref{fig:SST}
+
+\begin{figure}
+
+    \begin{subfigure}
+        \includegraphics[width=\textwidth]{.images/dns.png}
+        \caption{Ohne Turbulenzmodell}
+        \label{fig:DNS}
+    \end{subfigure}
+
+    \begin{subfigure}
+        \includegraphics[width=\textwidth]{.images/k-e.png}
+        \caption{Mit k-\epsilon Turbulenzmodell}
+        \label{fig:k-e}
+    \end{subfigure}
+
+    \begin{subfigure}
+        \includegraphics[width=\textwidth]{.images/k-w.png}
+        \caption{Mit k-\omega Turbulenzmodell}
+        \label{fig:k-w}
+    \end{subfigure}
+
+    \begin{subfigure}
+        \includegraphics[width=\textwidth]{.images/sst.png}
+        \caption{Mit SST Turbulenzmodell}
+        \label{fig:SST}
+    \end{subfigure}
+
+
+\end{figure}
+
 
 \input{papers/reynolds/teil0.tex}
 \input{papers/reynolds/teil1.tex}
