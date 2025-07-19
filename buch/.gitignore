@@ -18,6 +18,7 @@ paper.ilg
 paper.ind
 paper.run.xml
 paper.toc
+paper.out
 paper.synctex.gz
 publish
 *.swp
