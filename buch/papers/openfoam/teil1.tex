@@ -13,7 +13,7 @@ Zum Simulieren von Strömungen benötigen wir zum einen ein Modell das das verha
 
 Zudem benötigen wir ein Lösungsverfahren das Einen Anfangszustand und das Mathematische Modell zu einer Numerischen Lösung verarbeiten kann dies ist nötig da für die Navier Stokes Gleichungen keine Analytische Lösung existiert und die der Euler Gleichungen sehr aufwendig sind zu berechnen. Hierbei kommen meist die Finite-Differenzen-Methode (FDM), die Finite-Volumen-Methode (FVM)und die Finite-Elemente-Methode (FEM) zum Einsatz. 
 
-OpenFoam nutzt dabei meist die Finite-Volume-Methode dies ist jedoch eines der Gebiete in dem sich OpenFOAM von anderen Simulations Programmen unterscheidet da es sich Besonders dafür eignet Neue Lösungsverfahren zu implementieren und zu testen.
+OpenFoam nutzt dabei meist die Finite-Volume-Methode dies ist jedoch eines der Gebiete in dem sich OpenFOAM von anderen Simulations Programmen unterscheidet da es sich Besonders dafür eignet Neue algorithmische Lösungsverfahren zu implementieren und zu testen.
 
 \subsection{Modellbildung}
 \subsubsection{Stationär oder Instationär?}
@@ -21,4 +21,31 @@ Bei der Strömungsmechanik wird zuerst unterschieden ob es sich um eine Station�
 Bei einer Simulation wird meist Simuliert bis der Stationäre zustand, bis auf einen kleinen Fehler, erreicht wird.
 Dadurch kann man sich Simulationsaufwand ersparen da sobald der Stationäre zustand erreicht wird das Resultat nicht mehr ändert und so keine neuen Ergebnisse gefunden werden können.
 
+\subsubsection{Modellierung der Flüssigkeit}
+Im Kontext der CFD Simulation nimmt man an dass eine Flüssigkeit nicht aus einzelnen Teilen wie Atome oder Moleküle besteht, sondern man nimmt an dass die Flüssigkeit kontinuierlich, also ohne Zwischenräume, ist. Zudem wird angenommen dass sämtliche Eigenschaften die sich von Punkt zu Punkt innerhalb der Flüssigkeit Kontinuierlich und die Ableitung davon ebenfalls Kontinuierlich sind. 
 
+Zudem hat eine Flüssigkeit noch weitere Eigenschaften wie die Dichte diese kann hier aber nicht immer als Konstant angesehen werden da man ansonsten bei kompressiblen Flüssigkeiten einen großen teil der Energie nicht beachten würde. Zudem muss die Viskosität und die spezifische Wärmekapazität, wobei die Viskosität in der Navier-Stokes Gleichung benötigt wird.
+
+\subsubsection{Die Euler Gleichungen}
+Die Euler Gleichungen beschreiben das verhalten der Strömung eines viskose freien Fluides, also eines Laminaren Flusses dessen Reibung vernachlässigt werden kann.  Das bedeutet sie können nicht für alle Probleme eingesetzt werden da sobald Reibungskräfte einen substantiellen Einfluss auf die Strömung haben, das Berechnete Ergebnis eine zu große Abweichung aufweist.
+
+\subsubsection{Massenerhaltung}
+Die Erste Euler Gleichung geht aus der Idee hervor dass man ein arbiträres Volumen $V$ hat, das fest im Raum liegt. Durch ein Oberflächenstück 
+$d\emph{S}$ 
+des Volumens 
+$V$
+ fließt jeweils der Massenstrom 
+$d\emph{S}\cdot\rho\emph{u}$ . 
+Aus dem Massenstrom des Oberflächensegments kann man dann mit dem Oberflächenintegral 
+$\int_{S}d\emph{S}\cdot\rho\emph{u}$ 
+den Gesamten Massenstrom berechnen. Dieser Massenstrom muss nun gleich sein wie die Massenänderung der in dem Volumen enthaltenen Flüssigkeit 
+$\frac{\partial M}{\partial t}$ 
+dies lässt sich mit dem Integral 
+$\int_{V}\frac{\partial \rho}{\partial t} d\emph{V}$ 
+, hier integriert man die Dichteänderung in einem Volumenelement über das ganze Volumen 
+$V$ 
+
+Setzt man nun die beiden Terme gleich erhält man die Gleichung 
+$\int_{S}d\emph{S}\cdot\rho\emph{u} = \int_{V}\frac{\partial \rho}{\partial t} d\emph{V}$
+, in dieser kann man nun auf der L.H.S. mit dem Gaußschen Integralsatz das Oberflächen Integral in ein Flächenintegral umwandeln es wird also zu
+$$
