@@ -7,8 +7,8 @@
 % !TEX encoding = UTF-8
 %
 
-\section{Rechenbeispiel}\label{neuronal:section:rechenbeispiel}
-\kopfrechts{Rechenbeispiel}
+\section{Rechenbeispiele}\label{neuronal:section:rechenbeispiel}
+\kopfrechts{Rechenbeispiele}
 
 In diesem Abschnitt wird die zuvor vorgestellte Methode auf die Wellengleichung in zwei Dimensionen und die Burgers-Gleichung in einer Dimension angewendet.
 Der Ablauf orientiert sich an den Schritten aus Abschnitt \ref{neuronal:section:herleitung}:
@@ -56,7 +56,7 @@ Die Bereiche sind \( x, y \in [-2,2] \) und \( t \in [0,2] \).
 
 Die Lösung der Wellengleichung ist periodisch, und neuronale Netzwerke haben Schwierigkeiten beim Approximieren von periodischen Funktionen.
 Dieses Problem kann durch die Verwendung von \emph{Fourier Features} gelöst werden \cite{neuronal:fourier_features}.
-Die grundlegende Idee ist es, die Datenpunkte der Diskretisierung mit Sinus- und Cosinus-Funktionen zu transformieren, um periodische Strukturen besser erfassen zu können.
+Die grundlegende Idee ist es, die Datenpunkte der Diskretisierung mit Sinus- und Cosinus-Funktionen zu transformieren, um periodische Strukturen besser erfassen zu können. Eine ausführlichere Erklärung hierzu ist im Kapitel über \emph{Fourier-Transformation und Feldtheorie} zu finden (siehe Kapitel~\ref{chapter:fourier}).
 
 \subsection{Burgers-Gleichung}\label{neuronal:subsection:burgers_gleichung}
 Die Burgers-Gleichung ist gegeben als
