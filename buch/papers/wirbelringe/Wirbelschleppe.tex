@@ -20,23 +20,46 @@ Ein weitverbreiteter Irrglaube besagt, dass die Luft, welche über den Flügel g
 Dies ist jedoch nicht ganz korrekt.
 Es ist vielmehr die \textbf{Fläche} eines einzelnen, gedachten Luftstroms, welche auf dem Flügel verkleinert wird.% TODO: Genauere Erklärung noch anfügen!
 Wenn man dann mittels Kontinuitätsgleichung
-\[v_{oben}A_{oben} = v_{unten}A_{unten}\]
-die Geschwindigkeiten der beiden gedachten Luftströme vergleicht, muss der Luftstrom mit Geschwindigkeit $v_{oben}$ schneller sein als $v_{unten}$.
+
+\[
+v_{\text{oben}}A_{\text{oben}} 
+=
+v_{\text{unten}}A_{\text{unten}}
+\]
+die Geschwindigkeiten der beiden gedachten Luftströme vergleicht, muss der Luftstrom mit Geschwindigkeit $v_{\text{oben}}$ schneller sein als $v_{\text{unten}}$.
 Dies hat jetzt zur Folge, dass laut dem Satz von Bernoulli 
-\[p+\frac{1}{2}\rho v^2+\rho gh=konstant\]
-der Druck $p_{oben}$ kleiner sein muss als der Druck $p_{unten}$.
+\[
+p+\frac{1}{2}\rho v^2+\rho gh
+=
+const
+\]
+der Druck $p_{\text{oben}}$ kleiner sein muss als der Druck $p_{\text{oben}}$.
 Denn zwei punkte, einer auf der Oberseite des Flügels und einer auf der Unterseite können folgendermassen gleichgesetzt werden
-\[p_{oben}+\frac{1}{2}\rho v^2_{oben} + \rho gh_1 = p_{unten}+\frac{1}{2}\rho v^2_{unten}+\rho gh_2.\]
-Jetzt kann angenommen werden, dass der Höhenunterschied zwischen den beiden Punkten ob/unter dem Flügel vernachlässigbar klein ist also \(h_1\approx h_2\).
-Zudem ist die Dichte der Luft an beiden Punkten ungefähr gleich weshalb sich der Term zu folgendem vereinfacht
-\[p_{oben}+\frac{1}{2}\rho v^2_{oben} = p_{unten}+\frac{1}{2}\rho v^2_{unten}.\]
-Dann noch umgestellt nach $p_{oben}$ und $p_{unten}$
-\[p_{oben}-p_{unten} = \frac{1}{2}\rho( v^2_{unten}-v^2_{oben})\]
-und man kann erkennen, dass wenn $v_{unten} < v_{oben}$ muss $p_{unten} > p_{oben}$ sein.
+\[
+p_{\text{oben}}+\frac{1}{2}\rho v^2_{\text{oben}} + \rho gh_1 
+=
+p_{\text{unten}}+\frac{1}{2}\rho v^2_{\text{unten}}+\rho gh_2.
+\]
+Jetzt kann angenommen werden, dass der Höhenunterschied zwischen den beiden Punkten ober und unterhalb des Flügels vernachlässigbar klein ist also \(h_1\approx h_2\).
+Zudem ist die Dichte der Luft an beiden Punkten ungefähr gleich, weshalb sich der Term zu 
+\[
+p_{\text{oben}}+\frac{1}{2}\rho v^2_{\text{oben}} 
+=
+p_{\text{unten}}+\frac{1}{2}\rho v^2_{\text{unten}}
+\]
+vereinfacht.
+Für die Druckdifferenz ergibt sich
+\[
+p_{\text{oben}}-p_{\text{unten}} 
+=
+\frac{1}{2}\rho( v^2_{\text{unten}}-v^2_{\text{oben}})
+\]
+und man kann erkennen, dass wenn $v_{\text{unten}} < v_{\text{oben}}$ muss $p_{\text{unten}} > p_{\text{oben}}$ sein.
+
 Mit diesem Wissen kann auch die Entstehung der Wirbelschleppe erklärt werden. 
 Es existiert also unterhalb des Flügels ein Überdruck und oberhalb einen Unterdruck.
-Solange ein Flügel dazwischen ist generiert dieser Druckunterschied einen Auftrieb, was gut und auch gewünscht ist.
-Dummerweise gibt es aber eine stelle, an der der Flügel endet und dort wirds dann auch spannend.
+Solange ein Flügel dazwischen ist, generiert dieser Druckunterschied einen Auftrieb, was gut und auch gewünscht ist.
+Dummerweise gibt es aber eine Stelle, an der der Flügel endet und dort wirds dann auch spannend.
 An der Spitze des Flügels findet nämlich ein Druckausgleich statt.
 Hierbei strömt die Luft unterhalb des Flügels nach oben in das Unterdruckgebiet. 
 Dabei entsteht eine Zirkulation $\Gamma$, welche dann schlussendlich zu einer Wirbelschleppe am Flügelende wird.
@@ -47,13 +70,13 @@ Wie bereits im Kapitel \ref{paper:Wirbelringe:Wirbellinien} erwähnt sind Wirbel
 Die Wirbelschleppe jedoch hat eine ganz spezielle Wirbellinie, da diese eine Gerade von dem Flügelende bis zum Ort an dem das Flugzeug gestartet ist.
 Dies klingt zunächst etwas seltsam und unglaubwürdig und natürlich ist diese Aussage auch nicht ganz korrekt.
 Denn in der Realität wird sich die Wirbelschleppe natürlich irgendwann aufgrund des Luftwiderstands auflösen und somit auch die Wirbellinie verschwinden.
-Also gibt es leider oder eben zum Glück keine Wirbelschleppe von Zürich nach Tokyo, wenn man mit dem Flieger etwaige Enkel besuchen geht.
+Also gibt es leider oder eben zum Glück keine Wirbelschleppe von Zürich nach Tokyo, wenn man mit dem Flugzeug etwaige Enkel besuchen geht.
 Aber die Bedingung ist auch hier erfüllt, da die Wirbellinie am Flügelende (Grenzfläche zwischen Luft und Aluminium) startet und am Boden des Flughafens (Grenzfläche zwischen Asphalt und Luft) endet.
 
 \subsection{Problematik in der Aviatik}
 Da Wirbelringe sehr stabil sind und sich nicht sofort auflösen, bleiben auch die Wirbelschleppen relativ lange bestehen.
 Zudem breiten sie sich seitlich aus und sinken hinter dem Flugzeug ab.
-Bei \glqq schweren\grqq Flugzeugen (ab 136 Tonnen MCTOW)\cite{Wirbelringe:WakeTurbulence} wird vorgeschrieben, dass nachfolgende Flugzeuge bis zu 3 Minuten warten müssen bevor sie starten dürfen.
+Bei \glqq schweren\grqq Flugzeugen (ab 136 Tonnen MCTOW) \cite{Wirbelringe:WakeTurbulence} wird vorgeschrieben, dass nachfolgende Flugzeuge bis zu 3 Minuten warten müssen bevor sie starten dürfen.
 Ebenfalls muss man bedenken, dass es Energie benötigt eine solche Wirbelschleppe aufrechtzuerhalten.
-Die Energie dafür wird natürlich aus den Triebwerken des Fliegers gewonnen, welcher aber eigentlich dafür gedacht war Passagiere von A nach B zu bringen.
-Deshalb finden die Airlines es grundsätzlich nicht sehr amüsant zwei gewaltige Wirbelschleppen hinter ihren Flugzeugen herzuziehen, auch wenn es bei Schlechtwetter sehr spektakulär aussehen kann (siehe \ref{wirbelringe:fig:Wirbelschleppe}). %TODO: Gschiids bild finde
+Die Energie dafür wird natürlich aus den Triebwerken des Fliegers gewonnen, welcher aber eigentlich dafür gedacht war, Passagiere von A nach B zu bringen.
+Deshalb finden die Airlines es grundsätzlich nicht sehr amüsant, zwei gewaltige Wirbelschleppen hinter ihren Flugzeugen herzuziehen, auch wenn es bei Schlechtwetter sehr spektakulär aussehen kann (siehe \ref{wirbelringe:fig:Wirbelschleppe}). %TODO: Gschiids bild finde
