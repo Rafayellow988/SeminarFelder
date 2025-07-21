@@ -10,7 +10,7 @@ Die genaue mathematische Beschreibung des Entstehungsprozesses ist sehr komplex 
 Dafür kann mittels Slug Modell dieser Prozess relativ genau angenähert werden.
 
 \subsection{Grundlegende Idee}
-Im Slug Modell wird der Impulsaustritt eines Fluidvolumens (eines Fluid-Slug) aus einer Öffnung beschrieben.
+Im Slug Modell wird der Impulsaustritt eines Fluidvolumens (eines Fluid-Slug\footnote{Im Deutschen wird von einem Fluid-Pfropfen gesprochen}) aus einer Öffnung beschrieben.
 Man kann sich dies als Zylinder aus Flüssigkeit vorstellen, welcher innert kürzester Zeit aus einer Öffnung geschoben wird.
 Dabei definieren wir folgende Grössen:
 \begin{itemize}
@@ -29,3 +29,39 @@ Die in Abschnitt \ref{paper:Wirbelringe:Stokes} genannten Formel für die Zirkul
 \]
 vereinfacht werden.
 
+\subsection{Berechnungen zum Slug Modell}
+Möchte man ein etwas genaueres $\Gamma$ so kann man dies folgendermassen herleiten.
+
+Zunächst die Grundlagen:
+Grundsätzlich wird die Länge und das Volumen eines Slugs als
+\begin{align}
+    L &= \int_{0}^{t}v_k(t)dt\\
+    \label{paper:eq:sluglänge}
+    V &= LA
+\end{align}
+definiert.
+Es kann aber angenommen werden, dass das Slug mit konstanter Geschwindigkeit bewegt wird, weshalb \ref{paper:eq:sluglänge} zu
+\begin{equation}
+    L = v_0T
+\end{equation}
+wird.
+Nun kann noch der lineare Impuls eines Zylindrischen Slugs als
+\begin{align*}
+    I_{\text{slug}} = m_{\text{slug}}v\\
+    m_{\text{slug}} = \rho AL\\
+    I_{\text{slug}} = \rho ALv
+\end{align*}
+definiert werden.
+Der Drehimpuls eines kontinuierlichen Mediums
+\begin{equation}
+    \vec{I} = \int_{V}\rho(\vec{x})\vec{x}\times\vec{v(\vec{x})}dV
+\end{equation}
+kann durch Einsetzen der Vektor-Idetität für Rotationstensoren \ref{Wirbelringe:batchelor1967}
+\begin{equation}
+    \vec{x}\times\vec{v} = frac{1}{2}\int_{V}\vec{x}\times(\nabla\times\vec{v})dV = \frac{1}{2}\vec{x}\times\omega
+\end{equation}
+als Drehimpuls eines rotierenden Fluids 
+\begin{equation}
+    \vec{I} = \int_{V}
+\end{equation}
+hergeleitet werden. Dies geht allerdings nur, wenn man von einem inkompressiblen Fluid ausgeht!

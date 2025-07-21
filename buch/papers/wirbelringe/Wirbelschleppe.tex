@@ -9,7 +9,7 @@ An einem nebligen Tag kann man sie an einem Flughafen gut beobachten.
 Die Rede ist von den Wirbelschleppen hinter den Enden der Tragflächen eines Flugzeugs.
 Aber wieso entstehen sie eigentlich? 
 Wo genau starten sie und wo ist deren Ende?
-Wieso schauert es Kleinflugzeug-Piloten, wenn sie diesen Begriff hören?
+Wieso schaudert es Kleinflugzeug-Piloten, wenn sie diesen Begriff hören?
 All das und mehr klären wir in diesem Abschnitt mit ein wenig Mathematik.
 
 \subsection{Entstehung}
@@ -28,18 +28,21 @@ v_{\text{unten}}A_{\text{unten}}
 \]
 die Geschwindigkeiten der beiden gedachten Luftströme vergleicht, muss der Luftstrom mit Geschwindigkeit $v_{\text{oben}}$ schneller sein als $v_{\text{unten}}$.
 Dies hat jetzt zur Folge, dass laut dem Satz von Bernoulli 
-\[
-p+\frac{1}{2}\rho v^2+\rho gh
-=
-const
-\]
+\begin{equation}
+    p+\frac{1}{2}\rho v^2+\rho gh
+    =
+    const
+    \label{paper:eq:Bernoulli}
+\end{equation}
+
 der Druck $p_{\text{oben}}$ kleiner sein muss als der Druck $p_{\text{oben}}$.
-Denn zwei punkte, einer auf der Oberseite des Flügels und einer auf der Unterseite können folgendermassen gleichgesetzt werden
+Nimmt man jetzt jeweils einen Punkt auf der Ober- sowie einen auf der Unterseite und setzen diese in \ref{paper:eq:Bernoulli} ein, so können sie 
 \[
 p_{\text{oben}}+\frac{1}{2}\rho v^2_{\text{oben}} + \rho gh_1 
 =
-p_{\text{unten}}+\frac{1}{2}\rho v^2_{\text{unten}}+\rho gh_2.
+p_{\text{unten}}+\frac{1}{2}\rho v^2_{\text{unten}}+\rho gh_2
 \]
+gleichgesetzt werden.
 Jetzt kann angenommen werden, dass der Höhenunterschied zwischen den beiden Punkten ober und unterhalb des Flügels vernachlässigbar klein ist also \(h_1\approx h_2\).
 Zudem ist die Dichte der Luft an beiden Punkten ungefähr gleich, weshalb sich der Term zu 
 \[
@@ -57,12 +60,13 @@ p_{\text{oben}}-p_{\text{unten}}
 und man kann erkennen, dass wenn $v_{\text{unten}} < v_{\text{oben}}$ muss $p_{\text{unten}} > p_{\text{oben}}$ sein.
 
 Mit diesem Wissen kann auch die Entstehung der Wirbelschleppe erklärt werden. 
-Es existiert also unterhalb des Flügels ein Überdruck und oberhalb einen Unterdruck.
+Es existiert also unterhalb des Flügels ein Überdruck und oberhalb ein Unterdruck.
 Solange ein Flügel dazwischen ist, generiert dieser Druckunterschied einen Auftrieb, was gut und auch gewünscht ist.
 Dummerweise gibt es aber eine Stelle, an der der Flügel endet und dort wirds dann auch spannend.
 An der Spitze des Flügels findet nämlich ein Druckausgleich statt.
 Hierbei strömt die Luft unterhalb des Flügels nach oben in das Unterdruckgebiet. 
-Dabei entsteht eine Zirkulation $\Gamma$, welche dann schlussendlich zu einer Wirbelschleppe am Flügelende wird.
+Dabei entsteht eine Zirkulation $\Gamma$, sie zirkuliert um den ganzen Flügel.
+Schlussendlich wird sie zu einer Wirbelschleppe am Flügelende.
 Die entstandene Wirbelschleppe hat ein paar interessante Eigenschaften, welche in den kommenden Abschnitten behandelt werden.
 
 \subsection{Wirbellinie}
@@ -76,7 +80,19 @@ Aber die Bedingung ist auch hier erfüllt, da die Wirbellinie am Flügelende (Gr
 \subsection{Problematik in der Aviatik}
 Da Wirbelringe sehr stabil sind und sich nicht sofort auflösen, bleiben auch die Wirbelschleppen relativ lange bestehen.
 Zudem breiten sie sich seitlich aus und sinken hinter dem Flugzeug ab.
-Bei \glqq schweren\grqq Flugzeugen (ab 136 Tonnen MCTOW) \cite{Wirbelringe:WakeTurbulence} wird vorgeschrieben, dass nachfolgende Flugzeuge bis zu 3 Minuten warten müssen bevor sie starten dürfen.
+Bei \glqq schweren\grqq Flugzeugen (ab 136 Tonnen MCTOW\footnote{maximum certified takeoff weight oder zu Deutsch: maximales Startgewicht}) \cite{Wirbelringe:WakeTurbulence} wird vorgeschrieben, dass nachfolgende Flugzeuge bis zu 3 Minuten warten müssen bevor sie starten dürfen.
+Denn sollte ein Kleinflugzeug kurz nach einem solchen Flugzeug starten wird es ziemlich sicher von dessen Wirbelschleppe erfasst.
+In ganz schlimmen fällen kann dies durchaus zu einem Absturz führen.
 Ebenfalls muss man bedenken, dass es Energie benötigt eine solche Wirbelschleppe aufrechtzuerhalten.
 Die Energie dafür wird natürlich aus den Triebwerken des Fliegers gewonnen, welcher aber eigentlich dafür gedacht war, Passagiere von A nach B zu bringen.
 Deshalb finden die Airlines es grundsätzlich nicht sehr amüsant, zwei gewaltige Wirbelschleppen hinter ihren Flugzeugen herzuziehen, auch wenn es bei Schlechtwetter sehr spektakulär aussehen kann (siehe \ref{wirbelringe:fig:Wirbelschleppe}). %TODO: Gschiids bild finde
+Findige Wissenschaftler waren deshalb auf die Idee der Winglets gestossen.
+Diese sollten durch Reduktion der Zirkulation an den Flügelenden die Bildung solcher Wirbelschleppen hemmen.
+Bei diesem unterfangen hatten sie auch Erfolg aber zu einem preis, welcher in der Aviatik nicht gern gesehen ist.
+Durch das Anbringen solcher Winglets an den Flügelenden steigt das Leergewicht des Flugzeuges an.
+Das bedeutet, dass dieses zusätzliche Gewicht wieder mehr Treibstoff verbraucht.
+Wieso werden diese aber trotzdem in Kurzstreckenflugzeugen eingesetzt?
+Einerseits haben Winglets zusätzlich die angenehme Eigenschaft, den Lärm eines Flugzeuges zu reduzieren.
+Andererseits höhlt bekanntlich steter Tropfen den Stein.
+Wenn ein Kurzstreckenflieger täglich 5-6 mal fliegt und dabei jedes Mal 1-2 \% Treibstoff spart, so summiert sich dies und wird wieder Lohnenswert für die Fluggesellschaften.
+Bei Langstreckenflügen hingegen lohnen sich die Winglets noch viel mehr, da bei längerem Flug auf Reiseflughöhe (\textasciitilde10'000 m.ü.M.) auch die Wirkung der Winglets länger genutzt werden kann.
