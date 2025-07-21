@@ -26,112 +26,120 @@ Da der Feldstärketensor antisymmetrisch $F_{\mu\nu} = -F_{\nu\mu}$ ist, benöti
 \begin{align*}
 	F
 	= 
-	&+ \frac{1}{2} F_{\mu\nu} \, dx^\mu \wedge dx^\nu
+	\phantom{+} &\frac{1}{2} F_{\mu\nu} \, dx^\mu \wedge dx^\nu
 	\\
 	=
-	&+ \frac{1}{2} F_{00} \, dx^0 \wedge dx^0 + \frac{1}{2} F_{01} \, dx^0 \wedge dx^1 + \frac{1}{2} F_{02} \, dx^0 \wedge dx^2 + \frac{1}{2} F_{03} \, dx^0 \wedge dx^3
+	\phantom{+} &\frac{1}{2} F_{00} \, dx^0 \wedge dx^0 + \frac{1}{2} F_{01} \, dx^0 \wedge dx^1 + \frac{1}{2} F_{02} \, dx^0 \wedge dx^2 + \frac{1}{2} F_{03} \, dx^0 \wedge dx^3
 	\\
-	&+ \frac{1}{2} F_{10} \, dx^1 \wedge dx^0 + \frac{1}{2} F_{11} \, dx^1 \wedge dx^1 + \frac{1}{2} F_{12} \, dx^1 \wedge dx^2 + \frac{1}{2} F_{13} \, dx^1 \wedge dx^3
+	+ &\frac{1}{2} F_{10} \, dx^1 \wedge dx^0 + \frac{1}{2} F_{11} \, dx^1 \wedge dx^1 + \frac{1}{2} F_{12} \, dx^1 \wedge dx^2 + \frac{1}{2} F_{13} \, dx^1 \wedge dx^3
 	\\
-	&+ \frac{1}{2} F_{20} \, dx^2 \wedge dx^0 + \frac{1}{2} F_{21} \, dx^2 \wedge dx^1 + \frac{1}{2} F_{22} \, dx^2 \wedge dx^2 + \frac{1}{2} F_{23} \, dx^2 \wedge dx^3
+	+ &\frac{1}{2} F_{20} \, dx^2 \wedge dx^0 + \frac{1}{2} F_{21} \, dx^2 \wedge dx^1 + \frac{1}{2} F_{22} \, dx^2 \wedge dx^2 + \frac{1}{2} F_{23} \, dx^2 \wedge dx^3
 	\\
-	&+ \frac{1}{2} F_{30} \, dx^3 \wedge dx^0 + \frac{1}{2} F_{31} \, dx^3 \wedge dx^1 + \frac{1}{2} F_{32} \, dx^3 \wedge dx^2 + \frac{1}{2} F_{33} \, dx^3 \wedge dx^3
+	+ &\frac{1}{2} F_{30} \, dx^3 \wedge dx^0 + \frac{1}{2} F_{31} \, dx^3 \wedge dx^1 + \frac{1}{2} F_{32} \, dx^3 \wedge dx^2 + \frac{1}{2} F_{33} \, dx^3 \wedge dx^3
 \end{align*} 
-Da gilt $dx^n \wedge dx^n = 0$ und $dx^n \wedge dx^{n+1} = - dx^{n+1} \wedge dx^n$, folgt nach aufsteigenden Indizes sortiert
+%-------------------------------------------ab da mit dx^îjk arbeiten !!-------------------------------------------------------------------
+Mit der Definition (ref zu $dx^{ik}$ schreibweise def undso) gilt $dx^{ik} = 0$ wenn $i=k$ und $dx^{ik} = -dx^{ki}$ wenn $i \neq k $ . Somit folgt nach aufsteigenden Indizes sortiert
 \begin{align*}
 	F
 	=
-	&+ \frac{1}{2} F_{01} \, dx^0 \wedge dx^1 + \frac{1}{2} F_{02} \, dx^0 \wedge dx^2 + \frac{1}{2} F_{03} \, dx^0 \wedge dx^3
+	&\phantom{+ \frac{1}{2} F_{00} \, dx^{00}} + \frac{1}{2} F_{01} \, dx^{01} + \frac{1}{2} F_{02} \, dx^{02} + \frac{1}{2} F_{03} \, dx^{03}
 	\\
-	&- \frac{1}{2} F_{10} \, dx^0 \wedge dx^1 + \frac{1}{2} F_{12} \, dx^1 \wedge dx^2 + \frac{1}{2} F_{13} \, dx^1 \wedge dx^3
+	&- \frac{1}{2} F_{10} \, dx^{01} \phantom{+ \frac{1}{2} F_{11} \, dx^{11}} + \frac{1}{2} F_{12} \, dx^{12} + \frac{1}{2} F_{13} \, dx^{13}
 	\\
-	&- \frac{1}{2} F_{20} \, dx^0 \wedge dx^2 - \frac{1}{2} F_{21} \, dx^1 \wedge dx^2 + \frac{1}{2} F_{23} \, dx^2 \wedge dx^3
+	&- \frac{1}{2} F_{20} \, dx^{02} - \frac{1}{2} F_{21} \, dx^{12} \phantom{+ \frac{1}{2} F_{22} \, dx^{22}} + \frac{1}{2} F_{23} \, dx^{23}
 	\\
-	&- \frac{1}{2} F_{30} \, dx^0 \wedge dx^3 - \frac{1}{2} F_{31} \, dx^1 \wedge dx^3 - \frac{1}{2} F_{32} \, dx^2 \wedge dx^3
+	&- \frac{1}{2} F_{30} \, dx^{03} - \frac{1}{2} F_{31} \, dx^{13} - \frac{1}{2} F_{32} \, dx^{23} \phantom{+ \frac{1}{2} F_{33} \, dx^{33}}
 \end{align*}
 und wegen $F_{\mu\nu} = -F_{\nu\mu}$
 \begin{align*}
 	F
 	=
-	&+ \frac{1}{2} F_{01} \, dx^0 \wedge dx^1 + \frac{1}{2} F_{02} \, dx^0 \wedge dx^2 + \frac{1}{2} F_{03} \, dx^0 \wedge dx^3
+	&\phantom{+ \frac{1}{2} F_{00} \, dx^{00}} + \frac{1}{2} F_{01} \, dx^{01} + \frac{1}{2} F_{02} \, dx^{02} + \frac{1}{2} F_{03} \, dx^{03}
 	\\
-	&+ \frac{1}{2} F_{01} \, dx^0 \wedge dx^1 + \frac{1}{2} F_{12} \, dx^1 \wedge dx^2 + \frac{1}{2} F_{13} \, dx^1 \wedge dx^3
+	&+ \frac{1}{2} F_{01} \, dx^{01} \phantom{+ \frac{1}{2} F_{11} \, dx^{11}} + \frac{1}{2} F_{12} \, dx^{12} + \frac{1}{2} F_{13} \, dx^{13}
 	\\
-	&+ \frac{1}{2} F_{02} \, dx^0 \wedge dx^2 + \frac{1}{2} F_{12} \, dx^1 \wedge dx^2 + \frac{1}{2} F_{23} \, dx^2 \wedge dx^3
+	&+ \frac{1}{2} F_{02} \, dx^{02} + \frac{1}{2} F_{12} \, dx^{12} \phantom{+ \frac{1}{2} F_{22} \, dx^{22}} + \frac{1}{2} F_{23} \, dx^{23}
 	\\
-	&+ \frac{1}{2} F_{03} \, dx^0 \wedge dx^3 + \frac{1}{2} F_{13} \, dx^1 \wedge dx^3 + \frac{1}{2} F_{23} \, dx^2 \wedge dx^3
-	\\
-	\\
+	&+ \frac{1}{2} F_{03} \, dx^{03} + \frac{1}{2} F_{13} \, dx^{13} + \frac{1}{2} F_{21} \, dx^{23} \phantom{+ \frac{1}{2} F_{33} \, dx^{33}}
+\end{align*}
+folgt anschliessend
+\begin{align*}
+	F
 	=
-	&+ \frac{1}{2} F_{01} \, dx^0 \wedge dx^1 + \frac{1}{2} F_{02} \, dx^0 \wedge dx^2 + \frac{1}{2} F_{03} \, dx^0 \wedge dx^3
+	\phantom{+} F_{01} \, dx^{01} + F_{02} \, dx^{02} &+ F_{03} \, dx^{03}
 	\\
-	&+ \frac{1}{2} F_{12} \, dx^1 \wedge dx^2 + \frac{1}{2} F_{13} \, dx^1 \wedge dx^3 + \frac{1}{2} F_{23} \, dx^2 \wedge dx^3 \, .
+	\phantom{+ F_{11} \, dx^{11}} + F_{12} \, dx^{12} &+ F_{13} \, dx^{13}
+	\\
+	\phantom{+ F_{12} \, dx^{12}} \phantom{+ F_{22} \, dx^{22}} &+ F_{23} \, dx^{23} \, .
 \end{align*}
 Für besseres Verständnis setzen wir nun konkret die Komponenten von $F_{\mu\nu}$ ein und erhalten
- \begin{align*}
- 	F
- 	=
- 	&- \frac{1}{2} E_1 \, dx^0 \wedge dx^1 - \frac{1}{2} E_2 \, dx^0 \wedge dx^2 - \frac{1}{2} E_3 \, dx^0 \wedge dx^3
- 	\\
- 	&+ \frac{1}{2} B_3 \, dx^1 \wedge dx^2 - \frac{1}{2} B_2 \, dx^1 \wedge dx^3 + \frac{1}{2} B_1 \, dx^2 \wedge dx^3 \, ,
- \end{align*}
+\begin{align*}
+	F
+	=
+	- E_1 \, dx^{01} - E_2 \, dx^{02} &- E_3 \, dx^{03}
+	\\
+	\phantom{+ F_{11} \, dx^{11}} + B_3 \, dx^{12} &- B_2 \, dx^{13}
+	\\
+	\phantom{+ F_{12} \, dx^{12}} \phantom{+ F_{22} \, dx^{22}} &+ B_1 \, dx^{23} \, ,
+\end{align*}
 was schön den Komponenten oberhalb der Diagonalen von $F_{\mu\nu}$ entspricht.
-Nun wenden wir die äussere Ableitung auf die Zweiform F an
+Nun wenden wir die äussere Ableitung auf die 2-Form $F$ an, man beachte dabei Definition(index wedges)$dx^i \wedge dx^j \wedge dx^k = dx^{ijk}$
  \begin{align*}
  	dF =
- 	&\cancel{\, - \, \frac{\d E_1}{\d x^0} \, dx^0 \wedge dx^0 \wedge dx^1} \cancel{\, - \, \frac{\d E_1}{\d x^1} \, dx^1 \wedge dx^0 \wedge dx^1}
- 	 - \frac{\d E_1}{\d x^2} \, dx^2 \wedge dx^0 \wedge dx^1 - \frac{\d E_1}{\d x^3} \, dx^3 \wedge dx^0 \wedge dx^1
+ 	&\cancel{\, - \, \frac{\d E_1}{\d x^0} \, dx^{001}} \cancel{\, - \, \frac{\d E_1}{\d x^1} \, dx^{101}}
+ 	 - \frac{\d E_1}{\d x^2} \, dx^{201} - \frac{\d E_1}{\d x^3} \, dx^{301}
  	\\
- 	&\cancel{\, - \, \frac{\d E_2}{\d x^0} \, dx^0 \wedge dx^0 \wedge dx^2} - \frac{\d E_2}{\d x^1} \, dx^1 \wedge dx^0 \wedge dx^2
- 	 \cancel{\, - \, \frac{\d E_2}{\d x^2} \, dx^2 \wedge dx^0 \wedge dx^2} - \frac{\d E_2}{\d x^3} \, dx^3 \wedge dx^0 \wedge dx^2
+ 	&\cancel{\, - \, \frac{\d E_2}{\d x^0} \, dx^{002}} - \frac{\d E_2}{\d x^1} \, dx^{102}
+ 	 \cancel{\, - \, \frac{\d E_2}{\d x^2} \, dx^{202}} - \frac{\d E_2}{\d x^3} \, dx^{302}
  	\\
- 	&\cancel{\, - \, \frac{\d E_3}{\d x^0} \, dx^0 \wedge dx^0 \wedge dx^3} - \frac{\d E_3}{\d x^1} \, dx^1 \wedge dx^0 \wedge dx^3
- 	 - \frac{\d E_3}{\d x^2} \, dx^2 \wedge dx^0 \wedge dx^3 \cancel{\, - \, \frac{\d E_3}{\d x^3} \, dx^3 \wedge dx^0 \wedge dx^3}
+ 	&\cancel{\, - \, \frac{\d E_3}{\d x^0} \, dx^{003}} - \frac{\d E_3}{\d x^1} \, dx^{103}
+ 	 - \frac{\d E_3}{\d x^2} \, dx^{203} \cancel{\, - \, \frac{\d E_3}{\d x^3} \, dx^{303}}
  	\\
- 	&+ \frac{\d B_3}{\d x^0} \, dx^0 \wedge dx^1 \wedge dx^2 \cancel{\, + \, \frac{\d B_3}{\d x^1} \, dx^1 \wedge dx^1 \wedge dx^2}
- 	 \cancel{\, + \, \frac{\d B_3}{\d x^2} \, dx^2 \wedge dx^1 \wedge dx^2} + \frac{\d B_3}{\d x^3} \, dx^3 \wedge dx^1 \wedge dx^2
+ 	&+ \frac{\d B_3}{\d x^0} \, dx^{012} \cancel{\, + \, \frac{\d B_3}{\d x^1} \, dx^{112}}
+ 	 \cancel{\, + \, \frac{\d B_3}{\d x^2} \, dx^{212}} + \frac{\d B_3}{\d x^3} \, dx^{312}
  	\\
- 	&- \frac{\d B_2}{\d x^0} \, dx^0 \wedge dx^1 \wedge dx^3 \cancel{\, - \, \frac{\d B_2}{\d x^1} \, dx^1 \wedge dx^1 \wedge dx^3}
- 	 - \frac{\d B_2}{\d x^2} \, dx^2 \wedge dx^1 \wedge dx^3 \cancel{\, - \, \frac{\d B_2}{\d x^3} \, dx^3 \wedge dx^1 \wedge dx^3}
+ 	&- \frac{\d B_2}{\d x^0} \, dx^{013} \cancel{\, - \, \frac{\d B_2}{\d x^1} \, dx^{113}}
+ 	 - \frac{\d B_2}{\d x^2} \, dx^{213} \cancel{\, - \, \frac{\d B_2}{\d x^3} \, dx^{313}}
  	\\
- 	&+ \frac{\d B_1}{\d x^0} \, dx^0 \wedge dx^2 \wedge dx^3 + \frac{\d B_1}{\d x^1} \, dx^1 \wedge dx^2 \wedge dx^3
- 	 \cancel{\, + \, \frac{\d B_1}{\d x^2} \, dx^2 \wedge dx^2 \wedge dx^3} \cancel{\, + \, \frac{\d B_1}{\d x^3} \, dx^3 \wedge dx^2 \wedge dx^3}
+ 	&+ \frac{\d B_1}{\d x^0} \, dx^{023} + \frac{\d B_1}{\d x^1} \, dx^{123}
+ 	 \cancel{\, + \, \frac{\d B_1}{\d x^2} \, dx^{223}} \cancel{\, + \, \frac{\d B_1}{\d x^3} \, dx^{323}} %\,
  	\\
+ 	%\text{die gestrichenen Komponenten sind $=0$, da $dx^{ii}=0}$ gilt:}
  	\\
  	=
- 	&- \frac{\d E_1}{\d x^2} \, dx^2 \wedge dx^0 \wedge dx^1 - \frac{\d E_1}{\d x^3} \, dx^3 \wedge dx^0 \wedge dx^1
- 	 - \frac{\d E_2}{\d x^1} \, dx^1 \wedge dx^0 \wedge dx^2 - \frac{\d E_2}{\d x^3} \, dx^3 \wedge dx^0 \wedge dx^2
+ 	&- \frac{\d E_1}{\d x^2} \, dx^{201} - \frac{\d E_1}{\d x^3} \, dx^{301}
+ 	 - \frac{\d E_2}{\d x^1} \, dx^{102} - \frac{\d E_2}{\d x^3} \, dx^{302}
  	\\
- 	&- \frac{\d E_3}{\d x^1} \, dx^1 \wedge dx^0 \wedge dx^3 - \frac{\d E_3}{\d x^2} \, dx^2 \wedge dx^0 \wedge dx^3
- 	 + \frac{\d B_3}{\d x^0} \, dx^0 \wedge dx^1 \wedge dx^2 + \frac{\d B_3}{\d x^3} \, dx^3 \wedge dx^1 \wedge dx^2
+ 	&- \frac{\d E_3}{\d x^1} \, dx^{103} - \frac{\d E_3}{\d x^2} \, dx^{203}
+ 	 + \frac{\d B_3}{\d x^0} \, dx^{012} + \frac{\d B_3}{\d x^3} \, dx^{312}
  	\\
- 	&- \frac{\d B_2}{\d x^0} \, dx^0 \wedge dx^1 \wedge dx^3 - \frac{\d B_2}{\d x^2} \, dx^2 \wedge dx^1 \wedge dx^3
- 	 + \frac{\d B_1}{\d x^0} \, dx^0 \wedge dx^2 \wedge dx^3 + \frac{\d B_1}{\d x^1} \, dx^1 \wedge dx^2 \wedge dx^3 \, , 
+ 	&- \frac{\d B_2}{\d x^0} \, dx^{013} - \frac{\d B_2}{\d x^2} \, dx^{213}
+ 	 + \frac{\d B_1}{\d x^0} \, dx^{023} + \frac{\d B_1}{\d x^1} \, dx^{123} \, , 
  \end{align*}
 sortieren nach aufsteigenden Indizes
  \begin{align*}
 	dF =
-	&- \frac{\d E_1}{\d x^2} \, dx^0 \wedge dx^1 \wedge dx^2 - \frac{\d E_1}{\d x^3} \, dx^0 \wedge dx^1 \wedge dx^3
-	 + \frac{\d E_2}{\d x^1} \, dx^0 \wedge dx^1 \wedge dx^2 - \frac{\d E_2}{\d x^3} \, dx^0 \wedge dx^2 \wedge dx^3
+	&- \frac{\d E_1}{\d x^2} \, dx^{012} - \frac{\d E_1}{\d x^3} \, dx^{013}
+	 + \frac{\d E_2}{\d x^1} \, dx^{012} - \frac{\d E_2}{\d x^3} \, dx^{023}
 	\\
-	&+ \frac{\d E_3}{\d x^1} \, dx^0 \wedge dx^1 \wedge dx^3 + \frac{\d E_3}{\d x^2} \, dx^0 \wedge dx^2 \wedge dx^3
-	 + \frac{\d B_3}{\d x^0} \, dx^0 \wedge dx^1 \wedge dx^2 + \frac{\d B_3}{\d x^3} \, dx^1 \wedge dx^2 \wedge dx^3
+	&+ \frac{\d E_3}{\d x^1} \, dx^{013} + \frac{\d E_3}{\d x^2} \, dx^{023}
+	 + \frac{\d B_3}{\d x^0} \, dx^{012} + \frac{\d B_3}{\d x^3} \, dx^{123}
 	\\
-	&- \frac{\d B_2}{\d x^0} \, dx^0 \wedge dx^1 \wedge dx^3 + \frac{\d B_2}{\d x^2} \, dx^1 \wedge dx^2 \wedge dx^3
-	 + \frac{\d B_1}{\d x^0} \, dx^0 \wedge dx^2 \wedge dx^3 + \frac{\d B_1}{\d x^1} \, dx^1 \wedge dx^2 \wedge dx^3
+	&- \frac{\d B_2}{\d x^0} \, dx^{013} + \frac{\d B_2}{\d x^2} \, dx^{123}
+	 + \frac{\d B_1}{\d x^0} \, dx^{023} + \frac{\d B_1}{\d x^1} \, dx^{123}
 \end{align*}
 und fassen anschliessend alles zusammen
 \begin{align*}
 	dF =
-	&\left( - \frac{\d E_1}{\d x^2} + \frac{\d E_2}{\d x^1} + \frac{\d B_3}{\d x^0} \right) dx^0 \wedge dx^1 \wedge dx^2
+	&\left( - \frac{\d E_1}{\d x^2} + \frac{\d E_2}{\d x^1} + \frac{\d B_3}{\d x^0} \right) dx^{012}
 	\\
-	+&\left( - \frac{\d E_1}{\d x^3} + \frac{\d E_3}{\d x^1} - \frac{\d B_2}{\d x^0} \right) dx^0 \wedge dx^1 \wedge dx^3
+	+&\left( - \frac{\d E_1}{\d x^3} + \frac{\d E_3}{\d x^1} - \frac{\d B_2}{\d x^0} \right) dx^{013}
 	\\
-	+&\left( - \frac{\d E_2}{\d x^3} + \frac{\d E_3}{\d x^2} + \frac{\d B_1}{\d x^0} \right) dx^0 \wedge dx^2 \wedge dx^3
+	+&\left( - \frac{\d E_2}{\d x^3} + \frac{\d E_3}{\d x^2} + \frac{\d B_1}{\d x^0} \right) dx^{023}
 	\\
-	+&\left( + \frac{\d B_3}{\d x^3} + \frac{\d B_2}{\d x^2} + \frac{\d B_1}{\d x^1} \right) dx^1 \wedge dx^2 \wedge dx^3 \, .
+	+&\left( + \frac{\d B_3}{\d x^3} + \frac{\d B_2}{\d x^2} + \frac{\d B_1}{\d x^1} \right) dx^{123} \, .
 \end{align*}
-\textbf{Aussage Unsicher!:} Da die Vorzeichen der partiellen Ableitung nicht passen, ändern wir dort die Reihenfolge der Wedgeprodukte
+\textbf{Aussage Unsicher!:} Da die Vorzeichen der partiellen Ableitung nicht passen, ändern wir dort die Reihenfolge der Wedgeprodukte)das sich wurst, unabhängig undso..
 \begin{align*}
 	dF =
 	&\left( - \frac{\d E_1}{\d x^2} + \frac{\d E_2}{\d x^1} + \frac{\d B_3}{\d x^0} \right) dx^0 \wedge dx^1 \wedge dx^2

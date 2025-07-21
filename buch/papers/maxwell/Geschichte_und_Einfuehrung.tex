@@ -5,24 +5,26 @@
 %
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
-%
 \section{Geschichte und Einführung\label{maxwell:section:teil0}}
 \kopfrechts{Geschichte und Einführung}
+
+\subsection{Frühzeit? erster kontakt..}
 Die Geschichte der Elektrodynamik führt sehr weit zurück.
-Das erste mal, das Elektrizität, wenn auch unbewusst was es wirklich ist, verwendet wurde, war ca. 3100 Jahre v. Chr. im alten Ägypten.
-Dort wurden die Elektroschocks des elektrischen Wels zur Behandlung von Gelenkschmerzen verwendet\cite{maxwell:History_of_bioelectricity}(ist das richtig mit dem Verweis so?).
+Das erste mal, das Elektrizität, wenn auch unbewusst, was es wirklich ist, verwendet wurde, war ca. 3100 Jahre v. Chr. im alten Ägypten.
+Dort wurden die Elektroschocks des elektrischen Wels zur Behandlung von Gelenkschmerzen verwendet \cite{maxwell:History_of_bioelectricity}.
 
 Ein wichtiger Meilenstein in der Entdeckung des Magnetismus war die Erfindung des Kompasses im Jahre 200 v. Chr.
-Die Chinesen entdeckten, das sich der natürlich vorkommende Magnetit auf wundersame Weise immer gleich ausrichtet, wenn er frei drehend aufgehängt wird.
-Der Kompass wurde anfangs aber nur für das Wahrsagen verwendet, erst viel später, ca. 850 n. Chr. wurde er zur Navigation eingesetzt und fand seinen Weg im Jahre 1190 nach Europa(https://en.wikipedia.org/wiki/History\_of\_the\_compass).
+Die Chinesen entdeckten, dass sich der natürlich vorkommende Magnetit auf wundersame Weise immer gleich ausrichtet, wenn er frei drehend aufgehängt wird.
+Der Kompass wurde anfangs aber nur für das Wahrsagen verwendet, erst viel später, ca. 850 n. Chr. wurde er zur Navigation eingesetzt und fand seinen Weg im Jahre 1190 nach Europa \cite{maxwell:History_of_the_compass}.
 
 Im Zeitraum von 1269 bis 1767 wurden die Phänomene der Elektrodynamik erstmals genauer beobachtet.
 So beschrieb 1269 der Franzosen Petrus Peregrinus durch Experimente als erster die Polarität von Magneten.
 Während des 17. Jahrhunderts wurde viel mit Reibungselektrizität experimentiert. Der Begriff der ``Elektrizität'' wurde erstmals verwendet und die Unterschiede magnetischer und elektrische Wirkung wurde erkannt.
-Im Jahr 1767 erkannte Joseph Priestley, dass die elektrische Kraft quadratisch zum Abstand abnimmt, ein erster Hinweis auf das Coulomb-Gesetz(https://en.wikipedia.org/wiki/History\_of\_electromagnetic\_theory).
+Im Jahr 1767 erkannte Joseph Priestley, dass die elektrische Kraft quadratisch zum Abstand abnimmt, ein erster Hinweis auf das Coulomb-Gesetz \cite{maxwell:History_of_electromagnetic_theory}.
 
-Ab dem Jahr 1785 nimmt die Entwicklung der Elektrodynamik richtig fahrt auf.
-Charles Augustin de Coulomb entdeckte und bestätigte durch umfangreiche Experimente 1785, das die Kraft zwischen zwei Ladungen quadratisch zum Abstand ihres Mittelpunktes abnimmt(https://en.wikipedia.org/wiki/Charles-Augustin\_de\_Coulomb):
+\subsection{erste wissenschaftliche erkenntenisse?}
+Ab dem Jahr 1785 nimmt die Entwicklung der Elektrodynamik richtig Fahrt auf.
+Charles Augustin de Coulomb entdeckte und bestätigte durch umfangreiche Experimente 1785, das die Kraft zwischen zwei Ladungen quadratisch mit dem Abstand ihres Mittelpunktes abnimmt \cite{maxwell:Charles-Augustin_de_Coulomb}:
 \[
 \vec{F}
 =
@@ -41,7 +43,7 @@ Er nahm an, dass die die Ursache, die die Magnetnadel zur Bewegung führt, ein v
 Dies konnte er durch viele Versuche ein wenig später sogar beweisen.
 Ampère fand in diesen Versuchen heraus, dass sich zwei Leiter, in denen die elektrische Stromrichtung gleich ist, anziehen, und dass sie eine Abstossungskraft ausüben, wenn die Stromrichtung entgegengesetzt ist.
 Er formulierte eine Gleichung, die besagt, dass elektrische Ströme magnetische Wirbelfelder hervorrufen, deren Stärke durch die Stromstärke gegeben ist.
-Das Gesetz wird Ampèrsches Gesetz oder auch Durchflutungssatz gennant und wird in Integralform
+Das Gesetz wird ampèrsches Gesetz oder auch Durchflutungssatz gennant und wird in Integralform
 \[
 \oint_{\d A}
 \vec{H}
@@ -65,24 +67,24 @@ oder als differentielle Form
 \]
 formuliert.
 Dies sind sehr wichtige Gleichungen in der Elektrodynamik.
-Jedoch sind sie so nicht ganz vollständig und werden später noch mal überarbeitet(gleichung könnte evtl noch besser erklärt werden, was das bedeutet, https://de.wikipedia.org/wiki/Hans\_Christian\_Ørsted, https://de.wikipedia.org/wiki/André-Marie\_Ampère).
+Jedoch sind sie so nicht ganz vollständig und werden später noch mal überarbeitet(gleichung könnte evtl noch besser erklärt werden, was das bedeutet) \cite{maxwell:Hans_Christian_Ørsted}\cite{maxwell:André-Marie_Ampère}.
 
-
+\subsubsection{Herleitung der differentiellen Form der amperegleichnug?}
 \textit{Exkurs: Herleitung der differentiellen Form.}
-Mit Hilfe des Satzes von Stokes(\ref{buch:green:green:satz:stokes})
+Mit Hilfe des allgemeinen Satzes von Stokes(\ref{buch:green:green:satz:stokes})
 \[
 \int_{M} d\omega
 =
 \int_{\d M} \omega
 \]
 können wir die differentielle Form der Ampère-Gleichung herleiten.
-Definieren wir eine Einsform $\alpha$, die das H-Feld beschreibt:
+Definieren wir eine 1-Form $\alpha$, die das $H$-Feld beschreibt:
 \[
 \alpha
 =
 H_x \, dx + H_y \, dy + H_z \, dz . 
 \]
-Berechnen wir nun die äussere Ableitung von $\alpha$
+Berechnen wir nun als erstes die äussere Ableitung von $\alpha$
 \begin{align*}
 	d\alpha 
 	&=
@@ -103,9 +105,9 @@ Berechnen wir nun die äussere Ableitung von $\alpha$
 	\left(\frac{\d H_z}{\d x} - \frac{\d H_x}{\d z}\right) \, dx \wedge dz
 	\\
 	&+
-	\left(\frac{\d H_z}{\d y} - \frac{\d H_y}{\d z}\right) \, dy \wedge dz
+	\left(\frac{\d H_z}{\d y} - \frac{\d H_y}{\d z}\right) \, dy \wedge dz .
 \end{align*}
-und wenden Stokes an
+Anschliessend können wir das Ergebnis in den allgemeinen Satz von Stokes einsetzen:
 \[
 \int_{\d M} H_x \, dx + H_y \, dy + H_z \, dz
 =
@@ -147,28 +149,29 @@ Damit lässt sich beweisen, dass
 \end{align*}
 gilt.
 
+\subsection{weitere grosse fortschritte, wichtigste entdeckucngen?}
 
-Im Jahre 1821 gelang Michael Faraday ein Experiment, be dem sich ein stromdurchflossener Leiter unter Einfluss eines Dauermagneten um seine Achse drehte.
-Er nannte dies dies ``elektromagnetische Rotation'', was eine sehr wichtige Voraussetzung für die Entwicklung des Elektromotors war.
+Im Jahre 1821 gelang Michael Faraday ein Experiment, bei dem sich ein stromdurchflossener Leiter unter Einfluss eines Dauermagneten um seine Achse drehte.
+Er nannte dies die ``elektromagnetische Rotation'', was eine sehr wichtige Voraussetzung für die Entwicklung des Elektromotors war.
 Die Idee, dass man Magnetismus in Elektrizität umwandeln könnte, hatte er bereits 1822.
 Jedoch konnte er erst 1831, nach mehreren gescheiterten Versuchen und einer längeren Pause, in der er sich anderen Untersuchungen widmete, ein erfolgreiches Experiment durchführen.
 Faraday entdeckte die elektromagnetische Induktion!
 
-Fünf Jahre später konnte er erfolgreiche Versuche über den nach ihm benannten ``faradayscher Käfig'' erzielen.
+Fünf Jahre später konnte er erfolgreiche Versuche über den nach ihm benannten ``faradayschen Käfig'' erzielen.
 Der faradayscher Käfig hat die Eigenschaft, das in seinem Inneren kein elektrisches Feld vorhanden ist.
-Um das zu erreichen muss der Körper aus elektrisch leitfähigem Material bestehen.
+Um das zu erreichen, muss der Körper aus elektrisch leitfähigem Material bestehen.
 
 Faraday leistete in seinem Leben noch weitere Beiträge im Bereich der Elektrizität und im Magnetismus. 
 Er war einer der Ersten, der nicht an ein Fernwirkungsgesetz glaubte.
 Elektrische Kräfte oder auch die Gravitationskraft sollen durch Kraftlinien und Felder zu Stande kommen, was sich später auch bewahrheitete.
 Aussergewöhnlich war ausserdem auch seine Arbeitsweise.
-Seine veröffentlichten Errungenschaften beinhalteten wenig bis keine mathematischen Beweise, er konnte alles rein durch Experimente verifizieren(https://de.wikipedia.org/wiki/Michael\_Faraday).
+Seine veröffentlichten Errungenschaften beinhalteten wenig bis keine mathematischen Beweise, er konnte alles rein durch Experimente verifizieren \cite{maxwell:Michael_Faraday}.
 
-\begin{center}
-\textit{„Faraday sah im Geiste die den ganzen Raum durchdringenden Kraftlinien, wo die Mathematiker fernwirkende Kraftzentren sahen; Faraday sah ein Medium, wo sie nichts als Abstände sahen; Faraday suchte das Wesen der Vorgänge in den reellen Wirkungen, die sich in dem Medium abspielten, jene waren aber damit zufrieden, es in den fernwirkenden Kräften der elektrischen Fluida gefunden zu haben…“}
+\begin{flushleft}
+\emph{„Faraday sah im Geiste die den ganzen Raum durchdringenden Kraftlinien, wo die Mathematiker fernwirkende Kraftzentren sahen; Faraday sah ein Medium, wo sie nichts als Abstände sahen; Faraday suchte das Wesen der Vorgänge in den reellen Wirkungen, die sich in dem Medium abspielten, jene waren aber damit zufrieden, es in den fernwirkenden Kräften der elektrischen Fluida gefunden zu haben…“}
 
-\textit{– James Clerk Maxwell: A Treatise on Electricity and Magnetism. Clarendon Press, 1873.}
-\end{center}
+\emph{– James Clerk Maxwell: A Treatise on Electricity and Magnetism. Clarendon Press, 1873.}
+\end{flushleft}
 
 Carl Friedrich Gauss war ein sehr bedeutender Mathematiker und Theoretiker.
 Bereits während seiner Lebenszeit wurde er als ``Fürst der Mathematiker'' bezeichnet.
@@ -180,12 +183,12 @@ Somit lässt sich daraus schliessen, dass das Integral des elektrischen Flusses 
 \[
 \oint_{A=\d V} \vec{D} \cdot d\vec{s}
 =
-\int_{V} \rho_{frei}\, dv
+\int_{V} \rho_{\text{frei}}\, dv
 =
-Q_{frei} ,
+Q_{\text{frei}} ,
 \]
-wobei $\rho_{frei}$ die freie Ladungsdichte und $Q_{frei}$ die gesamten freien Ladungen in der Kugel sind. $\varepsilon_0$ enstpricht der Permitivität im Vakuum. Dies ist auch gerade eine Anwendung vom Gausschen Integralsatz aus der Mathematik.
-Die Gleichung lässt sich natürlich auch mit der elektrischen Feldstärke ausdrücken, da $\vec{D} = \varepsilon_0 \vec{E}$ gilt:
+wobei $\rho_{\text{frei}}$ die freie Ladungsdichte und $Q_{\text{frei}}$ die gesamten freien Ladungen in der Kugel sind. $\varepsilon_0$ enstpricht der Permitivität im Vakuum. Dies ist auch gerade eine Anwendung vom Gausschen Integralsatz aus der Mathematik.
+Die Gleichung lässt sich natürlich auch mit der elektrischen Feldstärke ausdrücken. Da $\vec{D} = \varepsilon_0 \vec{E}$ gilt, folgt:
 \[
 \oint_{A=\d V} \vec{E} \cdot d\vec{s}
 =
@@ -203,8 +206,10 @@ Natürlich lassen sich die Gleichungen auch in differentiellen Form darstellen a
 	&=
 	\frac{\rho}{\varepsilon_0} .
 \end{align*}
-(https://de.wikipedia.org/wiki/Gaußscher\_Integralsatz, https://de.wikipedia.org/wiki/Carl\_Friedrich\_Gauß)
+\cite{maxwell:Gaußscher_Integralsatz}
+\cite{maxwell:Carl_Friedrich_Gauß}
 
+\subsubsection{herleitung gaussscher integralsatz??}
 
 \textit{Exkurs: Herleitung Gaussscher Integralsatz}
 Der Integralsatz von Gauss ist ein Spezialfall des Satzes von Stokes.
@@ -221,21 +226,22 @@ Dafür integrieren wir bei
 =
 \int_{\d V} \omega .
 \]
-Wie bereits bei der Umformulierung des Ampère-Gesetz, definieren wir wieder eine Einform
+Wie bereits bei der Umformulierung des Ampère-Gesetz, definieren wir wieder eine 1-Form
 \[
 \alpha
 =
 E_x \, dx + E_y \, dy + E_z \, dz ,
 \]
 welche dieses Mal dem elektrischen Feld entspricht.
-Da wir einmal über den Rand eines Volumens und einmal über das Volumen selbst integrieren müssen, benötigen wir aber eine Zweiform und eine Dreiform, welche wir bekanntlich mit dem Hodgeoperator und mit der äusseren Ableitung bekommen:
+Da wir einmal über den Rand eines Volumens und einmal über das Volumen selbst integrieren müssen, benötigen wir aber eine 2-Form und eine 3-Form, welche wir bekanntlich mit dem Hodgeoperator
 \begin{align*}
-	\star\alpha
+	\ast\alpha
 	&=
 	E_x \, dy \wedge dz + E_y \, dz \wedge dx + E_z \, dx \wedge dy
 	\\
+\text{und mit der äusseren Ableitung}
 	\\
-	d\star\alpha
+	d\ast\alpha
 	&=
 	\frac{\d E_x}{\d x} \, dx \wedge dy \wedge dz +
 	\frac{\d E_y}{\d y} \, dy \wedge dz \wedge dx +
@@ -250,9 +256,10 @@ Da wir einmal über den Rand eines Volumens und einmal über das Volumen selbst 
 	\left(
 	\frac{\d E_x}{\d x} + \frac{\d E_y}{\d y} + \frac{\d E_z}{\d z}
 	\right)
-	dx \wedge dy \wedge dz .
+	dx \wedge dy \wedge dz 
 \end{align*}
-Das kann nun in Stokes eingesetzt werden
+bekommen.
+Das kann nun in den allgemeinen Satz von Stokes eingesetzt werden
 \[
 \int_{\d V}
 E_x \, dy \wedge dz + E_y \, dz \wedge dx + E_z \, dx \wedge dy
@@ -271,7 +278,7 @@ Wird die Gleichung nun in Vektorform umgeformt, folgt nun der Integralsatz von G
 \int_{V}
 (\nabla \cdot \vec{E}) \, dv .
 \]
-Wie man gut erkennen kann, entspricht die linke Seite des Integralsatzes genau dem Satz von Gauss für elektrische Felder und der Zusammenhang zwischen der integral- und differentiellen Form ist auch gerade gegeben:
+Wie man gut erkennen kann, entspricht die linke Seite des Integralsatzes genau dem Satz von Gauss für elektrische Felder und der Zusammenhang zwischen der Integralform und differentiellen Form ist auch gerade gegeben:
 \begin{align*}
 	\oint_{A=\d V} \vec{E} \cdot d\vec{s}
 	&=
@@ -287,10 +294,14 @@ Wie man gut erkennen kann, entspricht die linke Seite des Integralsatzes genau d
 	\frac{\rho}{\varepsilon_0}.
 \end{align*} 
 
-
+\subsection{das wo wir jetz kennen}
 
 folgt noch: Geschichte Maxwell,
 Heaviside,
 relativität mit einstein?
-differentailformen?
+differentailformen eher nicht
+bei maxwell 20 gleichhungne zerst, evtl sagen was es alles war, war nähmlich glaubs mehr drin als jetzt in den vier heuteigen
+
+
+\textbf{todo von korrekturen:}exkurse überearbeiten(mail an müller), titel besser machen
 
