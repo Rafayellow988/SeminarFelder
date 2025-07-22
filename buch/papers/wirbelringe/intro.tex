@@ -8,7 +8,10 @@
 
 \input{papers/wirbelringe/fig/wirbelring_RGB.tex}
 
-ToDo
+Wirbelringe sind ein interessantes Naturphänomen welchem man schneller begegnet als man denkt. 
+In diesem Paper schauen wir uns Wirbelringe etwas genauer an und begründen einige Eigenschaften. 
+Des Weiteren untersuchen wir eine weitverbreitete praktische (ungewollte) Anwendung und dessen Auswirkung. 
+Zuletzt formulieren wir ein Modell womit man zumindest angenähert selbst gezielt Wirbelringe berechnen und erzeugen kann.
 
 \section*{Disclaimer}
 
@@ -32,12 +35,9 @@ Für Wirbel ist die Identität
 = 
 0
 \]
-
-todo :Quellenfreiheit
-
-für die Stabilität eines Wirbels sehr wichtig. 
+wichtig, da die Stabilität eines Wirbels durch diese Begründet wird.  
 Das geht natürlich nur, wenn \(\vec{A}\) 2-mal stetig differenzierbar ist. 
-Ist das der Fall kann man das ganze kurz beweisen:
+Ist das der Fall kann man das ganze kurz überprüfen:
 
 \begin{align}
 \operatorname{div} \left( \operatorname{rot} \left( \vec{A} \right) \right) 
@@ -63,15 +63,15 @@ Ist das der Fall kann man das ganze kurz beweisen:
 &= 0 
 \end{align}
 
-Die Interpretation ist für unseren Anwendungsfall wichtiger. 
-In einem reinen Quellenfeld bleiben die Teilchen erhalten. 
+Aus dieser Identität lässt sich schliessen das in einem reinen Rotationsfeld die Teilchen erhalten bleiben. 
 Das bedeutet das sie, solange nicht anders beeinflusst werden, immer weiter rotieren. 
 Aus diesem Grund sind Wirbel sehr Stabil.
 
 
 \subsection{Wirbel vs Wirbelring}
 
-Werden nun viele Wirbel aneinander gereiht, entsteht ein sogenannter Wirbelfaden (Siehe Abbildung \ref{paper:Wirbelringe:Wirbelfaden}).
+Werden nun viele Wirbel aneinander gereiht, entsteht ein sogenannter Wirbelfaden (Siehe Abschnitt \ref{paper:Wirbelringe:Wirbelfaden}).
 Dieser alleine bewegt sich allerdings noch nicht. 
 Damit das passiert muss der Freie Wirbelfaden gekrümmt und zu einem Ring geschlossen werden. 
-Jetzt ist es ein Wirbelring.
+Jetzt ist es ein Wirbelring. 
+Mehr zur Bewegung eines Wirbelrings in Abschnitt \ref{paper:Wirbelringe:Bewegung}
