@@ -19,17 +19,22 @@ Als erstes brauchen wir ein geeignetes 3d Objekt, in unserem Fall wurden die Geb
 %hint, open foam arbeite in Meter, wenn das Objekt in mm exportiert wurde, faktor 1000 zu gross
 Dieses 3D file bildet die Grundlage unsere Simulation.
 
-%Bild Ordnerstruktur_Leer
-
-%Bild Snappy fein und grob 
-
 \subsubsection{Mesh generating\label{openfoam:section:Mesh generating}}
 Der grundlegende Schritt einer jeder Simulation ist, die reale, analoge Welt in eine diskrete Welt zu überführen.
 Mithilfe der \textbf{snappyHexMesh} funktion wird das 3d-Objekt in disktrete Zellen unterteilt. Je mehr Zellen desto genauer
 wird die Simulation, desto grösser jedoch der Aufwand für die Simulation. Diese Abwägung, Qualität vs. Aufwand, muss vom Auftraggeber definiert werden.
 Die Zellen können eine freie Form annehmen, oft wird in einem ersten Durchlauf der Simulationsraum grob in Quader aufgeteilt (\ref{fig:snappygrobbild}),
 in folgenden Schritten wird die Annäherung and das Grundmodell immer besser (\ref{fig:snappyfeinbild}).
+%TODO xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+\subsubsection{surfaceFeatureExtract\label{openfoam:section:surfaceFeatureExtract}}
+Erstellt .eMesh datei und extrahiert alle Features des 3d Objekts für die weitere Verarbeitung.
 
+\subsubsection{blockMesh\label{openfoam:section:blockMesh}}
+Grösse der Zellen definieren wie genau und aufwendig die Simulation wird
+
+\subsubsection{snappyHexMesh\label{openfoam:section:snappyHexMesh}}
+Im dict den ort des 3d Obj und eMesh files angeben, dauert lange
+%TODO xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 \begin{figure}
     \centering
@@ -47,7 +52,6 @@ in folgenden Schritten wird die Annäherung and das Grundmodell immer besser (\r
 %-------------------------------------------------------------------------------
 \subsubsection{Parameter\label{openfoam:section:Parameter}}
 Im folgenden einen kurzen Überblick über die wichtigsten Parameter einer OpenFOAM Simulation.
-%TODO, die einzelnen paramter als liste in liste, falls das möglich
 
 \subsubsection{Numerische Parameter\label{openfoam:section:Numerische Parameter}}
 Mit den numerischen Paramter im File \textbf{controlDict} wird festgelegt:
@@ -73,35 +77,33 @@ Beschreibt den Zustand im ersten Schritt der Simulation. Im \textbf{0} Ordner we
     \item Turbulenzen \textbf{k, epsilon, nut}: In den \textbf{k, epsilon, nut} Files wird die gesamte Turbulenz im Modell beschrieben.  
 \end{itemize}
 
-
-
 %-------------------------------------------------------------------------------
 \subsubsection{Simulation\label{openfoam:section:Simulation}}
-In der Simulation wird nun auf jede Zelle die im Mesh generating die für die Simulation relevanten Gleichungen angewandt. 
+In der Simulation wird nun auf jede Zelle die in den Parameter festgelegten Gleichungen angewandt. 
 
+%TODO
+Mit den folgenden Befehlen kann eine simple Simulation mit einem Tutorial Case durchgeführt werden:
+
+%\subsubsection{Ablauf\label{openfoam:section:Ablauf}}
+\begin{enumerate}
+    \item surfaceFeatureExtract: Erstellt .eMesh datei und extrahiert alle Features des 3d Objekts
+    \item blockMesh: Grösse der Zellen definieren wie genau und auswendig die Simulation wird
+    \item snappyHexMesh: Im dict den ort des 3d Obj und eMesh files angeben, dauert lange
+    \item simpleFoam: Vor dem start die startwerte von 0.orig in 1 und 2 kopieren
+\end{enumerate}
 %Bild Ordnerstruktur_Simuliert
 %Bild vorschlag_Wind_Westen_10m_blocky?
 
-
-%https://doc.openfoam.com/2306/quickstart/
-%https://www.openfoam.com/documentation/user-guide Dokumentation
-
-\subsubsection{Ablauf\label{openfoam:section:Ablauf}}
-surfaceFeatureExtract, erstellt .eMesh datei und extrahiert alle features des Objekts
-
-blockMesh, grösse der Zellen definieren wie genau und auswendig die Simulation wird
-
-snappyHexMesh, im dict den ort des 3d Obj und eMesh files angeben, dauert lange
-
-simpleFoam, vor dem start die startwerte von 0.orig in 1 und 2 kopieren
-
+%TODO
 abschluss für nicht windows user
 
+
+
+%TODO
 \subsubsection{Postprocessing}
 %\subsection{Postprocessing\label{openfoam:section:Postprocessing}}
 Postprocessing ist der Prozess, bei dem die Simulationsergebnisse visualisiert und analysiert werden. 
 %Bild vorschlag_Wind_Osten_5m oder Westen, evt interessant mehrere 5/10/15m
-
 
 
 foamToVTK
@@ -109,3 +111,6 @@ paraFoam -touch, erstellt .OpenFOAM datei, welche dann mit Paraview geöffnet wi
 
 darstellung
 Paraview, navigiere zum Simulations ordner, öffne .openFOAM datei
+
+%https://doc.openfoam.com/2306/quickstart/
+%https://www.openfoam.com/documentation/user-guide Dokumentation
