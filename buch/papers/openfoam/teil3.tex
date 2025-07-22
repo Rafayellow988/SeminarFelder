@@ -54,12 +54,13 @@ Im dict den ort des 3d Obj und eMesh files angeben, dauert lange
 Im folgenden einen kurzen Überblick über die wichtigsten Parameter einer OpenFOAM Simulation.
 
 \subsubsection{Numerische Parameter\label{openfoam:section:Numerische Parameter}}
-Mit den numerischen Paramter im File \textbf{controlDict} wird festgelegt:
+Mit den numerischen Paramter im File \textbf{controlDict} wird unter anderem festgelegt:
 \begin{itemize}
-    \item Endzeit: Gibt an, bis zu welchem Zeitpunkt simuliert werden soll.
-    \item Solver-Einstellungen: Hier wird definiert, welche numerischen Methoden verwendet werden (z.B. Diskretisierungsschemata, Iterationsverfahren) und welche Konvergenzkriterien gelten.
-    \item Schreibintervall: Legt fest, wie oft während der Simulation Ergebnisse gespeichert werden.
+    \item endTime: Endzeit der Simulation
+    \item application: Welcher Solver zu verwenden ist
+    \item writeInterval: Wie oft während der Simulation Ergebnisse gespeichert werden (\ref{fig:ordStrktSim})
 \end{itemize}
+Es ist darauf hinzuweisen, dass schnell grosse Datenmengen anfallen können, wenn das writeInterval und/oder die endTime zu gross gewählt werden
 
 \subsubsection{Konstante Parameter\label{openfoam:section:Konstante Parameter}}
 Im \textbf{constant} Ordner werden die Transport und Turbulenz Parameter gesetzt:
@@ -74,7 +75,7 @@ Beschreibt den Zustand im ersten Schritt der Simulation. Im \textbf{0} Ordner we
     \item Geschwindigkeit und Richtung \textbf{U}: Stärke und Richtungsvektoren für jede Zelle
     \item Druckverhältnisse \textbf{p}: Skalarfeld für die Druckverteilung
     \item Dichte $\rho$: Bei kompressiblen Fluiden nötig %can't get the rho to be fat for some reason \textbf{$\rho$} doesn't work
-    \item Turbulenzen \textbf{k, epsilon, nut}: In den \textbf{k, epsilon, nut} Files wird die gesamte Turbulenz im Modell beschrieben.  
+    \item Turbulenzen \textbf{k, epsilon, nut}: In den Files wird die gesamte Turbulenz im Modell beschrieben.  
 \end{itemize}
 
 %-------------------------------------------------------------------------------
@@ -98,7 +99,7 @@ Mit den folgenden Befehlen kann eine simple Simulation mit einem Tutorial Case d
 \begin{figure}
     \centering
     \includegraphics[width=0.55\textwidth]{papers/openfoam/Bilder/Ordnerstruktur_Simuliert.jpg}
-    \caption{Ordnerstruktur nach der Simulation, 0,5...60 die Zeitpunkte die danach in Paraview ansgesehen werden können.}
+    \caption{Ordnerstruktur nach der Simulation, 0,5...60 die Zeitpunkte die danach in Paraview dargestellt werden können.}
     \label{fig:ordStrktSim}
 \end{figure}
 
