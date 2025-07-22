@@ -47,33 +47,31 @@ in folgenden Schritten wird die Annäherung and das Grundmodell immer besser (\r
 %-------------------------------------------------------------------------------
 \subsubsection{Parameter\label{openfoam:section:Parameter}}
 Im folgenden einen kurzen Überblick über die wichtigsten Parameter einer OpenFOAM Simulation.
-%TODO, die einzelnen paramter als liste in liste, falls das möglich ist
+%TODO, die einzelnen paramter als liste in liste, falls das möglich
 
 \subsubsection{Numerische Parameter\label{openfoam:section:Numerische Parameter}}
-Mit den numerischen Paramter im File "controlDict" wird festgelegt
-\begin{numpam}
-    \item \textbf{Zeitschrittgrößen (deltaT):} Bestimmt, wie fein der zeitliche Ablauf der Simulation aufgelöst wird. Zu große Zeitschritte können zu Instabilität führen, zu kleine verlängern die Rechenzeit unnötig.
-    \item \textbf{Endzeit:} Gibt an, bis zu welchem Zeitpunkt simuliert werden soll.
-    \item \textbf{Solver-Einstellungen:} Hier wird definiert, welche numerischen Methoden verwendet werden (z.B. Diskretisierungsschemata, Iterationsverfahren) und welche Konvergenzkriterien gelten.
-    \item \textbf{Schreibintervall:} Legt fest, wie oft während der Simulation Ergebnisse gespeichert werden.
-\end{numpam}
+Mit den numerischen Paramter im File \textbf{controlDict} wird festgelegt:
+\begin{itemize}
+    \item Endzeit: Gibt an, bis zu welchem Zeitpunkt simuliert werden soll.
+    \item Solver-Einstellungen: Hier wird definiert, welche numerischen Methoden verwendet werden (z.B. Diskretisierungsschemata, Iterationsverfahren) und welche Konvergenzkriterien gelten.
+    \item Schreibintervall: Legt fest, wie oft während der Simulation Ergebnisse gespeichert werden.
+\end{itemize}
 
-\subsubsection{Physikalische Parameter\label{openfoam:section:Physikalische Parameter}}
-Viskosität, dichte ect "constant"
-\begin{physpam}
-    \item \textbf{Dichte ($\rho$):} Relevant für alle kraftbezogenen Berechnungen, z.B. Auftrieb, Trägheit oder Druckunterschiede.
-    \item \textbf{Viskosität ($\mu$):} Bestimmt, wie stark die innere Reibung im Fluid die Strömung hemmt. Besonders wichtig für laminare oder turbulente Strömungen.
-    \item \textbf{Turbulenzmodell:} Hier wird festgelegt, ob und wie Turbulenzen berücksichtigt werden (z.B. RANS, LES oder laminar).
-\end{physpam}
+\subsubsection{Konstante Parameter\label{openfoam:section:Konstante Parameter}}
+Im \textbf{constant} Ordner werden die Transport und Turbulenz Parameter gesetzt:
+\begin{itemize}
+    \item Transport \textbf{transportProperties}: Welches Transportmodell verwendet wird.
+    \item Turbulenzen \textbf{turbulenceProperties}: Festlegung des Simulationstyp, Reynolds-Averaged Navier-Stokes (RANS), Large Eddy Simulation (LES) oder Laminar.
+\end{itemize}
 
-\subsubsection{Anfangsbedingungen Parameter\label{openfoam:section:Anfangs und Randbedingungen}}
-Strömungsrichtung, geschwinigkeiten usw, "0" Ordner
-\begin{anfrandbed}
-    \item \textbf{Strömungsrichtung und Geschwindigkeit:} Gibt an, aus welcher Richtung der Wind weht und mit welcher Geschwindigkeit.
-    \item \textbf{Druckverhältnisse:} Setzt Referenzwerte für den statischen Druck, z.B. atmosphärisch.
-    \item \textbf{Wandbedingungen (no-slip, roughness):} Definiert, ob an Oberflächen die Strömung haften bleibt oder rutschen kann.
-    \item \textbf{Initialfelder:} Erste Näherung für Geschwindigkeit und Druck, um die Berechnung stabil zu starten.
-\end{anfrandbed}
+\subsubsection{Anfangsbedingungen \label{openfoam:section:Anfangsbedingungen}}
+Beschreibt den Zustand im ersten Schritt der Simulation. Im \textbf{0} Ordner werden folgende Faktoren bestimmt:
+\begin{itemize}
+    \item Geschwindigkeit und Richtung \textbf{U}: Stärke und Richtungsvektoren für jede Zelle
+    \item Druckverhältnisse \textbf{p}: Skalarfeld für die Druckverteilung
+    \item Dichte $\rho$: Bei kompressiblen Fluiden nötig %can't get the rho to be fat for some reason \textbf{$\rho$} doesn't work
+    \item Turbulenzen \textbf{k, epsilon, nut}: In den \textbf{k, epsilon, nut} Files wird die gesamte Turbulenz im Modell beschrieben.  
+\end{itemize}
 
 
 
