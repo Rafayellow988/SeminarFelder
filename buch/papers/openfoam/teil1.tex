@@ -54,7 +54,7 @@ $V$
 Setzt man nun die beiden Terme gleich erhält man die Gleichung 
 \[\int_{S}d\vb{S}\cdot\rho\vb{u} 
 =
-\int_{V}\frac{\partial \rho}{\partial t} \, dV\], 
+\int_{V}\frac{\partial \rho}{\partial t} \, dV ,\] 
 bei dieser Gleichung kann man nun auf der L.H.S. mit dem Gaußschen Integralsatz das Oberflächen Integral in ein Flächenintegral umwandeln es wird also zu
 \[\int_{V}\nabla\cdot(\rho\vb{u}) 
 =
@@ -77,9 +77,67 @@ Man geht ebenfalls von einem Arbiträren Volumen Flüssigkeit, $V$, das nicht me
 Dieses Volumen weist nun eine Impulsänderung die 
 \[\frac{D}{Dt}\int_{V}\rho\vb{u}\, dV\]
 entspricht.
-Als nächstes berechnet man die gesamte kraft auf die Oberfläche des Volumens $V$ in dem man alle Kräfte $\vb{f}$ die auf die Oberflächenstücke $dS$ wirken integriert.
-Dabei muss man zuerst aus dem Traktionsvektor die Kraft 
+
+Als nächstes berechnet man die gesamte kraft auf die Oberfläche des Volumens $V$ in dem man alle Kräfte $\vb{f} = \vb{t}\,dS$, die auf die Oberflächenstücke $dS$ wirken, integriert.
+Wobei $\vb{t} dS$ gleich $(\vb{n\cdot\sigma}dS)$ ist. 
 Daraus erhält man die Kraft 
-\[\vb{F} 
+\[\vb{Fs} 
 =
-\int_{S}\vb{f}\, dS\]
+\int_{S}\vb{f}\, dS
+= \int_{S} (d\vb{S}\cdot\vb{\sigma})
+\]
+Dies ist nun wieder ein Flächenintegral das mit dem Gaußschen Integralsatz in ein Volumenintegral umgewandelt werden kann.
+Dadurch ergibt sich dass
+\[\vb{Fs} 
+=
+\int_{V}\nabla \cdot \vb{\sigma}\, dV
+.\]
+
+Zuletzt berechnen wir noch den Einfluss anderer Kräfte wie die Schwerkraft auf den Impuls des Volumens $V$.
+Dazu integrieren wir den Vektor $\vb{b}$, bei dem es sich um eine Beschleunigung handelt, über alle Volumenstücke $dV$ wodurch wir das Integral
+\[\vb{Fa} 
+=
+\int_{V}\rho\vb{b}, dV
+\]
+erhalten.
+
+Nun können wir die Impulsänderung des Volumens gleich der Summe der darauf wirkenden Kräfte setzen und die Integrale in einem Integral zusammenfassen, daraus erhalten wir, mit der Bedingung die Masse im Volumen sei konstant, die Gleichung 
+\[\int_{V} \rho \frac{D\vb{u}}{Dt} - \nabla \cdot \vb{\sigma} -\rho \vb{b}\, dV
+=
+0
+\]
+hierbei kann man das Integral wider weglassen wodurch wir die Differentialgleichung
+\[\rho \frac{D\vb{u}}{Dt}
+= 
+\nabla \cdot \vb{\sigma} +\rho \vb{b}
+\]
+erhalten.
+
+Zuletzt kann man noch die substantielle Ableitung in eine partielle umwandeln damit wir die gleiche Form wie für die Massenerhaltungs Gleichung erhalten.
+Dazu nutzen wir die Definition der substantiellen Ableitung
+\[
+\frac{D\Phi(\vb{x},t)}{Dt}
+:=
+\frac{\partial \Phi}{\partial t}+(\vb{u}\cdot \nabla)\Phi
+\] 
+eingesetzt in die Differentialgleichung erhalten wir so 
+\[ \rho\frac{\partial\vb{u}}{\partial t} + \nabla \cdot(\rho\vb{u}\vb{u})
+= 
+\nabla \cdot \vb{\sigma} +\rho \vb{b}.
+\]
+Diese Form erleichtert einem die Berechnung da sie nicht mehr die Impulsänderung einer sich bewegenden Menge Flüssigkeit beschreibt sondern die Impulsänderung der sich momentan an einem Ort befindenden Masse. Man kann also anstelle ein sich durch den Raum bewegendes Masseteilchen ein Festes Volumenelement Simulieren welches bei der Fluiddynamik-Simulation die bevorzugte Methode ist.
+\subsubsection{Energieerhaltung}
+%TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!¨
+\subsubsection{Navier-Stokes}
+%TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!¨
+\subsubsection{Objekt Modellierung}
+Bei der CFD Simulation müssen nicht nur die Physikalischen Eigenschaften des Mediums, sondern auch die Form des Objektes dessen Influenz auf die Flüssigkeit und die Umgebung in der sich das Objekt befindet simuliert werden soll Modelliert werden.
+Dazu gehören zum einen die Geometrischen Eigenschaften des Objektes und die Umgebung in dem es sich befindet, zudem aber auch die Eigenschaften wie die Oberflächen der Objekte mit der Flüssigkeit interagieren.
+
+Zum modellieren der Objekte kann man eine beliebige CAD Software benutzen, für OpenFOAM muss dieses Modell dann jedoch konvertiert werden.
+Dazu ist eine Software, snappy hex  mesh, die bei OpenFOAM beinhaltet ist verfügbar.
+Sie verarbeitet das 3D Modell, meist im STL Format, zusammen mit einem simpleren Modell für die Begrenzung der Lösungs-Domain, welches für OpenFoam bei simplen Geometrien am beste im blockMesh Format definiert wird, zusammen um zum einen die Form der Lösungs-Domain (Raum in der sich die Flüssigkeit in der Simulation befindet) zu generieren und zudem eine Diskretisierung der Flächen und Unterteilung des Raumes in Zellen.
+
+
+
+
