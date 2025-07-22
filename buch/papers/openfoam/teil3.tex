@@ -20,47 +20,75 @@ Als erstes brauchen wir ein geeignetes 3d Objekt, in unserem Fall wurden die Geb
 Dieses 3D file bildet die Grundlage unsere Simulation.
 
 %Bild Ordnerstruktur_Leer
-%\subsubsection{Mesh generating}
-\subsubsection{Mesh generating\label{openfoam:section:Mesh generating}}
-mesh generating ist der Prozess, bei dem das 3D Objekt in ein Netz aus Zellen unterteilt wird, die von OpenFOAM verarbeitet werden können.
-
 
 %Bild Snappy fein und grob 
-%\subsubsection{Parameter}
+
+\subsubsection{Mesh generating\label{openfoam:section:Mesh generating}}
+Der grundlegende Schritt einer jeder Simulation ist, die reale, analoge Welt in eine diskrete Welt zu überführen.
+Mithilfe der \textbf{snappyHexMesh} funktion wird das 3d-Objekt in disktrete Zellen unterteilt. Je mehr Zellen desto genauer
+wird die Simulation, desto grösser jedoch der Aufwand für die Simulation. Diese Abwägung, Qualität vs. Aufwand, muss vom Auftraggeber definiert werden.
+Die Zellen können eine freie Form annehmen, oft wird in einem ersten Durchlauf der Simulationsraum grob in Quader aufgeteilt (\ref{fig:snappygrobbild}),
+in folgenden Schritten wird die Annäherung and das Grundmodell immer besser (\ref{fig:snappyfeinbild}).
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.55\textwidth]{papers/openfoam/Bilder/Snappy_grob.png}
+    \caption{Mesh nach dem ersten Durchlauf von snappyHexMesh}
+    \label{fig:snappygrobbild}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.55\textwidth]{papers/openfoam/Bilder/Snappy_fein.png}
+    \caption{Mesh nach dem zweiten Durchlauf von snappyHexMesh}
+    \label{fig:snappyfeinbild}
+\end{figure}
+%-------------------------------------------------------------------------------
 \subsubsection{Parameter\label{openfoam:section:Parameter}}
-Mit den Parameter werden alle Simulationsspezifischen Einstellungen vorgenommen.
+Im folgenden einen kurzen Überblick über die wichtigsten Parameter einer OpenFOAM Simulation.
+%TODO, die einzelnen paramter als liste in liste, falls das möglich ist
 
-%\subsubsection{Numerische Parameter}
 \subsubsection{Numerische Parameter\label{openfoam:section:Numerische Parameter}}
-Zeitschritte, Iterationen, Toleranzen   
-Zeitschritte usw "system"
+Mit den numerischen Paramter im File "controlDict" wird festgelegt
+\begin{numpam}
+    \item \textbf{Zeitschrittgrößen (deltaT):} Bestimmt, wie fein der zeitliche Ablauf der Simulation aufgelöst wird. Zu große Zeitschritte können zu Instabilität führen, zu kleine verlängern die Rechenzeit unnötig.
+    \item \textbf{Endzeit:} Gibt an, bis zu welchem Zeitpunkt simuliert werden soll.
+    \item \textbf{Solver-Einstellungen:} Hier wird definiert, welche numerischen Methoden verwendet werden (z.B. Diskretisierungsschemata, Iterationsverfahren) und welche Konvergenzkriterien gelten.
+    \item \textbf{Schreibintervall:} Legt fest, wie oft während der Simulation Ergebnisse gespeichert werden.
+\end{numpam}
 
-%\subsubsection{Physikalische Parameter}
 \subsubsection{Physikalische Parameter\label{openfoam:section:Physikalische Parameter}}
-iskosität, dichte ect "constant"
+Viskosität, dichte ect "constant"
+\begin{physpam}
+    \item \textbf{Dichte ($\rho$):} Relevant für alle kraftbezogenen Berechnungen, z.B. Auftrieb, Trägheit oder Druckunterschiede.
+    \item \textbf{Viskosität ($\mu$):} Bestimmt, wie stark die innere Reibung im Fluid die Strömung hemmt. Besonders wichtig für laminare oder turbulente Strömungen.
+    \item \textbf{Turbulenzmodell:} Hier wird festgelegt, ob und wie Turbulenzen berücksichtigt werden (z.B. RANS, LES oder laminar).
+\end{physpam}
 
-%\subsubsection{Anfangsbedingungen Parameter}
-\subsubsection{Anfangsbedingungen Parameter\label{openfoam:section:Anfangsbedingungen Parameter}}
+\subsubsection{Anfangsbedingungen Parameter\label{openfoam:section:Anfangs und Randbedingungen}}
 Strömungsrichtung, geschwinigkeiten usw, "0" Ordner
+\begin{anfrandbed}
+    \item \textbf{Strömungsrichtung und Geschwindigkeit:} Gibt an, aus welcher Richtung der Wind weht und mit welcher Geschwindigkeit.
+    \item \textbf{Druckverhältnisse:} Setzt Referenzwerte für den statischen Druck, z.B. atmosphärisch.
+    \item \textbf{Wandbedingungen (no-slip, roughness):} Definiert, ob an Oberflächen die Strömung haften bleibt oder rutschen kann.
+    \item \textbf{Initialfelder:} Erste Näherung für Geschwindigkeit und Druck, um die Berechnung stabil zu starten.
+\end{anfrandbed}
 
-%\subsubsection{Simulation}
+
+
+%-------------------------------------------------------------------------------
 \subsubsection{Simulation\label{openfoam:section:Simulation}}
-simulation
-
+In der Simulation wird nun auf jede Zelle die im Mesh generating die für die Simulation relevanten Gleichungen angewandt. 
 
 %Bild Ordnerstruktur_Simuliert
 %Bild vorschlag_Wind_Westen_10m_blocky?
 
-\subsubsection{Postprocessing}
-%\subsection{Postprocessing\label{openfoam:section:Postprocessing}}
-Postprocessing ist der Prozess, bei dem die Simulationsergebnisse visualisiert und analysiert werden. 
-%Bild vorschlag_Wind_Osten_5m oder Westen, evt interessant mehrere 5/10/15m
 
 %https://doc.openfoam.com/2306/quickstart/
 %https://www.openfoam.com/documentation/user-guide Dokumentation
 
 \subsubsection{Ablauf\label{openfoam:section:Ablauf}}
-
 surfaceFeatureExtract, erstellt .eMesh datei und extrahiert alle features des Objekts
 
 blockMesh, grösse der Zellen definieren wie genau und auswendig die Simulation wird
@@ -70,6 +98,13 @@ snappyHexMesh, im dict den ort des 3d Obj und eMesh files angeben, dauert lange
 simpleFoam, vor dem start die startwerte von 0.orig in 1 und 2 kopieren
 
 abschluss für nicht windows user
+
+\subsubsection{Postprocessing}
+%\subsection{Postprocessing\label{openfoam:section:Postprocessing}}
+Postprocessing ist der Prozess, bei dem die Simulationsergebnisse visualisiert und analysiert werden. 
+%Bild vorschlag_Wind_Osten_5m oder Westen, evt interessant mehrere 5/10/15m
+
+
 
 foamToVTK
 paraFoam -touch, erstellt .OpenFOAM datei, welche dann mit Paraview geöffnet wird
