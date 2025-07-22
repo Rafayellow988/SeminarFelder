@@ -23,46 +23,102 @@ Dabei definieren wir folgende Grössen:
 Tritt nun das Slug aus dem Zylinder aus, so trifft die Aussenseite des Slugs auf das stehende Fluid (bspw. Luft oder Wasser) ausserhalb.
 Dies bewirkt aufgrund der Geschwindigkeitsdifferenz zwischen dem Inneren des Slugs und dem stehenden Fluid aussen eine Scherung.
 Die Scherung hat zur Folge, dass sich das Slug beginnt \glqq Aufzurollen\grqq und somit einen Wirbel formt. 
-Die in Abschnitt \ref{paper:Wirbelringe:Stokes} genannten Formel für die Zirkulation kann approximativ auf
+Die in Abschnitt \ref{paper:Wirbelringe:Stokes} genannte Formel für die Zirkulation kann approximativ auf
 \[
 \Gamma \approx \frac{1}{2}UL
 \]
 vereinfacht werden.
 
 \subsection{Berechnungen zum Slug Modell}
-Möchte man ein etwas genaueres $\Gamma$ so kann man dies folgendermassen herleiten.
+Möchte man ein etwas genaueres $\Gamma$ des Wirbelrings haben, so kann man dies folgendermassen herleiten.
 
 Zunächst die Grundlagen:
 Grundsätzlich wird die Länge und das Volumen eines Slugs als
 \begin{align}
     L &= \int_{0}^{t}v_k(t)dt\\
-    \label{paper:eq:sluglänge}
+    \label{paper:Wirbelringe:eq:sluglaenge}
     V &= LA
 \end{align}
 definiert.
-Es kann aber angenommen werden, dass das Slug mit konstanter Geschwindigkeit bewegt wird, weshalb \ref{paper:eq:sluglänge} zu
+Es kann aber angenommen werden, dass das Slug mit konstanter Geschwindigkeit bewegt wird, weshalb \ref{paper:Wirbelringe:eq:sluglaenge} zu
 \begin{equation}
     L = v_0T
 \end{equation}
 wird.
 Nun kann noch der lineare Impuls eines Zylindrischen Slugs als
-\begin{align*}
-    I_{\text{slug}} = m_{\text{slug}}v\\
+\begin{align}
+    I_{\text{slug}} = m_{\text{slug}}v_0\\
     m_{\text{slug}} = \rho AL\\
-    I_{\text{slug}} = \rho ALv
-\end{align*}
+    I_{\text{slug}} = \rho ALv_0
+    \label{paper:Wirbelringe:eq:slugImp}
+\end{align}
 definiert werden.
 Der Drehimpuls eines kontinuierlichen Mediums
 \begin{equation}
-    \vec{I} = \int_{V}\rho(\vec{x})\vec{x}\times\vec{v(\vec{x})}dV
+    \vec{I} = \int_{V}\rho(\vec{x})\vec{x}\times\vec{v}(\vec{x})d\mathbf{V}
 \end{equation}
-kann durch Einsetzen der Vektor-Idetität für Rotationstensoren \ref{Wirbelringe:batchelor1967}
+kann durch Einsetzen der Vektor-Idetität für Rotationstensoren \cite{Wirbelringe:batchelor1967}
 \begin{equation}
-    \vec{x}\times\vec{v} = frac{1}{2}\int_{V}\vec{x}\times(\nabla\times\vec{v})dV = \frac{1}{2}\vec{x}\times\omega
+    \vec{x}\times\vec{v} = \frac{1}{2}\int_{V}\vec{x}\times(\nabla\times\vec{v})d\mathbf{V} = \frac{1}{2}\vec{x}\times\omega
 \end{equation}
 als Drehimpuls eines rotierenden Fluids 
 \begin{equation}
-    \vec{I} = \int_{V}
+    \vec{I} = \int_{V}\rho\cdot\vec{x}\times\vec{v}d\mathbf{V} = \int_{V}\rho\cdot(\frac{1}{2}\vec{x}\times\vec{\omega})d\mathbf{V} = \frac{\rho}{2}\int_{V}\vec{x}\times\vec{\omega}d\mathbf{V}
+    \label{paper:Wirbelringe:eq:Drehimpuls}
 \end{equation}
-hergeleitet werden. Dies geht allerdings nur, wenn man von einem inkompressiblen Fluid ausgeht!
-%WIP cont tomorrow...
+hergeleitet werden. 
+
+Dies geht allerdings nur, wenn man von einem inkompressiblen Fluid ausgeht!
+Zusätzlich kann man davon ausgehen, dass die Wirbelstärke $\omega$ tangential zum Wirbelring wirkt und der Wirbelring achsensymmetrisch ist
+\begin{equation*}
+    \vec{\omega} = \omega_\phi(r,z)\hat{e}_\phi
+\end{equation*}
+sowie, dass die Drehimpulsrichtung entlang der Symmetrieachse verläuft.
+Um nun der gewünschten Formel näherzukommen, wird \ref{paper:Wirbelringe:eq:Drehimpuls} in das Zylinderkoordinatensystem umgewandelt.
+Dabei wird
+\begin{equation*}
+    \vec{x} = r\hat{e}_r + z\hat{e}_z
+\end{equation*}
+und
+\begin{equation*}
+    \vec{\omega} = \omega_\phi
+\end{equation*}
+wobei das Kreuzprodukt der beiden 
+\begin{equation*}
+    \vec{x}\times\vec{\omega} = r\omega_\phi\hat{e}_z - z\omega_\phi\hat{e}_r
+\end{equation*}
+ergibt. Da der Wirbelring achsensymmetrisch ist, wird nur die $\hat{e}_z$-Komponente betrachtet.
+Als Nächstes können die gefundenen werte für $\vec{x}$ und $\vec{\omega}$ in \ref{paper:Wirbelringe:eq:Drehimpuls} eingesetzt werden.
+Sie wird dann zu
+\begin{equation*}
+    \vec{I}_z = \frac{\rho}{2}\int_{0}^{2\pi}\int_{A}r\omega_\phi(r,z)\cdot rd\phi drdz
+\end{equation*}
+da wir keine Integrationsvariable abhängig von $\phi$ haben können wir das erste Integral ganz einfach auflösen und nach dem Vereinfachen erhält man die elegante Formel
+\begin{equation}
+    \vec{I}_z = \pi\rho\int_{A}r^2\vec{\omega}(r,z)drdz
+    \label{paper:Wirbelringe:eq:achssymImp},
+\end{equation}
+mit welcher sich der Impuls eines Wirbelrings ermitteln lässt.
+
+Da die Impulserhaltung gilt, entspricht \ref{paper:Wirbelringe:eq:achssymImp} ungefähr \ref{paper:Wirbelringe:eq:slugImp} also
+\begin{equation*}
+    \rho\pi\int_{A}r^2\vec{\omega}(r,z)drdz \approx \rho ALv.
+    \label{paper:Wirbelringe:eq:Igleichi}
+\end{equation*}
+Glücklicherweise existiert der Integralsatz von Stokes, welcher besagt
+\begin{equation*}
+    \int_{S}rot\vec{A}\cdot\hat{n}dS = \oint_{C}\vec{A}\cdot d\vec{r}.
+\end{equation*}
+Da die Rotation definiert ist als 
+\begin{equation*}
+    \Gamma = \oint_{C}\vec{v}\cdot d\vec{l}
+\end{equation*}
+kann dies mittels Satz von Stokes in
+\begin{equation*}
+    \Gamma = \int_{A}\omega(r,z)drdz
+\end{equation*}
+umgewandelt werden.
+Angenehmerweise kann dies dann in Gleichung \ref{paper:Wirbelringe:eq:Igleichi} eingesetzt werden und es entsteht eine hübsche Formel
+\begin{equation*}
+    \Gamma = \frac{v^2AL}{\pi r^2}
+\end{equation*}
