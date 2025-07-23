@@ -137,7 +137,20 @@ Dazu gehören zum einen die Geometrischen Eigenschaften des Objektes und die Umg
 Zum modellieren der Objekte kann man eine beliebige CAD Software benutzen, für OpenFOAM muss dieses Modell dann jedoch konvertiert werden.
 Dazu ist eine Software, snappy hex  mesh, die bei OpenFOAM beinhaltet ist verfügbar.
 Sie verarbeitet das 3D Modell, meist im STL Format, zusammen mit einem simpleren Modell für die Begrenzung der Lösungs-Domain, welches für OpenFoam bei simplen Geometrien am beste im blockMesh Format definiert wird, zusammen um zum einen die Form der Lösungs-Domain (Raum in der sich die Flüssigkeit in der Simulation befindet) zu generieren und zudem eine Diskretisierung der Flächen und Unterteilung des Raumes in Zellen.
+Diese Diskretisierung ist benötigt dass die Finite Volume Methode verwendet werden kann um das Mathematische Modell der Flüssigkeit auf der Lösungs Domain anzuwenden.
+Ein Beispiel dafür ist in Bild \ref{openfoam:fig:SD_Modell_vergleich} zu sehen.
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.1]{papers/openfoam/Bilder/vergleich_solution_domain_object.png}
+	\caption{Vergleich der Solution Domain (L) und dem 3D Modell des Objektes (R)}
+	\label{openfoam:fig:SD_Modell_vergleich}
+\end{figure}
 
 
-
-
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.1]{papers/openfoam/Bilder/grid.png }
+	\caption{Beispiel des Rechengitters das von Snappy Hex Mesh generiert wird}
+	\label{openfoam:fig:sim_grid}
+\end{figure}
+\subsubsection{Diskretisierung in Zellen}
