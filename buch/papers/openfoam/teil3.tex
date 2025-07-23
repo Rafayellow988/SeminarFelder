@@ -25,15 +25,22 @@ Mithilfe der \textbf{snappyHexMesh} funktion wird das 3d-Objekt in disktrete Zel
 wird die Simulation, desto grösser jedoch der Aufwand für die Simulation. Diese Abwägung, Qualität vs. Aufwand, muss vom Auftraggeber definiert werden.
 Die Zellen können eine freie Form annehmen, oft wird in einem ersten Durchlauf der Simulationsraum grob in Quader aufgeteilt (\ref{fig:snappygrobbild}),
 in folgenden Schritten wird die Annäherung and das Grundmodell immer besser (\ref{fig:snappyfeinbild}).
+
 %TODO xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-\subsubsection{surfaceFeatureExtract\label{openfoam:section:surfaceFeatureExtract}}
-Erstellt .eMesh datei und extrahiert alle Features des 3d Objekts für die weitere Verarbeitung.
+%\subsubsection{surfaceFeatureExtract\label{openfoam:section:surfaceFeatureExtract}}
+%Erstellt .eMesh datei und extrahiert alle Features des 3d Objekts für die weitere Verarbeitung.
 
-\subsubsection{blockMesh\label{openfoam:section:blockMesh}}
-Grösse der Zellen definieren wie genau und aufwendig die Simulation wird
+%\subsubsection{blockMesh\label{openfoam:section:blockMesh}}
+%Grösse der Zellen definieren wie genau und aufwendig die Simulation wird
 
-\subsubsection{snappyHexMesh\label{openfoam:section:snappyHexMesh}}
-Im dict den ort des 3d Obj und eMesh files angeben, dauert lange
+%\subsubsection{snappyHexMesh\label{openfoam:section:snappyHexMesh}}
+%Im dict den ort des 3d Obj und eMesh files angeben, dauert lange
+
+%\begin{itemize}
+%    \item surfaceFeatureExtract: Erstellt .eMesh datei und extrahiert alle Features des 3d Objekts für die weitere Verarbeitung.
+%    \item blockMesh: Grösse der Zellen definieren wie genau und aufwendig die Simulation wird
+%    \item snappyHexMesh: Im dict den ort des 3d Obj und eMesh files angeben, dauert lange
+%\end{itemize}
 %TODO xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 \begin{figure}
@@ -53,20 +60,28 @@ Im dict den ort des 3d Obj und eMesh files angeben, dauert lange
 \subsubsection{Parameter\label{openfoam:section:Parameter}}
 Im folgenden einen kurzen Überblick über die wichtigsten Parameter einer OpenFOAM Simulation.
 
+\subsubsection{Geometrische Parameter\label{openfoam:section:Geometrische Parameter}}
+Im blockMeshDict und snappyHexMeshDict werden die für die Erstellung der Simulationszellen notwendigen Parameter festgelegt:
+\begin{itemize}
+    \item blockMeshDict: Physischer Grenzen der Simulation, definition der Inlet und Outletflächen und die Aufteilung des Raumes in eine vorgegebene Anzahl Zellen
+    \item snappyHexMeshDict: Einbinden des 3d Objekts in die im blockMeshDict festgelegte Umgebung, hier muss der Pfad des 3d Files und .eMesh angegeben werden.
+\end{itemize}
+
 \subsubsection{Numerische Parameter\label{openfoam:section:Numerische Parameter}}
 Mit den numerischen Paramter im File \textbf{controlDict} wird unter anderem festgelegt:
 \begin{itemize}
+    \item deltaT: Zeitschritte der Simulation
     \item endTime: Endzeit der Simulation
     \item application: Welcher Solver zu verwenden ist
-    \item writeInterval: Wie oft während der Simulation Ergebnisse gespeichert werden (\ref{fig:ordStrktSim})
+    \item writeInterval: Nach wievielen Zeitschritte Ergebnisse gespeichert werden (\ref{fig:ordStrktSim})
 \end{itemize}
 Es ist darauf hinzuweisen, dass schnell grosse Datenmengen anfallen können, wenn das writeInterval und/oder die endTime zu gross gewählt werden
 
 \subsubsection{Konstante Parameter\label{openfoam:section:Konstante Parameter}}
 Im \textbf{constant} Ordner werden die Transport und Turbulenz Parameter gesetzt:
 \begin{itemize}
-    \item Transport \textbf{transportProperties}: Welches Transportmodell verwendet wird.
-    \item Turbulenzen \textbf{turbulenceProperties}: Festlegung des Simulationstyp, Reynolds-Averaged Navier-Stokes (RANS), Large Eddy Simulation (LES) oder Laminar.
+    \item transportProperties: Welches Transportmodell verwendet wird.
+    \item turbulenceProperties: Festlegung des Simulationstyp, Reynolds-Averaged Navier-Stokes (RANS), Large Eddy Simulation (LES) oder Laminar.
 \end{itemize}
 
 \subsubsection{Anfangsbedingungen \label{openfoam:section:Anfangsbedingungen}}
@@ -87,28 +102,25 @@ Mit den folgenden Befehlen kann eine simple Simulation mit einem Tutorial Case d
 
 %\subsubsection{Ablauf\label{openfoam:section:Ablauf}}
 \begin{enumerate}
-    \item surfaceFeatureExtract: Erstellt .eMesh datei und extrahiert alle Features des 3d Objekts
-    \item blockMesh: Grösse der Zellen definieren wie genau und auswendig die Simulation wird
-    \item snappyHexMesh: Im dict den ort des 3d Obj und eMesh files angeben, dauert lange
-    \item simpleFoam: Vor dem start die startwerte von 0.orig in 1 und 2 kopieren
-\end{enumerate}
+    \item surfaceFeatureExtract
+    \item blockMesh
+    \item snappyHexMesh
+    \item simpleFoam
+%TODO
+%unterschied linux <> windows
+    \item foamToVTK
+    \item paraFoam -touch
 
+\end{enumerate} 
 
 %Bild Ordnerstruktur_Simuliert
 %Bild vorschlag_Wind_Westen_10m_blocky?
 \begin{figure}
     \centering
     \includegraphics[width=0.55\textwidth]{papers/openfoam/Bilder/Ordnerstruktur_Simuliert.jpg}
-    \caption{Ordnerstruktur nach der Simulation, 0,5...60 die Zeitpunkte die danach in Paraview dargestellt werden können.}
+    \caption{Ordnerstruktur nach der Simulation, 0,5...60 die Zeitpunkte die in Paraview dargestellt werden können.}
     \label{fig:ordStrktSim}
 \end{figure}
-
-
-
-
-%TODO
-abschluss für nicht windows user
-
 
 
 %TODO
@@ -116,6 +128,8 @@ abschluss für nicht windows user
 %\subsection{Postprocessing\label{openfoam:section:Postprocessing}}
 Postprocessing ist der Prozess, bei dem die Simulationsergebnisse visualisiert und analysiert werden. 
 %Bild vorschlag_Wind_Osten_5m oder Westen, evt interessant mehrere 5/10/15m
+darstellung
+ Paraview, navigiere zum Simulations ordner, öffne .openFOAM datei
 
 \begin{figure}
     \centering
@@ -123,14 +137,5 @@ Postprocessing ist der Prozess, bei dem die Simulationsergebnisse visualisiert u
     \caption{Buchumschlag mit den einzelnen Simulationszellen sichtbar}
     \label{fig:vorschWindWestBlocky}
 \end{figure}
-
-
-
-foamToVTK
-paraFoam -touch, erstellt .OpenFOAM datei, welche dann mit Paraview geöffnet wird
-
-darstellung
-Paraview, navigiere zum Simulations ordner, öffne .openFOAM datei
-
 %https://doc.openfoam.com/2306/quickstart/
 %https://www.openfoam.com/documentation/user-guide Dokumentation
