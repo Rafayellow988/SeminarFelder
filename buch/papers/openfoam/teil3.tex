@@ -6,38 +6,139 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 3
-\label{openfoam:section:teil3}}
-\kopfrechts{Teil 3}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
+\section{Anwendungsbeispiel
+\label{openfoam:section:Anwendungsbeispiel}}
+\kopfrechts{Anwendungsbeispiel}
+Wie wir gesehen haben, kann OpenFOAM, mit genügend Geduld, alles. 
+Wir werden jetzt an einem praktischen Beispiel zeigen, wie man eine eigene Simulation erstellt.
 
-\subsection{De finibus bonorum et malorum
-\label{openfoam:subsection:malorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
+Für ein anschauliches Beispiel haben wir ein Objekt gewählt, dass alle Studenten der OST-Rapperswil kennen: den Campus selbst.
+Das Ziel der Simulation ist, zu sehen, wie der Wind um die Gebäude strömt und mit ihnen interagiert.
+
+Als erstes brauchen wir ein geeignetes 3d Objekt, in unserem Fall wurden die Gebäude in Onshape erstellt.
+%hint, open foam arbeite in Meter, wenn das Objekt in mm exportiert wurde, faktor 1000 zu gross
+Dieses 3D file bildet die Grundlage unsere Simulation.
+
+\subsubsection{Mesh generating\label{openfoam:section:Mesh generating}}
+Der grundlegende Schritt einer jeder Simulation ist, die reale, analoge Welt in eine diskrete Welt zu überführen.
+Mithilfe der \textbf{snappyHexMesh} funktion wird das 3d-Objekt in disktrete Zellen unterteilt. Je mehr Zellen desto genauer
+wird die Simulation, desto grösser jedoch der Aufwand für die Simulation. Diese Abwägung, Qualität vs. Aufwand, muss vom Auftraggeber definiert werden.
+Die Zellen können eine freie Form annehmen, oft wird in einem ersten Durchlauf der Simulationsraum grob in Quader aufgeteilt (\ref{fig:snappygrobbild}),
+in folgenden Schritten wird die Annäherung and das Grundmodell immer besser (\ref{fig:snappyfeinbild}).
+
+%TODO xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+%\subsubsection{surfaceFeatureExtract\label{openfoam:section:surfaceFeatureExtract}}
+%Erstellt .eMesh datei und extrahiert alle Features des 3d Objekts für die weitere Verarbeitung.
+
+%\subsubsection{blockMesh\label{openfoam:section:blockMesh}}
+%Grösse der Zellen definieren wie genau und aufwendig die Simulation wird
+
+%\subsubsection{snappyHexMesh\label{openfoam:section:snappyHexMesh}}
+%Im dict den ort des 3d Obj und eMesh files angeben, dauert lange
+
+%\begin{itemize}
+%    \item surfaceFeatureExtract: Erstellt .eMesh datei und extrahiert alle Features des 3d Objekts für die weitere Verarbeitung.
+%    \item blockMesh: Grösse der Zellen definieren wie genau und aufwendig die Simulation wird
+%    \item snappyHexMesh: Im dict den ort des 3d Obj und eMesh files angeben, dauert lange
+%\end{itemize}
+%TODO xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.55\textwidth]{papers/openfoam/Bilder/Snappy_grob.png}
+    \caption{Mesh nach dem ersten Durchlauf von snappyHexMesh}
+    \label{fig:snappygrobbild}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.55\textwidth]{papers/openfoam/Bilder/Snappy_fein.png}
+    \caption{Mesh nach dem zweiten Durchlauf von snappyHexMesh}
+    \label{fig:snappyfeinbild}
+\end{figure}
+%-------------------------------------------------------------------------------
+\subsubsection{Parameter\label{openfoam:section:Parameter}}
+Im folgenden einen kurzen Überblick über die wichtigsten Parameter einer OpenFOAM Simulation.
+
+\subsubsection{Geometrische Parameter\label{openfoam:section:Geometrische Parameter}}
+Im blockMeshDict und snappyHexMeshDict werden die für die Erstellung der Simulationszellen notwendigen Parameter festgelegt:
+\begin{itemize}
+    \item blockMeshDict: Physischer Grenzen der Simulation, definition der Inlet und Outletflächen und die Aufteilung des Raumes in eine vorgegebene Anzahl Zellen
+    \item snappyHexMeshDict: Einbinden des 3d Objekts in die im blockMeshDict festgelegte Umgebung, hier muss der Pfad des 3d Files und .eMesh angegeben werden.
+\end{itemize}
+
+\subsubsection{Numerische Parameter\label{openfoam:section:Numerische Parameter}}
+Mit den numerischen Paramter im File \textbf{controlDict} wird unter anderem festgelegt:
+\begin{itemize}
+    \item deltaT: Zeitschritte der Simulation
+    \item endTime: Endzeit der Simulation
+    \item application: Welcher Solver zu verwenden ist
+    \item writeInterval: Nach wievielen Zeitschritte Ergebnisse gespeichert werden (\ref{fig:ordStrktSim})
+\end{itemize}
+Es ist darauf hinzuweisen, dass schnell grosse Datenmengen anfallen können, wenn das writeInterval und/oder die endTime zu gross gewählt werden
+
+\subsubsection{Konstante Parameter\label{openfoam:section:Konstante Parameter}}
+Im \textbf{constant} Ordner werden die Transport und Turbulenz Parameter gesetzt:
+\begin{itemize}
+    \item transportProperties: Welches Transportmodell verwendet wird.
+    \item turbulenceProperties: Festlegung des Simulationstyp, Reynolds-Averaged Navier-Stokes (RANS), Large Eddy Simulation (LES) oder Laminar.
+\end{itemize}
+
+\subsubsection{Anfangsbedingungen \label{openfoam:section:Anfangsbedingungen}}
+Beschreibt den Zustand im ersten Schritt der Simulation. Im \textbf{0} Ordner werden folgende Faktoren bestimmt:
+\begin{itemize}
+    \item Geschwindigkeit und Richtung \textbf{U}: Stärke und Richtungsvektoren für jede Zelle
+    \item Druckverhältnisse \textbf{p}: Skalarfeld für die Druckverteilung
+    \item Dichte $\rho$: Bei kompressiblen Fluiden nötig %can't get the rho to be fat for some reason \textbf{$\rho$} doesn't work
+    \item Turbulenzen \textbf{k, epsilon, nut}: In den Files wird die gesamte Turbulenz im Modell beschrieben.  
+\end{itemize}
+
+%-------------------------------------------------------------------------------
+\subsubsection{Simulation\label{openfoam:section:Simulation}}
+In der Simulation wird nun auf jede Zelle die in den Parameter festgelegten Gleichungen angewandt. 
+
+%TODO
+Mit den folgenden Befehlen kann eine simple Simulation mit einem Tutorial Case durchgeführt werden:
+
+%\subsubsection{Ablauf\label{openfoam:section:Ablauf}}
+\begin{enumerate}
+    \item surfaceFeatureExtract
+    \item blockMesh
+    \item snappyHexMesh
+    \item simpleFoam
+%TODO
+%unterschied linux <> windows
+    \item foamToVTK
+    \item paraFoam -touch
+
+\end{enumerate} 
+
+%Bild Ordnerstruktur_Simuliert
+%Bild vorschlag_Wind_Westen_10m_blocky?
+\begin{figure}
+    \centering
+    \includegraphics[width=0.55\textwidth]{papers/openfoam/Bilder/Ordnerstruktur_Simuliert.jpg}
+    \caption{Ordnerstruktur nach der Simulation, 0,5...60 die Zeitpunkte die in Paraview dargestellt werden können.}
+    \label{fig:ordStrktSim}
+\end{figure}
 
 
+%TODO
+\subsubsection{Postprocessing}
+%\subsection{Postprocessing\label{openfoam:section:Postprocessing}}
+TODO
+Postprocessing ist der Prozess, bei dem die Simulationsergebnisse visualisiert und analysiert werden. 
+
+%Bild vorschlag_Wind_Osten_5m oder Westen, evt interessant mehrere 5/10/15m
+darstellung
+ Paraview, navigiere zum Simulations ordner, öffne .openFOAM datei
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{papers/openfoam/Bilder/vorschlag_Wind_Westen_10m_blocky.png}
+    \caption{Buchumschlag mit den einzelnen Simulationszellen sichtbar}
+    \label{fig:vorschWindWestBlocky}
+\end{figure}
+%https://doc.openfoam.com/2306/quickstart/
+%https://www.openfoam.com/documentation/user-guide Dokumentation
