@@ -31,7 +31,7 @@ Genau diesen Übergang wollen wir nun am Beispiel eines einzelnen harmonischen O
 \vspace{1em}
 
 In der Quantenmechanik wird die Energie nicht mehr durch eine Zahl beschrieben, sondern durch einen Operator.  
-Die klassische Energieformel führt uns dabei direkt zum sogenannten \emph{Hamiltonoperator}:
+Die klassische Energieformel führt uns dabei direkt zum sogenannten \emph{Hamilton-Operator}:
 \begin{equation}
 \hat{H} = \frac{\hat{p}^2}{2m} + \frac{1}{2} k \hat{x}^2.
 \label{fourier:equation:derQMHO}
@@ -202,7 +202,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 \subsection{Einführung in Werkzeuge der Quantenmechanik\label{fourier:subsection:werkzeugeQuantenmechanik}}
 	Die bisherige Entwicklung --- von Plancks Energiepaketen über Einsteins Lichtquanten bis hin zu Schrödingers Wellenfunktion ---
 	macht deutlich, dass die Beschreibung von Ort, Impuls und Energie in der Quantenmechanik völlig neue mathematische Werkzeuge und Denkweisen erfordert.
-	Anstelle fester Teilchenbahnen treten Wahrscheinlichkeiten, Operatoren und Zustandsräume.
+	An die Stelle klassischer Teilchenbahnen treten in der Quantenmechanik Wahrscheinlichkeiten, Operatoren und Zustandsräume.
 
 	In den folgenden Abschnitten werden drei grundlegende Konzepte vorgestellt:
 	\begin{itemize}
@@ -218,58 +218,57 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 
 	Diese Konzepte sind nicht nur theoretisch relevant, sondern bilden die Grundlage für das Verständnis von Photonen, Feldern und quantisierten Schwingungen im weiteren Verlauf.
 
-\subsubsection{Bra-Ket-Notation\label{fourier:subsubsection:braKetNotation}} % todo knma: dies verständlicher formulieren und, dass man das dann als Werkzeug gebrauchen kann, um Photon zu beweisen
-	Die Bra-Ket-Notation, auch Dirac-Notation genannt, wurde von Paul Dirac eingeführt und ist heute Standard in der Quantenmechanik.
-	Sie dient dazu, Zustände und Operatoren kompakt und elegant darzustellen.
+	\subsubsection{Bra-Ket-Notation\label{fourier:subsubsection:braKetNotation}}
+		Die Bra-Ket-Notation, auch Dirac-Notation genannt, wurde von Paul Dirac eingeführt und ist heute Standard in der Quantenmechanik.
+		Sie dient dazu, Zustände und Operatoren kompakt und elegant darzustellen.
 
-	Ein \emph{Ket} $|\psi\rangle$ beschreibt den Zustand eines quantenmechanischen Systems.
-	Man kann sich Kets wie Richtungspfeile oder Vektoren vorstellen, die angeben, ``wie'' das System gerade ist;
-	z.B. mit welcher Energie, welchem Spin oder an welchem Ort sich ein Teilchen befindet.
-	Ein \emph{Bra} $\langle\psi|$ ist das zugehörige Gegenstück zum Ket.
-	Es steht symbolisch für eine Messung oder einen Test auf diesen Zustand.
-	Formal ist es das komplex-konjugierte und transponierte Objekt zum Ket.
+		Ein \emph{Ket} $|\psi\rangle$ beschreibt den Zustand eines quantenmechanischen Systems.
+		Man kann sich Kets wie Richtungspfeile oder Vektoren vorstellen, die angeben, in welchem Zustand sich das System gerade befindet ---
+		zum Beispiel mit welchem Energieeigenwert, welcher Spinquantenzahl oder an welchem Ort sich ein Teilchen befindet.	Ein \emph{Bra} $\langle\psi|$ ist das zugehörige Dualelement zum Ket.
+		Es steht symbolisch für eine Messung oder einen Test auf diesen Zustand.
+		Formal ist es das komplex-konjugierte und transponierte Objekt zum Ket.
 
-	Beispiele:
-	\begin{itemize}
-	\item $|0\rangle$ kann den Grundzustand eines Systems beschreiben.
-	\item $|x\rangle$ steht für einen Zustand, in dem sich ein Teilchen genau am Ort $x$ befindet.
-	\item Allgemeine Zustände lassen sich als Superposition (Überlagerung) schreiben, z.B.:
-	\[
-		|\psi\rangle = \alpha\,|0\rangle + \beta\,|1\rangle,
-	\]
-	wobei $\alpha$ und $\beta$ komplexe Zahlen sind.
-	\end{itemize}
+		Beispiele:
+		\begin{itemize}
+		\item $|0\rangle$ kann den Grundzustand eines Systems beschreiben.
+		\item $|x\rangle$ steht für einen Zustand, in dem sich ein Teilchen genau am Ort $x$ befindet.
+		\item Allgemeine Zustände lassen sich als Superposition (Überlagerung) schreiben, z.B.:
+		\[
+			|\psi\rangle = \alpha\,|0\rangle + \beta\,|1\rangle,
+		\]
+		wobei $\alpha$ und $\beta$ komplexe Zahlen sind.
+		\end{itemize}
 
-	Das \emph{Skalarprodukt}
-	\begin{equation}
-	\langle \varphi | \psi \rangle = \int\limits_{-\infty}^{+\infty} \varphi^*(x)\,\psi(x)\,dx,
-	\end{equation}
-	ist eine einzige (meist komplexe) Zahl, die angibt, wie ``gleich'' oder ``verschieden'' sich die beiden Zustände $|\varphi\rangle$ und $|\psi\rangle$ verhalten.
-	Man multipliziert dafür $\varphi^*(x)$ (das konjugiert-komplexe von $\varphi$) mit $\psi(x)$ und integriert über den gesamten Raum.
-	\begin{itemize}
-		\item Liegen die Zustände ``genau übereinander'', erhält man den Betrag 1 (bei Normierung).
-		\item Sind sie orthogonal, also völlig verschieden, ist das Ergebnis 0.
-	\end{itemize}
-	Kurz gesagt:
-	$\langle \varphi | \psi \rangle$ misst die Überlappung (den ``Winkel'') zwischen zwei Quantenzuständen.
+		Das \emph{Skalarprodukt}
+		\begin{equation}
+		\langle \varphi | \psi \rangle = \int\limits_{-\infty}^{+\infty} \varphi^*(x)\,\psi(x)\,dx,
+		\end{equation}
+		ist eine einzige (meist komplexe) Zahl, die angibt, wie ``gleich'' oder ``verschieden'' sich die beiden Zustände $|\varphi\rangle$ und $|\psi\rangle$ verhalten.
+		Man multipliziert dafür $\varphi^*(x)$ (das konjugiert-komplexe von $\varphi$) mit $\psi(x)$ und integriert über den gesamten Raum.
+		\begin{itemize}
+			\item Liegen die Zustände ``genau übereinander'', erhält man den Betrag 1 (bei Normierung).
+			\item Sind sie orthogonal, also völlig verschieden, ist das Ergebnis 0.
+		\end{itemize}
+		Kurz gesagt:
+		$\langle \varphi | \psi \rangle$ misst die Überlappung (den ``Winkel'') zwischen zwei Quantenzuständen.
 
-	Die \emph{Norm} eines Zustands ist einfach das Skalarprodukt mit sich selbst:
-	\begin{equation}
-	\langle \psi | \psi \rangle = \int \psi^*(x)\,\psi(x)\,dx.
-	\end{equation}
+		Die \emph{Norm} eines Zustands ist einfach das Skalarprodukt mit sich selbst:
+		\begin{equation}
+		\langle \psi | \psi \rangle = \int \psi^*(x)\,\psi(x)\,dx.
+		\end{equation}
 
-	Der \emph{Erwartungswert} eines physikalischen Operators $A$ im Zustand $|\psi\rangle$ beschreibt den durchschnittlich gemessenen Wert bei vielen Wiederholungen:
-	\begin{equation}
-	\langle A \rangle = \langle \psi | A | \psi \rangle = \int \psi^*(x)\,(A\psi)(x)\,dx.
-	\end{equation}
+		Der \emph{Erwartungswert} eines physikalischen Operators $A$ im Zustand $|\psi\rangle$ beschreibt den durchschnittlich gemessenen Wert bei vielen Wiederholungen:
+		\begin{equation}
+		\langle A \rangle = \langle \psi | A | \psi \rangle = \int \psi^*(x)\,(A\psi)(x)\,dx.
+		\end{equation}
 
-	Ist $|\psi\rangle$ ein Eigenzustand von $A$ mit einem bestimmten Eigenwert $a$, d.h.
-	\begin{equation}
-	A\,|\psi\rangle = a\,|\psi\rangle,
-	\end{equation}
-	so ergibt eine ideale Messung des Operators $A$ immer genau den Wert $a$.
+		Ist $|\psi\rangle$ ein Eigenzustand von $A$ mit einem bestimmten Eigenwert $a$, d.h.
+		\begin{equation}
+		A\,|\psi\rangle = a\,|\psi\rangle,
+		\end{equation}
+		so ergibt eine ideale Messung des Operators $A$ immer genau den Wert $a$.
 
-	Die Bra-Ket-Notation ist nicht nur kompakt, sondern macht viele Rechnungen in der Quantenmechanik übersichtlich und leicht handhabbar.
+		Die Bra-Ket-Notation ist nicht nur kompakt, sondern macht viele Rechnungen in der Quantenmechanik übersichtlich und leicht handhabbar.
 
 	\subsubsection{Heisenbergs Unschärferelation%
 	\label{fourier:subsubsection:unschaerferelation}}
@@ -330,37 +329,79 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 	Das zeigt anschaulich die Wellennatur von Teilchen:
 	Ein Teilchen, das genau lokalisiert ist, muss eine breite Wellenverteilung im Impulsraum haben.
 	Würde man das $\tfrac{1}{2}$ in der Formel weglassen, erhielte man eine vereinfachte, aber weniger präzise Darstellung des Zusammenhangs.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% todo knma: Ergänzungen anbringen
 
-\subsubsection{Hamilton-Operator und Schrödinger-Gleichung%
-\label{fourier:subsubsection:hamiltonOperatorUndSchroedinger}} 
-In diesem Abschnitt werden der Hamilton-Operator \( \hat{H} \) und die \dots Schrödinger-Gleichung als allgemeingültige Fakten vorgestellt.
-Die Eigenwerte dieser Gleichung entsprechen den Energie-Niveaus des Systems. % todo: Diese Einleitung überarbeiten.
+	Die Unschärferelation macht deutlich, dass klassische Begriffe wie ``Ort'' und ``Impuls'' in der Quantenmechanik nur noch als mittlere Werte und Streuungen auftreten können.
+	Um diese Konzepte mathematisch präzise zu fassen und weiterführende Aussagen über die Dynamik eines Systems zu treffen, bedarf es weiterer Werkzeuge ---
+	insbesondere des Hamilton-Operators und der Schrödinger-Gleichung.
 
-% todo-: Hamilton-Operator (subsection): -H, Schrödingergl., Eigenwerte sind Energie
+	% todo knma: Hier bin ich dran; --> Strukturieren, Wiederholungen vermeiden, verstänlicher
+	\subsubsection{Hamilton-Operator und Schrödinger-Gleichung%
+	\label{fourier:subsubsection:hamiltonOperatorUndSchroedinger}} 
+		Nachdem wir die grundlegende Struktur quantenmechanischer Zustände und ihre prinzipielle Unschärfe kennengelernt haben, wenden wir uns nun der Frage zu, wie sich ihre Dynamik beschreibt.
+		Zentral dafür sind der Hamilton-Operator \( \hat{H} \) und die Schrödinger-Gleichung, die die zeitliche Entwicklung und die Energie-Eigenwerte eines Systems festlegen.
 
-% TODO
-% Ich denke, Sie brauchen in dem Abschnitt über die Werkzeuge, noch einen Unterabschnitt über Hamilton-Operator und Schrödinger-Gleichung.
-% Diese brauchen Sie ja dann auf Seite 265 und 266.
-% Sie könnten in 18.4.3 den H-Operator und die Schrödinger-Gleichung darstellen und auch die Tatsache, dass die Eigenwerte die Energie-Niveaus sind.
-% Dies sind ja Aussagen, die ganz allgemein sind.
-% In 18.4.4 können Sie dann spezialisieren auf den Fall des harmonischen Oszillators.
-% Im Moment versuchen Sie alles in 18.4.4 "aufs Mal" zu machen, das ist etwas viel gleichzeitig für den Leser.
-% Ein solcher Unterabschnitt macht dem Leser auch klar, dass Sie er diese Dinge als "Fakten" akzeptieren muss, während Sie in späteren Abschnitten (in 18.4.4) dann daraus etwas ableiten.
-% Sie stellen damit sicher, dass der Leser nicht dadurch blockiert wird, dass er meint, er müsse verstehen, woher der Hamilton-Operator kommt.
-% Er muss ihn nur akzeptieren.
-% Erst in 18.4.4 muss er dann wieder verstehen, wie sie diese Vertauschungsrelationen für a und a^+ bekommen.
-% Er liest also 18.4.3 und 18.4.4 mit einem anderen "Mindset".
-Die klassische Hamilton-Funktion
-\begin{equation}
-	H(x, p) = T(p) + V(x) = \frac{p^2}{2m} + V(x),
-\end{equation}
-beschreibt die Gesamtenergie eines Systems.
-Hierbei stellt $T(p)$ die kinetische Energie und $V(x)$ die potenzielle Energie des Teilchens dar.
+		Im Kapitel~\ref{fourier:subsection:derQMHarmonischeOszillator} wurde der Hamilton-Operator bereits im Zusammenhang mit dem harmonischen Oszillator eingeführt.
+		Die entsprechende Formel findet sich in Gleichung~\ref{fourier:equation:derQMHO} abgebildet.
+		In diesem Abschnitt soll der Hamilton-Operator nun losgelöst von diesem Spezialfall als zentrales Werkzeug der Quantenmechanik betrachtet werden.
+		
+		Der Hamilton-Operator \( \hat{H} \) spielt eine doppelte Rolle:
+		\begin{itemize}
+		\item Einerseits beschreibt er — wie in der klassischen Physik — die Gesamtenergie des Systems (kinetisch und potenziell).
+		\item Andererseits steuert er die zeitliche Entwicklung des Systems über die Schrödinger-Gleichung.
+		\end{itemize}
+
+		Damit ist \( \hat{H} \) weit mehr als ein Energie-Ausdruck: Er ist das zentrale Bindeglied zwischen Struktur und Dynamik in der Quantenmechanik. Im Folgenden wird der Übergang von der klassischen zur quantenmechanischen Beschreibung systematisch beschrieben.
 
 
-%%% todo knma: here: Dieser Abschnitt ist in Überarbeitung
+
+	Der Hamilton-Operator
+	\begin{equation}\label{fourier:equation:hamiltonOperator}
+		\hat{H} = \frac{\hat p^2}{2m} + V(\hat{x})
+		\quad\longrightarrow\quad
+		\hat{H} = -\frac{\hbar^2}{2m}\,\frac{\mathrm{d}^2}{\mathrm{d}x^2} + V(x)
+	\end{equation}
+	ist in der Quantenmechanik der Operator, der die gesamte Energie eines Systems (kinetische plus potentielle Energie) darstellt.
+	Er taucht in beiden Formen der Schrödinger-Gleichung auf und verbindet damit die energetische Beschreibung des Systems mit seiner zeitlichen Entwicklung.
+	% todo: impulsoperator erklären.
+
+	In Gleichung~\ref{fourier:equation:zeitabhaengigeSchroedingerGleichung} wurde bereits die zeitabhängige Schrödinger-Gleichung präsentiert. % todo: mal nur platziert wegen Referenz
+
+	%%% maybe todo: add some stuff of book quantum mechanics to glue things together
+
+	Durch Schrödinger wird der Impuls p durch
+	\begin{equation}
+		\frac{\hbar}{i} \frac{\partial}{\partial x}
+	\end{equation}
+	ersetzt.
+	Wodurch der Hamilton-Operator
+	\begin{equation}
+		\hat{H} = -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2} + V(x)
+	\end{equation}	
+	resultiert.
+
+	Der Erwartungswert des Impulses in einem Zustand $|\psi\rangle$ lässt sich schreiben als:
+	\begin{equation}
+		E(p) = \int \bar{\psi}p\psi dx
+		= \int \bar{\psi} \frac{\hbar}{i} \frac{d\psi}{dx} dx
+		= \langle \psi | p | \psi \rangle
+	\end{equation}
+	Er gibt an, welcher mittlere Impuls gemessen wird, wenn sich das System im Zustand $|\psi\rangle$ befindet.
+
+	Nach Heisenbergs Unschärferelation (siehe Abschnitt~\ref{fourier:subsubsection:unschaerferelation}) gilt in der Quantenmechanik, dass die Vertauschung der Impuls- und Ortsoperatoren nicht null ist, also
+	\begin{equation}
+		px \neq xp.
+	\end{equation}
+	Die Vertauschungsrelation kann als
+	\begin{equation}
+		[x, p] = \hbar \text{id}
+	\end{equation}
+	geschrieben werden.
+
+
+
+%%% Vorschlag; einbetten / loeschen
+------------------------------------------------ % todo delete
+
 In der Quantenmechanik gelingt der Übergang von der klassischen Hamilton-Funktion zum Hamilton-Operator $\hat H$ durch das sogenannte Korrespondenzprinzip beziehungsweise kanonische Quantisierung.
 Die wesentlichen Schritte sind:
 \begin{itemize}
@@ -425,7 +466,11 @@ Die Vertauschungsrelation kann als
 \end{equation}
 geschrieben werden.
 
-\subsection{Leiteroperatoren\label{fourier:subsection:Leiteroperatoren}} % todo-: Besserer Titel; unpassende Wortwahl
+
+		Im nächsten Abschnitt wird dieser formal eingeführte Hamilton-Operator konkret für den harmonischen Oszillator untersucht.
+		Dabei zeigen sogenannte Leiteroperatoren eine elegante Methode, das Eigenwertproblem zu lösen — ganz ohne explizite Differentialgleichung.
+
+	\subsection{Leiteroperatoren\label{fourier:subsection:Leiteroperatoren}} % todo-: Besserer Titel; unpassende Wortwahl
 In diesem Abschnitt verwenden wir die bisher eingeführten Grundlagen der Quantenmechanik, um zu zeigen, dass Licht nicht kontinuierlich, sondern in kleinsten Energiepaketen, sogenannten Photonen, übertragen wird.
 
 %%%%%%%%%%%%%%%%%%%%% dieser Abschnitt nötig/ an anderem Ort einfügen
@@ -440,7 +485,7 @@ In diesem Abschnitt verwenden wir die bisher eingeführten Grundlagen der Quante
 % todo: some text
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Um nun den Beweis für das Photon zu führen, betrachten wir den harmonischen Oszillator (Abschnitt~\ref{fourier:subsection:derHarmonischeOszillator}).
+Um nun den Beweis für das Photon zu führen, betrachten wir den harmonischen Oszillator (Abschnitt~\ref{fourier:subsection:derQMHarmonischeOszillator}).
 Hierfür führen wir dimensionslose Operatoren ein:
 \[ 
 Q = \sqrt{\frac{m\omega}{\hbar}}x
