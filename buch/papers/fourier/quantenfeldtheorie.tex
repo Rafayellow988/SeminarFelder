@@ -13,8 +13,68 @@ Ein Quant ist ein kleinst mögliches Teilchen und Quantisierung bedeutet nichts 
 In der Quantenfeldtheorie ist genau dieser Schritt von zentraler Bedeutung, denn nun ist alles zählbar. 
 Dabei werden klassische Felder wie das elektromagnetische Feld in quantenmechanische Operatoren überführt, wodurch die zuvor kontinuierlichen Felder plötzlich aus einer endlichen Menge von Quanten bestehen.
 
-Im Folgenden ein geschichtlicher Exkurs, wie es dazu kam. 
+\subsection{Der quantenmechanische harmonische Oszillator\label{fourier:subsection:derQMHarmonischeOszillator}}
+	Im Kapitel~\ref{fourier:section:derKlassischeHarmonischeOszillator} wurde der klassische harmonische Oszillator behandelt.  
+	Im klassischen Fall wird der Zustand des Systems durch Zahlen beschrieben.  
+	Die Energieniveaus sind dabei kontinuierlich.  
+	Die klassische Energieformel des harmonischen Oszillators, siehe Gleichung~\ref{fourier:equation:derKlassischeHarmonischeOszillator}, bildet die Grundlage für die Quantisierung.
 
+	In der Quantenmechanik wird die Energie nicht mehr durch eine Zahl beschrieben, sondern durch einen Operator.  
+	Der klassische Ausdruck für die Energie geht deshalb in den sogenannten Hamiltonoperator über:  
+	\begin{equation}
+		\hat{H} = \frac{\hat{p}^2}{2m} + \frac{1}{2} k \hat{x}^2.
+		\label{fourier:equation:derQMHO}
+	\end{equation}
+	Physikalisch messbare Größen (Observablen) sind nun Operatoren auf einem sogenannten Hilbertraum
+	--- einem Raum, der alle möglichen quantenmechanischen Zustände enthält.
+	Die möglichen Energieeigenwerte ergeben dadurch ein diskretes Spektrum.
+
+	
+	% todo: merge these paragraphs or delete one
+	Der harmonische Oszillator spielt auch in der Quantenphysik eine Schlüsselrolle.  
+	Ein besonders anschauliches Beispiel ist das Licht: Elektromagnetische Felder lassen sich als Überlagerungen quantisierter harmonischer Oszillatoren beschreiben.  
+	Jede Modenfrequenz entspricht einem solchen quantisierten Oszillator, dessen Energie nur in Vielfachen von \( \hbar \cdot \omega \) vorkommt.  
+	Die Zustände des Feldes — sogenannte Photonenzahlenzustände — entsprechen den Schwingungszuständen dieser Oszillatoren.  
+	Diese Quantisierung erklärt, warum Licht nicht kontinuierlich, sondern in diskreten Paketen (Photonen) emittiert und absorbiert wird.
+
+	Der harmonische Oszillator spielt eine zentrale Rolle in der Quantenphysik.  
+	Ein besonders wichtiges Beispiel ist das Licht: Elektromagnetische Felder lassen sich als Überlagerungen quantisierter harmonischer Oszillatoren beschreiben.  
+	Jede Modenfrequenz des Feldes entspricht einem quantisierten Oszillator, dessen Energie nur in Vielfachen von \( \hbar \cdot \omega \) vorkommt.  
+	Die Zustände des Feldes — sogenannte Photonenzahlenzustände — entsprechen den Schwingungszuständen dieser Oszillatoren.  
+	Diese Quantisierung erklärt, warum Licht nicht kontinuierlich, sondern in diskreten Paketen (Photonen) emittiert und absorbiert wird.
+
+	Die Verbindung zum harmonischen Oszillator zeigt sich auch mathematisch in der Wellengleichung.  
+	Diese lautet in zwei Raumdimensionen:
+	\begin{equation}
+	\frac{\partial^2 u}{\partial t^2} = c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right).
+	\end{equation}
+	Dabei beschreibt \( u \) die Feldamplitude.  
+	Wird der \( y \)-Anteil als konstant angenommen, verschwinden die Ableitungen nach \( y \), und es bleibt die eindimensionale Wellengleichung:
+	\begin{equation}
+	\frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}.
+	\end{equation}
+	Löst man diese mit Hilfe einer Fourierzerlegung, so erhält man für jeden Modus eine Gleichung der Form:
+	\begin{equation}
+	\ddot{a}(t) = -k^2 a(t),
+	\end{equation}
+	wobei \( a(t) \) ein zeitabhängiger Fourier-Koeffizient des elektromagnetischen Feldes ist.  
+	Diese Gleichung beschreibt genau einen harmonischen Oszillator mit Frequenz \( \omega = k c \).  
+	Die entsprechende Lösung hat die Form:
+	\begin{equation}
+	u(t,x) = a_k(t) e^{ikx}.
+	\end{equation}
+	Der komplexe Ausdruck \( e^{ikx} \) ist mathematisch eleganter und wird häufig in theoretischen Darstellungen verwendet.  
+	Er enthält sowohl die Sinus- als auch die Kosinus-Anteile der Schwingung.  
+	Die Gleichung ist formal analog zur Bewegungsgleichung eines Federpendels.  
+	Es handelt sich hier um ein quantenmechanisches Federpendel.
+
+	Im quantenmechanischen Fall sind die Energien des Oszillators quantisiert.  
+	Der Oszillator kann nur auf bestimmten Energieleveln schwingen.  
+	Diese Niveaus sind gleichmäßig verteilt — der Abstand zwischen zwei benachbarten Zuständen beträgt stets \( \hbar \cdot \omega \).  
+	Die Energie des Oszillators ist also nicht beliebig, sondern gezählt.
+
+Wie kam es eigentlich dazu, dass man physikalische Größen plötzlich als „quantisiert“ betrachtete?  
+Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 
 \subsection{Die Idee der Quantisierung\label{fourier:subsection:DieIdeeDerQuantisierung}}
 	Mit 16 Jahren fragte Max Planck seinen Professor, ob sich ein Studium in der Physik lohne. 
@@ -150,65 +210,6 @@ Im Folgenden ein geschichtlicher Exkurs, wie es dazu kam.
 	Nicht das Teilchen ist grundlegend, sondern das Feld und was wir beobachten, sind nur dessen kleinste Schwingungen.
 	
 	So wird aus der Quantenmechanik eine Feldtheorie.
-	
-
-\subsection{Der quantenmechanische harmonische Oszillator\label{fourier:subsection:derQMHarmonischeOszillator}}
-	Im Kapitel~\ref{fourier:section:derKlassischeHarmonischeOszillator} wurde der klassische harmonische Oszillator behandelt.  
-	Im klassischen Fall wird der Zustand des Systems durch Zahlen beschrieben.  
-	Die Energieniveaus sind dabei kontinuierlich.  
-	Die klassische Energieformel des harmonischen Oszillators, siehe Gleichung~\ref{fourier:equation:derKlassischeHarmonischeOszillator}, bildet die Grundlage für die Quantisierung.
-
-	In der Quantenmechanik wird die Energie nicht mehr durch eine Zahl beschrieben, sondern durch einen Operator.  
-	Der klassische Ausdruck für die Energie geht deshalb in den sogenannten Hamiltonoperator über:  
-	\begin{equation}
-		\hat{H} = \frac{\hat{p}^2}{2m} + \frac{1}{2} k \hat{x}^2.
-		\label{fourier:equation:derQMHO}
-	\end{equation}
-	Physikalisch messbare Größen (Observablen) sind nun Operatoren auf einem Hilbertraum.  
-	Die möglichen Energieeigenwerte ergeben dadurch ein diskretes Spektrum.
-	
-	Der harmonische Oszillator spielt eine zentrale Rolle in der Quantenphysik.  
-	In der Quantenelektrodynamik werden elektromagnetische Felder als Überlagerungen quantisierter harmonischer Oszillatoren beschrieben.  
-	Jede Modenfrequenz des Feldes entspricht einem quantisierten Oszillator, dessen Energie nur in Vielfachen von \( \hbar \cdot \omega \) vorkommt.  
-	Die Zustände des Feldes – sogenannte Photonenzahlenzustände – entsprechen den Schwingungszuständen dieser Oszillatoren.  
-	Diese Quantisierung erklärt, warum Licht nicht kontinuierlich, sondern in diskreten Paketen (Photonen) emittiert und absorbiert wird.
-	
-	Die Verbindung zum harmonischen Oszillator lässt sich auch mathematisch aus der Wellengleichung ableiten.  
-	Diese lautet in zwei Raumdimensionen:
-	\begin{equation}
-	\frac{\partial^2 u}{\partial t^2} = c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right).
-	\end{equation}
-	Dabei beschreibt \( u \) die Feldamplitude.  
-	Wird der \( y \)-Anteil als konstant angenommen, verschwinden die Ableitungen nach \( y \), und es bleibt die eindimensionale Wellengleichung:
-	\begin{equation}
-	\frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}.
-	\end{equation}
-	Löst man diese mit Hilfe einer Fourierzerlegung, so erhält man für jeden Modus eine Gleichung der Form:
-	\begin{equation}
-	\ddot{a}(t) = -k^2 a(t),
-	\end{equation}
-	wobei \( a(t) \) ein zeitabhängiger Fourier-Koeffizient des elektromagnetischen Feldes ist.  
-	Diese Gleichung beschreibt genau einen harmonischen Oszillator mit Frequenz \( \omega = k c \).  
-	Die entsprechende Lösung hat die Form:
-	\begin{equation}
-	u(t,x) = a_k(t) \cos(kx).
-	\end{equation}
-	Die Gleichung ist formal analog zur Gleichung eines Federpendels.  
-	Es handelt sich hier um ein quantenmechanisches Federpendel.
-
-
-
-	% Besser sin verwenden --> besser e^ikx verwenden; Überlegen, ob wir komplex arbeiten möchten
-	% In Präsentation mit cos und im Paper mit e^ikx
-
-
-	% Gutes Video, welches den harmonischen Oszillator erklärt.
-	%       https://www.youtube.com/watch?v=5P19hROy9vk
-	% quantenmechanik: Energie ist auch Quantisiert;
-	% Oszillator kann nur auf bestimmten Leveln schwingen.
-	% Energielevel haben dieselben Abstände (quadratischer Brunnen)
-
-	% further theory: https://www.youtube.com/watch?v=OdizRUe84bg&list=PL8W2boV7eVfmdWs3CsaGfoITHURXvHOGm
 
 \subsection{Einführung in Werkzeuge der Quantenmechanik\label{fourier:subsection:werkzeugeQuantenmechanik}}
 	Für die Erklärung von Photonen sind einige Werkzeuge der Quantenmechanik nützlich, welche nachfolgend kurz eingeführt werden.
