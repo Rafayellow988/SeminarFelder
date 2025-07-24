@@ -94,12 +94,37 @@ Den Faraday-Tensor haben wir definiert als
 		0 & -E_1/c & -E_2/c & -E_3/c \\ E_1/c & 0 & B_3 & -B_2 \\ E_2/c & -B_3 & 0 & B_1 \\ E_3/c & B_2 & -B_1 & 0 
 	\end{pmatrix}.
 \end{equation}
+Wir haben dabei festgestellt, dass die äussere Ableitung von $F$ verschwindet, da $F$ eine geschlossene 2-Form ist. Dadurch haben wir die homogenen Maxwell-Gleichungen erhalten. 
+%Um nun die inhomogenen Maxwell-Gleichungen bestimmen zu können, müssen wir den Hodge-Operator auf $F$ anwenden.
 
+Um nun die inhomogenen Maxwell-Gleichungen bestimmen zu können, benötigen wir eine art Verallgemeinerung der Divergenz, die das Quellenverhalten des Faraday-Tensors misst. Hierfür eignet sich das Kodifferential
+\begin{equation*}
+	\delta = \ast d \ast.
+\end{equation*}
+Aus den klassischen inhomogenen Maxwell-Gleichungen
+\begin{align}
+	\nabla \cdot \vec{E} &= \frac{\rho}{\varepsilon_0},\\
+	\nabla \times \vec{B} &= \mu_0 \vec{J} + \varepsilon_0 \mu_0 \frac{\partial \vec{E}}{\partial t}
+\end{align}
+(schöner machen: nebeneinander und ein 'und' dazwischen oder so)
+sehen wir, dass die Teile, welche nicht $\vec{E}$ und $\vec{B}$ enthalten, die Ladungsdichte $\rho$ und Stromdichte $\vec{J}$ sind.
+
+Wir erinnern uns, dass $F$ ausgeschrieben mit Wedgeprodukten definiert ist als
+\begin{align*}
+	F = 
+	& - \frac{E_{1}}{c} \, dx^0 \wedge dx^1 - \frac{E_{2}}{c} \, dx^0 \wedge dx^2 - \frac{E_{3}}{c} \, dx^0 \wedge dx^3 \\
+	& + B_3 \, dx^1 \wedge dx^2 - B_2 \, dx^1 \wedge dx^3 + B_1 \, dx^2 \wedge dx^3.
+\end{align*}
+Zuerst wenden wir den Hodge-Operator auf $F$ an und erhalten
 \begin{align*}
 	\ast F =
 	& - \frac{E_{1}}{c} \, \ast(dx^0 \wedge dx^1) - \frac{E_{2}}{c} \, \ast(dx^0 \wedge dx^2) - \frac{E_{3}}{c} \, \ast(dx^0 \wedge dx^3) \\
-	& + B_3 \, \ast(dx^1 \wedge dx^2) - B_2 \, \ast(dx^1 \wedge dx^3) + B_1 \, \ast(dx^2 \wedge dx^3)\\
-	= 
+	& + B_3 \, \ast(dx^1 \wedge dx^2) - B_2 \, \ast(dx^1 \wedge dx^3) + B_1 \, \ast(dx^2 \wedge dx^3).
+\end{align*}
+Der Hodge-Operator bildet eine $k$-Form auf eine $(n-k)$-Form ab und somit wird aus $\ast F$ wieder eine 2-Form.
+Die Hodge-Duale können aus der Tabelle (VERWEISEN!) entnommen werden.
+\begin{align*}
+	\ast F =
 	& \, \frac{E_{1}}{c} \, dx^2 \wedge dx^3 - \frac{E_{2}}{c} \, dx^1 \wedge dx^3 + \frac{E_{3}}{c} \, dx^1 \wedge dx^2 \\
 	& + B_3 \, dx^0 \wedge dx^3 + B_2 \, dx^0 \wedge dx^2 + B_1 \, dx^0 \wedge dx^1.\\
 \end{align*}
@@ -110,7 +135,8 @@ Die erhaltene 2-Form kann nun wieder als Matrix
 	\end{pmatrix}
 	%	\label{maxwell:section:teil1:metrik}
 \end{equation}
-geschrieben werden.
+(Frage: diesen Satz weglassen? ist für weitere Berechung irrelevant) geschrieben werden.
+
 Nun wenden wir die äussere Ableitung darauf an und erhalten
 
 \begin{align*}
@@ -159,14 +185,6 @@ Damit wir nun wieder auf etwas physikalisch Sinnvolles kommen, ersetzen wir alle
 	&\left( -\frac{1}{c^2}\frac{\partial E_2}{\partial t} + \frac{\partial B_1}{\partial z} - \frac{\partial B_3}{\partial x} \right) dy +
 	\left( -\frac{1}{c^2}\frac{\partial E_3}{\partial t} - \frac{\partial B_1}{\partial y} + \frac{\partial B_2}{\partial x} \right) dz.
 \end{align*}
-
-\begin{align*}
-	\ast d \ast F = 
-	&\left( -\frac{\partial E_1}{\partial x} -\frac{\partial E_2}{\partial y} - \frac{\partial E_3}{\partial z} \right) dt +
-	\left(-\frac{1}{c^2}\frac{\partial E_1}{\partial t} - \frac{\partial B_2}{\partial z} + \frac{\partial B_3}{\partial y} \right) dx\\
-	&\left( -\frac{1}{c^2}\frac{\partial E_2}{\partial t} + \frac{\partial B_1}{\partial z} - \frac{\partial B_3}{\partial x} \right) dy +
-	\left( -\frac{1}{c^2}\frac{\partial E_3}{\partial t} - \frac{\partial B_1}{\partial y} + \frac{\partial B_2}{\partial x} \right) dz.
-\end{align*}
 Damit wir nun den erhaltenen Ausdruck auch interpretieren können definieren wir die Viererstromdichte als
 \begin{equation}
 	J = -c\rho dx^0 + J_1 dx^1 + J_2 dx^2 +J_3 dx^3.
@@ -199,7 +217,7 @@ diese Gleichung lässt sich, sofern man eine kartesische Raumstruktur wählt, in
 \end{equation}
 umschreiben.
 
-Vergleichen wir nun die anderen Komponenten $dx,dy,dz$ von beiden Seiten erhalten wir die drei Gleichungen
+Betrachten wir nun die restlichen Teile der Gleichung $\ast d \ast F = \mu_0 J,$ ergeben sich durch Vergleich der Koeffizienten von $dx,dy,dz$ die drei Gleichungen
 \begin{equation}
 	-\frac{1}{c^2}\frac{\partial E_1}{\partial t} - \frac{\partial B_2}{\partial z} + \frac{\partial B_3}{\partial y} = \mu_0 J_1
 \end{equation}
