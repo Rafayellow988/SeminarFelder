@@ -17,7 +17,7 @@
 Gewöhnliche Differentialgleichungen sind berühmt berüchtigt schwierig zu lösen.
 Schlimmer geht es immer.
 Partielle Differenzialgleichungen enthaltet Ableitungen nach mehreren Variabeln.
-In diesem Abschnitt vereinfachen wir eine Partielle, mithilfe der Fourierreihe, in eine Gewöhnliche.
+In diesem Abschnitt vereinfachen wir eine partielle Differentialgleichung, mithilfe der Fourierreihe, in eine Gewöhnliche.
 Alle Ableitungen sollten schlussendlich den identischen Nenner besitzen. 
 Im unteren Beispiel wäre das die Zeit $\partial t$.
 Als partielle Differentialgleichung verwenden wir die eindimensionale Wellengleichung mit der Lichtgeschwindigkeit als Ausbreitungsgeschwindigkeit. 
@@ -34,7 +34,9 @@ Neu besteht $u(x, t)$ aus einer unendlichen Anzahl von Schwingungen:
 	u(x,t) = \frac{a_0(t)}{2} + \sum_{n=1}^{\infty} \left( a_n(t) \cos(n \omega x) + b_n(t) \sin(n \omega x) \right)
 \end{equation}
 
-Alle Fourier Koeffizienten $a_0(t)$, $a_n(t)$ und $b_n(t)$ sind neu von der Zeit abhängig. 
+Alle drei Fourier Koeffizienten erhält man durch die integral-Rechnungen im Abschnitt \ref{fourier:section:GrundlagenFourierAnalyse}. 
+Da das Ziel ist, $x$ zu eliminieren, integriert man über eine Periode nach $x$.
+Somit entstehen Fourier-Koeffizienten, die von $t$ abhängig sind. 
 Nun wird $u(x,t)$ in seiner Summenform in die Wellengleichung eingebaut. 
 Dazu muss $u(x,t)$ je zwei Mal nach $t$ und $x$ abgeleitet werden:
 
@@ -43,7 +45,7 @@ Dazu muss $u(x,t)$ je zwei Mal nach $t$ und $x$ abgeleitet werden:
 \end{equation}
 
 \begin{equation}
-	\frac{\partial^2 u(x,t)}{\partial x^2} = \sum_{n=1}^{\infty} \left( -a_n(t) n^2 \omega^2 \cos(n \omega t) - b_n(t) n^2 \omega^2 \sin(n \omega t) \right)
+	\frac{\partial^2 u(x,t)}{\partial x^2} = \sum_{n=1}^{\infty} \left( -a_n(t) n^2 \omega^2 \cos(n \omega x) - b_n(t) n^2 \omega^2 \sin(n \omega x) \right)
 \end{equation}
 
 
@@ -56,7 +58,7 @@ Die Resultate können jetzt in die Wellengleichung einsetzt werden.
 
 
 \begin{multline}
-	\frac{1}{2}\frac{d^2 a_0(t)}{dt^2}
+	\frac{1}{2}\frac{\partial^2 a_0(t)}{dt^2}
 	+ \sum_{n=1}^{\infty}\Bigl(
 	\frac{d^2 a_n(t)}{dt^2}\cos(n\omega x)
 	+ \frac{d^2 b_n(t)}{dt^2}\sin(n\omega x)
@@ -89,23 +91,28 @@ So entstehen folgende drei Gleichungen:
 	-b_n(t)\,n^2\omega^2\sin(n\omega x)
 \end{equation}
 
-Der variable Mittelwert $a_0(t)$ kann somit gleich Null gesetzt werden.
-Die Gleichungen mit $a_n(t)$ und $b_n(t)$ besitzen beidseitig dasselbe Summenzeichen, daher gilt die Gleichung für jedes $n$. 
+
+Die zweite Ableitung des Mittelwerts $a_0(t)$ ist 0, somit ist $a_0(t)$ eine Gerade, eine Konstante oder 0. Also ist $a_0(t)$ von der Form $a_0(t)=C_1 t + C_2$. 
+$C_1$ und $C_2$ sind Integrationskonstanten.
+
+
+
+Die Gleichungen mit $a_n(t)$ und $b_n(t)$ kann man wiederrum mit einem Koefizientenvergleich lösen, diesmal jedoch über eine unendliche Summe! Man endet mit einer unendlichen anzahl von Gleichungen für jede Frequenz. Da sie alle dieselbe Form haben, bleibt man mit der schreibweise mit $n$.
 Zudem sind die $\cos(n\omega x)$ und $\sin(n\omega x)$ zu kürzen. 
-Somit entstehen folgende zwei Gleichungen:
+Somit entstehen folgende zwei gewöhnliche Differentialgleichungen:
 
 \begin{equation}
 	\frac{d^2}{dt^2} a_n(t) + a_n(t) n^2 \omega^2 c^2 = 0
 	  \quad   \text{und} \quad  \frac{d^2}{dt^2} b_n(t) + b_n(t) n^2 \omega^2 c^2 = 0
 \end{equation}
 
-Wenn man im Physik unterricht aufgepasst hat, sollte einem diese Form bekannt vorkommen. Die Differentialgleichung einem ungedämpften Federpendels besitzt dieselbe Form. 
+Falls man im Physik unterricht aufgepasst hat, sollte einem diese Form bekannt vorkommen. Die Differentialgleichung einem ungedämpften Federpendels besitzt dieselbe Form. 
 
 \begin{equation}
 	\frac{d^2}{dt^2} x(t) + x(t) \omega^2  = 0
 \end{equation}
 
-Die lösung von dieser DGL ist einfach eine ungedämpfte schwingung der Form 
+Die lösung von dieser Gleichung ist einfach eine ungedämpfte schwingung der Form 
 
 \begin{equation}
 x(t) = A \cos(\omega t) + B \sin(\omega t) \quad \text{oder} \quad x(t) = C \cos(\omega t - \varphi)
@@ -116,11 +123,12 @@ Dieses Resultat beschreib mit welcher Frequenz und Amplitude eine Masse an einer
 Könnte man nun dasselbe mit der resultierenden Lösung der Wellengleichung machen?
 Das Resultat wäre eine unendliche Anzahl von Felderpendeln, da $n$ für jede natürliche Zahl steht. 
 Die Kreisfrequenz wäre  $n \omega c$. 
-Dies macht mathematisch Sinn, physikalisch müsste man sich jedoch fragen, was genau hin und her pendelt und ob eine unendliche Frequenz Sinn macht.
+Dies macht mathematisch Sinn, physikalisch müsste man sich jedoch fragen, was genau hin und her pendelt und ob eine unendliche Frequenz möglich ist.
 
 
-In diesem Kapitel wurde die Thematik stark vereinfacht dargestellt. 
-Anstelle eines dreidimensionales Feldes $u(x,y,z,t)$ wurde lediglich eine eindimensionale Funktion $u(x,t)$ betrachtet. Die Fourier-Reihe lässt sich zwar auch auf mehrdimensionale Felder anwenden, der damit verbundene mathematische Aufwand ist jedoch deutlich höher. 
+
+In diesem Kapitel wurde die Thematik vereinfacht dargestellt. 
+Anstelle eines dreidimensionales Feldes $u(x,y,z,t)$ wurde lediglich eine eindimensionale Funktion $u(x,t)$ betrachtet. Die Fourier-Reihe lässt sich auch auf mehrdimensionale Felder anwenden, der damit verbundene mathematische Aufwand ist jedoch höher. 
 
 
 

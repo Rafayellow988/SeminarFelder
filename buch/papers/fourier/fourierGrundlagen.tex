@@ -22,16 +22,17 @@ Um die Reihe aufzustellen, braucht man nur drei Arten von Koeffizienten zu besti
 		a_0 = \frac{1}{T} \int_{t_0}^{t_0 + T} f(t) \, dt
 	\end{equation}
 	
-	\item Die $a_n$ definieren den geraden Anteil der Funktion:
+	\item Die $a_n$ definieren den geraden Anteil der Funktion. $\omega$ ist die Kreisfrequenz und ist definiert mit $\omega = 2\pi f$. 
+	$n$ ist der Summations- oder Frequenzindex, später wird eine Summe über $n$ gebildet.
 	
 	\begin{equation}
-		a_n = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t) \cos\left(\frac{2\pi n t}{T}\right) dt
+		a_n = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t) \cos\left(n\omega t\right) dt
 	\end{equation}
 	
 	\item Die $b_n$ definieren den ungeraden Anteil der Funktion:
 	
 	\begin{equation}
-		b_n = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t) \sin\left(\frac{2\pi n t}{T}\right) dt
+		b_n = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t) \sin\left(n\omega t\right) dt
 	\end{equation}
 	
 \end{itemize}
@@ -46,7 +47,7 @@ Das ist die Fourier-Reihe:
 
 
 \begin{equation}
-f(t) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left( a_n \cos\left( \frac{2\pi n}{T} t \right) + b_n \sin\left( \frac{2\pi n}{T} t \right) \right)
+f(t) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left( a_n \cos\left( n\omega t \right) + b_n \sin\left( n \omega t \right) \right)
 \end{equation}
 
 
