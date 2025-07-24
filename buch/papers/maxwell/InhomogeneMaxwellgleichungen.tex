@@ -101,13 +101,29 @@ Um nun die inhomogenen Maxwell-Gleichungen bestimmen zu können, benötigen wir 
 \begin{equation*}
 	\delta = \ast d \ast.
 \end{equation*}
+%Diese Operation erlaubt es, quellenartige Beiträge geometrisch zu erfassen.
 Aus den klassischen inhomogenen Maxwell-Gleichungen
 \begin{align}
 	\nabla \cdot \vec{E} &= \frac{\rho}{\varepsilon_0},\\
-	\nabla \times \vec{B} &= \mu_0 \vec{J} + \varepsilon_0 \mu_0 \frac{\partial \vec{E}}{\partial t}
+	\nabla \times \vec{B} - \varepsilon_0 \mu_0 \frac{\partial \vec{E}}{\partial t}&= \mu_0 \vec{J}
 \end{align}
 (schöner machen: nebeneinander und ein 'und' dazwischen oder so)
-sehen wir, dass die Teile, welche nicht $\vec{E}$ und $\vec{B}$ enthalten, die Ladungsdichte $\rho$ und Stromdichte $\vec{J}$ sind.
+sehen wir, dass auf der rechten Seite Quellenterme in Form von Ladungs- und Stromdichten auftreten.
+Da wir im Faraday-Tensor die elektrische Feldstärke $\vec{E}$ und magnetischen Flussdichte $\vec{B}$ integriert haben, wenden wir das Kodifferential auf $F$ an und schauen, ob die obigen Operationen in der Sprache der Differentialformen herauskommen.
+In diesem Fall wissen wir bereits, dass diese Operation wegen der Inhomogenität nicht verschwindet.
+Es liegt daher nahe auch $\rho$ und $\vec{J}$ zu einem einzigen geometrischen Objekt zusammenzufassen, weil beides Quellenterme sind.
+Damit wir wissen, welche geometrische Form dieses Objekt haben soll, betrachten wir, was die Operation 
+\begin{equation*}
+	\delta F = \ast d\ast F
+\end{equation*}
+für eine Form hat.
+Der Hodge-Operator bildet eine $k$-Form auf eine $(n-k)$-Form ab.
+Wir befinden uns in 4 Dimensionen und somit wird aus $\ast F$ wieder eine 2-Form.
+Anwendung der äusseren Ableitung erhöht den Grad um eins und ergibt somit eine 3-Form.
+Durch erneutes Anwenden des Hodge-Operators entsteht schlussendlich eine 1-Form.
+Folglich muss das geometrische Objekt, welches die Ladungs- und Stromdichte enthält, auch eine 1-Form sein.
+
+%dass die Teile, welche nicht $\vec{E}$ und $\vec{B}$ enthalten, die Ladungsdichte $\rho$ und Stromdichte $\vec{J}$ sind.
 
 Wir erinnern uns, dass $F$ ausgeschrieben mit Wedgeprodukten definiert ist als
 \begin{align*}
