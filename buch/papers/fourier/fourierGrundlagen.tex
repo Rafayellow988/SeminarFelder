@@ -15,11 +15,12 @@ Mit der Fourier-Reihe lassen sich periodisch wiederholende Funktionen, wie ein R
 Um die Reihe aufzustellen, braucht man nur drei Arten von Koeffizienten zu bestimmen. 
 
 \begin{itemize}
-	\item $a_0$ ist der Mittelwert, der Funktion. 
-	Dieser entspricht dem Integral über eine Periode und schliesslich geteilt durch die Periode: 
+	\item $\frac{a_0}{2}$ ist der Mittelwert, der Funktion. 
+	$a_0$ entspricht dem Integral über eine Periode und schliesslich geteilt durch die Periode.
+	Die multiplikation mit 2 ist reine Konvention.
 	
 	\begin{equation}
-		a_0 = \frac{1}{T} \int_{t_0}^{t_0 + T} f(t) \, dt
+		a_0 = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t) \, dt
 	\end{equation}
 	
 	\item Die $a_n$ definieren den geraden Anteil der Funktion. $\omega$ ist die Kreisfrequenz und ist definiert mit $\omega = 2\pi f$. 
@@ -41,7 +42,7 @@ Um die Reihe aufzustellen, braucht man nur drei Arten von Koeffizienten zu besti
 Mit allen Koeffizienten bestimmt und genügend Zeit um unendlich Summen zu berechnen lassen sich fast alle Funktionen perfekt approximieren.
 Die $a_n$ und $b_n$ skalieren die Amplituden der Schwingungen, in abhängigkeit zu $n>=1$. 
 Je nach Funktion können diese Faktoren durchaus komplizierte funktionen annehmen.
-Generell nehmen die Amplituden mit höherem $n$ ab, ob linear, quadratisch oder exponentiell lässt sich Allgemein nicht bestimmen.
+Generell nehmen die Amplituden mit höherem $n$ ab, ob linear, quadratisch oder höherer Ordnung lässt sich Allgemein nicht bestimmen.
 Mit jedem weiteren Summand der Reihe steigt die enthaltene Frequenz linear mit $n$ an.
 Das ist die Fourier-Reihe:
 
@@ -52,7 +53,7 @@ f(t) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left( a_n \cos\left( n\omega t \righ
 
 
 Die Ausnaheme sind Funktionen mit Sprungstellen, wie in Abbildung~\ref{fourier:fig:fourierrechteck}.
-Bei dieser Rechteckfunktion wurden die Reihe bis $n = 5$ berechnet. 
+Bei dieser Rechteckfunktion wurden die Reihe bis $n = 5$ berechnet.
 Bei solchen Funktionen tritt das sogenannte Gibbsche Phänomen auf.
 In der Nähe eines Sprungs entsteht ein charakteristischer Überschwinger, der selbst bei unendlich vielen Summanden nicht verschwindet.
 Das Gleichheitszeichen $=$ gilt daher nur eingeschränkt. 
@@ -64,7 +65,7 @@ Nun folgen zwei Bespiele.
 	f_1(t) = \frac{1}{2} + \sum_{\substack{n=1 \\ n\ \text{ungerade}}}^{5} \frac{2}{\pi n} \sin\left( \pi n t \right)
 \end{equation}
 
-$f_1(t)$ entspricht der roten Funktion. 
+$f_1(t)$ entspricht der roten Funktion in Abbildung~\ref{fourier:fig:fourierrechteck}. 
 Der Mittelwert $a_0$ entspricht $\frac{1}{2}$. 
 Die Rechteck Funktion ist abzüglich $a_0$ eine ungerade Funktion, da gilt $f_1(t) = -f_1(t)$. 
 Daher ist der gerade Anteil $a_n$ stets Null. 
@@ -78,14 +79,12 @@ Zudem wurde noch eine vereinfachung von $b_n$ vorgenommen, da der Term bei gerad
 	f_2(t) = \sum_{\substack{n=1 \\ n\ \text{ungerade}}}^{5} \frac{-8}{\pi^2 n^2} \cos(n\pi t)
 \end{equation}
 
-$f_2(t)$ entspricht der roten Funktion und überdeckt das Orginal beinahe perfekt. 
+$f_2(t)$ entspricht der roten Funktion in Abbildung~\ref{fourier:fig:fourierdreieck} und überdeckt das Orginal beinahe perfekt. 
 Dies mit nur drei Iterationen!
 Der Mittelwert ist $a_0$ ist hier 0. 
 Die Dreieck Funktion ist eine gerade Funktion, da gilt $f_1(t) = f_1(-t)$. 
 Daher ist der ungerade Anteil $a_n$ stets Null. 
 Wie beim ersten Beispiel wurde $b_n$ vereinfacht, man summiert nur über ungerade $n$. 
-
-
 Bei der Fourier-Reihen Bildung kann man sich viel Zeit erspaaren, wenn man zuerst überprüft ob es sich um eine gerade oder ungerade Funktion handelt.
 So kann man ohne zu rechnen $a_n$ oder $b_n$ gleich Null setzen.
 
