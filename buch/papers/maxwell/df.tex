@@ -4,13 +4,13 @@ Die homogenen Maxwellgleichungen bekommen wir durch die äussere Ableitung des F
 F_{\mu\nu}
 = 
 \begin{pmatrix}
-	0 & -E_1 & -E_2 & -E_3 \\
-	E_1 &  0 &  B_3 & -B_2 \\
-	E_2 & -B_3 &  0 &  B_1 \\
-	E_3 &  B_2 & -B_1 &  0 \\
+	0 & -E_1/c & -E_2/c & -E_3/c \\
+	E_1/c &  0 &  B_3 & -B_2 \\
+	E_2/c & -B_3 &  0 &  B_1 \\
+	E_3/c &  B_2 & -B_1 &  0 \\
 \end{pmatrix}.
 \]
-Wir wissen, aus (ref Buch dd=0), das
+Wir wissen, aus (kap 8.3.4 Operatorrelationen, kein label vorhanden), das
 \[
 ddA = dF = 0
 \]
@@ -76,11 +76,11 @@ Für besseres Verständnis setzen wir nun konkret die Komponenten von $F_{\mu\nu
 \begin{align*}
 	F
 	=
-	- E_1 \, dx^{01} - E_2 \, dx^{02} &- E_3 \, dx^{03}
+	- \frac{1}{c} E_1 \, dx^{01} - \frac{1}{c} E_2 \, dx^{02} &- \frac{1}{c} E_3 \, dx^{03}
 	\\
-	\phantom{+ F_{11} \, dx^{11}} + B_3 \, dx^{12} &- B_2 \, dx^{13}
+	\phantom{+ \frac{1}{c} F_{11} \, dx^{11}} + \phantom{\frac{1}{c}} B_3 \, dx^{12} &- \phantom{\frac{1}{c}} B_2 \, dx^{13}
 	\\
-	\phantom{+ F_{12} \, dx^{12}} \phantom{+ F_{22} \, dx^{22}} &+ B_1 \, dx^{23} \, ,
+	\phantom{+ \frac{1}{c} F_{12} \, dx^{12}} \phantom{+ \frac{1}{c} F_{22} \, dx^{22}} &+ \phantom{\frac{1}{c}} B_1 \, dx^{23} \, ,
 \end{align*}
 was schön den Komponenten oberhalb der Diagonalen von $F_{\mu\nu}$ entspricht.
 Nun wenden wir die äussere Ableitung auf die 2-Form $F$ an, man beachte dabei Definition(index wedges)$dx^i \wedge dx^j \wedge dx^k = dx^{ijk}$
