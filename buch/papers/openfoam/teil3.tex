@@ -73,7 +73,7 @@ Mit jeder Zelle steigt der Rechenaufwand.
 Es muss ein Mittelweg gefunden werden, so viel wie nötig, so wenig wie möglich.\\
 
 Um scharfe Kanten und Ecken im 3D-Objekt zu erkennen wird die Funktion \textbf{surfaceFeatureExtract} verwendet.
-Diese vorarbeit hilft \textbf{snappyHexMesh} bei der Mesh-Erstellung das Gitter genauer an der Geometrie auszurichten.
+Diese Vorarbeit hilft \textbf{snappyHexMesh} bei der Mesh-Erstellung das Gitter genauer an der Geometrie auszurichten.
 Im Dokument \texttt{surfaceFeatureExtractDict} werden die Parameter definiert:
 
 \begin{itemize}
@@ -111,16 +111,83 @@ Im Dokument \texttt{snappyHexMeshDict} werden die Parameter definiert:
 
 %Anfangsbedingungen Kapitel --------------------------------------------------------------------------------
 \subsection{Anfangsbedingungen \label{openfoam:section:Anfangsbedingungen}}
+Bei jeder Simulation muss beim ersten Zeitschritt ein Initialzustand definiert sein.
+Alle Zellen müssen mit Startwerte versehen werden.
+Diese Werte werdem im Ordner \texttt{0} hinterlegt:
 
+\begin{itemize}
+    \item \texttt{p}: Druck im Fluid [m²/s²]
+    \item \texttt{U}: Geschwindigkeit und Richtung der Strömungungsvektoren [m/s]\\
+    \textit{Uinlet} (X Y Z) beschreibt die Richtung und Stärke der Strömung 
+    \item \texttt{epsilon}: Dissipationsrate der turbulenten kinetischen Energie [m²/s³]
+    \item \texttt{k}: Turbulente kinematische Energie [m²/s²]
+    \item \texttt{nut}: Turbulente kinematische Viskosität [m²/s]
+\end{itemize}
+
+In allen Files für die Anfangsbedingungen gibt es die Variable \textit{dimensions}, sie bestimmt die Einheit des Wertes.\\
+Die Dimensionen sind \texttt{[kg m s K mol A cd]}.
+[0 2 -3 0 0 0 0] steht zum Beispiel für [m²/s³], der Einheit von epsilon.
+
+%Parameter Kapitel ----------------------------------------------------------------------------------------
+\subsection{Steuerparameter \label{openfoam:section:Steuerparameter}}
+Für die Simulation müssen diverse Konstante und Steuerparameter definiert werden.
+
+Im Ordner \texttt{constant} werden im Dokument \texttt{transportProperties} das \textit{transportModel} für die Viskosität und einen Wert, \textit{nu}, für für kinematische Viskosität gesetzt.\\
+Für Fluide mit konstanter Viskosität wird das Modell Newtonian verwendet.\\
+Bei Luft zum Beispiel \textit{nu} = 1.82e -6, \textit{transportModel} = Newtonian\\
+
+Im Dokument \texttt{turbulenceProperties} wird der \textit{simulationType} festgelegt.
+Zum Beispiel Reynolds-averaged Simulation (RAS), Large Eddy Simulation (LES) oder Laminar.\\
+
+Der Ordner\texttt{system} enthält das Dokument \texttt{controlDict}, damit wird der zeitliche Ablauf der Simulation gesteuert.
+
+\begin{itemize}
+    \item \textit{application}: In unserem Fall, stationär und inkompressibel, 
+    verwenden wir simpleFoam. Es gibt jedoch für jeden Anwendungsbereich eigene Solver.\\
+    Eine inkomplette Übersicht:
+    \begin{itemize}
+        \item icoFoam: Zeitabhängig, Inkompressibel, Laminar
+        \item buoyantSimpleFoam: Stationär, Inkompressibel, Wärmeübergang
+        \item sonicFoam: Zeitabhängig, Kompressibel
+    \end{itemize}
+    \item \textit{startTime}: Startzeit der Simulation [s]
+    \item \textit{endTime}: Endzeit der Simulation [s]
+    \item \textit{deltaT}: Zeitschritt der Simulation [s]
+    \item \textit{writeInterval}: Nach wievielen Zeitschritten die Ergebnisse gespeichert werden (Abb. \ref{fig:ordStrktSim})
+\end{itemize}
+
+%fvSchemes TODO
+
+%fvSolution TODO
 
 %Simulation Kapitel ----------------------------------------------------------------------------------------
 \subsection{Simulation \label{openfoam:section:Simulation}}
+In der Simulation wird nun auf jede Zelle das in den Parametern definierte Gleichungssystem angewendet.
+Die Berechnungen basieren auf den festgelegten Anfangs- und Randbedingungen sowie dem gewählten Solver.\\
 
+Mit den folgender Befehlsfolge kann eine einfache Simulation, stationär und inkompressibel, anhand eines Beispiel-Cases durchgeführt werden:
+
+\begin{enumerate}
+    \item \textbf{blockMesh}: Generiert Simulationsraum
+    \item \textbf{surfaceFeatureExtract}: Extrahiert "scharfe" Kanten und Ecken aus dem 3D-Objekt
+    \item \textbf{snappyHexMesh}: Fügt das 3D-Objekt in den Simulationsraum ein
+    \item \textbf{simpleFoam}: Simulation, bei einem anderen Simulationstyp durch den Entsprechenden ersetzen.
+    \item \textbf{foamToVTK}: Exportiert die Simulationsergebnisse in ein VTK-kompatibles Format, das in ParaView angesehen werden kann
+    \item \textbf{paraFoam -touch}: Erstellt eine Projektdatei die dann in ParaView geöffnet werden kann
+\end{enumerate}
+
+Dafür muss in der Kommandozeile in den Case-Ordner navigiert werden, in diesem Fall befindet sich der Ordner an der position:\\
+\texttt{/OpenFOAM/OpenFOAM-v2012/tutorials/incompressible/simpleFoam/Case\_Ordner}
+Dort können dann die Befehle nacheinander eingegeben werden.
+Erfahrungsgemäss kann \textbf{snappyHexMesh} und \textbf{simpleFoam}, je nach Einstellungen und komplexität des 3D-Objekt, 
+lange dauern, mehrere Stunden sind möglich.
+Grosse Simulationen können mehrere 100 GB an Speicherplatz benötigen.
+
+Ich empfehle mit einfache Modellen und Tutorials sowie kurzen Simulationszeiten anzufangen.
 
 %Auswertung Kapitel ----------------------------------------------------------------------------------------
 \subsection{Auswertung \label{openfoam:section:Auswertung}}
-
-
 \begin{center}
         Modelle sind immer falsch! Somit ist jede Simulation ebenfalls falsch!
+        Ich wünsche Ihnen viel Erfolg.
 \end{center}
