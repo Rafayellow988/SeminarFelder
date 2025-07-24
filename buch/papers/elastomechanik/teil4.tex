@@ -14,17 +14,21 @@
 
 \section*{Einführung in das Praxisbeispiel}
 
-In diesem Kapitel wird ein praxisnahes Beispiel vorgestellt, das insbesondere im Bauingenieurwesen von Bedeutung ist. Dazu betrachten wir ein einfaches statisches System, an dem grundlegende Konzepte der Elastizitätstheorie anschaulich demonstriert werden können.
+In diesem Kapitel wird ein praxisnahes Beispiel vorgestellt, das insbesondere im Bauingenieurwesen von Bedeutung ist. 
+Dazu betrachten wir ein einfaches statisches System, an dem grundlegende Konzepte der Elastizitätstheorie anschaulich demonstriert werden können.
 
-Im Mittelpunkt der Analyse stehen zwei unterschiedliche Materialien: \textbf{Holz} und \textbf{Stahl}. Diese beiden Werkstoffe unterscheiden sich deutlich in ihren mechanischen Eigenschaften, insbesondere in Bezug auf ihre Steifigkeit, Festigkeit und ihr Verformungsverhalten unter Belastung.
+Im Mittelpunkt der Analyse stehen zwei unterschiedliche Materialien: \textbf{Holz} und \textbf{Stahl}. 
+Diese beiden Werkstoffe unterscheiden sich deutlich in ihren mechanischen Eigenschaften, insbesondere in Bezug auf ihre Steifigkeit, Festigkeit und ihr Verformungsverhalten unter Belastung.
 
-Ziel der Untersuchung ist es, die Unterschiede zwischen diesen Materialien herauszuarbeiten. Wir zeigen, wie äußere Kräfte im Bauteil \textbf{Spannungen} erzeugen und wie sich daraus \textbf{Verformungen} ergeben.
+Ziel der Untersuchung ist es, die Unterschiede zwischen diesen Materialien herauszuarbeiten. 
+Wir zeigen, wie äußere Kräfte im Bauteil \textbf{Spannungen} erzeugen und wie sich daraus \textbf{Verformungen} ergeben.
 
 \subsection*{Berechnung des maximalen Biegemoments}
 
 Die Belastung von \SI{100}{\kilo\newton} erzeugt im Querschnitt des Trägers Schnittgrößen, insbesondere \textbf{Biegemomente} und \textbf{Querkraft}. Für dieses Beispiel sind vor allem die Biegemomente von Interesse, da sie maßgeblich für die entstehenden Spannungen und Verformungen verantwortlich sind.
 
-Die Bestimmung des maximalen Moments erfolgt mithilfe einer einfachen Gleichgewichtsbedingung. Bei einem symmetrisch belasteten Einfeldträger mit einer mittig aufgebrachten Einzellast kann das Moment wie folgt berechnet werden:
+Die Bestimmung des maximalen Moments erfolgt mithilfe einer einfachen Gleichgewichtsbedingung. 
+Bei einem symmetrisch belasteten Einfeldträger mit einer mittig aufgebrachten Einzellast kann das Moment wie folgt berechnet werden:
 
 \[
 M_\text{max} = \frac{F \cdot l}{4}
@@ -45,7 +49,9 @@ Das maximale Biegemoment beträgt somit \(\boxed{\SI{125}{\kilo\newton\meter}}\)
 
 \section*{Berechnung der Biegespannung im Balkenquerschnitt}
 
-Die Kenntnis der Biegespannung ist im Bauingenieurwesen von zentraler Bedeutung, da sie Auskunft darüber gibt, wie stark ein Bauteil durch äußere Momente beansprucht wird. Eine Überschreitung zulässiger Spannungen kann zur Schädigung oder gar zum Versagen des Bauteils führen. Deshalb ist die Berechnung der maximalen Spannung ein wesentlicher Bestandteil der Tragwerksanalyse.
+Die Kenntnis der Biegespannung ist im Bauingenieurwesen von zentraler Bedeutung, da sie Auskunft darüber gibt, wie stark ein Bauteil durch äußere Momente beansprucht wird. 
+Eine Überschreitung zulässiger Spannungen kann zur Schädigung oder gar zum Versagen des Bauteils führen. 
+Deshalb ist die Berechnung der maximalen Spannung ein wesentlicher Bestandteil der Tragwerksanalyse.
 
 \subsection*{Gegeben}
 
@@ -104,7 +110,10 @@ Die maximale Biegespannung im Balkenquerschnitt beträgt:
 
 \section*{Berechnung der Durchbiegung in der Balkenmitte}
 
-Die Durchbiegung eines Balkens unter Belastung ist ein entscheidendes Kriterium für die Gebrauchstauglichkeit eines Bauteils. Sie beschreibt, wie stark sich der Balken unter der wirkenden Kraft verformt. Eine zu große Durchbiegung kann die Funktion beeinträchtigen oder Schäden verursachen. Daher ist die Berechnung der maximalen Durchbiegung von großer Bedeutung.
+Die Durchbiegung eines Balkens unter Belastung ist ein entscheidendes Kriterium für die Gebrauchstauglichkeit eines Bauteils. 
+Sie beschreibt, wie stark sich der Balken unter der wirkenden Kraft verformt. 
+Eine zu große Durchbiegung kann die Funktion beeinträchtigen oder Schäden verursachen. 
+Daher ist die Berechnung der maximalen Durchbiegung von grosser Bedeutung.
 
 \subsection*{Gegebene Größen}
 
@@ -190,13 +199,16 @@ w_{\text{max, Stahl}} = \frac{1.25 \times 10^{16}}{4.536 \times 10^{15}} \approx
 
 \subsection*{Interpretation}
 
-Die Durchbiegung des Holzbalkens ist mit etwa \(\SI{48.2}{\milli\meter}\) deutlich größer als die des Stahlbalkens mit \(\SI{2.76}{\milli\meter}\). Dies liegt an dem wesentlich kleineren Elastizitätsmodul von Holz, das weniger steif ist als Stahl.
+Die Durchbiegung des Holzbalkens ist mit etwa \(\SI{48.2}{\milli\meter}\) deutlich größer als die des Stahlbalkens mit \(\SI{2.76}{\milli\meter}\). 
+Dies liegt an dem wesentlich kleineren Elastizitätsmodul von Holz, das weniger steif ist als Stahl.
 
-Diese Größenordnung zeigt, wie wichtig das Material für das Verformungsverhalten eines Bauteils ist. Trotz gleicher Geometrie und Belastung führen unterschiedliche Werkstoffe zu sehr unterschiedlichen Durchbiegungen und somit zu unterschiedlicher Gebrauchstauglichkeit.
+Diese Größenordnung zeigt, wie wichtig das Material für das Verformungsverhalten eines Bauteils ist. 
+Trotz gleicher Geometrie und Belastung führen unterschiedliche Werkstoffe zu sehr unterschiedlichen Durchbiegungen und somit zu unterschiedlicher Gebrauchstauglichkeit.
 
 \subsection*{Hinweis zur Materialanisotropie des Holzes}
 
-Holz ist ein anisotropes Material, das bedeutet, seine mechanischen Eigenschaften hängen von der Faserrichtung ab. In unserer Berechnung wurde der Elastizitätsmodul \( E_{\text{Holz}} = \SI{12}{\giga\pascal} \) parallel zur Faser verwendet, da dies die Hauptrichtung der Belastung im Balken ist.
+Holz ist ein anisotropes Material, das bedeutet, seine mechanischen Eigenschaften hängen von der Faserrichtung ab. 
+In unserer Berechnung wurde der Elastizitätsmodul \( E_{\text{Holz}} = \SI{12}{\giga\pascal} \) parallel zur Faser verwendet, da dies die Hauptrichtung der Belastung im Balken ist.
 
 Der Elastizitätsmodul quer zur Faser ist deutlich geringer, etwa nur \(10\%\) des Moduls parallel zur Faser, also ungefähr \( E_{\text{Holz, quer}} \approx \SI{1.2}{\giga\pascal} \).
 
@@ -210,7 +222,9 @@ Dies verdeutlicht die starke Abhängigkeit der Verformung vom Elastizitätsmodul
 
 \section*{Anwendung der Elastizitätstheorie im Oedometerversuch}
 
-Der Oedometerversuch dient zur Bestimmung der Verformungseigenschaften von Böden unter einaxialer Belastung. Dabei wird eine zylindrische Bodenprobe in einer starren Form seitlich eingespannt, sodass keine laterale Dehnung stattfinden kann (\( \varepsilon_x = \varepsilon_y = 0 \)). Auf die Probe wird schrittweise eine vertikale Spannung \( \sigma_z \) aufgebracht, während die vertikale Verformung \( \Delta h \) gemessen wird.
+Der Oedometerversuch dient zur Bestimmung der Verformungseigenschaften von Böden unter einaxialer Belastung. 
+Dabei wird eine zylindrische Bodenprobe in einer starren Form seitlich eingespannt, sodass keine laterale Dehnung stattfinden kann (\( \varepsilon_x = \varepsilon_y = 0 \)). 
+Auf die Probe wird schrittweise eine vertikale Spannung \( \sigma_z \) aufgebracht, während die vertikale Verformung \( \Delta h \) gemessen wird.
 
 \subsection*{Theorie}
 
@@ -261,7 +275,9 @@ Der berechnete Oedometer-Modul beträgt:
 \boxed{E_o = \SI{4000}{\kilo\pascal}}
 \]
 
-Dieser Wert beschreibt die Steifigkeit des Bodens unter einaxialer Belastung. In der Praxis liegt \( E_o \) für Kiese im Bereich von \( 10^4 \)–\( 10^5 \,\si{\kilo\pascal} \), für Sande bei \( 10^3 \)–\( 10^4 \,\si{\kilo\pascal} \), und für Tone oft deutlich darunter. Das Ergebnis ist somit typisch für einen verdichteten sandigen Boden.
+Dieser Wert beschreibt die Steifigkeit des Bodens unter einaxialer Belastung. 
+In der Praxis liegt \( E_o \) für Kiese im Bereich von \( 10^4 \)–\( 10^5 \,\si{\kilo\pascal} \), für Sande bei \( 10^3 \)–\( 10^4 \,\si{\kilo\pascal} \), und für Tone oft deutlich darunter. 
+Das Ergebnis ist somit typisch für einen verdichteten sandigen Boden.
 \end{document}
 
 
