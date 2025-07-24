@@ -39,15 +39,16 @@ Damit wir wissen, welche geometrische Form dieses Objekt haben soll, betrachten 
 \end{equation*}
 für eine Form hat.
 Der Hodge-Operator bildet eine $k$-Form auf eine $(n-k)$-Form ab.
-Da wir uns im vierdimensionalen Minkowsky-Raum befinden wird durch Anwendung des Hodge-Operators auf $F$ wieder eine 2-Form.
-Anwendung der äusseren Ableitung erhöht den Grad um eins und ergibt somit eine 3-Form.
+Da wir uns im vierdimensionalen Minkowsky-Raum befinden wird durch Anwendung des Hodge-Operators auf die 2-Form $F$ wieder eine 2-Form.
+Anwenden der äusseren Ableitung erhöht den Grad um eins und ergibt somit eine 3-Form.
 Durch erneutes Anwenden des Hodge-Operators entsteht schlussendlich eine 1-Form.
 Folglich muss das geometrische Objekt, welches die Ladungs- und Stromdichte enthält, auch eine 1-Form sein, die wir zukünftig Viererstromdichte $J$ nennen werden.
 Sobald wir das $\ast d \ast F$ berechnet haben, definieren wir $J$ so, dass die Gleichung aufgeht.
 
 %dass die Teile, welche nicht $\vec{E}$ und $\vec{B}$ enthalten, die Ladungsdichte $\rho$ und Stromdichte $\vec{J}$ sind.
+\subsection{Berechnung von $\ast d \ast F$}
 
-Wir erinnern uns, dass $F$ ausgeschrieben mit Wedgeprodukten definiert ist als
+Wir erinnern uns, dass $F$ ausgeschrieben mit Wedge-Produkten definiert ist als
 \begin{align*}
 	F = 
 	& - \frac{E_{1}}{c} \, dx^0 \wedge dx^1 - \frac{E_{2}}{c} \, dx^0 \wedge dx^2 - \frac{E_{3}}{c} \, dx^0 \wedge dx^3 \\
@@ -63,7 +64,7 @@ Die Hodge-Duale können aus der Tabelle (VERWEISEN!) entnommen werden.
 \begin{align*}
 	\ast F =
 	& \, \frac{E_{1}}{c} \, dx^2 \wedge dx^3 - \frac{E_{2}}{c} \, dx^1 \wedge dx^3 + \frac{E_{3}}{c} \, dx^1 \wedge dx^2 \\
-	& + B_3 \, dx^0 \wedge dx^3 + B_2 \, dx^0 \wedge dx^2 + B_1 \, dx^0 \wedge dx^1.\\
+	& + B_3 \, dx^0 \wedge dx^3 + B_2 \, dx^0 \wedge dx^2 + B_1 \, dx^0 \wedge dx^1.
 \end{align*}
 Die erhaltene 2-Form kann nun wieder als Matrix
 \begin{equation}
@@ -73,41 +74,68 @@ Die erhaltene 2-Form kann nun wieder als Matrix
 	%	\label{maxwell:section:teil1:metrik}
 \end{equation}
 (Frage: diesen Satz weglassen? ist für weitere Berechung irrelevant) geschrieben werden.
-
 Nun wenden wir die äussere Ableitung darauf an und erhalten
-
 \begin{align*}
-	d(\ast F) = \,
-	& d \left(\frac{E_{1}}{c} \, dx^2 \wedge dx^3 -\frac{E_{2}}{c} \, dx^1 \wedge dx^3 + \frac{E_{3}}{c} \, dx^1 \wedge dx^2 + B_3 \, dx^0 \wedge dx^3 + B_2 \, dx^0 \wedge dx^2 + B_1 \, dx^0 \wedge dx^1\right)\\
-	=
-	& \frac{1}{c}\frac{\partial E_1}{\partial x^0} dx^0 \wedge dx^2 \wedge dx^3 + \frac{1}{c}\frac{\partial E_1}{\partial x^1} dx^1 \wedge dx^2 \wedge dx^3 -
-	\frac{1}{c}\frac{\partial E_2}{\partial x^0} dx^0 \wedge dx^1 \wedge dx^3 -
-	\frac{1}{c}\frac{\partial E_2}{\partial x^2} dx^2 \wedge dx^1 \wedge dx^3 +\\
-	& \frac{1}{c}\frac{\partial E_3}{\partial x^0} dx^0 \wedge dx^1 \wedge dx^2 +
-	\frac{1}{c}\frac{\partial E_3}{\partial x^3} dx^3 \wedge dx^1 \wedge dx^2 +
-	\frac{\partial B_3}{\partial x^1} dx^1 \wedge dx^0 \wedge dx^3 +
-	\frac{\partial B_3}{\partial x^2} dx^2 \wedge dx^0 \wedge dx^3 +\\
-	& \frac{\partial B_2}{\partial x^1} dx^1 \wedge dx^0 \wedge dx^2 +
-	\frac{\partial B_2}{\partial x^3} dx^3 \wedge dx^0 \wedge dx^2 +
-	\frac{\partial B_1}{\partial x^2} dx^2 \wedge dx^0 \wedge dx^1 +
-	\frac{\partial B_1}{\partial x^3} dx^3 \wedge dx^0 \wedge dx^1\\
-	=
-	&\left( \frac{1}{c}\frac{\partial E_1}{\partial x^1} + \frac{1}{c}\frac{\partial E_2}{\partial x^2} + \frac{1}{c}\frac{\partial E_3}{\partial x^3} \right) dx^1 \wedge dx^2 \wedge dx^3 +
-	\left(\frac{1}{c}\frac{\partial E_1}{\partial x^0} + \frac{\partial B_2}{\partial x^3} - \frac{\partial B_3}{\partial x^2} \right) dx^0 \wedge dx^2 \wedge dx^3\\
-	&\left( -\frac{1}{c}\frac{\partial E_2}{\partial x^0} + \frac{\partial B_1}{\partial x^3} - \frac{\partial B_3}{\partial x^1} \right) dx^0 \wedge dx^1 \wedge dx^3 +
-	\left( \frac{1}{c}\frac{\partial E_3}{\partial x^0} + \frac{\partial B_1}{\partial x^2} - \frac{\partial B_2}{\partial x^1} \right) dx^0 \wedge dx^1 \wedge dx^2. 
+	d(\ast F)
+	&= d \Bigg(
+	\frac{E_{1}}{c} \, dx^2 \wedge dx^3
+	- \frac{E_{2}}{c} \, dx^1 \wedge dx^3
+	+ \frac{E_{3}}{c} \, dx^1 \wedge dx^2 \\
+	&\quad
+	+ B_3 \, dx^0 \wedge dx^3
+	+ B_2 \, dx^0 \wedge dx^2
+	+ B_1 \, dx^0 \wedge dx^1
+	\Bigg) \\[1ex]
+	&= \frac{1}{c} \frac{\partial E_1}{\partial x^0} \, dx^0 \wedge dx^2 \wedge dx^3
+	+ \frac{1}{c} \frac{\partial E_1}{\partial x^1} \, dx^1 \wedge dx^2 \wedge dx^3
+	- \frac{1}{c} \frac{\partial E_2}{\partial x^0} \, dx^0 \wedge dx^1 \wedge dx^3 \\
+	&\quad
+	- \frac{1}{c} \frac{\partial E_2}{\partial x^2} \, dx^2 \wedge dx^1 \wedge dx^3
+	+ \frac{1}{c} \frac{\partial E_3}{\partial x^0} \, dx^0 \wedge dx^1 \wedge dx^2
+	+ \frac{1}{c} \frac{\partial E_3}{\partial x^3} \, dx^3 \wedge dx^1 \wedge dx^2 \\
+	&\quad
+	+ \frac{\partial B_3}{\partial x^1} \, dx^1 \wedge dx^0 \wedge dx^3
+	+ \frac{\partial B_3}{\partial x^2} \, dx^2 \wedge dx^0 \wedge dx^3
+	+ \frac{\partial B_2}{\partial x^1} \, dx^1 \wedge dx^0 \wedge dx^2 \\
+	&\quad
+	+ \frac{\partial B_2}{\partial x^3} \, dx^3 \wedge dx^0 \wedge dx^2
+	+ \frac{\partial B_1}{\partial x^2} \, dx^2 \wedge dx^0 \wedge dx^1
+	+ \frac{\partial B_1}{\partial x^3} \, dx^3 \wedge dx^0 \wedge dx^1 \\[2ex]
+	&= \left(
+	\frac{1}{c} \frac{\partial E_1}{\partial x^1}
+	+ \frac{1}{c} \frac{\partial E_2}{\partial x^2}
+	+ \frac{1}{c} \frac{\partial E_3}{\partial x^3}
+	\right) dx^1 \wedge dx^2 \wedge dx^3 \\
+	&\quad
+	+ \left(
+	\frac{1}{c} \frac{\partial E_1}{\partial x^0}
+	+ \frac{\partial B_2}{\partial x^3}
+	- \frac{\partial B_3}{\partial x^2}
+	\right) dx^0 \wedge dx^2 \wedge dx^3 \\
+	&\quad
+	+ \left(
+	-\frac{1}{c} \frac{\partial E_2}{\partial x^0}
+	+ \frac{\partial B_1}{\partial x^3}
+	- \frac{\partial B_3}{\partial x^1}
+	\right) dx^0 \wedge dx^1 \wedge dx^3 \\
+	&\quad
+	+ \left(
+	\frac{1}{c} \frac{\partial E_3}{\partial x^0}
+	+ \frac{\partial B_1}{\partial x^2}
+	- \frac{\partial B_2}{\partial x^1}
+	\right) dx^0 \wedge dx^1 \wedge dx^2.
 \end{align*}
-Wenden wir nun noch einmal den Hodge-Operator auf die erhaltene 3-Form an, erhalten wir
+Wenden wir nun noch einmal den Hodge-Operator auf die erhaltene 3-Form an, ergibt sich
 \begin{align*}
 	\ast d \ast F = 
 	&\left( \frac{1}{c}\frac{\partial E_1}{\partial x^1} + \frac{1}{c}\frac{\partial E_2}{\partial x^2} + \frac{1}{c}\frac{\partial E_3}{\partial x^3} \right) (-dx^0) +
 	\left(\frac{1}{c}\frac{\partial E_1}{\partial x^0} + \frac{\partial B_2}{\partial x^3} - \frac{\partial B_3}{\partial x^2} \right) (-dx^1)\\
-	&\left( -\frac{1}{c}\frac{\partial E_2}{\partial x^0} + \frac{\partial B_1}{\partial x^3} - \frac{\partial B_3}{\partial x^1} \right) dx^2 +
-	\left( \frac{1}{c}\frac{\partial E_3}{\partial x^0} + \frac{\partial B_1}{\partial x^2} - \frac{\partial B_2}{\partial x^1} \right) (-dx^3).\\
+	& + \left( -\frac{1}{c}\frac{\partial E_2}{\partial x^0} + \frac{\partial B_1}{\partial x^3} - \frac{\partial B_3}{\partial x^1} \right) dx^2 +
+	\left( \frac{1}{c}\frac{\partial E_3}{\partial x^0} + \frac{\partial B_1}{\partial x^2} - \frac{\partial B_2}{\partial x^1} \right) (-dx^3).\\[2ex]
 	=
 	&\left( -\frac{1}{c}\frac{\partial E_1}{\partial x^1} -\frac{1}{c}\frac{\partial E_2}{\partial x^2} - \frac{1}{c}\frac{\partial E_3}{\partial x^3} \right) dx^0 +
 	\left(-\frac{1}{c}\frac{\partial E_1}{\partial x^0} - \frac{\partial B_2}{\partial x^3} + \frac{\partial B_3}{\partial x^2} \right) dx^1\\
-	&\left( -\frac{1}{c}\frac{\partial E_2}{\partial x^0} + \frac{\partial B_1}{\partial x^3} - \frac{\partial B_3}{\partial x^1} \right) dx^2 +
+	& + \left( -\frac{1}{c}\frac{\partial E_2}{\partial x^0} + \frac{\partial B_1}{\partial x^3} - \frac{\partial B_3}{\partial x^1} \right) dx^2 +
 	\left( -\frac{1}{c}\frac{\partial E_3}{\partial x^0} - \frac{\partial B_1}{\partial x^2} + \frac{\partial B_2}{\partial x^1} \right) dx^3.
 \end{align*}
 Damit wir nun wieder auf etwas physikalisch Sinnvolles kommen, ersetzen wir alle $dx^0$ mit $cdt$, $dx^1$ mit $dx$, $dx^2$ mit $dy$ und $dx^3$ mit $dz$ und erhalten
@@ -115,11 +143,11 @@ Damit wir nun wieder auf etwas physikalisch Sinnvolles kommen, ersetzen wir alle
 	\ast d \ast F = 
 	&\left( -\frac{1}{c}\frac{\partial E_1}{\partial x} -\frac{1}{c}\frac{\partial E_2}{\partial y} - \frac{1}{c}\frac{\partial E_3}{\partial z} \right) cdt +
 	\left(-\frac{1}{c}\frac{\partial E_1}{\partial ct} - \frac{\partial B_2}{\partial z} + \frac{\partial B_3}{\partial y} \right) dx\\
-	&\left( -\frac{1}{c}\frac{\partial E_2}{\partial ct} + \frac{\partial B_1}{\partial z} - \frac{\partial B_3}{\partial x} \right) dy +
-	\left( -\frac{1}{c}\frac{\partial E_3}{\partial ct} - \frac{\partial B_1}{\partial y} + \frac{\partial B_2}{\partial x} \right) dz\\
+	& + \left( -\frac{1}{c}\frac{\partial E_2}{\partial ct} + \frac{\partial B_1}{\partial z} - \frac{\partial B_3}{\partial x} \right) dy +
+	\left( -\frac{1}{c}\frac{\partial E_3}{\partial ct} - \frac{\partial B_1}{\partial y} + \frac{\partial B_2}{\partial x} \right) dz\\[2ex]
 	=&\left( -\frac{\partial E_1}{\partial x} -\frac{\partial E_2}{\partial y} - \frac{\partial E_3}{\partial z} \right) dt +
 	\left(-\frac{1}{c^2}\frac{\partial E_1}{\partial t} - \frac{\partial B_2}{\partial z} + \frac{\partial B_3}{\partial y} \right) dx\\
-	&\left( -\frac{1}{c^2}\frac{\partial E_2}{\partial t} + \frac{\partial B_1}{\partial z} - \frac{\partial B_3}{\partial x} \right) dy +
+	& + \left( -\frac{1}{c^2}\frac{\partial E_2}{\partial t} + \frac{\partial B_1}{\partial z} - \frac{\partial B_3}{\partial x} \right) dy +
 	\left( -\frac{1}{c^2}\frac{\partial E_3}{\partial t} - \frac{\partial B_1}{\partial y} + \frac{\partial B_2}{\partial x} \right) dz.
 \end{align*}
 Damit wir nun den erhaltenen Ausdruck auch interpretieren können definieren wir die Viererstromdichte als
