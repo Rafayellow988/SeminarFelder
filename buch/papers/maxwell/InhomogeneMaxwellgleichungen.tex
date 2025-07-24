@@ -150,6 +150,55 @@ Damit wir nun wieder auf etwas physikalisch Sinnvolles kommen, ersetzen wir alle
 	& + \left( -\frac{1}{c^2}\frac{\partial E_2}{\partial t} + \frac{\partial B_1}{\partial z} - \frac{\partial B_3}{\partial x} \right) dy +
 	\left( -\frac{1}{c^2}\frac{\partial E_3}{\partial t} - \frac{\partial B_1}{\partial y} + \frac{\partial B_2}{\partial x} \right) dz.
 \end{align*}
+Dieser Ausdruck soll nun also alle Teile der einen Seite der inhomogenen Maxwell-Gleichungen enthalten.
+Wir erkennen die Divergenz der Elektrischen Feldstärke, die Rotation der Magnetischen Flussdichte und die zeitliche Ableitung der Elektrischen Feldstärke in den jeweiligen Komponenten.
+
+Unser Ziel ist es nun, eine 1-Form zu finden, welche die Ladungs- und Stromdichte enthält und diesem Ausdruck gleichgesetzt werden kann.
+Wenn uns das gelingt, haben wir eine kovariante Formulierung der inhomogenen Maxwell-Gleichungen gefunden.
+Der erste Term muss, wegen dem Gaussschen Gesetzt der Elektrostatik, 
+\begin{equation*}
+	-\frac{\rho}{\varepsilon_0} dt
+\end{equation*}
+entsprechen.
+Die anderen Teile mit $dx,dy,dz$ können wir mit Hilfe der Lichtgeschwindigkeit im Vakuum 
+\begin{equation*}
+	c = \frac{1}{\sqrt{\varepsilon_0 \mu_0}}
+\end{equation*}
+umformulieren.
+Bei Betrachtung der zweiten Komponente
+\begin{equation*}
+	\left(-\varepsilon_0 \mu_0 \frac{\partial E_1}{\partial t} - \frac{\partial B_2}{\partial z} + \frac{\partial B_3}{\partial y}\right)dx
+\end{equation*}
+erkennen wir, dass diese gleich $\mu_0 J_1$ sein muss, damit die Ampère-Maxwell-Gleichung erfüllt werden kann.
+Aufgrund der gleichen Struktur folgt, dass die dritte Komponente $\mu_0 J_2$, und die vierte Komponente $\mu_0 J_3$ sein muss.
+Nun haben wir also herausgefunden dass
+\begin{equation}
+	\ast d \ast F = -\frac{\rho}{\varepsilon_0}dt + \mu_0 (J_1 dx +  J_2 dy +  J_3 dz)
+\end{equation}
+sein muss.
+Da alle räumlichen Komponenten auf der rechten Seite von $\ast d \ast F$ proportional zu $\mu_0$ sind und der erste Term die Ladungsdichte über $\varepsilon_0$ enthält, bietet es sich an, $\mu_0$ auszuklammern und als Vorfaktor zu verwenden.
+Somit ergibt sich
+\begin{align*}
+	\ast d \ast F
+	& = \mu_0 \left( -\frac{\rho}{\varepsilon_0 \mu_0}dt + J_1 dx + J_2 dy + J_3 dz \right)\\[2ex]
+	& = \mu_0 \left( -c^2 \rho dt + J_1 dx + J_2 dy + J_3 dz \right).
+\end{align*}
+Den Klammerausdruck definieren wir nun als Viererstromdichte
+\begin{equation}
+	J = -c^2 \rho dt + J_1 dx + J_2 dy + J_3 dz.
+\end{equation}
+In koordinatenfreier Sprache mit $dx^0 = cdt, dx^1 = dx,dx^2=dy$ und $dx^3 = dz$ entspricht dies
+\begin{equation}
+	J = -c \rho dx^0 + J_1 dx^1 + J_2 dx^2 + J_3 dx^3.
+\end{equation}
+
+Wir haben nun also eine sehr kompakte Form gefunden, die Inhomogenen Maxwell-Gleichungen zu formulieren.
+Die gesamte Information der beiden Gleichungen steckt in
+\begin{equation}
+	\ast d \ast F = \mu_0 J.
+\end{equation}
+Zusätzlich ist die Formulierung kovariant und behält somit seine Form bei Koordinatentransformationen.
+\begin{comment}
 Damit wir nun den erhaltenen Ausdruck auch interpretieren können definieren wir die Viererstromdichte als
 \begin{equation}
 	J = -c\rho dx^0 + J_1 dx^1 + J_2 dx^2 +J_3 dx^3.
@@ -215,3 +264,4 @@ Sie beschreibt, dass eine elektrische Stromdichte und eine zeitliche Änderung d
 
 %subsection?
 Wir haben nun also gesehen, dass wir nur durch Anwenden der äusseren Ableitung und dem Hodge-Operator auf $F$ die beiden inhomogenen Maxwell-Gleichungen erhalten. Zusätzlich ist die Formulierung kovariant und behält somit seine Form bei Koordinatentransformationen.
+\end{comment}
