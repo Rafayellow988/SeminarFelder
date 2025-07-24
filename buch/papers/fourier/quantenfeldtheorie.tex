@@ -75,36 +75,55 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 	
 	Das war 1874.
 	Zum Glück liess sich Planck davon nicht abhalten.
+<<<<<<< HEAD
+	1897 wurde er Professor für Physik und beschäftigte sich mit einem dieser ungelösten Probleme, der Schwarzkörperstrahlung, auch bekannt als die Ultraviolette katastrophe. 
+	
+	
+	In der Abbildung~\ref{fourier:fig:schwarzkoerper} ist das Experiment dargestellt. Ein hohler Metallwürfel mit einem Loch wird erwährmt. Die ganze Elektromagnetische Strahlung die von aussen in das Loch eindringt wird im inneren absorbiert, siehe blauer Pfeil. Die austretende Strahlung wird somit nur vom Würfel abgegeben, siehe die roten Pfeile. Der Schwarze Strahler ist in Wirklichkeit das Loch und nicht das Material selbst, obschon man dazu ein geeignetes Material benötigt! Nun misst man welche Intensität von welcher Wellenlänge aus dem Loch ausdringt, diese hängt auch von der Temperatur des Eisenblock ab. 
+	Gut zu wissen ist, dass jedes Objekt über dem absoluten Nullpunkt elektromagnetische Wellen abstrahlt. 
+	Sehen tut man dies normalerweise nicht, da sich zu wenig Strahlung im Sichtbaren Wellenbereich, zwischen 400nm und 780nm,  befindet. 
+	
+	\input{papers/fourier/fig/fig-schwarzkoerper.tex}
+	
+	In der Abbildung~\ref{fourier:fig:strahlungsspektren} wurde der Eisenblock auf 1000K erwährmt und anschliessend gemessen wie hoch die Intensität bei jeder Wellenlänge ist.
+	Bei dieser Temeratur ist glüht das Eisen Rötlich, hiermit handelt es sich um vom Bock abgegebene elektromagnetsiche strahlung!
+	
+	
+	Nach dem Rayleigh-Jeans-Gesetz 
+	
+	\begin{equation}
+		B(\lambda, T) = \frac{2 \pi c k_\mathrm{B} T}{\lambda^4}
+	\end{equation}
+	
+	steigt die abgegebene Strahlung eines Körpers mit kleiner werdender Wellenlänge immer weiter an. 
+	Bei hohen Wellenlängen passt das Gesetz gut, aber im ultravioletten Bereich versagt die Theorie komplett. Ultraviolette Strahlung umfasst den Wellenbereich von 10 nm bis 400 nm. 
+	Dieses Spektrum befindet sich auf der linken Seite.
+=======
 	1897 wurde er Professor für Physik und beschäftigte sich mit einem dieser ungelösten Probleme, der Schwarzkörperstrahlung, auch bekannt als die Ultraviolett-Katastrophe. 
 	UV Strahlung umfasst den Wellenbereich von 10 nm bis 400 nm. 
 	In der Abbildung~\ref{fourier:fig:strahlungsspektren} befindet sich dieser Bereich auf der linken Seite.
 	Nach dem Rayleigh-Jeans-Gesetz steigt die abgegebene Strahlung eines Körpers mit der Frequenz immer weiter an. 
 	Bei tiefen Frequenzen stimmt das, aber im ultravioletten Bereich versagt die Theorie komplett. 
+>>>>>>> 164168a4096d69a731e7a59beb8cd4315da58626
 	Sie sagt gigantische Energien voraus, während in Wirklichkeit kaum noch Strahlung messbar ist.
-	Planck suchte drei Jahre lang nach einer Lösung. 
+	Planck suchte drei Jahre lang nach einer Lösung, einer neuen Erkenntnis, aus der er eine neue Formel aufstellen kann, die korrekt ist. 
+	Leider funktioniert dies nicht.
 	
 	
-	Am Ende war es eher ein Akt der Verzweiflung als eine geniale Eingebung. 
-	Planck suchte nicht nach einer neuen Theorie, sondern nach einem mathematischen Trick, der zu den Messwerten passte.
-	Ohne genau zu verstehen, was seine Formel physikalisch bedeutete, passte er sie so an, dass sie die experimentellen Daten korrekt beschrieb.
-
-
+	Am Ende war es eher ein Akt der Verzweiflung als eine geniale Eingebung. Er suchte nicht mehr nach einer neuen Theorie, sondern nach einem mathematischen Trick, der zu den Messwerten passte. 
+	Dabei wusste er nicht, was seine Formel physikalisch bedeutete.
+	So entstand diese Formel: 
+	
 	\begin{equation}
-		\text{Rayleigh-Jeans:} \quad B(\lambda, T) = \frac{2 \pi c k_\mathrm{B} T}{\lambda^4}
+		B(\lambda, T) = \frac{2 \pi h c^2}{\lambda^5} \cdot \frac{1}{e^{\frac{h c}{\lambda k_B T}} - 1}
 	\end{equation}
-
-	\begin{equation}
-		\text{Plank:} \quad B(\lambda, T) = \frac{2 \pi h c^2}{\lambda^5} \cdot \frac{1}{e^{\frac{h c}{\lambda k_B T}} - 1}
-	\end{equation}
+	
+	Mithilfe der exponential Funktion geht nun die Intensität gegen Null, bei tiefen Wellenlängen. Ausserdem benötige er noch eine konstante $h$. Heutzutage ist $h$ eine Naturkonstante und bekannt als das Plancksche Wirkungsquantum $h = 6{,}626 \cdot 10^{-34} \ \text{J\,s}$. 
 	
 
 	%https://de.wikipedia.org/wiki/Rayleigh-Jeans-Gesetz#/media/Datei:PlanckWienRayleigh_linear_150dpi_de.png
 
-	\input{papers/fourier/fig/fig-strahlung.tex}%
-
-	In beiden Formeln kommen diverse Konstanten vor: $\pi$, die Bolzmann Konstante $k_B$, die Lichtgeschwindigkeit $c$ und $h$. 
-	Er führte eine neue Naturkonstante ein, das Plancksche Wirkungsquantum $h = 6{,}626 \cdot 10^{-34} \ \text{J\,s}$. 
-	Wie oben erwähnt entstand $h$ rein experimentell und war erst als mathematischer Trick gedacht. 
+	\input{papers/fourier/fig/fig-strahlung.tex}
 	
 	
 	Früher nahm man an, die Energie einer Welle hänge nur von ihrer Amplitude ab. 
@@ -198,6 +217,35 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 	Nicht das Teilchen ist grundlegend, sondern das Feld und was wir beobachten, sind nur dessen kleinste Schwingungen.
 	
 	So wird aus der Quantenmechanik eine Feldtheorie.
+<<<<<<< HEAD
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+\subsection{Der harmonische Oszillator\label{fourier:subsection:derHarmonischeOszillator}}
+% TODO
+% 7. In 18.4.2 wird harmonische Oszillator behandelt.
+% Es ist aber etwas verwirrend, dass hier bereits die Mischung mit der Wellengleichung gemacht wird.
+% Ich denke, es wäre hier besser, nur den klassischen harmonischen Operator zu zeigen, wie Sie ihn ja auch in der Abbildung dargestellt haben.
+% Wichtig für später ist, dass Sie die Gesamtenergie H = p^2/2m - 1/2 kx^2 durch x und p ausdrücken, weil daraus ja später der Hamilton-Operator wird.
+% Ich möchte davon abraten, hier schon von Wellen zu sprechen, das verwirrt.
+% Für diesen wichtigen Schritt brauchen Sie meines Erachtens einen eigenen Abschnitt, der die Erkenntnisse von 18.3 mit dem harmonischen Oszillator verbindet:
+% Gleichung des harmonischen Oszillators tritt als Gleichung für die Fourier-Koeffzienten auf.
+% Dies ist dann die Basis für die Quantisierung.
+=======
+>>>>>>> 164168a4096d69a731e7a59beb8cd4315da58626
 
 \subsection{Einführung in Werkzeuge der Quantenmechanik\label{fourier:subsection:werkzeugeQuantenmechanik}}
 	Die bisherige Entwicklung --- von Plancks Energiepaketen über Einsteins Lichtquanten bis hin zu Schrödingers Wellenfunktion ---
