@@ -261,7 +261,8 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		\begin{equation}
 		\langle A \rangle = \langle \psi | A | \psi \rangle = \int \psi^*(x)\,(A\psi)(x)\,dx.
 		\end{equation}
-
+		Dabei wirkt der Operator $A$ auf den rechten Ket und das Ergebnis wird mit dem Bra skalar multipliziert.
+		
 		Ist $|\psi\rangle$ ein Eigenzustand von $A$ mit einem bestimmten Eigenwert $a$, d.h.
 		\begin{equation}
 		A\,|\psi\rangle = a\,|\psi\rangle,
@@ -294,7 +295,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 	\begin{equation}
 		|\langle\varphi | \chi\rangle|^2 \le \langle\varphi | \varphi\rangle \langle\chi | \chi\rangle.
 	\end{equation}
-	Diese Relation stellt eine fundamentale Schranke für das Skalarprodukt zweier Zustände dar.
+	Diese Relation setzt eine obere Schranke dafür, wie stark zwei Zustände miteinander überlappen können. Sie beschreibt also, wie ähnlich sich zwei Zustände in ihrer quantenmechanischen Beschreibung überhaupt sein können.
 	Der Ausdruck $|\langle\varphi|\chi\rangle|^2$ misst die Überlappung der beiden Zustände, also gewissermaßen, wie ähnlich sie sich sind.
 	Die Terme $\langle\varphi|\varphi\rangle$ und $\langle\chi|\chi\rangle$ entsprechen dabei den Quadraten der Längen (Normen) der Zustände.
 	Der Betrag des Skalarprodukts kann also niemals größer werden als das Produkt der Normen, ganz analog zur klassischen Vektoranalysis.
@@ -405,7 +406,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 In der Quantenmechanik gelingt der Übergang von der klassischen Hamilton-Funktion zum Hamilton-Operator $\hat H$ durch das sogenannte Korrespondenzprinzip beziehungsweise kanonische Quantisierung.
 Die wesentlichen Schritte sind:
 \begin{itemize}
-\item Grössen werden zu Operatoren übergeführt % todo: evtl. andere Wortwahl
+\item Klassische Grössen wie Ort und Impuls erscheinen in der Quantenmechanik in neuer Form --- als Operatoren.
 \begin{equation}
 	x \longmapsto \hat{x}, \qquad p \longmapsto \hat{p}
 \end{equation}
@@ -437,10 +438,7 @@ In Gleichung~\ref{fourier:equation:zeitabhaengigeSchroedingerGleichung} wurde be
 
 %%% maybe todo: add some stuff of book quantum mechanics to glue things together
 
-Durch Schrödinger wird der Impuls p durch
-\begin{equation}
-	\frac{\hbar}{i} \frac{\partial}{\partial x}
-\end{equation}
+Durch Schrödinger wird der Impuls $p$ in der Ortsdarstellung durch den Impulsoperator $\frac{\hbar}{i} \frac{\partial}{\partial x}$
 ersetzt.
 Wodurch der Hamilton-Operator
 \begin{equation}
