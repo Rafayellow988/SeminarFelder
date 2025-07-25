@@ -13,7 +13,7 @@ Ein Quant ist ein kleinst mögliches Teilchen und Quantisierung bedeutet nichts 
 In der Quantenfeldtheorie ist genau dieser Schritt von zentraler Bedeutung, denn nun ist alles zählbar. 
 Dabei werden klassische Felder wie das elektromagnetische Feld in quantenmechanische Operatoren überführt, wodurch die zuvor kontinuierlichen Felder plötzlich aus einer endlichen Menge von Quanten bestehen.
 
-Wie kam es eigentlich dazu, dass man physikalische Größen plötzlich als „quantisiert“ betrachtete?
+Wie kam es eigentlich dazu, dass man physikalische Grössen plötzlich als „quantisiert“ betrachtete?
 Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 
 \subsection{Die Idee der Quantisierung\label{fourier:subsection:DieIdeeDerQuantisierung}}
@@ -175,7 +175,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 	E = \frac{p^2}{2m} + \frac{1}{2}kx^2.
 	\end{equation}
 
-	Im vorherigen Abschnitt~\ref{fourier:section:quantenfeldtheorie} wurde schließlich beschrieben, wie in der Quantenfeldtheorie klassische Felder in quantenmechanische Operatoren überführt werden.
+	Im vorherigen Abschnitt~\ref{fourier:section:quantenfeldtheorie} wurde schliesslich beschrieben, wie in der Quantenfeldtheorie klassische Felder in quantenmechanische Operatoren überführt werden.
 	Genau diesen Übergang wollen wir nun am Beispiel eines einzelnen harmonischen Oszillators nachvollziehen.
 
 	\vspace{1em}
@@ -184,10 +184,10 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 	Die klassische Energieformel führt uns dabei direkt zum sogenannten \emph{Hamilton-Operator}:
 	\begin{equation}
 	\hat{H} = \frac{\hat{p}^2}{2m} + \frac{1}{2} k \hat{x}^2.
-	\label{fourier:equation:derQMHO}
+	\label{fourier:equation:hamiltonOperator}
 	\end{equation}
 
-	Physikalisch messbare Größen wie Ort, Impuls oder Energie werden nun durch Operatoren beschrieben.
+	Physikalisch messbare Grössen wie Ort, Impuls oder Energie werden nun durch Operatoren beschrieben.
 	Diese wirken auf einen sogenannten \emph{Hilbertraum} — den Raum aller quantenmechanischen Zustände.
 	Die erlaubten Messwerte sind die Eigenwerte dieser Operatoren.
 	Im Fall des harmonischen Oszillators ergibt sich ein \emph{diskretes Energiespektrum}:
@@ -196,7 +196,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 	\]
 
 	Die Energie des Systems ist damit nicht mehr beliebig, sondern in diskrete Stufen unterteilt.
-	Der Oszillator kann nur auf bestimmten, gleichmäßig verteilten Niveaus existieren.
+	Der Oszillator kann nur auf bestimmten, gleichmässig verteilten Niveaus existieren.
 	Warum hier ein zusätzlicher Term $\frac{1}{2}$ auftritt, wird im Kapitel~\ref{fourier:subsection:Leiteroperatoren} genauer erklärt.
 
 	Der harmonische Oszillator spielt in der Quantenphysik eine fundamentale Rolle.
@@ -270,12 +270,22 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		\langle \psi | \psi \rangle = \int \psi^*(x)\,\psi(x)\,dx.
 		\end{equation}
 
-		Der \emph{Erwartungswert} eines physikalischen Operators $A$ im Zustand $|\psi\rangle$ beschreibt den durchschnittlich gemessenen Wert bei vielen Wiederholungen:
+		Der \emph{Erwartungswert} eines physikalischen Operators $A$ im Zustand $|\psi\rangle$ beschreibt den durchschnittlichen Messwert, den man erhält, wenn man ein Quantenexperiment mit demselben Zustand sehr oft wiederholt.
+		Mathematisch wird der Erwartungswert wie folgt berechnet:
 		\begin{equation}
-		\langle A \rangle = \langle \psi | A | \psi \rangle = \int \psi^*(x)\,(A\psi)(x)\,dx.
+			\langle A \rangle = \langle \psi | A | \psi \rangle = \int \psi^*(x)\,A\,\psi(x)\,dx.
 		\end{equation}
-		Dabei wirkt der Operator $A$ auf den rechten Ket und das Ergebnis wird mit dem Bra skalar multipliziert.
-		
+		In der Dirac-Notation bezeichnet $|\psi\rangle$ den \emph{Ket}, also den Zustandsvektor des Systems.
+		Der Ausdruck $\langle \psi |$ ist der zugehörige \emph{Bra}, also die komplex konjugiert transponierte Version von $|\psi\rangle$.
+		Zusammen bilden sie einen sogenannten \emph{Bra-Ket} (inneres Produkt).
+		Dabei gilt:
+		\begin{itemize}
+			\item Der Operator $A$ wirkt zunächst auf den Ket $|\psi\rangle$, also auf die Wellenfunktion $\psi(x)$ von rechts.
+			\item Anschliessend wird das Ergebnis mit dem Bra $\langle \psi|$ bzw. der komplex konjugierten Wellenfunktion $\psi^*(x)$ multipliziert.
+			\item Durch Integration über alle Orte $x$ erhält man den Mittelwert --- den Erwartungswert.
+		\end{itemize}
+		Das Ergebnis $\langle A \rangle$ ist also der theoretische Durchschnittswert, den man bei vielen Messungen der Grösse $A$ im Zustand $|\psi\rangle$ erhält.
+
 		Ist $|\psi\rangle$ ein Eigenzustand von $A$ mit einem bestimmten Eigenwert $a$, d.h.
 		\begin{equation}
 		A\,|\psi\rangle = a\,|\psi\rangle,
@@ -300,7 +310,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		\end{equation}
 		Diese fehlende Vertauschbarkeit führt direkt zur bekannten Unschärferelation.
 		Ihre Herleitung basiert auf einer grundlegenden mathematischen Ungleichung, der sogenannten Cauchy-Schwarz-Ungleichung:
-		\begin{equation}
+		\begin{equation}\label{fourier:equation:CauchySchwarzUngleichung}
 			\vec{a} \bullet \vec{b} = |\vec{a}| |\vec{b}|\cos\alpha \le |\vec{a}| |\vec{b}|.
 		\end{equation}
 		die besagt, dass das Skalarprodukt zweier Vektoren nie grösser sein kann als das Produkt ihrer Längen.
@@ -309,9 +319,9 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			|\langle\varphi | \chi\rangle|^2 \le \langle\varphi | \varphi\rangle \langle\chi | \chi\rangle.
 		\end{equation}
 		Diese Relation setzt eine obere Schranke dafür, wie stark zwei Zustände miteinander überlappen können. Sie beschreibt also, wie ähnlich sich zwei Zustände in ihrer quantenmechanischen Beschreibung überhaupt sein können.
-		Der Ausdruck $|\langle\varphi|\chi\rangle|^2$ misst die Überlappung der beiden Zustände, also gewissermaßen, wie ähnlich sie sich sind.
+		Der Ausdruck $|\langle\varphi|\chi\rangle|^2$ misst die Überlappung der beiden Zustände, also gewissermassen, wie ähnlich sie sich sind.
 		Die Terme $\langle\varphi|\varphi\rangle$ und $\langle\chi|\chi\rangle$ entsprechen dabei den Quadraten der Längen (Normen) der Zustände.
-		Der Betrag des Skalarprodukts kann also niemals größer werden als das Produkt der Normen, ganz analog zur klassischen Vektoranalysis.
+		Der Betrag des Skalarprodukts kann also niemals grösser werden als das Produkt der Normen, ganz analog zur klassischen Vektoranalysis.
 		Das Quadrat auf der linken Seite ergibt sich, weil die Ungleichung eine Aussage über den Betrag des Skalarprodukts ist, während die rechte Seite stets reell und positiv ist.
 		Diese Form der Ungleichung bildet die mathematische Grundlage für die Herleitung der heisenbergschen Unschärferelation.
 		Die Zustände $|\varphi\rangle$ und $|\chi\rangle$ sind hier in der Bra-Ket-Notation geschrieben, einer kompakten Notation für Zustände in der Quantenmechanik, wie sie in Abschnitt~\ref{fourier:subsubsection:braKetNotation} eingeführt wurde.
@@ -324,16 +334,16 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		\begin{equation}
 			\sigma_x^2 = \langle\varphi | \varphi\rangle \text{ und } \sigma_p^2 = \langle\chi | \chi\rangle
 		\end{equation}
-		für die sogenannten Standardabweichungen --- ein Mass für die „Streuung“ oder Unschärfe --- zusammen mit
+		für die sogenannten Standardabweichungen --- ein Mass für die „Streuung“ oder Unschärfe --- zusammen mit der Vertauschungsrelation
 		\begin{equation}
 			\langle\psi | [\hat{x},\hat{p}] | \psi\rangle = i\hbar
 		\end{equation}
-		zur Beziehung:
+		und der Cauchy-Schwarz-Ungleichung~\ref{fourier:equation:CauchySchwarzUngleichung} zur Beziehung:
 		\begin{equation}
-			\sigma_x^2 \sigma_p^2 \ge \frac{1}{4} |\langle\psi | [\hat{x},\hat{p}] | \psi\rangle|^2 = \frac{\hbar^2}{4},
+			\sigma_x^2 \sigma_p^2 \ge \frac{1}{4} |\langle\psi | [\hat{x},\hat{p}] | \psi\rangle|^2 = \frac{\hbar^2}{4}
 		\end{equation}
-		und damit schliesslich zur bekannten Form der Unschärferelation:
-		\begin{equation}
+		Nimmt man aus beiden Seiten die Quadratwurzel, erhält man die bekannte Form der Unschärferelation:
+		\begin{equation}\label{fourier:equation:FormUnschaerferelation}
 			\sigma_x \sigma_p \ge \frac{\hbar}{2}.
 		\end{equation}
 
@@ -342,15 +352,11 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		Je genauer der Ort eines Teilchens bekannt ist (kleines $\sigma_x$), desto unschärfer muss sein Impuls ($\sigma_p$) sein --- und umgekehrt.
 		Das zeigt anschaulich die Wellennatur von Teilchen:
 		Ein Teilchen, das genau lokalisiert ist, muss eine breite Wellenverteilung im Impulsraum haben.
-		Würde man das $\tfrac{1}{2}$ in der Formel weglassen, erhielte man eine vereinfachte, aber weniger präzise Darstellung des Zusammenhangs.
+		Würde man das $\tfrac{1}{2}$ in der Form der Unschärferelation~\ref{fourier:equation:FormUnschaerferelation} weglassen, erhielte man eine vereinfachte, aber weniger präzise Darstellung des Zusammenhangs.
 
 		Die Unschärferelation macht deutlich, dass klassische Begriffe wie ``Ort'' und ``Impuls'' in der Quantenmechanik nur noch als mittlere Werte und Streuungen auftreten können.
 		Um diese Konzepte mathematisch präzise zu fassen und weiterführende Aussagen über die Dynamik eines Systems zu treffen, bedarf es weiterer Werkzeuge ---
 		insbesondere des Hamilton-Operators und der Schrödinger-Gleichung.
-
-		In der klassischen Physik messen wir physikalische Größen wie Spannung oder Länge direkt.
-		In der Quantenmechanik erfolgt die Messung jedoch indirekt durch sogenannte Operatoren, welche auf den Zustand des Systems einwirken.
-		Dabei beeinflusst die Messung selbst den Zustand des Systems.
 
 	\subsubsection{Hamilton-Operator und Schrödinger-Gleichung%
 	\label{fourier:subsubsection:hamiltonOperatorUndSchroedinger}}
@@ -370,8 +376,8 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		Im Kapitel~\ref{fourier:subsection:derQMHarmonischeOszillator} wurde \( \hat{H} \) bereits in einem konkreten Beispiel eingeführt.
 		Hier betrachten wir ihn unabhängig von einem speziellen Potential.
 		In der klassischen Mechanik ergibt sich die Gesamtenergie aus der Summe von kinetischer und potentieller Energie.
-		In der Quantenmechanik wird diese Größe durch den Operator:
-		\begin{equation}
+		In der Quantenmechanik wird diese Grösse durch den Hamilton-Operator:
+		\begin{equation}\label{fourier:equation:HamiltonOperatorQM}
 			\hat{H} = \frac{\hat{p}^2}{2m} + V(\hat{x})
 		\end{equation}
 		ersetzt.
@@ -385,7 +391,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		\begin{equation}
 			\hat{H} = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x)
 		\end{equation}
-		Dieser Operator ist zentral in der zeitabhängigen Schrödinger-Gleichung:
+		Dieser Operator ist zentral in der zeitabhängigen Schrödinger-Gleichung~\ref{fourier:equation:zeitabhaengigeSchroedingerGleichung}:
 		\begin{equation}
 			i\hbar \frac{\partial}{\partial t} \psi(x,t) = \hat{H} \psi(x,t)
 		\end{equation}
@@ -415,7 +421,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 
 
 		Solche Berechnungen sind nicht nur theoretisch relevant, sondern liefern konkrete Vorhersagen für Experimente.
-		Sie zeigen, wie Operatoren mit Zuständen kombiniert werden, um physikalische Größen wie Energie, Ort oder Impuls zu berechnen.
+		Sie zeigen, wie Operatoren mit Zuständen kombiniert werden, um physikalische Grössen wie Energie, Ort oder Impuls zu berechnen.
 
 		Der Hamilton-Operator steht somit im Zentrum der quantenmechanischen Theorie.
 		Er fasst die Energie- und Dynamikstruktur eines Systems in einem einzigen Objekt zusammen.
@@ -425,16 +431,16 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 
 	\subsection{Leiteroperatoren\label{fourier:subsection:Leiteroperatoren}}
 		In diesem Abschnitt verwenden wir die Grundlagen der Quantenmechanik, um zu zeigen, dass Licht nicht kontinuierlich, sondern in kleinsten Energiepaketen, sogenannten \emph{Photonen}, übertragen wird.
-		Dazu betrachten wir zunächst den quantenmechanischen harmonischen Oszillator.
+		Der Übersichtlichkeit halber wurden verschiedene Unterkapitel erstellt, welche die Struktur für diese Herleitung liefern.
 
 		\subsubsection{Dimensionlose Operatoren\label{fourier:subsubsection:DimensionsloseOperatoren}}
-			Zur Vereinfachung führen wir dimensionslose Operatoren ein:
-			\[
+			Zur Vereinfachung führen wir dimensionslose Operatoren ein.
+			Die Wurzelausdrücke sorgen dafür, dass beide Operatoren keine physikalischen Einheiten mehr haben:			\[
 				Q = \sqrt{\frac{m\omega}{\hbar}}x
 				\qquad\text{und}\qquad
 				P = \frac{1}{\sqrt{m\hbar\omega}}p.
 			\]
-			Der Hamilton-Operator des harmonischen Oszillators nimmt damit die Form an:
+			Der Hamilton-Operator~\ref{fourier:equation:HamiltonOperatorQM} des harmonischen Oszillators nimmt damit die Form an:
 			\begin{equation}
 				H = \frac{1}{2}(P^2 + Q^2).
 			\end{equation}
@@ -487,7 +493,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			Damit erzeugt $a^+$ ein Quant (z.B. ein Photon), $a$ vernichtet eines.
 			Diese Operatoren $a$ und $a^+$ erlauben das Verständnis und die Beschreibung der Quantenwelt, ohne dass jedes Mal komplexe Differentialgleichungen gelöst werden müssen.
 
-		\subsubsection{Wirkung des Hamiltonoperators\label{fourier:subsubsection:WirkungHamiltonoperator}}
+		\subsubsection{Wirkung des Hamilton-Operators\label{fourier:subsubsection:WirkungHamiltonoperator}}
 			Wir prüfen anhand eines Beispiels die Wirkung von $H$ auf $a^+|\psi_n\rangle$:
 			\begin{align}
 				H\, (a^+|\psi_n\rangle)
@@ -532,7 +538,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			Dies stellt jedoch nur den ersten Schritt dar.
 			Um die quantisierte Energie tatsächlich zu bestimmen, ist es notwendig, eine Methode zur Messung zu etablieren.
 
-			In der klassischen Physik messen wir physikalische Größen wie Spannung oder Länge direkt.
+			In der klassischen Physik messen wir physikalische Grössen wie Spannung oder Länge direkt.
 			In der Quantenmechanik erfolgt die Messung jedoch indirekt durch sogenannte Operatoren, welche auf den Zustand des Systems einwirken.
 			Dabei beeinflusst die Messung selbst den Zustand des Systems.
 
@@ -543,13 +549,13 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			Diese Einschränkung wird durch die Heisenbergsche Unschärferelation beschrieben, welche bereits in Kapitel~\ref{fourier:subsubsection:unschaerferelation} ausgeführt wurde.
 			Deshalb werden Messoperatoren eingesetzt, die jeweils nur einen Teilaspekt des Zustands erfassen, beispielsweise den Ort oder den Impuls, aber niemals den vollständigen Zustand.
 
-			Die Messung der Energie eines quantenmechanischen Systems, dargestellt durch die Wellenfunktion \(\Psi\), wird formal über den Hamiltonoperator beschrieben.
-			Dabei ist zu beachten, dass Operatoren in der Quantenmechanik nicht beliebig vertauschbar sind; die Reihenfolge ihrer Anwendung ist von großer Bedeutung.
+			Die Messung der Energie eines quantenmechanischen Systems, dargestellt durch die Wellenfunktion \(\Psi\), wird formal über den Hamilton-Operator beschrieben.
+			Dabei ist zu beachten, dass Operatoren in der Quantenmechanik nicht beliebig vertauschbar sind; die Reihenfolge ihrer Anwendung ist von grosser Bedeutung.
 			Dies spiegelt sich in der Kommutatorrelation wider, welche im Allgemeinen nicht verschwindet, sondern proportional zur imaginären Einheit ist.
 
 			Operatoren dienen in der Quantenmechanik als essentielle Werkzeuge, die die Wirkung von Messungen oder Übergängen zwischen verschiedenen Energieniveaus beschreiben.
 			Zur Veranschaulichung gilt dieses Beispiel einer Energie-Messung:
-			Die Wirkung des Hamiltonoperators auf die Zustände lautet
+			Die Wirkung des Hamilton-Operators auf die Zustände lautet
 			\[
 				\hat{H} |\psi\rangle = E |\psi\rangle.
 			\]
