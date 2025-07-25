@@ -441,11 +441,10 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 				\qquad\text{und}\qquad
 				P = \frac{1}{\sqrt{m\hbar\omega}}p.
 			\]
-			Der Hamilton-Operator~\ref{fourier:equation:HamiltonOperatorQM} des harmonischen Oszillators nimmt damit die Form
+			Der Hamilton-Operator~\ref{fourier:equation:HamiltonOperatorQM} des harmonischen Oszillators nimmt damit die Form an:
 			\begin{equation}\label{fourier:equation:HamiltonOperatorDimLos}
-				H = \frac{1}{2}(P^2 + Q^2)
+				H = \frac{1}{2}(P^2 + Q^2).
 			\end{equation}
-			an.
 
 		\subsubsection{Definition der Leiteroperatoren\label{fourier:subsubsection:DefinitionLeiteroperatoren}}
 			Schrittweise werden nun die Leiteroperatoren aus dem Hamilton-Operator~\ref{fourier:equation:HamiltonOperatorDimLos} gebildet:
@@ -453,7 +452,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 				H = \frac{1}{2}(Q^2 + P^2) = \frac{1}{2}(Q + iP)(Q - iP).
 			\]
 
-			Um die Schreibweise zu vereinfachen, definiert man die sogenannten Leiteroperatoren
+			Um die Schreibweise zu vereinfachen, definiert man die sogenannten Leiteroperatoren:
 			\begin{equation}
 				a^+ = \frac{1}{\sqrt{2}}(Q + iP),
 				\qquad\text{und}\qquad
@@ -472,24 +471,18 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			\end{equation}
 
 			\textit{Anmerkung:}
-			Achtung, die Reihenfolge von $a$ und $a^+$ ist entscheidend! Es gilt
+			Achtung, die Reihenfolge von $a$ und $a^+$ ist entscheidend! Es gilt:
 			\[
 				[a^+, a] = -1.
 			\]
 			Diese Beziehung ist zentral für die Quantenmechanik, insbesondere beim quantenmechanischen Oszillator.
 
 		\subsubsection{Hamilton-Operator in Operatorform\label{fourier:subsubsection:HamiltonOperatorInOperatorform}}
-			Mit Hilfe der Leiteroperatoren lässt sich der Hamilton-Operator eleganter darstellen.
-			Setzt man die Definitionen von $a$ und $a^+$ ein, ergibt sich:
+
+			Mit Hilfe der Leiteroperatoren lässt sich der Hamilton-Operator eleganter darstellen. Setzt man die Definitionen von $a$ und $a^+$ ein, ergibt sich:
 			\[
-				a^+a = \frac{1}{2}(Q - iP)(Q + iP) = \frac{1}{2}(Q^2 +i(QP - PQ) + P^2) = \frac{1}{2}(Q^2 + P^2 + i[Q,P]).
+				a^+a = \frac{1}{2}(Q - iP)(Q + iP) = \frac{1}{2}(Q^2 + P^2 + i[Q, P]).
 			\]
-			\textit{Anmerkung:}
-			Die Kreuzterme $+iQP$ und $-iPQ$ lassen sich nicht wie bei Zahlen zusammenfassen, weil $QP \neq PQ$.
-			Stattdessen wird der Unterschied der Produkte als Kommutator geschrieben:
-			\begin{equation}
-				QP - PQ = [Q,P]
-			\end{equation}
 			Da $[Q, P] = i$, folgt:
 			\[
 				a^+a = \frac{1}{2}(Q^2 + P^2 - 1).
@@ -498,69 +491,44 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			\[
 				Q^2 + P^2 = 2a^+a + 1.
 			\]
-
 			Setzt man dies in den ursprünglichen Hamilton-Operator ein:
 			\[
-				H = \frac{1}{2}(Q^2 + P^2) = \frac{1}{2}(2a^+a+1) = a^+a + \frac{1}{2}.
+				H = \frac{1}{2}(Q^2 + P^2) = a^+a + \frac{1}{2}.
 			\]
-
-			Bisher haben wir mit den dimensionslosen Operatoren $Q$ und $P$ gerechnet, die keine Einheiten besitzen.
-			Um die korrekten Energieeinheiten zu erhalten, muss der Hamilton-Operator mit dem Faktor $\hbar \omega$ multipliziert werden.
-			Dieser Faktor definiert die natürliche Energieskala des harmonischen Oszillators.
-			Damit lautet der Hamilton-Operator in Operatorform:
+			Damit ergibt sich die Operatorform des Hamilton-Operators:
 			\begin{equation}
 				H = \hbar\omega \left(a^+ a + \frac{1}{2}\right) = \hbar\omega \left(N + \frac{1}{2}\right),
 			\end{equation}
-			wobei $N = a^+a$ der sogenannte Teilchenzahloperator ist.
-			Er zählt die Anzahl der Quanten (z.B. Photonen) im Zustand.
+			wobei $N = a^+a$ der sogenannte Teilchenzahloperator ist. Dieser zählt die Anzahl der Quanten (z.\,B. Photonen) im Zustand.
 
 			\textit{Bemerkung:}
-			Der Ausdruck $+\tfrac{1}{2}$ entsteht durch die nichtverschwindende Vertauschungsrelation $[Q,P] = i$, die die sogenannte Nullpunktsenergie des quantisierten harmonischen Oszillators widerspiegelt.
+			Der Ausdruck $+\tfrac{1}{2}$ entsteht also aus der nichtverschwindenden Vertauschungsrelation $[Q,P] = i$, die letztlich die Nullpunktsenergie widerspiegelt. Selbst im Grundzustand $n=0$ ist die Energie des Oszillators nicht null, sondern
+			\[
+				E_0 = \frac{1}{2}\hbar\omega.
+			\]
 
 		\subsubsection{Energieeigenwerte\label{fourier:subsubsection:Energieeigenwerte}}
 			Die Eigenzustände $|\psi_n\rangle$ des Operators $H$ sind auch Eigenzustände von $N$, mit
 			\begin{equation}
 				H\,|\psi_n\rangle = \hbar\omega\left(n + \frac{1}{2}\right) |\psi_n\rangle.
 			\end{equation}
-			\textit{Anmerkung zur Notation:} 
-			Der Operator $N$ wird groß geschrieben, da er auf Zustände wirkt.
-			Die Eigenwerte $n$ dagegen sind reine Zahlen, also Messwerte, und werden klein geschrieben.
-			Es gilt:
-			\begin{equation}
-				N\,|\psi_n\rangle = n\,|\psi_n\rangle, \quad \text{mit } n = 0,1,2,\dots
-			\end{equation}
-
 			Die Eigenwerte sind also diskret:
-			\begin{equation}
+			\[
 				E_n = \hbar\omega\left(n + \frac{1}{2}\right), \quad \text{mit } n = 0,1,2,\dots
-			\end{equation}
+			\]
 			Dies zeigt:
 			Die Energie ist quantisiert in Vielfachen von $\hbar\omega$.
 			Der Grundzustand $n = 0$ besitzt die minimale Energie $\tfrac{1}{2}\hbar\omega$.
 
 		\subsubsection{Wirkung der Leiteroperatoren\label{fourier:subsubsection:WirkungLeiteroperatoren}}
-			Die Operatoren $a^+$ (Erzeugungsoperator) und $a$ (Vernichtungsoperator) wirken auf die Zustände $|\psi_n\rangle$ und verändern deren Teilchenzahl:
+			Die Operatoren $a^+$ und $a$ verändern die Teilchenzahl:
 			\[
 				a^+|\psi_n\rangle = \sqrt{n+1}\,|\psi_{n+1}\rangle,
 				\qquad
 				a|\psi_n\rangle = \sqrt{n}\,|\psi_{n-1}\rangle.
 			\]
-			Dabei wird der Erzeugungsoperator $a^+$ auf die Wellenfunktion $|\psi_n\rangle$ angewendet und hebt den Zustand auf das nächsthöhere Energieniveau $|\psi_{n+1}\rangle$ an.
-			Umgekehrt senkt der Vernichtungsoperator $a$ den Zustand um ein Energieniveau auf $|\psi_{n-1}\rangle$.
-			
-			\textit{Bemerkung:}
-			Die Wurzeln entstehen aus der Normierung der Zustände:
-			Die Faktoren $\sqrt{n+1}$ bzw. $\sqrt{n}$ sorgen dafür, dass die Zustände $|\psi_{n\pm1}\rangle$ korrekt normiert bleiben, wenn der Erzeugungs- oder Vernichtungsoperator wirkt.
-			Ohne diese Faktoren würde sich die Länge (Norm) der Zustände ändern.
-
-			Das bedeutet: 
-			\begin{itemize}
-				\item Der Operator $a^+$ erhöht die Quantenzahl $n$ um eins – er \textbf{erzeugt} also ein zusätzliches Quant (z.\,B. ein Photon).
-				\item Der Operator $a$ senkt die Quantenzahl $n$ um eins – er \textbf{vernichtet} ein Quant.
-			\end{itemize}
-
-			\textit{Bemerkung:} 
-			Diese Operatoren ermöglichen eine elegante algebraische Beschreibung der Quantenzustände, ohne dass Differentialgleichungen gelöst werden müssen.
+			Damit erzeugt $a^+$ ein Quant (z.B. ein Photon), $a$ vernichtet eines.
+			Diese Operatoren $a$ und $a^+$ erlauben das Verständnis und die Beschreibung der Quantenwelt, ohne dass jedes Mal komplexe Differentialgleichungen gelöst werden müssen.
 
 		\subsubsection{Wirkung des Hamilton-Operators\label{fourier:subsubsection:WirkungHamiltonoperator}}
 			Wir prüfen anhand eines Beispiels die Wirkung von $H$ auf $a^+|\psi_n\rangle$:
