@@ -286,67 +286,71 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 
 	\subsubsection{Heisenbergs Unschärferelation%
 	\label{fourier:subsubsection:unschaerferelation}}
-	In der Quantenmechanik gibt es keine festen Werte für Grössen wie Ort oder Impuls eines Teilchens, sondern nur Wahrscheinlichkeiten und Mittelwerte, wo sich diese befinden oder wie schnell sie sind.
-	Im Gegensatz zur klassischen Physik, wo der Impuls $p$ eine klar definierte Zahl ist, wird in der Quantenmechanik der Impuls durch einen sogenannten Operator beschrieben:
-	\begin{equation}
-		\hat{p} = \frac{\hbar}{i} \frac{d}{dx}.
-	\end{equation}
-	Das bedeutet:
-	Man kann nicht einfach sagen ``Das Teilchen hat genau diesen Impuls'', sondern der Impuls ist grundsätzlich unscharf (nicht exakt bestimmbar).
-	Ort und Impuls sind sogenannte nicht gleichzeitig messbare Grössen:
-	Ihre Operatoren ``vertauschen'' nicht miteinander, was mathematisch ausgedrückt wird durch
-	\begin{equation}
-		[\hat{x},\hat{p}] = \hat{x} \hat{p} - \hat{p} \hat{x} = i \hbar.
-	\end{equation}
-	Diese fehlende Vertauschbarkeit führt direkt zur bekannten Unschärferelation.
-	Ihre Herleitung basiert auf einer grundlegenden mathematischen Ungleichung, der sogenannten Cauchy-Schwarz-Ungleichung:
-	\begin{equation}
-		\vec{a} \bullet \vec{b} = |\vec{a}| |\vec{b}|\cos\alpha \le |\vec{a}| |\vec{b}|.
-	\end{equation}
-	die besagt, dass das Skalarprodukt zweier Vektoren nie grösser sein kann als das Produkt ihrer Längen.
-	Übertragen auf die Wellenfunktionen zweier Quantenzustände $|\varphi\rangle$ und $|\chi\rangle$, erhält man
-	\begin{equation}
-		|\langle\varphi | \chi\rangle|^2 \le \langle\varphi | \varphi\rangle \langle\chi | \chi\rangle.
-	\end{equation}
-	Diese Relation setzt eine obere Schranke dafür, wie stark zwei Zustände miteinander überlappen können. Sie beschreibt also, wie ähnlich sich zwei Zustände in ihrer quantenmechanischen Beschreibung überhaupt sein können.
-	Der Ausdruck $|\langle\varphi|\chi\rangle|^2$ misst die Überlappung der beiden Zustände, also gewissermaßen, wie ähnlich sie sich sind.
-	Die Terme $\langle\varphi|\varphi\rangle$ und $\langle\chi|\chi\rangle$ entsprechen dabei den Quadraten der Längen (Normen) der Zustände.
-	Der Betrag des Skalarprodukts kann also niemals größer werden als das Produkt der Normen, ganz analog zur klassischen Vektoranalysis.
-	Das Quadrat auf der linken Seite ergibt sich, weil die Ungleichung eine Aussage über den Betrag des Skalarprodukts ist, während die rechte Seite stets reell und positiv ist.
-	Diese Form der Ungleichung bildet die mathematische Grundlage für die Herleitung der heisenbergschen Unschärferelation.
-	Die Zustände $|\varphi\rangle$ und $|\chi\rangle$ sind hier in der Bra-Ket-Notation geschrieben, einer kompakten Notation für Zustände in der Quantenmechanik, wie sie in Abschnitt~\ref{fourier:subsubsection:braKetNotation} eingeführt wurde.
+		In der Quantenmechanik gibt es keine festen Werte für Grössen wie Ort oder Impuls eines Teilchens, sondern nur Wahrscheinlichkeiten und Mittelwerte, wo sich diese befinden oder wie schnell sie sind.
+		Im Gegensatz zur klassischen Physik, wo der Impuls $p$ eine klar definierte Zahl ist, wird in der Quantenmechanik der Impuls durch einen sogenannten Operator beschrieben:
+		\begin{equation}
+			\hat{p} = \frac{\hbar}{i} \frac{d}{dx}.
+		\end{equation}
+		Das bedeutet:
+		Man kann nicht einfach sagen ``Das Teilchen hat genau diesen Impuls'', sondern der Impuls ist grundsätzlich unscharf (nicht exakt bestimmbar).
+		Ort und Impuls sind sogenannte nicht gleichzeitig messbare Grössen:
+		Ihre Operatoren ``vertauschen'' nicht miteinander, was mathematisch ausgedrückt wird durch
+		\begin{equation}
+			[\hat{x},\hat{p}] = \hat{x} \hat{p} - \hat{p} \hat{x} = i \hbar.
+		\end{equation}
+		Diese fehlende Vertauschbarkeit führt direkt zur bekannten Unschärferelation.
+		Ihre Herleitung basiert auf einer grundlegenden mathematischen Ungleichung, der sogenannten Cauchy-Schwarz-Ungleichung:
+		\begin{equation}
+			\vec{a} \bullet \vec{b} = |\vec{a}| |\vec{b}|\cos\alpha \le |\vec{a}| |\vec{b}|.
+		\end{equation}
+		die besagt, dass das Skalarprodukt zweier Vektoren nie grösser sein kann als das Produkt ihrer Längen.
+		Übertragen auf die Wellenfunktionen zweier Quantenzustände $|\varphi\rangle$ und $|\chi\rangle$, erhält man
+		\begin{equation}
+			|\langle\varphi | \chi\rangle|^2 \le \langle\varphi | \varphi\rangle \langle\chi | \chi\rangle.
+		\end{equation}
+		Diese Relation setzt eine obere Schranke dafür, wie stark zwei Zustände miteinander überlappen können. Sie beschreibt also, wie ähnlich sich zwei Zustände in ihrer quantenmechanischen Beschreibung überhaupt sein können.
+		Der Ausdruck $|\langle\varphi|\chi\rangle|^2$ misst die Überlappung der beiden Zustände, also gewissermaßen, wie ähnlich sie sich sind.
+		Die Terme $\langle\varphi|\varphi\rangle$ und $\langle\chi|\chi\rangle$ entsprechen dabei den Quadraten der Längen (Normen) der Zustände.
+		Der Betrag des Skalarprodukts kann also niemals größer werden als das Produkt der Normen, ganz analog zur klassischen Vektoranalysis.
+		Das Quadrat auf der linken Seite ergibt sich, weil die Ungleichung eine Aussage über den Betrag des Skalarprodukts ist, während die rechte Seite stets reell und positiv ist.
+		Diese Form der Ungleichung bildet die mathematische Grundlage für die Herleitung der heisenbergschen Unschärferelation.
+		Die Zustände $|\varphi\rangle$ und $|\chi\rangle$ sind hier in der Bra-Ket-Notation geschrieben, einer kompakten Notation für Zustände in der Quantenmechanik, wie sie in Abschnitt~\ref{fourier:subsubsection:braKetNotation} eingeführt wurde.
 
-	Setzt man
-	\begin{equation}
-		|\varphi\rangle = (\hat{x} - \langle \hat{x} \rangle) |\psi\rangle \quad |\chi\rangle = (\hat{p} - \langle \hat{p} \rangle) | \psi\rangle,
-	\end{equation}
-	also die Abweichungen von Ort und Impuls gegenüber ihren Mittelwerten ein, so führen die Definitionen
-	\begin{equation}
-		\sigma_x^2 = \langle\varphi | \varphi\rangle \text{ und } \sigma_p^2 = \langle\chi | \chi\rangle
-	\end{equation}
-	für die sogenannten Standardabweichungen --- ein Mass für die „Streuung“ oder Unschärfe --- zusammen mit
-	\begin{equation}
-		\langle\psi | [\hat{x},\hat{p}] | \psi\rangle = i\hbar
-	\end{equation}
-	zur Beziehung:
-	\begin{equation}
-		\sigma_x^2 \sigma_p^2 \ge \frac{1}{4} |\langle\psi | [\hat{x},\hat{p}] | \psi\rangle|^2 = \frac{\hbar^2}{4},
-	\end{equation}
-	und damit schliesslich zur bekannten Form der Unschärferelation:
-	\begin{equation}
-		\sigma_x \sigma_p \ge \frac{\hbar}{2}.
-	\end{equation}
+		Setzt man
+		\begin{equation}
+			|\varphi\rangle = (\hat{x} - \langle \hat{x} \rangle) |\psi\rangle \quad |\chi\rangle = (\hat{p} - \langle \hat{p} \rangle) | \psi\rangle,
+		\end{equation}
+		also die Abweichungen von Ort und Impuls gegenüber ihren Mittelwerten ein, so führen die Definitionen
+		\begin{equation}
+			\sigma_x^2 = \langle\varphi | \varphi\rangle \text{ und } \sigma_p^2 = \langle\chi | \chi\rangle
+		\end{equation}
+		für die sogenannten Standardabweichungen --- ein Mass für die „Streuung“ oder Unschärfe --- zusammen mit
+		\begin{equation}
+			\langle\psi | [\hat{x},\hat{p}] | \psi\rangle = i\hbar
+		\end{equation}
+		zur Beziehung:
+		\begin{equation}
+			\sigma_x^2 \sigma_p^2 \ge \frac{1}{4} |\langle\psi | [\hat{x},\hat{p}] | \psi\rangle|^2 = \frac{\hbar^2}{4},
+		\end{equation}
+		und damit schliesslich zur bekannten Form der Unschärferelation:
+		\begin{equation}
+			\sigma_x \sigma_p \ge \frac{\hbar}{2}.
+		\end{equation}
 
-	Hier bedeuten $\sigma_x$ und $\sigma_p$ die Unschärfen (Standardabweichungen) in Ort und Impuls.
-	Die Unschärferelation sagt also:
-	Je genauer der Ort eines Teilchens bekannt ist (kleines $\sigma_x$), desto unschärfer muss sein Impuls ($\sigma_p$) sein --- und umgekehrt.
-	Das zeigt anschaulich die Wellennatur von Teilchen:
-	Ein Teilchen, das genau lokalisiert ist, muss eine breite Wellenverteilung im Impulsraum haben.
-	Würde man das $\tfrac{1}{2}$ in der Formel weglassen, erhielte man eine vereinfachte, aber weniger präzise Darstellung des Zusammenhangs.
+		Hier bedeuten $\sigma_x$ und $\sigma_p$ die Unschärfen (Standardabweichungen) in Ort und Impuls.
+		Die Unschärferelation sagt also:
+		Je genauer der Ort eines Teilchens bekannt ist (kleines $\sigma_x$), desto unschärfer muss sein Impuls ($\sigma_p$) sein --- und umgekehrt.
+		Das zeigt anschaulich die Wellennatur von Teilchen:
+		Ein Teilchen, das genau lokalisiert ist, muss eine breite Wellenverteilung im Impulsraum haben.
+		Würde man das $\tfrac{1}{2}$ in der Formel weglassen, erhielte man eine vereinfachte, aber weniger präzise Darstellung des Zusammenhangs.
 
-	Die Unschärferelation macht deutlich, dass klassische Begriffe wie ``Ort'' und ``Impuls'' in der Quantenmechanik nur noch als mittlere Werte und Streuungen auftreten können.
-	Um diese Konzepte mathematisch präzise zu fassen und weiterführende Aussagen über die Dynamik eines Systems zu treffen, bedarf es weiterer Werkzeuge ---
-	insbesondere des Hamilton-Operators und der Schrödinger-Gleichung.
+		Die Unschärferelation macht deutlich, dass klassische Begriffe wie ``Ort'' und ``Impuls'' in der Quantenmechanik nur noch als mittlere Werte und Streuungen auftreten können.
+		Um diese Konzepte mathematisch präzise zu fassen und weiterführende Aussagen über die Dynamik eines Systems zu treffen, bedarf es weiterer Werkzeuge ---
+		insbesondere des Hamilton-Operators und der Schrödinger-Gleichung.
+
+		In der klassischen Physik messen wir physikalische Größen wie Spannung oder Länge direkt.
+		In der Quantenmechanik erfolgt die Messung jedoch indirekt durch sogenannte Operatoren, welche auf den Zustand des Systems einwirken.
+		Dabei beeinflusst die Messung selbst den Zustand des Systems.
 
 	\subsubsection{Hamilton-Operator und Schrödinger-Gleichung%
 	\label{fourier:subsubsection:hamiltonOperatorUndSchroedinger}}
@@ -423,111 +427,139 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		In diesem Abschnitt verwenden wir die Grundlagen der Quantenmechanik, um zu zeigen, dass Licht nicht kontinuierlich, sondern in kleinsten Energiepaketen, sogenannten \emph{Photonen}, übertragen wird.
 		Dazu betrachten wir zunächst den quantenmechanischen harmonischen Oszillator.
 
-		\paragraph{Dimensionlose Operatoren}
+		\subsubsection{Dimensionlose Operatoren\label{fourier:subsubsection:DimensionsloseOperatoren}}
+			Zur Vereinfachung führen wir dimensionslose Operatoren ein:
+			\[
+				Q = \sqrt{\frac{m\omega}{\hbar}}x
+				\qquad\text{und}\qquad
+				P = \frac{1}{\sqrt{m\hbar\omega}}p.
+			\]
+			Der Hamilton-Operator des harmonischen Oszillators nimmt damit die Form an:
+			\begin{equation}
+				H = \frac{1}{2}(P^2 + Q^2).
+			\end{equation}
 
-		Zur Vereinfachung führen wir dimensionslose Operatoren ein:
-		\[
-			Q = \sqrt{\frac{m\omega}{\hbar}}x
-			\qquad\text{und}\qquad
-			P = \frac{1}{\sqrt{m\hbar\omega}}p.
-		\]
-		Der Hamilton-Operator des harmonischen Oszillators nimmt damit die Form an:
-		\begin{equation}
-			H = \frac{1}{2}(P^2 + Q^2).
-		\end{equation}
+		\subsubsection{Definition der Leiteroperatoren\label{fourier:subsubsection:DefinitionLeiteroperatoren}}
+			Wir definieren nun die sogenannten Leiteroperatoren:
+			\[
+				a = \frac{1}{\sqrt{2}}(Q - iP)
+				\qquad\text{und}\qquad
+				a^+ = \frac{1}{\sqrt{2}}(Q + iP).
+			\]
+			\textit{Anmerkung:} Ursprünglich wurde der Erzeugungsoperator mit einem $\dagger$ (engl. „dagger“) als hochgestelltes Symbol geschrieben, also $a^\dagger$.
+			Aufgrund der begrenzten Verfügbarkeit von Sonderzeichen auf Tastaturen und in einfachen Textsystemen wird oft stattdessen das Pluszeichen $a^+$ verwendet.
+			Heute findet man deshalb in der Literatur meistens das hochgestellte Plus.
+			Beide Bezeichnungen meinen denselben Operator.
 
-		\paragraph{Definition der Leiteroperatoren}
-		Wir definieren nun die sogenannten Leiteroperatoren:
-		\[
-			a = \frac{1}{\sqrt{2}}(Q - iP)
-			\qquad\text{und}\qquad
-			a^+ = \frac{1}{\sqrt{2}}(Q + iP).
-		\]
-		\textit{Anmerkung:} Ursprünglich wurde der Erzeugungsoperator mit einem $\dagger$ (engl. „dagger“) als hochgestelltes Symbol geschrieben, also $a^\dagger$.
-		Aufgrund der begrenzten Verfügbarkeit von Sonderzeichen auf Tastaturen und in einfachen Textsystemen wird oft stattdessen das Pluszeichen $a^+$ verwendet.
-		Heute findet man deshalb in der Literatur meistens das hochgestellte Plus.
-		Beide Bezeichnungen meinen denselben Operator.
+			Diese Operatoren $a$ und $a^+$ erfüllen die fundamentale Vertauschungsrelation:
+			\begin{equation}
+				[a, a^+] = 1.
+			\end{equation}
 
-		Diese Operatoren $a$ und $a^+$ erfüllen die fundamentale Vertauschungsrelation:
-		\begin{equation}
-			[a, a^+] = 1.
-		\end{equation}
+		\subsubsection{Hamilton-Operator in Operatorform\label{fourier:subsubsection:HamiltonOperatorInOperatorform}}
+			Man kann den Hamilton-Operator auch in Operatorform schreiben:
+			\begin{equation}
+				H = \hbar\omega \left(a^+ a + \frac{1}{2}\right) = \hbar\omega \left(N + \frac{1}{2}\right),
+			\end{equation}
+			wobei $N = a^+a$ der sogenannte Teilchenzahloperator ist.
+			Dieser zählt die Anzahl der Quanten (z.\,B. Photonen) im Zustand.
 
-		\paragraph{Hamilton-Operator in Operatorform}
-		Man kann den Hamilton-Operator auch in Operatorform schreiben:
-		\begin{equation}
-			H = \hbar\omega \left(a^+ a + \frac{1}{2}\right) = \hbar\omega \left(N + \frac{1}{2}\right),
-		\end{equation}
-		wobei $N = a^+a$ der sogenannte Teilchenzahloperator ist.
-		Dieser zählt die Anzahl der Quanten (z.\,B. Photonen) im Zustand.
+		\subsubsection{Energieeigenwerte\label{fourier:subsubsection:Energieeigenwerte}}
+			Die Eigenzustände $|\psi_n\rangle$ des Operators $H$ sind auch Eigenzustände von $N$, mit
+			\begin{equation}
+				H\,|\psi_n\rangle = \hbar\omega\left(n + \frac{1}{2}\right) |\psi_n\rangle.
+			\end{equation}
+			Die Eigenwerte sind also diskret:
+			\[
+				E_n = \hbar\omega\left(n + \frac{1}{2}\right), \quad \text{mit } n = 0,1,2,\dots
+			\]
+			Dies zeigt:
+			Die Energie ist quantisiert in Vielfachen von $\hbar\omega$.
+			Der Grundzustand $n = 0$ besitzt die minimale Energie $\tfrac{1}{2}\hbar\omega$.
 
-		\paragraph{Energieeigenwerte}
-		Die Eigenzustände $|\psi_n\rangle$ des Operators $H$ sind auch Eigenzustände von $N$, mit
-		\begin{equation}
-			H\,|\psi_n\rangle = \hbar\omega\left(n + \frac{1}{2}\right) |\psi_n\rangle.
-		\end{equation}
-		Die Eigenwerte sind also diskret:
-		\[
-			E_n = \hbar\omega\left(n + \frac{1}{2}\right), \quad \text{mit } n = 0,1,2,\dots
-		\]
-		Dies zeigt:
-		Die Energie ist quantisiert in Vielfachen von $\hbar\omega$.
-		Der Grundzustand $n = 0$ besitzt die minimale Energie $\tfrac{1}{2}\hbar\omega$.
+		\subsubsection{Wirkung der Leiteroperatoren\label{fourier:subsubsection:WirkungLeiteroperatoren}}
+			Die Operatoren $a^+$ und $a$ verändern die Teilchenzahl:
+			\[
+				a^+|\psi_n\rangle = \sqrt{n+1}\,|\psi_{n+1}\rangle,
+				\qquad
+				a|\psi_n\rangle = \sqrt{n}\,|\psi_{n-1}\rangle.
+			\]
+			Damit erzeugt $a^+$ ein Quant (z.B. ein Photon), $a$ vernichtet eines.
+			Diese Operatoren $a$ und $a^+$ erlauben das Verständnis und die Beschreibung der Quantenwelt, ohne dass jedes Mal komplexe Differentialgleichungen gelöst werden müssen.
 
-		\paragraph{Wirkung der Leiteroperatoren}
-		Die Operatoren $a^+$ und $a$ verändern die Teilchenzahl:
-		\[
-			a^+|\psi_n\rangle = \sqrt{n+1}\,|\psi_{n+1}\rangle,
-			\qquad
-			a|\psi_n\rangle = \sqrt{n}\,|\psi_{n-1}\rangle.
-		\]
-		Damit erzeugt $a^+$ ein Quant (z.B. ein Photon), $a$ vernichtet eines.
+		\subsubsection{Wirkung des Hamiltonoperators\label{fourier:subsubsection:WirkungHamiltonoperator}}
+			Wir prüfen anhand eines Beispiels die Wirkung von $H$ auf $a^+|\psi_n\rangle$:
+			\begin{align}
+				H\, (a^+|\psi_n\rangle)
+				&= \hbar\omega (N + \tfrac{1}{2}) a^+|\psi_n\rangle \\
+				&= \hbar\omega (a^+ N + a^+ \cdot \tfrac{1}{2}) |\psi_n\rangle \\
+				&= \hbar\omega (n + 1 + \tfrac{1}{2})\, a^+|\psi_n\rangle = E_{n+1}\, a^+|\psi_n\rangle.
+			\end{align}
+			Dies zeigt:
+			$a^+|\psi_n\rangle$ ist (bis auf Normierung) der Zustand mit um eins erhöhter Energie.
 
-		\paragraph{Beispiel: Wirkung des Hamiltonoperators}
-		Wir prüfen anhand eines Beispiels die Wirkung von $H$ auf $a^+|\psi_n\rangle$:
-		\begin{align}
-			H\, (a^+|\psi_n\rangle)
-			&= \hbar\omega (N + \tfrac{1}{2}) a^+|\psi_n\rangle \\
-			&= \hbar\omega (a^+ N + a^+ \cdot \tfrac{1}{2}) |\psi_n\rangle \\
-			&= \hbar\omega (n + 1 + \tfrac{1}{2})\, a^+|\psi_n\rangle = E_{n+1}\, a^+|\psi_n\rangle.
-		\end{align}
-		Dies zeigt:
-		$a^+|\psi_n\rangle$ ist (bis auf Normierung) der Zustand mit um eins erhöhter Energie.
+			Analog ergibt sich für $a|\psi_n\rangle$:
+			\[
+				H\, (a|\psi_n\rangle) = E_{n-1}\, a|\psi_n\rangle.
+			\]
 
-		Analog ergibt sich für $a|\psi_n\rangle$:
-		\[
-			H\, (a|\psi_n\rangle) = E_{n-1}\, a|\psi_n\rangle.
-		\]
+		\subsubsection{Quantisierung des elektromagnetischen Feldes\label{fourier:subsubsection:QuantisierungElmagFeld}}
+			Im nächsten Schritt (Kapitel~\ref{fourier:section:AnwendungAufFeld}) übertragen wir diese Struktur auf das elektromagnetische Feld.
+			Dabei wird jede Modenkombination (bestimmte Wellenlänge, Polarisation, Richtung) wie ein unabhängiger harmonischer Oszillator behandelt.
+			Die Fourier-Koeffizienten dieser Felder verhalten sich wie die Leiteroperatoren $a$ und $a^+$.
 
-		\paragraph{Quantisierung des elektromagnetischen Feldes}
-		Im nächsten Schritt (Kapitel~\ref{fourier:section:AnwendungAufFeld}) übertragen wir diese Struktur auf das elektromagnetische Feld.
-		Dabei wird jede Modenkombination (bestimmte Wellenlänge, Polarisation, Richtung) wie ein unabhängiger harmonischer Oszillator behandelt.
-		Die Fourier-Koeffizienten dieser Felder verhalten sich wie die Leiteroperatoren $a$ und $a^+$.
+			Die Energie des Lichtfeldes ergibt sich somit ebenfalls in diskreten Portionen:
+			\[
+				E_n = \hbar\omega\left(n + \frac{1}{2}\right),
+			\]
+			was zur quantisierten Natur des Lichts und dem Konzept des Photons führt.
 
-		Die Energie des Lichtfeldes ergibt sich somit ebenfalls in diskreten Portionen:
-		\[
-			E_n = \hbar\omega\left(n + \frac{1}{2}\right),
-		\]
-		was zur quantisierten Natur des Lichts und dem Konzept des Photons führt.
+			\textit{Anmerkung zur Polarisation:} Bei realem Licht muss zusätzlich die Polarisation berücksichtigt werden.
+			Jede Richtung der Polarisation entspricht dabei einem eigenen Oszillator mit eigenen Leiteroperatoren.
 
-		\paragraph{Anmerkung zur Polarisation}
-		Bei realem Licht muss zusätzlich die Polarisation berücksichtigt werden.
-		Jede Richtung der Polarisation entspricht dabei einem eigenen Oszillator mit eigenen Leiteroperatoren.
+		\subsubsection{Überlegungen zur minimalen und maximalen Energie\label{fourier:subsubsection:MinMaxEnergie}}
+			Was würde passieren, wenn der Operator $a$ viele Male auf einen Zustand angewendet werden würde? ---
+			Bekanntlich gibt es eine minimale Energie (\ref{fourier:subsubsection:Energieeigenwerte}).
+			Einem Teilchen kann man nicht beliebig viele Energie entziehen.
+			Eine unendliche Energiequelle gibt es nicht!
 
-		\paragraph{Messung}
+			Was würde passieren, wenn einem Teilchen immer mehr Energie zugeführt würde, der Operator $a^+$ also sehr viele Male angewendet würde? ---
+			Nun, die physikalische Welt setzt Grenzen durch Instabilität und Wechselwirkungen und weitere Effekte.
+			Ein schwarzes Loch wäre ein Beispiel für sehr viel Energie.
+		
+		\subsubsection{Messung quantisierter Energie\label{fourier:subsubsection:MessungQuantisierterEnergie}}
+			Bislang wurde gezeigt, wie sich die Energie in einem quantisierten System verändern lässt.
+			Dies stellt jedoch nur den ersten Schritt dar.
+			Um die quantisierte Energie tatsächlich zu bestimmen, ist es notwendig, eine Methode zur Messung zu etablieren.
 
-		\paragraph{Beispiel: Energie-Messung}
-		Die Wirkung des Hamiltonoperators auf die Zustände lautet
-		\[
-			\hat{H} |\psi\rangle = E |\psi\rangle.
-		\]
-		Wendet man die Leiteroperatoren an, so verschieben sie die Energiewerte diskret um $\hbar \omega$:
-		\[
-			\hat{H} a^+ |\psi\rangle = a^+ (E + \hbar \omega) |\psi\rangle,
-			\quad
-			\hat{H} a |\psi\rangle = a (E - \hbar \omega) |\psi\rangle.
-		\]
-		Dies zeigt anschaulich, dass die Energiezustände in diskreten Paketen $\hbar \omega$ schwingen.
+			In der klassischen Physik messen wir physikalische Größen wie Spannung oder Länge direkt.
+			In der Quantenmechanik erfolgt die Messung jedoch indirekt durch sogenannte Operatoren, welche auf den Zustand des Systems einwirken.
+			Dabei beeinflusst die Messung selbst den Zustand des Systems.
+
+			Ein anschauliches Beispiel hierfür ist ein Mikroskop und eine zu beobachtende Zelle:
+			Mehr Licht liefert zwar mehr Informationen und ein genaueres Bild, zerstört jedoch auch die beobachtete Zelle stärker.
+			Ein ähnliches Phänomen tritt in der Quantenmechanik auf:
+			Ort und Impuls eines Teilchens können nicht gleichzeitig beliebig genau bestimmt werden.
+			Diese Einschränkung wird durch die Heisenbergsche Unschärferelation beschrieben, welche bereits in Kapitel~\ref{fourier:subsubsection:unschaerferelation} ausgeführt wurde.
+			Deshalb werden Messoperatoren eingesetzt, die jeweils nur einen Teilaspekt des Zustands erfassen, beispielsweise den Ort oder den Impuls, aber niemals den vollständigen Zustand.
+
+			Die Messung der Energie eines quantenmechanischen Systems, dargestellt durch die Wellenfunktion \(\Psi\), wird formal über den Hamiltonoperator beschrieben.
+			Dabei ist zu beachten, dass Operatoren in der Quantenmechanik nicht beliebig vertauschbar sind; die Reihenfolge ihrer Anwendung ist von großer Bedeutung.
+			Dies spiegelt sich in der Kommutatorrelation wider, welche im Allgemeinen nicht verschwindet, sondern proportional zur imaginären Einheit ist.
+
+			Operatoren dienen in der Quantenmechanik als essentielle Werkzeuge, die die Wirkung von Messungen oder Übergängen zwischen verschiedenen Energieniveaus beschreiben.
+			Zur Veranschaulichung gilt dieses Beispiel einer Energie-Messung:
+			Die Wirkung des Hamiltonoperators auf die Zustände lautet
+			\[
+				\hat{H} |\psi\rangle = E |\psi\rangle.
+			\]
+			Wendet man die Leiteroperatoren an, so verschieben sie die Energiewerte diskret um $\hbar \omega$:
+			\[
+				\hat{H} a^+ |\psi\rangle = a^+ (E + \hbar \omega) |\psi\rangle,
+				\quad
+				\hat{H} a |\psi\rangle = a (E - \hbar \omega) |\psi\rangle.
+			\]
+			Dies zeigt anschaulich, dass die Energiezustände in diskreten Paketen $\hbar \omega$ schwingen.
 
 		\paragraph{Motivation}
 		Diese Betrachtung des harmonischen Oszillators bildet die Grundlage für das Verständnis der Quantisierung von Licht und der Existenz von Photonen als kleinste Energieeinheiten.
