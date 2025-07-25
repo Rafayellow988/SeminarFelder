@@ -348,141 +348,79 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 	Um diese Konzepte mathematisch präzise zu fassen und weiterführende Aussagen über die Dynamik eines Systems zu treffen, bedarf es weiterer Werkzeuge ---
 	insbesondere des Hamilton-Operators und der Schrödinger-Gleichung.
 
-	% todo knma: Hier bin ich dran; --> Strukturieren, Wiederholungen vermeiden, verstänlicher
 	\subsubsection{Hamilton-Operator und Schrödinger-Gleichung%
-	\label{fourier:subsubsection:hamiltonOperatorUndSchroedinger}} 
-		Nachdem wir die grundlegende Struktur quantenmechanischer Zustände und ihre prinzipielle Unschärfe kennengelernt haben, wenden wir uns nun der Frage zu, wie sich ihre Dynamik beschreibt.
-		Zentral dafür sind der Hamilton-Operator \( \hat{H} \) und die Schrödinger-Gleichung, die die zeitliche Entwicklung und die Energie-Eigenwerte eines Systems festlegen.
-
-		Im Kapitel~\ref{fourier:subsection:derQMHarmonischeOszillator} wurde der Hamilton-Operator bereits im Zusammenhang mit dem harmonischen Oszillator eingeführt.
-		Die entsprechende Formel findet sich in Gleichung~\ref{fourier:equation:derQMHO} abgebildet.
-		In diesem Abschnitt soll der Hamilton-Operator nun losgelöst von diesem Spezialfall als zentrales Werkzeug der Quantenmechanik betrachtet werden.
+	\label{fourier:subsubsection:hamiltonOperatorUndSchroedinger}}
+		Die Unschärferelation hat gezeigt, dass Ort und Impuls eines Teilchens nicht gleichzeitig beliebig genau bestimmt werden können.
+		Diese fundamentale Eigenschaft ist nicht nur eine Aussage über Messprozesse,  
+		sondern hat unmittelbare Konsequenzen für die Dynamik eines quantenmechanischen Systems.
+		Um zu beschreiben, wie sich ein solcher Zustand mit der Zeit entwickelt,  
+		benötigt man ein mathematisches Werkzeug, das diese Unschärfe respektiert  
+		und gleichzeitig Auskunft über die Energieverhältnisse im System gibt.
 		
-		Der Hamilton-Operator \( \hat{H} \) spielt eine doppelte Rolle:
+		Dieses Werkzeug ist der Hamilton-Operator \( \hat{H} \).
+		Er spielt in der Quantenmechanik eine doppelte Rolle:
 		\begin{itemize}
-		\item Einerseits beschreibt er — wie in der klassischen Physik — die Gesamtenergie des Systems (kinetisch und potenziell).
-		\item Andererseits steuert er die zeitliche Entwicklung des Systems über die Schrödinger-Gleichung.
+		\item Er beschreibt die Gesamtenergie eines Systems (kinetisch und potentiell).  
+		\item Er steuert die zeitliche Entwicklung eines Zustands über die Schrödinger-Gleichung.  
 		\end{itemize}
+		Im Kapitel~\ref{fourier:subsection:derQMHarmonischeOszillator} wurde \( \hat{H} \) bereits in einem konkreten Beispiel eingeführt.  
+		Hier betrachten wir ihn unabhängig von einem speziellen Potential.  
+		In der klassischen Mechanik ergibt sich die Gesamtenergie aus der Summe von kinetischer und potentieller Energie.
+		In der Quantenmechanik wird diese Größe durch den Operator:
+		\begin{equation}
+			\hat{H} = \frac{\hat{p}^2}{2m} + V(\hat{x})
+		\end{equation}
+		ersetzt.
+		Dabei treten \( \hat{x} \) und \( \hat{p} \) als nicht-kommutierende (also nicht vertauschbare) Operatoren auf.  
+		
+		In der Ortsdarstellung gilt:
+		\begin{equation}
+			\hat{x} = x, \qquad \hat{p} = -i\hbar \frac{\partial}{\partial x}
+		\end{equation}
+		Setzt man dies ein, ergibt sich die konkrete Form des Hamilton-Operators:
+		\begin{equation}
+			\hat{H} = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x)
+		\end{equation}
+		Dieser Operator ist zentral in der zeitabhängigen Schrödinger-Gleichung:
+		\begin{equation}
+			i\hbar \frac{\partial}{\partial t} \psi(x,t) = \hat{H} \psi(x,t)
+		\end{equation}
+		Sie beschreibt, wie sich der Zustand eines Systems mit der Zeit verändert.  
+		Die Lösung dieser Gleichung ist die sogenannte Wellenfunktion \( \psi(x,t) \).  
 
-		Damit ist \( \hat{H} \) weit mehr als ein Energie-Ausdruck: Er ist das zentrale Bindeglied zwischen Struktur und Dynamik in der Quantenmechanik. Im Folgenden wird der Übergang von der klassischen zur quantenmechanischen Beschreibung systematisch beschrieben.
+		Gleichzeitig ist der Hamilton-Operator ein sogenannter Observablen-Operator.  
+		Das bedeutet:  
+		Seine Eigenwerte entsprechen den möglichen Energie-Messwerten des Systems.  
+		Und seine Eigenfunktionen beschreiben stationäre Zustände mit konstanter Energie.
+		Ein weiterer wichtiger Punkt ist, dass die Struktur von \( \hat{H} \) direkt von den Vertauschungsrelationen von \( \hat{x} \) und \( \hat{p} \) abhängt:
+		\begin{equation}
+			[\hat{x}, \hat{p}] = i \hbar
+		\end{equation}
 
+		Diese Beziehung führt, wie gesehen, zur Unschärferelation.  
+		Gleichzeitig stellt sie sicher, dass die Dynamik mit den Regeln der Quantenmechanik verträglich ist.
+		Die mathematische Konsistenz der Schrödinger-Gleichung hängt also von genau dieser Nichtvertauschbarkeit ab.
 
-
-	Der Hamilton-Operator
-	\begin{equation}\label{fourier:equation:hamiltonOperator}
-		\hat{H} = \frac{\hat p^2}{2m} + V(\hat{x})
-		\quad\longrightarrow\quad
-		\hat{H} = -\frac{\hbar^2}{2m}\,\frac{\mathrm{d}^2}{\mathrm{d}x^2} + V(x)
-	\end{equation}
-	ist in der Quantenmechanik der Operator, der die gesamte Energie eines Systems (kinetische plus potentielle Energie) darstellt.
-	Er taucht in beiden Formen der Schrödinger-Gleichung auf und verbindet damit die energetische Beschreibung des Systems mit seiner zeitlichen Entwicklung.
-	% todo: impulsoperator erklären.
-
-	In Gleichung~\ref{fourier:equation:zeitabhaengigeSchroedingerGleichung} wurde bereits die zeitabhängige Schrödinger-Gleichung präsentiert. % todo: mal nur platziert wegen Referenz
-
-	%%% maybe todo: add some stuff of book quantum mechanics to glue things together
-
-	Durch Schrödinger wird der Impuls p durch
-	\begin{equation}
-		\frac{\hbar}{i} \frac{\partial}{\partial x}
-	\end{equation}
-	ersetzt.
-	Wodurch der Hamilton-Operator
-	\begin{equation}
-		\hat{H} = -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2} + V(x)
-	\end{equation}	
-	resultiert.
-
-	Der Erwartungswert des Impulses in einem Zustand $|\psi\rangle$ lässt sich schreiben als:
-	\begin{equation}
-		E(p) = \int \bar{\psi}p\psi dx
-		= \int \bar{\psi} \frac{\hbar}{i} \frac{d\psi}{dx} dx
-		= \langle \psi | p | \psi \rangle
-	\end{equation}
-	Er gibt an, welcher mittlere Impuls gemessen wird, wenn sich das System im Zustand $|\psi\rangle$ befindet.
-
-	Nach Heisenbergs Unschärferelation (siehe Abschnitt~\ref{fourier:subsubsection:unschaerferelation}) gilt in der Quantenmechanik, dass die Vertauschung der Impuls- und Ortsoperatoren nicht null ist, also
-	\begin{equation}
-		px \neq xp.
-	\end{equation}
-	Die Vertauschungsrelation kann als
-	\begin{equation}
-		[x, p] = \hbar \text{id}
-	\end{equation}
-	geschrieben werden.
+		Beispielhaft kann man mit dem Hamilton-Operator Erwartungswerte berechnen.  
+		Für den Impuls ergibt sich:
+		\begin{equation}
+			E(p) = \int \bar{\psi}(x) \, \hat{p} \, \psi(x) \, dx 
+			= \int \bar{\psi}(x) \, \frac{\hbar}{i} \, \frac{\partial \psi}{\partial x} \, dx 
+			= \langle \psi | \hat{p} | \psi \rangle
+		\end{equation}
 
 
+		Solche Berechnungen sind nicht nur theoretisch relevant, sondern liefern konkrete Vorhersagen für Experimente.  
+		Sie zeigen, wie Operatoren mit Zuständen kombiniert werden, um physikalische Größen wie Energie, Ort oder Impuls zu berechnen.
 
-%%% Vorschlag; einbetten / loeschen
------------------------------------------------- % todo delete
+		Der Hamilton-Operator steht somit im Zentrum der quantenmechanischen Theorie.  
+		Er fasst die Energie- und Dynamikstruktur eines Systems in einem einzigen Objekt zusammen.  
 
-In der Quantenmechanik gelingt der Übergang von der klassischen Hamilton-Funktion zum Hamilton-Operator $\hat H$ durch das sogenannte Korrespondenzprinzip beziehungsweise kanonische Quantisierung.
-Die wesentlichen Schritte sind:
-\begin{itemize}
-\item Klassische Grössen wie Ort und Impuls erscheinen in der Quantenmechanik in neuer Form --- als Operatoren.
-\begin{equation}
-	x \longmapsto \hat{x}, \qquad p \longmapsto \hat{p}
-\end{equation}
-wobei man in der Ortsdarstellung
-\begin{equation}
-	\hat{x} = x, \hat{p} = -i \hbar \frac{d}{dx}
-\end{equation}
-nimmt.
-\item Vertauschungsrelation
-Die kanonischen Poisson-Klammern $\{x, p\} = 1$ werden ersetzt durch die Kommutatoren
-\begin{equation}
-	[\hat{x}, \hat{p}] = i \hbar.
-\end{equation}
-Damit ist sichergestellt, dass $\hat{x}$ und $\hat{p}$ die ``richtige'' nichtkommutative Struktur besitzen.
-%%%
+		Im nächsten Abschnitt werden wir sehen, wie sich der Hamilton-Operator im Fall des harmonischen Oszillators besonders elegant behandeln lässt ---
+		mithilfe sogenannter Leiteroperatoren.
 
-\end{itemize}
-Der Hamilton-Operator
-\begin{equation}\label{fourier:equation:hamiltonOperator}
- 	\hat{H} = \frac{\hat p^2}{2m} + V(\hat{x})
-    \quad\longrightarrow\quad
-    \hat{H} = -\frac{\hbar^2}{2m}\,\frac{\mathrm{d}^2}{\mathrm{d}x^2} + V(x)
-\end{equation}
-ist in der Quantenmechanik der Operator, der die gesamte Energie eines Systems (kinetische plus potentielle Energie) darstellt.
-Er taucht in beiden Formen der Schrödinger-Gleichung auf und verbindet damit die energetische Beschreibung des Systems mit seiner zeitlichen Entwicklung.
-% todo: impulsoperator erklären.
-
-In Gleichung~\ref{fourier:equation:zeitabhaengigeSchroedingerGleichung} wurde bereits die zeitabhängige Schrödinger-Gleichung präsentiert. % todo: mal nur platziert wegen Referenz
-
-%%% maybe todo: add some stuff of book quantum mechanics to glue things together
-
-Durch Schrödinger wird der Impuls $p$ in der Ortsdarstellung durch den Impulsoperator $\frac{\hbar}{i} \frac{\partial}{\partial x}$
-ersetzt.
-Wodurch der Hamilton-Operator
-\begin{equation}
-	\hat{H} = -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2} + V(x)
-\end{equation}	
-resultiert.
-
-Der Erwartungswert des Impulses in einem Zustand $|\psi\rangle$ lässt sich schreiben als:
-\begin{equation}
-	E(p) = \int \bar{\psi}p\psi dx
-	= \int \bar{\psi} \frac{\hbar}{i} \frac{d\psi}{dx} dx
-	= \langle \psi | p | \psi \rangle
-\end{equation}
-Er gibt an, welcher mittlere Impuls gemessen wird, wenn sich das System im Zustand $|\psi\rangle$ befindet.
-
-Nach Heisenbergs Unschärferelation (siehe Abschnitt~\ref{fourier:subsubsection:unschaerferelation}) gilt in der Quantenmechanik, dass die Vertauschung der Impuls- und Ortsoperatoren nicht null ist, also
-\begin{equation}
-	px \neq xp.
-\end{equation}
-Die Vertauschungsrelation kann als
-\begin{equation}
-	[x, p] = \hbar \text{id}
-\end{equation}
-geschrieben werden.
-
-
-		Im nächsten Abschnitt wird dieser formal eingeführte Hamilton-Operator konkret für den harmonischen Oszillator untersucht.
-		Dabei zeigen sogenannte Leiteroperatoren eine elegante Methode, das Eigenwertproblem zu lösen — ganz ohne explizite Differentialgleichung.
-
-	\subsection{Leiteroperatoren\label{fourier:subsection:Leiteroperatoren}} % todo-: Besserer Titel; unpassende Wortwahl
-In diesem Abschnitt verwenden wir die bisher eingeführten Grundlagen der Quantenmechanik, um zu zeigen, dass Licht nicht kontinuierlich, sondern in kleinsten Energiepaketen, sogenannten Photonen, übertragen wird.
+	\subsection{Leiteroperatoren\label{fourier:subsection:Leiteroperatoren}}
+		In diesem Abschnitt verwenden wir die bisher eingeführten Grundlagen der Quantenmechanik, um zu zeigen, dass Licht nicht kontinuierlich, sondern in kleinsten Energiepaketen, sogenannten Photonen, übertragen wird.
 
 %%%%%%%%%%%%%%%%%%%%% dieser Abschnitt nötig/ an anderem Ort einfügen
 % todo knma: Abschnitt evtl. weg oder an anderem Ort? War in seinen Notizen.
