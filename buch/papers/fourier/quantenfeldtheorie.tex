@@ -539,24 +539,6 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 
 			Diese Operatoren erlauben eine elegante algebraische Beschreibung der Quantenzustände, ohne dass komplexe Differentialgleichungen gelöst werden müssen.
 
-		\subsubsection{Wirkung des Hamilton-Operators\label{fourier:subsubsection:WirkungHamiltonoperator}}
-			Wir prüfen anhand eines Beispiels die Wirkung von \( H \) auf \( a^+|\psi_n\rangle \):
-			\begin{align}
-				H\, (a^+|\psi_n\rangle)
-				&= \hbar\omega \left(N + \tfrac{1}{2}\right) a^+|\psi_n\rangle \\[0.5em]
-				&= \hbar\omega \left([N, a^+] + a^+ N + \tfrac{1}{2} a^+\right)|\psi_n\rangle \\[0.5em]
-				&= \hbar\omega \left(a^+ + a^+ n + \tfrac{1}{2} a^+\right)|\psi_n\rangle \\[0.5em]
-				&= \hbar\omega \left(n + 1 + \tfrac{1}{2}\right) a^+|\psi_n\rangle \\[0.5em]
-				&= E_{n+1}\, a^+|\psi_n\rangle
-			\end{align}
-			Dies zeigt:
-			\( a^+|\psi_n\rangle \) ist (bis auf Normierung) der Zustand mit um eins erhöhter Energie.
-
-			Analog ergibt sich für \( a|\psi_n\rangle \):
-			\begin{equation}
-				H\, (a|\psi_n\rangle) = E_{n-1}\, a|\psi_n\rangle
-			\end{equation}
-
 		\subsubsection{Quantisierung des elektromagnetischen Feldes\label{fourier:subsubsection:QuantisierungElmagFeld}}
 			Im nächsten Schritt (Kapitel~\ref{fourier:section:AnwendungAufFeld}) übertragen wir diese Struktur auf das elektromagnetische Feld.
 			Dabei wird jede Modenkombination (bestimmte Wellenlänge, Polarisation, Richtung) wie ein unabhängiger harmonischer Oszillator behandelt.
