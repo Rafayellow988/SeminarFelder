@@ -13,54 +13,6 @@ Ein Quant ist ein kleinst mögliches Teilchen und Quantisierung bedeutet nichts 
 In der Quantenfeldtheorie ist genau dieser Schritt von zentraler Bedeutung, denn nun ist alles zählbar. 
 Dabei werden klassische Felder wie das elektromagnetische Feld in quantenmechanische Operatoren überführt, wodurch die zuvor kontinuierlichen Felder plötzlich aus einer endlichen Menge von Quanten bestehen.
 
-\subsection{Der quantenmechanische harmonische Oszillator\label{fourier:subsection:derQMHarmonischeOszillator}}
-
-Im Kapitel~\ref{fourier:section:AnwendungAufFeld} wurde gezeigt, wie sich eine klassische Wellengleichung mithilfe einer Fourierzerlegung in eine Überlagerung von Schwingungsmoden zerlegen lässt.  
-Jede dieser Moden erfüllt formal die Bewegungsgleichung eines klassischen harmonischen Oszillators.
-
-Kapitel~\ref{fourier:section:derKlassischeHarmonischeOszillator} untersuchte diesen Fall genauer:  
-Die Gesamtenergie eines solchen Oszillators setzt sich zusammen aus kinetischer Energie \( \frac{p^2}{2m} \) und potentieller Energie \( \frac{1}{2}kx^2 \).  
-Damit ergibt sich die klassische Energieformel:
-\begin{equation}
-E = \frac{p^2}{2m} + \frac{1}{2}kx^2.
-\end{equation}
-
-Im vorherigen Abschnitt~\ref{fourier:section:quantenfeldtheorie} wurde schließlich beschrieben, wie in der Quantenfeldtheorie klassische Felder in quantenmechanische Operatoren überführt werden.  
-Genau diesen Übergang wollen wir nun am Beispiel eines einzelnen harmonischen Oszillators nachvollziehen.
-
-\vspace{1em}
-
-In der Quantenmechanik wird die Energie nicht mehr durch eine Zahl beschrieben, sondern durch einen Operator.  
-Die klassische Energieformel führt uns dabei direkt zum sogenannten \emph{Hamilton-Operator}:
-\begin{equation}
-\hat{H} = \frac{\hat{p}^2}{2m} + \frac{1}{2} k \hat{x}^2.
-\label{fourier:equation:derQMHO}
-\end{equation}
-
-Physikalisch messbare Größen wie Ort, Impuls oder Energie werden nun durch Operatoren beschrieben.  
-Diese wirken auf einen sogenannten \emph{Hilbertraum} — den Raum aller quantenmechanischen Zustände.  
-Die erlaubten Messwerte sind die Eigenwerte dieser Operatoren.  
-Im Fall des harmonischen Oszillators ergibt sich ein \emph{diskretes Energiespektrum}:
-\[
-E_n = \hbar \omega \left(n + \frac{1}{2} \right), \quad n = 0, 1, 2, \dots
-\]
-
-Die Energie des Systems ist damit nicht mehr beliebig, sondern in diskrete Stufen unterteilt.  
-Der Oszillator kann nur auf bestimmten, gleichmäßig verteilten Niveaus existieren.
-Warum hier ein zusätzlicher Term $\frac{1}{2}$ auftritt, wird im Kapitel~\ref{fourier:subsection:Leiteroperatoren} genauer erklärt.
-
-Der harmonische Oszillator spielt in der Quantenphysik eine fundamentale Rolle.  
-Das liegt nicht nur an seiner mathematischen Einfachheit, sondern auch daran, dass viele physikalische Systeme — zumindest näherungsweise — durch ihn beschrieben werden können.
-
-Die Quantisierung des harmonischen Oszillators ist damit nicht nur ein mathematisches Spiel, sondern der Grundbaustein für das Verständnis der modernen Quantenfeldtheorie.
-Ein besonders wichtiges Beispiel ist das elektromagnetische Feld:  
-Wie bereits in Kapitel~\ref{fourier:section:AnwendungAufFeld} gesehen, lässt sich dieses Feld als Summe von Moden darstellen.  
-Jede dieser Moden entspricht einem quantenmechanischen Oszillator.  
-Die Zustände dieser Oszillatoren — sogenannte Photonenzahlenzustände — erklären, warum Licht nicht kontinuierlich, sondern in diskreten Paketen (Photonen) emittiert und absorbiert wird.
-Darüber hinaus findet der quantenmechanische harmonische Oszillator auch in vielen anderen Bereichen Anwendung:
-In der Festkörperphysik beschreibt er beispielsweise die Gitterschwingungen (Phononen), während er in der Quantenoptik zur Modellierung von Lichtfeldern dient.
-Sogar in der Elektrotechnik ist das Konzept grundlegend – etwa bei der Beschreibung von Resonanzphänomenen in elektrischen Schaltkreisen oder der Analyse schwingungsfähiger Systeme.
-
 Wie kam es eigentlich dazu, dass man physikalische Größen plötzlich als „quantisiert“ betrachtete?  
 Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 
@@ -211,32 +163,54 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 	Nicht das Teilchen ist grundlegend, sondern das Feld und was wir beobachten, sind nur dessen kleinste Schwingungen.
 	So wird aus der Quantenmechanik eine Feldtheorie.
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-\subsection{Der harmonische Oszillator\label{fourier:subsection:derHarmonischeOszillator}}
-% TODO
-% 7. In 18.4.2 wird harmonische Oszillator behandelt.
-% Es ist aber etwas verwirrend, dass hier bereits die Mischung mit der Wellengleichung gemacht wird.
-% Ich denke, es wäre hier besser, nur den klassischen harmonischen Operator zu zeigen, wie Sie ihn ja auch in der Abbildung dargestellt haben.
-% Wichtig für später ist, dass Sie die Gesamtenergie H = p^2/2m - 1/2 kx^2 durch x und p ausdrücken, weil daraus ja später der Hamilton-Operator wird.
-% Ich möchte davon abraten, hier schon von Wellen zu sprechen, das verwirrt.
-% Für diesen wichtigen Schritt brauchen Sie meines Erachtens einen eigenen Abschnitt, der die Erkenntnisse von 18.3 mit dem harmonischen Oszillator verbindet:
-% Gleichung des harmonischen Oszillators tritt als Gleichung für die Fourier-Koeffzienten auf.
-% Dies ist dann die Basis für die Quantisierung.
-=======
->>>>>>> 164168a4096d69a731e7a59beb8cd4315da58626
+	\subsection{Der quantenmechanische harmonische Oszillator\label{fourier:subsection:derQMHarmonischeOszillator}}
+
+	Im Kapitel~\ref{fourier:section:AnwendungAufFeld} wurde gezeigt, wie sich eine klassische Wellengleichung mithilfe einer Fourierzerlegung in eine Überlagerung von Schwingungsmoden zerlegen lässt.  
+	Jede dieser Moden erfüllt formal die Bewegungsgleichung eines klassischen harmonischen Oszillators.
+
+	Kapitel~\ref{fourier:section:derKlassischeHarmonischeOszillator} untersuchte diesen Fall genauer:  
+	Die Gesamtenergie eines solchen Oszillators setzt sich zusammen aus kinetischer Energie \( \frac{p^2}{2m} \) und potentieller Energie \( \frac{1}{2}kx^2 \).  
+	Damit ergibt sich die klassische Energieformel:
+	\begin{equation}
+	E = \frac{p^2}{2m} + \frac{1}{2}kx^2.
+	\end{equation}
+
+	Im vorherigen Abschnitt~\ref{fourier:section:quantenfeldtheorie} wurde schließlich beschrieben, wie in der Quantenfeldtheorie klassische Felder in quantenmechanische Operatoren überführt werden.  
+	Genau diesen Übergang wollen wir nun am Beispiel eines einzelnen harmonischen Oszillators nachvollziehen.
+
+	\vspace{1em}
+
+	In der Quantenmechanik wird die Energie nicht mehr durch eine Zahl beschrieben, sondern durch einen Operator.  
+	Die klassische Energieformel führt uns dabei direkt zum sogenannten \emph{Hamilton-Operator}:
+	\begin{equation}
+	\hat{H} = \frac{\hat{p}^2}{2m} + \frac{1}{2} k \hat{x}^2.
+	\label{fourier:equation:derQMHO}
+	\end{equation}
+
+	Physikalisch messbare Größen wie Ort, Impuls oder Energie werden nun durch Operatoren beschrieben.  
+	Diese wirken auf einen sogenannten \emph{Hilbertraum} — den Raum aller quantenmechanischen Zustände.  
+	Die erlaubten Messwerte sind die Eigenwerte dieser Operatoren.  
+	Im Fall des harmonischen Oszillators ergibt sich ein \emph{diskretes Energiespektrum}:
+	\[
+	E_n = \hbar \omega \left(n + \frac{1}{2} \right), \quad n = 0, 1, 2, \dots
+	\]
+
+	Die Energie des Systems ist damit nicht mehr beliebig, sondern in diskrete Stufen unterteilt.  
+	Der Oszillator kann nur auf bestimmten, gleichmäßig verteilten Niveaus existieren.
+	Warum hier ein zusätzlicher Term $\frac{1}{2}$ auftritt, wird im Kapitel~\ref{fourier:subsection:Leiteroperatoren} genauer erklärt.
+
+	Der harmonische Oszillator spielt in der Quantenphysik eine fundamentale Rolle.  
+	Das liegt nicht nur an seiner mathematischen Einfachheit, sondern auch daran, dass viele physikalische Systeme — zumindest näherungsweise — durch ihn beschrieben werden können.
+
+	Die Quantisierung des harmonischen Oszillators ist damit nicht nur ein mathematisches Spiel, sondern der Grundbaustein für das Verständnis der modernen Quantenfeldtheorie.
+	Ein besonders wichtiges Beispiel ist das elektromagnetische Feld:  
+	Wie bereits in Kapitel~\ref{fourier:section:AnwendungAufFeld} gesehen, lässt sich dieses Feld als Summe von Moden darstellen.  
+	Jede dieser Moden entspricht einem quantenmechanischen Oszillator.  
+	Die Zustände dieser Oszillatoren — sogenannte Photonenzahlenzustände — erklären, warum Licht nicht kontinuierlich, sondern in diskreten Paketen (Photonen) emittiert und absorbiert wird.
+	Darüber hinaus findet der quantenmechanische harmonische Oszillator auch in vielen anderen Bereichen Anwendung:
+	In der Festkörperphysik beschreibt er beispielsweise die Gitterschwingungen (Phononen), während er in der Quantenoptik zur Modellierung von Lichtfeldern dient.
+	Sogar in der Elektrotechnik ist das Konzept grundlegend ---
+	etwa bei der Beschreibung von Resonanzphänomenen in elektrischen Schaltkreisen oder der Analyse schwingungsfähiger Systeme.
 
 \subsection{Einführung in Werkzeuge der Quantenmechanik\label{fourier:subsection:werkzeugeQuantenmechanik}}
 	Die bisherige Entwicklung --- von Plancks Energiepaketen über Einsteins Lichtquanten bis hin zu Schrödingers Wellenfunktion ---
@@ -248,7 +222,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 	\item \textbf{Bra-Ket-Notation}:  
 	Dient zur kompakten Darstellung von Zuständen und Operatoren im Hilbertraum.
 
-	\item \textbf{Heisenbergsche Unschärferelation}:  
+	\item \textbf{Heisenbergsche Unschärferelation}:
 	Beschreibt die fundamentale Grenze der gleichzeitigen Bestimmbarkeit von Ort und Impuls.
 
 	\item \textbf{Hamilton-Operator und Schrödinger-Gleichung}:  
