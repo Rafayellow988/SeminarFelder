@@ -430,7 +430,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		mithilfe sogenannter Leiteroperatoren.
 
 	\subsection{Leiteroperatoren\label{fourier:subsection:Leiteroperatoren}}
-		Dieser Abschnitt erläutert anhand der Grundlagen der Quantenmechanik, dass Licht nicht kontinuierlich, sondern in kleinsten Energiepaketen, sogenannten Photonen, übertragen wird.
+		Dieser Abschnitt zeigt auf Grundlage der Quantenmechanik, dass Licht nicht kontinuierlich, sondern in kleinsten Energiepaketen, sogenannten Photonen, übertragen wird.
 		Der Übersichtlichkeit halber wurden verschiedene Unterkapitel erstellt, welche Anhaltspunkte für diese Herleitung liefern.
 
 		\subsubsection{Dimensionlose Operatoren\label{fourier:subsubsection:DimensionsloseOperatoren}}
@@ -462,7 +462,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			\textit{Anmerkung:}
 			Ursprünglich wurde der Erzeugungsoperator mit einem $\dagger$ (engl. „dagger“) als hochgestelltes Symbol geschrieben, also $a^\dagger$.
 			Aufgrund der begrenzten Verfügbarkeit von Sonderzeichen auf Tastaturen und in einfachen Textsystemen wird oft stattdessen das Pluszeichen $a^+$ verwendet.
-			Heute findet man deshalb in der Literatur meistens das hochgestellte Plus.
+			Heute findet man deshalb in der Literatur häufig das hochgestellte Plus.
 			Beide Bezeichnungen meinen denselben Operator.
 
 			Diese Operatoren erfüllen die fundamentale Vertauschungsrelation:
@@ -502,10 +502,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			wobei $N = a^+a$ der sogenannte Teilchenzahloperator ist. Dieser zählt die Anzahl der Quanten (z.\,B. Photonen) im Zustand.
 
 			\textit{Bemerkung:}
-			Der Ausdruck $+\tfrac{1}{2}$ entsteht also aus der nichtverschwindenden Vertauschungsrelation $[Q,P] = i$, die letztlich die Nullpunktsenergie widerspiegelt. Selbst im Grundzustand $n=0$ ist die Energie des Oszillators nicht null, sondern
-			\[
-				E_0 = \frac{1}{2}\hbar\omega.
-			\]
+			Der Ausdruck $+\tfrac{1}{2}$ entsteht also aus der nichtverschwindenden Vertauschungsrelation $[Q,P] = i$, die letztlich die Nullpunktsenergie widerspiegelt.
 
 		\subsubsection{Energieeigenwerte\label{fourier:subsubsection:Energieeigenwerte}}
 			Die Eigenzustände $|\psi_n\rangle$ des Operators $H$ sind auch Eigenzustände von $N$, mit
@@ -521,30 +518,44 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			Der Grundzustand $n = 0$ besitzt die minimale Energie $\tfrac{1}{2}\hbar\omega$.
 
 		\subsubsection{Wirkung der Leiteroperatoren\label{fourier:subsubsection:WirkungLeiteroperatoren}}
-			Die Operatoren $a^+$ und $a$ verändern die Teilchenzahl:
+			Die Operatoren $a^+$ (Erzeugungsoperator) und $a$ (Vernichtungsoperator) verändern die Teilchenzahl der Zustände:
 			\[
 				a^+|\psi_n\rangle = \sqrt{n+1}\,|\psi_{n+1}\rangle,
 				\qquad
 				a|\psi_n\rangle = \sqrt{n}\,|\psi_{n-1}\rangle.
 			\]
-			Damit erzeugt $a^+$ ein Quant (z.B. ein Photon), $a$ vernichtet eines.
-			Diese Operatoren $a$ und $a^+$ erlauben das Verständnis und die Beschreibung der Quantenwelt, ohne dass jedes Mal komplexe Differentialgleichungen gelöst werden müssen.
+			Dabei wird der Erzeugungsoperator $a^+$ auf die Wellenfunktion $|\psi_n\rangle$ angewendet und hebt den Zustand auf das nächsthöhere Energieniveau $|\psi_{n+1}\rangle$ an.
+			Umgekehrt senkt der Vernichtungsoperator $a$ den Zustand um ein Energieniveau auf $|\psi_{n-1}\rangle$.
+			
+			\textit{Bemerkung:} 
+			Die Wurzeln entstehen aus der Normierung der Zustände.
+			Die Faktoren $\sqrt{n+1}$ beziehungsweise $\sqrt{n}$ sorgen dafür, dass die Zustände $|\psi_{n\pm1}\rangle$ korrekt normiert bleiben, wenn die Operatoren wirken.
+			Ohne diese Faktoren würde sich die Länge (Norm) der Zustände verändern.
+			Dies bedeutet:
+			\begin{itemize}
+				\item Der Operator $a^+$ erhöht die Quantenzahl $n$ um eins – er \textbf{erzeugt} also ein zusätzliches Quant (z.\,B. ein Photon).
+				\item Der Operator $a$ senkt die Quantenzahl $n$ um eins – er \textbf{vernichtet} ein Quant.
+			\end{itemize}
+
+			Diese Operatoren erlauben eine elegante algebraische Beschreibung der Quantenzustände, ohne dass komplexe Differentialgleichungen gelöst werden müssen.
 
 		\subsubsection{Wirkung des Hamilton-Operators\label{fourier:subsubsection:WirkungHamiltonoperator}}
-			Wir prüfen anhand eines Beispiels die Wirkung von $H$ auf $a^+|\psi_n\rangle$:
+			Wir prüfen anhand eines Beispiels die Wirkung von \( H \) auf \( a^+|\psi_n\rangle \):
 			\begin{align}
 				H\, (a^+|\psi_n\rangle)
-				&= \hbar\omega (N + \tfrac{1}{2}) a^+|\psi_n\rangle \\
-				&= \hbar\omega (a^+ N + a^+ \cdot \tfrac{1}{2}) |\psi_n\rangle \\
-				&= \hbar\omega (n + 1 + \tfrac{1}{2})\, a^+|\psi_n\rangle = E_{n+1}\, a^+|\psi_n\rangle.
+				&= \hbar\omega \left(N + \tfrac{1}{2}\right) a^+|\psi_n\rangle \\[0.5em]
+				&= \hbar\omega \left([N, a^+] + a^+ N + \tfrac{1}{2} a^+\right)|\psi_n\rangle \\[0.5em]
+				&= \hbar\omega \left(a^+ + a^+ n + \tfrac{1}{2} a^+\right)|\psi_n\rangle \\[0.5em]
+				&= \hbar\omega \left(n + 1 + \tfrac{1}{2}\right) a^+|\psi_n\rangle \\[0.5em]
+				&= E_{n+1}\, a^+|\psi_n\rangle
 			\end{align}
 			Dies zeigt:
-			$a^+|\psi_n\rangle$ ist (bis auf Normierung) der Zustand mit um eins erhöhter Energie.
+			\( a^+|\psi_n\rangle \) ist (bis auf Normierung) der Zustand mit um eins erhöhter Energie.
 
-			Analog ergibt sich für $a|\psi_n\rangle$:
-			\[
-				H\, (a|\psi_n\rangle) = E_{n-1}\, a|\psi_n\rangle.
-			\]
+			Analog ergibt sich für \( a|\psi_n\rangle \):
+			\begin{equation}
+				H\, (a|\psi_n\rangle) = E_{n-1}\, a|\psi_n\rangle
+			\end{equation}
 
 		\subsubsection{Quantisierung des elektromagnetischen Feldes\label{fourier:subsubsection:QuantisierungElmagFeld}}
 			Im nächsten Schritt (Kapitel~\ref{fourier:section:AnwendungAufFeld}) übertragen wir diese Struktur auf das elektromagnetische Feld.
@@ -568,7 +579,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 
 			Was würde passieren, wenn einem Teilchen immer mehr Energie zugeführt würde, der Operator $a^+$ also sehr viele Male angewendet würde? ---
 			Nun, die physikalische Welt setzt Grenzen durch Instabilität und Wechselwirkungen und weitere Effekte.
-			Ein schwarzes Loch wäre ein Beispiel für sehr viel Energie.
+			Ein extremes Beispiel für eine grosse Energiedichte wäre ein schwarzes Loch.
 		
 		\subsubsection{Messung quantisierter Energie\label{fourier:subsubsection:MessungQuantisierterEnergie}}
 			Bislang wurde gezeigt, wie sich die Energie in einem quantisierten System verändern lässt.
@@ -592,20 +603,22 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 
 			Operatoren dienen in der Quantenmechanik als essentielle Werkzeuge, die die Wirkung von Messungen oder Übergängen zwischen verschiedenen Energieniveaus beschreiben.
 			Zur Veranschaulichung gilt dieses Beispiel einer Energie-Messung:
-			Die Wirkung des Hamilton-Operators auf die Zustände lautet
+			Die Wirkung des Hamilton-Operators auf die Zustände lautet:
 			\[
-				\hat{H} |\psi\rangle = E |\psi\rangle.
+				\hat{H} |\psi_n\rangle = E_n\, |\psi_n\rangle = \hbar\omega\left(n + \frac{1}{2}\right) |\psi_n\rangle.
 			\]
-			Wendet man die Leiteroperatoren an, so verschieben sie die Energiewerte diskret um $\hbar \omega$:
+			Wendet man die Leiteroperatoren an, so verschieben sie den Zustand auf ein benachbartes Energieniveau.
+			Der Hamilton-Operator wirkt dann wie folgt:
 			\[
-				\hat{H} a^+ |\psi\rangle = a^+ (E + \hbar \omega) |\psi\rangle,
-				\quad
-				\hat{H} a |\psi\rangle = a (E - \hbar \omega) |\psi\rangle.
+				\hat{H}\, a^+ |\psi_n\rangle = \hbar\omega\left(n + 1 + \frac{1}{2}\right) a^+|\psi_n\rangle = E_{n+1}\, a^+|\psi_n\rangle,
 			\]
-			Dies zeigt anschaulich, dass die Energiezustände in diskreten Paketen $\hbar \omega$ schwingen.
+			\[
+				\hat{H}\, a |\psi_n\rangle = \hbar\omega\left(n - 1 + \frac{1}{2}\right) a|\psi_n\rangle = E_{n-1}\, a|\psi_n\rangle.
+			\]
+			Dies zeigt anschaulich, dass die Energiezustände in diskreten Schritten der Größe \(\hbar\omega\) verändert werden können.
 
-		\paragraph{Motivation}
-		Diese Betrachtung des harmonischen Oszillators bildet die Grundlage für das Verständnis der Quantisierung von Licht und der Existenz von Photonen als kleinste Energieeinheiten.
+		\subsubsection{Motivation}
+			Diese Betrachtung des harmonischen Oszillators bildet die Grundlage für das Verständnis der Quantisierung von Licht und der Existenz von Photonen als kleinste Energieeinheiten.
 
 \section{Fazit\label{fourier:section:fazit}}
 \kopfrechts{Fazit}
