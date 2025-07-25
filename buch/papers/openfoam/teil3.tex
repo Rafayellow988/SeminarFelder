@@ -69,7 +69,8 @@ Je mehr Zellen erstellt werden, desto genauer wird das Ergebnis der Simulation, 
 Mit jeder Zelle steigt jedoch der Rechenaufwand.
 Es muss ein Mittelweg gefunden werden, so viele Zellen wie nötig, so wenige wie möglich.
 
-Mithilfe dem Programm \textbf{snappyHexMesh} wird das 3D-Objekt selbst in  Zellen unterteilt und in den Simulationsraum eingefügt. 
+Als nächstes wird das 3D-Objekt in den Simulationsraum eingebettet.
+Mithilfe dem Programm \textbf{snappyHexMesh} wird das 3D-Objekt in  Zellen unterteilt und eingefügt. 
 Im Dokument \texttt{snappyHexMeshDict} werden die Parameter definiert:
 
 \begin{itemize}
@@ -84,7 +85,7 @@ Im Dokument \texttt{snappyHexMeshDict} werden die Parameter definiert:
 \end{itemize}
 Spitze Kanten und Ecken korrekt darzustellen sind für \textbf{snappyHexMesh} eine Herausforderung.
 Das Programm \textbf{surfaceFeatureExtract} wird verwendet um diese Bereiche gesondert aus dem 3D-Objekt zu extrahieren.
-Es wird vor \textbf{snappyHexMesh} ausgeführt und hilft, bei der Mesh-Erstellung des 3D-Objekt, das Gitter genauer an der Geometrie auszurichten.
+Es wird vor \textbf{snappyHexMesh} ausgeführt und hilft, die Zellen genauer an der Geometrie auszurichten.
 Im Dokument \texttt{surfaceFeatureExtractDict} werden die Parameter definiert:
 
 \begin{itemize}
