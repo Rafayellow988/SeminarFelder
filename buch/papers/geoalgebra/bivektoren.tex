@@ -8,7 +8,7 @@
 \newcommand{\vtwo}{\color{blue}\mathbf{v}_2\color{black}}
 Durch das Wedgeprodukt zwischen $\vone$ und $\vtwo$ erhalten wir
 den
-Bivektor $\vone \wedge \vtwo$. Einen Bivektor können wir uns als \emph{gerichtete Fläche}, die zwischen den beiden Vektoren aufgespannt
+Bivektor $\vone \wedge \vtwo$. Einen Bivektor können wir uns als \emph{orientierte Fläche}, die zwischen den beiden Vektoren aufgespannt
 wird, vorstellen (siehe \autoref{geoalgebra:fig:bivektor-als-flaeche}).
 \begin{figure}
   \begin{center}
@@ -31,11 +31,11 @@ wird, vorstellen (siehe \autoref{geoalgebra:fig:bivektor-als-flaeche}).
   \draw[thick,->] (K) ++(0.6,0) arc (0:270:0.6);
 \end{tikzpicture}
   \end{center}
-  \caption{Bivektor als gerichtete Fläche}\label{geoalgebra:fig:bivektor-als-flaeche}
+  \caption{Bivektor als orientierte Fläche}\label{geoalgebra:fig:bivektor-als-flaeche}
 \end{figure}
 
-\subsection{Bivektoren als gerichtete Fläche}
-Es ist wichtig, dass wir uns die Idee einer gerichteten Fläche
+\subsection{Bivektoren als orientierte Fläche}
+Es ist wichtig, dass wir uns die Idee einer orientierten Fläche
 verinnerlichen. Wie wir bereits in \autoref{geoalgebra:section:bivektoren:idee} gesehen haben,
 gibt das Wedgeprodukt $\vone \wedge \vtwo$
 einen Bivektor, der die Fläche zwischen den beiden Vektoren als
@@ -56,8 +56,8 @@ am Vektor $\vtwo$ ``aufspannen'' (siehe \autoref{geoalgebra:fig:aufspannende-fla
 
   \fill[blue!30,opacity=0.7] (O) -- (A) -- (M_AC) -- (M_OB) -- cycle;
 
-  \draw[thick,->,red] (O) -- (A) node[midway,below] {$\mathbf{v_1}$};
-  \draw[thick,->,blue] (O) -- (B) node[midway,left] {$\mathbf{v_2}$};
+  \draw[thick,->,red] (O) -- (A) node[midway,below] {$\vone$};
+  \draw[thick,->,blue] (O) -- (B) node[midway,left] {$\vtwo$};
   \draw[dashed] (A) -- (C);
   \draw[dashed] (B) -- (C);
 
@@ -73,8 +73,8 @@ am Vektor $\vtwo$ ``aufspannen'' (siehe \autoref{geoalgebra:fig:aufspannende-fla
   \coordinate (C) at ($(A) + (B)$);
   \fill[blue!30, opacity=0.7] (0) -- (A) -- (C) -- (B) -- cycle;
 
-  \draw[thick, ->, red] (0) -- (A) node[midway,below] {$\mathbf{v_1}$};
-  \draw[thick, ->, blue] (0) -- (B) node[midway,left] {$\mathbf{v_2}$};
+  \draw[thick, ->, red] (0) -- (A) node[midway,below] {$\vone$};
+  \draw[thick, ->, blue] (0) -- (B) node[midway,left] {$\vtwo$};
   \draw[dashed] (A) -- (C);
   \draw[dashed] (B) -- (C);
   \node (K) at ($0.25*(0)+0.25*(A)+0.25*(B)+0.25*($(C)$)$)
@@ -91,7 +91,7 @@ $\vtwo$ am Vektor $\vone$ aufspannen (siehe \autoref{geoalgebra:fig:aufspannende
 In diesem Fall entsteht eine im Uhrzeigersinn orientierte Fläche mit demselben
 Flächeninhalt. Laut Axiom \ref{geoalgebra:satz:antikommutativ} ist das Wedgeprodukt
 \emph{antikommutativ}, d.h. $\vone \wedge \vtwo = -\vtwo \wedge \vone$. Das Vorzeichen bestimmt also,
-wie die Fläche rotiert ist.
+wie die Fläche orientiert ist.
 
 \begin{figure}
 \begin{center}
@@ -106,8 +106,8 @@ wie die Fläche rotiert ist.
 
   \fill[red!30,opacity=0.7] (O) -- (A) -- (M_OA) -- (M_BC) -- (B) -- cycle;
 
-  \draw[thick,->,red] (O) -- (A) node[midway,below] {$\mathbf{v_1}$};
-  \draw[thick,->,blue] (O) -- (B) node[midway,left] {$\mathbf{v_2}$};
+  \draw[thick,->,red] (O) -- (A) node[midway,below] {$\vone$};
+  \draw[thick,->,blue] (O) -- (B) node[midway,left] {$\vtwo$};
   \draw[dashed] (A) -- (C);
   \draw[dashed] (B) -- (C);
 
@@ -123,8 +123,8 @@ wie die Fläche rotiert ist.
   \coordinate (C) at ($(A) + (B)$);
   \fill[red!30, opacity=0.7] (0) -- (A) -- (C) -- (B) -- cycle;
 
-  \draw[thick, ->, red] (0) -- (A) node[midway,below] {$\mathbf{v_1}$};
-  \draw[thick, ->, blue] (0) -- (B) node[midway,left] {$\mathbf{v_2}$};
+  \draw[thick, ->, red] (0) -- (A) node[midway,below] {$\vone$};
+  \draw[thick, ->, blue] (0) -- (B) node[midway,left] {$\vtwo$};
   \draw[dashed] (A) -- (C);
   \draw[dashed] (B) -- (C);
   \node (K) at ($0.25*(O)+0.25*(A)+0.25*(B)+0.25*(C)$)
@@ -135,8 +135,8 @@ wie die Fläche rotiert ist.
   \caption{$\vtwo$ wird an $\vone$ aufgespannt}\label{geoalgebra:fig:aufspannende-flaeche-v2-v1}
 \end{figure}
 
-Eine positive Fläche ist generell einer Rotation \emph{im Uhrzeigersinn}
-zuzuordnen, eine negative Fläche bedeutet eine Rotation im \emph{Gegenuhrzeigersinn}.
+Eine positive, orientierte Fläche ist generell einem Umlaufsinn \emph{im Uhrzeigersinn}
+zuzuordnen, eine negative, orientierte Fläche bedeutet ein Umlaufsinn \emph{im Gegenuhrzeigersinn}.
 
 
 \subsection{Rechenbeispiel mit Zahlen}
@@ -144,17 +144,17 @@ zuzuordnen, eine negative Fläche bedeutet eine Rotation im \emph{Gegenuhrzeiger
 Wir nehmen an, dass 
 \begin{equation}
   \begin{aligned}
-    &\mathbf{a} &= \begin{pmatrix} 3 \\ 1 \end{pmatrix} = 3 \mathbf{e_1} + \mathbf{e_2} \\
+    &\mathbf{a} &= \begin{pmatrix} 3 \\ 1 \end{pmatrix} = 3 \eone + \etwo \\
     \text{und}\quad
-    &\mathbf{b} &= \begin{pmatrix} 1 \\ 2 \end{pmatrix} = \mathbf{e_1} + 2 \mathbf{e_2}.
+    &\mathbf{b} &= \begin{pmatrix} 1 \\ 2 \end{pmatrix} = \eone + 2 \etwo.
   \end{aligned}
 \end{equation}
 Das Wedgeprodukt zwischen den beiden Vektoren ergibt
 \begin{equation}
   \begin{aligned}
-    \mathbf{a} \wedge \mathbf{b} &= (3 \mathbf{e_1} + \mathbf{e_2}) \wedge (\mathbf{e_1} + 2 \mathbf{e_2}) \\
-    &= 5 \mathbf{e_1} \wedge \mathbf{e_2}.
+    \mathbf{a} \wedge \mathbf{b} &= (3 \eone + \etwo) \wedge (\eone + 2 \etwo) \\
+    &= 5 \eone \wedge \etwo.
   \end{aligned}
 \end{equation}
-Die Fläche im aufgespannten Parallelogramm ist 5 und im Gegenuhrzeigersinn rotiert.
+Die Fläche im aufgespannten Parallelogramm ist $5$ und im Gegenuhrzeigersinn orientiert.
 
