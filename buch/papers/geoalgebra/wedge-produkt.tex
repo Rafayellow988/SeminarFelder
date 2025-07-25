@@ -10,38 +10,37 @@ Algebra.
 Angenommen, wir haben die
 zwei Vektoren $\mathbf{v}_1, \mathbf{v}_2$ und bilden das Wedgeprodukt
 \begin{equation}
-  B = \mathbf{v}_1 \wedge \mathbf{v}_2
+  B = \mathbf{v}_1 \wedge \mathbf{v}_2,
 \end{equation}
 erhalten wir ein neues mathematisches Konzept, den \emph{Bivektor} $B$.
-Ein Bivektor unterscheidet sich grundsätzlich von einem Vektor (siehe \ref{geoalgebra:section:bivektoren}).
+Ein Bivektor unterscheidet sich grundsätzlich von einem Vektor (siehe \autoref{geoalgebra:section:bivektoren}).
 
 \subsection{Definition in zwei Dimensionen}
 Um das Wedgeprodukt definieren zu können, benötigen wir einige wenige Axiome, d.h. grundlegende Annahmen, die wir treffen,
 um uns eine Algebra darauf aufzubauen. Somit definieren wir
 
-\begin{satz}
-  Das Wedgeprodukt eines Vektors mit sich selbst ist 0.
-
-  $
-  \mathbf{v}_i \wedge \mathbf{v}_i = 0
-  $.
-\end{satz}
-\begin{satz}
-Das Wedgeprodukt ist antikommutativ
+\begin{axiom}
+  Das Wedgeprodukt ist \em{antikommutativ}
 
   $
   \mathbf{v}_i \wedge \mathbf{v}_j = -\mathbf{v}_j \wedge \mathbf{v}_i
   $.
-  \label{geoalgebra:satz:antikommutativ}
-\end{satz}
-und
-\begin{satz}
-Es gilt das Distributivgesetz
+  \label{geoalgebra:axiom:antikommutativ}
+\end{axiom}
+Daraus folgt:
+\begin{lemma}
+  Das Wedgeprodukt eines Vektors mit sich selbst ist $0$
+  $
+  \mathbf{v}_i \wedge \mathbf{v}_i = 0
+  $.
+\end{lemma}
 
+\begin{axiom}
+  Es gilt das \em{Distributivgesetz}
   $
   \mathbf{v}_i \wedge (\mathbf{v}_j + \mathbf{v}_k) = \mathbf{v}_i \wedge \mathbf{v}_j + \mathbf{v}_i \wedge \mathbf{v}_k
   $.
-\end{satz}
+\end{axiom}
 
 Mit diesen Axiomen können wir bereits das Wedgeprodukt zwischen zwei
 Vektoren in der zwei Dimensionen herleiten.
