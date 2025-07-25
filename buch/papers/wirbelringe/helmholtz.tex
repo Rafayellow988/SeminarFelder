@@ -37,7 +37,7 @@ Wirbelfäden werden auch Wirbelröhren genannt.
 
 Kurz gesagt, Teilchen die ruhen, bleiben in Ruhe. 
 Siehe Abbildung \ref{buch:papers:Wirbelringe:fig:Helmholtz_1}: 
-Alle Teilchen in Blau bewegen sich nicht, da der Betrachtungsraum abgeschlossen ist und diese {\em nicht} teil eines Wirbelrings sind.
+Alle Teilchen in Blau bewegen sich nicht, da der Betrachtungsraum abgeschlossen ist und diese {\em nicht} teil eines Wirbels sind.
 
 \subsection{Zweiter Helmholzscher Wirbelsatz}
 
@@ -65,7 +65,7 @@ Dieser Wirbelsatz kann mit dem Integral
 \text{const}
 \]
 ausgedrückt werden. 
-\(\Gamma\) ist die Zirkulation des jeweiligen Flächenstücks der Gesamtwirbelröhre, \(c\) der Umfang des jeweiligen Flächenstücks und \(\vec{v}\) die Geschwindigkeit der rotierenden Partikel. 
+\(\Gamma\) ist die Zirkulation des jeweiligen Flächenstücks der Gesamtwirbelröhre, \(c\) der Umfang des jeweiligen Flächenstücks und \(\vec{u}\) die Geschwindigkeit der rotierenden Partikel. 
 Siehe Abbildung \ref{buch:papers:Wirbelringe:fig:Helmholtz_3}: 
 Die Zirkulation, dargestellt als Grösse der Pfeile, ist bei allen 3 dargestellten Konturen der Wirbelröhre gleich gross 
 \input{papers/wirbelringe/fig/Helmholz_wirbelsätze.tex}
@@ -98,11 +98,8 @@ Bisher wurde nur das Verhalten im freien Raum betrachtet und Grenzflächen ignor
 Allerdings sind diese wichtig, da in der Realität immer solche Grenzflächen vorhanden sind. 
 Grenzflächen entstehen immer dort, wo es Übergänge von Materialien gibt oder am Rand dem Betrachtungsraum.
 
-Aus der Identität der Quellenfreiheit von Wirbel 
-\[
-\operatorname{div} \left( \operatorname{rot} \left( \vec{A} \right) \right) 
-= 
-0
-\]
-lässt sich schliessen das Teilchen in einem Wirbelring Grenzflächen nicht durchqueren. 
-Allerdings können Wirbellinien darauf enden, da die Bedingung der Divergenzfreiheit implizit erfüllt wird. 
+Aus der Identität der Quellenfreiheit von Wirbel (Gleichung \ref{paper:Wirbelringe:eq:wIdent}) lässt sich schliessen das Teilchen in einem Wirbelring Grenzflächen nicht durchqueren, da sonst die Divergenz nicht \(0\) ist. 
+Allerdings können Wirbellinien darauf enden, da die Teilchen zwar auf der Grenzfläche sind, diese aber nicht überschreiten. 
+
+Was man allerdings nicht vergessen sollte ist, bei Grenzflächen welche durch Übergänge von Materialien entstehen, die Teilchen diese Grenzfläche nicht überschreiten können. 
+Zum Beispiel ein Wirbel welcher in Wasser entstanden ist, kann sich nicht auf die daran grenzende Wand ausweiten.  
