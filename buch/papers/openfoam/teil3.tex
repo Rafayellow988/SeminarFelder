@@ -9,39 +9,91 @@
 \section{Anwendungsbeispiel
 \label{openfoam:section:Anwendungsbeispiel}}
 \kopfrechts{Anwendungsbeispiel}
-Wie wir gesehen haben, kann OpenFOAM, mit genügend Geduld, alles. 
-Wir werden jetzt an einem praktischen Beispiel zeigen, wie man eine eigene Simulation erstellt.
+Wie wir gesehen haben, kann OpenFOAM sehr viel.
 
-Für ein anschauliches Beispiel haben wir ein Objekt gewählt, dass alle Studenten der OST-Rapperswil kennen: den Campus selbst.
-Das Ziel der Simulation ist, zu sehen, wie der Wind um die Gebäude strömt und mit ihnen interagiert.
+Wir werden jetzt an einem Beispiel zeigen, was man für eine eigene Simulation alles braucht und wie man sie durchführt.
 
-Als erstes brauchen wir ein geeignetes 3d Objekt, in unserem Fall wurden die Gebäude in Onshape erstellt.
-%hint, open foam arbeite in Meter, wenn das Objekt in mm exportiert wurde, faktor 1000 zu gross
-Dieses 3D file bildet die Grundlage unsere Simulation.
+Für ein anschauliches Beispiel haben wir ein Objekt gewählt, welches alle Studenten der OST-Rapperswil kennen: den Campus Rapperswil.
+Das Ziel der Simulation ist, zu sehen, wie der Wind um die Gebäude strömt und mit ihnen interagiert, das Bild auf dem Buchumschlag wird das Resultat sein.
 
-\subsubsection{Mesh generating\label{openfoam:section:Mesh generating}}
-Der grundlegende Schritt einer jeder Simulation ist, die reale, analoge Welt in eine diskrete Welt zu überführen.
-Mithilfe der \textbf{snappyHexMesh} funktion wird das 3d-Objekt in disktrete Zellen unterteilt. Je mehr Zellen desto genauer
-wird die Simulation, desto grösser jedoch der Aufwand für die Simulation. Diese Abwägung, Qualität vs. Aufwand, muss vom Auftraggeber definiert werden.
-Die Zellen können eine freie Form annehmen, oft wird in einem ersten Durchlauf der Simulationsraum grob in Quader aufgeteilt (\ref{fig:snappygrobbild}),
-in folgenden Schritten wird die Annäherung and das Grundmodell immer besser (\ref{fig:snappyfeinbild}).
+%Übersicht Kapitel -----------------------------------------------------------------------------------------
+\subsection{Übersicht \label{openfoam:section:Übersicht}}
+Wir besitzen ein 3D-Objekt, im Beispiel im Massstab 1:1.
+Um die Simulation durchführen zu können benötigen wir einen Simulationsraum, eine grosse Box, die den Campus umschliesst.
+Es wird definiert, wie sich die Seiten dieser Box verhalten sollen: Eingang, Ausgang oder Wand.
+Diese Box wird dann in viele einzelne Zellen aufgeteilt.
+In der Simulation wird für jede Zelle, für jeden Zeitschritt, 
+die nötigen Differentialgleichungen für die lokalen Informationen gerechnet.
+Das Ergebnis kann dann mit einem Auswertungstool angesehen und ausgewertet werden.
 
-%TODO xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-%\subsubsection{surfaceFeatureExtract\label{openfoam:section:surfaceFeatureExtract}}
-%Erstellt .eMesh datei und extrahiert alle Features des 3d Objekts für die weitere Verarbeitung.
+OpenFOAM arbeitet für jede Simulation mit einem sogenannten \texttt{Case}-Ordner (Abb. \ref{fig:ordStrktSim}). 
+Darin sind alle Parameter, 3D-Objekte und Anfangsbedingungen abgelegt.
+Nach der Simulation sind hier die Zeitverzeichnisse mit den Simulationsresultate für jeden Zeitpunkt abgelegt.
 
-%\subsubsection{blockMesh\label{openfoam:section:blockMesh}}
-%Grösse der Zellen definieren wie genau und aufwendig die Simulation wird
+OpenFOAM arbeitet mit SI-Einheiten, alle Werte müssen in Meter, kg und Sekunden angegeben werden.
 
-%\subsubsection{snappyHexMesh\label{openfoam:section:snappyHexMesh}}
-%Im dict den ort des 3d Obj und eMesh files angeben, dauert lange
+\begin{figure}
+    \centering
+    \includegraphics[width=0.55\textwidth]{papers/openfoam/Bilder/Ordnerstruktur_Simuliert.jpg}
+    \caption{Ordnerstruktur nach der Simulation, 0,5...60 die Zeitpunkte, die in Paraview dargestellt werden können.}
+    \label{fig:ordStrktSim}
+\end{figure}
 
-%\begin{itemize}
-%    \item surfaceFeatureExtract: Erstellt .eMesh datei und extrahiert alle Features des 3d Objekts für die weitere Verarbeitung.
-%    \item blockMesh: Grösse der Zellen definieren wie genau und aufwendig die Simulation wird
-%    \item snappyHexMesh: Im dict den ort des 3d Obj und eMesh files angeben, dauert lange
-%\end{itemize}
-%TODO xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+%Vorbereitung Kapitel --------------------------------------------------------------------------------------
+\subsection{Vorbereitung \label{openfoam:section:Vorbereitung}}
+Befor mit der Simulation begonnen wird, müssen einige Entscheidungen getroffen werden.
+\begin{itemize}
+    \item Es muss entschieden werden, was überhaupt simuliert werden möchte und welche Gleichungen dafür infrage kommen.
+    Zum Beispiel die Navier-Stokes-Gleichungen, Large-Eddy Simulation oder auch solche für Wärmeübertragung.
+    \item Es muss die Geometrie der Umgebung definiert werden. 
+    Gibt es Möglichkeiten Symmetrien auszunutzen, um den Rechenaufwand zu minimieren?
+    \item Die Randbedingungen müssen festgelegt werden, wo strömt das Fluid in die Simulation ein, wo verlässt es sie.
+    \item Wie verhalten sich die Wände, tragen sie zu Turbulenzen bei oder nicht?
+    \item Sind die Wände genug weit vom Objekt entfernt, dass ihr Einfluss auf das Ergebnis vernachlässigbar ist?
+\end{itemize} 
+
+Diese Überlegungen sind essenziell, um ein realistisches und stabiles Simulationsmodell aufzubauen.
+
+
+%Mesh erstellen Kapitel ------------------------------------------------------------------------------------
+\subsection{Mesh erstellen \label{openfoam:section:Mesh erstellen}}
+Der grundlegende Schritt einer jeden Simulation ist, die reale, analoge Welt in eine diskrete Welt zu überführen.
+Der Simulationsraum wird mit dem Programm \textbf{blockMesh} erstellt.
+\footnote{In diesem Paper wir die Notation: \textbf{Fett für Programme}, \textit{kursiv für Parameter} und \texttt{Monospace für Ordner und Dokumente} verwendet.}
+Im Dokument \texttt{blockMeshDict} werden die Parameter definiert:
+
+\begin{itemize}
+    \item \textit{backgroundMesh}: Beschreibt das Hintergrundgitter, auf dem das Programm \textbf{snappyHexMesh} aufbaut.
+    \item \textit{boundary}: Beschreibt die Ränder des Simulationsraum, weist jeder Fläche einen Namen und eine Bedingung (Eingang, Ausgang, Wand) zu
+\end{itemize}
+
+Je mehr Zellen erstellt werden, desto genauer wird das Ergebnis der Simulation.
+Mit jeder Zelle steigt der Rechenaufwand.
+Es muss ein Mittelweg gefunden werden, so viel wie nötig, so wenig wie möglich.
+
+Um scharfe Kanten und Ecken im 3D-Objekt zu erkennen, wird das Programm \textbf{surfaceFeatureExtract} verwendet.
+Diese Vorarbeit hilft \textbf{snappyHexMesh}, bei der Mesh-Erstellung, das Gitter genauer an der Geometrie auszurichten.
+Im Dokument \texttt{surfaceFeatureExtractDict} werden die Parameter definiert:
+
+\begin{itemize}
+    \item \textit{Name des 3D-Objekt}: Von wo die Features extrahiert werden sollen.
+    \item \textit{includedAngle}: Winkel, ab welchem eine Kante als scharf gilt und extrahiert wird.
+\end{itemize}
+
+Mithilfe dem Programm \textbf{snappyHexMesh} wird das 3D-Objekt selbst in  Zellen unterteilt und in den Simulationsraum eingefügt. 
+Im Dokument \texttt{snappyHexMeshDict} werden die Parameter definiert:
+
+\begin{itemize}
+    \item \textit{geometry}: Definition des 3D-Objekts, zum Beispiel in Form einer STL-Datei.
+    \item \textit{castellatedMeshControls}: Erste Stufe des Meshing, steuert, wie die Quader am Anfang angenähert werden.
+    \item \textit{snapControls}: Wie oft das Mesh verfeinert wird. 
+    In einem ersten Durchlauf wird das 3D-Objekt grob in Quader aufgeteilt (Abb. \ref{fig:snappygrobbild}),
+    in den folgenden Schritten wird die Annäherung an die Vorgabe immer besser (Abb. \ref{fig:snappyfeinbild}).
+    Üblich sind 20 bis 40 Durchläufe, ist jedoch auch ein Abwägen zwischen dem Nutzen und dem erhöhten Rechenaufwand.
+    \item \textit{addLayersControls}: Im 3D-Mesh werden die Blöcke in der Nähe des Objekts verkleinert, 
+    damit können die interessanten Bereiche räumlich genauer simuliert werden.
+\end{itemize}
 
 \begin{figure}
     \centering
@@ -53,92 +105,116 @@ in folgenden Schritten wird die Annäherung and das Grundmodell immer besser (\r
 \begin{figure}
     \centering
     \includegraphics[width=0.55\textwidth]{papers/openfoam/Bilder/Snappy_fein.png}
-    \caption{Mesh nach dem zweiten Durchlauf von snappyHexMesh}
+    \caption{Mesh nach dem mehrfachen Durchlaufen von snappyHexMesh}
     \label{fig:snappyfeinbild}
 \end{figure}
-%-------------------------------------------------------------------------------
-\subsubsection{Parameter\label{openfoam:section:Parameter}}
-Im folgenden einen kurzen Überblick über die wichtigsten Parameter einer OpenFOAM Simulation.
 
-\subsubsection{Geometrische Parameter\label{openfoam:section:Geometrische Parameter}}
-Im blockMeshDict und snappyHexMeshDict werden die für die Erstellung der Simulationszellen notwendigen Parameter festgelegt:
+%Anfangsbedingungen Kapitel --------------------------------------------------------------------------------
+\subsection{Anfangsbedingungen \label{openfoam:section:Anfangsbedingungen}}
+Bei jeder Simulation muss beim ersten Zeitschritt ein Initialzustand definiert sein.
+Alle Zellen müssen mit Startwerte versehen werden. 
+
+Diese Werte werden im Ordner \texttt{0} hinterlegt:
 \begin{itemize}
-    \item blockMeshDict: Physischer Grenzen der Simulation, definition der Inlet und Outletflächen und die Aufteilung des Raumes in eine vorgegebene Anzahl Zellen
-    \item snappyHexMeshDict: Einbinden des 3d Objekts in die im blockMeshDict festgelegte Umgebung, hier muss der Pfad des 3d Files und .eMesh angegeben werden.
+    \item \texttt{p}: Druck im Fluid [m²/s²]
+    \item \texttt{U}: Geschwindigkeit und Richtung der Strömungsvektoren [m/s]\\
+    \textit{Uinlet} (X Y Z) beschreibt die Richtung und Stärke der Strömung. 
+    \item \texttt{epsilon}: Dissipationsrate der turbulenten kinetischen Energie [m²/s³]
+    \item \texttt{k}: Turbulente kinematische Energie [m²/s²]
+    \item \texttt{nut}: Turbulente kinematische Viskosität [m²/s]
+\end{itemize}
+\texttt{epsilon}, k und nut sind Teil von Turbulenzmodellen, in diesem Paper wird nicht weiter darauf eingegangen.
+
+In allen Dokumenten für die unterschiedlichen Anfangsbedingungen gibt es die Variable \textit{dimensions}, sie bestimmt die Einheit des Wertes.\\
+Die Dimensionen sind \texttt{[kg m s K mol A cd]}.
+\texttt{[0 2 -3 0 0 0 0]} steht zum Beispiel für [m²/s³], der Einheit von epsilon.
+
+%Parameter Kapitel ----------------------------------------------------------------------------------------
+\subsection{Steuerparameter \label{openfoam:section:Steuerparameter}}
+Für die Simulation müssen diverse Konstanten und Steuerparameter definiert werden.
+
+Im Ordner \texttt{constant} werden im Dokument \texttt{transportProperties} das \textit{transportModel} für die Viskosität und einen Wert, \textit{nu}, für die kinematische Viskosität gesetzt.
+Für Fluide mit konstanter Viskosität wird das Modell Newtonian verwendet.\\
+Bei Luft zum Beispiel \textit{nu} = 1.82e -5, \textit{transportModel} = Newtonian
+
+Im Dokument \texttt{turbulenceProperties} wird der \textit{simulationType} festgelegt.
+Zum Beispiel Reynolds-averaged Simulation (RAS), Large Eddy Simulation (LES) oder laminar.
+
+Der Ordner \texttt{system} enthält das Dokument \texttt{controlDict}. Damit wird der zeitliche Ablauf der Simulation gesteuert.
+
+\begin{itemize}
+    \item \textit{application}: In unserem Fall, stationär und inkompressibel, 
+    verwenden wir simpleFoam. Es gibt jedoch für jeden Anwendungsbereich eigene Solver.\\
+    Eine unvollstänige Übersicht:
+    \begin{itemize}
+        \item icoFoam: zeitabhängig, inkompressibel, laminar
+        \item buoyantSimpleFoam: stationär, inkompressibel, Wärmeübergang
+        \item sonicFoam: zeitabhängig, kompressibel
+    \end{itemize}
+    \item \textit{startTime}: Startzeit der Simulation [s]
+    \item \textit{endTime}: Endzeit der Simulation [s]
+    \item \textit{deltaT}: Zeitschritt der Simulation [s]
+    \item \textit{writeInterval}: Legt fest welche Zeitordner erzeugt werden (Abb. \ref{fig:ordStrktSim}).
 \end{itemize}
 
-\subsubsection{Numerische Parameter\label{openfoam:section:Numerische Parameter}}
-Mit den numerischen Paramter im File \textbf{controlDict} wird unter anderem festgelegt:
-\begin{itemize}
-    \item deltaT: Zeitschritte der Simulation
-    \item endTime: Endzeit der Simulation
-    \item application: Welcher Solver zu verwenden ist
-    \item writeInterval: Nach wievielen Zeitschritte Ergebnisse gespeichert werden (\ref{fig:ordStrktSim})
-\end{itemize}
-Es ist darauf hinzuweisen, dass schnell grosse Datenmengen anfallen können, wenn das writeInterval und/oder die endTime zu gross gewählt werden
+%fvSchemes TODO
 
-\subsubsection{Konstante Parameter\label{openfoam:section:Konstante Parameter}}
-Im \textbf{constant} Ordner werden die Transport und Turbulenz Parameter gesetzt:
-\begin{itemize}
-    \item transportProperties: Welches Transportmodell verwendet wird.
-    \item turbulenceProperties: Festlegung des Simulationstyp, Reynolds-Averaged Navier-Stokes (RANS), Large Eddy Simulation (LES) oder Laminar.
-\end{itemize}
+%fvSolution TODO
 
-\subsubsection{Anfangsbedingungen \label{openfoam:section:Anfangsbedingungen}}
-Beschreibt den Zustand im ersten Schritt der Simulation. Im \textbf{0} Ordner werden folgende Faktoren bestimmt:
-\begin{itemize}
-    \item Geschwindigkeit und Richtung \textbf{U}: Stärke und Richtungsvektoren für jede Zelle
-    \item Druckverhältnisse \textbf{p}: Skalarfeld für die Druckverteilung
-    \item Dichte $\rho$: Bei kompressiblen Fluiden nötig %can't get the rho to be fat for some reason \textbf{$\rho$} doesn't work
-    \item Turbulenzen \textbf{k, epsilon, nut}: In den Files wird die gesamte Turbulenz im Modell beschrieben.  
-\end{itemize}
+%Simulation Kapitel ----------------------------------------------------------------------------------------
+\subsection{Simulation \label{openfoam:section:Simulation}}
+In der Simulation wird nun auf jede Zelle, das in den Parametern definierte Gleichungssystem angewendet.
+Die Berechnungen basieren auf den festgelegten Anfangs- und Randbedingungen sowie dem gewählten Solver.
 
-%-------------------------------------------------------------------------------
-\subsubsection{Simulation\label{openfoam:section:Simulation}}
-In der Simulation wird nun auf jede Zelle die in den Parameter festgelegten Gleichungen angewandt. 
+Mit der folgenden Befehlsfolge kann eine einfache Simulation, stationär und inkompressibel, anhand eines Beispiel-Cases durchgeführt werden:
 
-%TODO
-Mit den folgenden Befehlen kann eine simple Simulation mit einem Tutorial Case durchgeführt werden:
-
-%\subsubsection{Ablauf\label{openfoam:section:Ablauf}}
 \begin{enumerate}
-    \item surfaceFeatureExtract
-    \item blockMesh
-    \item snappyHexMesh
-    \item simpleFoam
-%TODO
-%unterschied linux <> windows
-    \item foamToVTK
-    \item paraFoam -touch
+    \item \textbf{blockMesh}: Generiert Simulationsraum.
+    \item \textbf{surfaceFeatureExtract}: Extrahiert scharfe Kanten und Ecken aus dem 3D-Objekt.
+    \item \textbf{snappyHexMesh}: Fügt das 3D-Objekt in den Simulationsraum ein.
+    \item \textbf{simpleFoam}: Simulation, bei einem anderen Solver durch den entsprechenden ersetzen.
+    \item \textbf{foamToVTK}: (nicht nötig, wenn die Ergebnisse auf Linux mit \texttt{paraFoam} ausgewertet werden)\\
+    Exportiert die Simulationsergebnisse in ein VTK-kompatibles Format, welches dann in ParaView angesehen werden kann.
+    \item \textbf{paraFoam -touch}: (nicht nötig, wenn die Ergebnisse auf Linux mit \texttt{paraFoam} ausgewertet werden)\\
+    Erstellt eine Projektdatei, die dann in \texttt{ParaView} geöffnet werden kann.
+\end{enumerate}
 
-\end{enumerate} 
+Dafür muss in der Kommandozeile in den \texttt{Case}-Ordner navigiert werden, in diesem Fall befindet sich der Ordner an der Position:\\
+\texttt{/OpenFOAM/OpenFOAM-v2012/tutorials/incompressible/simpleFoam/\texttt{Case}\_Ordner}
+Dort können dann die Befehle nacheinander eingegeben werden.
+Erfahrungsgemäss kann \textbf{snappyHexMesh} und \textbf{simpleFoam}, je nach Einstellungen und Komplexität des 3D-Objekts, 
+lange dauern, mehrere Stunden sind möglich.
+Grosse Simulationen können mehrere 100 GB an Speicherplatz benötigen.
 
-%Bild Ordnerstruktur_Simuliert
-%Bild vorschlag_Wind_Westen_10m_blocky?
+Es wird empfohlen mit einfachen Modellen und Tutorials, sowie kurzen Simulationszeiten anzufangen.
+
+%Auswertung Kapitel ----------------------------------------------------------------------------------------
+\subsection{Auswertung \label{openfoam:section:Auswertung}}
+Nach der Simulation können die Ergebnisse ausgewertet werden. 
+Wir verwenden \texttt{ParaView} für die Auswertung. 
+Auf Linux-Systemen ist \texttt{paraFoam} verfügbar, dies wird hier jedoch nicht weiter verfolgt.
+Die Ergebnisse auch mit einem eigenen \texttt{Skript} ausgewertet und weiterverarbeitet werden.
+
+In ParaView öffnet man das OpenFOAM Dokument im \texttt{Case}-Ordner.
+Abbildung \ref{fig:Beispiel_Paraview} zeigt die wichtigsten Bedienelemente.
+Für ein aussagekräftiges Ergebnis sollten die ersten Zeitschritte ignoriert werden, die Simulation braucht eine gewisse Zeit, bis sie einen stationären Zustand eingenommen hat.
+
+Mithilfe diverser Einstellmöglichkeiten für die Darstellung wird aus \ref{fig:Beispiel_Paraview} das Titelbild des Buches.
+Abbildung \ref{fig:vorschWindWestBlocky} zeigt dasselbe Ergebnis, jedoch mit der Einstellung, dass die einzelnen Zellen des Mesh sichtbar sind.
+
 \begin{figure}
     \centering
-    \includegraphics[width=0.55\textwidth]{papers/openfoam/Bilder/Ordnerstruktur_Simuliert.jpg}
-    \caption{Ordnerstruktur nach der Simulation, 0,5...60 die Zeitpunkte die in Paraview dargestellt werden können.}
-    \label{fig:ordStrktSim}
+    \includegraphics[width=1\textwidth]{papers/openfoam/Bilder/Beispiel_Paraview.png}
+    \caption{Bedienung von ParaView\\ oben links: slice auswählen\\ oben mitte: Zeitschritte\\ unten links: Parameter}
+    \label{fig:Beispiel_Paraview}
 \end{figure}
 
-
-%TODO
-\subsubsection{Postprocessing}
-%\subsection{Postprocessing\label{openfoam:section:Postprocessing}}
-TODO
-Postprocessing ist der Prozess, bei dem die Simulationsergebnisse visualisiert und analysiert werden. 
-
-%Bild vorschlag_Wind_Osten_5m oder Westen, evt interessant mehrere 5/10/15m
-darstellung
- Paraview, navigiere zum Simulations ordner, öffne .openFOAM datei
-
-
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\textwidth]{papers/openfoam/Bilder/vorschlag_Wind_Westen_10m_blocky.png}
-    \caption{Buchumschlag mit den einzelnen Simulationszellen sichtbar}
+    \includegraphics[width=1\textwidth]{papers/openfoam/Bilder/vorschlag_Wind_Westen_10m_blocky.png}
+    \caption{Gleich wie der Buchumschlag, jedoch mit den einzelnen Simulationszellen sichtbar.}
     \label{fig:vorschWindWestBlocky}
 \end{figure}
-%https://doc.openfoam.com/2306/quickstart/
-%https://www.openfoam.com/documentation/user-guide Dokumentation
+
+Bei der Auswertung ist zu berücksichtigen, dass digitale Modelle die Realität nur näherungsweise abbilden. 
+Daher stellt auch jede Simulation lediglich eine vereinfachte Repräsentation der realen Vorgänge dar und muss, bei Bedarf, mit physischen Experimenten validiert werden.
