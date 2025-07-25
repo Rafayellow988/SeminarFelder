@@ -31,10 +31,50 @@
 	& + \frac{\partial A_3}{\partial x^0} dx^0 \wedge dx^3
 	+ \frac{\partial A_3}{\partial x^1} dx^1 \wedge dx^3
 	+ \frac{\partial A_3}{\partial x^2} dx^2 \wedge dx^3\\[2ex] =
-	& \left(\frac{\partial (-\phi)}{\partial x^1}-\frac{\partial A_1}{\partial x^0}\right) dx^1 \wedge dx^0 +
-	\left(\frac{\partial (-\phi)}{\partial x^2}-\frac{\partial A_2}{\partial x^0}\right) dx^2 \wedge dx^0 +
-	\left(\frac{\partial (-\phi)}{\partial x^3}-\frac{\partial A_3}{\partial x^0}\right) dx^3 \wedge dx^0\\
-	& + \left(\frac{\partial A_1}{\partial x^2}-\frac{\partial A_{x_2}}{\partial x^1}\right) dx^2 \wedge dx^1 +
+	& \left(\frac{1}{c}\frac{\partial (-\phi)}{\partial x^1}-\frac{\partial A_1}{\partial x^0}\right) dx^1 \wedge dx^0 +
+	\left(\frac{1}{c}\frac{\partial (-\phi)}{\partial x^2}-\frac{\partial A_2}{\partial x^0}\right) dx^2 \wedge dx^0 +
+	\left(\frac{1}{c}\frac{\partial (-\phi)}{\partial x^3}-\frac{\partial A_3}{\partial x^0}\right) dx^3 \wedge dx^0\\
+	& + \left(\frac{\partial A_1}{\partial x^2}-\frac{\partial A_2}{\partial x^1}\right) dx^2 \wedge dx^1 +
 	\left(\frac{\partial A_1}{\partial x^3}-\frac{\partial A_3}{\partial x^1}\right) dx^3 \wedge dx^1 +
-	\left(\frac{\partial A_{x_2}}{\partial x^3}-\frac{\partial A_3}{\partial x^2}\right) dx^3 \wedge dx^2.				
+	\left(\frac{\partial A_2}{\partial x^3}-\frac{\partial A_3}{\partial x^2}\right) dx^3 \wedge dx^2.				
 \end{align*}
+
+\subsection{Interpretation von $d$A}
+
+\subsection{B und E aus Maxwell-Gleichungen herleiten}
+Aus dem Gaussschen Gesetz für Magnetfelder
+\begin{equation}
+	\nabla \cdot \vec{B} = 0
+\end{equation}
+und der Tatsache, dass jedes divergenzfreie, stetig differenzierbare Vektorfeld als Rotation eines anderen Vektorfelds lokal dargestellt werden kann,
+folgt
+\begin{equation}
+	\vec{B} = \nabla \times \vec{A}.
+\end{equation}
+Diese Beziehung steht in engem Zusammenhang mit dem Prinzip, dass die zweifache äussere Ableitung auf Differentialformen verschwindet. Hier beziehen wir uns aber auf Vektoren.
+
+Das Induktionsgesetz lautet
+\begin{equation}
+	\nabla \times \vec{E} = - \frac{\partial \vec{B}}{\partial t}.
+\end{equation}
+Setzt man für $\vec{B}$ die obige Definition ein, folgt
+\begin{equation}
+	\nabla \times \vec{E} = - \frac{\partial}{\partial t}(\nabla \times \vec{A}).
+\end{equation}
+
+Die Rotation eines Vektorfelds ist linear und daraus folgt
+\begin{equation}
+	\nabla \times \left( \vec{E} + \frac{\partial \vec{A}}{\partial t}\right) = 0.
+\end{equation}
+
+Ist ein Vektorfeld rotationsfrei, so kann es als Gradient eines Skalarfelds geschrieben werden.
+\begin{equation}
+	\vec{E} + \frac{\partial \vec{A}}{\partial t} = -\nabla \phi \Rightarrow \vec{E} = -\nabla \phi -\frac{\partial \vec{A}}{\partial t}
+\end{equation}
+Das Minuszeichen vor dem Gradienten des elektrischen Potentials $\phi$ ergibt sich daraus, dass das elektrische Feld immer in Richtung des niedrigeren Potentials zeigt.
+
+Jetzt haben wir zwei Formeln gefunden, mit welchen sich die elektrische Feldstärke und die magnetische Flussdichte aus dem elektrischen Potential und dem magnetischen Vektorpotential herleiten lassen. Dieses Wissen können wir nun in unsere vorherige Rechnung einfliessen lassen und somit die verschiedenen Ausdrücke interpretieren.
+
+Im Faraday-Tensor steckt genau diese Information wie die beiden Felder zu den Potentialen stehen, nur dass dieser in der Sprache der Differentialformen formuliert ist.
+
+
