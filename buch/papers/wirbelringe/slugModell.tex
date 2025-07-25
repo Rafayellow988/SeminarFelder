@@ -1,32 +1,33 @@
 %
-% slugModell.tex -- Erleutert das Slug Modell
+% slugModell.tex -- Erleutert das Slug-Modell
 %
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Slug Modell}
-In diesem Kapitel werden wir uns das Slug Modell etwas genauer unter die Lupe nehmen, um die Entstehung eines Wirbelrings etwas genauer zu verstehen.
+\section{Slug-Modell}
+In diesem Kapitel nehmen wir das Slug-Modell genauer unter die Lupe, um die Entstehung eines Wirbelrings besser zu verstehen.
 Die genaue mathematische Beschreibung des Entstehungsprozesses ist sehr komplex und würde den Rahmen dieses Kapitels sprengen.
-Dafür kann mittels Slug Modell dieser Prozess relativ genau angenähert werden.
+Dafür kann dieser Prozess mit Hilfe des Slug-Modells relativ genau angenähert werden.
 
 \subsection{Grundlegende Idee}
-Im Slug Modell wird der Impulsaustritt eines Fluidvolumens (eines Fluid-Slug\footnote{Im Deutschen wird von einem Fluid-Pfropfen gesprochen}) aus einer Öffnung beschrieben.
-Man kann sich dies als Zylinder aus Flüssigkeit vorstellen, welcher innert kürzester Zeit aus einer Öffnung geschoben wird.
+Im Slug-Modell wird der Impulsaustritt eines Fluidvolumens (eines Fluid-Slugs\footnote{Im Deutschen: Fluid-Pfropfen}) aus einer Öffnung beschrieben.
+Man kann sich dies als Zylinder aus Flüssigkeit vorstellen, welcher innerhalb kürzester Zeit aus einer Öffnung geschoben wird.
 Dabei definieren wir folgende Grössen:
 \begin{itemize}
     \item Zirkulation $\Gamma$
     \item Wirbelstärke $\omega$
-    \item Slug Geschwindigkeit $u_p(t)$
-    \item Slug Durchmesser $D$
-    \item Slug Länge $L$
+    \item Slug-Geschwindigkeit $u_p(t)$
+    \item Slug-Durchmesser $D$
+    \item Slug-Länge $L$
+    \item Wirbelring-Querschnittsradius $r_w$
 \end{itemize}
 
 \input{papers/wirbelringe/fig/slug_formung.tex}
 
 Tritt nun das Slug aus dem Zylinder aus, so trifft die Aussenseite des Slugs auf das stehende Fluid (bspw. Luft oder Wasser) ausserhalb.
 Dies bewirkt aufgrund der Geschwindigkeitsdifferenz zwischen dem Inneren des Slugs und dem stehenden Fluid aussen eine Scherung.
-Die Scherung hat zur Folge, dass sich das Slug beginnt \glqq Aufzurollen\grqq und somit einen Wirbel formt. 
-Die in Abschnitt \ref{paper:Wirbelringe:Stokes} genannte Formel für die Zirkulation kann approximativ auf
+Die Scherung hat zur Folge, dass sich das Slug beginnt \glqq aufzurollen\grqq und somit einen Wirbel formt. 
+Die in Abschnitt \ref{paper:Wirbelringe:Stokes} genannte Formel für die Zirkulation kann näherungsweise auf
 \begin{equation*}
 \Gamma 
 \approx 
@@ -34,26 +35,34 @@ Die in Abschnitt \ref{paper:Wirbelringe:Stokes} genannte Formel für die Zirkula
 \end{equation*}
 vereinfacht werden.
 
-\subsection{Berechnungen zum Slug Modell}
-Möchte man ein etwas genaueres $\Gamma$ des Wirbelrings haben, so kann man dies folgendermassen herleiten.
+\subsection{Berechnungen zum Slug-Modell}
+Alternativ kann man auch über den Impulsvergleich auf eine Formel für die Zirkulation kommen.
+Dies funktioniert aber nur unter folgenden Annahmen:
+\begin{itemize}
+    \item Das verwendete Fluid ist inkompressibel.
+    \item Der linear ausgestoßene Impuls des Slugs wird in den Drehimpuls des Wirbelrings überführt.
+    \item Die Öffnungsfläche ist mit $A = \frac{\pi}{4} D^2$ angenähert.
+    \item $\omega$ ist tangential zum Wirbelring.
+    \item Der entstehende Wirbelring ist Achsensymmetrisch.
+\end{itemize} 
 
 Zunächst die Grundlagen:
 Grundsätzlich wird die Länge und das Volumen eines Slugs als
 \begin{align}
     L
     &=
-    \int_{0}^{t}v_k(t)dt\\
+    \int_{0}^{t}u_p(t)dt\\
     \label{paper:Wirbelringe:eq:sluglaenge}
     V
     &=
     LA
 \end{align}
 definiert.
-Es kann aber angenommen werden, dass das Slug mit konstanter Geschwindigkeit bewegt wird, weshalb \ref{paper:Wirbelringe:eq:sluglaenge} zu
+Es kann aber angenommen werden, dass das Slug mit konstanter Geschwindigkeit bewegt wird, weshalb \eqref{paper:Wirbelringe:eq:sluglaenge} zu
 \begin{equation}
     L
     =
-    v_0T
+    u_0T
 \end{equation}
 wird.
 Nun kann noch der lineare Impuls eines Zylindrischen Slugs als
@@ -84,7 +93,7 @@ kann durch Einsetzen der Vektor-Idetität für Rotationstensoren \cite{Wirbelrin
     =
     \frac{1}{2}\vec{x}\times\omega
 \end{equation*}
-als Drehimpuls eines rotierenden Fluids 
+als Drehimpuls eines rotierenden Fluidvolumens 
 \begin{equation}
     \vec{I}
     =
@@ -97,15 +106,14 @@ als Drehimpuls eines rotierenden Fluids
 \end{equation}
 hergeleitet werden. 
 
-Dies geht allerdings nur, wenn man von einem inkompressiblen Fluid ausgeht!
-Zusätzlich kann man davon ausgehen, dass die Wirbelstärke $\omega$ tangential zum Wirbelring wirkt und der Wirbelring achsensymmetrisch ist
+Wie bereits erwähnt ist $\omega$ tangential zum Wirbelrung und dieser ist Achsensymmetrisch.
 \begin{equation*}
     \vec{\omega}
     =
     \omega_\phi(r,z)\hat{e}_\phi
 \end{equation*}
 sowie, dass die Drehimpulsrichtung entlang der Symmetrieachse verläuft.
-Um nun der gewünschten Formel näherzukommen, wird \ref{paper:Wirbelringe:eq:Drehimpuls} in das Zylinderkoordinatensystem umgewandelt.
+Um jetzt der gewünschten Formel näherzukommen, wird \eqref{paper:Wirbelringe:eq:Drehimpuls} in das Zylinderkoordinatensystem umgewandelt.
 Dabei wird
 \begin{equation*}
     \vec{x}
@@ -125,20 +133,20 @@ wobei das Kreuzprodukt der beiden
     r\omega_\phi\hat{e}_z - z\omega_\phi\hat{e}_r
 \end{equation*}
 ergibt. Da der Wirbelring achsensymmetrisch ist, wird nur die $\hat{e}_z$-Komponente betrachtet.
-Als Nächstes können die gefundenen werte für $\vec{x}$ und $\vec{\omega}$ in \ref{paper:Wirbelringe:eq:Drehimpuls} eingesetzt werden.
+Als Nächstes können die gefundenen werte für $\vec{x}$ und $\vec{\omega}$ in \eqref{paper:Wirbelringe:eq:Drehimpuls} eingesetzt werden.
 Sie wird dann zu
 \begin{equation*}
     \vec{I}_z
     =
     \frac{\rho}{2}\int_{0}^{2\pi}\int_{A}r\omega_\phi(r,z)\cdot rd\phi drdz.
 \end{equation*}
-Angenehmerweise gibt es keine Integrationsvariable abhängig von $\phi$, weshalb das erste Integral aufgelöst werden kann, welches nach Einsetzen der Integrationsgrenzen
+Da keine Integrationsvariable von $\phi$ abhängt, kann das erste Integral sofort gelöst werden. Nach Einsetzen der Integrationsgrenzen ergibt sich
 \begin{equation*}
     \vec{I}_z
     =
-    \frac{\rho}{2}2\pi\int_{A}r^2\omega_\phi(r,z)drdz
+    \frac{\rho}{2}2\pi\int_{A}r^2\omega_\phi(r,z)drdz.
 \end{equation*}
-ergibt. Hier kann man offensichtlich die 2 kürzen und das r im integral kann zu $r^2$ zusammengefasst werden und es entsteht eine hübsche Formel
+Die 2 kürzt sich heraus und die beiden r können zu $r^2$ zusammengefasst werden, was zu folgender Formel führt
 \begin{equation}
     \vec{I}_z
     =
@@ -147,11 +155,11 @@ ergibt. Hier kann man offensichtlich die 2 kürzen und das r im integral kann zu
 \end{equation}
 mit welcher sich der Impuls eines Wirbelrings ermitteln lässt.
 
-Da die Impulserhaltung gilt, entspricht \ref{paper:Wirbelringe:eq:achssymImp} ungefähr \ref{paper:Wirbelringe:eq:slugImp} also
+Da die Impulserhaltung gilt, entspricht \eqref{paper:Wirbelringe:eq:achssymImp} ungefähr \eqref{paper:Wirbelringe:eq:slugImp} also
 \begin{equation}
     \rho\pi\int_{A}r^2\vec{\omega}(r,z)drdz
     \approx
-    \rho ALv
+    \rho ALu_0
     \label{paper:Wirbelringe:eq:Igleichi}.
 \end{equation}
 Glücklicherweise existiert der Integralsatz von Stokes, welcher besagt
@@ -173,10 +181,24 @@ kann dies mittels Satz von Stokes in
     \int_{A}\omega(r,z)drdz
 \end{equation*}
 umgewandelt werden.
-Angenehmerweise kann dies dann in Gleichung \ref{paper:Wirbelringe:eq:Igleichi} eingesetzt werden und es entsteht eine hübsche Formel
+Angenehmerweise kann dies dann in Gleichung \eqref{paper:Wirbelringe:eq:Igleichi} eingesetzt werden und es ergibt sich eine kompakte Formel
 \begin{equation*}
     \Gamma
     =
-    \frac{v_0^2AL}{\pi r^2},
+    \frac{2v_0AL}{\pi D^2},
 \end{equation*}
-welche dann noch ein wenig
+Setzt man dann noch 
+\begin{equation*}
+    A
+    =
+    \frac{\pi}{4} D^2
+\end{equation*}
+ein, erhält man folgende Formel zur Berechnung der Zirkulation
+\begin{equation*}
+    \Gamma
+    =
+    2v_0L\frac{r_w^2}{D^2}.
+\end{equation*}
+\textbf{Hinweis:}
+Die Formel ist dimensionsrichtig und physikalisch motiviert, jedoch nicht durch experimentelle oder numerische Studien bestätigt.
+Daher ist sie als \emph{heuristische Näherung} zu interpretieren, insbesondere für qualitative Abschätzungen oder geometrisch skalierte Vergleiche.
