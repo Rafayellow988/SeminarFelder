@@ -143,6 +143,7 @@ zuzuordnen, eine negative, orientierte Fläche bedeutet ein Umlaufsinn \emph{im 
 
 
 \subsection{Rechenbeispiel mit Zahlen}
+\label{geoalgebra:section:example}
 
 Wir nehmen an, dass 
 \begin{equation}
@@ -161,3 +162,142 @@ Das Wedgeprodukt zwischen den beiden Vektoren ergibt
 \end{equation}
 Die Fläche im aufgespannten Parallelogramm ist $5$ und im Gegenuhrzeigersinn orientiert.
 
+\subsection{Äquivalente Bivektoren}
+Da Bivektoren orientierte Flächen sind, sind sie nicht eindeutig. Es gibt unendlich viele mögliche Kombinationen von Vektoren,
+die denselben Bivektor erzeugen.
+
+Ein ganz simples Beispiel von einem äquivalenten Bivektor erhalten wir, wenn wir bei einem Wedgeprodukt zweier Vektoren einen strecken
+und den anderen stauchen. Dies lässt sich bereits aus unseren Axiomen herleiten.
+
+{
+\renewcommand{\a}{\mathbf{a}}
+\renewcommand{\b}{\mathbf{b}}
+\begin{beispiel}
+Sei
+  \begin{align*}
+    \a &= \begin{pmatrix} 3 \\ 1 \end{pmatrix} \\
+    \b &= \begin{pmatrix} 1 \\ 2 \end{pmatrix}
+  \end{align*}
+Das Wedgeprodukt zwischen $\a$ und $\b$ ergibt
+  \begin{equation}
+    \a \wedge \b = 5 \eone \wedge \etwo.
+  \end{equation}
+
+  Wir strecken $\a$ und stauchen $\b$ um denselben Faktor $2$. Durch die Bilinearität (\eqref{geoalgebra:eq:bilinear}) ergibt
+  \begin{equation}
+    2 \a \wedge \frac{1}{2} \b = 2 \frac{1}{2} \a \wedge \b = \a \wedge \b.
+  \end{equation}
+
+
+
+\begin{figure}
+  \begin{center}
+\begin{tikzpicture}
+  \draw[step=.5cm,gray,very thin] (-0.25,-0.25) grid (4.25,4.25);
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (3,1);
+  \coordinate (B) at (1,2);
+  \coordinate (C) at ($(A)+(B)$);
+
+  \fill[blue!30,opacity=0.7] (O) -- (A) -- (C) -- (B) -- cycle;
+
+  \draw[thick,->,red] (O) -- (A) node[midway,below] {$\a$};
+  \draw[thick,->,blue] (O) -- (B) node[midway,left] {$\b$};
+  \draw[dashed] (A) -- (C);
+  \draw[dashed] (B) -- (C);
+
+  \node (K) at ($0.25*(O)+0.25*(A)+0.25*(B)+0.25*(C)$)
+    {$\a \wedge \b$};
+  \draw[thick,->] (K) ++(0.5,0) arc (0:270:0.5);
+\end{tikzpicture}
+\begin{tikzpicture}
+  \draw[step=.5cm,gray,very thin] (-0.25,-0.25) grid (4.25,5.25);
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (1.5,0.5);
+  \coordinate (B) at (2,4);
+  \coordinate (C) at ($(A)+(B)$);
+
+  \fill[blue!30,opacity=0.7] (O) -- (A) -- (C) -- (B) -- cycle;
+
+  \draw[thick,->,red] (O) -- (A) node[midway,below] {$\frac{1}{2} \a$};
+  \draw[thick,->,blue] (O) -- (B) node[midway,left] {$2 \b$};
+  \draw[dashed] (A) -- (C);
+  \draw[dashed] (B) -- (C);
+
+  \node (K) at ($0.25*(O)+0.25*(A)+0.25*(B)+0.25*(C)$)
+    {$\a \wedge \b$};
+  \draw[thick,->] (K) ++(0.5,0) arc (0:270:0.5);
+\end{tikzpicture}
+  \end{center}
+  \caption{Beide Bivektoren sind äquivalent mit Fläche $5$}\label{geoalgebra:fig:bivektor-als-flaeche}.
+\end{figure}
+\end{beispiel}
+
+Derselbe Bivektor kann aber auch über Vektoren in andere Richtungen erreicht werden, z.B. über die Einheitsvektoren $\eone$ und $\etwo$ (siehe \autoref{geoalgebra:fig:equivalent-bivectors-unit-vectors}).
+
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}
+  \draw[step=.5cm,gray,very thin] (-0.25,-0.25) grid (3.25,2.25);
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (3,0);
+  \coordinate (B) at (0,5/3);
+  \coordinate (C) at ($(A)+(B)$);
+
+  \fill[blue!30,opacity=0.7] (O) -- (A) -- (C) -- (B) -- cycle;
+
+  \draw[thick,->,red] (O) -- (A) node[midway,below] {$3\eone$};
+  \draw[thick,->,blue] (O) -- (B) node[midway,left] {$\frac{5}{3} \etwo$};
+  \draw[dashed] (A) -- (C);
+  \draw[dashed] (B) -- (C);
+
+\end{tikzpicture}
+\begin{tikzpicture}
+  \draw[step=.5cm,gray,very thin] (-0.25,-0.25) grid (2.25,3.25);
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (2,0);
+  \coordinate (B) at (0,5/2);
+  \coordinate (C) at ($(A)+(B)$);
+
+  \fill[blue!30,opacity=0.7] (O) -- (A) -- (C) -- (B) -- cycle;
+
+  \draw[thick,->,red] (O) -- (A) node[midway,below] {$2 \eone$};
+  \draw[thick,->,blue] (O) -- (B) node[midway,left] {$\frac{5}{2} \etwo$};
+  \draw[dashed] (A) -- (C);
+  \draw[dashed] (B) -- (C);
+
+\end{tikzpicture}
+  \caption{Bivektoren der Fläche $5$ gebildet durch die Einheitsvektoren}
+  \label{geoalgebra:fig:equivalent-bivectors-unit-vectors}
+\end{center}
+\end{figure}
+
+}
+
+
+\subsection{Bivektoren im dreidimensionalen Raum}
+Bivektoren sind in allen Räumen genauso orientierte Flächen wie in zwei Dimensionen.
+Anstelle, dass wir jedoch das Resultat einfach so erhalten, erhalten wir \emph{Projektionen}
+auf alle von den Einheitsvektoren aufgespannten Ebenen.
+
+In \eqref{geoalgebra:eq:wedgeprodukt-dreidimensional} haben wir das Wedgeprodukt zwischen zwei Vektoren
+in drei Dimensionen bereits hergeleitet. Wir erhielten drei Summanden aus Wedgeprodukten mit skalaren Faktoren
+\begin{align*}
+&(a_1 b_2 - a_2 b_1) \eone \wedge \etwo \\
++&(a_2 b_3 - a_3 b_2) \etwo \wedge \ethree \\
++&(a_3 b_1 - a_1 b_3) \ethree \wedge \eone.
+\end{align*}
+
+Der Term $a_1 b_2 - a_2 b_1$ ist der Flächeninhalt der \emph{Projektion} (oder des ``Schattens'') des aufgespannten Parallelogramms auf die $\eone$-$\etwo$-Ebene.
+Analog dazu ist $a_2 b_3 - a_3 b_2$ der Flächeninhalt der Projektion auf die $\etwo$-$\ethree$-Ebene und $a_3 b_1 - a_1 b_3$ der Flächeninhalt
+der Projektion auf die $\ethree$-$\eone$-Ebene (siehe \autoref{geoalgebra:fig:bivectors-3d}).
+
+
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.4\textwidth]{papers/geoalgebra/assets/bivectors-3d.png}
+  \caption{Bivektoren im dreidimensionalen Raum}
+  \label{geoalgebra:fig:bivectors-3d}
+\end{figure}
