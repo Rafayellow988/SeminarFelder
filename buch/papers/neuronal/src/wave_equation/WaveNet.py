@@ -13,14 +13,13 @@ class WaveNet(nn.Module):
 
     def __init__(self):
         super(WaveNet, self).__init__()
-        self.fc1 = nn.Linear(4, 128) # 64 * 3 params = 192
-        self.fc2 = nn.Linear(128, 128) # 256 * 64 params = 16'384
-        self.fc3 = nn.Linear(128, 128) # 512 * 256 params = 131'072
+        self.fc1 = nn.Linear(4, 128)
+        self.fc2 = nn.Linear(128, 128)
+        self.fc3 = nn.Linear(128, 128)
         self.fc4 = nn.Linear(128, 1)
         self.act = nn.Tanh()
 
         self.init_weights()
-        self.input_range = [ (boundaries.X_MIN, boundaries.X_MAX), (boundaries.Y_MIN, boundaries.Y_MAX), (boundaries.T_MIN, boundaries.T_MAX) ]
 
     def init_weights(self):
         with torch.no_grad():
@@ -36,13 +35,6 @@ class WaveNet(nn.Module):
 
             self.fc4.weight.normal_(0, 2 / (self.fc4.in_features + self.fc4.out_features))
             self.fc4.bias.normal_(0, 2 / (self.fc4.in_features + self.fc4.out_features))
-
-
-    def normalize(self, x):
-        mins = torch.tensor([r[0] for r in self.input_range], dtype=x.dtype, device=x.device)
-        ranges = torch.tensor([r[1] - r[0] for r in self.input_range], dtype=x.dtype, device=x.device)
-        return 2 * (x - mins) / ranges - 1
-
 
     def forward(self, xyt):
         x = xyt[:, 0:1]
@@ -61,28 +53,15 @@ class WaveNet(nn.Module):
     # Train model
     def fit(self, x_train, y_train, t_train, x_test, y_test, t_test, device, n_epochs):
         optimizerAdam = optim.Adam(self.parameters(), lr=0.001)
-        optimizerLBFGS = optim.LBFGS(self.parameters(), lr=0.1, max_iter=20, history_size=10)
         self.train()
 
         for epoch in range(n_epochs):
-            if epoch < int(n_epochs):
-                optimizerAdam.zero_grad()
+            optimizerAdam.zero_grad()
 
-                train_loss = total_loss(self, x_train, y_train, t_train, device)
-                test_loss = total_loss(self, x_test, y_test, t_test, device)
-                train_loss.backward()
-                optimizerAdam.step()
-
-            else:
-                def closure():
-                    optimizerLBFGS.zero_grad()
-
-                    train_loss = total_loss(self, x_train, y_train, t_train, device)
-                    train_loss.backward()
-                    return train_loss
-
-                train_loss = optimizerLBFGS.step(closure)
-                test_loss = total_loss(self, x_test, y_test, t_test, device)
+            train_loss = total_loss(self, x_train, y_train, t_train, device)
+            test_loss = total_loss(self, x_test, y_test, t_test, device)
+            train_loss.backward()
+            optimizerAdam.step()
 
             self.train_error.append(train_loss.item())
             self.test_error.append(test_loss.item())
