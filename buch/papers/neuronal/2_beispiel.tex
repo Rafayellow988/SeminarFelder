@@ -47,16 +47,92 @@ sowie die Randbedingungen
 \end{equation}
 verwendet.
 Die Bereiche sind \( x, y \in [-2,2] \) und \( t \in [0,2] \).
+Die Gleichung hat eine analytische Lösung, diese ist
+\begin{equation}
+    u(x, y, t) = \cos(c \pi \sqrt{2}\: t)\sin(\pi x)\sin(\pi y).
+    \label{neuronal:wellen_analytisch}
+\end{equation}
+Somit kann das neuronale Netzwerk zur Qualitätsbewertung direkt damit verglichen werden.
 
- Das neuronale Netzwerk ist \ldots
+Das neuronale Netzwerk zur Lösung der Wellengleichung weicht leicht von der allgemeinen Definition im Abschnitt \ref{neuronal:subsection:struktur_nn} ab.
+Zusätzlich zu den drei Variablen $x, y$ und $t$ wird dem Netzwerk der Wert der ersten Anfangsbedingung \eqref{neuronal:wellen_anfangs} als Input gegeben.
+Somit ist das neuronale Netzwerk
+\begin{align*}
+    \hat{u}(x,\; y,\; t,\; u(x, y, 0);\; \vartheta),
+\end{align*}
+wobei
+\begin{align*}
+    u(x, y, 0) = \sin(\pi x) \sin(\pi y).
+\end{align*}
+Die Idee dabei ist, dass diese Anfangsbedingung auf eine bestimmte Art in der gesuchten Funktion $u$ vorkommen muss.
+Daher ist es naheliegend, diese Anfangsbedingung als zusätzlichen Input zu verwenden.
+Der konkrete Aufbau des neuronalen Netzwerks ist somit wie folgt:
+\begin{itemize}
+    \item 4 Teilfunktionen
+    \item \( f_1 \): \( \mathbb{R}^4 \longrightarrow \mathbb{R}^{128} \) 
+    \item \( f_{4} \): \( \mathbb{R}^{128} \longrightarrow \mathbb{R} \)
+    \item Alle anderen Teilfunktionen: \( \mathbb{R}^{128} \longrightarrow \mathbb{R}^{128} \)
+    \item Als Aktivierungsfunktion wird der hyperbolische Tangens verwendet
+\end{itemize}
+Das Netzwerk verfügt somit über 33'793 Parameter.
+In der letzten Teilfunktion \( f_{4} \) wird keine Aktivierungsfunktion verwendet.
+Grund dafür ist das der hyperbolische Tangens den Wertebereich \((-1, 1)\) hat, das Netzwerk aber zur Approximation der Wellengleichung den Wertebereich \( \mathbb{R} \) haben soll.
 
- Die Datensätze sind \ldots
+Wie im Abschnitt \ref{neuronal:subsection:diskretierung} beschrieben, werden insgesamt drei Datensätze verwendet.
+Alle drei Datensätze bestehen aus je 40'000 Datenpunkten.
+Weiter wurde je ein Fünftel der Datenpunkte für die Funktion \( L^1(\vartheta) \) abgetrennt und nicht im Optimierungsalgorithmus verwendet (siehe Abschnitt \ref{neuronal:subsection:qualitätsbewertung}).
 
- Das Resultat ist \ldots
+In diesem Beispiel hat sich eine grosse Limitierung dieser Methode gezeigt.
+In einigen Fällen kann es sein, dass $L(\vartheta)$ durch den Optimierungsalgorithmus gegen 0 geht, aber die Parameter $\vartheta$ an diesem (sehr tiefen) Minimum trotzdem nicht geeignet zur Approximation sind, wie beschrieben im Theorem 2 in \cite{neuronal:derivative_pathology}.
+Das bedeutet, obwohl der Approximationsfehler gegen 0 geht, ist das Netzwerk nicht in der Lage eine gute Approximation zu produzieren.
+Dies wird deutlich in diesem Beispiel \ldots % Beispiel einfügen
 
-Die Lösung der Wellengleichung ist periodisch, und neuronale Netzwerke haben Schwierigkeiten beim Approximieren von periodischen Funktionen.
-Dieses Problem kann durch die Verwendung von \emph{Fourier Features} gelöst werden \cite{neuronal:fourier_features}.
-Die grundlegende Idee ist es, die Datenpunkte der Diskretisierung mit Sinus- und Cosinus-Funktionen zu transformieren, um periodische Strukturen besser erfassen zu können. Eine ausführlichere Erklärung hierzu ist im Kapitel über \emph{Fourier-Transformation und Feldtheorie} zu finden (siehe Kapitel~\ref{chapter:fourier}).
+Beendet man den Optimierungsalgorithmus bei 700 Iterationen, findet sich eine bessere Lösung.
+Die Werte von $L(\vartheta)$ und $L^1(\vartheta)$ sind 3.368 bzw. 3.312 (siehe \ref{fig:fehler_wave_good}), was zunächst nicht besonders vielversprechend aussieht.
+\begin{figure}
+    \centering
+    \hspace*{-0.1\textwidth}
+    \includegraphics[width=0.7\textwidth]{papers/neuronal/images/approximation_error_wave_good.png}
+    \caption{Verlauf des Approximationsfehlers der Wellengleichung während des Trainings (bessere Lösung)}
+    \label{fig:fehler_wave_good}
+\end{figure}
+Berechnet man jedoch die durchschnittliche Differenz des neuronalen Netzwerks und der analytischen Lösung \eqref{neuronal:wellen_analytisch}, erhält man 0.085.
+Dieser Wert ist deutlich besser, der Verlauf dieser Differenz ist in \ref{fig:differenz_wellen} dargestellt.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{papers/neuronal/images/wellen_analytisch_neuronal.png}
+    \caption{Verlauf der Differenz Wellengleichung: Analytische Lösung - Neuronales Netzwerk}
+    \label{fig:differenz_wellen}
+\end{figure}
+Das visuelle Resultat ist in den Abbildungen \ref{fig:wellen_t0}, \ref{fig:wellen_t04}, \ref{fig:wellen_t136}, \ref{fig:wellen_t164} dargestellt.
+In diesen Abbildungen ist auf der linken Seite das neuronale Netzwerk und auf der rechten Seite die analytische Lösung abgebildet.
+Die Farben stellen die Wellenhöhen dar, rot bedeutet einen Wellenberg und blau ein Wellental.
+Die gesamte Animation dieses Resultat ist im GitHub Repository des Seminars \cite{neuronal:github_source_code} als GIF im Unterverzeichnis \emph{wave\_equation} zu finden.
+Was in diesen Abbildungen deutlich zu sehen ist, ist dass das Netzwerk bei Übergängen von Wellenbergen zu Wellentälern (z.B. von \ref{fig:wellen_t0} zu \ref{fig:wellen_t04}) Fehler macht.
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{papers/neuronal/images/prediction_wave_t0.png}
+    \caption{Wellengleichung t = 0}
+    \label{fig:wellen_t0}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{papers/neuronal/images/prediction_wave_t04.png}
+    \caption{Wellengleichung t = 0.4}
+    \label{fig:wellen_t04}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{papers/neuronal/images/prediction_wave_t136.png}
+    \caption{Wellengleichung t = 1.36}
+    \label{fig:wellen_t136}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{papers/neuronal/images/prediction_wave_t164.png}
+    \caption{Wellengleichung t = 1.64}
+    \label{fig:wellen_t164}
+\end{figure}
 
 \subsection{Burgers-Gleichung}\label{neuronal:subsection:burgers_gleichung}
 Die Burgers-Gleichung ist gegeben als
@@ -93,9 +169,9 @@ Grund dafür ist das der hyperbolische Tangens den Wertebereich \((-1, 1)\) hat,
 Wie im Abschnitt \ref{neuronal:subsection:diskretierung} beschrieben, werden insgesamt drei Datensätze verwendet.
 Der Datensatz \( F \), in dem die Burgers-Gleichung gilt, besteht aus 5000 Datenpunkten.
 Die Datensätze \( A \) und \( B \), in denen die Anfangsbedingungen bzw. die Randbedingungen gilten, bestehen jeweils aus 2000 Datenpunkten.
-Je ein Fünftel der Datenpunkte wurde für die Funktion \( L^1(\vartheta) \) abgetrennt und nicht im Optimierungsalgorithmus verwendet (siehe Abschnitt \ref{neuronal:subsection:qualitätsbewertung}).
+Weiter wurde je ein Fünftel der Datenpunkte für die Funktion \( L^1(\vartheta) \) abgetrennt und nicht im Optimierungsalgorithmus verwendet (siehe Abschnitt \ref{neuronal:subsection:qualitätsbewertung}).
 
-Der Optimierungsalgorithmus \ref{neuronal:gradient_descent} durchlief 15.000 Iterationen, um geeignete Parameter für die Approximation zu finden.
+Der Optimierungsalgorithmus \ref{neuronal:gradient_descent} durchlief 15'000 Iterationen, um geeignete Parameter für die Approximation zu finden.
 Die Werte von \( L(\vartheta) \) und \( L^1(\vartheta) \) am Ende der Optimierung sind 0.003328 bzw. 0.003449.
 Somit sind die mittleren Approximationsfehler des Netzwerks sehr gering.
 Der Verlauf des Approximationsfehlers während der Optimierung ist in Abbildung \ref{fig:fehler_burgers} dargestellt.
@@ -103,16 +179,26 @@ Der Verlauf des Approximationsfehlers während der Optimierung ist in Abbildung 
     \centering
     \hspace*{-0.1\textwidth}
     \includegraphics[width=0.7\textwidth]{papers/neuronal/images/approximation_error_burgers.png}
-    \caption{Verlauf des Approximationsfehlers der Burgers-Gleichung}
+    \caption{Verlauf des Approximationsfehlers der Burgers-Gleichung während des Trainings}
     \label{fig:fehler_burgers}
 \end{figure}
 
 Wertet man das neuronale Netzwerk über die Bereiche von \( x \) und \( t \) aus, ergibt sich ein Plot der Lösung des neuronalen Netzwerks (siehe Abbildung \ref{fig:loesung_burgers}).
+In dieser Abbildung laufen zwei sanfte Wellen aufeinander zu und kollidieren in einem scharfen Sprung.
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{papers/neuronal/images/prediction_burgers_net.png}
     \caption{Lösungs-Plot der Burgers-Gleichung}
     \label{fig:loesung_burgers}
+\end{figure}
+Dieses Verhalten wird deutlich, wenn man den Lösungsplot zu fixen Zeiten erstellt, siehe \ref{fig:loesung_burgers_fix_zeit}.
+\begin{figure}
+    \includegraphics[width=0.48\textwidth]{papers/neuronal/images/burgers_solution_t0.png}\hfill
+    \includegraphics[width=0.48\textwidth]{papers/neuronal/images/burgers_solution_t02.png}
+    \\[\smallskipamount]
+    \includegraphics[width=0.48\textwidth]{papers/neuronal/images/burgers_solution_t04.png}\hfill
+    \includegraphics[width=0.48\textwidth]{papers/neuronal/images/burgers_solution_t06.png}
+    \caption{Lösungs-Plot der Burgers-Gleichung zu verschiedenen Zeiten}\label{fig:loesung_burgers_fix_zeit}
 \end{figure}
 
 Der gesamte Code zur Umsetzung ist im GitHub-Repository des Seminars abgelegt \cite{neuronal:github_source_code}.

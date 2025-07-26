@@ -37,7 +37,7 @@ Hierbei ist:
     \item $\varphi(x, t)$ das gesuchte Feld,
     \item $\mathcal{D}$ ein beliebiger Differentialoperator auf $\varphi$ (siehe \eqref{neuronal:bsp_differentialoperator} für ein Beispiel),
     \item $f(x)$ und $g(x)$ bekannte Funktionen, die die Anfangsbedingungen definieren,
-    \item $\Omega$ das Gebiet , in dem das Feld definiert ist,
+    \item $\Omega$ das Gebiet, in dem das Feld definiert ist,
     \item $\partial \Omega$ der Rand des Gebietes,
     \item $[0,T]$ das betrachtete Zeitintervall.
 \end{itemize}
@@ -52,13 +52,12 @@ Die erste Anfangsbedingung \eqref{neuronal:anfangsbedingung_voll}, gibt die Form
 Die zweite Anfangsbedingung \eqref{neuronal:anfangsbedingung_partiel}, beschreibt die zeitliche Änderung des Feldes zum Zeitpunkt $t = 0$.
 Diese Bedingungen sind notwendig, um die Dynamik des Feldes über die Zeit hinweg zu bestimmen.
 
-Als Beispiel für den Differentialoperator $\mathcal{D}$ könnte dieser 
+Der Differentialoperator $\mathcal{D}$ könnte z.B. 
 \begin{equation}
     \mathcal{D}(\varphi(x, y, t)) = \frac{\partial^2 \varphi}{\partial t^2} - c^2 \left( \frac{\partial^2 \varphi}{\partial x^2} + \frac{\partial^2 \varphi}{\partial y^2} \right)
     \label{neuronal:bsp_differentialoperator}
 \end{equation}
-sein.
-Setzt man dies in die Gleichung \eqref{neuronal:generelle_feldgleichung} ein, erhält man die Wellengleichung in zwei Dimensionen.
+sein, setzt man dies in die Gleichung \eqref{neuronal:generelle_feldgleichung} ein, erhält man die Wellengleichung in zwei Dimensionen.
 
 Das Ziel dieses Papers ist es, die Lösung $\varphi(x, t)$ mit einem neuronalen Netzwerk $\hat{\varphi}(x, t; \vartheta)$ zu approximieren.
 Das Netzwerk verfügt über einen Vektor \( \vartheta \in \mathbb{R}^n \) von \emph{trainierbaren Parametern}.
@@ -141,21 +140,13 @@ und die Randbedingung
 umformuliert.
 Anschliessend wird das neuronale Netzwerk $\hat{\varphi}$ für $\varphi$ substituiert
 \begin{equation}
-    \left(\mathcal{D}(\hat{\varphi}(x, t; \vartheta))\right)^2 \qquad x \in \Omega, \quad t \in [0,T]
-    \label{neuronal:feldgleichung_umformuliert_netz}
-\end{equation}
-\begin{equation}
     \begin{aligned}
-        \left(f(x) - \hat{\varphi}(x, t = 0; \vartheta)\right)^2 \qquad x \in \Omega\\
-        \left(g(x) - \partial_t \hat{\varphi}(x, t = 0; \vartheta)\right)^2 \qquad x \in \Omega
+        &\left(\mathcal{D}(\hat{\varphi}(x, t; \vartheta))\right)^2 \qquad \qquad \quad x \in \Omega, \quad t \in [0,T]\\
+        &\left(f(x) - \hat{\varphi}(x, t = 0; \vartheta)\right)^2 \qquad x \in \Omega\\
+        &\left(g(x) - \partial_t \hat{\varphi}(x, t = 0; \vartheta)\right)^2 \quad \: x \in \Omega\\
+        &\left(\hat{\varphi}(x, t; \vartheta)\right)^2 \qquad \qquad \qquad \: \: x \in \partial \Omega, \quad t \in [0,T].
     \end{aligned}
-    \label{neuronal:anfangsbedingung_umformuliert_netz}
-\end{equation}
-\begin{equation}
-    \begin{aligned}
-        \left(\hat{\varphi}(x, t; \vartheta)\right)^2 \qquad x \in \partial \Omega, \quad t \in [0,T].
-    \end{aligned}
-    \label{neuronal:randbedingung_umformuliert_netz}
+    \label{neuronal:umformuliert_nn}
 \end{equation}
 Ziel ist es, $\vartheta$ so zu wählen, dass alle diese Terme möglichst nahe bei 0 liegen.
 Anders ausgedrückt, soll $\vartheta$ so gewählt werden, dass die Terme minimiert werden.
@@ -179,7 +170,7 @@ Es gelten:
     \item Die Anfangsbedingungen für die Punkte in $A$
     \item Die Randbedingungen für die Punkte in $B$
 \end{itemize}
-Die Terme \eqref{neuronal:feldgleichung_umformuliert_netz}, \eqref{neuronal:anfangsbedingung_umformuliert_netz} und \eqref{neuronal:randbedingung_umformuliert_netz}, werden über die zugehörigen Datensätze summiert und gemittelt
+Die Terme \eqref{neuronal:umformuliert_nn}, werden nun über die zugehörigen Datensätze summiert und gemittelt
 \begin{equation}
   \frac{1}{\lvert F \rvert} \sum_{F}^{} \left(\mathcal{D}(\hat{\varphi}(x_i, t_i; \vartheta))\right)^2
     \label{neuronal:feldgleichung_umformuliert_netz_disk}
@@ -237,9 +228,9 @@ Das bedeutet, dass stattdessen ein numerischer Algorithmus verwendet werden muss
     \begin{enumerate}
         \item Initialisiere \( \vartheta_1 \) mit Anfangswerten.
         \item \textbf{Schleife} von \( i = 1 \) bis \( i = m - 1 \):
-        \begin{itemize}
+        \begin{description}
             \item Berechne neue Parameterwerte: \( \vartheta_{i+1} = \vartheta_i - \varepsilon \nabla_\vartheta L\left(\vartheta_i\right) \). (Erklärung unten)
-        \end{itemize}
+        \end{description}
         \item Gebe die Parameter \( \vartheta_m \) zurück.
     \end{enumerate}
     \label{neuronal:gradient_descent}
@@ -288,9 +279,18 @@ Ein bisschen daneben bedeutet dass es eine Richtung gibt, in die es abwärts -- 
 Für die Beurteilung der Qualität der Approximation bietet sich zunächst der Wert von \( L(\vartheta) \) nach Abschluss des Optimierungsalgorithmus an.
 Dieser Wert entspricht dem mittleren Approximationsfehler, der bei den Datenpunkten aus der Diskretisierung auftritt.
 
-Eine weitere Möglichkeit ist es, einen Teil der drei Datensätze aus \ref{neuronal:subsection:diskretierung} nicht im Optimierungsalgorithmus zu verwenden, sondern zuvor abzutrennen.
-Anschliessend wird eine neue Funktion \( L^1(\vartheta) \) definiert, die analog zu \eqref{neuronal:optimierung} aufgebaut ist, mit dem Unterschied, dass nun über die abgetrennten (Teil-)Datensätze summiert wird.
+Eine weitere Möglichkeit ist es, die drei Datensätze aus \ref{neuronal:subsection:diskretierung} in je zwei Teile aufzuteilen
+\begin{equation*}
+    \begin{aligned}
+        F &= F_t \cup F_k\\
+        A &= A_t \cup A_k\\
+        B &= B_t \cup B_k.
+    \end{aligned}
+\end{equation*}
+In der Funktion $L(\vartheta)$ wird über die drei Teil-Datensätze mit Index $t$ summiert.
+Zudem wird eine neue Funktion \( L^1(\vartheta) \) analog zu $L(\vartheta)$ definiert, mit dem Unterschied, dass nun über die drei Teil-Datensätze mit Index $k$ summiert wird.
 Da diese Funktion nie explizit durch den Optimierungsalgorithmus minimiert wurde, dient sie als Mass für den mittleren Approximationsfehler bei Datenpunkten, die nicht in der Diskretisierung enthalten waren.
+Damit dies gilt muss sichergestellt werden, dass $F_t \cap F_k = \emptyset$ ist (analog für $A$ und $B$), ansonsten ist $L^1(\vartheta)$ nicht unabhängig von $L(\vartheta)$.
 
 Eine letzte Möglichkeit zur Qualitätsbewertung ist der direkte Vergleich mit Lösungen, die durch alternative Verfahren gefunden wurden.
 Existiert beispielsweise eine analytische Lösung der Feldgleichung oder wurde eine Lösung durch die Finite-Elemente-Methode gefunden, kann damit verglichen werden.

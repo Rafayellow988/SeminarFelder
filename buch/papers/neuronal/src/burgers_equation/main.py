@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 from scipy.stats import qmc
 from BurgersNet import BurgersNet
-from Graphics import error_plot, solution_plot
+from Graphics import error_plot, solution_plot, snapshot_plot
 
 matplotlib.use('TkAgg')
 torch.set_default_dtype(torch.float64)
@@ -32,3 +32,4 @@ print("Model parameters:" + str(sum(p.numel() for p in model.parameters() if p.r
 
 ### Solution Plot
 solution_plot(model, device)
+snapshot_plot(model, device, t=0.8)
