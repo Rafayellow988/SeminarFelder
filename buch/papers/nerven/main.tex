@@ -12,23 +12,23 @@
 \chapterauthor{Tobias Zuber und Dino Ramcilovic}
 \section{Einleitung}
 
-\begin{itemize}
-\item
-Absätze werden gebildet, indem man eine Leerzeile einfügt.
-Die Verwendung von \verb+\\+ ist nur in Tabellen und Arrays gestattet.
-\item
-Die explizite Platzierung von Bildern ist nicht erlaubt, entsprechende
-Optionen werden gelöscht. 
-Verwenden Sie Labels und Verweise, um auf Bilder hinzuweisen.
-\item
-Beginnen Sie jeden Satz auf einer neuen Zeile. 
-Damit ermöglichen Sie dem Versionsverwaltungssysteme, Änderungen
-in verschiedenen Sätzen von verschiedenen Autoren ohne Konflikt 
-anzuwenden.
-\item 
-Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
-Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
-\end{itemize}
+%\begin{itemize}
+%\item
+%Absätze werden gebildet, indem man eine Leerzeile einfügt.
+%Die Verwendung von \verb+\\+ ist nur in Tabellen und Arrays gestattet.
+%\item
+%Die explizite Platzierung von Bildern ist nicht erlaubt, entsprechende
+%Optionen werden gelöscht. 
+%Verwenden Sie Labels und Verweise, um auf Bilder hinzuweisen.
+%\item
+%Beginnen Sie jeden Satz auf einer neuen Zeile. 
+%Damit ermöglichen Sie dem Versionsverwaltungssysteme, Änderungen
+%in verschiedenen Sätzen von verschiedenen Autoren ohne Konflikt 
+%anzuwenden.
+%\item 
+%Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
+%Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
+%\end{itemize}
 
 Die Informationsübertragung in unserem Körper wird vom Nervensystem übernommen.
 Dies beinhaltet zum Beispiel das vermitteln von Reizen, welche die Augen oder Ohren aufgenommen haben,
@@ -36,7 +36,7 @@ an das Gehirn und das Senden von Befehlen vom Gehirn an die Muskeln.
 Das Nervensystem besteht aus Nervernzellen, welche elektrische Signale generieren, von anderen Zellen aufnehmen und weiterleiten können.
 Die Signale werden so von einer Zelle zur nächsten Zelle weitergeleitet, bis das Signal am Zielpunkt ist.
 \subsection{Biologische Grundlagen}
-In Bild \ref{fig:Aufbau Nervenzelle} ist der Aufbau einer Nervenzelle ersichtlich. 
+In Abbildung \ref{fig:Aufbau Nervenzelle} ist der Aufbau einer Nervenzelle ersichtlich. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{papers/nerven/Bilder/NervenAufbau2.png}
@@ -63,7 +63,7 @@ Diesen elektrischen Impuls nennt man Aktionspotential.
     \caption{Aktionspotential}
     \label{fig:Aktionspotential}
 \end{figure}
-In Bild \ref{ig:Aktionspotential} ist ersichtlich wie ein Aktionspotential entsteht und schnell wieder abklingt.
+In Abbildung \ref{fig:Aktionspotential} ist ersichtlich wie ein Aktionspotential entsteht und schnell wieder abklingt.
 Dabei besitzt diese Nervenzelle eine Ruhespannung von -70 Millivolt und einen Spannungsschwellenwert von -50 Millivolt.
 Wenn die Nervenzelle einen Reiz, in Form eines elektrischen Signales erhält, wird eine Entscheidung getroffen. 
 Ist die Spannung des Reizes kleiner als der Spannungsschwellenwert wird dies als unterschwelliger Reiz bezeichnet und klingt sofort ab.
@@ -75,17 +75,77 @@ Dieser Ablauf des Spannungsimpulses des geschieht in wenigen Millisekunden.
 
 
 \subsection{Biologische Vorgänge}
+Um dieses Aktionspotential an einer Nervenzelle erkennen zu können, muss die Zellwand betrachtet werden. 
+Das Aktionspotential wird durch das Membranpotential beschrieben, dies ist die Ladungsdifferenz zwischen dem Intra- und
+Extrazellulärraum.
+In Abbildung \ref{fig:Ruhezustand} ist ein Modell der Zellwand, wenn die Nervenzele im Ruhezustand ist, erkennbar.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{papers/nerven/Bilder/Vorgang1.png}
+    \caption{Ruhezustand}
+    \label{fig:Ruhezustand}
+\end{figure}
+Die Ladung von Zellinnerem und Zelläusserem wird durch die Verteilung von positiv geladenen Ionen gesteuert.
+Die wichtigsten Ionen dafür sind Kalium- und Natriumionen. 
+Durch eine sogenannte Ionenpumpe, wird ermöglicht, dass sich Ruhezustand der Zelle mehr Kaliumionen im Zellinneren und mehr
+Natriumionen im Zelläusseren befinden.
+Da Kaliumionen eine grössere Ladung als Natriumionen besitzen ergibt sich so das negatives Membranpotential von -70
+Millivolt.
+Die Zellwand besteht aus einer Biomembran, die für Moleküle und Ionen undurchlässig ist.
+In der Zellwand befinden sich jedoch Kanalproteine, die bei der richtigen Anregung spezifische Ionen durch die
+Biomembran transportieren können.
 
+Wenn die Nervenzelle, wie in Abbildung \ref{fig:Anregung} extern angeregt wird, öffnen sich einige Natriumkanalproteine und transportieren so Natriumionen in
+die Nervenzelle.
+Durch die Natriumionen vergrössert sich die Ladung der Nervenzelle und das Membranpotential wird somit grösser.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{papers/nerven/Bilder/Vorgang2.png}
+    \caption{Anregung}
+    \label{fig:Anregung}
+\end{figure}
 
+Sobald das Membranpotential grösser als der Schwellenwert von -50 Millivolt ist, öffnen sich wie in Abbildung
+\ref{fig:Depolarisation} erkennbar schlagartig viele
+Natriumkanalproteine und transportieren noch mehr Natriumionen in die Nervenzelle.
+Durch diese sogenannte Depolarisation erhöht sich die Ladung der Nervenzelle noch stärker und das Membranpotential erreicht ein Maximum. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{papers/nerven/Bilder/Vorgang3.png}
+    \caption{Depolarisation}
+    \label{fig:Depolarisation}
+\end{figure}
 
+Sobald das Membranpotential sein Maximum erreicht schliessen sich die Natriumkanalproteine und dafür öffnen sich die
+Kaliumkanalproteine.
+Wie in Abbildung \ref{fig:Repolarisation} ersichtlich strömen viele Kaliumionen aus der Nervenzelle hinaus.
+In dieser Repolarisation nimmt deshalb das Membranpotential schlagartig wieder ab.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{papers/nerven/Bilder/Vorgang4.png}
+    \caption{Repolarisation}
+    \label{fig:Repolarisation}
+\end{figure}
 
-HAllo
-Ein paar Hinweise für die korrekte Formatierung des Textes
+Nachdem das Membranpotential wieder abgenommen hat, muss die Nervenzelle wieder in den Ruhezustand gelangen, dies nennt
+man Hyperpolarisation.
+Dafür öffnen sich, wie in Abbildung \ref{fig:Hyperpolarisation} ersichtlicht Kanalproteine für beide Ionen und durch die
+Ionenpumpe strömen Kaliumionen in und Natriumionen aus der Zelle.
 
-\input{papers/nerven/teil0.tex}
-\input{papers/nerven/teil1.tex}
-\input{papers/nerven/teil2.tex}
-\input{papers/nerven/teil3.tex}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{papers/nerven/Bilder/Vorgang5.png}
+    \caption{Hyperpolarisation}
+    \label{fig:Hyperpolarisation}
+\end{figure}
+
+%HAllo
+%Ein paar Hinweise für die korrekte Formatierung des Textes
+%
+%\input{papers/nerven/teil0.tex}
+%\input{papers/nerven/teil1.tex}
+%\input{papers/nerven/teil2.tex}
+%\input{papers/nerven/teil3.tex}
 
 \printbibliography[heading=subbibliography]
 \end{refsection}
