@@ -1,17 +1,34 @@
-\section{Verhalten von Bahnkurven in 2D und Nullklinen} \label{poinbendix:section:nullklinen}
+\section{Verhalten von Bahnkurven in 2D} \label{poinbendix:section:nullklinen}
+
+Das Verhalten von Bahnkurven in 2D kann anhand von verschiedenen Methoden analysiert werden.
+Dabei gehen wir immer von $r$-fach differenzierbaren dynamischen Systemen aus, welche also stetige Bahnkurven hervorbringen.
+Die Bahnen in diesen Systemen sind dann zu einem gewissen Grad vorhersagbar durch die Analyse der Nullklinen.
+Ein Beispiel dazu findet sich im nächsten Abschnitt \ref{poinbendix:subsection:nullklinen}.
+In einem zweiten Abschnitt \ref{poinbendix:subsection:limesmengen} werden dann die sogenannten Limesmengen eingeführt, welche der Kern des Satzes von Poincaré-Bendixson bilden.
 
 %TODO Nullklinen erklären anhand Beispie
 %TODO Verhalten von Bahnkurven anhand Nullklinen analysieren
 \subsection{Nullklinen} \label{poinbendix:subsection:nullklinen}
-TODO
 
+Die Punkte bei denen die Ableitungen entlang einer Koordinatenachse null werden (e.g.: $\dot{x}=0$), befinden sich auf Kurven welche Nullklinen genannt werden. %TODO reference
+Somit werden Nullklinen in 2D immer von einem vertikalen ($x$-Nullkline) oder einem horizontalen ($y$-Nullkline) Fluss durchflossen.
+Daraus folgt, dass Schnittpunkte zweier Nullklinen in 2D Nullstellen sind.
+Alle Ableitungen werden also null ($\dot{x}=\dot{y}=0$) und Bahnkurven welche zu diesen Punkten kommen enden sofort.
 
-\begin{figure} %TODO change example
+Die Nullklinen unterteilen die Ebene in unterschiedliche Sektoren, welche jeweils eine bestimmte Flussrichtung haben.
+Da das dynamische System stetig ist, gibt es keine Sprünge in den Nullklinen.
+Deshalb werden die z.B. die $x$-Nullklinen zwischen zwei Nullstellen immer entweder von Oben oder von Unten durchflossen, es gibt keine Flussrichtungswechsel (die Flussgeschwindigkeit kann aber sehr wohl variieren).
+
+\begin{beispiel} \label{poinbendix:beispiel:nullklinen}
+
+\begin{figure}
     \centering
-    \input{papers/poinbendix/images/nullklinen.tikz}
+    \input{papers/poinbendix/images/nullklinen.tikz} %TODO fix Pfeile, remove equation
     \caption{Die Nullklinen unterteilen die Ebene in 4 Quadranten mit unterschiedlicher Flussrichtung. Darstellung von Nicolas Tobler.}
     \label{poinbendix:fig:nullklinen}
 \end{figure}
+
+\end{beispiel}
 
 \subsection{Limesmengen} \label{poinbendix:subsection:limesmengen}
 
