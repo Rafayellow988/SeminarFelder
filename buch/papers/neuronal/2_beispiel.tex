@@ -79,16 +79,15 @@ In der letzten Teilfunktion \( f_{4} \) wird keine Aktivierungsfunktion verwende
 Grund dafür ist das der hyperbolische Tangens den Wertebereich \((-1, 1)\) hat, das Netzwerk aber zur Approximation der Wellengleichung den Wertebereich \( \mathbb{R} \) haben soll.
 
 Wie im Abschnitt \ref{neuronal:subsection:diskretierung} beschrieben, werden insgesamt drei Datensätze verwendet.
-Alle drei Datensätze bestehen aus je 40'000 Datenpunkten.
+Alle drei Datensätze bestehen aus je 50'000 Datenpunkten.
 Weiter wurde je ein Fünftel der Datenpunkte für die Funktion \( L^1(\vartheta) \) abgetrennt und nicht im Optimierungsalgorithmus verwendet (siehe Abschnitt \ref{neuronal:subsection:qualitätsbewertung}).
 
-In diesem Beispiel hat sich eine grosse Limitierung dieser Methode gezeigt.
-In einigen Fällen kann es sein, dass $L(\vartheta)$ durch den Optimierungsalgorithmus gegen 0 geht, aber die Parameter $\vartheta$ an diesem (sehr tiefen) Minimum trotzdem nicht geeignet zur Approximation sind, wie beschrieben im Theorem 2 in \cite{neuronal:derivative_pathology}.
-Das bedeutet, obwohl der Approximationsfehler gegen 0 geht, ist das Netzwerk nicht in der Lage eine gute Approximation zu produzieren.
-Dies wird deutlich in diesem Beispiel \ldots % Beispiel einfügen
-
-Beendet man den Optimierungsalgorithmus bei 700 Iterationen, findet sich eine bessere Lösung.
-Die Werte von $L(\vartheta)$ und $L^1(\vartheta)$ sind 3.368 bzw. 3.312 (siehe \ref{fig:fehler_wave_good}), was zunächst nicht besonders vielversprechend aussieht.
+Beendet man den Optimierungsalgorithmus bei 1500 Iterationen, findet sich eine gute Lösung.
+Die Werte von $L(\vartheta)$ und $L^1(\vartheta)$ sind xxx bzw. xxx (siehe \ref{fig:fehler_wave_good}), was zunächst nicht besonders vielversprechend aussieht.
+Lässt man den Optimierungsalgorithmus für mehr als 1500 Iterationen laufen, wird zwar der Wert von $L(\vartheta)$ weiter reduziert, doch der Wert von $L^1(\vartheta)$ beginnt wieder anzusteigen.
+Dies ist ein klassisches Phänomen im Gebiet des maschinellen Lernens und wird als \emph{Overfitting} bezeichnet.
+\emph{Overfitting} bedeutet, dass das neuronale Netzwerk die Datenpunkte aus $L(\vartheta)$ ``auswendig'' lernt und als Resultat bei Datenpunkten aus $L^1(\vartheta)$ versagt.
+Insofern macht es Sinn, den Optimierungsalgorithmus nach 1500 Iterationen zu beenden, obwohl die Approximationsfehler nicht sehr tief sind.
 \begin{figure}
     \centering
     \hspace*{-0.1\textwidth}
@@ -96,19 +95,23 @@ Die Werte von $L(\vartheta)$ und $L^1(\vartheta)$ sind 3.368 bzw. 3.312 (siehe \
     \caption{Verlauf des Approximationsfehlers der Wellengleichung während des Trainings (bessere Lösung)}
     \label{fig:fehler_wave_good}
 \end{figure}
-Berechnet man jedoch die durchschnittliche Differenz des neuronalen Netzwerks und der analytischen Lösung \eqref{neuronal:wellen_analytisch}, erhält man 0.085.
-Dieser Wert ist deutlich besser, der Verlauf dieser Differenz ist in \ref{fig:differenz_wellen} dargestellt.
+
+Berechnet man nun die durchschnittliche Differenz des neuronalen Netzwerks und der analytischen Lösung \eqref{neuronal:wellen_analytisch}, erhält man xxx.
+Dieser Wert ist deutlich besser und deutet darauf hin, dass das neuronale Netzwerk eine gute Approximation liefert. 
+Der Verlauf dieser Differenz ist in \ref{fig:differenz_wellen} dargestellt.
 \begin{figure}
     \centering
     \includegraphics[width=0.7\textwidth]{papers/neuronal/images/wellen_analytisch_neuronal.png}
     \caption{Verlauf der Differenz Wellengleichung: Analytische Lösung - Neuronales Netzwerk}
     \label{fig:differenz_wellen}
 \end{figure}
+
 Das visuelle Resultat ist in den Abbildungen \ref{fig:wellen_t0}, \ref{fig:wellen_t04}, \ref{fig:wellen_t136}, \ref{fig:wellen_t164} dargestellt.
 In diesen Abbildungen ist auf der linken Seite das neuronale Netzwerk und auf der rechten Seite die analytische Lösung abgebildet.
 Die Farben stellen die Wellenhöhen dar, rot bedeutet einen Wellenberg und blau ein Wellental.
-Die gesamte Animation dieses Resultat ist im GitHub Repository des Seminars \cite{neuronal:github_source_code} als GIF im Unterverzeichnis \emph{wave\_equation} zu finden.
 Was in diesen Abbildungen deutlich zu sehen ist, ist dass das Netzwerk bei Übergängen von Wellenbergen zu Wellentälern (z.B. von \ref{fig:wellen_t0} zu \ref{fig:wellen_t04}) Fehler macht.
+Abgesehen davon sieht die Approximation auch visuell gut aus.
+Dieses Resultat ist als Animation über den gesamten Zeitraum $t \in [0, 2]$ im GitHub Repository des Seminars \cite{neuronal:github_source_code}, im Unterverzeichnis \emph{wave\_equation} zu finden.
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{papers/neuronal/images/prediction_wave_t0.png}
