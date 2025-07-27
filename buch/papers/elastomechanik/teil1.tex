@@ -9,7 +9,7 @@
 \section{Grundbegriffe der Baustatik und Mechanik}
 \label{elastomechanik:section:teil1}
 \subsection{Begriffe}
-\begin{description}	
+\begin{description}
 	\item[\textbf{Druckkräfte:}] Druckkräfte sind Kräfte, die senkrecht auf die Oberfläche eines Körpers wirken und dabei eine Kompression bzw. Zusammenstauchung des Körpers verursachen. 
 	Eine negative Normalkraft entspricht einer Druckkraft.
 	
@@ -154,19 +154,20 @@
 	
 	$\delta_{ij}$ = Kronecker-Delta 
 	
-	$\lambda_{,\mu}$ = Lamé- Konstanten
+	$\lambda_{,\mu}$ = Lamé-Konstanten
 	
 	
-	space{0.5em}
-	extbf{Isotropes Verhalten:} Wird durch zwei Konstanten ($E$, $
-	u$) beschrieben. Gilt für viele Metalle wie Stahl näherungsweise.
+	\item[\textbf{Isotropes Verhalten:}] Wird durch zwei Konstanten ($E$, $u$) beschrieben. 
+	Gilt für viele Metalle wie Stahl näherungsweise.
 	
-	extbf{Anisotropes Verhalten:} Mechanische Eigenschaften sind richtungsabhängig. Wird durch einen allgemeinen Elastizitätstensor vierter Stufe $C_{ijkl}$ beschrieben.
+	\item[\textbf{Anisotropes Verhalten}] Mechanische Eigenschaften sind richtungsabhängig. 
+	Wird durch einen allgemeinen Elastizitätstensor vierter Stufe $C_{ijkl}$ beschrieben.
 	
 	Für unsere Arbeit wird die Herleitung des anisotropen Materialverhaltens nicht thematisiert, da sie den Rahmen dieser Seminararbeit sprengen würde.
-	\item[\textbf{Lamé’sche Konstanten ($\lambda_{,\mu}$):}] Die Lamé'schen Konstanten werden die Konstanten $\lambda$ und $\mu$ bezeichnet. 
+	
+	\item[\textbf{Lamé-Konstanten ($\lambda_{,\mu}$):}] Die Lamé-Konstanten werden die Konstanten $\lambda$ und $\mu$ bezeichnet. 
 	Die sind zwei materialabhängige Parameter, die das mechanische Verhalten eines isotropen elastischen Materials vollständig beschreiben.
-	Die Lamé- Konstante ($\lambda$) lässt sich aus dem Elastizitätsmodul und der Poisson-Zahl wie folgt berechnen \cite{elastomechanik:Grundlagen_der_Elastizitaetstheorie}:
+	Die Lamé-Konstante ($\lambda$) lässt sich aus dem Elastizitätsmodul und der Poisson-Zahl wie folgt berechnen \cite{elastomechanik:Grundlagen_der_Elastizitaetstheorie}:
 	\begin{equation}
 		\lambda = 
 		\frac{E \cdot \nu}{(1 + \nu)(1 - 2\nu)}
@@ -194,12 +195,10 @@
 \end{description}
 
 \subsection{Anisotropes Materialverhalten}
-
 Bei anisotropen Materialien hängen die mechanischen Eigenschaften von der Richtung ab. Solche Materialien können nicht mehr durch zwei Konstanten beschrieben werden, sondern benötigen einen allgemeinen Elastizitätstensor vierter Stufe $C_{ijkl}$:
-
-\begin{equation}
-	\sigma_{ij} = C_{ijkl} \varepsilon_{kl}
-\end{equation}
+	\begin{equation}
+		\sigma_{ij} = C_{ijkl} \varepsilon_{kl}
+	\end{equation}
 
 Die Anzahl der unabhängigen Komponenten hängt von der Symmetrie ab (bis zu 81 bei vollanisotropem Verhalten). Ein Beispiel ist Holz, dessen Steifigkeit stark von der Faserrichtung abhängt.
 
