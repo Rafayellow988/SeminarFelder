@@ -17,24 +17,35 @@ if os.path.exists("wavenet.pth"):
 else:
     print("Training model...")
     # Generate training & testing points
-    n_samples = 40000
-    x = torch.FloatTensor(n_samples, 1).uniform_(boundaries.X_MIN, boundaries.X_MAX)
-    y = torch.FloatTensor(n_samples, 1).uniform_(boundaries.Y_MIN, boundaries.Y_MAX)
-    t = torch.FloatTensor(n_samples, 1).uniform_(boundaries.T_MIN, boundaries.T_MAX)
+    #n_samples = 40000
+    #x = torch.FloatTensor(n_samples, 1).uniform_(boundaries.X_MIN, boundaries.X_MAX)
+    #y = torch.FloatTensor(n_samples, 1).uniform_(boundaries.Y_MIN, boundaries.Y_MAX)
+    #t = torch.FloatTensor(n_samples, 1).uniform_(boundaries.T_MIN, boundaries.T_MAX)
 
-    indices = torch.randperm(n_samples)
-    split_idx = int(n_samples * 0.8) # 80% train, 20% test
-    train_indices = indices[:split_idx]
-    test_indices = indices[split_idx:]
+    #indices = torch.randperm(n_samples)
+    #split_idx = int(n_samples * 0.8) # 80% train, 20% test
+    #train_indices = indices[:split_idx]
+    #test_indices = indices[split_idx:]
 
-    x_train = x[train_indices]
-    x_test = x[test_indices]
-    y_train = y[train_indices]
-    y_test = y[test_indices]
-    t_train = t[train_indices]
-    t_test = t[test_indices]
+    #x_train = x[train_indices]
+    #x_test = x[test_indices]
+    #y_train = y[train_indices]
+    #y_test = y[test_indices]
+    #t_train = t[train_indices]
+    #t_test = t[test_indices]
 
-    train_error, test_error = model.fit(x_train, y_train, t_train, x_test, y_test, t_test, device, n_epochs=700)
+    n_train = 40000
+    n_test = 10000
+    # Train: x in (-1.5,2], y in [-2, 1.5] and t in [0, 1.5] --> Test: x in [-2, -1.5], y in (1.5 ,2] and t in (1.5, 2]
+    x_train = torch.FloatTensor(n_train, 1).uniform_(boundaries.X_MIN + 0.5, boundaries.X_MAX)
+    y_train = torch.FloatTensor(n_train, 1).uniform_(boundaries.Y_MIN, boundaries.Y_MAX - 0.5)
+    t_train = torch.FloatTensor(n_train, 1).uniform_(boundaries.T_MIN, boundaries.T_MAX - 0.5)
+
+    x_test = torch.FloatTensor(n_test, 1).uniform_(boundaries.X_MIN, boundaries.X_MIN + 0.5)
+    y_test = torch.FloatTensor(n_test, 1).uniform_(boundaries.Y_MAX - 0.5, boundaries.Y_MAX)
+    t_test = torch.FloatTensor(n_test, 1).uniform_(boundaries.T_MAX - 0.5, boundaries.T_MAX)
+
+    train_error, test_error = model.fit(x_train, y_train, t_train, x_test, y_test, t_test, device, n_epochs=1500)
     torch.save(model.state_dict(), "wavenet.pth")
     print("\nModel saved to 'wavenet.pth'\n")
 
