@@ -1,5 +1,6 @@
 import os
 import boundaries
+import torch
 from WaveNet import WaveNet
 from Graphics import *
 matplotlib.use('TkAgg')
@@ -17,23 +18,6 @@ if os.path.exists("wavenet.pth"):
 else:
     print("Training model...")
     # Generate training & testing points
-    #n_samples = 40000
-    #x = torch.FloatTensor(n_samples, 1).uniform_(boundaries.X_MIN, boundaries.X_MAX)
-    #y = torch.FloatTensor(n_samples, 1).uniform_(boundaries.Y_MIN, boundaries.Y_MAX)
-    #t = torch.FloatTensor(n_samples, 1).uniform_(boundaries.T_MIN, boundaries.T_MAX)
-
-    #indices = torch.randperm(n_samples)
-    #split_idx = int(n_samples * 0.8) # 80% train, 20% test
-    #train_indices = indices[:split_idx]
-    #test_indices = indices[split_idx:]
-
-    #x_train = x[train_indices]
-    #x_test = x[test_indices]
-    #y_train = y[train_indices]
-    #y_test = y[test_indices]
-    #t_train = t[train_indices]
-    #t_test = t[test_indices]
-
     n_train = 40000
     n_test = 10000
     # Train: x in (-1.5,2], y in [-2, 1.5] and t in [0, 1.5] --> Test: x in [-2, -1.5], y in (1.5 ,2] and t in (1.5, 2]
