@@ -11,29 +11,30 @@
 \begin{refsection}
 \chapterauthor{Flurin Brechbühler, Laurin Heitzer}
 
-Ein paar Hinweise für die korrekte Formatierung des Textes
-\begin{itemize}
-\item
-Absätze werden gebildet, indem man eine Leerzeile einfügt.
-Die Verwendung von \verb+\\+ ist nur in Tabellen und Arrays gestattet.
-\item
-Die explizite Platzierung von Bildern ist nicht erlaubt, entsprechende
-Optionen werden gelöscht. 
-Verwenden Sie Labels und Verweise, um auf Bilder hinzuweisen.
-\item
-Beginnen Sie jeden Satz auf einer neuen Zeile. 
-Damit ermöglichen Sie dem Versionsverwaltungssysteme, Änderungen
-in verschiedenen Sätzen von verschiedenen Autoren ohne Konflikt 
-anzuwenden.
-\item 
-Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
-Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
-\end{itemize}
+Felder werden oft als linear angenommen. 
+So nimmt man in der Physik oft an, dass eine Verdoppelung der Spannung in einem Spannungsfeld mit einer Verdoppelung der Deformation einhergeht.
+Die Beziehung zwischen der Spannung $\sigma$ und der Deformation $\varepsilon$ kann dann einfach durch das Hookesche Gesetz
+\[
+    \sigma = C \varepsilon
+\]
+beschrieben werden. % TODO: Cite
+Dabei ist der Elastizitätstensor $C$ unabhängig von der Deformation.
+Ohne Annahme dieser Unabhängigkeit wäre das Lösen solcher Probleme deutlich schwieriger.
 
-\input{papers/particles/teil0.tex}
-\input{papers/particles/teil1.tex}
-\input{papers/particles/teil2.tex}
-\input{papers/particles/teil3.tex}
+Im Elektromagnetismus werden ändliche Vereinfachungen gemacht. 
+Die elektrische Flussdichte $D$ wird dabei ebenfalls durch einen Tensor linear von der elektrischen Feldstärke $E$
+\[
+
+\]
+in ein lineares verhältnis mit der 
+% TODO: Beschreiben bezug Deformation / Elektrotechnik
+% TODO: Schwinger Limit als Hint, dass diese felder nichtlinear sein könnten
+% TODO: Unser Paper verwendet numerische Simulation um "einen blick über den Horlizont der linearen Felder zu werfen"
+
+\input{papers/particles/teil0.tex} % TODO: Wie funktioniert die Simulation?
+\input{papers/particles/teil1.tex} % TODO: Vielleicht: Funktioniert die Superposition?
+\input{papers/particles/teil2.tex} % TODO: Was passiert bei nichtlinearitäten
+\input{papers/particles/teil3.tex} % TODO: Fazit: Was könnten wir hier beobachtet haben?
 
 \printbibliography[heading=subbibliography]
 \end{refsection}
