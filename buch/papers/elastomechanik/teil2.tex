@@ -7,8 +7,22 @@
 % !TEX encoding = UTF-8
 %
 \section{Einführung in die mathematische Formulierung der Elastizitätstheorie}
-\label{elastomechanik:section:teil2}
-\subsection{Annahmen und Grundprinzipien}
+
+\subsection{Einleitung: Motivation und Ziel der Elastizitätstheorie}
+
+Die Elastizitätstheorie beschreibt das Verhalten fester Körper unter mechanischer Belastung. Ziel ist es, aus bekannten Kräften oder Verschiebungen die Spannungs- und Dehnungsverteilung im Inneren eines Körpers zu berechnen. Diese Beschreibung basiert auf der Kontinuumsmechanik und bildet die Grundlage für viele Anwendungen im Bauingenieurwesen, Maschinenbau und der Materialwissenschaft.
+
+\subsection{Annahmen des elastischen Materialverhaltens}
+
+Ein ideal elastisches Material folgt diesen grundlegenden Annahmen:
+
+\begin{enumerate}
+	\item Die Dehnung verschwindet vollständig bei Entlastung.
+	\item Der Energieinhalt ist vollständig reversibel.
+	\item Das Materialverhalten ist unabhängig von der Geschwindigkeit der Belastung.
+	\item Es existiert ein eindeutiger Zusammenhang zwischen Spannung und Dehnung.
+\end{enumerate}
+
 Wird ein Festkörper mechanisch belastet, entstehen im Inneren Spannungen. Diese Spannungen führen zu Verformungen, die sich als Verschiebungen einzelner Punkte des Körpers äussern.
 Aus dem Verschiebungsfeld lassen sich Verzerrungen berechnen, wodurch sich ein sogenannter Verzerrungszustand ausbildet.
 
@@ -20,18 +34,32 @@ Um das mechanische Verhalten eines Körpers unter Belastung vollständig beschre
 	
 	\item [\textbf{Konstitutiven Gleichungen:}] Auch bekannt als Materialgesetze. 
 	Sie beschreiben den materialabhängigen Zusammenhang zwischen den Spannungen $\sigma_{ij}$ und den Verzerrungen $\varepsilon_{ij}$. 
-	Im Fall linear-elastischer, isotroper Materialien erfolgt dies über das Hooke’sche Gesetz.
+	Im Fall linear-elastischer, isotroper Materialien erfolgt dies über das hookesche Gesetz.
 	
 	\item [\textbf{Gleichgewichtsbedingungen:}] Gewährleisten das mechanische Gleichgewicht im Festkörper, indem sie fordern, dass die Summe aller inneren Spannungen und äusseren Kräfte in jedem Punkt null ergibt.
 \end{description}
 
-\subsection{Spannungstensor und Verzerrungstensor}
-Durch die Cauchy-Spannungstensor werden Spannungsvektooren in jedem beliebige Schnittrichtung zugeornet, der auf der betreffenden Schnittfläche wirkt.
-Dieser Zusammenhang wird durch die Cauchy’sche Formel beschrieben:
-	\begin{equation}
-		t_i = 
-		\sigma_{ij} \cdot n_j
-	\end{equation}
+
+\subsection{Spannungen und Gleichgewichtsbedingungen}
+
+Die Spannungsverteilung beschreibt, welche inneren Kräfte im Material auftreten, um äussere Belastungen auszugleichen. Diese werden durch den Spannungstensor $\sigma_{ij}$ dargestellt. Um mechanisches Gleichgewicht sicherzustellen, muss die Impulsbilanz in jedem Punkt erfüllt sein:
+\begin{equation}
+	\frac{\partial \sigma_{ij}}{\partial x_j} + f_i = 0
+\end{equation}
+Dabei sind $f_i$ die Komponenten der Volumenkraftdichte.
+
+
+
+\subsection{Kinematik: Deformation und Verschiebung}
+
+Die Grundlage jeder elastischen Analyse bildet die Beschreibung der Geometrieänderung. Die Deformation wird über ein Verschiebungsfeld $u_i$ beschrieben, das angibt, wie sich Punkte im Inneren eines Körpers infolge einer Belastung verschieben. Daraus ergibt sich der Verzerrungstensor $\varepsilon_{ij}$, welcher lokale Längen- und Winkeländerungen erfasst.
+
+Durch die Cauchy-Spannungstensor werden Spannungsvektoren in jedem beliebige Schnittrichtung zugeordnet, der auf der betreffenden Schnittfläche wirkt.
+Dieser Zusammenhang wird durch die cauchysche Formel beschrieben:
+\begin{equation}
+	t_i = 
+	\sigma_{ij} \cdot n_j.
+\end{equation}
 Der Spannungstensor ist aufgrund des Momentengleichgewichts an einem infinitesimalen Volumenelement symmetrisch. Schubspannungen müssen sich dabei paarweise ausgleichen. 
 Der Tensor enthält sowohl die Normal- als auch die Schubspannungen und beschreibt somit vollständig den inneren Spannungszustand im Material.
 
@@ -42,46 +70,52 @@ Aus diesen Änderungen wird beispielsweise in $x$-Richtung die relative Längen�
 Dieses Vorgehen lässt sich analog auf die übrigen Normal- und Schubverzerrungen übertragen.
 
 Die einzelnen Komponenten des Verzerrungstensors lauten \cite{elastomechanik:Technische_Mechanik_2:Elastostatik}:
-	\begin{equation}
-		\varepsilon_{xx} =
-		\frac{\partial u}{\partial x}
-	\end{equation}
-	und
-	\begin{equation}
-		\varepsilon_{xy} =
-		\frac{1}{2} \left( \frac{\partial u}{\partial y} + \frac{\partial v}{\partial x} \right)
-	\end{equation}
+\begin{align}
+	\varepsilon_{xx} &=
+	\frac{\partial u}{\partial x}
+\end{align}
+und
+\begin{align}
+	\varepsilon_{xy} &=
+	\frac{1}{2} \left( \frac{\partial u}{\partial y} + \frac{\partial v}{\partial x} \right)
+\end{align}
+
+
+\subsection{Konstitutives Gesetz: Materialverhalten}
+
+Das konstitutive Gesetz verknüpft die Verzerrungen mit den Spannungen. Für isotrope, linear elastische Materialien ergibt sich dieser Zusammenhang aus dem hookeschen Gesetz. Dieses wird meist in Form der Lamé-Konstanten $\lambda$ und $\mu$ oder alternativ über $E$ und $\nu$ beschrieben.
+
 
 \subsection{Elastizitätsgesetz und Materialkonstanten}
 Aus dem Hooke’schen Gesetz ist bekannt, dass im einachsigen, linearen Fall folgender Zusammenhang zwischen Spannung und Dehnung gilt:
-	\begin{equation}
-		\sigma = 
-		E \cdot \varepsilon
-	\end{equation}
+\begin{equation}
+	\sigma = 
+	E \cdot \varepsilon.
+\end{equation}
 Im dreiachsigen Fall kann die lineare Beziehung zwischen den Spannungs- und Verzerrungskomponenten durch einen Elastizitätstensor 4. Stufe beschrieben werden:
-	\begin{equation}
-		\sigma_{ij} = 
-		E_{ijkl} \cdot \varepsilon_{kl}
-	\end{equation}
+\begin{equation}
+	\sigma_{ij} = 
+	E_{ijkl} \cdot \varepsilon_{kl}.
+\end{equation}
 Da wir den dreidimensionalen Fall unter der Annahme eines isotropen Materials betrachten, bei dem die mechanischen Eigenschaften in alle Richtungen gleich sind, reduziert sich die Form des Elastizitätstensors auf zwei unabhängige Konstanten: die sogenannten Lame’schen Konstanten $\lambda$ und $\mu$. 
 Damit ergibt sich das Elastizitätsgesetz in kompakter Form:
-	\begin{equation}
-		\sigma_{ij} = 
-		\lambda \cdot \delta_{ij} \cdot \varepsilon_{kk} + 2\mu \cdot \varepsilon_{ij}
-	\end{equation}
+\begin{equation}
+	\sigma_{ij} = 
+	\lambda \cdot \delta_{ij} \cdot \varepsilon_{kk} + 2\mu \cdot \varepsilon_{ij}.
+\end{equation}
 Die Lame’schen Konstanten lassen sich durch die technischen Materialkonstanten $E$ (Elastizitätsmodul), $\nu$ (Poissonzahl) und $G$ (Schubmodul) wie folgt ausdrücken:
-	\begin{equation}
-		E = 
-		\mu \cdot \frac{3\lambda + 2\mu}{\lambda + \mu}, \quad 
-		\nu = 
-		\frac{\lambda}{2(\lambda + \mu)}, \quad 
-		G = 
-		\mu
-	\end{equation}
+\begin{equation}
+	E = 
+	\mu \cdot \frac{3\lambda + 2\mu}{\lambda + \mu}, \quad 
+	\nu = 
+	\frac{\lambda}{2(\lambda + \mu)}, \quad 
+	G = 
+	\mu.
+\end{equation}
 Durch Einsetzen in die Spannungs-Verzerrungs-Beziehung kann das Elastizitätsgesetz auch in Form der Deviatorzerlegung dargestellt werden. 
 Dabei ergibt sich der Zusammenhang zwischen Spannungs- und Verzerrungsdeviator \cite{elastomechanik:Grundlagen_der_Elastizitaetstheorie}:
-	\begin{equation}
-		s_{ij} = 
-		\sigma_{ij} - \frac{1}{3} \sigma_{kk} \delta_{ij} = 
-		2\mu e_{ij}
-	\end{equation}
+\begin{equation}
+	s_{ij} = 
+	\sigma_{ij} - \frac{1}{3} \sigma_{kk} \delta_{ij} = 
+	2\mu e_{ij}.
+\end{equation}
