@@ -292,12 +292,32 @@ Der Term $a_1 b_2 - a_2 b_1$ ist der Flächeninhalt der \emph{Projektion} (oder 
 Analog dazu ist $a_2 b_3 - a_3 b_2$ der Flächeninhalt der Projektion auf die $\etwo$-$\ethree$-Ebene und $a_3 b_1 - a_1 b_3$ der Flächeninhalt
 der Projektion auf die $\ethree$-$\eone$-Ebene (siehe \autoref{geoalgebra:fig:bivectors-3d}).
 
-
-
-
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.4\textwidth]{papers/geoalgebra/assets/bivectors-3d.png}
   \caption{Bivektoren im dreidimensionalen Raum}
   \label{geoalgebra:fig:bivectors-3d}
 \end{figure}
+
+\subsection{Bivektoren als algebraische Struktur}
+Bisher wurde besonders auf geometrische Vorstellungen eines Bivektors eingegangen. Vor dem nächsten Thema sollte hier noch kurz
+auf die algebraische Struktur eines Bivektors eingegangen werden. Das Wedgeprodukt zweier zweidimensionalen Vektoren ergibt
+einen Bivektor mit genau einer Komponente. Das Wedgeprodukt zwischen zwei dreidimensionalen Vektoren ergibt einen Bivektor mit drei Komponenten
+und das Wedgeprodukt zwischen
+zwei vierdimensionalen Vektoren ergibt sechs.
+
+Die Anzahl Komponenten, die aus einem Bivektor resultieren, hängt also von der Dimension des Vektorraums ab, den wir betrachten.
+Wie in \eqref{geoalgebra:eq:2d-wedgeproduct} bereits erkannt, fallen die Terme, welche Wedgeprodukte von gleichen Vektoren $\mathbf{v}_i \wedge \mathbf{v}_i$ beinhalten,
+immer weg, da diese Produkte $0$ ergeben. Ausserdem werden vertauschte Reihenfolgen einfach negiert und zusammengefasst: 
+\begin{equation}
+  \lambda \mathbf{v}_i \wedge \mathbf{v}_j + \mu \mathbf{v}_j \wedge \mathbf{v_i} = \lambda \mathbf{v}_i \wedge \mathbf{v}_j - \mu \mathbf{v}_i \wedge \mathbf{v}_j = (\mu - \lambda) \mathbf{v}_i \wedge \mathbf{v}_j
+\end{equation}
+Wir erhalten also für jede Kombination von verschiedenen Basisvektoren eines Vektorraums eine Komponente.
+\begin{satz}
+Sei $N$ die Dimension des Vektorraumes. Die Anzahl Komponenten $K$ berechnet sich als
+  \begin{equation}
+    K = \binom{N}{2}.
+  \end{equation}
+\end{satz}
+
+
