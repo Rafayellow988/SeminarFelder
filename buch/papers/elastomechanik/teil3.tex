@@ -121,88 +121,87 @@ Dies sind die Navier-Cauchy-Gleichungen.
 \subsection{Variationsformulierung der Elastizität}
 Zusätzlich kann das Problem über ein Energieprinzip formuliert werden:
 
-\begin{description}	
-	\textbf{Potentielle Energie:}
-	\begin{equation}
-		\Pi = 
-		\int_V \left( \frac{1}{2} \sigma_{ij} \varepsilon_{ij} - f_i u_i \right) \, dV
-	\end{equation}
-	
-	\textbf{Interpretation:} Das System minimiert seine potentielle Energie im Gleichgewicht.
-	
-	\textbf{Bemerkung:} Durch Variation $\delta \Pi = 0$ erhalten wir wieder die Navier-Cauchy-Gleichungen (Euler-Lagrange-Prinzip).
-	
+\textbf{Potentielle Energie:}
+\begin{equation}
+	\Pi = 
+	\int_V \left( \frac{1}{2} \sigma_{ij} \varepsilon_{ij} - f_i u_i \right) \, dV
+\end{equation}
 
-	\textbf{Mathematische Herleitung:}
-	Das Prinzip der minimalen potentiellen Energie liefert einen alternativen Zugang:
+\textbf{Interpretation:} Das System minimiert seine potentielle Energie im Gleichgewicht.
+
+\textbf{Bemerkung:} Durch Variation $\delta \Pi = 0$ erhalten wir wieder die Navier-Cauchy-Gleichungen (Euler-Lagrange-Prinzip).
+
+
+\textbf{Mathematische Herleitung:}
+Das Prinzip der minimalen potentiellen Energie liefert einen alternativen Zugang:
+\begin{equation}
+	\Pi = 
+	\int_V \left( \frac{1}{2} \sigma_{ij} \varepsilon_{ij} - f_i u_i \right) \, dV - \int_{\partial V} 	t_i u_i \, dS
+\end{equation}
+\textbf{Stationaritätsbedingung:}
+\begin{equation}
+	\delta \Pi = 
+	0 \quad \Rightarrow \quad \text{Euler-Lagrange-Gleichungen entsprechen den Feldgleichungen}
+\end{equation}
+\textbf{Schrittweise Variation:}
+
+\begin{enumerate}
+	\item Variation der Verzerrungsenergie:
 	\begin{equation}
-		\Pi = 
-		\int_V \left( \frac{1}{2} \sigma_{ij} \varepsilon_{ij} - f_i u_i \right) \, dV - \int_{\partial V} 	t_i u_i \, dS
+		\delta U = 
+		\int_V \sigma_{ij} \, \delta \varepsilon_{ij} \, dV
 	\end{equation}
-	\textbf{Stationaritätsbedingung:}
+	
+	\item Variation der äusseren Arbeit:
 	\begin{equation}
-		\delta \Pi = 
-		0 \quad \Rightarrow \quad \text{Euler-Lagrange-Gleichungen entsprechen den Feldgleichungen}
+		\delta W = 
+		\int_V f_i \, \delta u_i \, dV + \int_{\partial V} t_i \, \delta u_i \, dS
 	\end{equation}
-	\textbf{Schrittweise Variation:}
 	
-	\begin{enumerate}
-		\item Variation der Verzerrungsenergie:
-		\begin{equation}
-			\delta U = 
-			\int_V \sigma_{ij} \, \delta \varepsilon_{ij} \, dV
-		\end{equation}
-		
-		\item Variation der äusseren Arbeit:
-		\begin{equation}
-			\delta W = 
-			\int_V f_i \, \delta u_i \, dV + \int_{\partial V} t_i \, \delta u_i \, dS
-		\end{equation}
-		
-		\item Anwendung des Gauss'schen Satzes führt auf die schwache Form der Gleichgewichtsbedingungen.
-	\end{enumerate}
-	
-	\subsection{Randbedingungen und Eindeutigkeit}
-	Für eine eindeutige Lösung benötigen wir Randwerte:
-	\begin{enumerate}
-		\item[\textbf{Dirichlet-Randbedingung}] (Verschiebungen vorgegeben)
-		\begin{equation}
-			u_i = 
-			\bar{u}_i \quad \text{auf} \quad \partial V_u
-		\end{equation}
-		\item[\textbf{Neumann-Randbedingung}] (Spannungen oder Kräfte vorgegeben)
-		\begin{equation}
-			\sigma_{ij} n_j = 
-			\bar{t}_i \quad \text{auf} \quad \partial V_t
-		\end{equation}		
-	\end{enumerate}
-	Der Satz von Kirchhoff garantiert die Eindeutigkeit der Lösung bei Vorgabe konsistenter Randbedingungen.
-	
-	\subsection{Tensorielle Ableitungsschritte}
-	Ableitung der Navier-Cauchy-Gleichungen:
-	\begin{align}
-		\frac{\partial \sigma_{ij}}{\partial x_j}& = 
-		\frac{\partial}{\partial x_j} \left( \lambda \delta_{ij} \varepsilon_{kk} + 2\mu \varepsilon_{ij} \right)
-		\\
-		&= \lambda \frac{\partial \varepsilon_{kk}}{\partial x_i} + 2\mu \frac{\partial \varepsilon_{ij}}{\partial x_j}
-		\\
-		&= \mu \nabla^2 u_i + (\lambda + \mu) \frac{\partial}{\partial x_i} (\nabla \cdot \vec{u})
-	\end{align}
-	
-	\subsection{Energieerhaltung und Dissipation}
-	Für hyperelastische Materialien gilt die Energiebilanz:
+	\item Anwendung des Gauss'schen Satzes führt auf die schwache Form der Gleichgewichtsbedingungen.
+\end{enumerate}
+
+\subsection{Randbedingungen und Eindeutigkeit}
+Für eine eindeutige Lösung benötigen wir Randwerte:
+\begin{enumerate}
+	\item[\textbf{Dirichlet-Randbedingung}] (Verschiebungen vorgegeben)
 	\begin{equation}
-		\frac{d}{dt} \int_V \left( \frac{1}{2} \rho \dot{u}_i \dot{u}_i + \frac{1}{2} \sigma_{ij} \varepsilon_{ij} \right) \, dV = 
-		\int_V f_i \dot{u}_i \, dV + \int_{\partial V} t_i \dot{u}_i \, dS
+		u_i = 
+		\bar{u}_i \quad \text{auf} \quad \partial V_u
 	\end{equation}
-	Diese Gleichung zeigt die Erhaltung mechanischer Energie bei Abwesenheit dissipativer Effekte.
-	
-	\subsection{Anwendungsbeispiel: Ebener Verzerrungszustand}
-	Für \(\varepsilon_{33} = \gamma_{13} = \gamma_{23} = 0\) vereinfachen sich die Gleichungen zu:
-	\begin{align}
-		\sigma_{11} &=	\frac{E (1-\nu)}{(1+\nu)(1-2\nu)} \varepsilon_{11} + \frac{E \nu}{(1+\nu)(1-2\nu)} \varepsilon_{22}
-		\\
-		\sigma_{22} &=	\frac{E \nu}{(1+\nu)(1-2\nu)} \varepsilon_{11} + \frac{E (1-\nu)}{(1+\nu)(1-2\nu)} \varepsilon_{22}
-		\\
-		\sigma_{12} &=	\frac{E}{2(1+\nu)} \gamma_{12}
-	\end{align}
+	\item[\textbf{Neumann-Randbedingung}] (Spannungen oder Kräfte vorgegeben)
+	\begin{equation}
+		\sigma_{ij} n_j = 
+		\bar{t}_i \quad \text{auf} \quad \partial V_t
+	\end{equation}		
+\end{enumerate}
+Der Satz von Kirchhoff garantiert die Eindeutigkeit der Lösung bei Vorgabe konsistenter Randbedingungen.
+
+\subsection{Tensorielle Ableitungsschritte}
+Ableitung der Navier-Cauchy-Gleichungen:
+\begin{align}
+	\frac{\partial \sigma_{ij}}{\partial x_j}& = 
+	\frac{\partial}{\partial x_j} \left( \lambda \delta_{ij} \varepsilon_{kk} + 2\mu \varepsilon_{ij} \right)
+	\\
+	&= \lambda \frac{\partial \varepsilon_{kk}}{\partial x_i} + 2\mu \frac{\partial \varepsilon_{ij}}{\partial x_j}
+	\\
+	&= \mu \nabla^2 u_i + (\lambda + \mu) \frac{\partial}{\partial x_i} (\nabla \cdot \vec{u})
+\end{align}
+
+\subsection{Energieerhaltung und Dissipation}
+Für hyperelastische Materialien gilt die Energiebilanz:
+\begin{equation}
+	\frac{d}{dt} \int_V \left( \frac{1}{2} \rho \dot{u}_i \dot{u}_i + \frac{1}{2} \sigma_{ij} \varepsilon_{ij} \right) \, dV = 
+	\int_V f_i \dot{u}_i \, dV + \int_{\partial V} t_i \dot{u}_i \, dS
+\end{equation}
+Diese Gleichung zeigt die Erhaltung mechanischer Energie bei Abwesenheit dissipativer Effekte.
+
+\subsection{Anwendungsbeispiel: Ebener Verzerrungszustand}
+Für \(\varepsilon_{33} = \gamma_{13} = \gamma_{23} = 0\) vereinfachen sich die Gleichungen zu:
+\begin{align}
+	\sigma_{11} &=	\frac{E (1-\nu)}{(1+\nu)(1-2\nu)} \varepsilon_{11} + \frac{E \nu}{(1+\nu)(1-2\nu)} \varepsilon_{22}
+	\\
+	\sigma_{22} &=	\frac{E \nu}{(1+\nu)(1-2\nu)} \varepsilon_{11} + \frac{E (1-\nu)}{(1+\nu)(1-2\nu)} \varepsilon_{22}
+	\\
+	\sigma_{12} &=	\frac{E}{2(1+\nu)} \gamma_{12}
+\end{align}
