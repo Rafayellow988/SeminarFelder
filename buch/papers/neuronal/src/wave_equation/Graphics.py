@@ -10,7 +10,6 @@ from Residuals import analytical_solution
 
 matplotlib.use('TkAgg')
 
-# Plots train & test error over training epochs
 def error_plot(train_error, test_error):
     plt.figure(figsize=(6, 3))
     plt.semilogy(train_error, label="L(theta)")
@@ -20,6 +19,30 @@ def error_plot(train_error, test_error):
     plt.title('Verlauf Approximationsfehler')
     plt.legend()
     plt.grid(True)
+    plt.tight_layout()
+    plt.show()
+
+
+def snapshot_plot(model, device, y=0.5, t=0.0):
+    m = 200
+    x = np.linspace(boundaries.X_MIN, boundaries.X_MAX, m)
+
+    x_tensor = torch.tensor(x.reshape(-1, 1), dtype=torch.float32, device=device)
+    y_tensor = torch.full_like(x_tensor, y, device=device)
+    t_tensor = torch.full_like(x_tensor, t, device=device)
+
+    xyt = torch.cat([x_tensor, y_tensor, t_tensor], dim=-1)
+
+    with torch.no_grad():
+        u = model(xyt).cpu().detach().numpy().flatten()
+
+    plt.figure(figsize=(6, 4), dpi=150)
+    plt.plot(x, u, label=f"t = {t:.2f}, y = {y:.2f}")
+    plt.xlabel("x")
+    plt.ylabel("u(x, t)")
+    plt.title(f"2D Wellengleichung bei t = {t}, y = {y}")
+    plt.grid(True)
+    plt.legend()
     plt.tight_layout()
     plt.show()
 
@@ -37,7 +60,6 @@ def animate_comparison(model, device):
     mse_accumulator = []
 
     for t in t_values:
-        # Predict
         xyt = torch.FloatTensor(
             np.column_stack([X.ravel(), Y.ravel(), np.full_like(X.ravel(), t)])
         ).to(device)
@@ -45,11 +67,9 @@ def animate_comparison(model, device):
         u_pred = model(xyt).cpu().detach().numpy().reshape(grid_size, grid_size)
         u_pred_array.append(u_pred)
 
-        # Analytical solution
         u_true = analytical_solution(xyt).cpu().detach().numpy().reshape(grid_size, grid_size)
         u_true_array.append(u_true)
 
-        # difference analytical - neural netwrok
         mse = np.mean((u_pred - u_true) ** 2)
         mse_accumulator.append(mse)
 

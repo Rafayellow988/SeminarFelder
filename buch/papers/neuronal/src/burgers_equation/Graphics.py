@@ -18,18 +18,15 @@ def error_plot(train_error, test_error):
     plt.show()
 
 def snapshot_plot(model, device, t=0.0):
-    m = 200  # number of x-points
+    m = 200
     x = np.linspace(-1, 1, m)
 
-    # Create torch tensors for x and fixed t
     x_tensor = torch.tensor(x.reshape(-1, 1), device=device)
     t_tensor = torch.full_like(x_tensor, t)
 
-    # Evaluate model
     with torch.no_grad():
         u = model(t_tensor, x_tensor).cpu().numpy().flatten()
 
-    # Plot u(x, t=t_value)
     plt.figure(figsize=(6, 4), dpi=150)
     plt.plot(x, u, label=f"t = {t:.2f}")
     plt.xlabel("x")

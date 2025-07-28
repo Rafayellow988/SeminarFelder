@@ -9,7 +9,7 @@ matplotlib.use('TkAgg')
 # Training setup
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = WaveNet().to(device)
-print("Model parameters:" + str(sum(p.numel() for p in model.parameters() if p.requires_grad)) + "\n")
+print("Model parameters: " + str(sum(p.numel() for p in model.parameters() if p.requires_grad)) + "\n")
 
 if os.path.exists("wavenet.pth"):
     model.load_state_dict(torch.load("wavenet.pth", map_location=device))
@@ -38,5 +38,6 @@ else:
 
 # Animation
 animate_comparison(model, device)
+snapshot_plot(model, device, y=0.5, t=0.0)
 
 
