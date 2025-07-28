@@ -7,77 +7,88 @@
 % !TEX encoding = UTF-8
 %
 
-\section{Fourierreihe\label{fourier:section:GrundlagenFourierAnalyse}}
-\kopfrechts{Fourierreihe}
+\section{Fourier-Reihe\label{fourier:section:GrundlagenFourierAnalyse}}
+\kopfrechts{Fourier-Reihe}
 
 
-Mit der Fourier-Reihe lassen sich periodisch wiederholende Funktionen, wie ein Rechteck- oder Dreiecksignal, mit skalierten Sinus- und Kosinus-Schwingungen darstellen.
-Um die Reihe aufzustellen, braucht man nur 3 Koeffizienten zu bestimmen. 
+Mit der Fourier-Reihe lassen sich periodische Funktionen, wie ein Rechteck- oder Dreiecksignal, mit skalierten Sinus- und Kosinusschwingungen darstellen. 
+Um die Reihe aufzustellen, muss man nur drei Arten von Koeffizienten bestimmen. 
 
 \begin{itemize}
-	\item $a_0$ ist der Mittelwert, der Funktion. 
-	Dieser entspricht dem Integral über eine Periode und schliesslich geteilt durch die Periode. 
+	\item $\frac{a_0}{2}$ ist der Mittelwert der Funktion. 
+	$a_0$ entspricht dem Integral der Funktion über eine Periode geteilt durch die Periode.
+	Die Multiplikation mit 2 ist reine Konvention.
 	
 	\begin{equation}
-		a_0 = \frac{1}{T} \int_{t_0}^{t_0 + T} f(t) \, dx
+		a_0 = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t) \, dt
 	\end{equation}
 	
-	\item $a_n$ beschreibt den geraden Anteil der Funktion.
+	\item Die $a_n$ definieren den geraden Anteil der Funktion. $\omega$ ist die Kreisfrequenz und ist definiert durch $\omega = 2\pi f$. 
+	$n$ ist der Summations- oder Frequenzindex, später wird eine Summe über $n$ gebildet.
 	
 	\begin{equation}
-		a_n = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t) \cos\left(\frac{2\pi n t}{T}\right) dt
+		a_n = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t) \cos\left(n\omega t\right) dt
 	\end{equation}
 	
-	\item $b_n$ beschreibt den ungeraden Anteil der Funktion.
+	\item Die $b_n$ definieren den ungeraden Anteil der Funktion:
 	
 	\begin{equation}
-		b_n = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t) \sin\left(\frac{2\pi n t}{T}\right) dt
+		b_n = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t) \sin\left(n\omega t\right) dt
 	\end{equation}
 	
 \end{itemize}
 
-Mit allen Koeffizienten bestimmt und genügend Zeit um unendlich Summen zu berechnen lassen sich fast alle Funktionen nachahmen.
-Bei Funktionen mit Sprungstellen tritt das Gibbsche Phänomen auf.
-Dies erklärt einen Überschwinger nach einem Sprung. Auch wenn man die unendliche Summe bildet, wird dieser Überschwinger nicht verschwinden.
-Das $=$ Zeichen stimmt also nur bedingt.
-Anhand der Abbildung \dots sieht man sehr schön, wie die Rechteckfunktion mit Schwingungen nachgeahmt wird. % todo: insert reference instead of \dots
 
-\[
-f(t) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left( a_n \cos\left( \frac{2\pi n}{T} x \right) + b_n \sin\left( \frac{2\pi n}{T} x \right) \right)
-\]
-
-\begin{tikzpicture}
-	\begin{axis}[
-		axis lines = middle,
-		xlabel = {$t$},
-		ylabel = {$f(t)$},		
-		domain=0:6,
-		samples=1000,
-		xtick={0,1,2,3,4,5,6},
-		ytick={0,1},
-		enlargelimits,
-		width=\textwidth
-		]
-		\addplot[thick] {mod(floor(x),2) == 0 ? 1 : 0};
-		\addplot[blue, thick] {(1/2) + 
-			(2/pi)*sin(pi * deg(x)) + 
-			(2/(3*pi))*sin(pi *3*deg(x)) +
-			(2/(5*pi))*sin(pi *5*deg(x))};
-	\end{axis}
-\end{tikzpicture}
-
-$a_0$ ist bei 
-
-%da es bei der Wellen Gleichung und schwingungen keine sprungstellen gibt, spielt das Gibbsche phenomen keine Rolle. 
-%Das muss noch geschrieben werden. 
-%bei der Quantenmechanik rechnet man stets komplex.
-%Theorie zur fourierreihe sollte man noch komplex machen.
-%Bei präsentation maybe noch mit sin und cos
+Sind alle Koeffizienten bestimmt, lassen sich fast alle Funktionen perfekt approximieren.
+Die $a_n$ und $b_n$ skalieren die Amplituden der Schwingungen in abhängigkeit zu $n>=1$. 
+Je nach Funktion können diese Faktoren durchaus komplizierte Funktionen annehmen.
+Generell nehmen die Amplituden mit höherem $n$ ab, ob linear, quadratisch oder höherer Ordnung lässt sich im Allgemeinen nicht bestimmen.
+Mit jedem weiteren Summanden der Reihe steigt die enthaltene Frequenz linear mit $n$ an.
+Das ist die Fourier-Reihe:
 
 
-% Todo: löschen, wenn nicht mehr gebraucht
-%\subsection{Fouriertransformation\label{fourier:subsection:fouriertransformation}}
+\begin{equation}
+f(t) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left( a_n \cos\left( n\omega t \right) + b_n \sin\left( n \omega t \right) \right)
+\end{equation}
 
-%\section{Von Fourier zu Feldern
-%\label{fourier:section:vonFourierZuFeldern}}
-%In diesem Kapitel wird die Verbindung von Fourierreihen/ Fouriertransformationen und Feldern aufgezeigt.
+
+Eine Ausnaheme sind Funktionen mit Sprungstellen, wie in Abbildung~\ref{fourier:fig:fourierrechteck} gezeigt wird.
+Bei dieser Rechteckfunktion wurden die Reihe bis $n = 5$ berechnet.
+Bei solchen Funktionen tritt das sogenannte Gibbsche Phänomen auf.
+In der Nähe eines Sprungs entsteht ein charakteristischer Überschwinger, der selbst bei unendlich vielen Summanden nicht verschwindet.
+Das Gleichheitszeichen $=$ gilt daher nur eingeschränkt. 
+Nun folgen zwei Bespiele.
+
+\input{papers/fourier/fig/fig-fourier_Rechteck.tex}
+
+\begin{equation}
+	f_1(t) = \frac{1}{2} + \sum_{\substack{n=1 \\ n\ \text{ungerade}}}^{5} \frac{2}{\pi n} \sin\left( \pi n t \right)
+\end{equation}
+
+$f_1(t)$ entspricht der roten Funktion in Abbildung~\ref{fourier:fig:fourierrechteck}. 
+Der Mittelwert $a_0$ entspricht $\frac{1}{2}$. 
+Die Rechteck Funktion ist abzüglich $a_0$ eine ungerade Funktion, da gilt $f_1(t) = -f_1(t)$. 
+Daher ist der gerade Anteil $a_n$ stets Null. 
+Zudem wurde noch eine Vereinfachung von $b_n$ vorgenommen, da der Term bei geraden $n$ Null wird, summiert man nur über ungerade $n$. 
+
+
+\input{papers/fourier/fig/fig-fourier_Dreieck.tex}
+
+
+\begin{equation}
+	f_2(t) = \sum_{\substack{n=1 \\ n\ \text{ungerade}}}^{5} \frac{-8}{\pi^2 n^2} \cos(n\pi t)
+\end{equation}
+
+$f_2(t)$ entspricht der roten Funktion in Abbildung~\ref{fourier:fig:fourierdreieck} und überdeckt das Original beinahe perfekt. 
+Dies mit nur drei Iterationen!
+Der Mittelwert $a_0$ ist hier 0. 
+Die Dreieck Funktion ist eine gerade Funktion, da gilt $f_1(t) = f_1(-t)$. 
+Daher ist der ungerade Anteil $a_n$ stets Null. 
+Wie beim ersten Beispiel wurde $b_n$ vereinfacht, man summiert nur über ungerade $n$. 
+Bei der Fourier-Reihenbildung kann man sich viel Zeit ersparen, wenn man zuerst überprüft, ob es sich um eine gerade oder ungerade Funktion handelt.
+So kann man ohne zu rechnen $a_n$ oder $b_n$ gleich Null setzen.
+
+%bei der Quantenmechanik rechnet man stets komplex. maybe noch erwähnen: die komplexe Fourier-Reihe
+
+
+
