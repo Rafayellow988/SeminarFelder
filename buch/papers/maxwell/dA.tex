@@ -40,7 +40,66 @@
 \end{align*}
 
 \subsection{Interpretation von $d$A}
-TODO...
+Wählen wir physikalisch sinnvolle 1-Formen mit $dx^0 = cdt,dx^1 = dx,dx^2 = dy$ und $dx^3 = dz$ erhalten wir
+\begin{align*}
+	dA = 
+	& \left(\frac{1}{c}\frac{\partial (-\phi)}{\partial x}-\frac{1}{c}\frac{\partial A_1}{\partial t}\right) dx \wedge cdt +
+	\left(\frac{1}{c}\frac{\partial (-\phi)}{\partial y}-\frac{1}{c}\frac{\partial A_2}{\partial t}\right) dy \wedge cdt +
+	\left(\frac{1}{c}\frac{\partial (-\phi)}{\partial z}-\frac{1}{c}\frac{\partial A_3}{\partial t}\right) dz \wedge cdt\\
+	& + \left(\frac{\partial A_1}{\partial y}-\frac{\partial A_2}{\partial x}\right) dy \wedge dx +
+	\left(\frac{\partial A_1}{\partial z}-\frac{\partial A_3}{\partial x}\right) dz \wedge dx +
+	\left(\frac{\partial A_2}{\partial z}-\frac{\partial A_3}{\partial y}\right) dz \wedge dy\\[2ex]
+	& = \left(\frac{\partial (-\phi)}{\partial x}-\frac{\partial A_1}{\partial t}\right) dx \wedge dt +
+	\left(\frac{\partial (-\phi)}{\partial y}-\frac{\partial A_2}{\partial t}\right) dy \wedge dt +
+	\left(\frac{\partial (-\phi)}{\partial z}-\frac{\partial A_3}{\partial t}\right) dz \wedge dt\\
+	& + \left(\frac{\partial A_1}{\partial y}-\frac{\partial A_2}{\partial x}\right) dy \wedge dx +
+	\left(\frac{\partial A_1}{\partial z}-\frac{\partial A_3}{\partial x}\right) dz \wedge dx +
+	\left(\frac{\partial A_2}{\partial z}-\frac{\partial A_3}{\partial y}\right) dz \wedge dy\\
+\end{align*}
+Eventuell unten weiterschreiben mit neuem titel
+
+Nun können wir die Klammerausdrücke interpretieren.
+Die elektrische Feldstärke ist genau der negative Gradient vom elektrischen Potential $\phi$ und der negativen zeitlichen Ableitung des Vektorpotentials.
+Die magnetische Flussdichte $B$ ist die Rotation des Vektorpotentials $A$.
+Setzen wir diese Informationen in die obige Rechnung ein, ergibt sich
+\begin{align*}
+	dA = 
+	& E_1 dx \wedge dt + E_2 dy\wedge dt + E_3 dz\wedge dt - B_3 dy \wedge dx + B_2 dz \wedge dx - B_1 dz\wedge dy.
+\end{align*}
+Diesen Ausdruck können wir auch als Matrix schreiben und erhalten
+\begin{equation*}
+	dA = \begin{pmatrix}
+		0 & -E_1 & -E_2 & -E_3 \\ E_1 & 0 & B_3 & -B_2 \\ E_2 & -B_3 & 0 & B_1 \\ E_3 & B_2 & -B_1 & 0 
+	\end{pmatrix}.
+\end{equation*}
+Würden wir die Teile mit $c$ nicht wegkürzen und alles in koordinatenunabhängiger Sprache formulieren, ergäbe sich
+\begin{align*}
+	dA = 
+	& \left(\frac{1}{c}\frac{\partial (-\phi)}{\partial x}-\frac{1}{c}\frac{\partial A_1}{\partial t}\right) dx \wedge cdt +
+	\left(\frac{1}{c}\frac{\partial (-\phi)}{\partial y}-\frac{1}{c}\frac{\partial A_2}{\partial t}\right) dy \wedge cdt +
+	\left(\frac{1}{c}\frac{\partial (-\phi)}{\partial z}-\frac{1}{c}\frac{\partial A_3}{\partial t}\right) dz \wedge cdt\\
+	& + \left(\frac{\partial A_1}{\partial y}-\frac{\partial A_2}{\partial x}\right) dy \wedge dx +
+	\left(\frac{\partial A_1}{\partial z}-\frac{\partial A_3}{\partial x}\right) dz \wedge dx +
+	\left(\frac{\partial A_2}{\partial z}-\frac{\partial A_3}{\partial y}\right) dz \wedge dy\\[2ex] = 
+	& \frac{E_1}{c} dx \wedge cdt +
+	\frac{E_2}{c} dy \wedge cdt +
+	\frac{E_3}{c} dz \wedge cdt\\
+	& - B_3 dy \wedge dx +
+	B_2 dz \wedge dx -
+	B_1 dz \wedge dy\\[2ex] =
+	& \frac{E_1}{c} dx^1 \wedge dx^0 +
+	\frac{E_2}{c} dx^2 \wedge dx^0 +
+	\frac{E_3}{c} dx^3 \wedge dx^0\\
+	& - B_3 dx^2 \wedge dx^1 +
+	B_2 dx^3 \wedge dx^1 -
+	B_1 dx^3 \wedge dx^2
+\end{align*}
+Diese Ausdruck können wir auch als Matrix schreiben und erhalten
+\begin{equation*}
+	dA = \begin{pmatrix}
+		0 & -E_1/c & -E_2/c & -E_3/c \\ E_1/c & 0 & B_3 & -B_2 \\ E_2/c & -B_3 & 0 & B_1 \\ E_3/c & B_2 & -B_1 & 0 
+	\end{pmatrix}.
+\end{equation*}
 
 \subsection{B und E aus Maxwell-Gleichungen herleiten}
 Aus dem Gaussschen Gesetz für Magnetfelder
