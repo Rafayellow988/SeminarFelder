@@ -8,67 +8,72 @@
 
 \input{papers/wirbelringe/fig/wirbelring_RGB.tex}
 
-ToDo
+Wirbelringe sind ein interessantes Naturphänomen welchem man schneller begegnet als man denkt. 
+In diesem Paper schauen wir uns Wirbelringe etwas genauer an und begründen einige Eigenschaften. 
+Des Weiteren untersuchen wir eine weitverbreitete praktische (ungewollte) Anwendung und dessen Auswirkung. 
+Zuletzt formulieren wir ein Modell womit man zumindest angenähert selbst gezielt Wirbelringe berechnen und erzeugen kann.
 
 \section*{Disclaimer}
 
 In diesem Paper werden, wo nicht anders angegeben nur ideale Fluide betrachtet.
 
-\begin{displayquote}
+\begin{quote}
     The theory of inviscid fluids is the study of «dry water».
 
-    - John von Neumann\cite{Wirbelringe:feynman1964lectures}
-\end{displayquote}
+    - John von Neumann \cite{Wirbelringe:feynman1964lectures}
+\end{quote}
 
 \subsection{Wirbel}
 
 \input{papers/wirbelringe/fig/flacher_wirbel}
 
 Für die Betrachtung von Wirbelringen müssen wir zunächst einzelne Wirbel betrachten. 
-In Abbildung \ref{buch:papers:Wirbelringe:fig:flacher_wirbel} ist solch ein Wirbel abgebildet. 
+In Abbildung \ref{buch:papers:Wirbelringe:fig:flacher_wirbel} ist solcher Wirbel abgebildet. 
 Für Wirbel ist die Identität
-\[
+\begin{equation}
+    \label{paper:Wirbelringe:eq:wIdent}
 \operatorname{div} \left( \operatorname{rot} \left( \vec{A} \right) \right) 
 = 
 0
-\]
-für die Stabilität eines Wirbels sehr wichtig. 
-Das geht natürlich nur, wenn \(\vec{A}\) 2-mal stetig differenzierbar ist. 
-Ist das der Fall kann man das ganze kurz beweisen:
+\end{equation}
 
-\begin{gather*}
+wichtig, da die Stabilität eines Wirbels durch diese Begründet wird.  
+Das geht natürlich nur, wenn \(\vec{A}\) 2-mal stetig differenzierbar ist. 
+Ist das der Fall kann man das ganze kurz überprüfen:
+
+\begin{align*}
 \operatorname{div} \left( \operatorname{rot} \left( \vec{A} \right) \right) 
-= 0\\
+&= 0\\
 \operatorname{div}      
     \begin{pmatrix} 
         \frac{\partial A_z}{\partial y} - \frac{\partial A_y}{\partial z} \\ 
         \frac{\partial A_x}{\partial z} - \frac{\partial A_z}{\partial x} \\ 
         \frac{\partial A_y}{\partial x} - \frac{\partial A_x}{\partial y} \\ 
     \end{pmatrix} 
-= 0\\
+&= 0\\
 \frac{\partial^2 A_z}{\partial x \partial y} - \frac{\partial^2 A_y}{\partial x \partial z} + 
 \frac{\partial^2 A_x}{\partial y \partial z} - \frac{\partial^2 A_z}{\partial y \partial x} +
 \frac{\partial^2 A_y}{\partial z \partial x} - \frac{\partial^2 A_x}{\partial z \partial y}
-= 0\\
+&= 0\\
 \frac{\partial^2 A_z}{\partial x \partial y} - \frac{\partial^2 A_z}{\partial y \partial x} + 
 \frac{\partial^2 A_x}{\partial y \partial z} - \frac{\partial^2 A_x}{\partial z \partial y} +
 \frac{\partial^2 A_y}{\partial z \partial x} - \frac{\partial^2 A_y}{\partial x \partial z}
-= 0 \quad \text{(Satz von Schwarz)}\\
+&= 0 \quad \text{(Satz von Schwarz)}\\
 \overbrace{\frac{\partial^2 A_z}{\partial x \partial y} - \frac{\partial^2 A_z}{\partial x \partial y}}^0 + 
 \overbrace{\frac{\partial^2 A_x}{\partial y \partial z} - \frac{\partial^2 A_x}{\partial y \partial z}}^0 +
 \overbrace{\frac{\partial^2 A_y}{\partial x \partial z} - \frac{\partial^2 A_y}{\partial x \partial z}}^0
-= 0 
-\end{gather*}
+&= 0 
+\end{align*}
 
-Die Interpretation ist für unseren Anwendungsfall wichtiger. 
-In einem reinen Quellenfeld bleiben die Teilchen erhalten. 
-Das bedeutet das sie, solange nicht anders beeinflusst werden, immer weiter rotieren. 
+Aus dieser Identität lässt sich schliessen das Teilchen in einem Rotationsfeld erhalten bleiben. 
+Das bedeutet, dass sie immer weiter rotieren. 
 Aus diesem Grund sind Wirbel sehr Stabil.
-
 
 \subsection{Wirbel vs Wirbelring}
 
-Werden nun viele Wirbel aneinander gereiht, entsteht ein sogenannter Wirbelfaden (Siehe Abbildung \ref{paper:Wirbelringe:Wirbelfaden}).
+Werden nun viele Wirbel aneinander gereiht, entsteht ein sogenannter Wirbelfaden (Siehe Abschnitt \ref{paper:Wirbelringe:Wirbelfaden}).
 Dieser alleine bewegt sich allerdings noch nicht. 
 Damit das passiert muss der Freie Wirbelfaden gekrümmt und zu einem Ring geschlossen werden. 
-Jetzt ist es ein Wirbelring.
+Jetzt ist es ein Wirbelring.  
+Mehr zur Bewegung eines Wirbelrings in Abschnitt \ref{paper:Wirbelringe:Bewegung}.
+Solch ein Wirbelring ist in Abbildung \ref{paper:Wirbelringe:fig:generell} dargestellt.
