@@ -86,11 +86,11 @@ Alle drei Datensätze bestehen aus je 50'000 Datenpunkten.
 Weiter wurde je ein Fünftel der Datenpunkte für die Funktion \( L^1(\vartheta) \) abgetrennt und nicht im Optimierungsalgorithmus verwendet (siehe Abschnitt \ref{neuronal:subsection:qualitätsbewertung}).
 
 Beendet man den Optimierungsalgorithmus nach 1500 Iterationen, findet sich eine gute Lösung.
-Die Werte von $L(\vartheta)$ und $L^1(\vartheta)$ sind 4.011 bzw. 0.878 (siehe \ref{fig:fehler_wave_good}), was zunächst nicht besonders vielversprechend aussieht.
-Lässt man den Optimierungsalgorithmus für mehr als 1500 Iterationen laufen, wird zwar der Wert von $L(\vartheta)$ weiter reduziert, doch der Wert von $L^1(\vartheta)$ beginnt wieder anzusteigen. (siehe Abbildung soundso)
+Die Werte von $L(\vartheta)$ und $L^1(\vartheta)$ sind 4.011 bzw. 0.878 (siehe Abbildung \ref{fig:fehler_wave_good}), was zunächst nicht besonders vielversprechend ist.
+Zusätzliche Iterationen des Optimierungsalgorithmus reduzieren zwar den Wert von $L(\vartheta)$ weiter, doch der Wert von $L^1(\vartheta)$ beginnt wieder anzusteigen.
 Dies ist ein klassisches Phänomen im Gebiet des maschinellen Lernens und wird als \emph{Overfitting} bezeichnet.
 \emph{Overfitting} bedeutet, dass das neuronale Netzwerk die Datenpunkte aus $L(\vartheta)$ ``auswendig'' lernt und als Resultat bei Datenpunkten aus $L^1(\vartheta)$ versagt.
-Insofern macht es Sinn, den Optimierungsalgorithmus nach 1500 Iterationen zu beenden, obwohl die Approximationsfehler nicht sehr tief sind.
+Insofern wurde der Optimierungsalgorithmus nach 1500 Iterationen beendet, obwohl die Approximationsfehler nicht sehr tief sind.
 \begin{figure}
     \centering
     \hspace*{-0.1\textwidth}
@@ -109,12 +109,14 @@ Der Verlauf dieser Differenz ist in \ref{fig:differenz_wellen} dargestellt.
     \label{fig:differenz_wellen}
 \end{figure}
 
-Das visuelle Resultat ist in den Abbildungen \ref{fig:wellen_t0}, \ref{fig:wellen_t04}, \ref{fig:wellen_t136}, \ref{fig:wellen_t164} dargestellt.
+Der Lösungsplot ist in den Abbildungen \ref{fig:wellen_t0}, \ref{fig:wellen_t04}, \ref{fig:wellen_t136}, \ref{fig:wellen_t164} dargestellt.
 In diesen Abbildungen ist auf der linken Seite das neuronale Netzwerk und auf der rechten Seite die analytische Lösung abgebildet.
 Die Farben stellen die Wellenhöhen dar, rot bedeutet einen Wellenberg und blau ein Wellental.
 Was in diesen Abbildungen deutlich zu sehen ist, ist dass das Netzwerk bei Übergängen von Wellenbergen zu Wellentälern (z.B. von \ref{fig:wellen_t0} zu \ref{fig:wellen_t04}) Fehler macht.
-Abgesehen davon sieht die Approximation auch visuell gut aus.
-Dieses Resultat ist als Animation über den gesamten Zeitraum $t \in [0, 2]$ im GitHub Repository des Seminars \cite{neuronal:github_source_code}, im Unterverzeichnis \emph{wave\_equation} zu finden.
+Dies wird deutlich wenn man $y$ bei $0.5$ fixiert und Lösungsplots für verschiedene $t$ erstellt (siehe Abbildung \ref{fig:loesung_wellen_fix_yt}).
+In dieser Abbildungsreihe ist klar zu erkennen, dass diese Übergänge zwar stattfinden, aber chaotisch ablaufen.
+Abgesehen davon sieht die Approximation visuell gut aus.
+Die Approximation ist als Animation über den gesamten Zeitraum $t \in [0, 2]$ im GitHub Repository des Seminars \cite{neuronal:github_source_code}, im Unterverzeichnis \emph{wave\_equation} zu finden.
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{papers/neuronal/images/prediction_wave_t0.png}
@@ -138,6 +140,18 @@ Dieses Resultat ist als Animation über den gesamten Zeitraum $t \in [0, 2]$ im 
     \includegraphics[width=\textwidth]{papers/neuronal/images/prediction_wave_t164.png}
     \caption{Wellengleichung t = 1.64}
     \label{fig:wellen_t164}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=0.48\textwidth]{papers/neuronal/images/wave_solution_t0.png}\hfill
+    \includegraphics[width=0.48\textwidth]{papers/neuronal/images/wave_solution_t035.png}
+    \\[\smallskipamount]
+    \includegraphics[width=0.48\textwidth]{papers/neuronal/images/wave_solution_t036.png}\hfill
+    \includegraphics[width=0.48\textwidth]{papers/neuronal/images/wave_solution_t037.png}
+    \\[\smallskipamount]
+    \includegraphics[width=0.48\textwidth]{papers/neuronal/images/wave_solution_t0375.png}\hfill
+    \includegraphics[width=0.48\textwidth]{papers/neuronal/images/wave_solution_t045.png}
+    \caption{Lösungs-Plot der Wellengleichung zu verschiedenen Zeiten und y = 0.5}\label{fig:loesung_wellen_fix_yt}
 \end{figure}
 
 \subsection{Burgers-Gleichung}\label{neuronal:subsection:burgers_gleichung}
