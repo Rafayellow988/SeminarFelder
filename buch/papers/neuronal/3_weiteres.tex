@@ -10,7 +10,15 @@
 \section{Diskussion}\label{neuronal:section:diskussion}
 \kopfrechts{Diskussion}
 
-Der grosse Vorteil dieser Methode liegt in ihrer breiten Anwendbarkeit.
+Was die vorangegangenen Beispiele deutlich zeigen, ist dass diese Methode bei der Burgers-Gleichung deutlich besser funktioniert als bei der Wellengleichung.
+Der Grund dafür liegt in den Gleichungen selbst: 
+Die Wellengleichung ist eine hyperbolische, die Burgers-Gleichung eine parabolische partielle Differentialgleichung.
+Neuronale Netzwerke haben beim Lösen von hyperbolischen Gleichungen Schwierigkeiten \cite{neuronal:hyperbolisch_1}, \cite{neuronal:hyperbolisch_2}, \cite{neuronal:hyperbolisch_3}.
+Zu beachten ist, dass diese Schwierigkeiten nicht auf einen Mangel an Ausdruckskraft des neuronalen Netzwerks zurückzuführen sind.
+Vielmehr liegt der Grund im Lösen des vorgestellten Optimierungsproblems \ref{neuronal:subsection:lösen_optimierungsproblem} \cite{neuronal:hyperbolisch_4}.
+Dieses wird für komplexere Feldgleichungen erheblich erschwert, was das Finden einer guten Lösung verunmöglichen kann, selbst wenn eine solche existiert. 
+
+Abgesehen davon liegt der grosse Vorteil dieser Methode in ihrer breiten Anwendbarkeit.
 Sie kann grundsätzlich auf beliebige Feldgleichungen angewendet werden, unabhängig von deren Komplexität.
 Im Gegensatz dazu sind klassische Verfahren wie die Finite-Differenzen- oder Finite-Elemente-Methode oft auf bestimmte Gleichungstypen beschränkt und stossen insbesondere bei stark nichtlinearen oder hochdimensionalen Problemen an ihre Grenzen.
 
