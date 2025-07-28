@@ -47,7 +47,7 @@ class WaveNet(nn.Module):
         xyt = self.act(self.fc1(xyt))
         xyt = self.act(self.fc2(xyt))
         xyt = self.act(self.fc3(xyt)) # (torch.pi / 1.062)
-        xyt = torch.sin(self.fc4(xyt))
+        xyt = self.fc4(xyt)
         return xyt
 
     # Train model
