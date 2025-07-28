@@ -6,38 +6,276 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 4
-\label{elastomechanik:section:teil4}}
-\kopfrechts{Teil 4}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage[ngerman]{babel}
 
-\subsection{De finibus bonorum et malorum
-\label{elastomechanik:subsection:malorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
-
-
+\begin{document}
+	
+	\section*{Einführung in das Praxisbeispiel}
+	
+	In diesem Kapitel wird ein praxisnahes Beispiel vorgestellt, das insbesondere im Bauingenieurwesen von Bedeutung ist. 
+	Dazu betrachten wir ein einfaches statisches System, an dem grundlegende Konzepte der Elastizitätstheorie anschaulich demonstriert werden können.
+	
+	Im Mittelpunkt der Analyse stehen zwei unterschiedliche Materialien: \textbf{Holz} und \textbf{Stahl}. 
+	Diese beiden Werkstoffe unterscheiden sich deutlich in ihren mechanischen Eigenschaften, insbesondere in Bezug auf ihre Steifigkeit, Festigkeit und ihr Verformungsverhalten unter Belastung.
+	
+	Ziel der Untersuchung ist es, die Unterschiede zwischen diesen Materialien herauszuarbeiten. 
+	Wir zeigen, wie äussere Kräfte im Bauteil \textbf{Spannungen} erzeugen und wie sich daraus \textbf{Verformungen} ergeben.
+	
+	\subsection*{Berechnung des maximalen Biegemoments}
+	
+	Die Belastung von \SI{100}{\kilo\newton} erzeugt im Querschnitt des Trägers Schnittgrössen, insbesondere \textbf{Biegemomente} und \textbf{Querkraft}. Für dieses Beispiel sind vor allem die Biegemomente von Interesse, da sie massgeblich für die entstehenden Spannungen und Verformungen verantwortlich sind.
+	
+	Die Bestimmung des maximalen Moments erfolgt mithilfe einer einfachen Gleichgewichtsbedingung. 
+	Bei einem symmetrisch belasteten Einfeldträger mit einer mittig aufgebrachten Einzellast kann das Moment wie folgt berechnet werden:
+	
+	\[
+	M_\text{max} = \frac{F \cdot l}{4}
+	\]
+	
+	Dabei ist:
+	\begin{align}
+		F = \SI{100}{\kilo\newton} && \text{(aufgebrachte Kraft)} \\
+		l = \SI{5}{\meter} && \text{(Spannweite des Trägers)}
+	\end{align}
+	
+	Einsetzen ergibt:
+	\[
+	M_\text{max} = \frac{100\,000 \cdot 5}{4} = \SI{125000}{\newton\meter} = \SI{125}{\kilo\newton\meter}
+	\]
+	
+	Das maximale Biegemoment beträgt somit \(\boxed{\SI{125}{\kilo\newton\meter}}\).
+	
+	\section*{Berechnung der Biegespannung im Balkenquerschnitt}
+	
+	Die Kenntnis der Biegespannung ist im Bauingenieurwesen von zentraler Bedeutung, da sie Auskunft darüber gibt, wie stark ein Bauteil durch äussere Momente beansprucht wird. 
+	Eine Überschreitung zulässiger Spannungen kann zur Schädigung oder gar zum Versagen des Bauteils führen. 
+	Deshalb ist die Berechnung der maximalen Spannung ein wesentlicher Bestandteil der Tragwerksanalyse.
+	
+	\subsection*{Gegeben}
+	
+	Für das betrachtete Beispiel gelten die folgenden Angaben:
+	
+	\begin{itemize}
+		\item Biegemoment: $M = \SI{125000}{\newton\meter} = \SI{125000000}{\newton\milli\meter}$
+		\item Breite des Rechteckquerschnitts: $b = \SI{200}{\milli\meter}$
+		\item Höhe des Rechteckquerschnitts: $h = \SI{300}{\milli\meter}$
+	\end{itemize}
+	
+	\subsection*{1. Flächenträgheitsmoment $I$}
+	
+	Für einen rechteckigen Querschnitt berechnet sich das Flächenträgheitsmoment $I$ um die neutrale Achse mit:
+	
+	\[
+	I = \frac{b \cdot h^3}{12}
+	\]
+	
+	Einsetzen der Werte ergibt:
+	
+	\[
+	I = \frac{200 \cdot 300^3}{12} = \frac{200 \cdot 27\,000\,000}{12} = \SI{450000000}{\milli\meter^4}
+	\]
+	
+	\subsection*{2. Abstand $y$ zur äussersten Faser}
+	
+	Da die maximale Spannung am weitesten Punkt von der neutralen Faser auftritt, gilt:
+	
+	\[
+	y = \frac{h}{2} = \frac{300}{2} = \SI{150}{\milli\meter}
+	\]
+	
+	\subsection*{3. Biegespannung $\sigma$}
+	
+	Die Biegespannung wird mit der folgenden Formel berechnet:
+	
+	\[
+	\sigma = \frac{M \cdot y}{I}
+	\]
+	
+	Einsetzen der bekannten Grössen:
+	
+	\[
+	\sigma = \frac{125\,000\,000 \cdot 150}{450\,000\,000} = \SI{41.67}{\newton\per\milli\meter\squared}
+	\]
+	
+	\subsection*{Ergebnis}
+	
+	Die maximale Biegespannung im Balkenquerschnitt beträgt:
+	
+	\[
+	\boxed{\sigma = \SI{41.67}{\mega\pascal}}
+	\]
+	
+	
+	\section*{Berechnung der Durchbiegung in der Balkenmitte}
+	
+	Die Durchbiegung eines Balkens unter Belastung ist ein entscheidendes Kriterium für die Gebrauchstauglichkeit eines Bauteils. 
+	Sie beschreibt, wie stark sich der Balken unter der wirkenden Kraft verformt. 
+	Eine zu grosse Durchbiegung kann die Funktion beeinträchtigen oder Schäden verursachen. 
+	Daher ist die Berechnung der maximalen Durchbiegung von grosser Bedeutung.
+	
+	\subsection*{Gegebene Grössen}
+	
+	Für unser Einfeldträgersystem mit einer mittigen Einzellast gelten folgende Werte:
+	
+	\begin{itemize}
+		\item Länge des Balkens: \( l = \SI{5}{\meter} = \SI{5000}{\milli\meter} \)
+		\item Einzellast in der Mitte: \( F = \SI{100}{\kilo\newton} = \SI{100000}{\newton} \)
+		\item Flächenträgheitsmoment des Querschnitts: \( I = \SI{450000000}{\milli\meter^4} \) (berechnet im vorherigen Kapitel)
+		\item Elastizitätsmodul \( E \) (materialabhängig):
+		\begin{itemize}
+			\item Holz: \( E_{\text{Holz}} = \SI{12}{\giga\pascal} = \SI{12000}{\mega\pascal} \)
+			\item Stahl: \( E_{\text{Stahl}} = \SI{210}{\giga\pascal} = \SI{210000}{\mega\pascal} \)
+		\end{itemize}
+	\end{itemize}
+	
+	\subsection*{Formel zur Berechnung der Durchbiegung}
+	
+	Für einen Einfeldträger mit einer mittigen Einzellast \( F \) lautet die Formel für die maximale Durchbiegung \( w_{\text{max}} \) in der Balkenmitte:
+	
+	\[
+	w_{\text{max}} = \frac{F \cdot l^3}{48 \cdot E \cdot I}
+	\]
+	
+	\begin{itemize}
+		\item \( F \) ist die auf den Balken wirkende Kraft in Newton (N).
+		\item \( l \) ist die Spannweite des Balkens in Millimetern (mm).
+		\item \( E \) ist der Elastizitätsmodul des Materials in Megapascal (MPa).
+		\item \( I \) ist das Flächenträgheitsmoment des Querschnitts in \(\mathrm{mm}^4\).
+	\end{itemize}
+	
+	\subsection*{Schrittweise Berechnung}
+	
+	\paragraph{1. Berechnung der Durchbiegung für Holz:}
+	
+	\[
+	w_{\text{max, Holz}} = \frac{F \cdot l^3}{48 \cdot E_{\text{Holz}} \cdot I}
+	= \frac{100000 \cdot (5000)^3}{48 \cdot 12000 \cdot 450000000}
+	\]
+	
+	Berechnen wir zunächst den Zähler:
+	
+	\[
+	F \cdot l^3 = 100000 \times 125 \times 10^9 = 1.25 \times 10^{16}
+	\]
+	
+	Dann den Nenner:
+	
+	\[
+	48 \times 12000 \times 450000000 = 2.592 \times 10^{14}
+	\]
+	
+	Setzen wir ein:
+	
+	\[
+	w_{\text{max, Holz}} = \frac{1.25 \times 10^{16}}{2.592 \times 10^{14}} \approx 48.2\, \mathrm{mm}
+	\]
+	
+	\paragraph{2. Berechnung der Durchbiegung für Stahl:}
+	
+	\[
+	w_{\text{max, Stahl}} = \frac{F \cdot l^3}{48 \cdot E_{\text{Stahl}} \cdot I}
+	= \frac{100000 \cdot (5000)^3}{48 \cdot 210000 \cdot 450000000}
+	\]
+	
+	Zähler wie zuvor:
+	
+	\[
+	1.25 \times 10^{16}
+	\]
+	
+	Nenner:
+	
+	\[
+	48 \times 210000 \times 450000000 = 4.536 \times 10^{15}
+	\]
+	
+	Eingesetzt:
+	
+	\[
+	w_{\text{max, Stahl}} = \frac{1.25 \times 10^{16}}{4.536 \times 10^{15}} \approx 2.76\, \mathrm{mm}
+	\]
+	
+	\subsection*{Interpretation}
+	
+	Die Durchbiegung des Holzbalkens ist mit etwa \(\SI{48.2}{\milli\meter}\) deutlich grösser als die des Stahlbalkens mit \(\SI{2.76}{\milli\meter}\). 
+	Dies liegt an dem wesentlich kleineren Elastizitätsmodul von Holz, das weniger steif ist als Stahl.
+	
+	Diese Grössenordnung zeigt, wie wichtig das Material für das Verformungsverhalten eines Bauteils ist. 
+	Trotz gleicher Geometrie und Belastung führen unterschiedliche Werkstoffe zu sehr unterschiedlichen Durchbiegungen und somit zu unterschiedlicher Gebrauchstauglichkeit.
+	
+	\subsection*{Hinweis zur Materialanisotropie des Holzes}
+	
+	Holz ist ein anisotropes Material, das bedeutet, seine mechanischen Eigenschaften hängen von der Faserrichtung ab. 
+	In unserer Berechnung wurde der Elastizitätsmodul \( E_{\text{Holz}} = \SI{12}{\giga\pascal} \) parallel zur Faser verwendet, da dies die Hauptrichtung der Belastung im Balken ist.
+	
+	Der Elastizitätsmodul quer zur Faser ist deutlich geringer, etwa nur \(10\%\) des Moduls parallel zur Faser, also ungefähr \( E_{\text{Holz, quer}} \approx \SI{1.2}{\giga\pascal} \).
+	
+	Würde man diesen kleineren Wert für \( E \) einsetzen, ergäbe sich eine deutlich grössere Durchbiegung:
+	
+	\[
+	w_{\text{max, Holz quer}} \approx \frac{F \cdot l^3}{48 \cdot E_{\text{Holz, quer}} \cdot I} \approx 10 \times w_{\text{max, Holz parallel}}.
+	\]
+	
+	Dies verdeutlicht die starke Abhängigkeit der Verformung vom Elastizitätsmodul und die Bedeutung der Faserrichtung bei der Bemessung von Holzbauteilen.
+	
+	\section*{Anwendung der Elastizitätstheorie im Oedometerversuch}
+	
+	Der Oedometerversuch dient zur Bestimmung der Verformungseigenschaften von Böden unter einaxialer Belastung. 
+	Dabei wird eine zylindrische Bodenprobe in einer starren Form seitlich eingespannt, sodass keine laterale Dehnung stattfinden kann (\( \varepsilon_x = \varepsilon_y = 0 \)). 
+	Auf die Probe wird schrittweise eine vertikale Spannung \( \sigma_z \) aufgebracht, während die vertikale Verformung \( \Delta h \) gemessen wird.
+	
+	\subsection*{Theorie}
+	
+	Unter der Annahme linear-elastischen Verhaltens lässt sich der Zusammenhang zwischen Spannung und Dehnung über den sogenannten Oedometer-Modul \( E_o \) ausdrücken:
+	
+	\[
+	\varepsilon_z = \frac{\Delta h}{h_0} = \frac{\sigma_z}{E_o}
+	\quad \Rightarrow \quad
+	E_o = \frac{\sigma_z}{\varepsilon_z}
+	\]
+	
+	Dabei ist:
+	\begin{itemize}
+		\item \( \sigma_z \) — vertikale Spannung [\si{\kilo\pascal}]
+		\item \( \Delta h \) — gemessene Verkürzung der Probe [\si{\milli\meter}]
+		\item \( h_0 \) — Ausgangshöhe der Probe [\si{\milli\meter}]
+		\item \( \varepsilon_z \) — vertikale Dehnung [-]
+		\item \( E_o \) — Oedometer-Modul [\si{\kilo\pascal}]
+	\end{itemize}
+	
+	\subsection*{Beispielrechnung}
+	
+	Gegeben seien folgende Werte aus einem Oedometerversuch:
+	
+	\begin{itemize}
+		\item Anfangshöhe der Probe: \( h_0 = \SI{20}{\milli\meter} \)
+		\item Aufgebrachte Spannung: \( \sigma_z = \SI{100}{\kilo\pascal} \)
+		\item Vertikale Verformung: \( \Delta h = \SI{0.5}{\milli\meter} \)
+	\end{itemize}
+	
+	Berechnung der vertikalen Dehnung:
+	
+	\[
+	\varepsilon_z = \frac{\Delta h}{h_0} = \frac{0.5}{20} = 0.025
+	\]
+	
+	Berechnung des Oedometer-Moduls:
+	
+	\[
+	E_o = \frac{\sigma_z}{\varepsilon_z} = \frac{100}{0.025} = \SI{4000}{\kilo\pascal}
+	\]
+	
+	\subsection*{Interpretation}
+	
+	Der berechnete Oedometer-Modul beträgt:
+	
+	\[
+	\boxed{E_o = \SI{4000}{\kilo\pascal}}
+	\]
+	
+	Dieser Wert beschreibt die Steifigkeit des Bodens unter einaxialer Belastung. 
+	In der Praxis liegt \( E_o \) für Kiese im Bereich von \( 10^4 \)–\( 10^5 \,\si{\kilo\pascal} \), für Sande bei \( 10^3 \)–\( 10^4 \,\si{\kilo\pascal} \), und für Tone oft deutlich darunter. 
+	Das Ergebnis ist somit typisch für einen verdichteten sandigen Boden.
+\end{document}
