@@ -10,24 +10,9 @@
 
 Um das Verhalten von Wirbelringen besser zu verstehen, sind die sogenannten helmholzschen Wirbelsätze sehr nützlich. 
 Mitte 19. Jahrhundert formulierte der deutsche Physiker Hermann von Helmholtz drei Wirbelsätze und veröffentlichte diese im Journal für die reine und angewandte Mathematik \cite{Wirbelringe:JournalHelmholz}.
-In seinem veröffentlichten Paper definiert er auch gleich Linien, um die Wirbelbewegungen besser beschreiben zu können:
+In seinem veröffentlichten Paper definiert er auch die Begriffe Wirbellinie und Wirbelfaden, welche wir bereits kennen.
 
-\subsubsection*{Wirbellinien \label{paper:Wirbelringe:Wirbellinien}}
-
-Wirbellinien sind die „Mittelachse“ eines Wirbels. 
-Um diese Achse rotieren die Teile, welche Teil eines Wirbels sind. 
-Diese hat an sich kein Volumen, allerdings kann es sein, dass Teilchen auf dieser Achse zu liegen kommen. 
-Diese Linie kann an einem Bild eines Wirbels (zum Beispiel in Abbildung \ref{buch:papers:Wirbelringe:fig:flacher_wirbel}) beobachtet werden. 
-In der Praxis ist eine Wirbellinie nicht gerade, sondern gekrümmt oder sogar spiralenähnlich. 
-Ein idealer Wirbelring besitzt eine Wirbellinie in der Form eines Kreises.
-Des Weiteren ist eine sehr wichtige Eigenschaft, dass Wirbellinien nur auf einer Grenzfläche enden können, 
-wie wir in Abschnitt \ref{paper:Wirbelringe:Grenzflaechen} sehen werden.
-
-\subsubsection*{Wirbelfäden \label{paper:Wirbelringe:Wirbelfaden}}
-
-Ein Wirbelfaden ist ein Zylinder, welcher eine Wirbellinie als Zentrum des Zylinders hat. 
-Schneidet man nun diesen Zylinder senkrecht zu der Wirbellinie, ergibt sich ein einzelner Wirbel. 
-Wirbelfäden werden auch Wirbelröhren genannt.
+\subsection{Helmholzsche Wirbelsätze}
 
 \begin{satz}[Erster Wirbelsatz]
     In Abwesenheit von wirbelanfachenden äusseren Kräften bleiben wirbelfreie Strömungsgebiete wirbelfrei.
@@ -69,16 +54,16 @@ Die Zirkulation, dargestellt als Grösse der Pfeile, ist bei allen drei dargeste
 Die Zirkulation \(\Gamma\) kann auch anders beschrieben werden. 
 Ein Wirbelring hat eine Wirbelstärke \(\omega\) welche als
 \[
-\omega
+\vec{\omega}
 =
-\operatorname{rot}\left( \vec{u} \right)
+\operatorname{rot}( \vec{u} )
 \]
 definiert ist.
 Integriert man $\omega$ über eine Fläche \(A\) mit Rand \(c\), erhält man nach dem Satz von Stokes (Satz \ref{buch:green:green:satz:stokes})
 \begin{align*}
 \iint_{A} \vec{\omega} \cdot d \vec{A}
 &=
-\iint_{A} \operatorname{rot}\left(\vec{u}\right)\cdot  d \vec{A}\\
+\iint_{A} \operatorname{rot}(\vec{u})\cdot  d \vec{A}\\
 &=
 \int_{\partial A} \vec{u} \cdot d\vec{l},
 \end{align*}
