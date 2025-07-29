@@ -13,9 +13,7 @@ In diesem Paper schauen wir uns Wirbelringe etwas genauer an und begründen eini
 Des Weiteren untersuchen wir eine weitverbreitete praktische (ungewollte) Anwendung und dessen Auswirkung. 
 Zuletzt formulieren wir ein Modell womit man zumindest angenähert selbst gezielt Wirbelringe berechnen und erzeugen kann.
 
-\section*{Disclaimer}
-
-In diesem Paper werden, wo nicht anders angegeben nur ideale Fluide betrachtet.
+In diesem Paper werden, wo nicht anders angegeben, nur ideale Fluide betrachtet.
 
 \begin{quote}
     The theory of inviscid fluids is the study of «dry water».
@@ -32,13 +30,12 @@ In Abbildung \ref{buch:papers:Wirbelringe:fig:flacher_wirbel} ist solcher Wirbel
 Für Wirbel ist die Identität
 \begin{equation}
     \label{paper:Wirbelringe:eq:wIdent}
-\operatorname{div} \left( \operatorname{rot} \left( \vec{A} \right) \right) 
+\operatorname{div} ( \operatorname{rot} \left( \vec{A} \right) ) 
 = 
 0
 \end{equation}
-
-wichtig, da die Stabilität eines Wirbels durch diese Begründet wird.  
-Das geht natürlich nur, wenn \(\vec{A}\) 2-mal stetig differenzierbar ist. 
+wichtig, da die Stabilität eines Wirbels durch diese begründet wird.  
+Das geht natürlich nur, wenn \(\vec{A}\) zweimal stetig differenzierbar ist. 
 Ist das der Fall kann man das ganze kurz überprüfen:
 
 \begin{align*}
@@ -64,16 +61,15 @@ Ist das der Fall kann man das ganze kurz überprüfen:
 \overbrace{\frac{\partial^2 A_y}{\partial x \partial z} - \frac{\partial^2 A_y}{\partial x \partial z}}^0
 &= 0 
 \end{align*}
-
-Aus dieser Identität lässt sich schliessen das Teilchen in einem Rotationsfeld erhalten bleiben. 
+Aus dieser Identität lässt sich schliessen, dass Teilchen in einem Rotationsfeld erhalten bleiben. 
 Das bedeutet, dass sie immer weiter rotieren. 
 Aus diesem Grund sind Wirbel sehr Stabil.
 
-\subsection{Wirbel vs Wirbelring}
+\subsection{Vom Wirbel zum Wirbelring}
 
 Werden nun viele Wirbel aneinander gereiht, entsteht ein sogenannter Wirbelfaden (Siehe Abschnitt \ref{paper:Wirbelringe:Wirbelfaden}).
 Dieser alleine bewegt sich allerdings noch nicht. 
-Damit das passiert muss der Freie Wirbelfaden gekrümmt und zu einem Ring geschlossen werden. 
+Damit das passiert muss der freie Wirbelfaden gekrümmt und zu einem Ring geschlossen werden. 
 Jetzt ist es ein Wirbelring.  
 Mehr zur Bewegung eines Wirbelrings in Abschnitt \ref{paper:Wirbelringe:Bewegung}.
-Solch ein Wirbelring ist in Abbildung \ref{paper:Wirbelringe:fig:generell} dargestellt.
+Solch ein Wirbelring ist in Abbildung \ref{buch:papers:Wirbelringe:fig:generell} dargestellt.
