@@ -8,77 +8,93 @@
 %
 \section{Potentialströmung\label{ueberschall:section:potentialstroemung}}
 \kopfrechts{Potentialströmung}
-Bei der Potentialströmung handelt sich um eine stationäre, 
-inkompressible und wirbelfreie Strömung.
-Anders formuliert
-\begin{align}
-    \frac{\partial \vec{v}}{\partial t} &= 0 \\
+Bei der Potentialströmung handelt sich um eine quellenfreie 
+und wirbelfreie Strömung
+\begin{align*}
     \mathrm{div}\,\vec{v} &= 0 \\
-    \mathrm{rot}\,\vec{v} &= 0 \\
-    \nabla \cdot \vec{v} &= 0 \\
-    \nabla \times \vec{v} &= 0\label{equation:inkompressibel}
-\end{align}
+    \mathrm{rot}\,\vec{v} &= 0,
+\end{align*}
 wobei $\vec{v}$ die Geschwindigkeit der Strömung ist.
-Das Skalarprodukt der Geschwindigkeit mit dem Nabla-Operator $\nabla \cdot \vec{v}$ 
-wird auch bezeichnet als Divergenz der Geschwindigkeit
-\begin{equation}
-    \mathrm{div}\,(\vec{v})
+Diese Idealisierung ist ein Spezialfall der laminaren Strömungen.
+Unter Einhaltung der genannten Bedingung besitzt dieses
+Geschwindigkeitsfeld auch ein Potential
+\begin{align}
+    \vec{v} = \mathrm{grad}\,\Phi,\label{eq:potential}
+\end{align}
+wobei $\vec{v}$ auch als Gradient des Potentials bezeichnet wird
+und bedeutet nichts geringeres als 
+die Ableitung in jede Koordinatenrichtung
+\begin{align}
+    \mathrm{grad}\,\Phi
     =
-    \frac{\partial v_x}{\partial x} +
-    \frac{\partial v_y}{\partial y} +
-    \frac{\partial v_z}{\partial z}.
-\end{equation}
-Diese gibt an ob das Feld wie eine Quelle oder eine Senke verhält.
+    \nabla\Phi
+    =
+    \begin{pmatrix}
+        \frac{\partial\,\Phi_x}{\partial\,x}\\
+        \frac{\partial\,\Phi_y}{\partial\,y}\\
+        \frac{\partial\,\Phi_z}{\partial\,z}
+    \end{pmatrix}.
+\end{align} 
+Dies kann auch als normale Multiplikation mit dem Nabla-Operator $\nabla$
+dargestellt werden da das Potential $\Phi$ skalar ist.
+
+Zudem nehmen wir eine stationäre Strömung an.
+Natürlich muss auch die Kontinuitätsgleichung
+\begin{align*}
+    \frac{\partial\,\rho}{\partial\,t} + 
+    \mathrm{div}\,\vec{v} &= 0
+\end{align*}
+erfüllt sein.
+Bei inkompressiblen Medien wird der erste Term sowieso zu null
+\begin{align*}
+    \frac{\partial\,\rho}{\partial\,t} &= 0,
+\end{align*}
+wonach nur noch die Quellen- und Senkenfreiheit übrig bleibt.
+Die Divergenz der Geschwindigkeit kann auch als Skalarprodukt 
+des Nabla-Operators und der Geschwindigkeit dargestellt werden
+\begin{align*}
+    \mathrm{div}\,\vec{v}
+    =
+    \nabla \cdot \vec{v}
+    =
+    \frac{\partial\,v_x}{\partial\,x} +
+    \frac{\partial\,v_y}{\partial\,y} +
+    \frac{\partial\,v_z}{\partial\,z}.
+\end{align*}
+Das ist ein Mass dafür wie sehr sich ein Feld wie eine Quelle 
+oder eine Senke verhält.
 Bei $\mathrm{div}\,\vec{v} = 0$ ist sie weder Quelle noch Senke.
 Das Kreuzprodukt mit dem Operator entspricht
 der Rotation der Geschwindigkeit
-\begin{align}
-    \mathrm{rot}\,(\vec{v})
+\begin{align*}
+    \mathrm{rot}\,\vec{v} 
+    =
+    \nabla \times \vec{v}
     =
     \begin{pmatrix}
-        \frac{\partial v_z}{\partial y} - \frac{\partial v_y}{\partial z} \\
-        \frac{\partial v_x}{\partial z} - \frac{\partial v_z}{\partial x} \\
-        \frac{\partial v_y}{\partial x} - \frac{\partial v_x}{\partial y}
+        \frac{\partial\,v_z}{\partial\,y} - \frac{\partial\,v_y}{\partial\,z} \\
+        \frac{\partial\,v_x}{\partial\,z} - \frac{\partial\,v_z}{\partial\,x} \\
+        \frac{\partial\,v_y}{\partial\,x} - \frac{\partial\,v_x}{\partial\,y}
     \end{pmatrix},
-\end{align}
-welcher wie das Wort schon sagt die Rotation eines Feldes angibt.
-Was für ein wirbelfreies Feld $\mathrm{rot}\,(\vec{v}) = 0$ bedeutet.
+\end{align*}
+welcher angibt wie sich ein Körper der diesem Vektorfeld 
+ausgesetzt rotieren würde.
+Was für ein wirbelfreies Feld $\mathrm{rot}\,\vec{v} = 0$ bedeutet,
+wodurch das Vektorfeld genau dann der Gradient einer Funktion ist
+wie in~\ref{eq:potential}.
 
-Zudem gilt für eine Potentialströmung mit dem Potential $\varphi$
-\begin{equation}
-    \vec{v} = \nabla\varphi,
-\end{equation}
-wobei $\nabla\varphi$ auch als Gradient des Potential bezeichnet wird
-und bedeutet nichts geringeres als die Ableitung in jede Richtung
+Wenn nun in die Kontinuitätsgleichung des inkompressiblen
+Falls $ \nabla \cdot \vec{v} = 0$ die Definition 
+des Geschwindigkeitsfeld~\ref{eq:potential} eingesetzt wird, dann folgt daraus
 \begin{align}
-    \nabla\varphi
-    =
-    \begin{pmatrix}
-        \frac{\partial \varphi_x}{\partial x}\\
-        \frac{\partial \varphi_y}{\partial y}\\
-        \frac{\partial \varphi_z}{\partial z}
-    \end{pmatrix}.
-\end{align} 
-Eingesetzt in die Bedingung der Inkompressibilität~\ref{equation:inkompressibel}
-führt das zu
-\begin{equation}
-    \nabla \cdot \nabla \varphi
+    \nabla \cdot \nabla \Phi
     = 
-    \nabla^2 \varphi
+    \nabla\,^2 \Phi
     =
-    \Delta\varphi,
-\end{equation}
-auch bezeichnet als Laplace Gleichung mit dem Laplace-Operator $\Delta$.
-
-
-
-\subsection{Unterschallgebiet\label{ueberschall:subsection:unterschallgebiet}}
-\begin{equation}
-    \Phi
+    \Delta\Phi
     =
-    Ux + A \frac{l}{2\pi}
-    \sin(\frac{2\pi x}{l})
-    e^{-\frac{2\pi y}{l}}
-\end{equation}
-wobei $U$ die ungestörte Geschwindigkeit im Unendlichen bedeutet.
-test
+    0,\label{eq:laplace}
+\end{align}
+auch bezeichnet als Laplace-Gleichung mit dem Laplace-Operator $\Delta$.
+
+
