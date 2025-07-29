@@ -1,6 +1,49 @@
 \section{$d$A
 	\label{maxwell:section:dA}}
 \kopfrechts{dA}
+Reihenfolge:
+F haben wir gegeben und wissen dass deren äussere Ableitung = 0 ist.\\
+Zuerst in Koordinatenfreier Sprache $dx^0,dx^1,dx^2.dx^3$ das $F$ hinschreiben\\
+Durch das Pointarré-Lemma wissen wir dass es eine Differentialform geben muss, deren äussere Ableitung $F$ geben muss.\\
+Eine solche Differentialform nennt man auch Potentialform von $F$\\
+Da $F$ eine 2-Form ist, muss diese Potentialform eine 1-Form sein.\\
+Wie der Name schon sagt, bieten sich hier das elektrische Potential $\phi$ und das magnetische Vektorpotential $\vec{A}$ an.\\
+Nun suchen wir also eine Möglichkeit, mithilfe der Vektor-Analysis die Herleitung von $E$ und $B$ aus den beiden Potentialen zu finden und danach einen Übergang in die Differentialformen zu schaffen, um so eine 1-Form zu finden, deren äussere Ableitung genau $F$ entspricht.
+\subsection{B und E aus Maxwell-Gleichungen herleiten}
+Aus dem Gaussschen Gesetz für Magnetfelder
+\begin{equation}
+	\nabla \cdot \vec{B} = 0
+\end{equation}
+und der Tatsache, dass jedes divergenzfreie, stetig differenzierbare Vektorfeld als Rotation eines anderen Vektorfelds lokal dargestellt werden kann,
+folgt
+\begin{equation}
+	\vec{B} = \nabla \times \vec{A}.
+\end{equation}
+Diese Beziehung steht in engem Zusammenhang mit dem Prinzip, dass die zweifache äussere Ableitung auf Differentialformen verschwindet. Hier beziehen wir uns aber auf Vektoren.
+
+Das Induktionsgesetz lautet
+\begin{equation}
+	\nabla \times \vec{E} = - \frac{\partial \vec{B}}{\partial t}.
+\end{equation}
+Setzt man für $\vec{B}$ die obige Definition ein, folgt
+\begin{equation}
+	\nabla \times \vec{E} = - \frac{\partial}{\partial t}(\nabla \times \vec{A}).
+\end{equation}
+
+Die Rotation eines Vektorfelds ist linear und daraus folgt
+\begin{equation}
+	\nabla \times \left( \vec{E} + \frac{\partial \vec{A}}{\partial t}\right) = 0.
+\end{equation}
+
+Ist ein Vektorfeld rotationsfrei, so kann es als Gradient eines Skalarfelds geschrieben werden.
+\begin{equation}
+	\vec{E} + \frac{\partial \vec{A}}{\partial t} = -\nabla \phi \Rightarrow \vec{E} = -\nabla \phi -\frac{\partial \vec{A}}{\partial t}
+\end{equation}
+Das Minuszeichen vor dem Gradienten des elektrischen Potentials $\phi$ ergibt sich daraus, dass das elektrische Feld immer in Richtung des niedrigeren Potentials zeigt.
+
+Jetzt haben wir zwei Formeln gefunden, mit welchen sich die elektrische Feldstärke und die magnetische Flussdichte aus dem elektrischen Potential und dem magnetischen Vektorpotential herleiten lassen. Dieses Wissen können wir nun in unsere vorherige Rechnung einfliessen lassen und somit die verschiedenen Ausdrücke interpretieren.
+
+Im Faraday-Tensor steckt genau diese Information wie die beiden Felder zu den Potentialen stehen, nur dass dieser in der Sprache der Differentialformen formuliert ist.
 \begin{equation}
 	F = \begin{pmatrix}
 		0 & -E_1/c & -E_2/c & -E_3/c \\ E_1/c & 0 & B_3 & -B_2 \\ E_2/c & -B_3 & 0 & B_1 \\ E_3/c & B_2 & -B_1 & 0 
@@ -100,41 +143,3 @@ Diese Ausdruck können wir auch als Matrix schreiben und erhalten
 		0 & -E_1/c & -E_2/c & -E_3/c \\ E_1/c & 0 & B_3 & -B_2 \\ E_2/c & -B_3 & 0 & B_1 \\ E_3/c & B_2 & -B_1 & 0 
 	\end{pmatrix}.
 \end{equation*}
-
-\subsection{B und E aus Maxwell-Gleichungen herleiten}
-Aus dem Gaussschen Gesetz für Magnetfelder
-\begin{equation}
-	\nabla \cdot \vec{B} = 0
-\end{equation}
-und der Tatsache, dass jedes divergenzfreie, stetig differenzierbare Vektorfeld als Rotation eines anderen Vektorfelds lokal dargestellt werden kann,
-folgt
-\begin{equation}
-	\vec{B} = \nabla \times \vec{A}.
-\end{equation}
-Diese Beziehung steht in engem Zusammenhang mit dem Prinzip, dass die zweifache äussere Ableitung auf Differentialformen verschwindet. Hier beziehen wir uns aber auf Vektoren.
-
-Das Induktionsgesetz lautet
-\begin{equation}
-	\nabla \times \vec{E} = - \frac{\partial \vec{B}}{\partial t}.
-\end{equation}
-Setzt man für $\vec{B}$ die obige Definition ein, folgt
-\begin{equation}
-	\nabla \times \vec{E} = - \frac{\partial}{\partial t}(\nabla \times \vec{A}).
-\end{equation}
-
-Die Rotation eines Vektorfelds ist linear und daraus folgt
-\begin{equation}
-	\nabla \times \left( \vec{E} + \frac{\partial \vec{A}}{\partial t}\right) = 0.
-\end{equation}
-
-Ist ein Vektorfeld rotationsfrei, so kann es als Gradient eines Skalarfelds geschrieben werden.
-\begin{equation}
-	\vec{E} + \frac{\partial \vec{A}}{\partial t} = -\nabla \phi \Rightarrow \vec{E} = -\nabla \phi -\frac{\partial \vec{A}}{\partial t}
-\end{equation}
-Das Minuszeichen vor dem Gradienten des elektrischen Potentials $\phi$ ergibt sich daraus, dass das elektrische Feld immer in Richtung des niedrigeren Potentials zeigt.
-
-Jetzt haben wir zwei Formeln gefunden, mit welchen sich die elektrische Feldstärke und die magnetische Flussdichte aus dem elektrischen Potential und dem magnetischen Vektorpotential herleiten lassen. Dieses Wissen können wir nun in unsere vorherige Rechnung einfliessen lassen und somit die verschiedenen Ausdrücke interpretieren.
-
-Im Faraday-Tensor steckt genau diese Information wie die beiden Felder zu den Potentialen stehen, nur dass dieser in der Sprache der Differentialformen formuliert ist.
-
-
