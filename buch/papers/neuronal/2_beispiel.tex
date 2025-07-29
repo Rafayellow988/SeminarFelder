@@ -24,6 +24,7 @@ Sämtliche Resultate können mit dem Code im GitHub Repository \cite{neuronal:gi
 Im Repository ist zusätzlich eine Readme-Datei abgelegt, welche einige Punkte bezüglich Reproduzierbarkeit klärt.
 
 \subsection{Wellengleichung in zwei Dimensionen}\label{neuronal:subsection:wellengleichung}
+\kopfrechts{Wellengleichung}
 Die zu lösende Gleichung lautet
 \begin{equation}
     \frac{\partial^2 u}{\partial t^2} = c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right).
@@ -157,6 +158,7 @@ Die Approximation ist als Animation über den gesamten Zeitraum $t \in [0, 2]$ i
 \end{figure}
 
 \subsection{Burgers-Gleichung}\label{neuronal:subsection:burgers_gleichung}
+\kopfrechts{Burgers-Gleichung}
 Die Burgers-Gleichung ist gegeben als
 \begin{equation}
     \frac{\partial u}{\partial t} + u \frac{\partial u}{\partial x} = \nu \frac{\partial^2 u}{\partial x^2}.
@@ -222,6 +224,3 @@ Dieses Verhalten wird deutlich, wenn man den Lösungsplot zu fixen Zeiten erstel
     \includegraphics[width=0.48\textwidth]{papers/neuronal/images/burgers_solution_t06.png}
     \caption{Lösungs-Plot der Burgers-Gleichung zu verschiedenen Zeiten}\label{fig:loesung_burgers_fix_zeit}
 \end{figure}
-
-Der gesamte Code zur Umsetzung ist im GitHub-Repository des Seminars abgelegt \cite{neuronal:github_source_code}.
-

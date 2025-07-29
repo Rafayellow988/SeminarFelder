@@ -62,6 +62,7 @@ Das Netzwerk verfügt über einen Vektor \( \vartheta \in \mathbb{R}^n \) von \e
 Diese Parameter sollen so gewählt werden, dass das neuronale Netzwerk $\hat{\varphi}(x, t; \vartheta)$ die gesuchte Funktion $\varphi(x, t)$ möglichst genau approximiert.
 
 \subsection{Aufbau neuronaler Netzwerke}\label{neuronal:subsection:struktur_nn}
+\kopfrechts{Aufbau neuronaler Netzwerke}
 In diesem Abschnitt wird erläutert, was neuronale Netzwerke sind und wie sie aufgebaut sind.
 Grundsätzlich bestehen neuronale Netzwerke aus der Verkettung mehrerer Teilfunktionen:
 
@@ -106,6 +107,7 @@ out = activation(t2(temp))
 \end{lstlisting}
 
 \subsection{Formulierung als Optimierungsproblem}\label{neuronal:subsection:optimierungsproblem}
+\kopfrechts{Formulierung als Optimierungsproblem}
 In diesem Abschnitt wird die Wahl der \emph{trainierbaren Parameter} $\vartheta$ des neuronalen Netzwerks behandelt.
 Die Auswahl von $\vartheta$ stellt im Wesentlichen ein Minimierungsproblem dar.
 Die grundlegende Idee besteht darin, eine Funktion \( L(\vartheta) \) zu definieren, die den Approximationsfehler des Netzwerks quantifiziert.
@@ -151,6 +153,7 @@ Es ist wichtig zu beachten, dass die Terme für alle $x$ und $t$ in den jeweilig
 Daher müssen $x$ und $t$ diskretisiert werden, bevor $L(\vartheta)$ definiert werden kann.
 
 \subsection{Diskretisierung}\label{neuronal:subsection:diskretierung}
+\kopfrechts{Diskretisierung}
 Für die Diskretisierung werden drei Datensätze benötigt
 \begin{equation}
     \begin{aligned}
@@ -210,6 +213,7 @@ Die Wahl der Parameter des neuronalen Netzwerks ist nun ein Minimierungsproblem:
 \end{aufgabe}
 
 \subsection{Lösen des Minimierungsproblems}\label{neuronal:subsection:lösen_optimierungsproblem}
+\kopfrechts{Lösen des Minimierungsproblems}
 \( L \) lässt sich aus zwei Gründen nicht analytisch minimieren:
 \begin{enumerate}
     \item \( L \) hängt von \( \vartheta \in \mathbb{R}^n \) ab. 
@@ -276,6 +280,7 @@ Grund dafür ist, dass der Algorithmus genau auf diesen Punkten landen müsste.
 Ein bisschen daneben bedeutet dass es eine Richtung gibt, in die es abwärts -- und somit weg von diesen Punkten -- geht.
 
 \subsection{Qualitätsbewertung}\label{neuronal:subsection:qualitätsbewertung}
+\kopfrechts{Qualitätsbewertung}
 Für die Beurteilung der Qualität der Approximation bietet sich zunächst der Wert von \( L(\vartheta) \) nach Abschluss des Optimierungsalgorithmus an.
 Dieser Wert entspricht dem mittleren Approximationsfehler, der bei den Datenpunkten aus der Diskretisierung auftritt.
 
