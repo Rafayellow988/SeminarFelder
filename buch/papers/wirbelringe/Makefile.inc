@@ -10,5 +10,6 @@ dependencies-wirbelringe =						\
 	papers/wirbelringe/bewegung.tex					\
 	papers/wirbelringe/helmholtz.tex					\
 	papers/wirbelringe/slugModell.tex					\
-	papers/wirbelringe/Wirbelschleppe.tex
+	papers/wirbelringe/Wirbelschleppe.tex					\
+	papers/wirbelringe/WirbelringKanone.tex
 

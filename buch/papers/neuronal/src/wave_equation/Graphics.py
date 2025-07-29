@@ -6,74 +6,49 @@ import matplotlib.pyplot as plt
 from matplotlib import animation
 from matplotlib.animation import FuncAnimation
 
-from Residuals import analytical_solution, wave_equation_residual, initial_condition_loss, boundary_condition_loss, \
-    total_loss
+from Residuals import analytical_solution
 
 matplotlib.use('TkAgg')
 
-# Plots train & test error over training epochs
 def error_plot(train_error, test_error):
-    epochs = range(1, len(train_error) + 1)
-
-    plt.figure(figsize=(10, 6))
-    plt.plot(epochs, train_error, label='Training Error')
-    plt.plot(epochs, test_error, label='Testing Error')
+    plt.figure(figsize=(6, 3))
+    plt.semilogy(train_error, label="L(theta)")
+    plt.semilogy(test_error, label="L^1(theta)")
     plt.xlabel('Epoch')
     plt.ylabel('Error')
-    plt.title('Errors over Epochs')
+    plt.title('Verlauf Approximationsfehler')
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
     plt.show()
 
 
-# Creates an animated contour plot that updates through time
-def animate_neural_network(model, device):
-    error = []
-    grid_size = 1000
-    t_values = np.linspace(boundaries.T_MIN, boundaries.T_MAX, 51)
-    x_vals = np.linspace(boundaries.X_MIN, boundaries.X_MAX, grid_size)
-    y_vals = np.linspace(boundaries.Y_MIN, boundaries.Y_MAX, grid_size)
-    X, Y = np.meshgrid(x_vals, y_vals)
+def snapshot_plot(model, device, y=0.5, t=0.0):
+    m = 200
+    x = np.linspace(boundaries.X_MIN, boundaries.X_MAX, m)
 
-    u_pred_array = []
+    x_tensor = torch.tensor(x.reshape(-1, 1), dtype=torch.float32, device=device)
+    y_tensor = torch.full_like(x_tensor, y, device=device)
+    t_tensor = torch.full_like(x_tensor, t, device=device)
 
-    for t in t_values:
-        xyt = torch.FloatTensor(
-            np.column_stack([X.ravel(), Y.ravel(), np.full_like(X.ravel(), t)])
-        ).to(device)
-        u_pred_array.append(model(xyt).cpu().detach().numpy().reshape(grid_size, grid_size))
+    xyt = torch.cat([x_tensor, y_tensor, t_tensor], dim=-1)
 
-        x = torch.FloatTensor(np.column_stack([X.ravel()])).to(device)
-        y = torch.FloatTensor(np.column_stack([Y.ravel()])).to(device)
-        t = torch.FloatTensor(np.column_stack([np.full_like(X.ravel(), t)])).to(device)
-        #error.append(total_loss(model, x, y, t, device).item())
+    with torch.no_grad():
+        u = model(xyt).cpu().detach().numpy().flatten()
 
-    #print(f"Average loss on animated data: {np.mean(error)}")
-
-    fig, ax = plt.subplots(figsize=(20, 20))
-
-    cbar = None
-
-    def update(frame):
-        nonlocal cbar
-        t = t_values[frame]
-        U_pred = u_pred_array[frame]
-
-        cont = ax.contourf(X, Y, U_pred, levels=100, cmap='coolwarm')
-        ax.set_title(f"Wave solution at t = {t:.1f}")
-        ax.set_xlabel("x")
-        ax.set_ylabel("y")
-
-        if cbar is None:
-            cbar = fig.colorbar(cont, ax=ax, label='Wave Height')
-
-    ani = animation.FuncAnimation(fig, update, frames=len(t_values), interval=100, repeat=True)
-    ani.save("wave_animation.gif", writer='pillow', fps=5)
+    plt.figure(figsize=(6, 4), dpi=150)
+    plt.plot(x, u, label=f"t = {t:.2f}, y = {y:.2f}")
+    plt.xlabel("x")
+    plt.ylabel("u(x, t)")
+    plt.title(f"2D Wellengleichung bei t = {t}, y = {y}")
+    plt.grid(True)
+    plt.legend()
+    plt.tight_layout()
     plt.show()
 
+
 def animate_comparison(model, device):
-    grid_size = 500  # Use 1000 if memory allows
+    grid_size = 500
 
     t_values = np.linspace(boundaries.T_MIN, boundaries.T_MAX, 51)
     x_vals = np.linspace(boundaries.X_MIN, boundaries.X_MAX, grid_size)
@@ -85,26 +60,22 @@ def animate_comparison(model, device):
     mse_accumulator = []
 
     for t in t_values:
-        # Predict with neural net
         xyt = torch.FloatTensor(
             np.column_stack([X.ravel(), Y.ravel(), np.full_like(X.ravel(), t)])
         ).to(device)
 
-        u_pred = model(xyt, device).cpu().detach().numpy().reshape(grid_size, grid_size)
+        u_pred = model(xyt).cpu().detach().numpy().reshape(grid_size, grid_size)
         u_pred_array.append(u_pred)
 
-        # Analytical solution
         u_true = analytical_solution(xyt).cpu().detach().numpy().reshape(grid_size, grid_size)
         u_true_array.append(u_true)
 
-        # MSE at this time step (difference analytical - neural)
         mse = np.mean((u_pred - u_true) ** 2)
         mse_accumulator.append(mse)
 
     avg_mse = np.mean(mse_accumulator)
     print(f"Average difference analytical solution - neural network: {avg_mse}")
 
-    # Create the figure
     fig, axes = plt.subplots(1, 2, figsize=(20, 10))
     cbar1 = cbar2 = None
 
@@ -127,7 +98,6 @@ def animate_comparison(model, device):
         axes[1].set_xlabel("x")
         axes[1].set_ylabel("y")
 
-        # Recreate colorbars each frame for consistency
         if cbar1 is None:
             cbar1 = fig.colorbar(cont1, ax=axes[0], label='Wellenhöhe')
         if cbar2 is None:
