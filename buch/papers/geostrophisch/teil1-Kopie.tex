@@ -21,58 +21,43 @@ Quis autem vel eum iure reprehenderit qui in ea voluptate velit
 esse quam nihil molestiae consequatur, vel illum qui dolorem eum
 fugiat quo voluptas nulla pariatur?
 
-
-
-
-
-
 \subsection{Corioliskraft
 \label{geostrophisch:subsection:finibus}}
-Die Corioliskraft, welche durch die Rotation der Erde entsteht, beeinflusst die Bewegung von Ludtmassen und anderen frei beweglichen Körpern auf der Erdoberfläche. Sie ist eine Scheinkraft, die nur in einem rotierendem Bezugssystem wie dem der Erde auftritt. Die Stärke hängt von der geografischen Breite ab und nimmt in Richtung der Pole zu.
-Der Coriolisparameter $\boldsymbol{f}$ beschreibt diese Abhängigkeit und ist definiert als 
+At vero eos et accusamus et iusto odio dignissimos ducimus qui
+blanditiis praesentium voluptatum deleniti atque corrupti quos
+dolores et quas molestias excepturi sint occaecati cupiditate non
+provident, similique sunt in culpa qui officia deserunt mollitia
+animi, id est laborum et dolorum fuga \eqref{geostrophisch:equation1}.
 \begin{equation}
 \boldsymbol{
 f\, 
 = 
 2*\ohm*sin(\phi)
 }
-\label{geostrophisch:equation1}
+\label{eq:coriolisparameter}
 \end{equation}
-Wobei $\ohm$ die Winkelgeschwindigkeit der Erdrotation und $\phi$ die geografische Breite ist.
-Die Corioliskraft wirkt immer senkrecht zur Bewegungsrichtung. Auf der Nordhalbkugel lenkt sie Bewegungen nach rechts ab, auf der Südhalbkugel nach links. Mathematisch lässt sie sich für eine Geschwindigkeit $\vec{v}_g $ mit Hilfe des Kreuzproduktes darstellen:
+Et harum quidem rerum facilis est et expedita distinctio
+\ref{geostrophisch:section:teil2}.
+Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
+impedit quo minus id quod maxime placeat facere possimus, omnis
+voluptas assumenda est, omnis dolor repellendus
+\ref{geostrophisch:section:teil3}.
+Temporibus autem quibusdam et aut officiis debitis aut rerum
+necessitatibus saepe eveniet ut et voluptates repudiandae sint et
+molestiae non recusandae.
+Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
+voluptatibus maiores alias consequatur aut perferendis doloribus
+asperiores repellat.
 \begin{equation}
 \boldsymbol{
-\vec{F}_c 
-= 
--f\, *\vec{k} \times \vec{v}_g 
+f\, *\vec{k} \times \vec{v}_g 
++
+\frac{1}{\rho} \nabla p
+=
+0
 }
-\label{geostrophisch:equation2}
+\label{eq:coriolis}
 \end{equation}
-Wobei $\vec{k}$ ein Einheitsvektor in Vertikalrichtung ist. Durch das Zusammenspiel von Corioliskraft und Druckgradientkraft ergibt sich im Gleichgewicht der sogenannte geostrophische Wind, der parallel zu den Isobaren weht.
-\begin{equation}
-\vec{k} =
-\left(
-\begin{array}{c}
-0 \\
-0 \\
-1
-\end{array}
-\right)
-\label{geostrophisch:equation4}
-\end{equation}
-Das Kreuzprodukt von $\vec{k}$ mit  $\vec{v}_g $ sorgt dafür, dass die Corioliskraft immer genau senkrecht zur Bewegungsrichtung wirkt.
-
-
-
-
-
-
-
-
-
-
-
-
 
 \subsection{Gradientenkraft
 \label{geostrophisch:subsection:finibus}}
@@ -87,7 +72,7 @@ animi, id est laborum et dolorum fuga \eqref{geostrophisch:equation1}.
 = 
 -\frac{1}{\rho} \nabla p
 }
-\label{geostrophisch:equation3}
+\label{eq:gradient}
 \end{equation}
 Et harum quidem rerum facilis est et expedita distinctio
 \ref{geostrophisch:section:teil2}.
