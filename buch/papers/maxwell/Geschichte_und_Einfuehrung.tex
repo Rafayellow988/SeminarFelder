@@ -148,7 +148,39 @@ Damit lässt sich beweisen, dass
 	\vec{J} .
 \end{align*}
 gilt.
-
+Dabei Stellt sich noch die Frage, warum die Integrale beim letzten Schritt weggelassen dürfen werden.
+Ganz allgemein könnte man sich fragen, ob aus
+\[
+\int_A \vec{X}_1 \cdot d\vec{s} = \int_A \vec{X}_2 \cdot d\vec{s}
+\quad \forall A
+\]
+folgt, dass
+\[
+\vec{X_1} = \vec{X_2}
+\]
+ist. Dabei ist zu betonen, dass wir wirklich jede beliebige Fläche $A$ wählen dürfen.
+Somit kann man auch sagen, dass
+\[
+\int_A (\vec{X_1}-\vec{X_2}) \cdot d\vec{s} = 0
+\]
+ist.
+Mit einer Widerspruchsüberlegung lässt sich unsere Fragestellung belegen.
+Wir definieren zur einfachheit
+\[
+\vec{X_1}-\vec{X_2} = \vec{X}.
+\]
+Nun wäre $\vec{X} \ne 0$ an einer bestimmten Stelle $P$, also $\vec{X}(P) \ne 0$. Wählen wir jetzt ein ganz kleines Ebenenstück um diesen Punkt $P$ mit Normale $\hat{n}$ parallel zu $\vec{X}$, können wir $\vec{X}$ als konstante betrachten.
+Dann ist
+\begin{align*}
+	\vec{X} \cdot d\vec{s} 
+	&\approx
+	\vec{X}(P) \cdot \hat{n} \cdot ds
+	\\
+	\int_{A} \vec{X} \cdot d\vec{s}
+	&\approx
+	\vec{X}(P) \cdot \hat{n} \cdot (\text{Flächeninhalt}) \overset{!}{\ne} 0.
+\end{align*}
+Dieser Widerspruch zeigt, dass $\vec{X} = 0$ sein muss. Im Bezug auf unsere Herleitung wäre $X = (\nabla \times \vec{H}) - J$.
 \subsection{weitere grosse fortschritte, wichtigste entdeckucngen?}
 
 Im Jahre 1821 gelang Michael Faraday ein Experiment, bei dem sich ein stromdurchflossener Leiter unter Einfluss eines Dauermagneten um seine Achse drehte.
@@ -259,7 +291,13 @@ Da wir einmal über den Rand eines Volumens und einmal über das Volumen selbst 
 	dx \wedge dy \wedge dz 
 \end{align*}
 bekommen.
-Das kann nun in den allgemeinen Satz von Stokes eingesetzt werden
+Nun kann der allgemeine Satz von Stokes auch wie folgend formuliert werden
+\[
+\int_{V} d \ast \alpha 
+=
+\int_{\d V} \ast \alpha ,
+\]
+und das letzte Resultat kann eingesetzt werden
 \[
 \int_{\d V}
 E_x \, dy \wedge dz + E_y \, dz \wedge dx + E_z \, dx \wedge dy
@@ -293,7 +331,12 @@ Wie man gut erkennen kann, entspricht die linke Seite des Integralsatzes genau d
 	&=
 	\frac{\rho}{\varepsilon_0}.
 \end{align*} 
-
+Damit die Integrale beim letzten Schritt weggelassen werden dürfen, gilt es zu beachten, dass der allgemeine Satz von Stokes für jedes noch so kleine Volumen gilt:
+\[
+\lim_{\left| V \right| \to 0} \frac{1}{\left| V \right|} \int_{V} \rho \, dV = \rho(x),
+\]
+falls $x\in V$ während des Grenzübergangs.
+Das bedeutet, dass der Satz punktweise ausgewertet werden kann, was im Zusammenhang mit dem Gaussschen Integralsatz durchaus auch intuitiv Sinn ergibt.
 \subsection{das wo wir jetz kennen}
 
 folgt noch: Geschichte Maxwell,
@@ -303,5 +346,5 @@ differentailformen eher nicht
 bei maxwell 20 gleichhungne zerst, evtl sagen was es alles war, war nähmlich glaubs mehr drin als jetzt in den vier heuteigen
 
 
-\textbf{todo von korrekturen:}exkurse überearbeiten(mail an müller), titel besser machen
+%\textbf{todo von korrekturen:}exkurse überearbeiten(mail an müller), titel besser machen
 
