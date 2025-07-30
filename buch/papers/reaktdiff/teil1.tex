@@ -8,9 +8,8 @@
 %
 \section{Musterbildung in Reaktionsdiffusionssystemen
 \label{reaktdiff:section:teil1}}
-\kopfrechts{Problemstellung}
-In diesem Abschnitt wird die Reaktionsdiffusionsgleichung mit zwei Komponenten
-untersucht.
+
+In diesem Abschnitt wird die Reaktionsdiffusionsgleichung mit zwei Komponenten untersucht.
 Hierführ werden Turing-Muster betrachtet.
 Turing-Muster findet man häufig in der Natur zum Beispiel als Fellmuster bei Tieren oder  das Muster unserer Fingerabdrücke.
 Sie sind nach dem Mathematiker Alan Turing benannt, der sie 1952 in seinem Artikel \textit{The Chemical Basis of Morphogenesis} beschrieb.
@@ -23,27 +22,28 @@ Diese Kapitel basiert auf \cite{reaktdiff:turing_patterns_2019} \cite{reaktdiff:
 \label{reaktdiff:subsection:mathe}}
 Als Basis haben wir zwei Komponenten \(u\) und \(v\).
 Die Reaktionsdiffusionsgleichungen für \(u\) und \(v\) lauten
-\begin{align}
-    \label{reaktdiff:equation:reaktdiff2}
+\begin{align*}
+    %\label{reaktdiff:equation:reaktdiff1}
     \frac{du}{dt} &= D_u \Delta u + f(u,v)\\
+    \label{reaktdiff:equation:reaktdiff2}
     \frac{dv}{dt} &= D_v \Delta v + g(u,v)
-\end{align}
+\end{align*}
 wobei \(D_u, D_v > 0\) die Diffusionskoeffizienten der Komponenten \(u\) und \(v\) sind.
 
 Als erstes wird der erste Teil der Turing-Bedingung untersucht welche besagt das ein System ohne Diffusion Stabil sein muss.
 Hierfür wird eine lineare Stabilitätsanalyse ohne Diffusion durchgeführt.
 Man betrachte die Gleichungen
-\begin{align}
+\begin{equation}
     \label{reaktdiff:equation:reaktdiff2ohneDiff}
-    \frac{du}{dt} &= f(u_0,v_0)\\
-    \frac{dv}{dt} &= g(u_0,v_0).
-\end{align}
-Im fokus liegt die Stationärlösung \(u_0, v_0\) der Gleichungen \ref{reaktdiff:equation:reaktdiff2ohneDiff}, das heisst das \(f(u_0,v_0) = g(u_0,v_0) = 0\).
+    \frac{du}{dt} = f(u_0,v_0),\,
+    \frac{dv}{dt} = g(u_0,v_0).
+\end{equation}
+Im fokus liegt die Stationärlösung \(u_0, v_0\) der Gleichungen \ref{reaktdiff:equation:reaktdiff2ohneDiff1},, das heisst das \(f(u_0,v_0) = g(u_0,v_0) = 0\).
 Nun wird eine kleine Störung \(\epsilon\) zu \(u_0\) und \(v_0\) hinzugefügt.
-\begin{align}
+\begin{align*}
     \delta u &= \epsilon u - u_0 \\
     \delta v &= \epsilon v - v_0.
-\end{align}
+\end{align*}
 Die Störung \(\epsilon\) ist klein, das heisst \(\epsilon \ll 1\).
 Jetzt kann man die Reaktionsterme linearisiern.
 Hierfür nutzt man die Taylorentwicklung bis zum linearen Term.
@@ -64,7 +64,7 @@ Nun können die Gleichungen \ref{reaktdiff:equation:reaktdiff2ohneDiff} umgeschr
 Diese Gleichungen sind lineare partielle Differentialgleichungen.
 Die Frage ist nun wie sich die Störungen \(\delta u\) und \(\delta v\) mit der Zeit entwickeln, werden sie grösser oder kleiner.
 Wenn man sie als Matrixform screibt, erhält man
-\begin{equation}
+\begin{equation*}
     \label{reaktdiff:equation:reaktdiff2ohneDiffmatrix}
     \frac{d}{dt} \begin{pmatrix}
         \delta u\\
@@ -81,27 +81,27 @@ Wenn man sie als Matrixform screibt, erhält man
         f_u & f_v\\
         g_u & g_v
     \end{pmatrix}.
-\end{equation}
+\end{equation*}
 
 Die Matrix \(J\) ist die Jacobi-Matrix der Reaktionsgleichungen.
 Damit die Gleichung stabil ist, müssen die Eigenwerte der Matrix \(J\) negative Realteile haben.
 Hierbei ist es ausreichend dass die Spur \(\text{Tr}(J) < 0\) und die Determinante \(\det(J) > 0\) sind.
 Das kann man zeigen, indem
-\begin{equation}
+\begin{equation*}
     \det(A - \lambda I) = 0
-\end{equation}
+\end{equation*}
 gelöst wird, wobei \(I\) die Einheitsmatrix ist.
 Die Eigenwerte der Matrix \(J\) sind die Lösungen der Gleichung
-\begin{equation}
+\begin{equation*}
     \lambda^2 - \text{Tr}(J) \lambda + \det(J) = 0.
 \label{reaktdiff:equation:reaktdiff2ohneDifflinearisiert3}
-\end{equation}
+\end{equation*}
 Die Eigenwerte der Matrix \(J\) sind die Lösungen der Gleichung
-\begin{equation}
+\begin{equation*}
     \lambda_{1,2} = \frac{1}{2} \left( \text{Tr}(J) \pm 
     \sqrt{\text{Tr}(J)^2 - 4 \det(J)} \right).
 \label{reaktdiff:equation:reaktdiff2ohneDifflinearisiert4}
-\end{equation}
+\end{equation*}
 Hier sieht man das der Wert unter der Wurzel immmer kleiner ist als die Spur der Matrix \(J\) wenn die Determinante positiv ist.
 Somit muss die Spur der Matrix \(J\) negativ sein, damit die Eigenwerte negative Realteile haben.
 
@@ -110,9 +110,10 @@ Somit muss die Spur der Matrix \(J\) negativ sein, damit die Eigenwerte negative
 Nun wird die Diffusion in die Gleichungen \ref{reaktdiff:equation:reaktdiff2ohneDifflinearisiert2} und \ref{reaktdiff:equation:reaktdiff2ohneDifflinearisiert1} eingeführt.
 Die Gleichungen werden zu
 \begin{align}
-    \label{reaktdiff:equation:reaktdiff2mitDiff}
+    \label{reaktdiff:equation:reaktdiff2mitDiff1}
     \frac{d \delta u}{dt} &= D_u \Delta \delta u + 
     f_u \delta u + f_v \delta v\\
+    \label{reaktdiff:equation:reaktdiff2mitDiff2}
     \frac{d \delta v}{dt} &= D_v \Delta \delta v + 
     g_u \delta u + g_v \delta v.
 \end{align}
@@ -239,15 +240,15 @@ Die minimale Wellenzahl \(k\) ist also
 Die minimale Wellenzahl \(k_{\text{min}}\) wird nun in die Gleichung für die Determinante der Matrix \(A\) \ref{reaktdiff:equation:reaktdiffbedingunen} eingesetzt.
 Somit erhält man einen Ausdruck für den minimalwert Determinante welcher lautet
 \begin{equation*}
-    \det(A) = \frac{(D_vf_u + D_ug_v)^2}{D_uD_v} - f_u g_v - f_v g_u.
+    \det(A) = \frac{(D_v f_u + D_u g_v)^2}{D_u D_v} - f_u g_v - f_v g_u.
 \end{equation*}
 Die Determinante der Matrix \(A\) ist also positiv, wenn
 \begin{equation*}
-    \frac{(D_vf_u + D_ug_v)^2}{D_uD_v} - f_u g_v - f_v g_u > 0.
+    \frac{(D_v f_u + D_u g_v)^2}{D_u D_v} - f_u g_v - f_v g_u > 0.
 \end{equation*}
 oder umgestellt
 \begin{equation*}
-    D_ug_v+D_vf_u < 2\sqrt{D_uD_v(f_u g_v - f_v g_u)}.
+    D_ug_v+D_vf_u < 2\sqrt{D_u D_v(f_u g_v - f_v g_u)}.
 \end{equation*}
 Das ist ein weiterer Bedingung für die Musterbildung in Reaktionsdiffusionssystemen.
 Aus den Bedingungen kann man ein generelles System erkennen welches man Aktivator-Inhibitor System.
@@ -294,11 +295,11 @@ Somit erhalten wir folgende Bedingungen für die Musterbildung:
 
 \subsection{Einfaches Beispiel}
 Um das ganze an einem einfachen Beispiel zu zeigen werden
-\begin{align}
-f(u, v) &= a u + b v + k_1 \\
-g(u, v) &= c u + d v + k_2
+\begin{equation}
+f(u, v) = a u + b v + k_1, \,
+g(u, v) = c u + d v + k_2
 \label{reaktdiff:equ:ownreakterm}
-\end{align}
+\end{equation}
 als Reaktionsterme eingesetzt.
 Als Parameter werden \( a = 1.0,\; b = -1.4,\; c = 1.0,\; d = -1.1,\; k_1 = 0.4,\text{und }k_2 = 0.1 \) eingesetzt.
 Durch die Wahl von \(k_1\) und \(k_2\) befindet sich das Gleichgewicht bei \(u_0 = v_0 = 1\).
@@ -349,7 +350,9 @@ Setzen wir nun \(k^2_{\text{min}}\) in der Determinante ein erhält man
 \end{equation}
 Somit ist die Bedingung das die Deteminante mit Diffusion kleiner 0 wird erfüllt.
 Ein System mit diesen Reaktionsterme wird Muster bilden.
-Ein Beispiel ist in \ref{reaktdiff:fig:ownreakterm} zu sehen.
+Ein Beispiel ist in Abbildung \ref{reaktdiff:fig:ownreakterm} zu sehen.
+In Abbildung \ref{reaktdiff:fig:easyfft} ist die Räumliche FFT zu sehen.
+
 \begin{figure}
     \centering
     \includegraphics[width=0.32\linewidth]{papers/reaktdiff/images/simpleExample/easy_n1.png}
@@ -358,6 +361,28 @@ Ein Beispiel ist in \ref{reaktdiff:fig:ownreakterm} zu sehen.
     \caption{Verlauf der Simulation (Links nach Rechts) der Reaktions-Diffusiongleichung mit \ref{reaktdiff:equ:ownreakterm} als Reaktionsterm}
     \label{reaktdiff:fig:ownreakterm}
 \end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{papers/reaktdiff/images/simpleExample/fft_turing_1d.png}
+    \caption{FFT der Animation. Die rote Linie zeigt die theortische minimale Frequnez von \(f = k_{\min} / 2 \pi \approx 0.109\). Man sieht das die dominanten Frequnzen links des berechneten minimums ist.}
+    \label{reaktdiff:fig:easyfft}
+\end{figure}
+
+%\begin{table}[h!]
+%    \centering
+%    \begin{tabular}{lcc}
+%    \textbf{Größe} & \textbf{Theorie} & \textbf{Simulation (FFT)} \\
+%    Dominante Frequenz $f$ (1/Pixel) & $\approx 0{,}075$ & $\approx 0{,060$ \\
+%    Wellenlänge $\lambda = 1/f$ (Pixel) & $\approx 13{,}33$ & $\approx 16{,}67$ \\
+%    Wellenzahl $k = 2\pi / \lambda$ & $\approx 0{,}472$ & $\approx 0{,}377$ \\
+%    \end{tabular}
+%    \caption{Vergleich zwischen theoretischer und numerisch bestimmter dominanter Wellenlänge. Die leichte Abweichung ist auf numerische Effekte der Simulation zurückzuführen.}
+%    \label{tab:turing-vergleich}
+%\end{table}
+
+
+
 \subsection{Klasssische Reaktionsterme}
 In der Literatur werden viele weitere Reaktionsterme erwähnt.
 Eignige wenig werden hier im anschluss beleuchtet.
@@ -370,13 +395,13 @@ Die Reaktionsterme
      \label{reaktdiff:equ:fhn}
 \end{equation}
 fördern Wurmartigemuster.
-Ein Beispiel kann in \ref{reaktdiff:fig:fhn} gsehen werden
+Ein Beispiel kann in Abbildung \ref{reaktdiff:fig:fhn} gsehen werden
 \begin{figure}
     \centering
     \includegraphics[width=0.32\linewidth]{papers/reaktdiff/images/FitzHughNagumo/fhn_n1.png}
     \includegraphics[width=0.32\linewidth]{papers/reaktdiff/images/FitzHughNagumo/fhn_n300.png}
     \includegraphics[width=0.32\linewidth]{papers/reaktdiff/images/FitzHughNagumo/fhn_n999.png}
-    \caption{Verlauf der Simulation (Links nach Rechts) der Reaktions-Diffusiongleichung mit FitzHugh-Nagumo Modell(\ref{reaktdiff:equ:fhn}) als Reaktionsterm}
+    \caption{Verlauf der Simulation (Links nach Rechts) der Reaktions-Diffusiongleichung mit FitzHugh-Nagumo Modell(Gleichung \ref{reaktdiff:equ:fhn}) als Reaktionsterm}
     \label{reaktdiff:fig:fhn}
 \end{figure}
 
@@ -388,7 +413,7 @@ Die Reaktionsterme
     \label{reaktdiff:equ:gs}
 \end{equation}
 Bilden Muster welche man in der Natur bei Tieren sehen kann.
-Ein Beispiel ist in \ref{reaktdiff:fig:gs} zu sehen.
+Ein Beispiel ist in Abbildung \ref{reaktdiff:fig:gs} zu sehen.
 \begin{figure}
     \centering
     \includegraphics[width=0.32\linewidth]{papers/reaktdiff/images/GrayScott/gs_n1.png}

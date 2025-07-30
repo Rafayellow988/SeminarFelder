@@ -11,10 +11,10 @@
 \kopfrechts{Teil 3}
 Die simpleste Reaktionsdiffusionsgleichung ist die welche nur einen Stoff beschreibt.
 Die Reaktionsdiffusionsgleichung ist in diesem Fall
-\begin{equation}
+\begin{equation*}
 \label{reaktdiff:equation:fkpp}
 \frac{\partial c}{\partial t} = D \frac{\partial^2 c}{\partial x^2} + rc(1-c).
-\end{equation}
+\end{equation*}
 Um die komplexität zu reduzieren ist \(c\) eindimensional. 
 Die Gleichung \ref{reaktdiff:equation:fkpp} ist auch als Fisher-KPP-Gleichung\cite{reaktdiff:wikipedia_kpp_fisher} bekannt, benannt nach Roland Fisher, Andery Kolmogorov, Ivan Petrovsky und Nikolai Piskunov.
 
@@ -100,10 +100,10 @@ Die Stabilität der Stationärlösungen \(c = 0\) und \(c = 1\) zeigt, dass die 
 \label{reaktdiff:subsection:fkppwelle}}
 Die Fisher-KPP-Gleichung hat eine Wellenlösung.
 Die Wellenlösung ist eine Lösung der Form
-\begin{equation}
+\begin{equation*}
 \label{reaktdiff:equation:fkppwelle}
 c(x,t) = C(z), \text{ wobei } z = x - vt,
-\end{equation}
+\end{equation*}
 wobei \(C\) eine Funktion ist, die die Form der Welle beschreibt und \(v\) die Geschwindigkeit der Welle ist.
 Für die Lösung benötigen wir die Ableitungen
 \begin{align*}
@@ -112,10 +112,10 @@ Für die Lösung benötigen wir die Ableitungen
 \frac{\partial^2 c}{\partial x^2} &= C''(z).
 \end{align*}
 Setzen wir die Ableitungen in die Fisher-KPP-Gleichung \ref{reaktdiff:equation:fkpp} ein, erhalten wir
-\begin{equation}
+\begin{equation*}
 \label{reaktdiff:equation:fkppwelle2}
 -vC'(z) = D C''(z) + rC(z)(1-C(z)).
-\end{equation}
+\end{equation*}
 Das ist eine nichtlineare gewöhnliche Differentialgleichung für \(U(z)\)
 \begin{equation}
     \label{reaktdiff:equation:fkppwelle3}
