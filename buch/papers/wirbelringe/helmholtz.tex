@@ -1,0 +1,105 @@
+%
+% helmholtz.tex -- Geht auf die Helmholzschen Wirbelsätze ein
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Helmholzsche Wirbelsätze}
+
+\subsection{Historisches}
+
+Um das Verhalten von Wirbelringen besser zu verstehen, sind die sogenannten helmholzschen Wirbelsätze sehr nützlich. 
+Mitte 19. Jahrhundert formulierte der deutsche Physiker Hermann von Helmholtz drei Wirbelsätze und veröffentlichte diese im Journal für die reine und angewandte Mathematik \cite{Wirbelringe:JournalHelmholz}.
+In seinem veröffentlichten Paper definiert er auch gleich Linien, um die Wirbelbewegungen besser beschreiben zu können:
+
+\subsubsection*{Wirbellinien \label{paper:Wirbelringe:Wirbellinien}}
+
+Wirbellinien sind die „Mittelachse“ eines Wirbels. 
+Um diese Achse rotieren die Teile, welche Teil eines Wirbels sind. 
+Diese hat an sich kein Volumen, allerdings kann es sein, dass Teilchen auf dieser Achse zu liegen kommen. 
+Diese Linie kann an einem Bild eines Wirbels (zum Beispiel in Abbildung \ref{buch:papers:Wirbelringe:fig:flacher_wirbel}) beobachtet werden. 
+In der Praxis ist eine Wirbellinie nicht gerade, sondern gekrümmt oder sogar spiralenähnlich. 
+Ein idealer Wirbelring besitzt eine Wirbellinie in der Form eines Kreises.
+Des Weiteren ist eine sehr wichtige Eigenschaft, dass Wirbellinien nur auf einer Grenzfläche enden können, 
+wie wir in Abschnitt \ref{paper:Wirbelringe:Grenzflaechen} sehen werden.
+
+\subsubsection*{Wirbelfäden \label{paper:Wirbelringe:Wirbelfaden}}
+
+Ein Wirbelfaden ist ein Zylinder, welcher eine Wirbellinie als Zentrum des Zylinders hat. 
+Schneidet man nun diesen Zylinder senkrecht zu der Wirbellinie, ergibt sich ein einzelner Wirbel. 
+Wirbelfäden werden auch Wirbelröhren genannt.
+
+\subsection{Erster Helmholzscher Wirbelsatz}
+
+\begin{satz}
+    In Abwesenheit von wirbel anfachenden äusseren Kräften bleiben wirbelfreie Strömungsgebiete wirbelfrei.
+\end{satz}
+
+Kurz gesagt, Teilchen die ruhen, bleiben in Ruhe. 
+Siehe Abbildung \ref{buch:papers:Wirbelringe:fig:Helmholtz_1}: 
+Alle Teilchen in Blau bewegen sich nicht, da der Betrachtungsraum abgeschlossen ist und diese {\em nicht} teil eines Wirbels sind.
+
+\subsection{Zweiter Helmholzscher Wirbelsatz}
+
+\begin{satz}
+    Fluidelemente, die auf einer Wirbellinie liegen, verbleiben auf dieser Wirbellinie.
+\end{satz}
+
+Dies gilt auch, wenn sich diese Wirbellinie fortbewegt. 
+Allerdings heisst das nicht, dass Teilchen, die sich nicht von Anfang an auf einer Wirbellinie befinden, dort nicht mehr hingelangen können
+Siehe Abbildung \ref{buch:papers:Wirbelringe:fig:Helmholtz_2}:  
+Alle Teilchen in Blau bewegen sich nicht, da sich die Wirbellinie (relativ zum Betrachtungsraum) nicht bewegt.
+
+\subsection{Dritter Helmholzscher Wirbelsatz}
+
+\begin{satz}
+    Die Zirkulation entlang einer Wirbelröhre ist konstant. 
+\end{satz}
+
+Dieser Wirbelsatz kann mit dem Integral 
+\[
+\Gamma
+= 
+\oint_{c} \vec{u} \cdot d \vec{l}
+=
+\text{const}
+\]
+ausgedrückt werden. 
+\(\Gamma\) ist die Zirkulation des jeweiligen Flächenstücks der Gesamtwirbelröhre, \(c\) der Umfang des jeweiligen Flächenstücks und \(\vec{u}\) die Geschwindigkeit der rotierenden Partikel. 
+Siehe Abbildung \ref{buch:papers:Wirbelringe:fig:Helmholtz_3}: 
+Die Zirkulation, dargestellt als Grösse der Pfeile, ist bei allen 3 dargestellten Konturen der Wirbelröhre gleich gross 
+\input{papers/wirbelringe/fig/Helmholz_wirbelsätze.tex}
+
+\subsection{Stokes auf Wirbelringe angewendet \label{paper:Wirbelringe:Stokes}}
+
+Die Zirkulation \(\Gamma\) kann auch anders beschrieben werden. 
+Ein Wirbelring hat eine Wirbelstärke \(\omega\) welche als
+\[
+\omega
+=
+\operatorname{rot}\left( \vec{u} \right)
+\]
+definiert ist.
+Integriert man $\omega$ über eine Fläche \(A\) mit Rand \(c\), erhält man nach dem Satz von Stokes (Satz \ref{buch:green:green:satz:stokes})
+\begin{align*}
+\iint_{A} \vec{\omega} \cdot d \vec{A}
+&=
+\iint_{A} \operatorname{rot}\left(\vec{u}\right)\cdot  d \vec{A}\\
+&=
+\int_{\partial A} \vec{u} \cdot d\vec{l},
+\end{align*}
+also die Zirkulation.
+
+\subsection{Verhalten an Grenzflächen \label{paper:Wirbelringe:Grenzflaechen}}
+
+Mit den vorhergegangenen Regel kann das Verhalten von Wirbelringen nun einfacher nachvollzogen werden. 
+Allerdings können noch nicht alle Verhalten begründet werden. 
+Bisher wurde nur das Verhalten im freien Raum betrachtet und Grenzflächen ignoriert. 
+Allerdings sind diese wichtig, da in der Realität immer solche Grenzflächen vorhanden sind. 
+Grenzflächen entstehen immer dort, wo es Übergänge von Materialien gibt oder am Rand dem Betrachtungsraum.
+
+Aus der Identität der Quellenfreiheit von Wirbel (Gleichung \ref{paper:Wirbelringe:eq:wIdent}) lässt sich schliessen das Teilchen in einem Wirbelring Grenzflächen nicht durchqueren, da sonst die Divergenz nicht \(0\) ist. 
+Allerdings können Wirbellinien darauf enden, da die Teilchen zwar auf der Grenzfläche sind, diese aber nicht überschreiten. 
+
+Was man allerdings nicht vergessen sollte ist, bei Grenzflächen welche durch Übergänge von Materialien entstehen, die Teilchen diese Grenzfläche nicht überschreiten können. 
+Zum Beispiel ein Wirbel welcher in Wasser entstanden ist, kann sich nicht auf die daran grenzende Wand ausweiten.  

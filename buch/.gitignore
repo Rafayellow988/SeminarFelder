@@ -18,6 +18,7 @@ paper.ilg
 paper.ind
 paper.run.xml
 paper.toc
+paper.out
 paper.synctex.gz
 publish
 *.swp
@@ -25,3 +26,9 @@ papername.tex
 paper.pdf
 test*.pdf
 chapter.pdf
+separata
+SeminarFelder-blx.bib
+SeminarFelder.idx
+SeminarFelder.run.xml
+SeminarFelder.synctex.gz
+SeminarFelder.toc
