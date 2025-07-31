@@ -4,7 +4,7 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Bewegung \label{paper:Wirbelringe:Bewegung}}
+\section{Bewegung eines Wirbelrings\label{paper:Wirbelringe:Bewegung}}
 
 Bisher wurde die Bewegung eines Wirbelrings noch nicht weiter betrachtet. 
 Doch wie man bereits bei Rauchringen beobachten kann, bleiben diese nicht an einem Ort stehen, sondern bewegen sich. 
@@ -28,21 +28,24 @@ Die elektrodynamischen Grössen haben jeweils ein Gegenstück in der Strömungsm
     \begin{tabular}{lcl}
     stromdurchflossener Leiter          & \(\Leftrightarrow \) & Wirbelfaden \\
     Stromstärke \(I\)                   & \(\Leftrightarrow \) & Zirkulation \(\Gamma\) \\
-    Stromdichtevektor \(\hat{j}\)       & \(\Leftrightarrow \) & Wirbelstärkevektor \(\vec{\omega}\)\\ % Dieser Zusammenhang wird hier nicht explizit verwendet aber veranschaulicht den Zusammenhang besser als die Zirkulation
+    Stromdichtevektor \(\hat{j}\)       & \(\Leftrightarrow \) & Wirbelstärkevektor \(\vec{\omega}\)\\
     magnetische Feldstärke \(\vec{H}\)  & \(\Leftrightarrow \) & Geschwindigkeit \(\vec{u}\) \\
     \end{tabular}
 \end{center}
 
-Die Maxwellgleichungen (Siehe Abschnitt \ref{chapter:maxwell}) sehen auch vor das \(\vec{B}\) Feld quellenfrei ist. 
+Im Folgenden wird der Wirbelstärkevektor nicht verwenden.
+Jedoch ist der Zusammenhang vom Wirbelstärkevektor zum Stromdichtevektor etwas intuitiver als die Zirkulation zur Stromstärke.
+
+Die Maxwellgleichungen (siehe Abschnitt \ref{chapter:maxwell}) sehen vor das \(\vec{B}\) Feld quellenfrei ist. 
 Da wir nur inkompressible Fluide betrachten, ist dies gegeben.
 
-Setzt man nun die entsprechenden Grössen in das Biot-Savart-Gesetz  
+Setzt man nun die entsprechenden Grössen in das Biot-Savart-Gesetz
 \[
 d\, \vec{u}
 =
 \frac{\Gamma}{4\pi}\frac{d\, \vec{l} \times \vec{r}}{\left\lvert \vec{r}^{\,3}\right\rvert }
 \]
-ein lässt sich damit die Geschwindigkeitsänderung eines Punktes durch ein Wirbelfadenelement beschreiben.
+ein, lässt sich damit die Geschwindigkeitsänderung eines Punktes durch ein Wirbelfadenelement beschreiben.
 Um die Rechnung zu vereinfachen, können wir annehmen, dass der Wirbelfaden vergleichsweise dünn ist, verglichen zum Durchmesser des Rings aus der Wirbellinie.
 Mit dem Integral über diesen Wirbelfaden
 \[
@@ -51,11 +54,10 @@ Mit dem Integral über diesen Wirbelfaden
 \int_{\text{Wirbellinie}} \frac{\Gamma}{4\pi}\frac{d\, \vec{l} \times \vec{r}}{\left\lvert \vec{r}^{\,3}\right\rvert}
 \]
 erhalten wir die induzierte Geschwindigkeit, welche durch den Wirbelfaden entsteht.
-Analog dazu in der Elektrotechnik wäre die Selbstinduktion einer Spule(so nicht ganz korrekt da man die für die Induktion die Ableitung des B-Felds verwendet).
-Daher spricht man auch in der Strömungsmechanik von einer induzierten Geschwindigkeit.
+Da dieses Gesetz aus der Elektrotechnik stammt, spricht man in der Strömungsmechanik von einer induzierten Geschwindigkeit.
 
 Um nun die selbstinduzierte Geschwindigkeit zu berechnen, wählen wir ein in der X-Y Plane liegender Wirbelring mit Radius \(a\).
-Der Wirbelfaden ist einfachheitshalber verglichen zum Radius der Wirbellinie sehr klein.
+Der Radius des Wirbelfaden ist einfachheitshalber verglichen zum Radius der Wirbellinie vernachlässigbar klein.
 Uns interessiert irgendein Punkt, der auf der Wirbellinie liegt.
 Somit ist
 \(
@@ -72,7 +74,7 @@ d\,\vec{l} =
     0\\
     a\\
     0    
-\end{pmatrix}\). 
+\end{pmatrix}d\,\varphi \). 
 Setzt man diese in
 \[
 \vec{u}
@@ -94,10 +96,11 @@ Schlussendlich ergibt sich
 \]
 woraus ersichtlich ist das, je kleiner der Wirbelring, desto schneller bewegt er sich.
 
-Würde man dieselbe Rechnung für einen geraden Wirbelfaden durchrechnen, würde auffallen, dass das Ergebnis für Punkte auf der Wirbellinie null ist.
+Würde man dieselbe Rechnung für einen geraden Wirbelfaden durchführen, würde auffallen, dass das Ergebnis für Punkte auf der Wirbellinie null ist.
 Der Wirbelfaden induziert sich selbst keine Geschwindigkeit.
 Daher, damit sich ein Wirbelfaden von sich bewegt, muss dieser zumindest ein wenig gekrümmt sein.
-Ein zweiter Wirbelfaden führt auch zu einer induzierten Geschwindigkeit, betrachten wir hier aber nicht weiter. 
+Ein zweiter Wirbelfaden würde zu einer induzierten Geschwindigkeit führen. 
+Dies betrachten wir hier aber nicht weiter. 
 
 \subsection{Bewegung eines Teilchens}
 
