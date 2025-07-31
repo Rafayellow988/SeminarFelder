@@ -7,8 +7,9 @@ dependencies-maxwell =							\
 	papers/maxwell/packages.tex					\
 	papers/maxwell/main.tex						\
 	papers/maxwell/references.bib					\
-	papers/maxwell/teil0.tex					\
+	papers/maxwell/Geschichte_und_Einfuehrung.tex					\
 	papers/maxwell/teil1.tex					\
-	papers/maxwell/teil2.tex					\
-	papers/maxwell/teil3.tex
+	papers/maxwell/df.tex					\
+	papers/maxwell/InhomogeneMaxwellgleichungen.tex\
+
 
