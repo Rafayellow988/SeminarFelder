@@ -27,7 +27,7 @@ Dabei definieren wir folgende Grössen:
 Tritt nun das Slug aus dem Zylinder aus, so trifft die Aussenseite des Slugs auf das stehende Fluid (bspw. Luft oder Wasser) ausserhalb.
 Dies bewirkt aufgrund der Geschwindigkeitsdifferenz zwischen dem Inneren des Slugs und dem stehenden Fluid aussen eine Scherung.
 Die Scherung hat zur Folge, dass sich das Slug beginnt \glqq aufzurollen\grqq und somit einen Wirbel formt. 
-Die in Abschnitt \ref{paper:Wirbelringe:Stokes} genannte Formel für die Zirkulation kann näherungsweise auf
+Die in Abschnitt \ref{Wirbelringe:Stokes} genannte Formel für die Zirkulation kann näherungsweise auf
 \begin{equation*}
 \Gamma 
 \approx 
@@ -52,13 +52,13 @@ Grundsätzlich wird die Länge und das Volumen eines Slugs als
     L
     &=
     \int_{0}^{t}u_p(t)dt\\
-    \label{paper:Wirbelringe:eq:sluglaenge}
+    \label{Wirbelringe:eq:sluglaenge}
     V
     &=
     LA
 \end{align}
 definiert.
-Es kann aber angenommen werden, dass das Slug mit konstanter Geschwindigkeit bewegt wird, weshalb \eqref{paper:Wirbelringe:eq:sluglaenge} zu
+Es kann aber angenommen werden, dass das Slug mit konstanter Geschwindigkeit bewegt wird, weshalb \eqref{Wirbelringe:eq:sluglaenge} zu
 \begin{equation}
     L
     =
@@ -76,7 +76,7 @@ Nun kann noch der lineare Impuls eines Zylindrischen Slugs als
     I_{\text{slug}}
     =
     \rho ALv_0
-    \label{paper:Wirbelringe:eq:slugImp}
+    \label{Wirbelringe:eq:slugImp}
 \end{align}
 definiert werden.
 Der Drehimpuls eines kontinuierlichen Mediums
@@ -102,7 +102,7 @@ als Drehimpuls eines rotierenden Fluidvolumens
     \int_{V}\rho\cdot(\frac{1}{2}\vec{x}\times\vec{\omega})d\mathbf{V}
     =
     \frac{\rho}{2}\int_{V}\vec{x}\times\vec{\omega}d\mathbf{V}
-    \label{paper:Wirbelringe:eq:Drehimpuls}
+    \label{Wirbelringe:eq:Drehimpuls}
 \end{equation}
 hergeleitet werden. 
 
@@ -113,7 +113,7 @@ Wie bereits erwähnt ist $\omega$ tangential zum Wirbelrung und dieser ist Achse
     \omega_\phi(r,z)\hat{e}_\phi
 \end{equation*}
 sowie, dass die Drehimpulsrichtung entlang der Symmetrieachse verläuft.
-Um jetzt der gewünschten Formel näherzukommen, wird \eqref{paper:Wirbelringe:eq:Drehimpuls} in das Zylinderkoordinatensystem umgewandelt.
+Um jetzt der gewünschten Formel näherzukommen, wird \eqref{Wirbelringe:eq:Drehimpuls} in das Zylinderkoordinatensystem umgewandelt.
 Dabei wird
 \begin{equation*}
     \vec{x}
@@ -133,7 +133,7 @@ wobei das Kreuzprodukt der beiden
     r\omega_\phi\hat{e}_z - z\omega_\phi\hat{e}_r
 \end{equation*}
 ergibt. Da der Wirbelring achsensymmetrisch ist, wird nur die $\hat{e}_z$-Komponente betrachtet.
-Als Nächstes können die gefundenen werte für $\vec{x}$ und $\vec{\omega}$ in \eqref{paper:Wirbelringe:eq:Drehimpuls} eingesetzt werden.
+Als Nächstes können die gefundenen werte für $\vec{x}$ und $\vec{\omega}$ in \eqref{Wirbelringe:eq:Drehimpuls} eingesetzt werden.
 Sie wird dann zu
 \begin{equation*}
     \vec{I}_z
@@ -151,16 +151,16 @@ Die 2 kürzt sich heraus und die beiden r können zu $r^2$ zusammengefasst werde
     \vec{I}_z
     =
     \pi\rho\int_{A}r^2\vec{\omega}(r,z)drdz
-    \label{paper:Wirbelringe:eq:achssymImp},
+    \label{Wirbelringe:eq:achssymImp},
 \end{equation}
 mit welcher sich der Impuls eines Wirbelrings ermitteln lässt.
 
-Da die Impulserhaltung gilt, entspricht \eqref{paper:Wirbelringe:eq:achssymImp} ungefähr \eqref{paper:Wirbelringe:eq:slugImp} also
+Da die Impulserhaltung gilt, entspricht \eqref{Wirbelringe:eq:achssymImp} ungefähr \eqref{Wirbelringe:eq:slugImp} also
 \begin{equation}
     \rho\pi\int_{A}r^2\vec{\omega}(r,z)drdz
     \approx
     \rho ALu_0
-    \label{paper:Wirbelringe:eq:Igleichi}.
+    \label{Wirbelringe:eq:Igleichi}.
 \end{equation}
 Glücklicherweise existiert der Integralsatz von Stokes, welcher besagt
 \begin{equation*}
@@ -181,7 +181,7 @@ kann dies mittels Satz von Stokes in
     \int_{A}\omega(r,z)drdz
 \end{equation*}
 umgewandelt werden.
-Angenehmerweise kann dies dann in Gleichung \eqref{paper:Wirbelringe:eq:Igleichi} eingesetzt werden und es ergibt sich eine kompakte Formel
+Angenehmerweise kann dies dann in Gleichung \eqref{Wirbelringe:eq:Igleichi} eingesetzt werden und es ergibt sich eine kompakte Formel
 \begin{equation*}
     \Gamma
     =
@@ -195,6 +195,7 @@ Setzt man dann noch
 \end{equation*}
 ein, erhält man folgende Formel zur Berechnung der Zirkulation
 \begin{equation*}
+    \label{Wirbelringe:eq:naeherungZirkulation}
     \Gamma
     =
     2v_0L\frac{r_w^2}{D^2}.
