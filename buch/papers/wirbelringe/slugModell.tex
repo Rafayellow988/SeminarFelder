@@ -11,7 +11,7 @@ Dafür kann dieser Prozess mit Hilfe des Slug-Modells relativ genau angenähert 
 
 \subsection{Grundlegende Idee}
 Im Slug-Modell wird der Impulsaustritt eines Fluidvolumens (eines Fluid-Slugs\footnote{Im Deutschen: Fluid-Pfropfen}) aus einer Öffnung beschrieben.
-Man kann sich dies als Zylinder aus Flüssigkeit vorstellen, welcher innerhalb kürzester Zeit aus einer Öffnung geschoben wird.
+Man kann sich dies als Zylinder aus Flüssigkeit vorstellen, welcher innerhalb kürzester Zeit aus einer Öffnung geschoben wird wie in Abbildung \ref{Wirbelringe:fig:slug_formung}.
 Dabei definieren wir folgende Grössen:
 \begin{itemize}
     \item Zirkulation $\Gamma$
@@ -20,6 +20,7 @@ Dabei definieren wir folgende Grössen:
     \item Slug-Durchmesser $D$
     \item Slug-Länge $L$
     \item Wirbelring-Querschnittsradius $r_w$
+    \item Ausstosszeit \(T\)
 \end{itemize}
 
 \input{papers/wirbelringe/fig/slug_formung.tex}
@@ -40,10 +41,10 @@ Alternativ kann man auch über den Impulsvergleich auf eine Formel für die Zirk
 Dies funktioniert aber nur unter folgenden Annahmen:
 \begin{itemize}
     \item Das verwendete Fluid ist inkompressibel.
-    \item Der linear ausgestoßene Impuls des Slugs wird in den Drehimpuls des Wirbelrings überführt.
+    \item Der linear ausgestossene Impuls des Slugs wird in den Drehimpuls des Wirbelrings überführt.
     \item Die Öffnungsfläche ist mit $A = \frac{\pi}{4} D^2$ angenähert.
     \item $\omega$ ist tangential zum Wirbelring.
-    \item Der entstehende Wirbelring ist Achsensymmetrisch.
+    \item Der entstehende Wirbelring ist achsensymmetrisch.
 \end{itemize} 
 
 Zunächst die Grundlagen:
@@ -51,7 +52,7 @@ Grundsätzlich wird die Länge und das Volumen eines Slugs als
 \begin{align}
     L
     &=
-    \int_{0}^{t}u_p(t)dt\\
+    \int_{0}^{T}u_p(t)dt\\
     \label{Wirbelringe:eq:sluglaenge}
     V
     &=
@@ -83,13 +84,13 @@ Der Drehimpuls eines kontinuierlichen Mediums
 \begin{equation*}
     \vec{I}
     =
-    \int_{V}\rho(\vec{x})\vec{x}\times\vec{v}(\vec{x})d\mathbf{V}
+    \int_{V}\rho(\vec{x})\vec{x}\times\vec{v}(\vec{x})\,d\mathbf{V}
 \end{equation*}
 kann durch Einsetzen der Vektor-Idetität für Rotationstensoren \cite{Wirbelringe:batchelor1967}
 \begin{equation*}
     \vec{x}\times\vec{v}
     =
-    \frac{1}{2}\int_{V}\vec{x}\times(\nabla\times\vec{v})d\mathbf{V}
+    \frac{1}{2}\int_{V}\vec{x}\times(\nabla\times\vec{v})\,d\mathbf{V}
     =
     \frac{1}{2}\vec{x}\times\omega
 \end{equation*}
@@ -97,16 +98,16 @@ als Drehimpuls eines rotierenden Fluidvolumens
 \begin{equation}
     \vec{I}
     =
-    \int_{V}\rho\cdot\vec{x}\times\vec{v}d\mathbf{V}
+    \int_{V}\rho\cdot\vec{x}\times\vec{v}\,d\mathbf{V}
     =
-    \int_{V}\rho\cdot(\frac{1}{2}\vec{x}\times\vec{\omega})d\mathbf{V}
+    \int_{V}\rho\cdot(\frac{1}{2}\vec{x}\times\vec{\omega})\,d\mathbf{V}
     =
-    \frac{\rho}{2}\int_{V}\vec{x}\times\vec{\omega}d\mathbf{V}
+    \frac{\rho}{2}\int_{V}\vec{x}\times\vec{\omega}\,d\mathbf{V}
     \label{Wirbelringe:eq:Drehimpuls}
 \end{equation}
 hergeleitet werden. 
 
-Wie bereits erwähnt ist $\omega$ tangential zum Wirbelrung und dieser ist Achsensymmetrisch.
+Wie bereits erwähnt ist $\omega$ tangential zum Wirbelring und dieser ist Achsensymmetrisch.
 \begin{equation*}
     \vec{\omega}
     =
@@ -138,37 +139,37 @@ Sie wird dann zu
 \begin{equation*}
     \vec{I}_z
     =
-    \frac{\rho}{2}\int_{0}^{2\pi}\int_{A}r\omega_\phi(r,z)\cdot rd\phi drdz.
+    \frac{\rho}{2}\int_{0}^{2\pi}\int_{A}r\omega_\phi(r,z)\cdot r\,d\phi \,dr\,dz.
 \end{equation*}
 Da keine Integrationsvariable von $\phi$ abhängt, kann das erste Integral sofort gelöst werden. Nach Einsetzen der Integrationsgrenzen ergibt sich
 \begin{equation*}
     \vec{I}_z
     =
-    \frac{\rho}{2}2\pi\int_{A}r^2\omega_\phi(r,z)drdz.
+    \frac{\rho}{2}2\pi\int_{A}r^2\omega_\phi(r,z)\,dr\,dz.
 \end{equation*}
 Die 2 kürzt sich heraus und die beiden r können zu $r^2$ zusammengefasst werden, was zu folgender Formel führt
 \begin{equation}
     \vec{I}_z
     =
-    \pi\rho\int_{A}r^2\vec{\omega}(r,z)drdz
+    \pi\rho\int_{A}r^2\vec{\omega}(r,z)\,dr\,dz
     \label{Wirbelringe:eq:achssymImp},
 \end{equation}
 mit welcher sich der Impuls eines Wirbelrings ermitteln lässt.
 
 Da die Impulserhaltung gilt, entspricht \eqref{Wirbelringe:eq:achssymImp} ungefähr \eqref{Wirbelringe:eq:slugImp} also
 \begin{equation}
-    \rho\pi\int_{A}r^2\vec{\omega}(r,z)drdz
+    \rho\pi\int_{A}r^2\vec{\omega}(r,z)\,dr\,dz
     \approx
     \rho ALu_0
     \label{Wirbelringe:eq:Igleichi}.
 \end{equation}
 Glücklicherweise existiert der Integralsatz von Stokes, welcher besagt
 \begin{equation*}
-    \int_{S}rot\vec{A}\cdot\hat{n}dS 
+    \int_{S}\operatorname{rot}\vec{A}\cdot\hat{n}\,dS 
     =
     \oint_{C}\vec{A}\cdot d\vec{r}.
 \end{equation*}
-Da die Rotation definiert ist als 
+Da die Zirkulation definiert ist als 
 \begin{equation*}
     \Gamma
     =
@@ -178,7 +179,7 @@ kann dies mittels Satz von Stokes in
 \begin{equation*}
     \Gamma
     =
-    \int_{A}\omega(r,z)drdz
+    \int_{A}\omega(r,z)\,dr\,dz
 \end{equation*}
 umgewandelt werden.
 Angenehmerweise kann dies dann in Gleichung \eqref{Wirbelringe:eq:Igleichi} eingesetzt werden und es ergibt sich eine kompakte Formel
