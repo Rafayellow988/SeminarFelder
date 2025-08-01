@@ -57,22 +57,22 @@ erhalten wir die induzierte Geschwindigkeit, welche durch den Wirbelfaden entste
 Da dieses Gesetz aus der Elektrotechnik stammt, spricht man in der Strömungsmechanik von einer induzierten Geschwindigkeit.
 
 Um nun die selbstinduzierte Geschwindigkeit zu berechnen, wählen wir ein in der X-Y Plane liegender Wirbelring mit Radius \(a\).
-Der Radius des Wirbelfaden ist einfachheitshalber verglichen zum Radius der Wirbellinie vernachlässigbar klein.
+Der Radius des Wirbelfadens ist der Einfachheit halber im Vergleich zum Radius der Wirbellinie vernachlässigbar klein.
 Uns interessiert irgendein Punkt, der auf der Wirbellinie liegt.
 Somit ist
 \(
 \vec{r} = 
 \begin{pmatrix}
-    a\\
-    0\\
+    a \cos \varphi\\
+    a \sin \varphi\\
     0    
 \end{pmatrix}\)
 und
 \(
 d\vec{l} = 
 \begin{pmatrix}
-    0\\
-    a\\
+    -a \sin \varphi\\
+    a \cos \varphi\\
     0    
 \end{pmatrix}
 \,d\varphi \). 
@@ -82,23 +82,23 @@ Setzt man diese in
 =
 \int_{0}^{2\pi} \frac{\Gamma }{4\pi}\frac{d \vec{l} \times \vec{r}}{\left\lvert \vec{r}^{\,3}\right\rvert },
 \]
-ein erhält man 
+ein und löst das Kreuzprodukt auf, erhält man 
 \[
 \vec{u}
 =
 \frac{\Gamma a^{2}}{4\pi a^{3}} \int_{0}^{2\pi} \hat{z}\, d\varphi.
 \]
-Da der Kreisumfang und der Radius immer senkrecht zueinander ist der Richtungsvektor \(\hat{z}\). 
+Da der Kreisumfang und der Radius immer senkrecht zueinander stehen, ist der Richtungsvektor \(\hat{z}\). 
 Schlussendlich ergibt sich
 \[
 \vec{u}
 =
 \frac{\Gamma }{2 a}\hat{z},
 \]
-woraus ersichtlich ist das, je kleiner der Wirbelring, desto schneller bewegt er sich.
+woraus ersichtlich ist, dass je kleiner der Wirbelring, desto schneller bewegt er sich.
 
 Würde man dieselbe Rechnung für einen geraden Wirbelfaden durchführen, würde auffallen, dass das Ergebnis für Punkte auf der Wirbellinie null ist.
-Der Wirbelfaden induziert sich selbst keine Geschwindigkeit.
+Der Wirbelfaden induziert sich auf Grund der Symmetrie selbst keine Geschwindigkeit.
 Daher, damit sich ein Wirbelfaden von sich bewegt, muss dieser zumindest ein wenig gekrümmt sein.
 Ein zweiter Wirbelfaden würde zu einer induzierten Geschwindigkeit führen. 
 Dies betrachten wir hier aber nicht weiter. 
