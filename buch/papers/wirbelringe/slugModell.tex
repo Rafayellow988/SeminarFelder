@@ -37,7 +37,7 @@ Die in Abschnitt \ref{Wirbelringe:Stokes} genannte Formel für die Zirkulation k
 vereinfacht werden.
 
 \subsection{Berechnungen zum Slug-Modell}
-Alternativ kann man auch über den Impulsvergleich auf eine Formel für die Zirkulation kommen.
+Alternativ kann man auch über den Impulsvergleich auf die Formel \eqref{Wirbelringe:eq:naeherungZirkulation} für die Zirkulation kommen.
 Dies funktioniert aber nur unter folgenden Annahmen:
 \begin{itemize}
     \item Das verwendete Fluid ist inkompressibel.
@@ -52,7 +52,7 @@ Grundsätzlich wird die Länge und das Volumen eines Slugs als
 \begin{align}
     L
     &=
-    \int_{0}^{T}u_p(t)dt\\
+    \int_{0}^{T}u_p(t)\,dt\\
     \label{Wirbelringe:eq:sluglaenge}
     V
     &=
@@ -66,27 +66,28 @@ Es kann aber angenommen werden, dass das Slug mit konstanter Geschwindigkeit bew
     u_0T
 \end{equation}
 wird.
-Nun kann noch der lineare Impuls eines Zylindrischen Slugs als
+Nun kann noch der lineare Impuls eines zylindrischen Slugs als
 \begin{align}
     I_{\text{slug}}
-    =
+    &=
     m_{\text{slug}}v_0\\
+    \intertext{definiert werden. Da die Masse}
     m_{\text{slug}}
-    =
+    &=
     \rho AL\\
+    \intertext{ist, folgt}
     I_{\text{slug}}
-    =
-    \rho ALv_0
+    &=
+    \rho ALv_0.
     \label{Wirbelringe:eq:slugImp}
 \end{align}
-definiert werden.
 Der Drehimpuls eines kontinuierlichen Mediums
 \begin{equation*}
     \vec{I}
     =
     \int_{V}\rho(\vec{x})\vec{x}\times\vec{v}(\vec{x})\,d\mathbf{V}
 \end{equation*}
-kann durch Einsetzen der Vektor-Idetität für Rotationstensoren \cite{Wirbelringe:batchelor1967}
+kann durch Einsetzen der Vektor-Identität für Rotationstensoren \cite{Wirbelringe:batchelor1967}
 \begin{equation*}
     \vec{x}\times\vec{v}
     =
@@ -134,8 +135,8 @@ wobei das Kreuzprodukt der beiden
     r\omega_\phi\hat{e}_z - z\omega_\phi\hat{e}_r
 \end{equation*}
 ergibt. Da der Wirbelring achsensymmetrisch ist, wird nur die $\hat{e}_z$-Komponente betrachtet.
-Als Nächstes können die gefundenen werte für $\vec{x}$ und $\vec{\omega}$ in \eqref{Wirbelringe:eq:Drehimpuls} eingesetzt werden.
-Sie wird dann zu
+Als Nächstes können die gefundenen Werte für $\vec{x}$ und $\vec{\omega}$ in \eqref{Wirbelringe:eq:Drehimpuls} eingesetzt werden.
+\(\vec{I}_z\) wird dann zu
 \begin{equation*}
     \vec{I}_z
     =
@@ -143,7 +144,7 @@ Sie wird dann zu
 \end{equation*}
 Da keine Integrationsvariable von $\phi$ abhängt, kann das erste Integral sofort gelöst werden. Nach Einsetzen der Integrationsgrenzen ergibt sich
 \begin{equation*}
-    \vec{I}_z
+    I_z
     =
     \frac{\rho}{2}2\pi\int_{A}r^2\omega_\phi(r,z)\,dr\,dz.
 \end{equation*}
@@ -163,7 +164,7 @@ Da die Impulserhaltung gilt, entspricht \eqref{Wirbelringe:eq:achssymImp} ungef�
     \rho ALu_0
     \label{Wirbelringe:eq:Igleichi}.
 \end{equation}
-Glücklicherweise existiert der Integralsatz von Stokes, welcher besagt
+Glücklicherweise besagt der Integralsatz von Stokes, dass
 \begin{equation*}
     \int_{S}\operatorname{rot}\vec{A}\cdot\hat{n}\,dS 
     =
@@ -194,13 +195,14 @@ Setzt man dann noch
     =
     \frac{\pi}{4} D^2
 \end{equation*}
-ein, erhält man folgende Formel zur Berechnung der Zirkulation
-\begin{equation*}
+ein, erhält man 
+\begin{equation}
     \label{Wirbelringe:eq:naeherungZirkulation}
     \Gamma
     =
-    2v_0L\frac{r_w^2}{D^2}.
-\end{equation*}
+    2v_0L\frac{r_w^2}{D^2}
+\end{equation}
+zur Berechnung der Zirkulation.
 \textbf{Hinweis:}
 Die Formel ist dimensionsrichtig und physikalisch motiviert, jedoch nicht durch experimentelle oder numerische Studien bestätigt.
 Daher ist sie als \emph{heuristische Näherung} zu interpretieren, insbesondere für qualitative Abschätzungen oder geometrisch skalierte Vergleiche.
