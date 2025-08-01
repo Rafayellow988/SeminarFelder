@@ -120,19 +120,22 @@ Anschliessend können wir das Ergebnis in den allgemeinen Satz von Stokes einset
 \left(\frac{\d H_z}{\d y} - \frac{\d H_y}{\d z}\right) \, dy \wedge dz .
 \]
 Nun kann man die linke Seite der Gleichung in eine normale Integralform und die rechte Seite in eine differentielle Form umschreiben, wobei die Klammerausdrücke rechts die Rotation und die Wedgeprodukte die orientierten Flächenstücke bilden: 
-\[
+\begin{equation}
+\label{maxwell:equation:ampere:integral}
 \int_{\d A} \vec{H} \cdot d\vec{l}
 =
 \iint_{A} (\nabla \times \vec{H}) \cdot d\vec{s} .
-\]
-Damit lässt sich beweisen, dass
-\begin{align*}
+\end{equation}
+Damit ist gezeigt, dass die integrale Form der Gleichung
+\begin{align}
 	\int_{\d A}
 	\vec{H} \cdot d\vec{l}
 	&=
 	\iint_{A}
 	\vec{J} \cdot d\vec{s}
+	\notag
 	\\
+	\intertext{in der Gleichung \refeq{maxwell:equation:ampere:integral} eingesetzt wird}
 	\iint_{A}
 	(
 	\nabla \times \vec{H}
@@ -142,45 +145,80 @@ Damit lässt sich beweisen, dass
 	&=
 	\iint_{A}
 	\vec{J} \cdot d\vec{s}
+	\label{maxwell:equation:ampere:differential}
 	\\
+	\intertext{genau der Differentialform}
 	\nabla \times \vec{H}
 	&=
-	\vec{J} .
-\end{align*}
-gilt.
+	\vec{J} 
+\end{align}
+entsricht.
+
 Dabei Stellt sich noch die Frage, warum die Integrale beim letzten Schritt weggelassen dürfen werden.
-Ganz allgemein könnte man sich fragen, ob aus
-\[
-\int_A \vec{X}_1 \cdot d\vec{s} = \int_A \vec{X}_2 \cdot d\vec{s}
-\quad \forall A
-\]
-folgt, dass
-\[
-\vec{X_1} = \vec{X_2}
-\]
-ist. Dabei ist zu betonen, dass wir wirklich jede beliebige Fläche $A$ wählen dürfen.
-Somit kann man auch sagen, dass
-\[
-\int_A (\vec{X_1}-\vec{X_2}) \cdot d\vec{s} = 0
-\]
-ist.
-Mit einer Widerspruchsüberlegung lässt sich unsere Fragestellung belegen.
-Wir definieren zur einfachheit
-\[
-\vec{X_1}-\vec{X_2} = \vec{X}.
-\]
-Nun wäre $\vec{X} \ne 0$ an einer bestimmten Stelle $P$, also $\vec{X}(P) \ne 0$. Wählen wir jetzt ein ganz kleines Ebenenstück um diesen Punkt $P$ mit Normale $\hat{n}$ parallel zu $\vec{X}$, können wir $\vec{X}$ als konstante betrachten.
-Dann ist
-\begin{align*}
-	\vec{X} \cdot d\vec{s} 
-	&\approx
-	\vec{X}(P) \cdot \hat{n} \cdot ds
-	\\
-	\int_{A} \vec{X} \cdot d\vec{s}
-	&\approx
-	\vec{X}(P) \cdot \hat{n} \cdot (\text{Flächeninhalt}) \overset{!}{\ne} 0.
-\end{align*}
-Dieser Widerspruch zeigt, dass $\vec{X} = 0$ sein muss. Im Bezug auf unsere Herleitung wäre $X = (\nabla \times \vec{H}) - J$.
+\begin{lemma}
+	\label{maxwell:lemma:ampere}
+	Sind $\vec{X}_1$ und $\vec{X}_2$ Vektorfelder, für die für jede Fläche $A$
+	\[
+	\int_A \vec{X}_1\cdot d\vec{s}
+	=
+	\int_A \vec{X}_2\cdot d\vec{s}
+	\]
+	gilt, dann ist $\vec{X}_1=\vec{X}_2$.
+\end{lemma}
+
+\begin{proof}
+	\label{maxwell:proof:ampere}
+	Mit einer Widerspruchsüberlegung lässt sich das lemma \ref{maxwell:lemma:ampere} beweisen.
+	Der Einfachheit halber setzen wir $\vec{X} = \vec{X}_1-\vec{X}_2$.
+	Nun wäre $\vec{X} \ne 0$ an einer bestimmten Stelle $P$, also $\vec{X}(P) \ne 0$.
+	Wählen wir jetzt ein ganz kleines Ebenenstück um diesen Punkt $P$ mit Normale $\hat{n}$ parallel zu $\vec{X}$, können wir $\vec{X}$ als konstante betrachten. 
+	Dann ist
+	\begin{align*}
+		\vec{X} \cdot d\vec{s} 
+		&\approx
+		\vec{X}(P) \cdot \hat{n} \cdot ds
+		\\
+		\int_{A} \vec{X} \cdot d\vec{s}
+		&\approx
+		\vec{X}(P) \cdot \hat{n} \cdot (\text{Flächeninhalt}) \overset{!}{\ne} 0.
+	\end{align*}
+	Dieser Widerspruch zeigt, dass $\vec{X} = 0$ sein muss.
+\end{proof}
+Das Lemma \ref{maxwell:lemma:ampere} kann nun auf Gleichung \refeq{maxwell:equation:ampere:differential} angewendent werden, und erhalten dadurch die Differentialform des ampèreschen Gesetzes ohne Integrale.
+%Ganz allgemein könnte man sich fragen, ob aus
+%\[
+%\int_A \vec{X}_1 \cdot d\vec{s} = \int_A \vec{X}_2 \cdot d\vec{s}
+%\quad \forall A
+%\]
+%folgt, dass
+%\[
+%\vec{X_1} = \vec{X_2}
+%\]
+%ist. Dabei ist zu betonen, dass wir wirklich jede beliebige Fläche $A$ wählen dürfen.
+%Somit kann man auch sagen, dass
+%\[
+%\int_A (\vec{X_1}-\vec{X_2}) \cdot d\vec{s} = 0
+%\]
+%ist.
+%Mit einer Widerspruchsüberlegung lässt sich unsere Fragestellung belegen.
+%Wir definieren zur einfachheit
+%\[
+%\vec{X_1}-\vec{X_2} = \vec{X}.
+%\]
+%Nun wäre $\vec{X} \ne 0$ an einer bestimmten Stelle $P$, also $\vec{X}(P) \ne 0$. Wählen wir jetzt ein ganz kleines Ebenenstück um diesen Punkt $P$ mit Normale $\hat{n}$ parallel zu $\vec{X}$, können wir $\vec{X}$ als konstante betrachten.
+%Dann ist
+%\begin{align*}
+%	\vec{X} \cdot d\vec{s} 
+%	&\approx
+%	\vec{X}(P) \cdot \hat{n} \cdot ds
+%	\\
+%	\int_{A} \vec{X} \cdot d\vec{s}
+%	&\approx
+%	\vec{X}(P) \cdot \hat{n} \cdot (\text{Flächeninhalt}) \overset{!}{\ne} 0.
+%\end{align*}
+%Dieser Widerspruch zeigt, dass $\vec{X} = 0$ sein muss. Im Bezug auf unsere Herleitung wäre $X = (\nabla \times \vec{H}) - J$.
+
+
 \subsection{weitere grosse fortschritte, wichtigste entdeckucngen?}
 
 Im Jahre 1821 gelang Michael Faraday ein Experiment, bei dem sich ein stromdurchflossener Leiter unter Einfluss eines Dauermagneten um seine Achse drehte.
