@@ -304,38 +304,42 @@ E_x \, dx + E_y \, dy + E_z \, dz ,
 \]
 welche dieses Mal dem elektrischen Feld entspricht.
 Da wir einmal über den Rand eines Volumens und einmal über das Volumen selbst integrieren müssen, benötigen wir aber eine 2-Form und eine 3-Form, welche wir bekanntlich mit dem Hodgeoperator
-\begin{align*}
+\begin{align}
 	\ast\alpha
 	&=
 	E_x \, dy \wedge dz + E_y \, dz \wedge dx + E_z \, dx \wedge dy
+	\label{maxwell:equasion:gauss:zweiform}
 	\\
-\text{und mit der äusseren Ableitung}
-	\\
-	d\ast\alpha
+	\intertext{und mit der äusseren Ableitung}
+	d{\ast}\alpha
 	&=
 	\frac{\d E_x}{\d x} \, dx \wedge dy \wedge dz +
 	\frac{\d E_y}{\d y} \, dy \wedge dz \wedge dx +
 	\frac{\d E_z}{\d z} \, dz \wedge dx \wedge dy
+	\notag
 	\\ 
 	&=
 	\frac{\d E_x}{\d x} \, dx \wedge dy \wedge dz +
 	\frac{\d E_y}{\d y} \, dx \wedge dy \wedge dz +
 	\frac{\d E_z}{\d z} \, dx \wedge dy \wedge dz
+	\notag
 	\\
 	&=
 	\left(
 	\frac{\d E_x}{\d x} + \frac{\d E_y}{\d y} + \frac{\d E_z}{\d z}
 	\right)
 	dx \wedge dy \wedge dz 
-\end{align*}
+	\label{maxwell:equasion:gauss:dreiform}
+\end{align}
 bekommen.
-Nun kann der allgemeine Satz von Stokes auch wie folgend formuliert werden
+
+Der allgemeine Satz von Stokes für $\ast \alpha$ ist
 \[
 \int_{V} d \ast \alpha 
 =
-\int_{\d V} \ast \alpha ,
+\int_{\d V} \ast \alpha .
 \]
-und das letzte Resultat kann eingesetzt werden
+Setzt man Gleichung \refeq{maxwell:equasion:gauss:zweiform} und \refeq{maxwell:equasion:gauss:dreiform} ein, erhalten wir
 \[
 \int_{\d V}
 E_x \, dy \wedge dz + E_y \, dz \wedge dx + E_z \, dx \wedge dy
@@ -346,35 +350,124 @@ E_x \, dy \wedge dz + E_y \, dz \wedge dx + E_z \, dx \wedge dy
 \right)
 dx \wedge dy \wedge dz .
 \]
-Wird die Gleichung nun in Vektorform umgeformt, folgt nun der Integralsatz von Gauss:
-\[
-\int_{\d V}
-\vec{E} \cdot d\vec{s}
-=
-\int_{V}
-(\nabla \cdot \vec{E}) \, dv .
-\]
-Wie man gut erkennen kann, entspricht die linke Seite des Integralsatzes genau dem Satz von Gauss für elektrische Felder und der Zusammenhang zwischen der Integralform und differentiellen Form ist auch gerade gegeben:
+In Vektorform umgeformt, folgt nun der Integralsatz von Gauss:
+\begin{equation}
+	\label{maxwell:equasion:gauss:gauss}
+	\int_{\d V}
+	\vec{E} \cdot d\vec{s}
+	=
+	\int_{V}
+	(\nabla \cdot \vec{E}) \, dV .
+\end{equation}
+Nun können wir in bei der integralen Form des Satzes von Gauss
 \begin{align*}
 	\oint_{A=\d V} \vec{E} \cdot d\vec{s}
 	&=
 	\frac{1}{\varepsilon_0}\int_{V} \rho \, dv
 	\\
+	\intertext{den Integralsatz \refeq{maxwell:equasion:gauss:gauss} einsetzen:}
 	\int_{V}
 	(\nabla \cdot \vec{E}) \, dv
 	&=
-	\frac{1}{\varepsilon_0}\int_{V} \rho \, dv
+	\frac{1}{\varepsilon_0}\int_{V} \rho \, dv .
 	\\
+	\intertext{Dadurch folgt mit Hilfe des Lemma \ref{maxwell:lemma:gauss} die differentielle Form}
 	\nabla \cdot \vec{E}
 	&=
 	\frac{\rho}{\varepsilon_0}.
 \end{align*} 
-Damit die Integrale beim letzten Schritt weggelassen werden dürfen, gilt es zu beachten, dass der allgemeine Satz von Stokes für jedes noch so kleine Volumen gilt:
-\[
-\lim_{\left| V \right| \to 0} \frac{1}{\left| V \right|} \int_{V} \rho \, dV = \rho(x),
-\]
-falls $x\in V$ während des Grenzübergangs.
-Das bedeutet, dass der Satz punktweise ausgewertet werden kann, was im Zusammenhang mit dem Gaussschen Integralsatz durchaus auch intuitiv Sinn ergibt.
+
+\begin{lemma}
+	\label{maxwell:lemma:gauss}
+	Für den allgemeinen Satz von Stokes gilt für jedes noch so kleine Volumen
+	\[
+	\lim_{\left| V \right| \to 0} \frac{1}{\left| V \right|} \int_{V} \rho \, dV = \rho(x),
+	\]
+	falls $x\in V$ während des Grenzübergangs.
+\end{lemma}
+\begin{proof}
+	Die Funktion $\rho$ ist stetig in $x$. Das bedeutet, für jedes noch so kleine $\varepsilon > 0$ existiert ein $\delta > 0$.
+	Dabei muss für alle Punkte $y$ mit
+	\[
+	\left|y-x\right| < \delta	
+	\]
+	gelten, dass 
+	\[
+	\left|\rho(y) - \rho(x)\right| < \varepsilon
+	\] 
+	gilt.
+	Wir wählen ein Volumen $V$ mit Eigenschaften $x \in V$ und der Durchmesser von $V$ ist kleiner als $\delta$, was bedeutet, dass jeder Punkt $y \in V$ in einer Kugel um $x$ mit Radius $\delta$ liegt.
+	Somit gilt auch für alle $y \in V$
+	\[
+	\left|\rho(y) - \rho(x)\right| < \varepsilon .
+	\]
+	Betrachten wir nun die Differenz zwischen dem Mittelwert über das volume $V$ und dem Wert $x$
+	\[
+	\left|
+	\frac{1}{\left|V\right|}
+	\int_{V}
+	\rho(y)
+	\,
+	dV
+	-
+	\rho(x)
+	\right|
+	\]
+	und nehmen das $\rho(x)$ ins Integral
+	\[
+	\left|
+	\frac{1}{\left|V\right|}
+	\int_{V}
+	(\rho(y) - \rho(x)) \, dV
+	\right|
+	\leq
+	\frac{1}{\left|V\right|}
+	\int_{V}
+	\left|
+	\rho(y) - \rho(x)
+	\right|
+	\,
+	dV .
+	\]
+	Da wir wissen, dass $\left|\rho(y) - \rho(x)\right| < \varepsilon \quad \forall \, y \in V$, folgt
+	\[
+	\frac{1}{\left|V\right|}
+	\int_{V}
+	\left|
+	\rho(y) - \rho(x)
+	\right|
+	\,
+	dV
+	<
+	\frac{1}{\left|V\right|}
+	\int_{V}
+	\varepsilon
+	\,
+	dV
+	=
+	\varepsilon .
+	\]
+	Somit ist 
+	\[
+	\left|
+	\frac{1}{\left|V\right|}
+	\int_{V}
+	(\rho(y) - \rho(x)) \, dV
+	\right|
+	<
+	\varepsilon
+	\]
+	für jedes $\varepsilon > 0$, wenn $V$ sehr klein ist, mit Durchmesser $< \delta$ und Lemma \ref{maxwell:lemma:gauss} ist korrekt.
+\end{proof}
+
+%Damit die Integrale beim letzten Schritt weggelassen werden dürfen, gilt es zu beachten, dass der allgemeine Satz von Stokes für jedes noch so kleine Volumen gilt:
+%\[
+%\lim_{\left| V \right| \to 0} \frac{1}{\left| V \right|} \int_{V} \rho \, dV = \rho(x),
+%\]
+%falls $x\in V$ während des Grenzübergangs.
+%Das bedeutet, dass der Satz punktweise ausgewertet werden kann, was im Zusammenhang mit dem Gaussschen Integralsatz durchaus auch intuitiv Sinn ergibt.
+
+
 \subsection{das wo wir jetz kennen}
 
 folgt noch: Geschichte Maxwell,

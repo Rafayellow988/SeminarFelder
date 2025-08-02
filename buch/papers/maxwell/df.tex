@@ -1,6 +1,4 @@
 \section{Homogene Maxwellgleichungen}
-test
-
 Die homogenen Maxwellgleichungen bekommen wir durch die äussere Ableitung des Feldstärketensors, den wir in (Abschnitt vom Herr widmer, ref) durch $F = dA$ erhalten haben
 \[
 F_{\mu\nu}
@@ -86,74 +84,81 @@ Für besseres Verständnis setzen wir nun konkret die Komponenten von $F_{\mu\nu
 \end{align*}
 was schön den Komponenten oberhalb der Diagonalen von $F_{\mu\nu}$ entspricht.
 Nun wenden wir die äussere Ableitung auf die 2-Form $F$ an, man beachte dabei Definition(index wedges)$dx^i \wedge dx^j \wedge dx^k = dx^{ijk}$
- \begin{align*}
+ \begin{align*}	
  	dF =
- 	&\cancel{\, - \, \frac{\d E_1}{\d x^0} \, dx^{001}} \cancel{\, - \, \frac{\d E_1}{\d x^1} \, dx^{101}}
- 	 - \frac{\d E_1}{\d x^2} \, dx^{201} - \frac{\d E_1}{\d x^3} \, dx^{301}
+ 	& -  \frac{1}{c} \frac{\d E_1}{\d x^0} \, dx^{001} - \frac{1}{c} \frac{\d E_1}{\d x^1} \, dx^{101}
+ 	- \frac{1}{c} \frac{\d E_1}{\d x^2} \, dx^{201} - \frac{1}{c} \frac{\d E_1}{\d x^3} \, dx^{301}
  	\\
- 	&\cancel{\, - \, \frac{\d E_2}{\d x^0} \, dx^{002}} - \frac{\d E_2}{\d x^1} \, dx^{102}
- 	 \cancel{\, - \, \frac{\d E_2}{\d x^2} \, dx^{202}} - \frac{\d E_2}{\d x^3} \, dx^{302}
+ 	&- \frac{1}{c} \frac{\d E_2}{\d x^0} \, dx^{002} - \frac{1}{c} \frac{\d E_2}{\d x^1} \, dx^{102}
+ 	 - \frac{1}{c} \frac{\d E_2}{\d x^2} \, dx^{202} - \frac{1}{c} \frac{\d E_2}{\d x^3} \, dx^{302}
  	\\
- 	&\cancel{\, - \, \frac{\d E_3}{\d x^0} \, dx^{003}} - \frac{\d E_3}{\d x^1} \, dx^{103}
- 	 - \frac{\d E_3}{\d x^2} \, dx^{203} \cancel{\, - \, \frac{\d E_3}{\d x^3} \, dx^{303}}
+ 	& - \frac{1}{c} \frac{\d E_3}{\d x^0} \, dx^{003} - \frac{1}{c} \frac{\d E_3}{\d x^1} \, dx^{103}
+ 	- \frac{1}{c} \frac{\d E_3}{\d x^2} \, dx^{203} - \frac{1}{c} \frac{\d E_3}{\d x^3} \, dx^{303}
  	\\
- 	&+ \frac{\d B_3}{\d x^0} \, dx^{012} \cancel{\, + \, \frac{\d B_3}{\d x^1} \, dx^{112}}
- 	 \cancel{\, + \, \frac{\d B_3}{\d x^2} \, dx^{212}} + \frac{\d B_3}{\d x^3} \, dx^{312}
+ 	&+ \phantom{\frac{1}{c}}\frac{\d B_3}{\d x^0} \, dx^{012} + \phantom{\frac{1}{c}}\frac{\d B_3}{\d x^1} \, dx^{112}
+ 	+ \phantom{\frac{1}{c}}\frac{\d B_3}{\d x^2} \, dx^{212} + \phantom{\frac{1}{c}}\frac{\d B_3}{\d x^3} \, dx^{312}
  	\\
- 	&- \frac{\d B_2}{\d x^0} \, dx^{013} \cancel{\, - \, \frac{\d B_2}{\d x^1} \, dx^{113}}
- 	 - \frac{\d B_2}{\d x^2} \, dx^{213} \cancel{\, - \, \frac{\d B_2}{\d x^3} \, dx^{313}}
+ 	&- \phantom{\frac{1}{c}}\frac{\d B_2}{\d x^0} \, dx^{013} - \phantom{\frac{1}{c}}\frac{\d B_2}{\d x^1} \, dx^{113}
+ 	- \phantom{\frac{1}{c}}\frac{\d B_2}{\d x^2} \, dx^{213} - \phantom{\frac{1}{c}}\frac{\d B_2}{\d x^3} \, dx^{313}
  	\\
- 	&+ \frac{\d B_1}{\d x^0} \, dx^{023} + \frac{\d B_1}{\d x^1} \, dx^{123}
- 	 \cancel{\, + \, \frac{\d B_1}{\d x^2} \, dx^{223}} \cancel{\, + \, \frac{\d B_1}{\d x^3} \, dx^{323}} %\,
+ 	&+ \phantom{\frac{1}{c}}\frac{\d B_1}{\d x^0} \, dx^{023} + \phantom{\frac{1}{c}}\frac{\d B_1}{\d x^1} \, dx^{123}
+ 	+ \phantom{\frac{1}{c}}\frac{\d B_1}{\d x^2} \, dx^{223} + \phantom{\frac{1}{c}}\frac{\d B_1}{\d x^3} \, dx^{323} .
  	\\
- 	%\text{die gestrichenen Komponenten sind $=0$, da $dx^{ii}=0}$ gilt:}
- 	\\
+	\intertext{Bei doppelten Indizes der Wedgeprodukte sind diese $=0$:}
+	dF
  	=
- 	&- \frac{\d E_1}{\d x^2} \, dx^{201} - \frac{\d E_1}{\d x^3} \, dx^{301}
- 	 - \frac{\d E_2}{\d x^1} \, dx^{102} - \frac{\d E_2}{\d x^3} \, dx^{302}
+ 	&- \frac{1}{c} \frac{\d E_1}{\d x^2} \, dx^{201} - \frac{1}{c} \frac{\d E_1}{\d x^3} \, dx^{301}
+ 	 - \frac{1}{c} \frac{\d E_2}{\d x^1} \, dx^{102} - \frac{1}{c} \frac{\d E_2}{\d x^3} \, dx^{302}
  	\\
- 	&- \frac{\d E_3}{\d x^1} \, dx^{103} - \frac{\d E_3}{\d x^2} \, dx^{203}
- 	 + \frac{\d B_3}{\d x^0} \, dx^{012} + \frac{\d B_3}{\d x^3} \, dx^{312}
+ 	&- \frac{1}{c} \frac{\d E_3}{\d x^1} \, dx^{103} - \frac{1}{c} \frac{\d E_3}{\d x^2} \, dx^{203}
+ 	 + \phantom{\frac{1}{c}} \frac{\d B_3}{\d x^0} \, dx^{012} + \phantom{\frac{1}{c}} \frac{\d B_3}{\d x^3} \, dx^{312}
  	\\
- 	&- \frac{\d B_2}{\d x^0} \, dx^{013} - \frac{\d B_2}{\d x^2} \, dx^{213}
- 	 + \frac{\d B_1}{\d x^0} \, dx^{023} + \frac{\d B_1}{\d x^1} \, dx^{123} \, , 
- \end{align*}
-sortieren nach aufsteigenden Indizes
- \begin{align*}
+ 	&- \phantom{\frac{1}{c}} \frac{\d B_2}{\d x^0} \, dx^{013} - \phantom{\frac{1}{c}} \frac{\d B_2}{\d x^2} \, dx^{213}
+ 	 + \phantom{\frac{1}{c}} \frac{\d B_1}{\d x^0} \, dx^{023} + \phantom{\frac{1}{c}} \frac{\d B_1}{\d x^1} \, dx^{123} .  
+	\\
+	\intertext{Weiter sortieren wir nach aufsteigenden Indizes}
 	dF =
-	&- \frac{\d E_1}{\d x^2} \, dx^{012} - \frac{\d E_1}{\d x^3} \, dx^{013}
-	 + \frac{\d E_2}{\d x^1} \, dx^{012} - \frac{\d E_2}{\d x^3} \, dx^{023}
+	&- \frac{1}{c} \frac{\d E_1}{\d x^2} \, dx^{012} - \frac{1}{c} \frac{\d E_1}{\d x^3} \, dx^{013}
+	 + \frac{1}{c} \frac{\d E_2}{\d x^1} \, dx^{012} - \frac{1}{c} \frac{\d E_2}{\d x^3} \, dx^{023}
 	\\
-	&+ \frac{\d E_3}{\d x^1} \, dx^{013} + \frac{\d E_3}{\d x^2} \, dx^{023}
-	 + \frac{\d B_3}{\d x^0} \, dx^{012} + \frac{\d B_3}{\d x^3} \, dx^{123}
+	&+ \frac{1}{c} \frac{\d E_3}{\d x^1} \, dx^{013} + \frac{1}{c} \frac{\d E_3}{\d x^2} \, dx^{023}
+	 + \phantom{\frac{1}{c}} \frac{\d B_3}{\d x^0} \, dx^{012} + \phantom{\frac{1}{c}} \frac{\d B_3}{\d x^3} \, dx^{123}
 	\\
-	&- \frac{\d B_2}{\d x^0} \, dx^{013} + \frac{\d B_2}{\d x^2} \, dx^{123}
-	 + \frac{\d B_1}{\d x^0} \, dx^{023} + \frac{\d B_1}{\d x^1} \, dx^{123}
+	&- \phantom{\frac{1}{c}} \frac{\d B_2}{\d x^0} \, dx^{013} + \phantom{\frac{1}{c}} \frac{\d B_2}{\d x^2} \, dx^{123}
+	 + \phantom{\frac{1}{c}} \frac{\d B_1}{\d x^0} \, dx^{023} + \phantom{\frac{1}{c}} \frac{\d B_1}{\d x^1} \, dx^{123}
 \end{align*}
 und fassen anschliessend alles zusammen
 \begin{align*}
 	dF =
-	&\left( - \frac{\d E_1}{\d x^2} + \frac{\d E_2}{\d x^1} + \frac{\d B_3}{\d x^0} \right) dx^{012}
+	&\left( - \frac{1}{c} \frac{\d E_1}{\d x^2} + \frac{1}{c} \frac{\d E_2}{\d x^1} + \phantom{\frac{1}{c}} \frac{\d B_3}{\d x^0} \right) dx^{012}
 	\\
-	+&\left( - \frac{\d E_1}{\d x^3} + \frac{\d E_3}{\d x^1} - \frac{\d B_2}{\d x^0} \right) dx^{013}
+	+&\left( - \frac{1}{c} \frac{\d E_1}{\d x^3} + \frac{1}{c} \frac{\d E_3}{\d x^1} - \phantom{\frac{1}{c}} \frac{\d B_2}{\d x^0} \right) dx^{013}
 	\\
-	+&\left( - \frac{\d E_2}{\d x^3} + \frac{\d E_3}{\d x^2} + \frac{\d B_1}{\d x^0} \right) dx^{023}
+	+&\left( - \frac{1}{c} \frac{\d E_2}{\d x^3} + \frac{1}{c} \frac{\d E_3}{\d x^2} + \phantom{\frac{1}{c}} \frac{\d B_1}{\d x^0} \right) dx^{023}
 	\\
-	+&\left( + \frac{\d B_3}{\d x^3} + \frac{\d B_2}{\d x^2} + \frac{\d B_1}{\d x^1} \right) dx^{123} \, .
-\end{align*}
- Um nun besser zu verstehen, was das nun bedeutet, ändern wir die Vorzeichen innerhalb der Klammer in der zweiten Zeile, indem wir die Reihenfolge der Wedgeprodukte verändern.
-\begin{align*}
+	+&\left( + \phantom{\frac{1}{c}} \frac{\d B_3}{\d x^3} + \phantom{\frac{1}{c}} \frac{\d B_2}{\d x^2} + \phantom{\frac{1}{c}} \frac{\d B_1}{\d x^1} \right) dx^{123} \, .
+	\\
+	\intertext{Wenn wir nun die Koordinaten wie folgend ändern, dass $x^0 = ct, x^1 = x, x^2 = y$ und $x^3 = z$, erhalten wir}
 	dF =
-	&\left( - \frac{\d E_1}{\d x^2} + \frac{\d E_2}{\d x^1} + \frac{\d B_3}{\d x^0} \right) dx^0 \wedge dx^1 \wedge dx^2
+	&\left( - \frac{1}{c} \frac{\d E_1}{\d y} + \frac{1}{c} \frac{\d E_2}{\d x} + \frac{1}{c} \frac{\d B_3}{\d t} \right) c \, dt \wedge dx \wedge dy
 	\\
-	+&\left( + \frac{\d E_1}{\d x^3} - \frac{\d E_3}{\d x^1} + \frac{\d B_2}{\d x^0} \right) dx^0 \wedge dx^3 \wedge dx^1
+	+&\left( - \frac{1}{c} \frac{\d E_1}{\d z} + \frac{1}{c} \frac{\d E_3}{\d x} - \frac{1}{c} \frac{\d B_2}{\d t} \right) c \, dt \wedge dx \wedge dz
 	\\
-	+&\left( - \frac{\d E_2}{\d x^3} + \frac{\d E_3}{\d x^2} + \frac{\d B_1}{\d x^0} \right) dx^0 \wedge dx^2 \wedge dx^3
+	+&\left( - \frac{1}{c} \frac{\d E_2}{\d z} + \frac{1}{c} \frac{\d E_3}{\d y} + \frac{1}{c} \frac{\d B_1}{\d t} \right) c\, dt \wedge dy \wedge dz
 	\\
-	+&\left( + \frac{\d B_3}{\d x^3} + \frac{\d B_2}{\d x^2} + \frac{\d B_1}{\d x^1} \right) dx^1 \wedge dx^2 \wedge dx^3 \, .
-\end{align*}
-und erkennen nun, wenn $dx^0 = dt, dx^1 = dx, dx^2 = dy, dx^3 = dz$:
-\begin{align*}
+	+&\left( + \phantom{\frac{1}{c}} \frac{\d B_3}{\d z} + \phantom{\frac{1}{c}} \frac{\d B_2}{\d y} + \phantom{\frac{1}{c}} \frac{\d B_1}{\d x} \right) \phantom{c} dx \wedge dy \wedge dz
+	\\
+	\intertext{und der Faktor $c$ kann überall gekürzt werden:}
+	dF =
+	&\left( -  \frac{\d E_1}{\d y} +  \frac{\d E_2}{\d x} +  \frac{\d B_3}{\d t} \right) dt \wedge dx \wedge dy
+	\\
+	+&\left( -  \frac{\d E_1}{\d z} +  \frac{\d E_3}{\d x} -  \frac{\d B_2}{\d t} \right)dt \wedge dx \wedge dz
+	\\
+	+&\left( -  \frac{\d E_2}{\d z} +  \frac{\d E_3}{\d y} +  \frac{\d B_1}{\d t} \right)dt \wedge dy \wedge dz
+	\\
+	+&\left( +  \frac{\d B_3}{\d z} +  \frac{\d B_2}{\d y} +  \frac{\d B_1}{\d x} \right) dx \wedge dy \wedge dz \, .
+	\\
+	\intertext{Ändern wir nun in der zweiten Zeile die Reihenfolge der Wedgeprodukte, können wir folgendes erkennen:}
 	dF =
 	&\Bigg( \underbrace{ - \frac{\d E_x}{\d y} + \frac{\d E_y}{\d x}}_{(\nabla \times E)_z} + \frac{\d B_z}{\d t} \Bigg) dt \wedge dx \wedge dy
 	\\
@@ -163,7 +168,19 @@ und erkennen nun, wenn $dx^0 = dt, dx^1 = dx, dx^2 = dy, dx^3 = dz$:
 	\\
 	+&\Bigg( \underbrace{ + \frac{\d B_z}{\d z} + \frac{\d B_y}{\d y} + \frac{\d B_x}{\d x}}_{\nabla \cdot \vec{B}} \Bigg) dx \wedge dy \wedge dz \, .
 \end{align*}
-Das sind genau die homogenen Maxwellgleichungen
+% Um nun besser zu verstehen, was das nun bedeutet, ändern wir die Vorzeichen innerhalb der Klammer in der zweiten Zeile, indem wir die Reihenfolge der Wedgeprodukte verändern.
+%\begin{align*}
+%	dF =
+%	&\left( - \frac{\d E_1}{\d x^2} + \frac{\d E_2}{\d x^1} + \frac{\d B_3}{\d x^0} \right) dx^0 \wedge dx^1 \wedge dx^2
+%	\\
+%	+&\left( + \frac{\d E_1}{\d x^3} - \frac{\d E_3}{\d x^1} + \frac{\d B_2}{\d x^0} \right) dx^0 \wedge dx^3 \wedge dx^1
+%	\\
+%	+&\left( - \frac{\d E_2}{\d x^3} + \frac{\d E_3}{\d x^2} + \frac{\d B_1}{\d x^0} \right) dx^0 \wedge dx^2 \wedge dx^3
+%	\\
+%	+&\left( + \frac{\d B_3}{\d x^3} + \frac{\d B_2}{\d x^2} + \frac{\d B_1}{\d x^1} \right) dx^1 \wedge dx^2 \wedge dx^3 \, .
+%\end{align*}
+%und erkennen nun, wenn $dx^0 = dt, dx^1 = dx, dx^2 = dy, dx^3 = dz$:
+Das sind zusammengefasst genau die homogenen Maxwellgleichungen
 \[
 \nabla \times \vec{E} + \frac{\d \vec{B}}{\d t} = 0
 \]
