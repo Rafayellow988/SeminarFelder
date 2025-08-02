@@ -9,7 +9,8 @@
 \section{Potentialströmung\label{ueberschall:section:potentialstroemung}}
 \kopfrechts{Potentialströmung}
 Bei der Potentialströmung handelt sich um eine quellenfreie 
-und wirbelfreie Strömung
+und wirbelfreie Strömung.
+Mathematisch wird das ausgedrückt als
 \begin{align*}
     \mathrm{div}\,\vec{v} &= 0 \\
     \mathrm{rot}\,\vec{v} &= 0,
@@ -45,13 +46,12 @@ Natürlich muss auch die Kontinuitätsgleichung
     \mathrm{div}\,\vec{v} &= 0
 \end{align*}
 erfüllt sein.
-Bei inkompressiblen Medien wird der erste Term sowieso zu null
+Bei inkompressiblen Medien wird der erste Term sowieso zu
 \begin{align*}
     \frac{\partial\,\rho}{\partial\,t} &= 0,
 \end{align*}
 wonach nur noch die Quellen- und Senkenfreiheit übrig bleibt.
 Die Divergenz der Geschwindigkeit kann auch als Skalarprodukt 
-des Nabla-Operators und der Geschwindigkeit dargestellt werden
 \begin{align*}
     \mathrm{div}\,\vec{v}
     =
@@ -59,9 +59,10 @@ des Nabla-Operators und der Geschwindigkeit dargestellt werden
     =
     \frac{\partial\,v_x}{\partial\,x} +
     \frac{\partial\,v_y}{\partial\,y} +
-    \frac{\partial\,v_z}{\partial\,z}.
+    \frac{\partial\,v_z}{\partial\,z}
 \end{align*}
-Das ist ein Mass dafür wie sehr sich ein Feld wie eine Quelle 
+des Nabla-Operators und der Geschwindigkeit dargestellt werden.
+Das ist ein Mass dafür, wie sehr sich ein Feld wie eine Quelle 
 oder eine Senke verhält.
 Bei $\mathrm{div}\,\vec{v} = 0$ ist sie weder Quelle noch Senke.
 Das Kreuzprodukt mit dem Operator entspricht
@@ -77,16 +78,18 @@ der Rotation der Geschwindigkeit
         \frac{\partial\,v_y}{\partial\,x} - \frac{\partial\,v_x}{\partial\,y}
     \end{pmatrix},
 \end{align*}
-welcher angibt wie sich ein Körper der diesem Vektorfeld 
-ausgesetzt rotieren würde.
+welcher angibt wie sich ein Körper, der diesem Vektorfeld 
+ausgesetzt ist, rotieren würde.
 Was für ein wirbelfreies Feld $\mathrm{rot}\,\vec{v} = 0$ bedeutet,
 wodurch das Vektorfeld genau dann der Gradient einer Funktion ist
-wie in~\ref{eq:potential}.
+wie in~\eqref{eq:potential}.
 
 Wenn nun in die Kontinuitätsgleichung des inkompressiblen
 Falls $ \nabla \cdot \vec{v} = 0$ die Definition 
-des Geschwindigkeitsfeld~\ref{eq:potential} eingesetzt wird, dann folgt daraus
+des Geschwindigkeitsfeld~\eqref{eq:potential} eingesetzt wird, dann folgt daraus
 \begin{align}
+    \nabla \cdot \vec{v}
+    = 
     \nabla \cdot \nabla \Phi
     = 
     \nabla\,^2 \Phi

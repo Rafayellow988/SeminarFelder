@@ -5,13 +5,12 @@
 %
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
-%
+%c
 \section{Strömungsgleichungen\label{ueberschall:stroemungsgleichung}}
 \kopfrechts{Strömungsgleichungen}
 Wir untersuchen hier an einem einfachen Beispiel, 
 illustriert in Abbildung~\ref{fig:wellblech},
-die Strömung der Luft über ein gewelltes Blech,
-welche eine kleine Störung hereinbringt.
+die Strömung der Luft über einem Wellblech.
 \input{papers/ueberschall/figures/stroemung_wellblech.tex}
 Dabei definieren wir das Potential als
 \begin{align*}
@@ -25,9 +24,9 @@ Unendlichen $y\rightarrow\infty$ bedeutet.
 
 \subsection{Inkompressible Strömung}
 Bei inkompressibler Strömung ist auch gleich die
-Laplace-Gleichung~\ref{eq:laplace} erfüllt.
-Das kann bewiesen werden indem wir für das Potential
-folgendermassen die zweite Ableitung berechnen
+Laplace-Gleichung~\eqref{eq:laplace} erfüllt.
+Das kann bewiesen werden, indem wir für das Potential
+die zweiten Ableitungen
 \begin{align*}
     \frac{\partial\,^2\,\Phi}{\partial\,x^2}
     &= \frac{A\,2\,\pi}{l}\,\sin\left(\frac{2\,\pi\,x}{l}\right)
@@ -36,14 +35,20 @@ folgendermassen die zweite Ableitung berechnen
     &= -\frac{A\,2\,\pi}{l}\,\sin\left(\frac{2\,\pi\,x}{l}\right)
     \,e^{-\frac{2\,\pi\,y}{l}}
 \end{align*}
-wobei ersichtlich ist, dass
+berechnen wobei ersichtlich ist, dass
 \begin{align*}
     \frac{\partial\,^2\,\Phi}{\partial\,x^2}
     =
-    -\frac{\partial\,^2\,\Phi}{\partial\,y^2}
+    -\frac{\partial\,^2\,\Phi}{\partial\,y^2}.
 \end{align*}
-Es ist existiert dann auch eine sogenannte Stromfunktion $\Psi$.
-Dabei gilt
+Es ist existiert dann auch eine sogenannte Stromfunktion
+\begin{align*}
+    \Psi
+    =
+    U\,y - A\,\frac{l}{2\,\pi}\,\cos\left(\frac{2\,\pi\,x}{l}\right)
+    \,e^{-\frac{2\,\pi\,y}{l}},
+\end{align*}
+welche die Bedingung
 \begin{align*}
     u 
     &=
@@ -55,16 +60,9 @@ Dabei gilt
     &=
     \frac{\partial\,\Phi}{\partial\,y}
     =
-    -\frac{\partial\,\Psi}{\partial\,x},
+    -\frac{\partial\,\Psi}{\partial\,x}
 \end{align*}
-was ausgerechnet dann für den Strom
-\begin{align*}
-    \Psi
-    =
-    U\,y - A\,\frac{l}{2\,\pi}\,\cos\left(\frac{2\,\pi\,x}{l}\right)
-    \,e^{-\frac{2\,\pi\,y}{l}}
-\end{align*}
-ergibt.
+erfüllt.
 Auch die Stromfunktion ist eine Lösung der Laplace-Gleichung
 \begin{align*}
     \frac{\partial\,^2\,\Psi}{\partial\,x\,^2}
@@ -73,13 +71,13 @@ Auch die Stromfunktion ist eine Lösung der Laplace-Gleichung
     =
     0.
 \end{align*}
-Wenn wir $\Psi = 0$ setzen, dann erhalten wir Gleichung
+Wenn wir $\Psi = 0$ setzen, dann erhalten wir die Gleichung
 einer Stromlinie
-\begin{align*}
+\begin{align}
     0 = U\,y - A\,\frac{l}{2\,\pi}\,
     \cos\left(\frac{2\,\pi\,x}{l}\right)\,
-    e^{-\frac{2\,\pi\,y}{l}},
-\end{align*}
+    e^{-\frac{2\,\pi\,y}{l}},\label{eq:stromlinie}
+\end{align}
 aufgelöst nach $y$ ergibt das
 \begin{align*}
     y
@@ -90,7 +88,7 @@ aufgelöst nach $y$ ergibt das
 \end{align*}
 Wir setzen zusätzlich 
 \begin{align*}
-    \frac{A}{U} << 1,
+    \frac{A}{U} \ll 1,
 \end{align*}
 damit näherungsweise gilt
 \begin{align*}
@@ -109,7 +107,7 @@ in Gerade über, weil
     =
     0.
 \end{align*}
-Das ganze sieht man auch in Abbildung~\ref{fig:stromlinien}
+Das Ganze sieht man auch in Abbildung~\ref{fig:stromlinien}.
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{papers/ueberschall/figures/Stromlinien.pdf}
@@ -117,21 +115,22 @@ Das ganze sieht man auch in Abbildung~\ref{fig:stromlinien}
     ~\label{fig:stromlinien}  
 \end{figure}
 
-Mit Hilfe der Bernouilli'schen Gleichung
+Mit Hilfe der bernouillischen Gleichung
 \begin{align*}
     p_{tot}
     =
-    \frac{1}{2}\,\rho\,V^2
-    +
     p
     +
-    \rho\,g\,z,
+    \frac{1}{2}\,\rho\,V^2
+    +
+    \rho\,g\,z
+    =
+    \mathrm{const},
 \end{align*}
-wobei $p_{tot}$ der Totaldruck ist, welcher
-auf einer Stromlinie konstant ist.
+wobei $p_{tot}$ der Totaldruck ist,
 $\rho$ die Dichte des Fluids, $g$ die Erdbeschleunigung,
 $V$ die Geschwindigkeit an einem Ort auf der Stromlinie
-und $z$ gemäss (cite Wikipedia).
+und $z$ die Höhe, falls es sich um ein dreidimensionales Gebilde handelt. (cite Wikipedia)
 Der letzte Term fällt wegen $z=0$ weg, da wir nur in 
 der $x,y$-Ebene arbeiten.
 Übrig bleibt dann noch
@@ -143,7 +142,7 @@ der $x,y$-Ebene arbeiten.
     \mathrm{const},
 \end{align*}
 was nichts anderes sagt als, dass der statische Druck und der 
-dynamische Druck zusammen überall gleich sind auf einer Stromlinie.
+dynamische Druck zusammen überall auf einer Stromlinie gleich sind.
 Wenn wir nun den lokalen Druck $p(x,y)$ in unserem Fall berechnen wollen,
 dann nehmen wir die Strömungsgeschwindigkeit $U$ als Referenz.
 Das sieht dann folgendermassen aus:
@@ -168,7 +167,7 @@ wobei $V^2$ nichts anderes ist als
 \begin{align*}
     |V(x,y)|^2 = u^2(x,y) + v^2(x,y).
 \end{align*}
-Damit kann nun die Druckverteilung über dem Wellblech visualisiern,
+Damit kann nun die Druckverteilung über dem Wellblech visualisiert werden,
 wie in Abbildung~\ref{fig:druckverteilung}.
 Es handelt sich hierbei um den relativen Druck,
 d.h es ist abhängig vom Umgebungsdruck.
@@ -185,58 +184,48 @@ während bei den konvexen Stellen der niedrigste ist.
 Bei der kompressible Strömung ist das Ganze ein bisschen schwieriger.
 Die Ausgangslage ist eine komplexere partielle 
 Differentialgleichung zweiter Ordnung, welche vereinfacht
-wurde indem sie lediglich auf die Ausdrücke reduziert, die 
+wurde, indem sie lediglich auf die Ausdrücke reduziert, die 
 die grösste Abweichung bedingen.
 Das Vorgehen dafür ist in~\cite{Ackeret1928} ausführlich dokumentiert.
 Es handelt sich daher nur um eine Näherungslösung,
 die aber einige wesentlichen Züge der wahren Lösung wiederspiegelt.
 Die Näherungsgleichung lautet:
-\begin{align*}
+\begin{align}
     \frac{\partial\,^2\,\Phi}{\partial\,x\,^2}\,
     \left(1-\frac{U^2}{a^2}\right)
     +
     \frac{\partial\,^2\,\Phi}{\partial\,y\,^2}
     =
-    0
-\end{align*}
+    0\label{eq:kompressible_stroemung}
+\end{align}
 Der Ausdruck in der Klammer ist eine Konstante, d.h.
-durch eine einfache Koordinatentransformation
+durch die einfache Koordinatentransformation
 \begin{align*}
     x 
     &=
     \xi \\
     y\,\beta
     &=
-    \eta,
-\end{align*}
-wobei
-\begin{align*}
+    \eta \\
     \beta
     &=
     \sqrt{1-\frac{U^2}{a^2}}
 \end{align*}
-ist.
-Das führt dann wenig überraschend zu
+wird daraus wenig überraschend
 \begin{align*}
     \frac{\partial\,^2\,\Phi}{\partial\,\xi\,^2}\,
     +
     \frac{\partial\,^2\,\Phi}{\partial\,\eta\,^2}
     =
-    0,
+    0
 \end{align*}
-der gewöhnlichen Laplace'schen Gleichung, wie
+die gewöhnlichen laplaceschen Gleichung, wie
 bei der Potentialströmung.
 Das Potential dieser kompressiblen Strömung ergibt sich zu
 \begin{align*}
     \Phi
     =
     U\,x + A\,\frac{l}{2\,\pi}\,\sin\left(\frac{2\,\pi\,x}{l}\right)
-    \,e^{-\frac{2\,\pi\,y\,\beta}{l}}
-\end{align*}
-\begin{align*}
-    \Phi
-    =
-    U\,x + U\,\frac{h}{\beta}\,\sin\left(\frac{2\,\pi\,x}{l}\right)
     \,e^{-\frac{2\,\pi\,y\,\beta}{l}}
 \end{align*}
 und die dazugehörige Stromfunktion
@@ -246,3 +235,106 @@ und die dazugehörige Stromfunktion
     U\,y - U\,\frac{h}{\beta^2}\,\cos\left(\frac{2\pi x}{l}\right)
     \,e^{-\frac{2\pi y \beta}{l}}.
 \end{align*}
+Durch gleiches Vorgehen wie bei Gleichung~\eqref{eq:stromlinie}
+erhalten wir für $y\,\to\,0$
+\begin{align*}
+    y
+    =
+    \frac{A\,\beta\,l}{2\,\pi\,U}\,
+    \cos\left(\frac{2\,\pi\,x}{l}\right).
+\end{align*}
+Damit wäre für kleine $y$ die Amplitude $h$ der Kosinuslinie
+\begin{align*}
+    h
+    =
+    \frac{A\,l\,\beta}{2\,\pi\,U}
+\end{align*}
+und somit 
+\begin{align*}
+    A
+    =
+    \frac{2\,\pi\,h\,U}{\beta\,l}.
+\end{align*}
+Demnach formulieren wir neu $\Phi$ als
+\begin{align*}
+    \Phi
+    =
+    U\,x + U\,\frac{h}{\beta}\,\sin\left(\frac{2\,\pi\,x}{l}\right)
+    \,e^{-\frac{2\,\pi\,y\,\beta}{l}}.
+\end{align*}
+Der Faktor $\beta$ hat Einfluss auf das Abklingen der Störung,
+wie man das in Abbildung~\ref{fig:abklingen_stromlinie} sieht für 
+drei verschiedene Fälle.
+Dafür werden die Stromlinien über einem Buckel visualisiert.
+\begin{figure}
+    \centering
+    \begin{minipage}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{papers/ueberschall/figures/abklingen_10.pdf}
+        \caption*{$\beta = 1$ ; $U = 10\,\frac{\mathrm{m}}{\mathrm{s}}$}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{papers/ueberschall/figures/abklingen_200.pdf}
+        \caption*{$\beta = 0.81$ ; $U = 200\,\frac{\mathrm{m}}{\mathrm{s}}$}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{papers/ueberschall/figures/abklingen_340.pdf}
+        \caption*{$\beta = 0$ ; $U = a$}
+    \end{minipage}
+    \caption{Stromlinien bei verschiedenen Strömungsgeschwindigkeiten im Unterschall.}
+~\label{fig:abklingen_stromlinie}
+\end{figure}
+
+Nun gehen wir über in den Überschallbereich.
+Wir starten dabei bereits bei der vereinfachten 
+Gleichung~\eqref{eq:kompressible_stroemung}
+\begin{align*}
+    \frac{\partial\,^2\,\Phi}{\partial\,x\,^2}\,
+    \left(1-\frac{U^2}{a^2}\right)
+    =
+    -\frac{\partial\,^2\,\Phi}{\partial\,y\,^2},
+\end{align*}
+wo aber der rechte Term auf die andere Seite genommen wurde.
+Nun gilt aber $U>a$, was dazu führt, dass der Klammerausdruck
+zwingend negativ wird.
+Deswegen macht es Sinn die Gleichung folgendermassen umzustellen:
+\begin{align*}
+    \frac{\partial\,^2\,\Phi}{\partial\,x\,^2}\,
+    \left(\frac{U^2}{a^2}-1\right)
+    =
+    \frac{\partial\,^2\,\Phi}{\partial\,y\,^2},
+\end{align*}
+Jetzt erhalten wir bei leicht angepasster 
+Koordinatentransformation, wo
+\begin{align*}
+    x 
+    &=
+    \xi \\
+    y\,\beta
+    &=
+    \eta,
+\end{align*}
+mit
+\begin{align*}
+    \beta
+    &=
+    \sqrt{\frac{U^2}{a^2}-1},
+\end{align*}
+die neue Gleichung
+\begin{align*}
+    \frac{\partial\,^2\,\Phi}{\partial\,\xi\,^2}\,
+    -
+    \frac{\partial\,^2\,\Phi}{\partial\,\eta\,^2}
+    =
+    0.
+\end{align*}
+Sie ist der alten Gleichung sehr ähnlich bis auf des Vorzeichen
+des zweiten Terms.
+Dafür hat sie eine ganz andere Charakeristik,
+denn sie beschreibt Wellenvorgänge.
+Deswegen ist das Strömungsverhalten um Objekte im Überschall
+sehr nahe der im Wasser.
