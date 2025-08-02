@@ -26,7 +26,7 @@ In diesem Paper werden, wo nicht anders angegeben, nur ideale Fluide betrachtet.
 Für die Betrachtung von Wirbelringen starten wir zunächst mit einzelnen Wirbeln.
 Ein Wirbel ist eine Formation von Teilchen, welche um einen Mittelpunkt rotieren.
 In Abbildung \ref{Wirbelringe:fig:flacher_wirbel} ist ein Wirbel abgebildet.
-Die eingezeichneten Pfeile stellen die Geschwindigkeitsvektoren \( \vec{v} \) von den Teilchen dar, welche Teil des Wirbels sind.
+Die eingezeichneten Pfeile stellen die Geschwindigkeitsvektoren \( \vec{v} \) von den Teilchen, welche Teil des Wirbels sind, dar.
 Nicht explizit eingezeichnet sind die Bahnen, auf welchen sich die Teilchen bewegen.
 Die Bahnen bilden konzentrische Kreise.
 Auch ist in der Abbildung \ref{Wirbelringe:fig:flacher_wirbel} der Wirbelstärkevektor \(\vec{\omega}\) eingezeichnet.
@@ -45,8 +45,8 @@ wie wir in Abschnitt \ref{Wirbelringe:Grenzflaechen} sehen werden.
 
 \subsection{Stabilität}
 
-Um die Stabilität von Wirbeln zu beurteilen, können wir betrachten wie sich die Menge an Teilchen verhaltet, ob sie wächst oder schrumpft. 
-Also die Divergenz der Teilchen, die Teil eines Wirbels sind.
+Um die Stabilität von Wirbeln zu beurteilen, können wir betrachten, wie sich die Menge an Teilchen verhält --- ob diese wächst oder schrumpft. 
+Wir betrachten also die Divergenz der Teilchen, die Teil eines Wirbels sind.
 Mit dieser Frage kommt man auf die Rechnung
 \[
 \operatorname{div} ( \operatorname{rot} ( \vec{A} ) )
@@ -69,11 +69,12 @@ Nehmen wir an das \(\vec{A}\) zweimal stetig differenzierbar ist, so erhalten wi
 \frac{\partial^2 A_x}{\partial y \partial z} - \frac{\partial^2 A_z}{\partial y \partial x} +
 \frac{\partial^2 A_y}{\partial z \partial x} - \frac{\partial^2 A_x}{\partial z \partial y}
 \\
+\intertext{unter anwendung des Satzes von Schwarz}
 &=
 \frac{\partial^2 A_z}{\partial x \partial y} - \frac{\partial^2 A_z}{\partial y \partial x} + 
 \frac{\partial^2 A_x}{\partial y \partial z} - \frac{\partial^2 A_x}{\partial z \partial y} +
 \frac{\partial^2 A_y}{\partial z \partial x} - \frac{\partial^2 A_y}{\partial x \partial z}
-\quad \text{(Satz von Schwarz)}\\
+\\
 &=
 \overbrace{\frac{\partial^2 A_z}{\partial x \partial y} - \frac{\partial^2 A_z}{\partial x \partial y}}^0 + 
 \overbrace{\frac{\partial^2 A_x}{\partial y \partial z} - \frac{\partial^2 A_x}{\partial y \partial z}}^0 +
@@ -100,7 +101,7 @@ Um aus Wirbeln ein Wirbelring zu machen brauchen wir noch eine Definition.
 
 \subsubsection*{Wirbelfäden}
 
-Ein {\em Wirbelfaden} ist ein Zylinder, welcher eine Wirbellinie als Zentrum des Zylinders hat.
+Ein {\em Wirbelfaden} ist ein Zylinder, welcher eine Wirbellinie als Zentrum dessen hat.
 Schneidet man nun diesen Zylinder senkrecht zu der Wirbellinie, ergibt sich ein einzelner Wirbel.
 Wirbelfäden werden auch {\em Wirbelröhren} genannt.
 

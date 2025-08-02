@@ -33,10 +33,10 @@ Die elektrodynamischen Grössen haben jeweils ein Gegenstück in der Strömungsm
     \end{tabular}
 \end{center}
 
-Im Folgenden wird der Wirbelstärkevektor nicht verwenden.
+Im Folgenden wird der Wirbelstärkevektor nicht verwendet.
 Jedoch ist der Zusammenhang vom Wirbelstärkevektor zum Stromdichtevektor etwas intuitiver als die Zirkulation zur Stromstärke.
 
-Die Maxwellgleichungen (siehe Abschnitt \ref{chapter:maxwell}) sehen vor das \(\vec{B}\) Feld quellenfrei ist. 
+Die Maxwellgleichungen (siehe Abschnitt \ref{chapter:maxwell}) sehen vor, dass das \(\vec{B}\) Feld quellenfrei ist. 
 Da wir nur inkompressible Fluide betrachten, ist dies gegeben.
 
 Setzt man nun die entsprechenden Grössen in das Biot-Savart-Gesetz
@@ -46,18 +46,19 @@ d\vec{u}
 \frac{\Gamma}{4\pi}\frac{d\vec{l} \times \vec{r}}{\left\lvert \vec{r}^{\,3}\right\rvert }
 \]
 ein, lässt sich damit die Geschwindigkeitsänderung eines Punktes durch ein Wirbelfadenelement beschreiben.
-Um die Rechnung zu vereinfachen, können wir annehmen, dass der Wirbelfaden vergleichsweise dünn ist, verglichen zum Durchmesser des Rings aus der Wirbellinie.
+Um die Rechnung zu vereinfachen, können wir annehmen, dass der Wirbelfaden vergleichsweise dünn ist in Bezug zum Durchmesser des Rings aus der Wirbellinie.
 Mit dem Integral über diesen Wirbelfaden
-\[
-\vec{u}
-=
-\int_{\text{Wirbellinie}} \frac{\Gamma}{4\pi}\frac{d\vec{l} \times \vec{r}}{\left\lvert \vec{r}^{\,3}\right\rvert}
-\]
+\begin{equation}
+    \label{Wirbelringe:eq:WirbelSpeed}
+    \vec{u}
+    =
+    \int_{\text{Wirbellinie}} \frac{\Gamma}{4\pi}\frac{d\vec{l} \times \vec{r}}{\left\lvert \vec{r}^{\,3}\right\rvert}
+\end{equation}
 erhalten wir die induzierte Geschwindigkeit, welche durch den Wirbelfaden entsteht.
 Da dieses Gesetz aus der Elektrotechnik stammt, spricht man in der Strömungsmechanik von einer induzierten Geschwindigkeit.
 
-Um nun die selbstinduzierte Geschwindigkeit zu berechnen, wählen wir ein in der X-Y Plane liegender Wirbelring mit Radius \(a\).
-Der Radius des Wirbelfadens ist der Einfachheit halber im Vergleich zum Radius der Wirbellinie vernachlässigbar klein.
+Um jetzt die selbstinduzierte Geschwindigkeit zu berechnen, wählen wir ein in der X-Y Plane liegender Wirbelring mit Radius \(a\).
+Wie bereits erwähnt, ist der Radius des Wirbelfadens vernachlässigbar klein.
 Uns interessiert irgendein Punkt, der auf der Wirbellinie liegt.
 Somit ist
 \(
@@ -76,30 +77,53 @@ d\vec{l} =
     0    
 \end{pmatrix}
 \,d\varphi \). 
-Setzt man diese in
+Setzt man diese in \eqref{Wirbelringe:eq:WirbelSpeed} ein, löst das Kreuzprodukt 
 \[
-\vec{u}
+d\vec{l}\times\vec{r} 
+= 
+\begin{pmatrix}
+    -a \sin \varphi\\
+    a \cos \varphi\\
+    0
+\end{pmatrix}
+\times
+\begin{pmatrix}
+    a \cos \varphi\\
+    a \sin \varphi\\
+    0    
+\end{pmatrix}
 =
-\int_{0}^{2\pi} \frac{\Gamma }{4\pi}\frac{d \vec{l} \times \vec{r}}{\left\lvert \vec{r}^{\,3}\right\rvert },
+\begin{pmatrix}
+    0\\
+    0\\
+    a^2
+\end{pmatrix}
 \]
-ein und löst das Kreuzprodukt auf, erhält man 
-\[
+auf erhält man nach Einsetzen der Integrationsgrenzen von 0 bis \(2\pi\)
+\begin{align*}
 \vec{u}
-=
-\frac{\Gamma a^{2}}{4\pi a^{3}} \int_{0}^{2\pi} \hat{z}\, d\varphi.
-\]
-Da der Kreisumfang und der Radius immer senkrecht zueinander stehen, ist der Richtungsvektor \(\hat{z}\). 
-Schlussendlich ergibt sich
-\[
-\vec{u}
-=
-\frac{\Gamma }{2 a}\hat{z},
-\]
-woraus ersichtlich ist, dass je kleiner der Wirbelring, desto schneller bewegt er sich.
+&=
+\int_{0}^{2\pi} \frac{\Gamma}{4\pi}\frac{1}{a^3}
+\begin{pmatrix}
+    0\\
+    0\\
+    a^2
+\end{pmatrix}
+\,d\varphi\\
+&=\frac{\Gamma}{4\pi a^3}
+\begin{pmatrix}
+    0\\
+    0\\
+    a^2
+\end{pmatrix}\\
+&=\frac{\Gamma}{4\pi a}\hat{e}_z.
+\end{align*}    
+Dies deckt sich auch mit der Annahme, dass der Kreisumfang und der Radius immer senkrecht zueinander stehen.
+Zusätzlich ist ersichtlich, dass mit zunehmender Grösse des Wirbelrings, die Geschwindigkeit des Wirbelrings abnimmt.
 
 Würde man dieselbe Rechnung für einen geraden Wirbelfaden durchführen, würde auffallen, dass das Ergebnis für Punkte auf der Wirbellinie null ist.
-Der Wirbelfaden induziert sich auf Grund der Symmetrie selbst keine Geschwindigkeit.
-Daher, damit sich ein Wirbelfaden von sich bewegt, muss dieser zumindest ein wenig gekrümmt sein.
+Auf Grund der Symmetrie kann der Wirbelfaden auf sich selbst keine Geschwindigkeit induzieren.
+Damit sich ein Wirbelfaden von sich aus bewegt, muss dieser zumindest ein wenig gekrümmt sein.
 Ein zweiter Wirbelfaden würde zu einer induzierten Geschwindigkeit führen. 
 Dies betrachten wir hier aber nicht weiter. 
 
