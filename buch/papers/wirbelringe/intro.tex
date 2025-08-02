@@ -51,7 +51,7 @@ Mit dieser Frage kommt man auf die Rechnung
 \[
 \operatorname{div} ( \operatorname{rot} ( \vec{A} ) )
 = % \overset{!}{=}
-?,
+\,?,
 \]
 wobei wir für \(\vec{A}\) das Vektorfeld aus Abbildung \ref{Wirbelringe:fig:flacher_wirbel} verwenden.
 Nehmen wir an das \(\vec{A}\) zweimal stetig differenzierbar ist, so erhalten wir
@@ -69,11 +69,11 @@ Nehmen wir an das \(\vec{A}\) zweimal stetig differenzierbar ist, so erhalten wi
 \frac{\partial^2 A_x}{\partial y \partial z} - \frac{\partial^2 A_z}{\partial y \partial x} +
 \frac{\partial^2 A_y}{\partial z \partial x} - \frac{\partial^2 A_x}{\partial z \partial y}
 \\
-\intertext{unter anwendung des Satzes von Schwarz}
 &=
 \frac{\partial^2 A_z}{\partial x \partial y} - \frac{\partial^2 A_z}{\partial y \partial x} + 
 \frac{\partial^2 A_x}{\partial y \partial z} - \frac{\partial^2 A_x}{\partial z \partial y} +
 \frac{\partial^2 A_y}{\partial z \partial x} - \frac{\partial^2 A_y}{\partial x \partial z}
+\quad \text{(Satz von Schwarz)}\\
 \\
 &=
 \overbrace{\frac{\partial^2 A_z}{\partial x \partial y} - \frac{\partial^2 A_z}{\partial x \partial y}}^0 + 
@@ -81,7 +81,7 @@ Nehmen wir an das \(\vec{A}\) zweimal stetig differenzierbar ist, so erhalten wi
 \overbrace{\frac{\partial^2 A_y}{\partial x \partial z} - \frac{\partial^2 A_y}{\partial x \partial z}}^0
 \\
 &=
-0
+0.
 \end{align*}
 
 Aus dem Resultat
