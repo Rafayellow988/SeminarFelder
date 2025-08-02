@@ -20,7 +20,7 @@ Wir haben dabei festgestellt, dass die äussere Ableitung von $F$ verschwindet, 
 
 Um nun die inhomogenen Maxwell-Gleichungen bestimmen zu können, benötigen wir eine art Verallgemeinerung der Divergenz, die das Quellenverhalten des Faraday-Tensors misst. Hierfür eignet sich das Kodifferential
 \begin{equation*}
-	\delta = \ast d \ast.
+	\delta = \ast d {\ast}.
 \end{equation*}
 %Diese Operation erlaubt es, quellenartige Beiträge geometrisch zu erfassen.
 Aus den klassischen inhomogenen Maxwell-Gleichungen
@@ -35,7 +35,7 @@ In diesem Fall wissen wir bereits, dass diese Operation wegen der Inhomogenität
 Es liegt daher nahe, auch $\rho$ und $\vec{J}$ zu einem einzigen geometrischen Objekt zusammenzufassen, weil beides Quellenterme sind.
 Damit wir wissen, welche geometrische Form dieses Objekt haben soll, betrachten wir, was die Operation 
 \begin{equation*}
-	\delta F = \ast d\ast F
+	\delta F = \ast d{\ast} F
 \end{equation*}
 für eine Form hat.
 Der Hodge-Operator bildet eine $k$-Form auf eine $(n-k)$-Form ab.
@@ -43,7 +43,7 @@ Da wir uns im vierdimensionalen Minkowsky-Raum befinden wird durch Anwendung des
 Anwenden der äusseren Ableitung erhöht den Grad um eins und ergibt somit eine 3-Form.
 Durch erneutes Anwenden des Hodge-Operators entsteht schlussendlich eine 1-Form.
 Folglich muss das geometrische Objekt, welches die Ladungs- und Stromdichte enthält, auch eine 1-Form sein, die wir zukünftig Viererstromdichte $J$ nennen werden.
-Sobald wir das $\ast d \ast F$ berechnet haben, definieren wir $J$ so, dass die Gleichung aufgeht.
+Sobald wir das $\ast d {\ast} F$ berechnet haben, definieren wir $J$ so, dass die Gleichung aufgeht.
 
 %dass die Teile, welche nicht $\vec{E}$ und $\vec{B}$ enthalten, die Ladungsdichte $\rho$ und Stromdichte $\vec{J}$ sind.
 \subsection{Berechnung des Kodifferentials von $F$}
@@ -58,8 +58,8 @@ Wir erinnern uns, dass $F$ ausgeschrieben mit Wedge-Produkten definiert ist als
 Zuerst wenden wir den Hodge-Operator auf $F$ an und erhalten
 \begin{align*}
 	\ast F =
-	& - \frac{E_{1}}{c} \, \ast(dx^0 \wedge dx^1) - \frac{E_{2}}{c} \, \ast(dx^0 \wedge dx^2) - \frac{E_{3}}{c} \, \ast(dx^0 \wedge dx^3) \\
-	& + B_3 \, \ast(dx^1 \wedge dx^2) - B_2 \, \ast(dx^1 \wedge dx^3) + B_1 \, \ast(dx^2 \wedge dx^3).
+	& - \frac{E_{1}}{c} \, {\ast}(dx^0 \wedge dx^1) - \frac{E_{2}}{c} \, {\ast}(dx^0 \wedge dx^2) - \frac{E_{3}}{c} \, {\ast}(dx^0 \wedge dx^3) \\
+	& + B_3 \, {\ast}(dx^1 \wedge dx^2) - B_2 \, {\ast}(dx^1 \wedge dx^3) + B_1 \, {\ast}(dx^2 \wedge dx^3).
 \end{align*}
 Die Hodge-Duale können aus der Tabelle (VERWEISEN!) entnommen werden.
 \begin{align*}
@@ -76,11 +76,11 @@ Die erhaltene 2-Form kann nun wieder als Matrix
 \end{equation}
 geschrieben werden.
 Wir sehen, dass durch den Hodge-Operator die $E$ und $B$ ihre Plätze tauschen.
-\subsubsection{Berechnung $d \ast F$}
+\subsubsection{Berechnung $d {\ast} F$}
 Nun wenden wir die äussere Ableitung an und erhalten
 \begin{align*}
-	d(\ast F)
-	&= d \Bigg(
+	d{\ast} F
+	&= d \, \Bigg(
 	\frac{E_{1}}{c} \, dx^2 \wedge dx^3
 	- \frac{E_{2}}{c} \, dx^1 \wedge dx^3
 	+ \frac{E_{3}}{c} \, dx^1 \wedge dx^2 \\
@@ -128,10 +128,10 @@ Nun wenden wir die äussere Ableitung an und erhalten
 	- \frac{\partial B_2}{\partial x^1}
 	\right) dx^0 \wedge dx^1 \wedge dx^2.
 \end{align*}
-\subsubsection{Berechnung $\ast d \ast F$}
+\subsubsection{Berechnung $\ast d {\ast} F$}
 Wenden wir nun noch einmal den Hodge-Operator auf die erhaltene 3-Form an, ergibt sich
 \begin{align*}
-	\ast d \ast F = 
+	\ast d {\ast} F = 
 	&\left( \frac{1}{c}\frac{\partial E_1}{\partial x^1} + \frac{1}{c}\frac{\partial E_2}{\partial x^2} + \frac{1}{c}\frac{\partial E_3}{\partial x^3} \right) (-dx^0) +
 	\left(\frac{1}{c}\frac{\partial E_1}{\partial x^0} + \frac{\partial B_2}{\partial x^3} - \frac{\partial B_3}{\partial x^2} \right) (-dx^1)\\
 	& + \left( -\frac{1}{c}\frac{\partial E_2}{\partial x^0} + \frac{\partial B_1}{\partial x^3} - \frac{\partial B_3}{\partial x^1} \right) dx^2 +
@@ -149,7 +149,7 @@ Damit wir nun wieder auf etwas physikalisch Sinnvolles kommen, ersetzen wir
 \end{equation}
 und erhalten
 \begin{align*}
-	\ast d \ast F = 
+	\ast d {\ast} F = 
 	&\left( -\frac{1}{c}\frac{\partial E_1}{\partial x} -\frac{1}{c}\frac{\partial E_2}{\partial y} - \frac{1}{c}\frac{\partial E_3}{\partial z} \right) c\,dt +
 	\left(-\frac{1}{c}\frac{\partial E_1}{\partial ct} - \frac{\partial B_2}{\partial z} + \frac{\partial B_3}{\partial y} \right) dx\\
 	& + \left( -\frac{1}{c}\frac{\partial E_2}{\partial ct} + \frac{\partial B_1}{\partial z} - \frac{\partial B_3}{\partial x} \right) dy +
@@ -183,13 +183,13 @@ erkennen wir, dass diese gleich $\mu_0 J_1$ sein muss, damit die Ampère-Maxwell
 Aufgrund der gleichen Struktur folgt, dass die dritte Komponente $\mu_0 J_2$, und die vierte Komponente $\mu_0 J_3$ sein muss.
 Nun haben wir also herausgefunden dass
 \begin{equation}
-	\ast d \ast F = -\frac{\rho}{\varepsilon_0}\,dt + \mu_0 (J_1 \,dx +  J_2 \,dy +  J_3 \,dz)
+	\ast d {\ast} F = -\frac{\rho}{\varepsilon_0}\,dt + \mu_0 (J_1 \,dx +  J_2 \,dy +  J_3 \,dz)
 \end{equation}
 sein muss.
-Da alle räumlichen Komponenten auf der rechten Seite von $\ast d \ast F$ proportional zu $\mu_0$ sind und der erste Term die Ladungsdichte über $\varepsilon_0$ enthält, bietet es sich an, $\mu_0$ auszuklammern und als Vorfaktor zu verwenden.
+Da alle räumlichen Komponenten auf der rechten Seite von $\ast d {\ast} F$ proportional zu $\mu_0$ sind und der erste Term die Ladungsdichte über $\varepsilon_0$ enthält, bietet es sich an, $\mu_0$ auszuklammern und als Vorfaktor zu verwenden.
 Somit ergibt sich
 \begin{align*}
-	\ast d \ast F
+	\ast d {\ast} F
 	& = \mu_0 \left( -\frac{\rho}{\varepsilon_0 \mu_0}\,dt + J_1\, dx + J_2\, dy + J_3\, dz \right)\\[2ex]
 	& = \mu_0 \left( -c^2 \rho \,dt + J_1 \,dx + J_2 \,dy + J_3 \,dz \right).
 \end{align*}
@@ -205,7 +205,7 @@ In koordinatenfreier Sprache mit $dx^0 = c\,dt, dx^1 = dx,dx^2=dy$ und $dx^3 = d
 Wir haben nun also eine sehr kompakte Form gefunden, die inhomogenen Maxwell-Gleichungen zu formulieren.
 Die gesamte Information der beiden Gleichungen steckt in
 \begin{equation}
-	\ast d \ast F = \mu_0 J.
+	\ast d {\ast} F = \mu_0 J.
 \end{equation}
 Zusätzlich ist die Formulierung kovariant und behält somit seine Form bei Koordinatentransformationen.
 \begin{comment}
