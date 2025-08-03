@@ -1,9 +1,40 @@
-\newcommand{\eot}{\mathbf{e}_{12}}
+\newcommanduu{\eot}{\mathbf{e}_{12}}
 % \newcommand{\eott}{\mathbf{e}_{123}}
 \section{Berechnungen mit der geometrischen Algebra}
-Anstelle immer $\eone \wedge \etwo$ zu schreiben, wird in der geometrischen Algebra oft auch
-die Schreibweise $\eot$ verwendet.
-Wie wir bereits wissen, nennen wir $\eot$ einen \emph{Bivektor}. In der geometrischen Algebra
+Da für beliebige Einheitsvektoren $\eone, \etwo$ das Skalarprodukt $\eone \cdot \etwo = 0$ ergibt,
+folgt, dass das geometrische Produkt zwischen $\eone$ und $\etwo$
+\begin{equation}
+  \begin{aligned}
+  \eone \etwo &= \eone \cdot \etwo + \eone \wedge \etwo \\
+  &= \eone \wedge \etwo
+  \end{aligned}
+\end{equation}
+ergibt.
+Anstelle immer $\eone \wedge \etwo$ zu schreiben, kann somit auch einfach $\eone \etwo$ geschrieben werden.
+Diese Schreibweise wird in der geometrischen Algebra oft sogar noch weiter zu $\eot$ verkürzt. Im Folgenden bedeutet
+$\eot$ also der Bivektor $\eone \wedge \etwo$.
+
+Ausserdem folgt aus \eqref{geoalgebra:lemma:a_squared}, dass
+\begin{equation}
+  \begin{aligned}
+  \eone^2 &= \eone \cdot \eone + \eone \wedge \eone \\
+  &= \eone \cdot \eone \\
+  &= 1
+  \end{aligned}
+\end{equation}
+ergibt.
+
+Desweiteren ergibt 
+\begin{equation}
+  \begin{aligned}
+  \mathbf{e}_{121} = -\mathbf{e}_{112} = -\etwo.
+  \end{aligned}
+\end{equation}
+Jedesmal, wenn ein Index ``getauscht'' wird ($\mathbf{e}_{121} = -\mathbf{e}_{112}$), wird auch das Vorzeichen
+gewechselt.
+
+In \autoref{geoalgebra:section:trivectors-n-vectors} wurde bereits auf Trivektoren und $n$-Vektoren eingegangen. 
+In der geometrischen Algebra
 spricht man auch von \emph{Graden}. Ein Bivektor ist von Grad $2$, ein Vektor ist von Grad $1$, ein Skalar von
 Grad $0$, ein Trivektor von Grad $3$ und so weiter.
 
@@ -13,22 +44,20 @@ A &= 2 + 3 \eone + \eot \\
 B &= 1 + \eone + 2 \eot.
 \end{align}
 
-Das Tolle ist, dass mit der geometrischen Algebra ähnlich zu den komplexen Zahlen eine Algebra definiert
-ist, mit welcher normal gerechnet werden kann. So können wir zum Beispiel Multivektoren addieren
+Mit der geometrischen Algebra ist ähnlich zu den komplexen Zahlen eine Algebra definiert,
+mit welcher normal gerechnet werden kann. So können zum Beispiel Multivektoren addiert
 \begin{equation}
 \begin{aligned}
 A + B &= (2 + 3 \eone + \eot) + (1 + \eone + 2 \eot) \\
 &= 3 + 4 \eone + 3 \eot,
 \end{aligned}
 \end{equation}
-
-oder sogar multiplizieren
-
+oder sogar multipliziert werden
 \begin{equation}
 \begin{aligned}
 A  B &= (2 + 3 \eone + \eot) (1 + \eone + 2 \eot) \\
 &= 2 + 2 \eone + 4 \eot + 3 \eone + 3 \eone^2 + 6 \eone \eot + \eot + \eot \eone + 2 \eot^2 \\
 &= 2 + 2 \eone + 4 \eot + 3 \eone + 3 + 6 \etwo + \eot - \etwo - 2 \\
-&= 3 + 5 \eone + 5 \etwo + 5 \eot \\
+&= 3 + 5 \eone + 5 \etwo + 5 \eot \\.
 \end{aligned}
 \end{equation}
