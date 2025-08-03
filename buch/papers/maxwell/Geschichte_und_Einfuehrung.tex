@@ -120,19 +120,22 @@ Anschliessend können wir das Ergebnis in den allgemeinen Satz von Stokes einset
 \left(\frac{\d H_z}{\d y} - \frac{\d H_y}{\d z}\right) \, dy \wedge dz .
 \]
 Nun kann man die linke Seite der Gleichung in eine normale Integralform und die rechte Seite in eine differentielle Form umschreiben, wobei die Klammerausdrücke rechts die Rotation und die Wedgeprodukte die orientierten Flächenstücke bilden: 
-\[
+\begin{equation}
+\label{maxwell:equation:ampere:integral}
 \int_{\d A} \vec{H} \cdot d\vec{l}
 =
 \iint_{A} (\nabla \times \vec{H}) \cdot d\vec{s} .
-\]
-Damit lässt sich beweisen, dass
-\begin{align*}
+\end{equation}
+Damit ist gezeigt, dass die integrale Form der Gleichung
+\begin{align}
 	\int_{\d A}
 	\vec{H} \cdot d\vec{l}
 	&=
 	\iint_{A}
 	\vec{J} \cdot d\vec{s}
+	\notag
 	\\
+	\intertext{in der Gleichung \refeq{maxwell:equation:ampere:integral} eingesetzt wird}
 	\iint_{A}
 	(
 	\nabla \times \vec{H}
@@ -142,45 +145,80 @@ Damit lässt sich beweisen, dass
 	&=
 	\iint_{A}
 	\vec{J} \cdot d\vec{s}
+	\label{maxwell:equation:ampere:differential}
 	\\
+	\intertext{genau der Differentialform}
 	\nabla \times \vec{H}
 	&=
-	\vec{J} .
-\end{align*}
-gilt.
+	\vec{J} 
+\end{align}
+entsricht.
+
 Dabei Stellt sich noch die Frage, warum die Integrale beim letzten Schritt weggelassen dürfen werden.
-Ganz allgemein könnte man sich fragen, ob aus
-\[
-\int_A \vec{X}_1 \cdot d\vec{s} = \int_A \vec{X}_2 \cdot d\vec{s}
-\quad \forall A
-\]
-folgt, dass
-\[
-\vec{X_1} = \vec{X_2}
-\]
-ist. Dabei ist zu betonen, dass wir wirklich jede beliebige Fläche $A$ wählen dürfen.
-Somit kann man auch sagen, dass
-\[
-\int_A (\vec{X_1}-\vec{X_2}) \cdot d\vec{s} = 0
-\]
-ist.
-Mit einer Widerspruchsüberlegung lässt sich unsere Fragestellung belegen.
-Wir definieren zur einfachheit
-\[
-\vec{X_1}-\vec{X_2} = \vec{X}.
-\]
-Nun wäre $\vec{X} \ne 0$ an einer bestimmten Stelle $P$, also $\vec{X}(P) \ne 0$. Wählen wir jetzt ein ganz kleines Ebenenstück um diesen Punkt $P$ mit Normale $\hat{n}$ parallel zu $\vec{X}$, können wir $\vec{X}$ als konstante betrachten.
-Dann ist
-\begin{align*}
-	\vec{X} \cdot d\vec{s} 
-	&\approx
-	\vec{X}(P) \cdot \hat{n} \cdot ds
-	\\
-	\int_{A} \vec{X} \cdot d\vec{s}
-	&\approx
-	\vec{X}(P) \cdot \hat{n} \cdot (\text{Flächeninhalt}) \overset{!}{\ne} 0.
-\end{align*}
-Dieser Widerspruch zeigt, dass $\vec{X} = 0$ sein muss. Im Bezug auf unsere Herleitung wäre $X = (\nabla \times \vec{H}) - J$.
+\begin{lemma}
+	\label{maxwell:lemma:ampere}
+	Sind $\vec{X}_1$ und $\vec{X}_2$ Vektorfelder, für die für jede Fläche $A$
+	\[
+	\int_A \vec{X}_1\cdot d\vec{s}
+	=
+	\int_A \vec{X}_2\cdot d\vec{s}
+	\]
+	gilt, dann ist $\vec{X}_1=\vec{X}_2$.
+\end{lemma}
+
+\begin{proof}
+	\label{maxwell:proof:ampere}
+	Mit einer Widerspruchsüberlegung lässt sich das lemma \ref{maxwell:lemma:ampere} beweisen.
+	Der Einfachheit halber setzen wir $\vec{X} = \vec{X}_1-\vec{X}_2$.
+	Nun wäre $\vec{X} \ne 0$ an einer bestimmten Stelle $P$, also $\vec{X}(P) \ne 0$.
+	Wählen wir jetzt ein ganz kleines Ebenenstück um diesen Punkt $P$ mit Normale $\hat{n}$ parallel zu $\vec{X}$, können wir $\vec{X}$ als konstante betrachten. 
+	Dann ist
+	\begin{align*}
+		\vec{X} \cdot d\vec{s} 
+		&\approx
+		\vec{X}(P) \cdot \hat{n} \cdot ds
+		\\
+		\int_{A} \vec{X} \cdot d\vec{s}
+		&\approx
+		\vec{X}(P) \cdot \hat{n} \cdot (\text{Flächeninhalt}) \overset{!}{\ne} 0.
+	\end{align*}
+	Dieser Widerspruch zeigt, dass $\vec{X} = 0$ sein muss.
+\end{proof}
+Das Lemma \ref{maxwell:lemma:ampere} kann nun auf Gleichung \refeq{maxwell:equation:ampere:differential} angewendent werden, und erhalten dadurch die Differentialform des ampèreschen Gesetzes ohne Integrale.
+%Ganz allgemein könnte man sich fragen, ob aus
+%\[
+%\int_A \vec{X}_1 \cdot d\vec{s} = \int_A \vec{X}_2 \cdot d\vec{s}
+%\quad \forall A
+%\]
+%folgt, dass
+%\[
+%\vec{X_1} = \vec{X_2}
+%\]
+%ist. Dabei ist zu betonen, dass wir wirklich jede beliebige Fläche $A$ wählen dürfen.
+%Somit kann man auch sagen, dass
+%\[
+%\int_A (\vec{X_1}-\vec{X_2}) \cdot d\vec{s} = 0
+%\]
+%ist.
+%Mit einer Widerspruchsüberlegung lässt sich unsere Fragestellung belegen.
+%Wir definieren zur einfachheit
+%\[
+%\vec{X_1}-\vec{X_2} = \vec{X}.
+%\]
+%Nun wäre $\vec{X} \ne 0$ an einer bestimmten Stelle $P$, also $\vec{X}(P) \ne 0$. Wählen wir jetzt ein ganz kleines Ebenenstück um diesen Punkt $P$ mit Normale $\hat{n}$ parallel zu $\vec{X}$, können wir $\vec{X}$ als konstante betrachten.
+%Dann ist
+%\begin{align*}
+%	\vec{X} \cdot d\vec{s} 
+%	&\approx
+%	\vec{X}(P) \cdot \hat{n} \cdot ds
+%	\\
+%	\int_{A} \vec{X} \cdot d\vec{s}
+%	&\approx
+%	\vec{X}(P) \cdot \hat{n} \cdot (\text{Flächeninhalt}) \overset{!}{\ne} 0.
+%\end{align*}
+%Dieser Widerspruch zeigt, dass $\vec{X} = 0$ sein muss. Im Bezug auf unsere Herleitung wäre $X = (\nabla \times \vec{H}) - J$.
+
+
 \subsection{weitere grosse fortschritte, wichtigste entdeckucngen?}
 
 Im Jahre 1821 gelang Michael Faraday ein Experiment, bei dem sich ein stromdurchflossener Leiter unter Einfluss eines Dauermagneten um seine Achse drehte.
@@ -207,11 +245,11 @@ Seine veröffentlichten Errungenschaften beinhalteten wenig bis keine mathematis
 
 Carl Friedrich Gauss war ein sehr bedeutender Mathematiker und Theoretiker.
 Bereits während seiner Lebenszeit wurde er als ``Fürst der Mathematiker'' bezeichnet.
-Nach ihm wurden über 100 mathematische und wissenschaftliche Konzepte benannt, so auch in der Elektrodynamik.
+Nach ihm wurden über 100 mathematische und wissenschaftliche Konzepte benannt, so auch in der Elektrodynamik.\cite{maxwell:Carl_Friedrich_Gauß}
 1825 formulierte er das ``Gaussches Gesetz für elektrische Felder''.
 Dieses Gesetz konnte er durch Coulombs Beobachtungen, dass das elektrische Feld einer Punktladung radial quadratisch abnimmt, folgern.
 Durch diese radiale Abnahme musste auch der elektrisch Fluss durch eine Kugel, in der die Ladung eingeschlossen ist, konstant sein.
-Somit lässt sich daraus schliessen, dass das Integral des elektrischen Flusses über diese Kugeloberfläche genau der darin enthaltenen Ladung entspricht
+Somit lässt sich daraus schliessen, dass das Integral des elektrischen Flusses über diese Kugeloberfläche genau der darin enthaltenen Ladung entspricht\cite{maxwell:Gaußscher_Integralsatz}
 \[
 \oint_{A=\d V} \vec{D} \cdot d\vec{s}
 =
@@ -238,8 +276,6 @@ Natürlich lassen sich die Gleichungen auch in differentiellen Form darstellen a
 	&=
 	\frac{\rho}{\varepsilon_0} .
 \end{align*}
-\cite{maxwell:Gaußscher_Integralsatz}
-\cite{maxwell:Carl_Friedrich_Gauß}
 
 \subsubsection{herleitung gaussscher integralsatz??}
 
@@ -266,38 +302,42 @@ E_x \, dx + E_y \, dy + E_z \, dz ,
 \]
 welche dieses Mal dem elektrischen Feld entspricht.
 Da wir einmal über den Rand eines Volumens und einmal über das Volumen selbst integrieren müssen, benötigen wir aber eine 2-Form und eine 3-Form, welche wir bekanntlich mit dem Hodgeoperator
-\begin{align*}
+\begin{align}
 	\ast\alpha
 	&=
 	E_x \, dy \wedge dz + E_y \, dz \wedge dx + E_z \, dx \wedge dy
+	\label{maxwell:equasion:gauss:zweiform}
 	\\
-\text{und mit der äusseren Ableitung}
-	\\
-	d\ast\alpha
+	\intertext{und mit der äusseren Ableitung}
+	d{\ast}\alpha
 	&=
 	\frac{\d E_x}{\d x} \, dx \wedge dy \wedge dz +
 	\frac{\d E_y}{\d y} \, dy \wedge dz \wedge dx +
 	\frac{\d E_z}{\d z} \, dz \wedge dx \wedge dy
+	\notag
 	\\ 
 	&=
 	\frac{\d E_x}{\d x} \, dx \wedge dy \wedge dz +
 	\frac{\d E_y}{\d y} \, dx \wedge dy \wedge dz +
 	\frac{\d E_z}{\d z} \, dx \wedge dy \wedge dz
+	\notag
 	\\
 	&=
 	\left(
 	\frac{\d E_x}{\d x} + \frac{\d E_y}{\d y} + \frac{\d E_z}{\d z}
 	\right)
 	dx \wedge dy \wedge dz 
-\end{align*}
+	\label{maxwell:equasion:gauss:dreiform}
+\end{align}
 bekommen.
-Nun kann der allgemeine Satz von Stokes auch wie folgend formuliert werden
+
+Der allgemeine Satz von Stokes für $\ast \alpha$ ist
 \[
 \int_{V} d \ast \alpha 
 =
-\int_{\d V} \ast \alpha ,
+\int_{\d V} \ast \alpha .
 \]
-und das letzte Resultat kann eingesetzt werden
+Setzt man Gleichung \refeq{maxwell:equasion:gauss:zweiform} und \refeq{maxwell:equasion:gauss:dreiform} ein, erhalten wir
 \[
 \int_{\d V}
 E_x \, dy \wedge dz + E_y \, dz \wedge dx + E_z \, dx \wedge dy
@@ -308,43 +348,153 @@ E_x \, dy \wedge dz + E_y \, dz \wedge dx + E_z \, dx \wedge dy
 \right)
 dx \wedge dy \wedge dz .
 \]
-Wird die Gleichung nun in Vektorform umgeformt, folgt nun der Integralsatz von Gauss:
-\[
-\int_{\d V}
-\vec{E} \cdot d\vec{s}
-=
-\int_{V}
-(\nabla \cdot \vec{E}) \, dv .
-\]
-Wie man gut erkennen kann, entspricht die linke Seite des Integralsatzes genau dem Satz von Gauss für elektrische Felder und der Zusammenhang zwischen der Integralform und differentiellen Form ist auch gerade gegeben:
+In Vektorform umgeformt, folgt nun der Integralsatz von Gauss:
+\begin{equation}
+	\label{maxwell:equasion:gauss:gauss}
+	\int_{\d V}
+	\vec{E} \cdot d\vec{s}
+	=
+	\int_{V}
+	(\nabla \cdot \vec{E}) \, dV .
+\end{equation}
+Nun können wir in bei der integralen Form des Satzes von Gauss
 \begin{align*}
 	\oint_{A=\d V} \vec{E} \cdot d\vec{s}
 	&=
 	\frac{1}{\varepsilon_0}\int_{V} \rho \, dv
 	\\
+	\intertext{den Integralsatz \refeq{maxwell:equasion:gauss:gauss} einsetzen:}
 	\int_{V}
 	(\nabla \cdot \vec{E}) \, dv
 	&=
-	\frac{1}{\varepsilon_0}\int_{V} \rho \, dv
+	\frac{1}{\varepsilon_0}\int_{V} \rho \, dv .
 	\\
+	\intertext{Dadurch folgt mit Hilfe des Lemma \ref{maxwell:lemma:gauss} die differentielle Form}
 	\nabla \cdot \vec{E}
 	&=
 	\frac{\rho}{\varepsilon_0}.
 \end{align*} 
-Damit die Integrale beim letzten Schritt weggelassen werden dürfen, gilt es zu beachten, dass der allgemeine Satz von Stokes für jedes noch so kleine Volumen gilt:
-\[
-\lim_{\left| V \right| \to 0} \frac{1}{\left| V \right|} \int_{V} \rho \, dV = \rho(x),
-\]
-falls $x\in V$ während des Grenzübergangs.
-Das bedeutet, dass der Satz punktweise ausgewertet werden kann, was im Zusammenhang mit dem Gaussschen Integralsatz durchaus auch intuitiv Sinn ergibt.
-\subsection{das wo wir jetz kennen}
 
-folgt noch: Geschichte Maxwell,
+\begin{lemma}
+	\label{maxwell:lemma:gauss}
+	Für den allgemeinen Satz von Stokes gilt für jedes noch so kleine Volumen
+	\[
+	\lim_{\left| V \right| \to 0} \frac{1}{\left| V \right|} \int_{V} \rho \, dV = \rho(x),
+	\]
+	falls $x\in V$ während des Grenzübergangs.
+\end{lemma}
+\begin{proof}
+	Die Funktion $\rho$ ist stetig in $x$. Das bedeutet, für jedes noch so kleine $\varepsilon > 0$ existiert ein $\delta > 0$.
+	Dabei muss für alle Punkte $y$ mit
+	\[
+	\left|y-x\right| < \delta	
+	\]
+	gelten, dass 
+	\[
+	\left|\rho(y) - \rho(x)\right| < \varepsilon
+	\] 
+	gilt.
+	Wir wählen ein Volumen $V$ mit Eigenschaften $x \in V$ und der Durchmesser von $V$ ist kleiner als $\delta$, was bedeutet, dass jeder Punkt $y \in V$ in einer Kugel um $x$ mit Radius $\delta$ liegt.
+	Somit gilt auch für alle $y \in V$
+	\[
+	\left|\rho(y) - \rho(x)\right| < \varepsilon .
+	\]
+	Betrachten wir nun die Differenz zwischen dem Mittelwert über das volume $V$ und dem Wert $x$
+	\[
+	\left|
+	\frac{1}{\left|V\right|}
+	\int_{V}
+	\rho(y)
+	\,
+	dV
+	-
+	\rho(x)
+	\right|
+	\]
+	und nehmen das $\rho(x)$ ins Integral
+	\[
+	\left|
+	\frac{1}{\left|V\right|}
+	\int_{V}
+	(\rho(y) - \rho(x)) \, dV
+	\right|
+	\leq
+	\frac{1}{\left|V\right|}
+	\int_{V}
+	\left|
+	\rho(y) - \rho(x)
+	\right|
+	\,
+	dV .
+	\]
+	Da wir wissen, dass $\left|\rho(y) - \rho(x)\right| < \varepsilon \quad \forall \, y \in V$, folgt
+	\[
+	\frac{1}{\left|V\right|}
+	\int_{V}
+	\left|
+	\rho(y) - \rho(x)
+	\right|
+	\,
+	dV
+	<
+	\frac{1}{\left|V\right|}
+	\int_{V}
+	\varepsilon
+	\,
+	dV
+	=
+	\varepsilon .
+	\]
+	Somit ist 
+	\[
+	\left|
+	\frac{1}{\left|V\right|}
+	\int_{V}
+	(\rho(y) - \rho(x)) \, dV
+	\right|
+	<
+	\varepsilon
+	\]
+	für jedes $\varepsilon > 0$, wenn $V$ sehr klein ist, mit Durchmesser $< \delta$ und Lemma \ref{maxwell:lemma:gauss} ist korrekt.
+\end{proof}
+
+%Damit die Integrale beim letzten Schritt weggelassen werden dürfen, gilt es zu beachten, dass der allgemeine Satz von Stokes für jedes noch so kleine Volumen gilt:
+%\[
+%\lim_{\left| V \right| \to 0} \frac{1}{\left| V \right|} \int_{V} \rho \, dV = \rho(x),
+%\]
+%falls $x\in V$ während des Grenzübergangs.
+%Das bedeutet, dass der Satz punktweise ausgewertet werden kann, was im Zusammenhang mit dem Gaussschen Integralsatz durchaus auch intuitiv Sinn ergibt.
+
+
+\subsection{das wo wir jetz kennen}
+Der wohl prägendste Namen in der Geschichte der Elektrodynamik ist wohl der von James Clerk Maxwell.
+Mit seiner Publikation ``A dynamical Theory of the Electromagnetic Field'' im Jahre 1865 beschrieb Maxwell, dass sich das magnetische und elektrische Feld in Form von Wellen mit Lichtgeschwindigkeit im Vakuum ausbreiten.
+Im selben Paper veröffentlichte er auch seine Finale Version seiner berühmten Gleichungen, doch wie kam es dazu?
+
+Schon im jungen Alter war Maxwell sehr fasziniert an der Geometrie. Bereits mit 13 Jahren, im Jahre 1844, gewann er den Mathematikwettbewerb seiner Schule, der angesehenen Edinburgh Academy.
+Sein Interesse ging weit über den gewöhnlichen Schulstoff hinweg.
+Er beschäftigte sich hauptsächlich mit Verfahren über das Zeichnen mathematischer Kurven und Eigenschaften von Ellipsen, worüber er mit 14 Jahren seine erste wissenschaftliche Arbeit darüber schrieb.
+In dieser war nicht alles neu?(tönt blöd), jedoch konnte er bereits bekannte Theorien stark vereinfachen.
+
+Er führte sein Studium in der University of Edinburgh fort und wechselte später zur University of Cambridge.
+1865 wurde er Professor für Mathematik am Marischal College in Aberdeen.
+Mit seinen 25 war er mit Abstand der jüngste Professor am College.%https://en.wikipedia.org/wiki/James_Clerk_Maxwell
+
+Sein Studium über den Elektromagnetismus begann er aber bereits 1855 und dauerte bis 1870. In dieser Zeit veröffentlichte er mehrere Papers.
+
+ 
+
+%https://en.wikipedia.org/wiki/History_of_Maxwell%27s_equations
+
+%axwell also introduced the concept of the electromagnetic field in comparison to force lines that Faraday described.[1
+
+%His discoveries helped usher in the era of modern physics, laying the foundations for such fields as relativity, also being the one to introduce the term into physics,[10] and quantum mechanics.[18][19] Many physicists regard Maxwell as the 19th-century scientist having the greatest influence on 20th-century physics. His contributions to the science are considered by many to be of the same magnitude as those of Isaac Newton and Albert Einstein.[20] On the centenary of Maxwell's birthday, his work was described by Einstein as the "most profound and the most fruitful that physics has experienced since the time of Newton".[21] When Einstein visited the University of Cambridge in 1922, he was told by his host that he had done great things because he stood on Newton's shoulders; Einstein replied: "No I don't. I stand on the shoulders of Maxwell."[22] Tom Siegfried described Maxwell as "one of those once-in-a-century geniuses who perceived the physical world with sharper senses than those around him".[23]
+folgt noch: Geschichte Maxwell, war der erste der die relativität in betracht zog!! wichtig
 Heaviside,
 relativität mit einstein?
 differentailformen eher nicht
 bei maxwell 20 gleichhungne zerst, evtl sagen was es alles war, war nähmlich glaubs mehr drin als jetzt in den vier heuteigen
 
 
-%\textbf{todo von korrekturen:}exkurse überearbeiten(mail an müller), titel besser machen
+
 
