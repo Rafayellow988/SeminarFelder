@@ -41,7 +41,7 @@ auf der linken Seite ist ein Einlass mit 10m/s definiert auf der rechten Seite e
 Das Mesh ist so gewählt das es in der Tiefe nur ein Element hat, bzw. so dass die Simulation einer zweidimensionalen Simulation entspricht.
 
 \begin{figure}
-    \includegraphics[width=\textwidth]{.images/domain.png}
+    \includegraphics[width=\textwidth]{papers/reynolds/images/domain.png}
     \caption{Simulationsgeometrie}
     \label{fig:SimDomain}
 \end{figure}
@@ -57,48 +57,43 @@ Im Inkompressiblen und Isothermen fall kann eine Simulation mit eine Turbulenzmo
 
 \subsubsection{Verscheiden Turbulenzmodelle}
 
-Das wohl meistverbreitete Turbulenzmodell ist das k-\epsilon Modell das mit zwei Feldern auskommt. Das k Feld für die Turbulente kinetische Energie, und das epsilon Feld für die Eddy Viskosität, was aufgrund der Turbulenzen eine hypotetische Viskosität darstellt.
+Das wohl meistverbreitete Turbulenzmodell ist das k-$\epsilon$ Modell das mit zwei Feldern auskommt. Das k Feld für die Turbulente kinetische Energie, und das epsilon Feld für die Eddy Viskosität, was aufgrund der Turbulenzen eine hypotetische Viskosität darstellt.
 Folgen eine nicht komplete liste von Trubulenzmodellen für RANS:
--	K-\epsilon
--	Quadratisch/Kubisch K-\epsilon
--	K-\omega
+-	K-$\epsilon$
+-	Quadratisch/Kubisch K-$\epsilon$
+-	K-$\omega$
 -	Shear Stress Transport (SST)
 -	RANS-LES kombinierte Modell (>=4 Felder)
 
 Jedes dieser Turbulenzmodell hat seine Eigenheiten und spezifische Einsatz Bereiche.
-So ist das K-\epsilon Modell zum Beispiel nicht geeignet für schwach turbulente Strömungen,
+So ist das K-$\epsilon$ Modell zum Beispiel nicht geeignet für schwach turbulente Strömungen,
 wo es die Effekte der Verwirbelungen tendenziell überschätzt.~\ref{fig:k-e}
-Hingegen ist das k-\omega Modell in diesen Bereichen besser geeignet.~\ref{fig:k-w}
+Hingegen ist das k-$\omega$ Modell in diesen Bereichen besser geeignet.~\ref{fig:k-w}
 Das SST-Modell kombiniert die beiden Modell so das im Wandbereich,
-wo die misten Turbulenzen auftreten, k-\epsilon verwendet wird und um mittleren Bereich k-\omega.~\ref{fig:SST}
+wo die misten Turbulenzen auftreten, k-$\epsilon$ verwendet wird und um mittleren Bereich k-$\omega$.~\ref{fig:SST}
 
 \begin{figure}
+    \includegraphics[width=\textwidth]{papers/reynolds/images/dns.png}
+    \caption{Ohne Turbulenzmodell}
+    \label{fig:DNS}
+\end{figure}
 
-    \begin{subfigure}
-        \includegraphics[width=\textwidth]{.images/dns.png}
-        \caption{Ohne Turbulenzmodell}
-        \label{fig:DNS}
-    \end{subfigure}
+\begin{figure}
+    \includegraphics[width=\textwidth]{papers/reynolds/images/k-e.png}
+    \caption{Mit k-$\epsilon$ Turbulenzmodell}
+    \label{fig:k-e}
+\end{figure}
 
-    \begin{subfigure}
-        \includegraphics[width=\textwidth]{.images/k-e.png}
-        \caption{Mit k-\epsilon Turbulenzmodell}
-        \label{fig:k-e}
-    \end{subfigure}
+\begin{figure}
+    \includegraphics[width=\textwidth]{papers/reynolds/images/k-w.png}
+    \caption{Mit k-$\omega$ Turbulenzmodell}
+    \label{fig:k-w}
+\end{figure}
 
-    \begin{subfigure}
-        \includegraphics[width=\textwidth]{.images/k-w.png}
-        \caption{Mit k-\omega Turbulenzmodell}
-        \label{fig:k-w}
-    \end{subfigure}
-
-    \begin{subfigure}
-        \includegraphics[width=\textwidth]{.images/sst.png}
-        \caption{Mit SST Turbulenzmodell}
-        \label{fig:SST}
-    \end{subfigure}
-
-
+\begin{figure}
+    \includegraphics[width=\textwidth]{papers/reynolds/images/sst.png}
+    \caption{Mit SST Turbulenzmodell}
+    \label{fig:SST}
 \end{figure}
 
 
