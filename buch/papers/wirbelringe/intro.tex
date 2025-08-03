@@ -6,18 +6,19 @@
 %
 \section{Einleitung}
 
-Wirbelringe sind ein interessantes Naturphänomen welchem man schneller begegnet als man denkt. 
+Wirbelringe sind ein interessantes Naturphänomen, welchem man schneller begegnet als man denkt. 
 In diesem Paper schauen wir uns Wirbelringe etwas genauer an und begründen einige Eigenschaften. 
 Des Weiteren untersuchen wir eine weitverbreitete praktische (ungewollte) Anwendung und dessen Auswirkung. 
-Zuletzt formulieren wir ein Modell womit man zumindest angenähert selbst gezielt Wirbelringe berechnen und erzeugen kann.
+Zuletzt formulieren wir ein Modell, womit man zumindest angenähert selbst gezielt Wirbelringe berechnen und erzeugen kann.
 
 In diesem Paper werden, wo nicht anders angegeben, nur ideale Fluide betrachtet.
+John von Neumann soll über die Theorie der idealen Fluide gesagt haben\cite{Wirbelringe:feynman1964lectures}: 
 
 \begin{quote}
     The theory of inviscid fluids is the study of «dry water».
-
-    - John von Neumann \cite{Wirbelringe:feynman1964lectures}
 \end{quote}
+
+Für das Verständnis von Wirbelringen ist sie aber ausreichend.
 
 \subsection{Wirbel}
 
@@ -47,6 +48,16 @@ wie wir in Abschnitt \ref{Wirbelringe:Grenzflaechen} sehen werden.
 
 Um die Stabilität von Wirbeln zu beurteilen, können wir betrachten, wie sich die Menge an Teilchen verhält --- ob diese wächst oder schrumpft. 
 Wir betrachten also die Divergenz der Teilchen, die Teil eines Wirbels sind.
+Die Kontinuitätsgleichung 
+\[
+\frac{\partial \rho}{\partial t}
++
+\operatorname{div}\vec{\jmath}
+=
+0
+\]
+aus Abschnitt \ref{buch:zusammenhang:erhaltungssatz:subsection:kontinuitaetsgleichung} besagt nämlich, dass aus dem Verschwinden der Divergenz folgt, dass sich die Dichte nicht ändern kann.
+
 Mit dieser Frage kommt man auf die Rechnung
 \[
 \operatorname{div} ( \operatorname{rot} ( \vec{A} ) )
@@ -68,13 +79,14 @@ Nehmen wir an das \(\vec{A}\) zweimal stetig differenzierbar ist, so erhalten wi
 \frac{\partial^2 A_z}{\partial x \partial y} - \frac{\partial^2 A_y}{\partial x \partial z} + 
 \frac{\partial^2 A_x}{\partial y \partial z} - \frac{\partial^2 A_z}{\partial y \partial x} +
 \frac{\partial^2 A_y}{\partial z \partial x} - \frac{\partial^2 A_x}{\partial z \partial y}
-\\
+.\\
+\intertext{Der Satz von Schwarz besagt, dass es auf die Reihenfolge der Ableitungen nicht ankommt. Somit kann man sie paarweise anordnen}\\
 &=
 \frac{\partial^2 A_z}{\partial x \partial y} - \frac{\partial^2 A_z}{\partial y \partial x} + 
 \frac{\partial^2 A_x}{\partial y \partial z} - \frac{\partial^2 A_x}{\partial z \partial y} +
-\frac{\partial^2 A_y}{\partial z \partial x} - \frac{\partial^2 A_y}{\partial x \partial z}
-\quad \text{(Satz von Schwarz)}\\
+\frac{\partial^2 A_y}{\partial z \partial x} - \frac{\partial^2 A_y}{\partial x \partial z}.
 \\
+\intertext{Somit fallen sie weg}
 &=
 \overbrace{\frac{\partial^2 A_z}{\partial x \partial y} - \frac{\partial^2 A_z}{\partial x \partial y}}^0 + 
 \overbrace{\frac{\partial^2 A_x}{\partial y \partial z} - \frac{\partial^2 A_x}{\partial y \partial z}}^0 +
@@ -97,11 +109,11 @@ Aus diesem Grund sind Wirbel sehr stabil.
 
 \subsection{Vom Wirbel zum Wirbelring}
 
-Um aus Wirbeln ein Wirbelring zu machen brauchen wir noch eine Definition.
+Um aus Wirbeln ein Wirbelring zu machen, brauchen wir noch eine Definition.
 
 \subsubsection*{Wirbelfäden}
 
-Ein {\em Wirbelfaden} ist ein Zylinder, welcher eine Wirbellinie als Zentrum dessen hat.
+Ein {\em Wirbelfaden} ist ein Zylinder, welcher eine Wirbellinie als Zentrum hat.
 Schneidet man nun diesen Zylinder senkrecht zu der Wirbellinie, ergibt sich ein einzelner Wirbel.
 Wirbelfäden werden auch {\em Wirbelröhren} genannt.
 

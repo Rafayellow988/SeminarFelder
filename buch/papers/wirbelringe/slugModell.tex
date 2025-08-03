@@ -102,14 +102,14 @@ als Drehimpuls eines rotierenden Fluidvolumens
     =
     \int_{V}\rho\cdot\vec{x}\times\vec{v}\,d\mathbf{V}
     =
-    \int_{V}\rho\cdot(\frac{1}{2}\vec{x}\times\vec{\omega})\,d\mathbf{V}
+    \int_{V}\rho\cdot({\textstyle \frac{1}{2}}\vec{x}\times\vec{\omega})\,d\mathbf{V}
     =
     \frac{\rho}{2}\int_{V}\vec{x}\times\vec{\omega}\,d\mathbf{V}
     \label{Wirbelringe:eq:Drehimpuls}
 \end{equation}
 hergeleitet werden. 
 
-Wie bereits erwähnt ist \(\vec{\omega}\) tangential zum Wirbelring und dieser ist Achsensymmetrisch.
+Wie bereits erwähnt ist \(\vec{\omega}\) tangential zum Wirbelring und dieser ist achsensymmetrisch.
 Ausserdem verläuft die Drehimpulsrichtung entlang der Symmetrieachse.
 Um jetzt der gewünschten Formel näherzukommen, wird \eqref{Wirbelringe:eq:Drehimpuls} in das Zylinderkoordinatensystem umgewandelt.
 Dabei wird
@@ -130,7 +130,8 @@ wobei das Kreuzprodukt der beiden
     =
     r\omega_\phi\hat{e}_z - z\omega_\phi\hat{e}_r
 \end{equation*}
-ergibt. Da der Wirbelring achsensymmetrisch ist, wird nur die \(\hat{e}_z\)-Komponente betrachtet.
+ergibt. 
+Da der Wirbelring achsensymmetrisch ist, wird nur die \(\hat{e}_z\)-Komponente betrachtet.
 Als Nächstes können die gefundenen Werte für \(\vec{x}\) und \(\vec{\omega}\) in \eqref{Wirbelringe:eq:Drehimpuls} eingesetzt werden.
 \(I_z\) wird dann zu
 \begin{equation*}
@@ -138,20 +139,21 @@ Als Nächstes können die gefundenen Werte für \(\vec{x}\) und \(\vec{\omega}\)
     =
     \frac{\rho}{2}\int_{0}^{2\pi}\int_{A}r\omega_\phi(r,z)\cdot r\,d\phi \,dr\,dz.
 \end{equation*}
-Da keine Integrationsvariable von \(\phi\) abhängt, kann das erste Integral sofort gelöst werden. Nach Einsetzen der Integrationsgrenzen ergibt sich
+Da keine Integrationsvariable von \(\phi\) abhängt, kann das erste Integral sofort gelöst werden. 
+Nach Einsetzen der Integrationsgrenzen ergibt sich
 \begin{equation*}
     I_z
     =
     \frac{\rho}{2}2\pi\int_{A}r^2\omega_\phi(r,z)\,dr\,dz.
 \end{equation*}
-Die 2 kürzt sich heraus und die beiden r können zu \(r^2\) zusammengefasst werden, was zu folgender Formel führt
+Die 2 kürzt sich heraus und die beiden \(r\) können zu \(r^2\) zusammengefasst werden, was zu
 \begin{equation}
     I_z
     =
     \pi\rho\int_{A}r^2\vec{\omega}(r,z)\,dr\,dz
-    \label{Wirbelringe:eq:achssymImp},
+    \label{Wirbelringe:eq:achssymImp}
 \end{equation}
-mit welcher sich der Impuls eines Wirbelrings ermitteln lässt.
+führt, womit sich der Impuls eines Wirbelrings ermitteln lässt.
 
 Da die Impulserhaltung gilt, ist \(I_z\) von \eqref{Wirbelringe:eq:achssymImp} ungefähr gleich gross wie \(I_{\text{slug}}\) von \eqref{Wirbelringe:eq:slugImp}, also
 \begin{equation}
@@ -166,7 +168,7 @@ Da die Zirkulation gemäss \eqref{Wirbelringe:eq:Zirkulation} und \ref{Wirbelrin
     =
     \int_{A}\vec{\omega}(r,z)\,dr\,dz
 \end{equation*}
-umgewandelt werden kann ergibt sich mittels einsetzen in Gleichung \eqref{Wirbelringe:eq:Igleichi} die kompakte Formel
+umgewandelt werden kann ergibt sich mittels Einsetzen in Gleichung \eqref{Wirbelringe:eq:Igleichi} die kompakte Formel
 \begin{equation*}
     \Gamma
     =

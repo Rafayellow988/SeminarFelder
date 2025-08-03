@@ -36,7 +36,7 @@ Die elektrodynamischen Grössen haben jeweils ein Gegenstück in der Strömungsm
 Im Folgenden wird der Wirbelstärkevektor nicht verwendet.
 Jedoch ist der Zusammenhang vom Wirbelstärkevektor zum Stromdichtevektor etwas intuitiver als die Zirkulation zur Stromstärke.
 
-Die Maxwellgleichungen (siehe Abschnitt \ref{chapter:maxwell}) sehen vor, dass das \(\vec{B}\) Feld quellenfrei ist. 
+Die Maxwellgleichungen (siehe Abschnitt \ref{chapter:maxwell}) sehen vor, dass das \(\vec{B}\)-Feld quellenfrei ist. 
 Da wir nur inkompressible Fluide betrachten, ist dies gegeben.
 
 Setzt man nun die entsprechenden Grössen in das Biot-Savart-Gesetz
@@ -57,27 +57,29 @@ Mit dem Integral über diesen Wirbelfaden
 erhalten wir die induzierte Geschwindigkeit, welche durch den Wirbelfaden entsteht.
 Da dieses Gesetz aus der Elektrotechnik stammt, spricht man in der Strömungsmechanik von einer induzierten Geschwindigkeit.
 
-Um jetzt die selbstinduzierte Geschwindigkeit zu berechnen, wählen wir ein in der X-Y Plane liegender Wirbelring mit Radius \(a\).
+Um jetzt die selbstinduzierte Geschwindigkeit zu berechnen, wählen wir ein in der \(X\)-\(Y\) Ebene liegender Wirbelring mit Radius \(a\).
 Wie bereits erwähnt, ist der Radius des Wirbelfadens vernachlässigbar klein.
 Uns interessiert irgendein Punkt, der auf der Wirbellinie liegt.
 Somit ist
-\(
+\[
 \vec{r} = 
 \begin{pmatrix}
     a \cos \varphi\\
     a \sin \varphi\\
     0    
-\end{pmatrix}\)
-und
-\(
+\end{pmatrix}
+\qquad
+\text{und}
+\qquad
 d\vec{l} = 
 \begin{pmatrix}
     -a \sin \varphi\\
     a \cos \varphi\\
     0    
 \end{pmatrix}
-\,d\varphi \). 
-Setzt man diese in \eqref{Wirbelringe:eq:WirbelSpeed} ein, löst das Kreuzprodukt 
+\,d\varphi .
+\] 
+Setzt man diese in Gleichung \eqref{Wirbelringe:eq:WirbelSpeed} ein und löst das Kreuzprodukt 
 \[
 d\vec{l}\times\vec{r} 
 = 
@@ -99,7 +101,7 @@ d\vec{l}\times\vec{r}
     a^2
 \end{pmatrix}
 \]
-auf erhält man nach Einsetzen der Integrationsgrenzen von 0 bis \(2\pi\)
+auf, erhält man nach Einsetzen der Integrationsgrenzen von 0 bis \(2\pi\)
 \begin{align*}
 \vec{u}
 &=
