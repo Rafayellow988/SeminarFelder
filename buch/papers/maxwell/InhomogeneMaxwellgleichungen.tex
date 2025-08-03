@@ -10,11 +10,11 @@
 	\label{maxwell:section:InhomogeneMaxwellgleichungen}}
 \kopfrechts{Inhomogene Maxwellgleichungen}
 Den Faraday-Tensor haben wir definiert als
-\begin{equation}
-	F = \begin{pmatrix}
+\begin{equation*}
+	F_{\mu \nu} = \begin{pmatrix}
 		0 & -E_1/c & -E_2/c & -E_3/c \\ E_1/c & 0 & B_3 & -B_2 \\ E_2/c & -B_3 & 0 & B_1 \\ E_3/c & B_2 & -B_1 & 0 
 	\end{pmatrix}.
-\end{equation}
+\end{equation*}
 Wir haben dabei festgestellt, dass die äussere Ableitung von $F$ verschwindet, da $F$ eine geschlossene 2-Form ist. Dadurch haben wir die homogenen Maxwell-Gleichungen erhalten. 
 %Um nun die inhomogenen Maxwell-Gleichungen bestimmen zu können, müssen wir den Hodge-Operator auf $F$ anwenden.
 
@@ -28,9 +28,8 @@ Aus den klassischen inhomogenen Maxwell-Gleichungen
 	\nabla \cdot \vec{E} &= \frac{\rho}{\varepsilon_0},\\
 	\nabla \times \vec{B} - \varepsilon_0 \mu_0 \frac{\partial \vec{E}}{\partial t}&= \mu_0 \vec{J}
 \end{align}
-(schöner machen: nebeneinander und ein 'und' dazwischen oder so)
 sehen wir, dass auf der rechten Seite Quellenterme in Form von Ladungs- und Stromdichten auftreten.
-Da wir im Faraday-Tensor die elektrische Feldstärke $\vec{E}$ und magnetischen Flussdichte $\vec{B}$ integriert haben, wenden wir das Kodifferential auf $F$ an und schauen, ob die obigen Operationen in der Sprache der Differentialformen herauskommen.
+Da im Faraday-Tensor die elektrische Feldstärke $\vec{E}$ und magnetischen Flussdichte $\vec{B}$ enthalten ist, wenden wir das Kodifferential auf $F$ an und untersuchen, ob die obigen Operationen in der Sprache der Differentialformen herauskommen.
 In diesem Fall wissen wir bereits, dass diese Operation wegen der Inhomogenität nicht verschwindet.
 Es liegt daher nahe, auch $\rho$ und $\vec{J}$ zu einem einzigen geometrischen Objekt zusammenzufassen, weil beides Quellenterme sind.
 Damit wir wissen, welche geometrische Form dieses Objekt haben soll, betrachten wir, was die Operation 
@@ -51,21 +50,24 @@ Sobald wir das $\ast d {\ast} F$ berechnet haben, definieren wir $J$ so, dass di
 Wir erinnern uns, dass $F$ ausgeschrieben mit Wedge-Produkten definiert ist als
 \begin{align*}
 	F = 
-	& - \frac{E_{1}}{c} \, dx^0 \wedge dx^1 - \frac{E_{2}}{c} \, dx^0 \wedge dx^2 - \frac{E_{3}}{c} \, dx^0 \wedge dx^3 \\
-	& + B_3 \, dx^1 \wedge dx^2 - B_2 \, dx^1 \wedge dx^3 + B_1 \, dx^2 \wedge dx^3.
+	- &\frac{E_{1}}{c} \, dx^0 \wedge dx^1 - \frac{E_{2}}{c} \, dx^0 \wedge dx^2 - \frac{E_{3}}{c} \, dx^0 \wedge dx^3 \\
+	+ & \, B_3 \, \, dx^1 \wedge dx^2 - B_2 \, \, dx^1 \wedge dx^3 + \, B_1 \, \, dx^2 \wedge dx^3.
 \end{align*}
+
+
+
 \subsubsection{Berechnung $\ast F$}
 Zuerst wenden wir den Hodge-Operator auf $F$ an und erhalten
 \begin{align*}
 	\ast F =
 	& - \frac{E_{1}}{c} \, {\ast}(dx^0 \wedge dx^1) - \frac{E_{2}}{c} \, {\ast}(dx^0 \wedge dx^2) - \frac{E_{3}}{c} \, {\ast}(dx^0 \wedge dx^3) \\
-	& + B_3 \, {\ast}(dx^1 \wedge dx^2) - B_2 \, {\ast}(dx^1 \wedge dx^3) + B_1 \, {\ast}(dx^2 \wedge dx^3).
+	& + \, B_3 \, \, {\ast}(dx^1 \wedge dx^2) - \, B_2 \, \, {\ast}(dx^1 \wedge dx^3) + B_1 \, {\ast}(dx^2 \wedge dx^3).
 \end{align*}
 Die Hodge-Duale können aus der Tabelle ~\ref{maxwell:section:teil1:Hodge-Tabelle} entnommen werden.
 \begin{align*}
 	\ast F =
 	& \, \frac{E_{1}}{c} \, dx^2 \wedge dx^3 - \frac{E_{2}}{c} \, dx^1 \wedge dx^3 + \frac{E_{3}}{c} \, dx^1 \wedge dx^2 \\
-	& + B_3 \, dx^0 \wedge dx^3 + B_2 \, dx^0 \wedge dx^2 + B_1 \, dx^0 \wedge dx^1.
+	 + & \, B_3 \, \, dx^0 \wedge dx^3 + \, B_2 \, \, dx^0 \wedge dx^2 + \, B_1 \, \, dx^0 \wedge dx^1.
 \end{align*}
 Die erhaltene 2-Form kann nun wieder als Matrix
 \begin{equation}
