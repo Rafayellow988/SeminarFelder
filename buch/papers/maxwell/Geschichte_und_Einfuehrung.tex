@@ -5,10 +5,9 @@
 %
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
-\section{Geschichte und Einführung\label{maxwell:section:teil0}}
-\kopfrechts{Geschichte und Einführung}
+\section{Geschichte der Elektrodynamik\label{maxwell:section:teil0}}
+\kopfrechts{Geschichte der Elektrodynamik}
 
-\subsection{Frühzeit? erster kontakt..}
 Die Geschichte der Elektrodynamik führt sehr weit zurück.
 Das erste mal, das Elektrizität, wenn auch unbewusst, was es wirklich ist, verwendet wurde, war ca. 3100 Jahre v. Chr. im alten Ägypten.
 Dort wurden die Elektroschocks des elektrischen Wels zur Behandlung von Gelenkschmerzen verwendet \cite{maxwell:History_of_bioelectricity}.
@@ -22,7 +21,7 @@ So beschrieb 1269 der Franzosen Petrus Peregrinus durch Experimente als erster d
 Während des 17. Jahrhunderts wurde viel mit Reibungselektrizität experimentiert. Der Begriff der ``Elektrizität'' wurde erstmals verwendet und die Unterschiede magnetischer und elektrische Wirkung wurde erkannt.
 Im Jahr 1767 erkannte Joseph Priestley, dass die elektrische Kraft quadratisch zum Abstand abnimmt, ein erster Hinweis auf das Coulomb-Gesetz \cite{maxwell:History_of_electromagnetic_theory}.
 
-\subsection{erste wissenschaftliche erkenntenisse?}
+\subsection{erste wissenschaftliche Erkenntnisse}
 Ab dem Jahr 1785 nimmt die Entwicklung der Elektrodynamik richtig Fahrt auf.
 Charles Augustin de Coulomb entdeckte und bestätigte durch umfangreiche Experimente 1785, das die Kraft zwischen zwei Ladungen quadratisch mit dem Abstand ihres Mittelpunktes abnimmt \cite{maxwell:Charles-Augustin_de_Coulomb}:
 \[
@@ -32,7 +31,7 @@ Charles Augustin de Coulomb entdeckte und bestätigte durch umfangreiche Experim
 \cdot
 \frac{q_1 q_2}{r^2}
 \cdot
-\hat{r}.
+\vec{r}_0.
 \]
 Ob er von der Entdeckung Priestleys wusste ist nicht bekannt.
 %test
@@ -67,10 +66,10 @@ oder als differentielle Form
 \]
 formuliert.
 Dies sind sehr wichtige Gleichungen in der Elektrodynamik.
-Jedoch sind sie so nicht ganz vollständig und werden später noch mal überarbeitet(gleichung könnte evtl noch besser erklärt werden, was das bedeutet) \cite{maxwell:Hans_Christian_Ørsted}\cite{maxwell:André-Marie_Ampère}.
+Jedoch sind sie so nicht ganz vollständig und werden später noch mal überarbeitet \cite{maxwell:Hans_Christian_Ørsted}\cite{maxwell:André-Marie_Ampère}.
 
-\subsubsection{Herleitung der differentiellen Form der amperegleichnug?}
-\textit{Exkurs: Herleitung der differentiellen Form.}
+\subsubsection{Herleitung der differentiellen Form der Ampère-Gleichnug}
+
 Mit Hilfe des allgemeinen Satzes von Stokes(\ref{buch:green:green:satz:stokes})
 \[
 \int_{M} d\omega
@@ -88,24 +87,24 @@ Berechnen wir nun als erstes die äussere Ableitung von $\alpha$
 \begin{align*}
 	d\alpha 
 	&=
-	\cancel{\frac{\d H_x}{\d x} \, dx \wedge dx} + \frac{\d H_x}{\d x} \, dy \wedge dx + \frac{\d H_x}{\d z} \, dz \wedge dx
+	\frac{\d H_x}{\d x} \, dx \wedge dx + \frac{\d H_x}{\d x} \, dy \wedge dx + \frac{\d H_x}{\d z} \, dz \wedge dx
 	\\
 	&+
-	\frac{\d H_y}{\d x} \, dx \wedge dy + \cancel{\frac{\d H_y}{\d y} \, dy \wedge dy} + \frac{\d H_y}{\d z} \, dz \wedge dy
+	\frac{\d H_y}{\d x} \, dx \wedge dy + \frac{\d H_y}{\d y} \, dy \wedge dy + \frac{\d H_y}{\d z} \, dz \wedge dy
 	\\
 	&+
-	\frac{\d H_z}{\d x} \, dx \wedge dz + \frac{\d H_z}{\d y} \, dy \wedge dz + \cancel{\frac{\d H_z}{\d z} \, dz \wedge dz}
+	\frac{\d H_z}{\d x} \, dx \wedge dz + \frac{\d H_z}{\d y} \, dy \wedge dz + \frac{\d H_z}{\d z} \, dz \wedge dz
 	\\
 	\\
 	d\alpha
-	&=
-	\left(\frac{\d H_y}{\d x} - \frac{\d H_x}{\d y}\right) \, dx \wedge dy
+	=
+	&\left(\frac{\d H_y}{\d x} - \frac{\d H_x}{\d y}\right) \, dx \wedge dy
 	\\
-	&+
-	\left(\frac{\d H_z}{\d x} - \frac{\d H_x}{\d z}\right) \, dx \wedge dz
+	+
+	&\left(\frac{\d H_z}{\d x} - \frac{\d H_x}{\d z}\right) \, dx \wedge dz
 	\\
-	&+
-	\left(\frac{\d H_z}{\d y} - \frac{\d H_y}{\d z}\right) \, dy \wedge dz .
+	+
+	&\left(\frac{\d H_z}{\d y} - \frac{\d H_y}{\d z}\right) \, dy \wedge dz .
 \end{align*}
 Anschliessend können wir das Ergebnis in den allgemeinen Satz von Stokes einsetzen:
 \[
@@ -119,7 +118,7 @@ Anschliessend können wir das Ergebnis in den allgemeinen Satz von Stokes einset
 +
 \left(\frac{\d H_z}{\d y} - \frac{\d H_y}{\d z}\right) \, dy \wedge dz .
 \]
-Nun kann man die linke Seite der Gleichung in eine normale Integralform und die rechte Seite in eine differentielle Form umschreiben, wobei die Klammerausdrücke rechts die Rotation und die Wedgeprodukte die orientierten Flächenstücke bilden: 
+Nun kann man die Gleichung in die Sprache der Vektoranalysis umformulieren, wobei die Klammerausdrücke rechts die Rotation und die Wedgeprodukte die orientierten Flächenstücke bilden: 
 \begin{equation}
 \label{maxwell:equation:ampere:integral}
 \int_{\d A} \vec{H} \cdot d\vec{l}
@@ -147,14 +146,14 @@ Damit ist gezeigt, dass die integrale Form der Gleichung
 	\vec{J} \cdot d\vec{s}
 	\label{maxwell:equation:ampere:differential}
 	\\
-	\intertext{genau der Differentialform}
+	\intertext{genau der differentiellen Form der Ampère-Gleichung}
 	\nabla \times \vec{H}
 	&=
 	\vec{J} 
 \end{align}
-entsricht.
+entspricht.
 
-Dabei Stellt sich noch die Frage, warum die Integrale beim letzten Schritt weggelassen dürfen werden.
+Dabei Stellt sich noch die Frage, warum die Integrale beim letzten Schritt weggelassen dürfen werden, welche wir im folgendem Lemma klären.
 \begin{lemma}
 	\label{maxwell:lemma:ampere}
 	Sind $\vec{X}_1$ und $\vec{X}_2$ Vektorfelder, für die für jede Fläche $A$
@@ -185,41 +184,9 @@ Dabei Stellt sich noch die Frage, warum die Integrale beim letzten Schritt wegge
 	Dieser Widerspruch zeigt, dass $\vec{X} = 0$ sein muss.
 \end{proof}
 Das Lemma \ref{maxwell:lemma:ampere} kann nun auf Gleichung \refeq{maxwell:equation:ampere:differential} angewendent werden, und erhalten dadurch die Differentialform des ampèreschen Gesetzes ohne Integrale.
-%Ganz allgemein könnte man sich fragen, ob aus
-%\[
-%\int_A \vec{X}_1 \cdot d\vec{s} = \int_A \vec{X}_2 \cdot d\vec{s}
-%\quad \forall A
-%\]
-%folgt, dass
-%\[
-%\vec{X_1} = \vec{X_2}
-%\]
-%ist. Dabei ist zu betonen, dass wir wirklich jede beliebige Fläche $A$ wählen dürfen.
-%Somit kann man auch sagen, dass
-%\[
-%\int_A (\vec{X_1}-\vec{X_2}) \cdot d\vec{s} = 0
-%\]
-%ist.
-%Mit einer Widerspruchsüberlegung lässt sich unsere Fragestellung belegen.
-%Wir definieren zur einfachheit
-%\[
-%\vec{X_1}-\vec{X_2} = \vec{X}.
-%\]
-%Nun wäre $\vec{X} \ne 0$ an einer bestimmten Stelle $P$, also $\vec{X}(P) \ne 0$. Wählen wir jetzt ein ganz kleines Ebenenstück um diesen Punkt $P$ mit Normale $\hat{n}$ parallel zu $\vec{X}$, können wir $\vec{X}$ als konstante betrachten.
-%Dann ist
-%\begin{align*}
-%	\vec{X} \cdot d\vec{s} 
-%	&\approx
-%	\vec{X}(P) \cdot \hat{n} \cdot ds
-%	\\
-%	\int_{A} \vec{X} \cdot d\vec{s}
-%	&\approx
-%	\vec{X}(P) \cdot \hat{n} \cdot (\text{Flächeninhalt}) \overset{!}{\ne} 0.
-%\end{align*}
-%Dieser Widerspruch zeigt, dass $\vec{X} = 0$ sein muss. Im Bezug auf unsere Herleitung wäre $X = (\nabla \times \vec{H}) - J$.
 
 
-\subsection{weitere grosse fortschritte, wichtigste entdeckucngen?}
+\subsection{Entdeckung des Induktionsgesetzes}
 
 Im Jahre 1821 gelang Michael Faraday ein Experiment, bei dem sich ein stromdurchflossener Leiter unter Einfluss eines Dauermagneten um seine Achse drehte.
 Er nannte dies die ``elektromagnetische Rotation'', was eine sehr wichtige Voraussetzung für die Entwicklung des Elektromotors war.
@@ -236,12 +203,13 @@ Er war einer der Ersten, der nicht an ein Fernwirkungsgesetz glaubte.
 Elektrische Kräfte oder auch die Gravitationskraft sollen durch Kraftlinien und Felder zu Stande kommen, was sich später auch bewahrheitete.
 Aussergewöhnlich war ausserdem auch seine Arbeitsweise.
 Seine veröffentlichten Errungenschaften beinhalteten wenig bis keine mathematischen Beweise, er konnte alles rein durch Experimente verifizieren \cite{maxwell:Michael_Faraday}.
+\begin{quote}
+	„Faraday sah im Geiste die den ganzen Raum durchdringenden Kraftlinien, wo die Mathematiker fernwirkende Kraftzentren sahen; Faraday sah ein Medium, wo sie nichts als Abstände sahen; Faraday suchte das Wesen der Vorgänge in den reellen Wirkungen, die sich in dem Medium abspielten, jene waren aber damit zufrieden, es in den fernwirkenden Kräften der elektrischen Fluida gefunden zu haben…“
+	
+	– James Clerk Maxwell: A Treatise on Electricity and Magnetism. Clarendon Press, 1873.
+\end{quote}
 
-\begin{flushleft}
-\emph{„Faraday sah im Geiste die den ganzen Raum durchdringenden Kraftlinien, wo die Mathematiker fernwirkende Kraftzentren sahen; Faraday sah ein Medium, wo sie nichts als Abstände sahen; Faraday suchte das Wesen der Vorgänge in den reellen Wirkungen, die sich in dem Medium abspielten, jene waren aber damit zufrieden, es in den fernwirkenden Kräften der elektrischen Fluida gefunden zu haben…“}
-
-\emph{– James Clerk Maxwell: A Treatise on Electricity and Magnetism. Clarendon Press, 1873.}
-\end{flushleft}
+\subsection{Entdeckung des gaussschen Gesetzes}
 
 Carl Friedrich Gauss war ein sehr bedeutender Mathematiker und Theoretiker.
 Bereits während seiner Lebenszeit wurde er als ``Fürst der Mathematiker'' bezeichnet.
@@ -277,9 +245,8 @@ Natürlich lassen sich die Gleichungen auch in differentiellen Form darstellen a
 	\frac{\rho}{\varepsilon_0} .
 \end{align*}
 
-\subsubsection{herleitung gaussscher integralsatz??}
+\subsubsection{Herleitung der differentiellen Form des gaussschen Gesetzes}
 
-\textit{Exkurs: Herleitung Gaussscher Integralsatz}
 Der Integralsatz von Gauss ist ein Spezialfall des Satzes von Stokes.
 Somit lässt sich das Gausssche Gesetz für elektrische Felder mittels des Satzes von Stokes herleiten.
 Dafür integrieren wir bei
@@ -458,23 +425,15 @@ Nun können wir in bei der integralen Form des Satzes von Gauss
 	für jedes $\varepsilon > 0$, wenn $V$ sehr klein ist, mit Durchmesser $< \delta$ und Lemma \ref{maxwell:lemma:gauss} ist korrekt.
 \end{proof}
 
-%Damit die Integrale beim letzten Schritt weggelassen werden dürfen, gilt es zu beachten, dass der allgemeine Satz von Stokes für jedes noch so kleine Volumen gilt:
-%\[
-%\lim_{\left| V \right| \to 0} \frac{1}{\left| V \right|} \int_{V} \rho \, dV = \rho(x),
-%\]
-%falls $x\in V$ während des Grenzübergangs.
-%Das bedeutet, dass der Satz punktweise ausgewertet werden kann, was im Zusammenhang mit dem Gaussschen Integralsatz durchaus auch intuitiv Sinn ergibt.
 
-
-\subsection{das wo wir jetz kennen}
+\subsection{Maxwells Beiträge zur Elektrodynamik}
 Der wohl prägendste Namen in der Geschichte der Elektrodynamik ist wohl der von James Clerk Maxwell.
 Mit seiner Publikation ``A dynamical Theory of the Electromagnetic Field'' im Jahre 1865 beschrieb Maxwell, dass sich das magnetische und elektrische Feld in Form von Wellen mit Lichtgeschwindigkeit im Vakuum ausbreiten.
 Im selben Paper veröffentlichte er auch seine Finale Version seiner berühmten Gleichungen, doch wie kam es dazu?
 
 Schon im jungen Alter war Maxwell sehr fasziniert an der Geometrie. Bereits mit 13 Jahren, im Jahre 1844, gewann er den Mathematikwettbewerb seiner Schule, der angesehenen Edinburgh Academy.
 Sein Interesse ging weit über den gewöhnlichen Schulstoff hinweg.
-Er beschäftigte sich hauptsächlich mit Verfahren über das Zeichnen mathematischer Kurven und Eigenschaften von Ellipsen, worüber er mit 14 Jahren seine erste wissenschaftliche Arbeit darüber schrieb.
-In dieser war nicht alles neu?(tönt blöd), jedoch konnte er bereits bekannte Theorien stark vereinfachen.
+Er beschäftigte sich hauptsächlich mit Verfahren über das Zeichnen mathematischer Kurven und Eigenschaften von Ellipsen, worüber er mit 14 Jahren seine erste wissenschaftliche Arbeit schrieb.
 
 Er führte sein Studium in der University of Edinburgh fort und wechselte später zur University of Cambridge.
 1865 wurde er Professor für Mathematik am Marischal College in Aberdeen.
