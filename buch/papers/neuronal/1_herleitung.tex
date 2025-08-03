@@ -30,8 +30,6 @@ sowie die Anfangsbedingungen
 \partial_t \varphi(x, t = 0) = g(x) \qquad x \in \Omega.
 \label{neuronal:anfangsbedingung_partiel}
 \end{equation}
-
-
 Hierbei ist:
 \begin{itemize}
     \item $\varphi(x, t)$ das gesuchte Feld,
@@ -59,11 +57,12 @@ Der Differentialoperator $\mathcal{D}$ könnte z.B.
 \end{equation}
 sein, setzt man dies in die Gleichung \eqref{neuronal:generelle_feldgleichung} ein, erhält man die Wellengleichung in zwei Dimensionen.
 
-Das Ziel dieses Papers ist es, die Lösung $\varphi(x, t)$ mit einem neuronalen Netzwerk $\hat{\varphi}(x, t; \vartheta)$ zu approximieren.
+Das Ziel dieses Papers ist, die Lösung $\varphi(x, t)$ mit einem neuronalen Netzwerk $\hat{\varphi}(x, t; \vartheta)$ zu approximieren.
 Das Netzwerk verfügt über einen Vektor \( \vartheta \in \mathbb{R}^n \) von \emph{trainierbaren Parametern}.
 Diese Parameter sollen so gewählt werden, dass das neuronale Netzwerk $\hat{\varphi}(x, t; \vartheta)$ die gesuchte Funktion $\varphi(x, t)$ möglichst genau approximiert.
 
 \subsection{Aufbau neuronaler Netzwerke}\label{neuronal:subsection:struktur_nn}
+\kopfrechts{Aufbau neuronaler Netzwerke}
 In diesem Abschnitt wird erläutert, was neuronale Netzwerke sind und wie sie aufgebaut sind.
 Grundsätzlich bestehen neuronale Netzwerke aus der Verkettung mehrerer Teilfunktionen:
 
@@ -71,13 +70,11 @@ Grundsätzlich bestehen neuronale Netzwerke aus der Verkettung mehrerer Teilfunk
     \hat{\varphi}(x, t; \vartheta) = f_j \circ \ldots \circ f_i \ldots \circ f_1(x, t).
     \label{neuronal:nn_ausformuliert}
 \end{equation}
-
 Jede Teilfunktion \( f_i \) setzt sich aus einer affinen Transformation und einer anschliessenden nicht-linearen Aktivierungsfunktion \( g_i \) zusammen:
 
 \begin{align*}
     f_i\colon \mathbb{R}^q & \longrightarrow \mathbb{R}^p \colon \quad v \longmapsto g_i(A_i v + b_i)
 \end{align*}
-
 Hierbei ist \( v \in \mathbb{R}^q \), \( A_i \in \mathbb{R}^{p \times q} \) und \( b_i \in \mathbb{R}^p \). 
 Die Elemente aller Matrizen \( A_i \) und Vektoren \( b_i \) bilden den Vektor \( \vartheta \) der \emph{trainierbaren Parameter} des Netzwerks.
 Die Aktivierungsfunktion \( g_i \) wird elementweise auf das Ergebnis der affinen Transformation angewendet.
@@ -110,6 +107,7 @@ out = activation(t2(temp))
 \end{lstlisting}
 
 \subsection{Formulierung als Optimierungsproblem}\label{neuronal:subsection:optimierungsproblem}
+\kopfrechts{Formulierung als Optimierungsproblem}
 In diesem Abschnitt wird die Wahl der \emph{trainierbaren Parameter} $\vartheta$ des neuronalen Netzwerks behandelt.
 Die Auswahl von $\vartheta$ stellt im Wesentlichen ein Minimierungsproblem dar.
 Die grundlegende Idee besteht darin, eine Funktion \( L(\vartheta) \) zu definieren, die den Approximationsfehler des Netzwerks quantifiziert.
@@ -152,9 +150,10 @@ Ziel ist es, $\vartheta$ so zu wählen, dass alle diese Terme möglichst nahe be
 Anders ausgedrückt, soll $\vartheta$ so gewählt werden, dass die Terme minimiert werden.
 
 Es ist wichtig zu beachten, dass die Terme für alle $x$ und $t$ in den jeweiligen Bereichen minimal werden sollen.
-Daher müssen $x$ und $t$ diskretiert werden, bevor $L(\vartheta)$ definiert werden kann.
+Daher müssen $x$ und $t$ diskretisiert werden, bevor $L(\vartheta)$ definiert werden kann.
 
 \subsection{Diskretisierung}\label{neuronal:subsection:diskretierung}
+\kopfrechts{Diskretisierung}
 Für die Diskretisierung werden drei Datensätze benötigt
 \begin{equation}
     \begin{aligned}
@@ -163,7 +162,7 @@ Für die Diskretisierung werden drei Datensätze benötigt
         B &\subset \{\, (x, t) \,|\, x \in \partial \Omega\,, t \in [0, T] \,\}.
     \end{aligned}
 \end{equation}
-Jeder Datensatz besteht aus den Punkten $k_F, k_A, k_B$, die aus einer Gleichverteilung in den jeweiligen Bereichen stammen.
+Die Punkte dieser Datensätze stammen aus einer Gleichverteilung in den jeweiligen Bereichen.
 Es gelten:
 \begin{itemize}
     \item Die Feldgleichung für die Punkte in $F$
@@ -214,6 +213,7 @@ Die Wahl der Parameter des neuronalen Netzwerks ist nun ein Minimierungsproblem:
 \end{aufgabe}
 
 \subsection{Lösen des Minimierungsproblems}\label{neuronal:subsection:lösen_optimierungsproblem}
+\kopfrechts{Lösen des Minimierungsproblems}
 \( L \) lässt sich aus zwei Gründen nicht analytisch minimieren:
 \begin{enumerate}
     \item \( L \) hängt von \( \vartheta \in \mathbb{R}^n \) ab. 
@@ -229,7 +229,11 @@ Das bedeutet, dass stattdessen ein numerischer Algorithmus verwendet werden muss
         \item Initialisiere \( \vartheta_1 \) mit Anfangswerten.
         \item \textbf{Schleife} von \( i = 1 \) bis \( i = m - 1 \):
         \begin{description}
-            \item Berechne neue Parameterwerte: \( \vartheta_{i+1} = \vartheta_i - \varepsilon \nabla_\vartheta L\left(\vartheta_i\right) \). (Erklärung unten)
+            \item \quad \;\, Berechne neue Parameterwerte: (Erklärung unten)
+            \begin{flalign}
+                \vartheta_{i+1} = \vartheta_i - \varepsilon \nabla_\vartheta L\left(\vartheta_i\right)&&
+                \label{neuronal:gradient_descent_formel}
+            \end{flalign}
         \end{description}
         \item Gebe die Parameter \( \vartheta_m \) zurück.
     \end{enumerate}
@@ -241,7 +245,7 @@ Der Algorithmus wird beendet, sobald sich der Wert von \( L \) über mehrere Ite
 
 Dieser Algorithmus basiert auf dem Verhalten des Gradienten.
 Der Gradient von $L$ -- ausgewertet an einem beliebigen Punkt -- ist ein Vektor, der in die Richtung des stärksten Anstiegs auf $L$ zeigt.
-Durch das Minus in der Formel geht man in die entgegengesetzte Richtung, wo es wahrscheinlich abwärts geht.
+Durch das Minus in der Formel \eqref{neuronal:gradient_descent_formel} geht man in die entgegengesetzte Richtung, wo es wahrscheinlich abwärts geht.
 Mit $\varepsilon$ wird die Schrittgrösse gesteuert, um zu verhindern, dass ein Minimum überschritten wird.
 
 Abbildung~\ref{fig:gradientenabstieg_beispiel} veranschaulicht ein exemplarisches Beispiel eines Gradientenabstiegs.
@@ -276,6 +280,7 @@ Grund dafür ist, dass der Algorithmus genau auf diesen Punkten landen müsste.
 Ein bisschen daneben bedeutet dass es eine Richtung gibt, in die es abwärts -- und somit weg von diesen Punkten -- geht.
 
 \subsection{Qualitätsbewertung}\label{neuronal:subsection:qualitätsbewertung}
+\kopfrechts{Qualitätsbewertung}
 Für die Beurteilung der Qualität der Approximation bietet sich zunächst der Wert von \( L(\vartheta) \) nach Abschluss des Optimierungsalgorithmus an.
 Dieser Wert entspricht dem mittleren Approximationsfehler, der bei den Datenpunkten aus der Diskretisierung auftritt.
 
