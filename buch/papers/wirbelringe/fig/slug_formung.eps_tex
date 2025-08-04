@@ -57,6 +57,7 @@
     \put(0.86139341,0.0163501){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.29999995}\smash{\begin{tabular}[t]{c}\(\omega\)\end{tabular}}}}%
     \put(0.96749005,0.23115812){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.29999995}\smash{\begin{tabular}[t]{c}\(\Gamma\)\end{tabular}}}}%
     \put(-0.01065234,0.12301954){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.29999995}\smash{\begin{tabular}[t]{c}\(D\)\end{tabular}}}}%
+    \put(1.01937033,0.14544439){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.29999995}\smash{\begin{tabular}[t]{c}\(r_w\)\end{tabular}}}}%
     \put(0.07831621,0.0357686){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.29999995}\smash{\begin{tabular}[t]{c}\(L\)\end{tabular}}}}%
     \put(0.03383073,0.21297532){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.29999995}\smash{\begin{tabular}[t]{c}Slug\end{tabular}}}}%
     \put(0.16548421,0.14912185){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.29999995}\smash{\begin{tabular}[t]{c}\(u_p\)\end{tabular}}}}%

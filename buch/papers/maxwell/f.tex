@@ -1,0 +1,33 @@
+\section{Faraday-Tensor}
+\label{maxwell:faraday}
+Wie im Kapitel \ref{maxwell:motivation} gezeigt wurde, benötigen wir ein Objekt, welches $E$ und $B$ beinhaltet und durch Koordinatentransformation seine Information behält.
+Aufgrund dieser Voraussetzungen bietet sich ein Tensor an.
+Da das elektromagnetische Feld auf Flächen wirkt, ist es mathematisch sinnvoll, ein Tensor zweiter Stufe zu verwenden.
+Ein Tensor zweiter Stufe in vier Dimensionen hat 16 Komponenten. Aufgrund das $E$ und $B$ mit jeweils drei Komponenten vollständig beschrieben werden können, muss der Tensor antisymmetrisch sein, weil nur sechs Komponenten unabhängig sind.
+Wir definieren deshalb
+\[
+F_{\mu\nu}
+= 
+\begin{pmatrix}
+	0 & -E_1/c & -E_2/c & -E_3/c \\
+	E_1/c &  0 &  B_3 & -B_2 \\
+	E_2/c & -B_3 &  0 &  B_1 \\
+	E_3/c &  B_2 & -B_1 &  0 \\
+\end{pmatrix}.
+\]  
+Dabei ist $E$ von Zeit und Raum abhängig und $B$ nur vom Raum, siehe Gleichungen \refeq{maxwell:dA;rotA} und \refeq{maxwell:dA:defE}.
+Deshalb ist nur $E$ in den Koordinaten $dx^0$ ersichtlich.
+Da $dx^0 = c \, dt$ ist, benötigt man bei den Komponenten von $E$ den Faktor $\frac{1}{c}$.
+Wie sich später zeigen wird, ist $F$ eine geschlossene 2-Form, siehe Kapitel................
+
+
+%Für unsere Berechnungen benötigen wir ein mathematisches Objekt...
+%Das Ziel ist es, e und bfeld zu vereinheitlichen
+%es soll algemein kovariant sein, deshalb tensor
+%4d
+%lorentztransformatio erwähnen
+
+
+%zweiform
+%allgemein kovariant
+%e und b
