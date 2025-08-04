@@ -23,8 +23,8 @@ wobei $U$ die ungestörte Geschwindigkeit im
 Unendlichen $y\rightarrow\infty$ bedeutet.
 
 \subsection{Inkompressible Strömung}
-Bei inkompressibler Strömung ist auch gleich die
-Laplace-Gleichung~\eqref{eq:laplace} erfüllt.
+Bei inkompressibler Strömung ist die
+Laplace-Gleichung~\eqref{eq:laplace} sofort erfüllt.
 Das kann bewiesen werden, indem wir für das Potential
 die zweiten Ableitungen
 \begin{align*}
@@ -41,7 +41,7 @@ berechnen wobei ersichtlich ist, dass
     =
     -\frac{\partial\,^2\,\Phi}{\partial\,y^2}.
 \end{align*}
-Es ist existiert dann auch eine sogenannte Stromfunktion
+Es existiert dann auch eine sogenannte Stromfunktion
 \begin{align*}
     \Psi
     =
@@ -115,64 +115,64 @@ Das Ganze sieht man auch in Abbildung~\ref{fig:stromlinien}.
     ~\label{fig:stromlinien}  
 \end{figure}
 
-Mit Hilfe der bernouillischen Gleichung
+Mit Hilfe der bernoullischen Gleichung, gemäss~\cite{BernoulliWikiDE},
 \begin{align*}
-    p_{tot}
-    =
-    p
-    +
-    \frac{1}{2}\,\rho\,V^2
-    +
-    \rho\,g\,z
-    =
-    \mathrm{const},
+    p_{\text{tot}} 
+    = 
+    p 
+    + 
+    \frac{1}{2}\,\rho\,V^2 
+    + 
+    \rho\,g\,z = \text{const},
 \end{align*}
-wobei $p_{tot}$ der Totaldruck ist,
+wobei $p_{\text{tot}}$ der Totaldruck ist, 
 $\rho$ die Dichte des Fluids, $g$ die Erdbeschleunigung,
-$V$ die Geschwindigkeit an einem Ort auf der Stromlinie
-und $z$ die Höhe, falls es sich um ein dreidimensionales Gebilde handelt. (cite Wikipedia)
-Der letzte Term fällt wegen $z=0$ weg, da wir nur in 
-der $x,y$-Ebene arbeiten.
-Übrig bleibt dann noch
+$V$ die Geschwindigkeit an einem Ort auf der Stromlinie 
+und $z$ die Höhe über einem Bezugspunkt,
+falls es sich um ein dreidimensionales Strömungsfeld handelt.
+
+Da wir jedoch ausschliesslich in der $x,y$-Ebene arbeiten, 
+fällt der letzte Term weg, weil $z = 0$.
+Es bleibt somit:
 \begin{align*}
     \underbrace{p}_{\text{statischer Druck}} 
-    +
-    \underbrace{\frac{1}{2}\,\rho\,v^2}_{\text{dynamischer Druck}}
-    =
-    \mathrm{const},
+    + 
+    \underbrace{\frac{1}{2}\,\rho\,V^2}_{\text{dynamischer Druck}} 
+    = 
+    \text{const},
 \end{align*}
-was nichts anderes sagt als, dass der statische Druck und der 
-dynamische Druck zusammen überall auf einer Stromlinie gleich sind.
-Wenn wir nun den lokalen Druck $p(x,y)$ in unserem Fall berechnen wollen,
-dann nehmen wir die Strömungsgeschwindigkeit $U$ als Referenz.
-Das sieht dann folgendermassen aus:
+was bedeutet, dass entlang einer Stromlinie 
+der statische Druck und der dynamische Druck
+zusammen konstant bleiben.
+
+Wenn wir nun den lokalen Druck $p$ berechnen möchten, 
+verwenden wir die freie Strömungsgeschwindigkeit $U$
+als Referenzgrösse. 
+Daraus ergibt sich:
 \begin{align*}
-    p_\infty
-    +
-    \frac{1}{2}\,\rho\,U^2
-    =
-    p(x,y)
-    +
-    \frac{1}{2}\,\rho\,V^2(x,y),
+    p_\infty 
+    + 
+    \frac{1}{2}\,\rho\,U^2 
+    = 
+    p 
+    + 
+    \frac{1}{2}\,\rho\,V^2,
 \end{align*}
-umgestellt nach dem lokalen Druck
+umgestellt nach dem lokalen Druck:
 \begin{align*}
-    p(x,y)
-    =
-    p_\infty
-    +
-    \frac{1}{2}\,\rho\,(U^2-V^2(x,y)),
+    p = p_\infty + \frac{1}{2}\,\rho\,(U^2 - V^2),
 \end{align*}
-wobei $V^2$ nichts anderes ist als
+wobei $V^2$ sich ergibt aus:
 \begin{align*}
-    |V(x,y)|^2 = u^2(x,y) + v^2(x,y).
+    V^2 = u^2 + v^2.
 \end{align*}
-Damit kann nun die Druckverteilung über dem Wellblech visualisiert werden,
-wie in Abbildung~\ref{fig:druckverteilung}.
-Es handelt sich hierbei um den relativen Druck,
-d.h es ist abhängig vom Umgebungsdruck.
-Man sieht deutlich, dass der höchste Druck an den konkaven Stellen herrscht,
-während bei den konvexen Stellen der niedrigste ist.
+
+Damit kann nun die Druckverteilung über dem Wellblech visualisiert werden, 
+wie in Abbildung~\ref{fig:druckverteilung} dargestellt. 
+Es handelt sich dabei um den relativen Druck, 
+das heisst, der Druck ist bezogen auf den Umgebungsdruck. 
+Deutlich erkennbar ist, dass der höchste Druck an den konkaven Stellen auftritt, 
+während an den konvexen Stellen der niedrigste Druck herrscht.
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{papers/ueberschall/figures/Druckverteilung.pdf}
@@ -181,15 +181,14 @@ während bei den konvexen Stellen der niedrigste ist.
 \end{figure}
 
 \subsection{Kompressible Strömung}
-Bei der kompressible Strömung ist das Ganze ein bisschen schwieriger.
-Die Ausgangslage ist eine komplexere partielle 
-Differentialgleichung zweiter Ordnung, welche vereinfacht
-wurde, indem sie lediglich auf die Ausdrücke reduziert, die 
-die grösste Abweichung bedingen.
-Das Vorgehen dafür ist in~\cite{Ackeret1928} ausführlich dokumentiert.
-Es handelt sich daher nur um eine Näherungslösung,
-die aber einige wesentlichen Züge der wahren Lösung wiederspiegelt.
-Die Näherungsgleichung lautet:
+Bei kompressibler Strömung gestaltet sich die Situation etwas komplexer.
+Die Ausgangslage ist eine partielle Differentialgleichung zweiter Ordnung,
+die durch geeignete Vereinfachungen auf jene Terme reduziert wurde, 
+welche den grössten Einfluss auf die Abweichung haben.
+Das genaue Vorgehen ist in~\cite{Ackeret1928} ausführlich dokumentiert.
+
+Die folgende Gleichung stellt daher eine Näherungslösung dar,
+die jedoch wesentliche Eigenschaften der exakten Lösung widerspiegelt:
 \begin{align}
     \frac{\partial\,^2\,\Phi}{\partial\,x\,^2}\,
     \left(1-\frac{U^2}{a^2}\right)
@@ -230,7 +229,7 @@ Das Potential dieser kompressiblen Strömung ergibt sich zu
 \end{align*}
 und die dazugehörige Stromfunktion
 \begin{align*}
-    \Psi(x, y)
+    \Psi
     =
     U\,y - U\,\frac{h}{\beta^2}\,\cos\left(\frac{2\pi x}{l}\right)
     \,e^{-\frac{2\pi y \beta}{l}}.
@@ -262,10 +261,10 @@ Demnach formulieren wir neu $\Phi$ als
     U\,x + U\,\frac{h}{\beta}\,\sin\left(\frac{2\,\pi\,x}{l}\right)
     \,e^{-\frac{2\,\pi\,y\,\beta}{l}}.
 \end{align*}
-Der Faktor $\beta$ hat Einfluss auf das Abklingen der Störung,
-wie man das in Abbildung~\ref{fig:abklingen_stromlinie} sieht für 
-drei verschiedene Fälle.
-Dafür werden die Stromlinien über einem Buckel visualisiert.
+Der Faktor~$\beta$ beeinflusst das Abklingen der Störung,
+wie in Abbildung~\ref{fig:abklingen_stromlinie} 
+für drei verschiedene Fälle dargestellt ist.
+Dazu werden die Stromlinien über einem Buckel visualisiert.
 \begin{figure}
     \centering
     \begin{minipage}[b]{0.32\textwidth}
@@ -289,52 +288,55 @@ Dafür werden die Stromlinien über einem Buckel visualisiert.
 ~\label{fig:abklingen_stromlinie}
 \end{figure}
 
-Nun gehen wir über in den Überschallbereich.
-Wir starten dabei bereits bei der vereinfachten 
-Gleichung~\eqref{eq:kompressible_stroemung}
+\subsection{Überschall}
+Nun betrachten wir die Strömung im Überschallbereich.
+Wir starten dabei bereits mit der vereinfachten 
+Gleichung~\eqref{eq:kompressible_stroemung}:
 \begin{align*}
-    \frac{\partial\,^2\,\Phi}{\partial\,x\,^2}\,
-    \left(1-\frac{U^2}{a^2}\right)
+    \frac{\partial^2\,\Phi}{\partial\,x^2}
+    \left(1 - \frac{U^2}{a^2}\right)
     =
-    -\frac{\partial\,^2\,\Phi}{\partial\,y\,^2},
+    -\frac{\partial^2\,\Phi}{\partial\,y^2},
 \end{align*}
-wo aber der rechte Term auf die andere Seite genommen wurde.
-Nun gilt aber $U>a$, was dazu führt, dass der Klammerausdruck
-zwingend negativ wird.
-Deswegen macht es Sinn die Gleichung folgendermassen umzustellen:
+wobei der rechte Term zur besseren Übersicht auf die 
+linke Seite verschoben wurde.
+
+Da im Überschallbereich $U > a$ gilt, wird der Ausdruck 
+in der Klammer negativ.
+Es ist daher sinnvoll, die Gleichung in folgender 
+Form umzuschreiben:
 \begin{align*}
-    \frac{\partial\,^2\,\Phi}{\partial\,x\,^2}\,
-    \left(\frac{U^2}{a^2}-1\right)
+    \frac{\partial^2\,\Phi}{\partial\,x^2}
+    \left(\frac{U^2}{a^2} - 1\right)
     =
-    \frac{\partial\,^2\,\Phi}{\partial\,y\,^2},
+    \frac{\partial^2\,\Phi}{\partial\,y^2}.
 \end{align*}
-Jetzt erhalten wir bei leicht angepasster 
-Koordinatentransformation, wo
+
+Führen wir nun eine geeignete Koordinatentransformation durch,
 \begin{align*}
     x 
-    &=
-    \xi \\
-    y\,\beta
-    &=
+    &= 
+    \xi, \\
+    y\,\beta 
+    &= 
     \eta,
 \end{align*}
-mit
+mit dem Parameter
 \begin{align*}
-    \beta
-    &=
-    \sqrt{\frac{U^2}{a^2}-1},
+    \beta = \sqrt{\frac{U^2}{a^2} - 1},
 \end{align*}
-die neue Gleichung
+so ergibt sich die transformierte Gleichung:
 \begin{align*}
-    \frac{\partial\,^2\,\Phi}{\partial\,\xi\,^2}\,
+    \frac{\partial^2\,\Phi}{\partial\,\xi^2}
     -
-    \frac{\partial\,^2\,\Phi}{\partial\,\eta\,^2}
+    \frac{\partial^2\,\Phi}{\partial\,\eta^2}
     =
     0.
 \end{align*}
-Sie ist der alten Gleichung sehr ähnlich bis auf des Vorzeichen
-des zweiten Terms.
-Dafür hat sie eine ganz andere Charakeristik,
-denn sie beschreibt Wellenvorgänge.
-Deswegen ist das Strömungsverhalten um Objekte im Überschall
-sehr nahe der im Wasser.
+Diese Gleichung ähnelt formal der ursprünglichen Gleichung 
+für den Unterschallbereich, weist jedoch ein 
+unterschiedliches Vorzeichen im zweiten Term auf.
+Dementsprechend handelt es sich hier um eine hyperbolische 
+Differentialgleichung, die Wellenvorgänge beschreibt.
+Das Strömungsverhalten im Überschallbereich ist daher — 
+in gewisser Weise — mit dem Verhalten von Wellen in Wasser vergleichbar.

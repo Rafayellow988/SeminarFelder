@@ -8,96 +8,122 @@
 %
 \section{Potentialströmung\label{ueberschall:section:potentialstroemung}}
 \kopfrechts{Potentialströmung}
-Bei der Potentialströmung handelt sich um eine quellenfreie 
-und wirbelfreie Strömung.
-Mathematisch wird das ausgedrückt als
+Bei der Potentialströmung handelt es sich um eine 
+quellenfreie und wirbelfreie Strömung.
+Mathematisch wird dies durch die folgenden Bedingungen 
+an das Geschwindigkeitsfeld~$\vec{v}$ ausgedrückt:
 \begin{align*}
-    \mathrm{div}\,\vec{v} &= 0 \\
+    \mathrm{div}\,\vec{v} &= 0, \\
     \mathrm{rot}\,\vec{v} &= 0,
 \end{align*}
-wobei $\vec{v}$ die Geschwindigkeit der Strömung ist.
-Diese Idealisierung ist ein Spezialfall der laminaren Strömungen.
-Unter Einhaltung der genannten Bedingung besitzt dieses
-Geschwindigkeitsfeld auch ein Potential
+wobei~$\vec{v}$ die Geschwindigkeit der Strömung bezeichnet.
+Diese Idealisierung stellt einen Spezialfall der
+laminaren Strömung dar. 
+Unter Einhaltung der genannten Bedingungen 
+besitzt das Geschwindigkeitsfeld ein skalares
+Potential~$\Phi$, sodass gilt:
 \begin{align}
-    \vec{v} = \mathrm{grad}\,\Phi,\label{eq:potential}
+    \vec{v} 
+    = 
+    \mathrm{grad}\,\Phi 
+    = 
+    \nabla \Phi.\label{eq:potential}
 \end{align}
-wobei $\vec{v}$ auch als Gradient des Potentials bezeichnet wird
-und bedeutet nichts geringeres als 
-die Ableitung in jede Koordinatenrichtung
-\begin{align}
-    \mathrm{grad}\,\Phi
-    =
-    \nabla\Phi
-    =
+Das bedeutet, dass~$\vec{v}$ dem Gradienten des Potentials 
+entspricht, also der Richtungsableitung in jeder 
+Koordinatenrichtung:
+\begin{align*}
+    \nabla \Phi =
     \begin{pmatrix}
-        \frac{\partial\,\Phi_x}{\partial\,x}\\
-        \frac{\partial\,\Phi_y}{\partial\,y}\\
-        \frac{\partial\,\Phi_z}{\partial\,z}
+        \frac{\partial \Phi}{\partial x} \\
+        \frac{\partial \Phi}{\partial y} \\
+        \frac{\partial \Phi}{\partial z}
     \end{pmatrix}.
-\end{align} 
-Dies kann auch als normale Multiplikation mit dem Nabla-Operator $\nabla$
-dargestellt werden da das Potential $\Phi$ skalar ist.
+\end{align*}
+Da es sich bei~$\Phi$ um eine skalare Funktion handelt, 
+kann der Gradient formal als gewöhnliche Multiplikation 
+mit dem Nabla-Operator~$\nabla$ interpretiert werden.
 
-Zudem nehmen wir eine stationäre Strömung an.
-Natürlich muss auch die Kontinuitätsgleichung
+Zudem betrachten wir eine stationäre Strömung.  
+Natürlich muss dabei auch die Kontinuitätsgleichung
+erfüllt sein:
 \begin{align*}
-    \frac{\partial\,\rho}{\partial\,t} + 
-    \mathrm{div}\,\vec{v} &= 0
+    \frac{\partial \rho}{\partial t}
+    + 
+    \mathrm{div}\,\vec{v} 
+    = 
+    0.
 \end{align*}
-erfüllt sein.
-Bei inkompressiblen Medien wird der erste Term sowieso zu
+Für inkompressible Medien vereinfacht sich dies, 
+da die Dichte zeitlich konstant bleibt:
 \begin{align*}
-    \frac{\partial\,\rho}{\partial\,t} &= 0,
+    \frac{\partial \rho}{\partial t} 
+    = 
+    0,
 \end{align*}
-wonach nur noch die Quellen- und Senkenfreiheit übrig bleibt.
-Die Divergenz der Geschwindigkeit kann auch als Skalarprodukt 
+woraus folgt, dass das Geschwindigkeitsfeld 
+quellen- und senkenfrei ist, also
+\begin{align*}
+    \mathrm{div}\,\vec{v} = 0.
+\end{align*}
+Die Divergenz kann auch als Skalarprodukt 
+des Nabla-Operators mit dem Geschwindigkeitsfeld 
+geschrieben werden:
 \begin{align*}
     \mathrm{div}\,\vec{v}
-    =
+    = 
     \nabla \cdot \vec{v}
-    =
-    \frac{\partial\,v_x}{\partial\,x} +
-    \frac{\partial\,v_y}{\partial\,y} +
-    \frac{\partial\,v_z}{\partial\,z}
+    = 
+    \frac{\partial v_x}{\partial x} 
+    +
+    \frac{\partial v_y}{\partial y} 
+    +
+    \frac{\partial v_z}{\partial z}.
 \end{align*}
-des Nabla-Operators und der Geschwindigkeit dargestellt werden.
-Das ist ein Mass dafür, wie sehr sich ein Feld wie eine Quelle 
-oder eine Senke verhält.
-Bei $\mathrm{div}\,\vec{v} = 0$ ist sie weder Quelle noch Senke.
-Das Kreuzprodukt mit dem Operator entspricht
-der Rotation der Geschwindigkeit
+Sie ist ein Mass dafür, wie stark sich ein Feld lokal 
+wie eine Quelle oder eine Senke verhält.  
+Ist $\mathrm{div}\,\vec{v} = 0$, 
+so ist das Feld weder Quelle noch Senke.
+
+Das Kreuzprodukt des Nabla-Operators mit 
+dem Geschwindigkeitsfeld entspricht der Rotation 
+(auch Wirbel) des Feldes:
 \begin{align*}
     \mathrm{rot}\,\vec{v} 
-    =
+    = 
     \nabla \times \vec{v}
     =
     \begin{pmatrix}
-        \frac{\partial\,v_z}{\partial\,y} - \frac{\partial\,v_y}{\partial\,z} \\
-        \frac{\partial\,v_x}{\partial\,z} - \frac{\partial\,v_z}{\partial\,x} \\
-        \frac{\partial\,v_y}{\partial\,x} - \frac{\partial\,v_x}{\partial\,y}
-    \end{pmatrix},
+        \frac{\partial v_z}{\partial y} - \frac{\partial v_y}{\partial z} \\
+        \frac{\partial v_x}{\partial z} - \frac{\partial v_z}{\partial x} \\
+        \frac{\partial v_y}{\partial x} - \frac{\partial v_x}{\partial y}
+    \end{pmatrix}.
 \end{align*}
-welcher angibt wie sich ein Körper, der diesem Vektorfeld 
-ausgesetzt ist, rotieren würde.
-Was für ein wirbelfreies Feld $\mathrm{rot}\,\vec{v} = 0$ bedeutet,
-wodurch das Vektorfeld genau dann der Gradient einer Funktion ist
-wie in~\eqref{eq:potential}.
+Diese Grösse beschreibt, wie ein Körper, 
+der sich im Strömungsfeld befindet, zu rotieren beginnt.  
+Ein wirbelfreies Feld erfüllt demnach
+ $\mathrm{rot}\,\vec{v} = 0$,  
+woraus folgt, dass das Vektorfeld ein Gradientenfeld 
+ist – wie in Gleichung~\eqref{eq:potential} gezeigt.
 
-Wenn nun in die Kontinuitätsgleichung des inkompressiblen
-Falls $ \nabla \cdot \vec{v} = 0$ die Definition 
-des Geschwindigkeitsfeld~\eqref{eq:potential} eingesetzt wird, dann folgt daraus
+Wenn nun in die Kontinuitätsgleichung des inkompressiblen 
+Falls, $\nabla \cdot \vec{v} = 0$, 
+die Definition des Geschwindigkeitsfeldes 
+aus Gleichung~\eqref{eq:potential} eingesetzt wird, 
+ergibt sich:
 \begin{align}
     \nabla \cdot \vec{v}
     = 
     \nabla \cdot \nabla \Phi
     = 
-    \nabla\,^2 \Phi
-    =
-    \Delta\Phi
-    =
-    0,\label{eq:laplace}
+    \nabla^2 \Phi
+    = 
+    \Delta \Phi
+    = 
+    0, \label{eq:laplace}
 \end{align}
-auch bezeichnet als Laplace-Gleichung mit dem Laplace-Operator $\Delta$.
+auch bekannt als Laplace-Gleichung mit dem 
+Laplace-Operator~$\Delta$.
+
 
 
