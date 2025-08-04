@@ -6,52 +6,83 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Lineares Feld\label{particles:section:linear}}
-\kopfrechts{Lineares Feld}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
-\begin{equation}
-\int_a^b x^2\, dx
-=
-\left[ \frac13 x^3 \right]_a^b
-=
-\frac{b^3-a^3}3.
-\label{particles:equation1}
-\end{equation}
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-consectetur, adipisci velit, sed quia non numquam eius modi tempora
-incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+\section{Lineares Medium\label{particles:section:linear}}
+\kopfrechts{Lineares Medium}
+% TODO: Quellenangaben
+% [ ]: https://en.wikipedia.org/wiki/Linearity
+% [ ]: Lineare Algebra: Eine anwendungsorientierte Einführung, Seite: 27, ISBN: 978-3-662-67865-7, Published: 01 September 2023, DOI: https://doi.org/10.1007/978-3-662-67866-4
+% \subsection{Linearität} % TODO: Allenfalls folgendes als subsection "Linearität" schreiben.
+Für den einfachsten und üblichsten Fall, nimmt man oft ein \emph{lineares Medium} an.
+Solch ein Medium nennt man \emph{linear}, wenn dessen Definition sowohl \emph{additiv}
+\[
+    f(x_{1} + y_{1}, \ldots, x_{n} + y_{n}) 
+    = f(x_{1}, \ldots, x_{n}) + f(y_{1}, \ldots, y_{n}),
+\]
+als auch \emph{homogen}
+\[
+    f(\lambda x_{1}, \ldots, \lambda x_{n}) 
+    = \lambda f(x_{1}, \ldots, x_{n})
+\]
+ist.
+Hierbei ist angemerkt, dass $x_{k}$, $y_{k}$ und $\lambda$ nicht rein reell sein müssen, 
+sondern einem beliebigen Vektorraum angehören können. % Alternativ: "[...] angehörig sein können."
+Diese Definition ist auch bekannt unter dem Term \emph{Superpositionsprinzip}, 
+worauf im nächsten Unterabschnitt noch weiter darauf eingegangen wird. % TODO: Etwas umschreiben, dass es schöner in den Fluss des Textes passt.
+Im Kontext dieses Papers wird besonders die Elastizität eines Mediums betrachtet, 
+welche durch
+\[
+    D
+    = \frac{\varepsilon}{E}
+    \quad
+    (E = \text{const.})\label{particles:eq:lin-elastizitaet}
+\]
+gegeben ist. 
+$D$ beschreibt hier die \emph{Deformierung}, % NOTE: oder Deformation?
+$\varepsilon$ den mechanischen Stress oder Druck und
+$E$ eine Elastizitätskonstante.
 
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-fugiat quo voluptas nulla pariatur?
 
-\subsection{De finibus bonorum et malorum
-\label{particles:subsection:finibus}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga \eqref{particles:equation1}.
+\subsection{Superpositionsprinzip}
+Das Superpositionsprinzip fasst die Bedingungen zur Linearität in eine Formel zusammen, nämlich
+\[
+    T(\lambda x + \mu y)
+    = \lambda T(x) + \mu T(y).
+\]
+Drückt man die Deformierung $D$ aus Formel~\ref{particles:eq:lin-elastizitaet} als eine Funktion von $\varepsilon$ aus
+und stellt man die Formel ein wenig um zu 
+\[
+    D(\varepsilon)
+    = \frac{1}{E} \cdot \varepsilon,
+\]
+so kann man daraus folgern, dass es sich hierbei ebenfalls um eine lineare Funktion handelt, 
+sofern $E = \text{const.}$ eingehalten wird.
+Folglich ist das angenommene Medium also linear und erfüllt somit auch die Superpositionsbedingungen.
+Dies vereinfacht die Berechnung des Feldes enorm, 
+da nicht für jedes einzelne $\varepsilon$ ein separates $E$ berechnet werden muss. 
 
-Et harum quidem rerum facilis est et expedita distinctio
-\ref{particles:section:teil2}.
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-impedit quo minus id quod maxime placeat facere possimus, omnis
-voluptas assumenda est, omnis dolor repellendus
-\ref{particles:section:teil3}.
-Temporibus autem quibusdam et aut officiis debitis aut rerum
-necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-molestiae non recusandae.
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus
-asperiores repellat.
+% TODO: Folgendes irgendwo besser einbringen:
+\subsection{Feldgleichung}
+Da die Elastizitätsgleichung allgemeingültig geschrieben ist, % NOTE: Stimmt das überhaupt?
+wird hier noch die Feldgleichung für ein zweidimensionales, diskretes Feld hergeleitet,
+welches so in der Simulation verwendet wird.
+% TODO: Herleitung Feldgleichung aus Elastizitätsgleichung etc.
+% In der Elastizitätsgleichung ist die Feldgleichung zwar gewissermassen enthalten,
+% jedoch ist sie nicht direkt ersichtlich. 
+
+
+% Solch ein Medium nennt man \emph{linear}, wenn dessen Definition die folgenden Anforderungen zur Linearität erfüllen.
+% \[
+%     \left.\begin{array}{rl}
+%         \text{Additivität: } 
+%         &   f(x_{1} + y_{1}, \ldots, x_{n} + y_{n}) 
+%         = f(x_{1}, \ldots, x_{n}) + f(y_{1}, \ldots, y_{n})\\ 
+%         \text{Homogenität: } 
+%         &   f(\lambda x_{1}, \ldots, \lambda x_{n}) 
+%         = \lambda f(x_{1}, \ldots, x_{n})
+%     \end{array}\right\rbrace
+%     \quad 
+%     \forall x_{k}, y_{k}, \lambda \in \mathbb{k} % TODO: k hier als Platzhalter für eine beliebige Zahl in einem beliebigen Vektorraum. Bitte anpassen, falls es ein "Standard" für dieses Buch gibt.
+% \]
+
 
 
