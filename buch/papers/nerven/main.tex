@@ -63,6 +63,7 @@ Diesen elektrischen Impuls nennt man Aktionspotential.
     \caption{Aktionspotential}
     \label{fig:Aktionspotential}
 \end{figure}
+\noindent
 In Abbildung \ref{fig:Aktionspotential} ist ersichtlich wie ein Aktionspotential entsteht und schnell wieder abklingt.
 Dabei besitzt diese Nervenzelle eine Ruhespannung von -70 Millivolt und einen Spannungsschwellenwert von -50 Millivolt.
 Wenn die Nervenzelle einen Reiz, in Form eines elektrischen Signales erhält, wird eine Entscheidung getroffen. 
@@ -72,7 +73,6 @@ Sobald das Aktionspotential diese Maximale Spannung erreicht, beginnt die Repola
 Dies bedeutet, die Spannung des Aktionspotentials nimmt schnell wieder ab und wird mit -70 Millivolt noch kleiner als die Ruhespannung.
 In der Hyperpolarisationsphase beruhigt sich das Aktionspotential wieder und nimmt die Ruhespannung von -50 Millivolt an.
 Dieser Ablauf des Spannungsimpulses des geschieht in wenigen Millisekunden.
-
 
 \subsection{Biologische Vorgänge}
 Um dieses Aktionspotential an einer Nervenzelle erkennen zu können, muss die Zellwand betrachtet werden. 
@@ -85,6 +85,7 @@ In Abbildung \ref{fig:Ruhezustand} ist ein Modell der Zellwand, wenn die Nervenz
     \caption{Ruhezustand}
     \label{fig:Ruhezustand}
 \end{figure}
+\noindent
 Die Ladung von Zellinnerem und Zelläusserem wird durch die Verteilung von positiv geladenen Ionen gesteuert.
 Die wichtigsten Ionen dafür sind Kalium- und Natriumionen. 
 Durch eine sogenannte Ionenpumpe, wird ermöglicht, dass sich Ruhezustand der Zelle mehr Kaliumionen im Zellinneren und mehr
@@ -94,7 +95,7 @@ Millivolt.
 Die Zellwand besteht aus einer Biomembran, die für Moleküle und Ionen undurchlässig ist.
 In der Zellwand befinden sich jedoch Kanalproteine, die bei der richtigen Anregung spezifische Ionen durch die
 Biomembran transportieren können.
-
+\noindent
 Wenn die Nervenzelle, wie in Abbildung \ref{fig:Anregung} extern angeregt wird, öffnen sich einige Natriumkanalproteine und transportieren so Natriumionen in
 die Nervenzelle.
 Durch die Natriumionen vergrössert sich die Ladung der Nervenzelle und das Membranpotential wird somit grösser.
@@ -104,7 +105,7 @@ Durch die Natriumionen vergrössert sich die Ladung der Nervenzelle und das Memb
     \caption{Anregung}
     \label{fig:Anregung}
 \end{figure}
-
+\noindent
 Sobald das Membranpotential grösser als der Schwellenwert von -50 Millivolt ist, öffnen sich wie in Abbildung
 \ref{fig:Depolarisation} erkennbar schlagartig viele
 Natriumkanalproteine und transportieren noch mehr Natriumionen in die Nervenzelle.
@@ -115,7 +116,7 @@ Durch diese sogenannte Depolarisation erhöht sich die Ladung der Nervenzelle no
     \caption{Depolarisation}
     \label{fig:Depolarisation}
 \end{figure}
-
+\noindent
 Sobald das Membranpotential sein Maximum erreicht schliessen sich die Natriumkanalproteine und dafür öffnen sich die
 Kaliumkanalproteine.
 Wie in Abbildung \ref{fig:Repolarisation} ersichtlich strömen viele Kaliumionen aus der Nervenzelle hinaus.
@@ -126,12 +127,12 @@ In dieser Repolarisation nimmt deshalb das Membranpotential schlagartig wieder a
     \caption{Repolarisation}
     \label{fig:Repolarisation}
 \end{figure}
-
+\noindent
 Nachdem das Membranpotential wieder abgenommen hat, muss die Nervenzelle wieder in den Ruhezustand gelangen, dies nennt
 man Hyperpolarisation.
 Dafür öffnen sich, wie in Abbildung \ref{fig:Hyperpolarisation} ersichtlicht Kanalproteine für beide Ionen und durch die
 Ionenpumpe strömen Kaliumionen in und Natriumionen aus der Zelle.
-
+Durch die ungleiche Verteilung von Natrium- und Kaliumionen ensteht so wieder ein negatives Membranpotential an der Zellenwand.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{papers/nerven/Bilder/Vorgang5.png}
@@ -139,6 +140,79 @@ Ionenpumpe strömen Kaliumionen in und Natriumionen aus der Zelle.
     \label{fig:Hyperpolarisation}
 \end{figure}
 
+\section{Verhalten bei Anregung}
+\subsection{Formelparameter}
+In den vorigen Kapiteln wurde die Parameter der Nullklinien des Fitzhugh-Nagume Modells folgendermassen definiert.
+\(a = -0.7, b = 0.8, \epsilon = 0.8, I = 0\), somit werden aus den allgemeinen Nullklinien, \( w = v - \frac{v^3}{3} + I\)
+und \(w = \frac{v + a}{b}\) die spezifischen Nullklinien \( w = v - \frac{v^3}{3}\)
+und \(w = \frac{v + 0.7}{0.8}\).
+Der stationäre Punkt, welcher von Objekten im Vektorfeld angestrebt werden befindet sich bei \((1.2 |-0.6)\).
+Der Parameter I ist als 0 definiert, dies bedeutet es findet keine Anregung statt.
+In Abbildung \ref{fig:Parameter} sind das Vektrofeld und die Nullklinien erkennbar, wenn das Modell nicht angeregt wird.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{papers/nerven/Bilder/Anregung1.png}
+    \caption{Parameter}
+    \label{fig:Parameter}
+\end{figure}
+\subsection{Schwache Anregung}
+Wenn das Nullklinienmodell angeregt werden soll, muss der Parameter I verändert werden.
+Beispielweise kann I = 0.1 Volt definiert werden.
+Dadurch wird die v-Nullklinie um 0.1 in positive w-Richtung verschoben.
+Somit verändern sich die Nullklinien zu \( w = v - \frac{v^3}{3} + 0.1\)
+und \(w = \frac{v + 0.7}{0.8}\) und der stationäre Punkt wandert zu \((1.1 |-0.5)\).
+Der ursprüngliche stationäre Punkt ist jetzt nicht mehr stabil und wird vom Vektorfeld in den neuen stationären Punkt
+gezwungen.
+Dies geschieht entlang des Vektorfelds, was bei dieser schwachen Anregung nur eine kurze Trajektorie ergibt.
+In Abbildung \ref{fig:schwacheAnregung} lässt sich die Trajektorie zwischen den stationären Punkten erkennen, sowie
+deren Auslenkung in v-Richtung.
+Da die Anregung von I = 0.1 sehr schwach ist, fällt auch die Auslenkung der Trajektorie in v-Richtung mit 0.2 klein aus und
+nimmt sofort wieder ab. 
+Dieser Effekt tritt auf, wenn die Nervenzelle mit einer Spannung unterhalb der Schwellenspannung angeregt wird.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{papers/nerven/Bilder/schwacheAnregung.png}
+    \caption{Schwache Anregung}
+    \label{fig:schwacheAnregung}
+\end{figure}
+\subsection{Starke Anregung}
+Um den Effekt, der bei einer Nervenzelle bei Anregung über der Schwellenspannung auftritt, beobachten zu können, muss
+der Parameter I erhöht werden.
+Beispielweise wird hier I = 0.3 Volt definiert.
+Dadurch wird die v-Nullklinie um 0.3 in positive w-Richtung verschoben.
+Somit verändern sich die Nullklinien zu \( w = v - \frac{v^3}{3} + 0.3\)
+und \(w = \frac{v + 0.7}{0.8}\) und der stationäre Punkt wandert zu \((1 |-0.3)\).
+Der ursprüngliche stationäre Punkt ist wird wieder instabil und vom Vektorfeld in den neuen stationären Punkt
+gezwungen.
+Dies geschieht entlang des Vektorfelds, was bei dieser stärkeren Anregung eine lange Trajektorie ergibt.
+In Abbildung \ref{fig:starkeAnregung} lässt sich die Trajektorie zwischen den stationären Punkten erkennen, sowie
+deren Auslenkung in v-Richtung.
+Durch das Vektorfeld muss der ursprüngliche stationäre Punkt, bei einer Anregung von I = 0.3 eine grosse Kurve
+beschreiben um den neuen stationären Punkt zu erreichen.
+Die Auslenkung in v-Richtung ist dadurch mit -3 auch viel grösser und es lässt sich ein impulsartiger Verlauf erkennen.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{papers/nerven/Bilder/starkeAnregung.png}
+    \caption{Starke Anregung}
+    \label{fig:starkeAnregung}
+\end{figure}
+
+\subsection{Vergleich mit Aktionspotential}
+Den Verlauf der Auslenkung der Trajektorie in v-Richtung bei einer starken Anregung des Fitzhugh-Nagumo-Modells, lässt
+sich mit dem Verlauf des Aktionspotentials der Nervenzelle vergleichen. 
+In Abbildung \ref{fig:Vergleich} sind links die Auslenkung in v-Richtung und rechts der Verlauf des Aktionspotentials
+erkennbar.
+Der Verlauf der Auslenkung in v-Richtung ist an der v-Achse gespiegelt um die Abbildungen besser vergleichen zu können.
+In der Abbildung lassen sich die einzelnen Phasen, Depolarisation, Repolarisation und Hyperpolarisation erkennen, die
+sowohl im Verlauf der Auslenkung in v-Richtung und im Verlauf des Aktionspotentials auftreten.
+Somit kann mit dem Nullklinienmodell des Fitzhugh-Nagumo-Modells der Verlauf des Aktionspotentials einer Nervenzelle
+dargestelt werden.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{papers/nerven/Bilder/Vergleich.png}
+    \caption{Vergleich v-Auslenkung Aktionspotential}
+    \label{fig:Vergleich}
+\end{figure}
 %HAllo
 %Ein paar Hinweise für die korrekte Formatierung des Textes
 %
