@@ -150,8 +150,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 	Im vorherigen Abschnitt~\ref{fourier:section:quantenfeldtheorie} wurde schliesslich beschrieben, wie in der Quantenfeldtheorie klassische Felder in quantenmechanische Operatoren überführt werden.
 	Genau diesen Übergang wollen wir nun am Beispiel eines einzelnen harmonischen Oszillators nachvollziehen.
 
-	\vspace{1em}
-
+	In diesem Abschnitt folgt ein Plan für die Abschnitte~\ref{fourier:subsection:werkzeugeQuantenmechanik} und~\ref{fourier:subsection:Leiteroperatoren}. % todo knma, gefällt mir noch nicht so...
 	In der Quantenmechanik wird die Energie nicht mehr durch eine Zahl beschrieben, sondern durch einen Operator.
 	Die klassische Energieformel führt uns dabei direkt zum sogenannten \emph{Hamilton-Operator}:
 	\begin{equation}
@@ -169,7 +168,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 
 	Die Energie des Systems ist damit nicht mehr beliebig, sondern in diskrete Stufen unterteilt.
 	Der Oszillator kann nur auf bestimmten, gleichmässig verteilten Niveaus existieren.
-	Warum hier ein zusätzlicher Term $\frac{1}{2}$ auftritt, wird im Kapitel~\ref{fourier:subsection:Leiteroperatoren} genauer erklärt.
+	Warum hier ein zusätzlicher Term $\frac{1}{2}$ auftritt, wird im Abschnitt~\ref{fourier:subsection:Leiteroperatoren} genauer erklärt.
 
 	Der harmonische Oszillator spielt in der Quantenphysik eine fundamentale Rolle.
 	Das liegt nicht nur an seiner mathematischen Einfachheit, sondern auch daran, dass viele physikalische Systeme — zumindest näherungsweise — durch ihn beschrieben werden können.
@@ -217,7 +216,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		\begin{itemize}
 		\item $|0\rangle$ kann den Grundzustand eines Systems beschreiben.
 		\item $|x\rangle$ steht für einen Zustand, in dem sich ein Teilchen genau am Ort $x$ befindet.
-		\item Allgemeine Zustände lassen sich als Superposition (Überlagerung) schreiben, z.B.:
+		\item Allgemeine Zustände lassen sich als Superposition (Überlagerung) schreiben, beispielsweise:
 		\[
 			|\psi\rangle = \alpha\,|0\rangle + \beta\,|1\rangle,
 		\]
@@ -230,17 +229,17 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		\end{equation}
 		ist eine einzige (meist komplexe) Zahl, die angibt, wie ``gleich'' oder ``verschieden'' sich die beiden Zustände $|\varphi\rangle$ und $|\psi\rangle$ verhalten.
 		Man multipliziert dafür $\varphi^*(x)$ (das konjugiert-komplexe von $\varphi$) mit $\psi(x)$ und integriert über den gesamten Raum.
+		Die \emph{Norm} eines Zustands ist einfach das Skalarprodukt mit sich selbst:
+		\begin{equation}
+		\langle \psi | \psi \rangle = \int \psi^*(x)\,\psi(x)\,dx.
+		\end{equation}
+
 		\begin{itemize}
 			\item Liegen die Zustände ``genau übereinander'', erhält man den Betrag 1 (bei Normierung).
 			\item Sind sie orthogonal, also völlig verschieden, ist das Ergebnis 0.
 		\end{itemize}
 		Kurz gesagt:
 		$\langle \varphi | \psi \rangle$ misst die Überlappung (den ``Winkel'') zwischen zwei Quantenzuständen.
-
-		Die \emph{Norm} eines Zustands ist einfach das Skalarprodukt mit sich selbst:
-		\begin{equation}
-		\langle \psi | \psi \rangle = \int \psi^*(x)\,\psi(x)\,dx.
-		\end{equation}
 
 		Der \emph{Erwartungswert} eines physikalischen Operators $A$ im Zustand $|\psi\rangle$ beschreibt den durchschnittlichen Messwert, den man erhält, wenn man ein Quantenexperiment mit demselben Zustand sehr oft wiederholt.
 		Mathematisch wird der Erwartungswert wie folgt berechnet:
@@ -310,9 +309,9 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		\begin{equation}
 			\langle\psi | [\hat{x},\hat{p}] | \psi\rangle = i\hbar
 		\end{equation}
-		und der Cauchy-Schwarz-Ungleichung~\ref{fourier:equation:CauchySchwarzUngleichung} zur Beziehung:
+		und der Cauchy-Schwarz-Ungleichung~(\ref{fourier:equation:CauchySchwarzUngleichung}) zur Beziehung:
 		\begin{equation}
-			\sigma_x^2 \sigma_p^2 \ge \frac{1}{4} |\langle\psi | [\hat{x},\hat{p}] | \psi\rangle|^2 = \frac{\hbar^2}{4}
+			\sigma_x^2 \sigma_p^2 \ge \frac{1}{4} |\langle\psi | [\hat{x},\hat{p}] | \psi\rangle|^2 = \frac{\hbar^2}{4}.
 		\end{equation}
 		Nimmt man aus beiden Seiten die Quadratwurzel, erhält man die bekannte Form der Unschärferelation:
 		\begin{equation}\label{fourier:equation:FormUnschaerferelation}
@@ -345,7 +344,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		\item Er beschreibt die Gesamtenergie eines Systems (kinetisch und potentiell).
 		\item Er steuert die zeitliche Entwicklung eines Zustands über die Schrödinger-Gleichung.
 		\end{itemize}
-		Im Kapitel~\ref{fourier:subsection:derQMHarmonischeOszillator} wurde \( \hat{H} \) bereits in einem konkreten Beispiel eingeführt.
+		Im Abschnitt~\ref{fourier:subsection:derQMHarmonischeOszillator} wurde \( \hat{H} \) bereits in einem konkreten Beispiel eingeführt.
 		Hier betrachten wir ihn unabhängig von einem speziellen Potential.
 		In der klassischen Mechanik ergibt sich die Gesamtenergie aus der Summe von kinetischer und potentieller Energie.
 		In der Quantenmechanik wird diese Grösse durch den Hamilton-Operator:
@@ -363,7 +362,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		\begin{equation}
 			\hat{H} = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x)
 		\end{equation}
-		Dieser Operator ist zentral in der zeitabhängigen Schrödinger-Gleichung~\ref{fourier:equation:zeitabhaengigeSchroedingerGleichung}:
+		Dieser Operator ist zentral in der zeitabhängigen Schrödinger-Gleichung~(\ref{fourier:equation:zeitabhaengigeSchroedingerGleichung}):
 		\begin{equation}
 			i\hbar \frac{\partial}{\partial t} \psi(x,t) = \hat{H} \psi(x,t)
 		\end{equation}
@@ -419,11 +418,11 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			\end{equation}
 
 		\subsubsection{Definition der Leiteroperatoren\label{fourier:subsubsection:DefinitionLeiteroperatoren}}
-			Schrittweise werden nun die Leiteroperatoren aus dem Hamilton-Operator~\ref{fourier:equation:HamiltonOperatorDimLos} gebildet:
+			Schrittweise werden nun die Leiteroperatoren aus dem Hamilton-Operator~(\ref{fourier:equation:HamiltonOperatorDimLos}) gebildet:
+			Zunächst faktorisieren wir
 			\[
 				H = \frac{1}{2}(Q^2 + P^2) = \frac{1}{2}(Q + iP)(Q - iP).
 			\]
-
 			Um die Schreibweise zu vereinfachen, definiert man die sogenannten Leiteroperatoren:
 			\begin{equation}
 				a^+ = \frac{1}{\sqrt{2}}(Q + iP),
@@ -476,19 +475,6 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			\textit{Bemerkung:}
 			Der Ausdruck $+\tfrac{1}{2}$ entsteht also aus der nichtverschwindenden Vertauschungsrelation $[Q,P] = i$, die letztlich die Nullpunktsenergie widerspiegelt.
 
-		\subsubsection{Energieeigenwerte\label{fourier:subsubsection:Energieeigenwerte}}
-			Die Eigenzustände $|\psi_n\rangle$ des Operators $H$ sind auch Eigenzustände von $N$, mit
-			\begin{equation}
-				H\,|\psi_n\rangle = \hbar\omega\left(n + \frac{1}{2}\right) |\psi_n\rangle.
-			\end{equation}
-			Die Eigenwerte sind also diskret:
-			\[
-				E_n = \hbar\omega\left(n + \frac{1}{2}\right), \quad \text{mit } n = 0,1,2,\dots
-			\]
-			Dies zeigt:
-			Die Energie ist quantisiert in Vielfachen von $\hbar\omega$.
-			Der Grundzustand $n = 0$ besitzt die minimale Energie $\tfrac{1}{2}\hbar\omega$.
-
 		\subsubsection{Wirkung der Leiteroperatoren\label{fourier:subsubsection:WirkungLeiteroperatoren}}
 			Die Operatoren $a^+$ (Erzeugungsoperator) und $a$ (Vernichtungsoperator) verändern die Teilchenzahl der Zustände:
 			\[
@@ -510,6 +496,19 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			\end{itemize}
 
 			Diese Operatoren erlauben eine elegante algebraische Beschreibung der Quantenzustände, ohne dass komplexe Differentialgleichungen gelöst werden müssen.
+
+		\subsubsection{Energieeigenwerte\label{fourier:subsubsection:Energieeigenwerte}}
+			Die Eigenzustände $|\psi_n\rangle$ des Operators $H$ sind auch Eigenzustände von $N$, mit
+			\begin{equation}
+				H\,|\psi_n\rangle = \hbar\omega\left(n + \frac{1}{2}\right) |\psi_n\rangle.
+			\end{equation}
+			Die Eigenwerte sind also diskret:
+			\[
+				E_n = \hbar\omega\left(n + \frac{1}{2}\right), \quad \text{mit } n = 0,1,2,\dots
+			\]
+			Dies zeigt:
+			Die Energie ist quantisiert in Vielfachen von $\hbar\omega$.
+			Der Grundzustand $n = 0$ besitzt die minimale Energie $\tfrac{1}{2}\hbar\omega$.
 
 		\subsubsection{Quantisierung des elektromagnetischen Feldes\label{fourier:subsubsection:QuantisierungElmagFeld}}
 			Im nächsten Schritt (Kapitel~\ref{fourier:section:AnwendungAufFeld}) übertragen wir diese Struktur auf das elektromagnetische Feld.
@@ -548,10 +547,10 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			Mehr Licht liefert zwar mehr Informationen und ein genaueres Bild, zerstört jedoch auch die beobachtete Zelle stärker.
 			Ein ähnliches Phänomen tritt in der Quantenmechanik auf:
 			Ort und Impuls eines Teilchens können nicht gleichzeitig beliebig genau bestimmt werden.
-			Diese Einschränkung wird durch die Heisenbergsche Unschärferelation beschrieben, welche bereits in Kapitel~\ref{fourier:subsubsection:unschaerferelation} ausgeführt wurde.
+			Diese Einschränkung wird durch die Heisenbergsche Unschärferelation beschrieben, welche bereits in Abschnitt~\ref{fourier:subsubsection:unschaerferelation} ausgeführt wurde.
 			Deshalb werden Messoperatoren eingesetzt, die jeweils nur einen Teilaspekt des Zustands erfassen, beispielsweise den Ort oder den Impuls, aber niemals den vollständigen Zustand.
 
-			Die Messung der Energie eines quantenmechanischen Systems, dargestellt durch die Wellenfunktion \(\Psi\), wird formal über den Hamilton-Operator beschrieben.
+			Die Messung der Energie eines quantenmechanischen Systems, dargestellt durch die Wellenfunktion $\psi$, wird formal über den Hamilton-Operator beschrieben.
 			Dabei ist zu beachten, dass Operatoren in der Quantenmechanik nicht beliebig vertauschbar sind; die Reihenfolge ihrer Anwendung ist von grosser Bedeutung.
 			Dies spiegelt sich in der Kommutatorrelation wider, welche im Allgemeinen nicht verschwindet, sondern proportional zur imaginären Einheit ist.
 
@@ -576,7 +575,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 
 \section{Fazit\label{fourier:section:fazit}}
 \kopfrechts{Fazit}
-	In diesem Buch wurde der Zusammenhang zwischen der klassischen Fourier-Analyse und der Quantenmechanik dargestellt.
+	In diesem Kapitel wurde der Zusammenhang zwischen der klassischen Fourier-Analyse und der Quantenmechanik dargestellt.
 	Es wurde gezeigt, wie komplexe Schwingungen durch Fourier-Reihen in einfachere harmonische Komponenten zerlegt werden können.
 
 	Am Beispiel des quantenmechanischen harmonischen Oszillators wurden die Leiteroperatoren $a^+$ und $a$ eingeführt.
