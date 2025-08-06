@@ -192,11 +192,9 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 	Der quantenmechanische harmonische Oszillator ist damit ein universeller Baustein in der Beschreibung quantisierter Systeme.
 
 \subsection{Einführung in Werkzeuge der Quantenmechanik\label{fourier:subsection:werkzeugeQuantenmechanik}}
-	Die bisherige Entwicklung --- von Plancks Energiepaketen über Einsteins Lichtquanten bis hin zu Schrödingers Wellenfunktion ---
-	macht deutlich, dass die Beschreibung von Ort, Impuls und Energie in der Quantenmechanik völlig neue mathematische Werkzeuge und Denkweisen erfordert.
-	An die Stelle klassischer Teilchenbahnen treten in der Quantenmechanik Wahrscheinlichkeiten, Operatoren und Zustandsräume.
-
-	In den folgenden Abschnitten werden drei grundlegende Konzepte vorgestellt:
+	Um die quantenmechanische Beschreibung des harmonischen Oszillators vollständig zu verstehen, ist eine neue mathematische Sprache erforderlich.
+	
+	In den folgenden Abschnitten werden drei zentrale Werkzeuge vorgestellt:
 	\begin{itemize}
 	\item \textbf{Bra-Ket-Notation}:
 	Dient zur kompakten Darstellung von Zuständen und Operatoren im Hilbertraum.
@@ -214,12 +212,15 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		Die Bra-Ket-Notation, auch Dirac-Notation genannt, wurde von Paul Dirac eingeführt und ist heute Standard in der Quantenmechanik.
 		Sie dient dazu, Zustände und Operatoren kompakt und elegant darzustellen.
 
-		Ein \emph{Ket} $|\psi\rangle$ beschreibt den Zustand eines quantenmechanischen Systems.
-		Man kann sich Kets wie Richtungspfeile oder Vektoren vorstellen, die angeben, in welchem Zustand sich das System gerade befindet ---
-		zum Beispiel mit welchem Energieeigenwert, welcher Spinquantenzahl oder an welchem Ort sich ein Teilchen befindet.	Ein \emph{Bra} $\langle\psi|$ ist das zugehörige Dualelement zum Ket.
-		Es steht symbolisch für eine Messung oder einen Test auf diesen Zustand.
-		Formal ist es das komplex-konjugierte und transponierte Objekt zum Ket.
-
+		\begin{itemize}
+			\item Ein \emph{Ket} $|\psi\rangle$ beschreibt den Zustand eines quantenmechanischen Systems.
+			Man kann sich Kets wie Richtungspfeile oder Vektoren vorstellen, die angeben, in welchem Zustand sich das System gerade befindet ---
+			zum Beispiel mit welchem Energieeigenwert, welcher Spinquantenzahl oder an welchem Ort sich ein Teilchen befindet.
+			\item Ein \emph{Bra} $\langle\psi|$ ist das zugehörige Dualelement zum Ket.
+			Es steht symbolisch für eine Messung oder einen Test auf diesen Zustand.
+			Formal ist es das komplex-konjugierte und transponierte Objekt zum Ket.
+		\end{itemize}
+		
 		Beispiele:
 		\begin{itemize}
 		\item $|0\rangle$ kann den Grundzustand eines Systems beschreiben.
@@ -228,28 +229,27 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		\[
 			|\psi\rangle = \alpha\,|0\rangle + \beta\,|1\rangle,
 		\]
-		wobei $\alpha$ und $\beta$ komplexe Zahlen sind.
+		wobei $\alpha$ und $\beta$ $\in \mathbb{C}$.
 		\end{itemize}
 
-		Das \emph{Skalarprodukt}
+		Das \emph{Skalarprodukt} zweier Zustände $\langle \varphi | \psi \rangle$ misst, wie ähnlich sie sich sind:
 		\begin{equation}
-		\langle \varphi | \psi \rangle = \int\limits_{-\infty}^{+\infty} \varphi^*(x)\,\psi(x)\,dx,
+		\langle \varphi | \psi \rangle = \int\limits_{-\infty}^{+\infty} \varphi^*(x)\,\psi(x)\,dx.
 		\end{equation}
-		ist eine einzige (meist komplexe) Zahl, die angibt, wie ``gleich'' oder ``verschieden'' sich die beiden Zustände $|\varphi\rangle$ und $|\psi\rangle$ verhalten.
-		Man multipliziert dafür $\varphi^*(x)$ (das konjugiert-komplexe von $\varphi$) mit $\psi(x)$ und integriert über den gesamten Raum.
-		Die \emph{Norm} eines Zustands ist einfach das Skalarprodukt mit sich selbst:
-		\begin{equation}
-		\langle \psi | \psi \rangle = \int \psi^*(x)\,\psi(x)\,dx.
-		\end{equation}
-
 		\begin{itemize}
-			\item Liegen die Zustände ``genau übereinander'', erhält man den Betrag 1 (bei Normierung).
-			\item Sind sie orthogonal, also völlig verschieden, ist das Ergebnis 0.
+			\item Wenn $\phi = \psi$, ergibt sich (bei normierten Zuständen) $\langle \psi | \psi \rangle = 1$.
+			\item Sind die Zustände orthogonal, gilt $\langle \phi | \psi \rangle  = 0$.
 		\end{itemize}
-		Kurz gesagt:
-		$\langle \varphi | \psi \rangle$ misst die Überlappung (den ``Winkel'') zwischen zwei Quantenzuständen.
-
-		Der \emph{Erwartungswert} eines physikalischen Operators $A$ im Zustand $|\psi\rangle$ beschreibt den durchschnittlichen Messwert, den man erhält, wenn man ein Quantenexperiment mit demselben Zustand sehr oft wiederholt.
+		Die Norm eines Zustands ist sein Skalarprodukt mit sich selbst:
+		\begin{equation}
+			\langle \psi | \psi \rangle = 1 ~\text{(bei normierten Zuständen)}.
+		\end{equation}
+	
+	\subsubsection{Erwartungswert eines Operators\label{fourier:subsubsection:erwartungswertEinesOperators}}
+		Physikalische Grössen wie Ort, Impuls oder Energie werden in der Quantenmechanik nicht als Zahlen, sondern als \emph{Operatoren} $A$ beschrieben.
+		Der gemessene Durchschnittswert --- also der Erwartungswert --- eines Operators im Zustand $|\psi\rangle$ wird so berechnet:
+		% todo knma : tbc.
+		im Zustand $|\psi\rangle$ beschreibt den durchschnittlichen Messwert, den man erhält, wenn man ein Quantenexperiment mit demselben Zustand sehr oft wiederholt.
 		Mathematisch wird der Erwartungswert wie folgt berechnet:
 		\begin{equation}
 			\langle A \rangle = \langle \psi | A | \psi \rangle = \int \psi^*(x)\,A\,\psi(x)\,dx.
