@@ -140,48 +140,56 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 	Im Kapitel~\ref{fourier:section:AnwendungAufFeld} wurde gezeigt, wie sich eine klassische Wellengleichung mithilfe einer Fourierzerlegung in eine Überlagerung von Schwingungsmoden zerlegen lässt.
 	Jede dieser Moden erfüllt formal die Bewegungsgleichung eines klassischen harmonischen Oszillators.
 
-	Kapitel~\ref{fourier:section:derKlassischeHarmonischeOszillator} untersuchte diesen Fall genauer:
-	Die Gesamtenergie eines solchen Oszillators setzt sich zusammen aus kinetischer Energie \( \frac{p^2}{2m} \) und potentieller Energie \( \frac{1}{2}kx^2 \).
-	Damit ergibt sich die klassische Energieformel:
-	\begin{equation}
+	Kapitel~\ref{fourier:section:derKlassischeHarmonischeOszillator} analysierte die Gesamtenergie eines solchen Oszillators.
+	Sie setzt sich zusammen aus kinetischer Energie $\frac{p^2}{2m}$ und potentieller Energie $\frac{1}{2}kx^2$, sodass sich ergibt:
+	\begin{equation}\label{fourier:equation:klassischeEnergieformel}
 	E = \frac{p^2}{2m} + \frac{1}{2}kx^2.
 	\end{equation}
 
-	Im vorherigen Abschnitt~\ref{fourier:section:quantenfeldtheorie} wurde schliesslich beschrieben, wie in der Quantenfeldtheorie klassische Felder in quantenmechanische Operatoren überführt werden.
-	Genau diesen Übergang wollen wir nun am Beispiel eines einzelnen harmonischen Oszillators nachvollziehen.
-
-	In diesem Abschnitt folgt ein Plan für die Abschnitte~\ref{fourier:subsection:werkzeugeQuantenmechanik} und~\ref{fourier:subsection:Leiteroperatoren}. % todo knma, gefällt mir noch nicht so...
-	In der Quantenmechanik wird die Energie nicht mehr durch eine Zahl beschrieben, sondern durch einen Operator.
-	Die klassische Energieformel führt uns dabei direkt zum sogenannten \emph{Hamilton-Operator}:
+	Der nächste Schritt ist, diesen klassischen Oszillator in den quantenmechanischen Formalismus zu überführen.
+	Dabei wird die klassische Energieformel (\ref{fourier:equation:klassischeEnergieformel}) zur Grundlage des sogenannten \emph{Hamilton-Operators}, der die Energie im quantenmechanischen Sinne beschreibt:
 	\begin{equation}
 	\hat{H} = \frac{\hat{p}^2}{2m} + \frac{1}{2} k \hat{x}^2.
 	\label{fourier:equation:hamiltonOperator}
 	\end{equation}
+	Die klassischen Grössen Ort $x$ und Impuls $p$ werden zu \emph{Operatoren} $\hat{x}$ und $\hat{p}$.
+	Diese Operatoren wirken nicht mehr auf Zahlen, sondern auf die \emph{Zustände} eines physikalischen Systems.
+	
+	Zur mathematischen Beschreibung dieser Zustände verwendet man den sogenannten \emph{Hilbertraum} --- ein komplexer Vektorraum, der mit einem innerem Produkt ausgestattet ist.
+	Dieses innere Produkt erlaubt es, den Raum mit Begriffen wie Länge und Winkel zu versehen und somit Zustände und ihre Überlagerungen präzise zu beschreiben.
+	Die Zustände selbst werden durch Vektoren in diesem Raum dargestellt.
 
-	Physikalisch messbare Grössen wie Ort, Impuls oder Energie werden nun durch Operatoren beschrieben.
-	Diese wirken auf einen sogenannten \emph{Hilbertraum} — den Raum aller quantenmechanischen Zustände.
-	Die erlaubten Messwerte sind die Eigenwerte dieser Operatoren.
-	Im Fall des harmonischen Oszillators ergibt sich ein \emph{diskretes Energiespektrum}:
+	Die Wirkung eines Operators auf einen Zustand liefert, im Fall eines Eigenzustands, das zugehörige Messergebnis als Eigenwert.
+	Die Eigenwerte des Hamilton-Operators $\hat{H}$ entsprechen den möglichen Energiezuständen des quantenmechanischen Systems.
+
+	Ziel ist es, das \emph{Energiespektrum} des quantenmechanischen Oszillators zu bestimmen.
+	Es zeigt sich, dass die Energie nur in diskreten Werten auftreten kann:
 	\[
 	E_n = \hbar \omega \left(n + \frac{1}{2} \right), \quad n = 0, 1, 2, \dots
 	\]
+	Die Herleitung dieses Spektrums erfolgt in zwei Schritten:
+	\begin{itemize}
+		\item Abschnitt~\ref{fourier:subsection:werkzeugeQuantenmechanik} führt die grundlegenden Werkzeuge der Quantenmechanik ein, darunter Bra-Ket-Notation, Erwartungswerte, Operatoren und die Unschärferelation.
+		\item Abschnitt~\ref{fourier:subsection:Leiteroperatoren} wendet diese Konzepte auf den harmonischen Oszillator an.
+		Dort werden sogenannte Leiteroperatoren eingeführt, mit deren Hilfe sich das Spektrum ableiten lässt.
+	\end{itemize}
+	Die Diskretisierung der Energie ist eine direkte Konsequenz der mathematischen Struktur der Theorie.
+	Sie ergibt sich aus dem Operatorformalismus und wird nicht unabhängig angenommen.
 
-	Die Energie des Systems ist damit nicht mehr beliebig, sondern in diskrete Stufen unterteilt.
-	Der Oszillator kann nur auf bestimmten, gleichmässig verteilten Niveaus existieren.
-	Warum hier ein zusätzlicher Term $\frac{1}{2}$ auftritt, wird im Abschnitt~\ref{fourier:subsection:Leiteroperatoren} genauer erklärt.
 
-	Der harmonische Oszillator spielt in der Quantenphysik eine fundamentale Rolle.
-	Das liegt nicht nur an seiner mathematischen Einfachheit, sondern auch daran, dass viele physikalische Systeme — zumindest näherungsweise — durch ihn beschrieben werden können.
+	Der Grundzustand besitzt die Energie $E_0 = \frac{1}{2}\hbar \omega$.
+	Die Herkunft dieses Nullpunktterms wird in Abschnitt~\ref{fourier:subsection:Leiteroperatoren} erläutert.
 
-	Die Quantisierung des harmonischen Oszillators ist damit nicht nur ein mathematisches Spiel, sondern der Grundbaustein für das Verständnis der modernen Quantenfeldtheorie.
-	Ein besonders wichtiges Beispiel ist das elektromagnetische Feld:
-	Wie bereits in Kapitel~\ref{fourier:section:AnwendungAufFeld} gesehen, lässt sich dieses Feld als Summe von Moden darstellen.
-	Jede dieser Moden entspricht einem quantenmechanischen Oszillator.
-	Die Zustände dieser Oszillatoren — sogenannte Photonenzahlenzustände — erklären, warum Licht nicht kontinuierlich, sondern in diskreten Paketen (Photonen) emittiert und absorbiert wird.
-	Darüber hinaus findet der quantenmechanische harmonische Oszillator auch in vielen anderen Bereichen Anwendung:
-	In der Festkörperphysik beschreibt er beispielsweise die Gitterschwingungen (Phononen), während er in der Quantenoptik zur Modellierung von Lichtfeldern dient.
-	Sogar in der Elektrotechnik ist das Konzept grundlegend ---
-	etwa bei der Beschreibung von Resonanzphänomenen in elektrischen Schaltkreisen oder der Analyse schwingungsfähiger Systeme.
+	Der harmonische Oszillator ist ein zentrales Modell der Quantenphysik.
+	Viele physikalische Systeme lassen sich näherungsweise durch ihn beschreiben.
+	Seine Quantisierung bildet die Grundlage der Quantenfeldtheorie.
+
+	Ein wesentliches Beispiel ist das elektromagnetische Feld. Wie in Kapitel~\ref{fourier:section:AnwendungAufFeld} dargestellt, lässt es sich in Moden zerlegen, von denen jede einem quantenmechanischen Oszillator entspricht.
+	Die Zustände dieser Oszillatoren --- sogenannte Photonenzahlenzustände --- erklären, warum Licht nicht kontinuierlich, sondern in diskreten Paketen (Photonen) emittiert und absorbiert wird.
+	
+	Auch in der Festkörperphysik und Quantenoptik ist der Oszillator zentral.
+	Er beschreibt Gitterschwingungen (Phononen), Lichtfelder und Resonanzen in elektrischen Schaltungen.
+	Der quantenmechanische harmonische Oszillator ist damit ein universeller Baustein in der Beschreibung quantisierter Systeme.
 
 \subsection{Einführung in Werkzeuge der Quantenmechanik\label{fourier:subsection:werkzeugeQuantenmechanik}}
 	Die bisherige Entwicklung --- von Plancks Energiepaketen über Einsteins Lichtquanten bis hin zu Schrödingers Wellenfunktion ---
@@ -309,7 +317,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		\begin{equation}
 			\langle\psi | [\hat{x},\hat{p}] | \psi\rangle = i\hbar
 		\end{equation}
-		und der Cauchy-Schwarz-Ungleichung~(\ref{fourier:equation:CauchySchwarzUngleichung}) zur Beziehung:
+		und der Cauchy-Schwarz-Ungleichung (\ref{fourier:equation:CauchySchwarzUngleichung}) zur Beziehung:
 		\begin{equation}
 			\sigma_x^2 \sigma_p^2 \ge \frac{1}{4} |\langle\psi | [\hat{x},\hat{p}] | \psi\rangle|^2 = \frac{\hbar^2}{4}.
 		\end{equation}
@@ -323,7 +331,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		Je genauer der Ort eines Teilchens bekannt ist (kleines $\sigma_x$), desto unschärfer muss sein Impuls ($\sigma_p$) sein --- und umgekehrt.
 		Das zeigt anschaulich die Wellennatur von Teilchen:
 		Ein Teilchen, das genau lokalisiert ist, muss eine breite Wellenverteilung im Impulsraum haben.
-		Würde man das $\tfrac{1}{2}$ in der Form der Unschärferelation~\ref{fourier:equation:FormUnschaerferelation} weglassen, erhielte man eine vereinfachte, aber weniger präzise Darstellung des Zusammenhangs.
+		Würde man das $\tfrac{1}{2}$ in der Form der Unschärferelation (\ref{fourier:equation:FormUnschaerferelation}) weglassen, erhielte man eine vereinfachte, aber weniger präzise Darstellung des Zusammenhangs.
 
 		Die Unschärferelation macht deutlich, dass klassische Begriffe wie ``Ort'' und ``Impuls'' in der Quantenmechanik nur noch als mittlere Werte und Streuungen auftreten können.
 		Um diese Konzepte mathematisch präzise zu fassen und weiterführende Aussagen über die Dynamik eines Systems zu treffen, bedarf es weiterer Werkzeuge ---
@@ -344,7 +352,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		\item Er beschreibt die Gesamtenergie eines Systems (kinetisch und potentiell).
 		\item Er steuert die zeitliche Entwicklung eines Zustands über die Schrödinger-Gleichung.
 		\end{itemize}
-		Im Abschnitt~\ref{fourier:subsection:derQMHarmonischeOszillator} wurde \( \hat{H} \) bereits in einem konkreten Beispiel eingeführt.
+		Im Abschnitt~\ref{fourier:subsection:derQMHarmonischeOszillator} wurde $\hat{H}$ bereits in einem konkreten Beispiel eingeführt.
 		Hier betrachten wir ihn unabhängig von einem speziellen Potential.
 		In der klassischen Mechanik ergibt sich die Gesamtenergie aus der Summe von kinetischer und potentieller Energie.
 		In der Quantenmechanik wird diese Grösse durch den Hamilton-Operator:
@@ -352,7 +360,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			\hat{H} = \frac{\hat{p}^2}{2m} + V(\hat{x})
 		\end{equation}
 		ersetzt.
-		Dabei treten \( \hat{x} \) und \( \hat{p} \) als nicht-kommutierende (also nicht vertauschbare) Operatoren auf.
+		Dabei treten $\hat{x}$ und $\hat{p}$ als nicht-kommutierende (also nicht vertauschbare) Operatoren auf.
 		
 		In der Ortsdarstellung gilt:
 		\begin{equation}
@@ -362,7 +370,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		\begin{equation}
 			\hat{H} = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x)
 		\end{equation}
-		Dieser Operator ist zentral in der zeitabhängigen Schrödinger-Gleichung~(\ref{fourier:equation:zeitabhaengigeSchroedingerGleichung}):
+		Dieser Operator ist zentral in der zeitabhängigen Schrödinger-Gleichung (\ref{fourier:equation:zeitabhaengigeSchroedingerGleichung}):
 		\begin{equation}
 			i\hbar \frac{\partial}{\partial t} \psi(x,t) = \hat{H} \psi(x,t)
 		\end{equation}
@@ -418,7 +426,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			\end{equation}
 
 		\subsubsection{Definition der Leiteroperatoren\label{fourier:subsubsection:DefinitionLeiteroperatoren}}
-			Schrittweise werden nun die Leiteroperatoren aus dem Hamilton-Operator~(\ref{fourier:equation:HamiltonOperatorDimLos}) gebildet:
+			Schrittweise werden nun die Leiteroperatoren aus dem Hamilton-Operator (\ref{fourier:equation:HamiltonOperatorDimLos}) gebildet:
 			Zunächst faktorisieren wir
 			\[
 				H = \frac{1}{2}(Q^2 + P^2) = \frac{1}{2}(Q + iP)(Q - iP).
