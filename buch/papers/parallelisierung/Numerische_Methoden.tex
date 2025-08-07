@@ -1,0 +1,95 @@
+%
+% einleitung.tex -- Beispiel-File für die Einleitung
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Numerische Methoden}
+
+Bisher wurden Feldgleichungen und deren Lösungen aus einer theoretischen und abstrakten Perspektive betrachtet.
+Dies ist grundlegend für das Verständnis der zugrundeliegenden Konzepte.
+
+Um den praktischen Nutzen dieser mächtigen Theorie jedoch voll auszuschöpfen, ist ein Übergang von dieser idealisierten, kontinuierlichen und grenzenlosen Sichtweise hin zu einer realitätsnahen, diskreten und physikalisch eingeschränkten Betrachtung erforderlich.
+
+Konkret bedeutet dies, dass wir die Feldgleichungen diskretisieren müssen.
+
+Ein prominentes Beispiel dafür ist das numerische Wettermodell des ECMWF (European Centre for Medium-Range Weather Forecasts), das auf Grundlage eines breiten Spektrums aktueller und vergangener Wetterdaten versucht, möglichst präzise Vorhersagen für die kommenden zehn Tage zu treffen.
+
+Als wichtigste und somit einflussreichste Parameter dieses Modells gelten der Luftdruck, die Lufttemperatur, die Windgeschwindigkeit bzw. -richtung, die Luftfeuchtigkeit sowie diverse Niederschlagsparameter \cite{ecmwf2023}.
+
+Diese Messwerte liegen jedoch nur mit begrenzter zeitlicher und räumlicher Auflösung vor.
+
+Sie bestimmen somit die Feinheit des zugrundeliegenden Datenrasters – ein Umstand, der sich später als entscheidend erweisen wird.
+
+\subsection{Diskretisierung statt Interpolation}
+
+Angesichts der Tatsache, dass die Messwerte nur in diskreter Form vorliegen, stellt sich die Frage, warum man nicht versucht, diese durch geeignete Interpolation wieder in ein kontinuierliches Datenset zu überführen, um dann die bekannten kontinuierlichen Gleichungen analytisch auszuwerten.
+
+Diese Fragestellung allein könnte den Umfang dieses gesamten Papers einnehmen.
+
+Daher sollen im Folgenden nur einige ausgewählte, nicht abschließende Aspekte diskutiert werden.
+
+Ein erster wesentlicher Punkt ist, dass Interpolation ein rein mathematisches Verfahren darstellt, das keinerlei physikalische Gesetzmäßigkeiten berücksichtigt.
+
+In der Praxis führt dies dazu, dass verrauschte und durch das Abtasten bereits verfälschte Messwerte durch Interpolation weiter verfälscht werden können.
+
+Eine mögliche Lösung wäre, die Interpolation um ein physikalisches Modell zu erweitern, welches die Lücken auf plausible Weise schließt.
+
+Dabei würde jedoch ein weiteres physikalisches Modell entstehen, das letztlich nur dazu dient, Daten für das eigentliche Modell zu liefern – was den methodischen Aufwand verdoppelt, ohne zwingend zusätzliche Erkenntnisse zu bringen.
+
+Ein weiterer zentraler Vorteil numerischer Verfahren liegt in ihrer Fähigkeit, auch Gleichungen zu lösen, die keine geschlossene analytische Lösung besitzen.
+
+Dies ist insbesondere in der Strömungsmechanik von Bedeutung.
+
+Ein Beispiel dafür ist die Navier-Stokes-Gleichung, welche die Bewegung von Flüssigkeiten und Gasen beschreibt.
+
+Für den allgemeinen dreidimensionalen Fall ist bis heute keine Lösung in geschlossener Form bekannt.
+
+Numerische Verfahren ermöglichen jedoch näherungsweise Lösungen mit vernachlässigbar kleinen Fehlern, sofern geeignete Diskretisierung und Randbedingungen gegeben sind.
+
+Allen klassischen numerischen Methoden zur Lösung partieller Differentialgleichungen ist gemeinsam, dass sie das kontinuierliche, analytische Problem in ein algebraisches Gleichungssystem mit endlich vielen Unbekannten überführen.
+
+Dieses lässt sich anschließend mit numerischen Verfahren der linearen Algebra effizient auf dem Computer lösen.
+
+\subsection{Überblick über numerische Methoden zur Lösung von Feldgleichungen}
+
+Zur numerischen Lösung partieller Differentialgleichungen existieren verschiedene etablierte Methoden, die je nach Anwendungsgebiet unterschiedliche Vor- und Nachteile aufweisen.
+
+Drei der wichtigsten Verfahren werden im Folgenden kurz vorgestellt.
+
+\subsubsection{Finite-Differenzen-Methode (FDM)}
+
+Die Finite-Differenzen-Methode ersetzt Ableitungen durch Differenzenquotienten auf einem diskreten Gitter.
+
+Dadurch wird die ursprüngliche Differentialgleichung in ein algebraisches Gleichungssystem überführt, das die gesuchte Lösung an diskreten Gitterpunkten beschreibt.
+
+FDM ist insbesondere für einfache Geometrien und regelmäßige Gitter gut geeignet und vergleichsweise leicht zu implementieren.
+
+Sie wird häufig bei Wärmeleitungsproblemen, Diffusionsprozessen und einfachen Wellengleichungen verwendet.
+
+\subsubsection{Finite-Elemente-Methode (FEM)}
+
+Die Finite-Elemente-Methode basiert auf der schwachen Formulierung der Gleichung und verwendet eine Zerlegung des Lösungsgebiets in sogenannte Elemente (z.B. Dreiecke oder Tetraeder).
+
+Innerhalb dieser Elemente wird die Lösung durch geeignete Basisfunktionen approximiert.
+
+FEM ist besonders leistungsfähig für komplexe Geometrien, Materialinhomogenitäten und Randwertprobleme in der Elektrotechnik und Strömungsmechanik.
+
+\subsubsection{Finite-Volumen-Methode (FVM)}
+
+Die Finite-Volumen-Methode basiert auf der integralen Form der Erhaltungssätze (z.B. Massen-, Impuls- oder Energieerhaltung) und ist besonders geeignet für konservative Systeme, also Systeme, bei denen physikalische Erhaltungsgrößen wie Masse oder Energie nicht erzeugt oder vernichtet, sondern nur transportiert oder umgewandelt werden.
+
+Die Methode berechnet Flüsse über die Ränder sogenannter Kontrollvolumina.
+
+Sie ist weit verbreitet in der Computational Fluid Dynamics (CFD), insbesondere bei der Simulation von Strömungen, Gasdynamik und Transportprozessen.
+
+\subsubsection{Wahl der Methode}
+
+Für das im Folgenden betrachtete Beispiel – die eindimensionale Wärmeleitungsgleichung – ist die Finite-Differenzen-Methode besonders geeignet.
+
+Die Geometrie ist einfach, und das Verfahren erlaubt eine direkte, transparente Umsetzung der zugrundeliegenden physikalischen Zusammenhänge in eine diskrete Form.
+
+Daher wird im nächsten Abschnitt die FDM im Detail erläutert und anhand eines konkreten Beispiels demonstriert.
+
