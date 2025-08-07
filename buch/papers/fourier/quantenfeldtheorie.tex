@@ -232,28 +232,39 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		wobei $\alpha$ und $\beta$ $\in \mathbb{C}$.
 		\end{itemize}
 
+		Die Norm eines Zustands ergibt sich aus seinem Skalarprodukt mit sich selbst:
+		\begin{equation}
+			\langle \psi | \psi \rangle = \int \psi^*(x)\psi(x)dx = 1 \quad \text{(für normierte Zustände)}.
+		\end{equation}
+		Dabei wird der Ausdruck $\psi^*(x)\psi(x) = |\psi(x)|^2$ als \emph{Wahrscheinlichkeitsdichte} interpretiert.
+		Dies bedeutet einschränkend, dass der Zustand $\psi$ immer so normiert werden muss, dass
+		\begin{equation}
+			\int |\psi|^2 dx = 1
+		\end{equation}
+		gilt.
+
 		Das \emph{Skalarprodukt} zweier Zustände $\langle \varphi | \psi \rangle$ misst, wie ähnlich sie sich sind:
 		\begin{equation}
 		\langle \varphi | \psi \rangle = \int\limits_{-\infty}^{+\infty} \varphi^*(x)\,\psi(x)\,dx.
 		\end{equation}
+		Dabei gilt:
 		\begin{itemize}
-			\item Wenn $\phi = \psi$, ergibt sich (bei normierten Zuständen) $\langle \psi | \psi \rangle = 1$.
-			\item Sind die Zustände orthogonal, gilt $\langle \phi | \psi \rangle  = 0$.
+			\item Für identische, normierte Zustände ($\varphi = \psi$) ist $\langle \psi | \psi \rangle = 1$.
+			\item Sind die Zustände orthogonal, also völlig verschieden, so gilt $\langle \varphi | \psi \rangle  = 0$.
 		\end{itemize}
-		Die Norm eines Zustands ist sein Skalarprodukt mit sich selbst:
-		\begin{equation}
-			\langle \psi | \psi \rangle = 1 ~\text{(bei normierten Zuständen)}.
-		\end{equation}
 	
 	\subsubsection{Erwartungswert eines Operators\label{fourier:subsubsection:erwartungswertEinesOperators}}
-		Physikalische Grössen wie Ort, Impuls oder Energie werden in der Quantenmechanik nicht als Zahlen, sondern als \emph{Operatoren} $A$ beschrieben.
 		Der gemessene Durchschnittswert --- also der Erwartungswert --- eines Operators im Zustand $|\psi\rangle$ wird so berechnet:
-		% todo knma : tbc.
-		im Zustand $|\psi\rangle$ beschreibt den durchschnittlichen Messwert, den man erhält, wenn man ein Quantenexperiment mit demselben Zustand sehr oft wiederholt.
-		Mathematisch wird der Erwartungswert wie folgt berechnet:
 		\begin{equation}
 			\langle A \rangle = \langle \psi | A | \psi \rangle = \int \psi^*(x)\,A\,\psi(x)\,dx.
 		\end{equation}
+		Dieser Ausdruck ist zentral in der Quantenmechanik.
+		Besonder wichtig ist er bei der Energie. Der Energieerwartungswert wird als
+		\begin{equation}
+			\langle H \rangle = \langle \psi|\hat{H}|\psi \rangle
+		\end{equation}
+		geschrieben.
+
 		In der Dirac-Notation bezeichnet $|\psi\rangle$ den \emph{Ket}, also den Zustandsvektor des Systems.
 		Der Ausdruck $\langle \psi |$ ist der zugehörige \emph{Bra}, also die komplex konjugiert transponierte Version von $|\psi\rangle$.
 		Zusammen bilden sie einen sogenannten \emph{Bra-Ket} (inneres Produkt).
@@ -265,11 +276,12 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		\end{itemize}
 		Das Ergebnis $\langle A \rangle$ ist also der theoretische Durchschnittswert, den man bei vielen Messungen der Grösse $A$ im Zustand $|\psi\rangle$ erhält.
 
-		Ist $|\psi\rangle$ ein Eigenzustand von $A$ mit einem bestimmten Eigenwert $a$, d.h.
+		Wenn der Zustand $|\psi\rangle$ ein \emph{Eigenzustand} des Operators $\hat{A}$ ist, dann gilt:
 		\begin{equation}
-		A\,|\psi\rangle = a\,|\psi\rangle,
+			\hat{A} | \psi \rangle = a | \psi \rangle \Rightarrow \langle A \rangle = a.
 		\end{equation}
-		so ergibt eine ideale Messung des Operators $A$ immer genau den Wert $a$.
+		Dabei ist $a$ der \emph{Eigenwert}, der dem Eigenzustand $|\psi\rangle$ des Operators $\hat{A}$ zugeordnet ist. 
+		Man erhält also bei jeder Messung denselben Wert a, was typisch für beispielsweise einen stationären Energiezustand ist.
 
 		Die Bra-Ket-Notation ist nicht nur kompakt, sondern macht viele Rechnungen in der Quantenmechanik übersichtlich und leicht handhabbar.
 
