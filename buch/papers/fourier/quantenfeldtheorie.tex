@@ -211,6 +211,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 	\subsubsection{Bra-Ket-Notation\label{fourier:subsubsection:braKetNotation}}
 		Die Bra-Ket-Notation, auch Dirac-Notation genannt, wurde von Paul Dirac eingeführt und ist heute Standard in der Quantenmechanik.
 		Sie dient dazu, Zustände und Operatoren kompakt und elegant darzustellen.
+		Die Bra-Ket-Notation ist nicht nur kompakt, sondern macht viele Rechnungen in der Quantenmechanik übersichtlich und leicht handhabbar.
 
 		\begin{itemize}
 			\item Ein \emph{Ket} $|\psi\rangle$ beschreibt den Zustand eines quantenmechanischen Systems.
@@ -233,7 +234,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		\end{itemize}
 
 		Die Norm eines Zustands ergibt sich aus seinem Skalarprodukt mit sich selbst:
-		\begin{equation}
+		\begin{equation}\label{fourier:equation:normEinesZustands}
 			\langle \psi | \psi \rangle = \int \psi^*(x)\psi(x)dx = 1 \quad \text{(für normierte Zustände)}.
 		\end{equation}
 		Dabei wird der Ausdruck $\psi^*(x)\psi(x) = |\psi(x)|^2$ als \emph{Wahrscheinlichkeitsdichte} interpretiert.
@@ -285,16 +286,14 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		Dabei ist $a$ der \emph{Eigenwert}, der dem Eigenzustand $|\psi\rangle$ des Operators $\hat{A}$ zugeordnet ist. 
 		Man erhält also bei jeder Messung denselben Wert a, was typisch für beispielsweise einen stationären Energiezustand ist.
 
-		Die Bra-Ket-Notation ist nicht nur kompakt, sondern macht viele Rechnungen in der Quantenmechanik übersichtlich und leicht handhabbar.
-
 	\subsubsection{Heisenbergs Unschärferelation%
 	\label{fourier:subsubsection:unschaerferelation}}
-		In der Quantenmechanik gibt es keine festen Werte für Grössen wie Ort oder Impuls eines Teilchens, sondern nur Wahrscheinlichkeiten und Mittelwerte, wo sich diese befinden oder wie schnell sie sind.
-		Im Gegensatz zur klassischen Physik, wo der Impuls $p$ eine klar definierte Zahl ist, wird in der Quantenmechanik der Impuls durch einen sogenannten Operator beschrieben:
+		In der klassischen Mechanik lassen sich Ort $x$ und Impuls $p$ gleichzeitig beliebig genau messen.
+		In der Quantenmechanik ist dies \emph{grundsätzlich nicht möglich}.
+		Der Impulsoperator lautet:
 		\begin{equation}
 			\hat{p} = \frac{\hbar}{i} \frac{d}{dx}.
 		\end{equation}
-		Das bedeutet:
 		Man kann nicht einfach sagen ``Das Teilchen hat genau diesen Impuls'', sondern der Impuls ist grundsätzlich unscharf (nicht exakt bestimmbar).
 		Ort und Impuls sind sogenannte nicht gleichzeitig messbare Grössen:
 		Ihre Operatoren ``vertauschen'' nicht miteinander, was mathematisch ausgedrückt wird durch
@@ -302,7 +301,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			[\hat{x},\hat{p}] = \hat{x} \hat{p} - \hat{p} \hat{x} = i \hbar.
 		\end{equation}
 		Diese fehlende Vertauschbarkeit führt direkt zur bekannten Unschärferelation.
-		Ihre Herleitung basiert auf einer grundlegenden mathematischen Ungleichung, der sogenannten Cauchy-Schwarz-Ungleichung:
+		Ihre Herleitung basiert auf einer grundlegenden mathematischen Ungleichung, der sogenannten \emph{Cauchy-Schwarz-Ungleichung}:
 		\begin{equation}\label{fourier:equation:CauchySchwarzUngleichung}
 			\vec{a} \bullet \vec{b} = |\vec{a}| |\vec{b}|\cos\alpha \le |\vec{a}| |\vec{b}|.
 		\end{equation}
@@ -419,64 +418,60 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		Der Hamilton-Operator steht somit im Zentrum der quantenmechanischen Theorie.
 		Er fasst die Energie- und Dynamikstruktur eines Systems in einem einzigen Objekt zusammen.
 
-		Im nächsten Abschnitt werden wir sehen, wie sich der Hamilton-Operator im Fall des harmonischen Oszillators besonders elegant behandeln lässt ---
-		mithilfe sogenannter Leiteroperatoren.
+	\subsubsection{Ausblick\label{fourier:subsubsection:Ausblick}}
+		Mit den bisher eingeführten Werkzeugen lässt sich der quantenmechanische harmonische Oszillator vollständig verstehen.
+		Im nächsten Abschnitt wird gezeigt, wie sich der Hamilton-Operator in diesem Fall besonders elegant mithilfe sogenannter \emph{Leiteroperatoren} behandeln lässt.
+
+		Dabei wird betrachtet, wie diese Operatoren auf Zustände wirken, wie daraus die \emph{Energieniveaus} entstehen ---
+		und warum der Oszillator niemals die Energie Null haben kann.
 
 	\subsection{Leiteroperatoren\label{fourier:subsection:Leiteroperatoren}}
-		Dieser Abschnitt zeigt auf Grundlage der Quantenmechanik, dass Licht nicht kontinuierlich, sondern in kleinsten Energiepaketen, sogenannten Photonen, übertragen wird.
-		Der Übersichtlichkeit halber wurden verschiedene Unterkapitel erstellt, welche Anhaltspunkte für diese Herleitung liefern.
+		Die Energie des quantenmechanischen harmonischen Oszillators ist diskret.
+		Ziel dieses Abschnitts ist es, diese Aussage formal zu begründen.
+		Grundlage ist die algebraische Methode mit sogenannten Leiteroperatoren, die eine vollständige Lösung des Systems ermöglichen, ohne Differentialgleichungen zu lösen.	
 
 		\subsubsection{Dimensionlose Operatoren\label{fourier:subsubsection:DimensionsloseOperatoren}}
-			Zur Vereinfachung führen wir dimensionslose Operatoren ein.
-			Die Wurzelausdrücke sorgen dafür, dass beide Operatoren keine physikalischen Einheiten mehr haben:
+			Zur Vereinfachung führt man dimensionslose Operatoren ein:
 			\[
 				Q = \sqrt{\frac{m\omega}{\hbar}}x
 				\qquad\text{und}\qquad
 				P = \frac{1}{\sqrt{m\hbar\omega}}p.
 			\]
+			Die Wurzelausdrücke sorgen dafür, dass beide Operatoren keine physikalischen Einheiten mehr haben.
 			Der Hamilton-Operator~\ref{fourier:equation:HamiltonOperatorQM} des harmonischen Oszillators nimmt damit die Form an:
 			\begin{equation}\label{fourier:equation:HamiltonOperatorDimLos}
 				H = \frac{1}{2}(P^2 + Q^2).
 			\end{equation}
 
 		\subsubsection{Definition der Leiteroperatoren\label{fourier:subsubsection:DefinitionLeiteroperatoren}}
-			Schrittweise werden nun die Leiteroperatoren aus dem Hamilton-Operator (\ref{fourier:equation:HamiltonOperatorDimLos}) gebildet:
-			Zunächst faktorisieren wir
+			Der Ausdruck~\ref{fourier:equation:HamiltonOperatorDimLos} lässt sich faktorisieren:
 			\[
-				H = \frac{1}{2}(Q^2 + P^2) = \frac{1}{2}(Q + iP)(Q - iP).
+				H = \frac{1}{2}(Q + iP)(Q - iP).
 			\]
-			Um die Schreibweise zu vereinfachen, definiert man die sogenannten Leiteroperatoren:
+			Dies motiviert die Definition der Leiteroperatoren:
 			\begin{equation}
-				a^+ = \frac{1}{\sqrt{2}}(Q + iP),
+				a = \frac{1}{\sqrt{2}}(Q + iP),
 				\qquad\text{und}\qquad
-				a = \frac{1}{\sqrt{2}}(Q - iP).
+				a^+ = \frac{1}{\sqrt{2}}(Q - iP).
 			\end{equation}
-
+			Diese erfüllen die fundamentale Vertauschungsrelation:
+			\begin{equation}
+				[a, a^+] = 1.
+			\end{equation}
+			Die Reihenfolge der Operatoren ist entscheidend: $[a^+, a] = -1$.
 			\textit{Anmerkung:}
 			Ursprünglich wurde der Erzeugungsoperator mit einem $\dagger$ (engl. „dagger“) als hochgestelltes Symbol geschrieben, also $a^\dagger$.
 			Aufgrund der begrenzten Verfügbarkeit von Sonderzeichen auf Tastaturen und in einfachen Textsystemen wird oft stattdessen das Pluszeichen $a^+$ verwendet.
 			Heute findet man deshalb in der Literatur häufig das hochgestellte Plus.
 			Beide Bezeichnungen meinen denselben Operator.
 
-			Diese Operatoren erfüllen die fundamentale Vertauschungsrelation:
-			\begin{equation}
-				[a, a^+] = 1.
-			\end{equation}
-
-			\textit{Anmerkung:}
-			Achtung, die Reihenfolge von $a$ und $a^+$ ist entscheidend! Es gilt:
-			\[
-				[a^+, a] = -1.
-			\]
-			Diese Beziehung ist zentral für die Quantenmechanik, insbesondere beim quantenmechanischen Oszillator.
-
 		\subsubsection{Hamilton-Operator in Operatorform\label{fourier:subsubsection:HamiltonOperatorInOperatorform}}
-
-			Mit Hilfe der Leiteroperatoren lässt sich der Hamilton-Operator eleganter darstellen. Setzt man die Definitionen von $a$ und $a^+$ ein, ergibt sich:
+			Die Leiteroperatoren ermöglichen eine kompakte Darstellung des Hamilton-Operators.
+			Zunächst ergibt sich durch Ausmultiplizieren:
 			\[
-				a^+a = \frac{1}{2}(Q - iP)(Q + iP) = \frac{1}{2}(Q^2 + P^2 + i[Q, P]).
+				a^+a = \frac{1}{2}(Q - iP)(Q + iP) = \frac{1}{2}(Q^2 + iQP - iPQ + P^2) = \frac{1}{2}(Q^2 + P^2 + i[Q, P]).
 			\]
-			Da $[Q, P] = i$, folgt:
+			Da $QP - PQ = [Q, P] = i$, folgt:
 			\[
 				a^+a = \frac{1}{2}(Q^2 + P^2 - 1).
 			\]
@@ -484,25 +479,69 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			\[
 				Q^2 + P^2 = 2a^+a + 1.
 			\]
-			Setzt man dies in den ursprünglichen Hamilton-Operator ein:
+			Setzt man dies in den ursprünglichen Hamilton-Operator ein, ergibt sich
 			\[
-				H = \frac{1}{2}(Q^2 + P^2) = a^+a + \frac{1}{2}.
+				H = \frac{1}{2}(Q^2 + P^2) = \frac{1}{2}(2a^+a + 1) = a^+a + \frac{1}{2}.
 			\]
-			Damit ergibt sich die Operatorform des Hamilton-Operators:
+			Mit Einheiten eingesetzt:
 			\begin{equation}
-				H = \hbar\omega \left(a^+ a + \frac{1}{2}\right) = \hbar\omega \left(N + \frac{1}{2}\right),
+				\hat{H} = \hbar\omega \left(a^+ a + \frac{1}{2}\right) = \hbar\omega \left(N + \frac{1}{2}\right).
 			\end{equation}
-			wobei $N = a^+a$ der sogenannte Teilchenzahloperator ist. Dieser zählt die Anzahl der Quanten (z.\,B. Photonen) im Zustand.
-
-			\textit{Bemerkung:}
-			Der Ausdruck $+\tfrac{1}{2}$ entsteht also aus der nichtverschwindenden Vertauschungsrelation $[Q,P] = i$, die letztlich die Nullpunktsenergie widerspiegelt.
-
+			Hierbei ist $N = a^+a$ der sogenannte Zahloperator.
+			Er zählt die Anzahl von Quanten (zum Beispiel Photonen) im Zustand.
+			Der Term $\frac{1}{2}\hbar\omega$ ergibt sich aus der Vertauschungsrelation und beschreibt die \emph{Nullpunktsenergie} des Oszillators.
+		
 		\subsubsection{Wirkung der Leiteroperatoren\label{fourier:subsubsection:WirkungLeiteroperatoren}}
+			Die gemessene Energie eines quantenmechanischen Zustands ist der Erwartungswert des Hamilton-Operators:
+			\begin{equation}
+				\langle\psi|\hat{H}|\psi\rangle = \langle\psi|E|\psi\rangle.
+			\end{equation}
+			Gilt $|\psi\rangle$ als Eigenzustand von $\hat{H}$ mit Eigenwert $E$, so folgt:
+			\[
+				\hat{H}|\psi\rangle = E|\psi\rangle.
+			\]
+			Weil $E$ nur eine Zahl ist, lässt sich der Ausdruck vereinfachen:
+			\[
+				\langle\psi|E|\psi\rangle = E \langle\psi|\psi\rangle.
+			\]
+			Für normierte Zustände gilt $\langle\psi|\psi\rangle = 1$ (siehe Formel~\ref{fourier:equation:normEinesZustands}), womit sich
+			\[
+				E \langle\psi|\psi\rangle = E \cdot 1 = E
+			\]
+			ergibt.
+			Der Erwartungswert der Energie ist also gleich dem Eigenwert, wenn der Zustand $|\varphi\rangle$ ein Eigenzustand des Hamilton-Operators ist.
+			
+			Das heisst, man kann jetzt ausrechnen, wie $a$ und $a^+$ die Energie ändern.
+			Zunächst verwenden wir die Vertauschungsrelationen:
+			\[
+				[H, a^+] = \hbar\omega a^+
+				\qquad
+				und
+				\qquad
+				[H, a] = -\hbar\omega a
+			\]
+			Daraus folgt:
+			\[
+				H a^+ |\psi_n\rangle = a^+ H|\psi_n\rangle + [H, a^+]|\psi_n\rangle = a^+ E_n|\psi_n\rangle + \hbar\omega a^+ |\psi_n\rangle = (E_n + \hbar\omega)a^+|\psi_n\rangle
+			\]
+			und
+			\[
+				H a|\psi_n\rangle = a H|\psi_n\rangle + [H, a]|\psi_n\rangle = a E_n|\psi_n\rangle - \hbar\omega a|\psi_n\rangle = (E_n - \hbar\omega)a|\psi_n\rangle
+			\]
+			Also:
+			\begin{equation}
+				H a^+ |\psi_n\rangle =  (E_n + \hbar\omega)a^+ |\psi_n\rangle \quad \text{(mehr Energie)}
+			\end{equation}
+			\begin{equation}
+				H a |\psi_n\rangle = (E_n - \hbar\omega)a | \psi_n\rangle \quad \text{(weniger Energie)}
+			\end{equation}
+			Das zeigt, dass der Erzeugungsoperator $a^+$ die Energie um $\hbar\omega$ erhöht, während der Vernichtungsoperator $a$ sie um $\hbar\omega$ verringert.
+
 			Die Operatoren $a^+$ (Erzeugungsoperator) und $a$ (Vernichtungsoperator) verändern die Teilchenzahl der Zustände:
 			\[
-				a^+|\psi_n\rangle = \sqrt{n+1}\,|\psi_{n+1}\rangle,
+				a^+|\psi_n\rangle = \sqrt{n+1}\,|\psi_\text{n+1}\rangle,
 				\qquad
-				a|\psi_n\rangle = \sqrt{n}\,|\psi_{n-1}\rangle.
+				a|\psi_n\rangle = \sqrt{n}\,|\psi_\text{n-1}\rangle.
 			\]
 			Dabei wird der Erzeugungsoperator $a^+$ auf die Wellenfunktion $|\psi_n\rangle$ angewendet und hebt den Zustand auf das nächsthöhere Energieniveau $|\psi_{n+1}\rangle$ an.
 			Umgekehrt senkt der Vernichtungsoperator $a$ den Zustand um ein Energieniveau auf $|\psi_{n-1}\rangle$.
@@ -520,7 +559,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			Diese Operatoren erlauben eine elegante algebraische Beschreibung der Quantenzustände, ohne dass komplexe Differentialgleichungen gelöst werden müssen.
 
 		\subsubsection{Energieeigenwerte\label{fourier:subsubsection:Energieeigenwerte}}
-			Die Eigenzustände $|\psi_n\rangle$ des Operators $H$ sind auch Eigenzustände von $N$, mit
+			Da $\hat{H} = \hbar\omega(N + \frac{1}{2})$, folgt:
 			\begin{equation}
 				H\,|\psi_n\rangle = \hbar\omega\left(n + \frac{1}{2}\right) |\psi_n\rangle.
 			\end{equation}
@@ -528,72 +567,45 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			\[
 				E_n = \hbar\omega\left(n + \frac{1}{2}\right), \quad \text{mit } n = 0,1,2,\dots
 			\]
-			Dies zeigt:
-			Die Energie ist quantisiert in Vielfachen von $\hbar\omega$.
-			Der Grundzustand $n = 0$ besitzt die minimale Energie $\tfrac{1}{2}\hbar\omega$.
+			Der Zustand mit $n = 0$ ist der Grundzustand mit minimaler Energie $\frac{1}{2}\hbar\omega$.
+			Zustände mit negativer Teilchenzahl existieren nicht, da sonst unphysikalisch negative Energien entstünden.
 
-		\subsubsection{Quantisierung des elektromagnetischen Feldes\label{fourier:subsubsection:QuantisierungElmagFeld}}
-			Im nächsten Schritt (Kapitel~\ref{fourier:section:AnwendungAufFeld}) übertragen wir diese Struktur auf das elektromagnetische Feld.
-			Dabei wird jede Modenkombination (bestimmte Wellenlänge, Polarisation, Richtung) wie ein unabhängiger harmonischer Oszillator behandelt.
-			Die Fourier-Koeffizienten dieser Felder verhalten sich wie die Leiteroperatoren $a$ und $a^+$.
+		\subsubsection{Bedeutung für die Quantisierung des Lichts\label{fourier:subsubsection:QuantisierungElmagFeld}}
+			Diese Struktur überträgt sich direkt auf die Quantisierung des elektromagnetischen Feldes.
+			Jede Modenkombination eines Feldes (Frequenz, Richtung, Polarisation) wird als unabhängiger Oszillator modelliert.
+			Die zugehörigen Fourier-Koeffizienten verhalten sich wie die Operatoren $a$ und $a^+$.
 
-			Die Energie des Lichtfeldes ergibt sich somit ebenfalls in diskreten Portionen:
+			Die Energie des Feldes ergibt sich analog:
 			\[
 				E_n = \hbar\omega\left(n + \frac{1}{2}\right),
 			\]
-			was zur quantisierten Natur des Lichts und dem Konzept des Photons führt.
+			was zur quantisierten Natur des Lichts  führt.
+			Das Photon entspricht einem einzelnen Quant der Energie $\hbar\omega$.
+			Jeder Zustand $n$ enthält $n$ Photonen.
+			
+			\textit{Anmerkung zur Polarisation:}
+			Jede Polarisation entspricht einem eigenen Oszillator mit eigenen Leiteroperatoren.
+			Reales Licht besteht aus Überlagerungen dieser Moden.
 
-			\textit{Anmerkung zur Polarisation:} Bei realem Licht muss zusätzlich die Polarisation berücksichtigt werden.
-			Jede Richtung der Polarisation entspricht dabei einem eigenen Oszillator mit eigenen Leiteroperatoren.
+		\subsubsection{Bemerkung zu Energiegrenzen\label{fourier:subsubsection:BemerkungBegrenztheitDerEnergie}}
+			Der Vernichtungsoperator $a$ kann nur bis zum Grundzustand angewendet werden.
+			Eine weitere Anwendung würde unphysikalische Zustände erzeugen.
+			Nach oben existiert formal kein Limit, allerdings setzt die reale Physik praktische Grenzen (beispielsweise durch Wechselwirkungen, Instabilität oder Gravitationseffekte bei extremer Energiedichte).
 
-		\subsubsection{Überlegungen zur minimalen und maximalen Energie\label{fourier:subsubsection:MinMaxEnergie}}
-			Was würde passieren, wenn der Operator $a$ viele Male auf einen Zustand angewendet werden würde? ---
-			Bekanntlich gibt es eine minimale Energie (\ref{fourier:subsubsection:Energieeigenwerte}).
-			Einem Teilchen kann man nicht beliebig viele Energie entziehen.
-			Eine unendliche Energiequelle gibt es nicht!
-
-			Was würde passieren, wenn einem Teilchen immer mehr Energie zugeführt würde, der Operator $a^+$ also sehr viele Male angewendet würde? ---
-			Nun, die physikalische Welt setzt Grenzen durch Instabilität und Wechselwirkungen und weitere Effekte.
-			Ein extremes Beispiel für eine grosse Energiedichte wäre ein schwarzes Loch.
-		
-		\subsubsection{Messung quantisierter Energie\label{fourier:subsubsection:MessungQuantisierterEnergie}}
-			Bislang wurde gezeigt, wie sich die Energie in einem quantisierten System verändern lässt.
-			Dies stellt jedoch nur den ersten Schritt dar.
-			Um die quantisierte Energie tatsächlich zu bestimmen, ist es notwendig, eine Methode zur Messung zu etablieren.
-
-			In der klassischen Physik messen wir physikalische Grössen wie Spannung oder Länge direkt.
-			In der Quantenmechanik erfolgt die Messung jedoch indirekt durch sogenannte Operatoren, welche auf den Zustand des Systems einwirken.
-			Dabei beeinflusst die Messung selbst den Zustand des Systems.
-
-			Ein anschauliches Beispiel hierfür ist ein Mikroskop und eine zu beobachtende Zelle:
-			Mehr Licht liefert zwar mehr Informationen und ein genaueres Bild, zerstört jedoch auch die beobachtete Zelle stärker.
-			Ein ähnliches Phänomen tritt in der Quantenmechanik auf:
-			Ort und Impuls eines Teilchens können nicht gleichzeitig beliebig genau bestimmt werden.
-			Diese Einschränkung wird durch die Heisenbergsche Unschärferelation beschrieben, welche bereits in Abschnitt~\ref{fourier:subsubsection:unschaerferelation} ausgeführt wurde.
-			Deshalb werden Messoperatoren eingesetzt, die jeweils nur einen Teilaspekt des Zustands erfassen, beispielsweise den Ort oder den Impuls, aber niemals den vollständigen Zustand.
-
-			Die Messung der Energie eines quantenmechanischen Systems, dargestellt durch die Wellenfunktion $\psi$, wird formal über den Hamilton-Operator beschrieben.
-			Dabei ist zu beachten, dass Operatoren in der Quantenmechanik nicht beliebig vertauschbar sind; die Reihenfolge ihrer Anwendung ist von grosser Bedeutung.
-			Dies spiegelt sich in der Kommutatorrelation wider, welche im Allgemeinen nicht verschwindet, sondern proportional zur imaginären Einheit ist.
-
-			Operatoren dienen in der Quantenmechanik als essentielle Werkzeuge, die die Wirkung von Messungen oder Übergängen zwischen verschiedenen Energieniveaus beschreiben.
-			Zur Veranschaulichung gilt dieses Beispiel einer Energie-Messung:
-			Die Wirkung des Hamilton-Operators auf die Zustände lautet:
+		\subsubsection{Messung von Energie\label{fourier:subsubsection:MessungQuantisierterEnergie}}
+			Die Energie eines Systems wird über den Erwartungswert des Hamilton-Operators gemessen:
+			\begin{equation}
+				\langle\varphi|\hat{H}|\varphi\rangle = E.
+			\end{equation}
+			Für Eigenzustände gilt:
+			\begin{equation}
+				\hat{H}|\varphi_n\rangle = E_n|varphi_n\rangle.
+			\end{equation}
+			Durch Anwendung von $a$ oder $a^+$ auf $|\varphi_n\rangle$ wird der Zustand in ein höheres oder tieferes Energieniveau verschoben:
 			\[
-				\hat{H} |\psi_n\rangle = E_n\, |\psi_n\rangle = \hbar\omega\left(n + \frac{1}{2}\right) |\psi_n\rangle.
+				\hat{H}a^+|\varphi_n\rangle = E_\text{n+1}a^+|\varphi_n\rangle, \qquad \hat{H}a|\varphi_n\rangle = E_\text{n-1}a|\varphi_n\rangle.
 			\]
-			Wendet man die Leiteroperatoren an, so verschieben sie den Zustand auf ein benachbartes Energieniveau.
-			Der Hamilton-Operator wirkt dann wie folgt:
-			\[
-				\hat{H}\, a^+ |\psi_n\rangle = \hbar\omega\left(n + 1 + \frac{1}{2}\right) a^+|\psi_n\rangle = E_{n+1}\, a^+|\psi_n\rangle,
-			\]
-			\[
-				\hat{H}\, a |\psi_n\rangle = \hbar\omega\left(n - 1 + \frac{1}{2}\right) a|\psi_n\rangle = E_{n-1}\, a|\psi_n\rangle.
-			\]
-			Dies zeigt anschaulich, dass die Energiezustände in diskreten Schritten der Größe \(\hbar\omega\) verändert werden können.
-
-		\subsubsection{Motivation}
-			Diese Betrachtung des harmonischen Oszillators bildet die Grundlage für das Verständnis der Quantisierung von Licht und der Existenz von Photonen als kleinste Energieeinheiten.
+			Diese algebraische Struktur beschreibt den Übergang zwischen diskreten Energieniveaus, wie der etwa bei der Emission oder Absorption einzelner Quanten (beispielsweise Photonen) auftritt.
 
 \section{Fazit\label{fourier:section:fazit}}
 \kopfrechts{Fazit}
