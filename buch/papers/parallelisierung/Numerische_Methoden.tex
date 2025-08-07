@@ -60,6 +60,7 @@ Zur numerischen Lösung partieller Differentialgleichungen existieren verschiede
 Drei der wichtigsten Verfahren werden im Folgenden kurz vorgestellt.
 
 \subsubsection{Finite-Differenzen-Methode (FDM)}
+\label{fdm}
 
 Die Finite-Differenzen-Methode ersetzt Ableitungen durch Differenzenquotienten auf einem diskreten Gitter.
 
@@ -92,4 +93,116 @@ Für das im Folgenden betrachtete Beispiel – die eindimensionale Wärmeleitung
 Die Geometrie ist einfach, und das Verfahren erlaubt eine direkte, transparente Umsetzung der zugrundeliegenden physikalischen Zusammenhänge in eine diskrete Form.
 
 Daher wird im nächsten Abschnitt die FDM im Detail erläutert und anhand eines konkreten Beispiels demonstriert.
+
+\subsection{Beispiel FDM}
+
+Als Ausgangslage wird die allgemeine Wärmeleitungsgleichung betrachtet.
+
+\begin{equation}
+	\frac{\partial T}{\partial t}
+	=
+	\alpha \Delta T.
+	\label{parallelisierung:Wärmeleitung_alg}
+\end{equation}
+
+Im folgenden wird im 2D-Raum gearbeitet also resultiert
+
+\begin{equation}
+	\frac{\partial T}{\partial t}
+	=
+	\alpha \left(
+	\frac{\partial^2 T}{\partial x^2}
+	+
+	\frac{\partial^2 T}{\partial y^2}
+	\right).
+	\label{parallelisierung:Wärmeleitung_2D}
+\end{equation}
+
+
+
+
+\subsubsection{Diskretisierung der Variablen}
+
+Als erstes müssen die Variablen diskretisiert werden. Dies tun wir indem wir ein Gitter über den gesamten Bereich (zeitlich, sowie räumlich) legen, also
+
+Im Raum:
+\begin{equation}
+	x_i
+	=
+	i \cdot \Delta x,
+\end{equation}
+
+\begin{equation}
+	y_j
+	=
+	j \cdot \Delta y,
+\end{equation}
+
+Und in der Zeit:
+
+\begin{equation}
+	t^n
+	=
+	n \cdot \Delta t.
+\end{equation}
+
+Somit wird unsere resultierende, diskrete Temperaturfunktion die Form
+
+\begin{equation}
+	T^n_{i,j}
+	=
+	T(x_i,y_j,t^n)
+\end{equation}
+
+haben.
+
+
+\subsubsection{Diskretisierung der Zeit}
+
+Die partielle Ableitung der Temperaturfunktion \( T \) nach der Zeit wird durch eine explizite Vorwärtsdifferenz approximiert:
+
+\begin{equation}
+	\left. \frac{\partial T}{\partial t}\right|_{(i,j,n)}
+	\approx
+	\frac{T_{i,j}^{n+1} - T_{i,j}^n}{\Delta t}.
+\end{equation}
+
+Dies entspricht der zeitlichen Änderungsrate von \( T \) am diskreten Gitterpunkt \( (x_i, y_j, t^n) \).
+
+\subsubsection{Diskretisierung des Raums}
+Auch hier beginen wir mit der einmaligen Anwendungen des Diefferentielquotientsen (Vorwärts), um die erste Ableitung, zunächst in x-Richtung zu approximieren:
+
+\begin{equation}
+	\left. \frac{\partial T}{\partial x} \right|{(i,j,n)}
+	\approx \frac{T_{i+1,j}^n - T_{i,j}^n}{\Delta x}.
+\end{equation}
+
+Zusätzlich bestimmen wir die Rückwärtsdifferenz
+
+\begin{equation}
+	\left. \frac{\partial T}{\partial x} \right|{(i,j,n)}
+	\approx \frac{T_{i,j}^n - T_{i-1,j}^n}{\Delta x},
+\end{equation}
+
+um mittels einer letzen Anwendung des Differentialquotienten die Änderung dieser beiden Änderungen, also genau das was die zweite Ableitung beschreibt, diskret zu bestimmen
+
+\begin{equation}
+	\frac{\partial^2 T}{\partial x^2} \approx
+	\frac{ \left( \frac{T_{i+1,j}^n - T_{i,j}^n}{\Delta x} \right) - \left( \frac{T_{i,j}^n - T_{i-1,j}^n}{\Delta x} \right) }{\Delta x}.
+\end{equation}
+
+Schlussendlich vereinfacht sich dies zu 
+
+\begin{equation}
+	\left. \frac{\partial^2 T}{\partial x^2} \right|{(i,j,n)} \approx \frac{T{i+1,j}^n - 2T_{i,j}^n + T_{i-1,j}^n}{(\Delta x)^2}.
+\end{equation}
+
+Für die y-Richtung folgt analog
+
+\begin{equation}
+	\left. \frac{\partial^2 T}{\partial y^2} \right|{(i,j,n)} \approx \frac{T{i,j+1}^n - 2T_{i,j}^n + T_{i,j-1}^n}{(\Delta y)^2}.
+\end{equation}
+
+Womit die Diskretisierung des Raums abgeschlossen ist.
+
 
