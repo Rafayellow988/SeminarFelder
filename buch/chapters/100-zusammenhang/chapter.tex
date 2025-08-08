@@ -15,7 +15,9 @@ allgemein kovariante Art definiert werden kann.
 Der Grund dafür ist, dass die Tangentialvektoren in den Punkten
 $\gamma(t)$ und $\gamma(t+\Delta t)$ in den disjunkten Vektorräumen
 $T_{\gamma(t)}M$ und $T_{\gamma(t+\Delta t)}M$ liegen und sich nicht
-einfach so miteinander verrechnen lassen.
+einfach so miteinander verrechnen lassen
+(Abbildung~\ref{buch:zusammenhang:fig:differenz}).
+\input{chapters/100-zusammenhang/fig/fig-differenz.tex}%
 Dazu wird eine Methode benötigt, die Tangentialvektoren vom einen
 Punkt in einen nahegelegenen Punkt zu transportieren.
 Die einfachste Methode, dies zu erreichen, ist eine Metrik $g$ auf der
@@ -247,6 +249,8 @@ sind die paralleltransportierten Vektorfelder leicht zu identifizieren,
 es sind die Vektorfelder mit konstanten Komponenten.
 In diesem Falle verschwinden die partiellen Ableitungen.
 
+\input{chapters/100-zusammenhang/fig/fig-transport.tex}
+
 %
 % Kovariante Ableitung der Standardbasisvektoren in einer Karte
 %
@@ -280,6 +284,7 @@ oder
 Die Christoffel-Symbole in einer Karte beschreiben daher die Komponenten
 der kovarianten Ableitung der Standardbasisvektoren in Richtung
 der Standardbasisvektoren.
+
 %
 % Koordinatentransformation für Christoffel-Symbole
 %
@@ -1004,6 +1009,187 @@ Es ergibt sich
 \]
 \end{beispiel}
 
+\begin{beispiel}
+\label{buch:zusammenhang:paralleltransport:bsp:kugel}
+Kugelkoordinaten beschreiben Punkte der Einheitskugel mit Hilfe der
+geographischen Länge und Breite 
+\[
+f\colon
+[0,\pi] \times [0,2\pi)
+\to
+\mathbb{R}^3
+:
+(\vartheta,\varphi)
+\mapsto
+\begin{pmatrix}
+\sin\vartheta \cos\varphi\\
+\sin\vartheta \sin\varphi\\
+\cos\vartheta
+\end{pmatrix}
+\]
+Die geographische Breite wird vom Nordpol gemessen.
+Die Komponenten des metrischen Tensors entstehen aus den Skalarprodukten
+der partiellen Ableitungen nach $\vartheta$ und $\varphi$
+\begin{align*}
+\frac{\partial f}{\partial \vartheta}
+&=
+\begin{pmatrix}
+\cos\vartheta \cos\varphi \\
+\cos\vartheta \sin\varphi \\
+-\sin\vartheta
+\end{pmatrix}
+&
+\frac{\partial f}{\partial \varphi}
+&=
+\begin{pmatrix}
+-\sin\vartheta\sin\varphi\\
+ \sin\vartheta\cos\varphi\\
+0
+\end{pmatrix}.
+\end{align*}
+Sie sind
+\begin{align*}
+g_{11}
+&=
+\frac{\partial f}{\partial\vartheta}
+\cdot
+\frac{\partial f}{\partial\vartheta}
+=
+\cos^2\vartheta\cos^2\varphi+\cos^2\vartheta\sin^2\varphi+\sin^2\vartheta
+\\
+&=
+\cos^2\vartheta(\underbrace{\cos^2\varphi+\sin^2\varphi}_{\displaystyle=1})+\sin^2\vartheta
+=\cos^2\vartheta+\sin^2\vartheta=1
+\\
+g_{12}=g_{21}
+&=
+\frac{\partial f}{\partial\vartheta}
+\cdot
+\frac{\partial f}{\partial\varphi}
+=
+-\cos\vartheta\cos\varphi\sin\vartheta\sin\varphi
++\cos\vartheta\sin\varphi\sin\vartheta\cos\varphi
+=
+0
+\\
+g_{22}
+&=
+\frac{\partial f}{\partial\varphi}
+\cdot
+\frac{\partial f}{\partial\varphi}
+=
+\sin^2\vartheta\sin^2\varphi+\sin^2\vartheta\cos^2\varphi
+=
+\sin^2\vartheta(\underbrace{\sin^2\varphi+\cos^2\varphi}_{\displaystyle=1})
+=
+\sin^2\vartheta.
+\end{align*}
+Der metrische Tensor kann daher als die Matrix
+\[
+(g)
+=
+\begin{pmatrix}
+1&0\\
+0&\sin^2\vartheta
+\end{pmatrix}
+\]
+geschrieben werden.
+
+Ausgehend vom metrischen Tensor können jetzt auch die Christoffel-Symbole
+berechnet werden.
+Ganz ähnlich wie bei den Polarkoordinaten, sind
+die partiellen Ableitungen nach $\vartheta$ von $g_{22}$ von $0$
+verschieden:
+\[
+\frac{\partial g_{22}}{\partial x^1}
+=
+\frac{\partial g_{22}}{\partial\vartheta}
+=
+2\sin\vartheta\cos\vartheta.
+\]
+Die Christoffel-Symbole erster Art sind daher
+\[
+\begin{aligned}
+\Gamma_{1,11}
+&=
+0,
+&
+\Gamma_{1,12} = \Gamma_{1,21}
+&=
+0,
+&
+\Gamma_{1,22}
+&=
+-\sin\vartheta\cos\vartheta,
+\\
+\Gamma_{2,11}
+&=
+0,
+&
+\Gamma_{2,12} = \Gamma_{2,21}
+&=
+\sin\vartheta\cos\vartheta,
+&
+\Gamma_{2,22}
+&=
+0.
+\end{aligned}
+\]
+Mit der inversen Matrix von $g$ mit
+\[
+g^{ik}
+=
+\begin{pmatrix}
+1&0\\
+0&\frac{1}{\sin^2\vartheta}
+\end{pmatrix}
+\]
+kann man jetzt auch die Christoffel-Symbole zweiter Art berechnen,
+sie sind
+\[
+\Gamma^j_{ik}
+=
+g^{jl}\Gamma_{l,ik}
+=
+\begin{cases}
+\Gamma_{1,ik}&\qquad\text{falls $j=1$}\\
+\frac{1}{\sin^2\vartheta}\Gamma_{2,ik}&\qquad\text{falls $j=2$}.
+\end{cases}
+\]
+Ausgerechnet sind die Christoffel-Symbole
+\[
+\begin{aligned}
+\Gamma^1_{11}
+&=
+0,
+&
+\Gamma^1_{12}
+=
+\Gamma^1_{21}
+&=
+0,
+&
+\Gamma^1_{22}
+&=
+-\sin\vartheta\cos\vartheta,
+\\
+\Gamma^2_{11}
+&=
+0,
+&
+\Gamma^2_{12}
+=
+\Gamma^2_{21}
+&=
+\cot\vartheta,
+&
+\Gamma^2_{22}
+&=
+0.
+\end{aligned}
+\]
+\end{beispiel}
+
 %
 % Geodäten
 %
@@ -1110,7 +1296,7 @@ Die Differentialgleichungen
 können mit den Resultaten von 
 Beispiel~\ref{buch:zusammenhang:paralleltransport:bsp:polar}
 ausgeschrieben werden als die beiden Differentialgleichungen
-\[
+\begin{equation}
 \left.
 \begin{aligned}
 \ddot{x}^1
@@ -1119,9 +1305,9 @@ ausgeschrieben werden als die beiden Differentialgleichungen
 \\
 \ddot{x}^2
 &=
-\Gamma^2_{21}\dot{x}^1\dot{x^2}
+\Gamma^2_{21}\dot{x}^1\dot{x}^2
 +
-\Gamma^2_{12}\dot{x}^2\dot{x^1}
+\Gamma^2_{12}\dot{x}^2\dot{x}^1
 \end{aligned}
 \quad
 \right\}
@@ -1133,14 +1319,274 @@ ausgeschrieben werden als die beiden Differentialgleichungen
 \begin{aligned}
 \ddot{r}
 &=
--r \dot{r}^2
+r \dot{\varphi}^2
 \\
 \ddot{\varphi}
 &=
-\frac{2}{r}\dot{\varphi}\dot{r}
+-\frac{2}{r}\dot{\varphi}\dot{r}
 \end{aligned}
 \right.
+\label{buch:zusammenhang:paralleltransport:bsp:polardgl}
+\end{equation}
+Daraus lässt sich bereits ablesen, dass die radialen Geraden, die
+durch $\varphi=\text{const}$ charakterisiert sind, Lösungen
+der Differentialgleichung
+\eqref{buch:zusammenhang:paralleltransport:bsp:polardgl}
+sind.
+In diesem Fall ist $\ddot{\varphi}=\dot{\varphi}=0$ und
+daher $\ddot{r}=0$, die als Lösung $r=vt+r_0$, wobei $v$ die Geschwindigkeit
+und $r_0$ der Radius zur Zeit $t=0$ ist.
+
+Schreibt man $\omega=\dot{\varphi}$ für die Winkelgeschwindigkeit, dann
+wird die zweite Gleichung von
+\eqref{buch:zusammenhang:paralleltransport:bsp:polardgl}
+zu
+\[
+\frac{\dot{\omega}}{\omega}
+=
+-2\frac{\dot{r}}{r}
+\qquad\Rightarrow\qquad
+\frac{d}{dt}\log \omega
+=
+\frac{d}{dt}\bigl(-2\log r\bigr)
+=
+\frac{d}{dt}\log\frac{1}{r^2}.
 \]
+Durch Integration findet man, dass
+\begin{equation}
+\log \omega = \log\frac{1}{r^2} + C
+\qquad\Rightarrow\qquad
+\omega = \frac{D}{r^2}
+\qquad\Rightarrow\qquad
+\omega r^2 = D
+\label{buch:zusammenhang:paralleltransport:bsp:drehimpuls}
+\end{equation}
+mit $D=e^C$ ist.
+Multipliziert man die letzte Gleichung mit $m$, erhält man
+$m\omega r^2=\text{const}$, also die Aussage, dass der Drehimpuls
+erhalten ist.
+Jeder Massepunkt, der sich in der Ebene mit konstanter Geschwindigkeit
+und konstanter Richtung bewegt, erfüllt diese Gleichung.
+
+Mit der Drehimpulserhaltung
+\eqref{buch:zusammenhang:paralleltransport:bsp:drehimpuls}
+kann jetzt 
+die zweite Differentialgleichung von
+\eqref{buch:zusammenhang:paralleltransport:bsp:polardgl}
+zu
+\begin{equation}
+\ddot{r}=r\biggl(\frac{D}{r^2}\biggr)^2 = r^{-3} D^2
+\label{buch:zusammenhang:paralleltransport:bsp:polardotr}
+\end{equation}
+vereinfacht werden.
+Schreibt man $r=\sqrt{R}$ oder $r^2=R$, werden die Ableitungen von $R$
+\begin{align*}
+\dot{R} &= 2\dot{r} r \\
+\ddot{R}
+&=
+2\ddot{r} r + 2\dot{r}^2
+=
+\\
+\dddot{R}
+&=
+2\dddot{r} r + 2\ddot{r}\dot{r} + 4\ddot{r}\dot{r}
+=
+2\dddot{r}r + 6\ddot{r}\dot{r}
+\intertext{oder nach Einsetzen von 
+\eqref{buch:zusammenhang:paralleltransport:bsp:polardotr}
+und dessen Ableitung
+}
+&=
+2(-3\dot{r}r^{-4}D^2) r + 6r^{-3}D^2\dot{r}
+=
+6\dot{r}D^2(-r^{-3}+r^{-3})
+=
+0.
+\end{align*}
+Es folgt, dass $R$ ein quadratisches Polynom in $t$ sein muss.
+Es muss von der Form $R=at^2 + bt + c$ sein.
+Da $R(t)\ge 0$ sein muss, muss $a \ge 0$ sein und die Diskriminante $\Delta$
+muss 
+\[
+\Delta
+=
+b^2-4ac\le 0
+\]
+sein.
+Für $a>0$ kann man dies durch quadratisches Ergänzen in die Form
+\[
+R(t)
+=
+a\biggl(t+\frac{b}{2a}\biggr)^2 - \frac{b^2-4ac}{4a^2}
+\]
+bringen.
+Das Minimum wird erreicht wenn $t=-b/2a$ ist, daher kann man die
+Parameter wie folgt interpretieren.
+\input{chapters/100-zusammenhang/fig/fig-polargeodaete.tex}%
+Schreibt man
+\[
+t_0=-b/2a,
+\qquad
+v=\sqrt{a}
+\qquad\text{und}\qquad
+d^2 = -\frac{b^2-4ac}{4a^2},
+\]
+folgt
+\[
+R(t)
+=
+(v(t-t_0))^2 + d^2
+\qquad\Rightarrow\qquad
+r(t)
+=
+\sqrt{
+(v(t-t_0))^2 + d^2
+}.
+\]
+Daraus kann man mit Hilfe des Satzes von Pythagoras ablesen, dass sich
+der Punkt mit der Geschwindigkeit $v$ auf einer Geraden bewegt und
+zur Zeit $t_0$ im geringsten Abstand $d$ am Nullpunkt vorbeigeht
+(Abbildung~\ref{buch:zusammenhang:geodaeten:fig:polargeodaete}).
+Damit lässt sich jetzt auch die Konstante $D$ bestimmen.
+Aus $v=\omega d$ folgt
+\[
+\omega=\frac{d}{v}
+\quad \Rightarrow \quad
+D=\omega d^2 = \frac{d^3}{v}
+\]
+
+Aus $\dot{\varphi}=\omega = Dr^{-2} = d^3 / v r^2$
+kann jetzt durch Integration auch die explizite Formel 
+\[
+\varphi(t)
+=
+\varphi_0
++
+\frac{d}{v}
+\int_{t_0}^t
+\frac{d^2\,dt}{v^2(t-t_0)^2+d^2}
+=
+\varphi_0
++
+\frac{d}{v}
+\arctan\frac{(t-t_0)v}{d}
+\]
+für $\varphi(t)$ gefunden werden.
+
+\subsubsection{Geodäten auf einer Kugeloberfläche}
+In Beispiel~\ref{buch:zusammenhang:paralleltransport:bsp:kugel}
+wurden die Christoffel-Symbole für Kugelkoordinaten auf einer
+Kugeloberfläche berechnet.
+\input{chapters/100-zusammenhang/fig/kugeldreieck.tex}%
+Damit lässt sich jetzt die Differentialgleichung für eine Geodäte auf
+einer Kugel finden.
+Sie ist
+\begin{equation}
+\left.
+\begin{aligned}
+\ddot{x}^1 &= -\Gamma^1_{ik}\dot{x}^i\dot{x}^k
+\\
+\ddot{x}^2 &= -\Gamma^2_{ik}\dot{x}^i\dot{x}^k
+\end{aligned}
+\quad
+\right\}
+\qquad\Rightarrow\qquad
+\left\{
+\quad
+\begin{aligned}
+\ddot{\vartheta}
+&=
+\sin\vartheta\cos\vartheta \cdot \dot{\varphi}^2
+\\
+\ddot{\varphi}
+&=
+-\cot\vartheta \cdot \dot{\vartheta}\dot{\varphi}.
+\end{aligned}
+\right.
+\label{buch:zusammenhang:geodaeten:kugeldgl}
+\end{equation}
+Der Äquator ist durch $\vartheta=\frac{\pi}2$ definiert.
+Für diesen Wert werden die Differentialgleichungen für $\varphi$ zu
+\[
+\ddot{\varphi}=0,
+\]
+die als Lösung eine lineare Funktion
+$\varphi(0)=\omega t +\varphi_0$ hat.
+
+Ein Längenkreis ist gegeben durch $\varphi=\text{const}$ oder
+$\dot{\varphi}=0$, damit wird die Differentialgleichung für $\vartheta$
+zu
+\[
+\ddot{\vartheta} = 0,
+\]
+die als Lösung eine lineare Funktion der Form
+$\vartheta(t) = \omega t + \vartheta_0$ hat.
+
+Andere Geodäten schneiden den Äquator, wir können ohne Beschränkung der
+Allgemeinheit annehmen, dass dies für $\varphi=0$ geschieht.
+In Abbildung~\ref{buch:zusammenhang:geodaeten:fig:kugeldreieck}
+ist rot der Grosskreis durch den Punkt $A$ bei $\varphi=0$ dargestellt,
+der den Äquator im Winkel $\alpha$ schneidet.
+Als Parameter wird die Länge $c=t$ der Hypothenuse des rechtwinkligen
+Dreiecks verwendet.
+Der sphärische Sinussatz liefert die Beziehung
+\[
+\sin a : \sin \alpha
+=
+\sin c : \sin\gamma
+=
+\sin c,
+\]
+wegen $\sin\gamma=\sin\frac{\pi}2=1$.
+Durch einsetzen der Werte aus der
+Abbildung~\ref{buch:zusammenhang:geodaeten:fig:kugeldreieck}
+erhalten wir
+\begin{align*}
+\sin\biggl(\frac{\pi}2-\vartheta\biggr) : \sin\alpha
+&=
+\sin t
+\\
+\cos\vartheta
+&=
+\sin\alpha \sin t
+&&\Rightarrow&
+\vartheta(t) &= \arccos(\sin\alpha\sin t).
+\end{align*}
+Für die Berechnung von $\varphi$ kann der sphärische Kosinussatz
+für rechtwinklige sphärische Dreiecke in der Form
+\begin{align*}
+\cos c = \cos a\cos b
+\quad\Rightarrow\quad
+\cos\varphi\cos\biggl(\frac{\pi}2-\vartheta(t)\biggr)
+&=
+\cos t
+\\
+\cos\varphi
+&= 
+\frac{
+\cos t
+}{
+\sin\vartheta(t)
+}.
+\end{align*}
+Daraus erhalten wir als vollständige Parametrisierung des Grosskreises
+\begin{equation}
+\begin{aligned}
+\vartheta(t)
+&=
+\arccos(\sin\alpha\cos t)
+\\
+\varphi(t)
+&=
+\arccos\frac{\cos t}{\sin\vartheta(t)}.
+\end{aligned}
+\label{buch:zusammenhang:geodaeten:eqn:kugelgeodaeten}
+\end{equation}
+Durch Nachrechnen kann geprüft werden, dass diese Funktionen tatsächlich
+eine Lösung der Geodätendifferentialgleichung ergeben.
+Die Rechnung ist allerdings ziemlich mühsam, die Verwendung eines
+Computeralgebrasystems ist empfohlen.
+
 
 %
 % Geodäten als kürzeste Verbindungen
@@ -1351,16 +1797,148 @@ Die Euler-Lagrange-Differentialgleichung für das Weglängenfunktional
 ist also die Differentialgleichung für Geodäten.
 
 %
+% Kovariante Ableitung von Tensoren
+%
+\section{Divergenz und Erhaltungssätze
+\label{buch:zusammenhang:section:divergenz}}
+In Abschnitt~\ref{buch:gauss:section:erhaltungssatz} wurde gezeigt,
+wie Erhaltungssätze mit Hilfe der Divergenz formuliert werden können.
+Beschreibt man den Fluss eines Feldes durch die $n-1$-dimensionale
+Volumenelemente durch eine $n-1$-Form $\omega\in \Omega^{n-1}(M)$,
+dann ist die äussere Ableitung $d\omega\in \Omega^n(M)$ eine $n$-Form.
+Der Satz von Gauss sagt dann, dass für ein $n$-dimensionales $V$
+mit dem geschlossenen, $n-1$-dimensionalen Rand $\partial V$
+\[
+\int_{V}d\omega
+=
+\int_{\partial V}\omega
+\]
+gilt.
+Die $n$-Form $d\omega$ beschreibt die Quelldichte für das Feld im
+Gebiet $V$.
+Da man $d\omega$ in der Form
+\[
+d\omega
+=
+\varrho(x^1,\dots,x^n)
+\,
+dx^1\wedge\dots\wedge dx^n
+\]
+schreiben kann, betrachtet man $\varrho(x^1,\dots,x^n)$ als die
+Dichte der erhaltenen Grösse.
+Die Dichtefunktion $\varrho(x^1,\dots,x^n)$  ist aber abhängig
+von der Wahl des Koordinatensystems, sie kann also nicht direkt 
+mit einer physikalischen Grösse identifiziert werden.
+
+Die äussere Ableitung $d\omega$ wurde mit der Divergenz des Vektorfeldes
+identifiziert, dessen Komponenten die Koeffizienten der $n$ Basis-$n-1$-Formen
+$dx^{i_1}\wedge\dots\wedge dx^{i_{n-1}}$, $1\le i_1<\dots<i_{n-1}\le n$, in
+einem gewählten Koordinatensystem sind.
+Die Kontinuitätsgleichung wurde in Abschnitt
+\ref{buch:zusammenhang:erhaltungssatz:subsection:kontinuitaetsgleichung}
+als der Ausdruck eines Erhaltungssatzes.
+Die Komponenten des Vektorfeldes bilden den zur Dichte $\varrho$ gehörigen
+erhaltenen Strom.
+Auch dieses Vektorfeld hängt, genau wie die Dichtefunktion
+$\varrho(x^1,\dots,x^n)$, von der Wahl des Koordinatensystems ab.
+
+%
+% Metrik und Dichte
+%
+\subsection{Metrik und Dichte
+\label{buch:zusammenhang:divergenz:subsection:metrik}}
+Die Dichtefunktion $\varrho(x^1,\dots,x^n)$ liess sich nicht 
+unabhängig vom Koordinatensystem definieren, weil es keine vom
+Koorinatensystem unabhängig Wahl einer Volumenform
+\[
+v(x^1,\dots,x^n)\,dx^1\wedge\dots\wedge dx^n
+\]
+gibt.
+Eine Orientierung der Mannigfaltigkeit verlang zwar, dass auf
+jedem Kartengebiet eine solche Form ausgezeichnet wird.
+Von den Kartenwechseln wird aber nur verlangt, dass sie das Vorzeichen
+der $n$-Form nicht ändern.
+Es wird nichts über die Werte der $n$-Formen verlangt.
+
+Mit einer Metrik wird es möglich, eine koordinatenunabhängige Volumenform
+\[
+\sqrt{\det g}
+\,dx^1\wedge\dots\wedge dx^n
+\]
+zu definieren.
+Eine beliebige $n$-Form $\omega$ kann dann in der Form
+\[
+\varrho(x^1,\dots,x^n)
+\sqrt{\det g}
+\,dx^1\wedge \dots \wedge dx^n
+\]
+geschrieben werden.
+Die Dichtefunktion $\varrho(x^1,\dots,x^n)$ ist jetzt eine von der
+Wahl des Koordinatensystems unabhängige Grösse.
+
+Eine entsprechende ``Referenzform'' lässt sich auch für $p$-Formen mit
+$p<n$ finden, die auf einer eingebetteten $p$-Mannifaltigkeit
+definiert sind.
+Ein $p$-dimensionale Untermannigfaltigkeit $N\subset M$ einer
+riemannschen Mannigfaltigkeit $M$ mit der Metrik $g$ erbt die Metrik
+von $M$.
+Wegen $N\subset M$ folgt $T_xN\subset T_xM$ für jeden Punkt $x\in N$
+und daher sind Tangentialvektoren von $N$ im Punkt $x$ auch
+Tangentialvektoren von $M$ im selben Punkt.
+Die Metrik von $M$ definiert daher auch ein Skalarprodukt von
+Tangentialvektoren von $N$ und damit eine Metrik auf $N$.
+Die Länge einer Kurve in $N$ wird natürlich nicht verändert.
+
+Eine $p$-dimensionale Untermannigfaltigkeit hat daher eine $p$-dimensionale
+Volumenform, die mit der gleichen Metrik definiert ist.
+Auf dem $p-1$-dimensionalen Rand eines $p$-dimensionalen Gebietes definiert
+die Metrik eine $p-1$-Form, die mit der $p$-Form auf dem Gebiet kompatibel
+ist.
+
+%
+% Symmetrien und Erhaltungssätze
+%
+\subsection{Symmetrien und Erhaltungssätze
+\label{buch:zusammenhang:divergenz:subsection:noether}}
+Aus der Variationsrechnung \cite[Abschnitt 10.2]{buch:seminarvariation}
+ist bekannt, dass zu jeder Symmetrie der Lagrange-Funktion eines
+Variationsproblems ein Erhaltungssatz gehört.
+
+XXX Divergenzform des Erhaltungssatzes
+
+%
+% Kovariante Ableitung und erhaltene Ströme
+%
+\subsection{Kovariante Ableitung und erhaltene Ströme
+\label{buch:zusammenhang:divergenz:subsetion:kovariant}}
+Die Divergenzform ermöglicht, Erhaltungssätze in Form einer 
+Differentialgleichung zu formulieren.
+Die Koeffizienten der Basis-$p$-Formen sind aber koordinatenabhängig,
+wir können also nicht erwarten, damit einen koordinatenunabhängig
+formulierten Erhaltungssatz zu konstruieren.
+
+Die Divergenzform des Satzes von Nöther zeigt uns aber die Richtung,
+in die wir gehen müssen.
+Da die $n$-Form $v=\sqrt{g} dx^1\wedge \dots\wedge dx^n$
+koordinatenunabhängig ist, sind Grössen, die als Dichtefunktionen
+relativ zu $v$ definiert sind, Kandidaten für Grössen, für die
+ein Erhaltungssatz in Divergenzform formuliert werden kann.
+
+Etwas formaler betrachten wir jetzt eine Grösse mit Komponenten $A^i$
+derart, dass $\sqrt{g}A^i$ ein Vektor ist.
+Wir bezeichnen eine solche Grösse als eine Vektordichte.
+In Divergenzform lautet ein Erhaltungssatz für diese Grösse
+\[
+\sum_{i=1}^n \frac{\partial}{\partial x^i} (\sqrt{g}A^i)
+=
+0.
+\]
+
+%
 % Zusammenhang
 %
 \section{Zusammenhang
 \label{buch:zusammenhang:section:zusammenhang}}
-
-%
-% Kovariante Ableitung
-%
-\subsection{Kovariante Ableitung
-\label{buch:zusammenhang:zusammenhang:subsection:kovarianteableitung}}
 
 %
 % Strömungsgleichungen
