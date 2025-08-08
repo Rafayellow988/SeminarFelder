@@ -9,6 +9,14 @@
 \section{Theorie\label{reynolds:section:teil0}}
 \kopfrechts{Theorie}
 \subsection{Die Navie-Stokes-Gleichungen}
+
+Im folgenden Abschnitt wird kurz erleutert wie man von den berühmtne Navior-Stokes-Gleichung,
+durch matematsiche umformungen auf die zeitgemittelte RANS gleichungen kommt.
+Ziel dieser Umformungen ist es die Möglichkeit zu schaffen mittels zusätzlicher Felder,
+die mittleren Effekte von Eddys zwischen zwei Zeitschritten so zu beschreiben das sich die Effekte in die Navior-Stokes-Gleichungen einfügen lassen.
+
+
+
 Die Navier-Stokes-Gleichungen für ein viskoses, inkompressibles, newtonisches Fluid lauten
 
 \begin{align}
@@ -40,7 +48,7 @@ Die Terme lassen sich wie folgt beschreiben:
     \item $\frac{1}{\rho} \frac{\partial p}{\partial x_i}$: Das Druckgefälle.
     \item $\nu \frac{\partial^2 u_i}{\partial x_j \partial x_j}$: Die Diffusion, also Änderung des Impulses
         aufgrund mikroskopischer Kollisionen und anderer Wechselwirkungen von Teilchen bzw.
-        makroskopischer Reibung.
+        makroskopischer Reibung. %innere reibung?
 \end{enumerate}
 
 \subsection{Die Reynolds-Zerlegung}
@@ -96,8 +104,8 @@ anzupassen, kann dies zu numerischen Instabilitäten führen.
 
 \subsection{Reynolds Averaging}
 Eine Art, die Gleichungen anzupassen ist ``Reynolds Averaging''. Beim Reynolds-Averaging
-interessiert man sich nur für Phänomene die auf einer Zeitskala von $\Delta t$ auftreten.
-Über höher aufgelöste Phänomene wird gemittelt.
+interessiert man sich nur für Phänomene die in einem Zeitschritt von $\Delta t$ auftreten.
+Beim ``Reynolds Averaging'' wird so über eine Zeit von $\Delta t$ gemittetelt.
 
 Im ersten Schrit werden die Unbekannten $u_\cdot$ und $p$ in den Navier-Stokes-Gleichungen \ref{reynolds:eqs:impulse}
 durch ihre Reynolds-Zerlegungungen - $\rdecomp{u_\cdot}$ und analog für $p$ - ersetzt und die Gleichung
@@ -207,6 +215,20 @@ Die Gleichungen \ref{reynolds:eqs:rans1} und \ref{reynolds:eqs:rans2} stellen di
 ``Reynolds-gemittelten Navier-Stokes'' (oder englisch ``Reynolds-averaged
 Navier-Stokes (RANS)'')-Gleichungen dar. Der einzige Term, in denen die transienten
 Anteile vorkommen, ist der Term $\rho \frac{\partial \ravg{u_i' u_j'}}{\partial x_j}$.
-Er enthält gewissermassen die Korrelation zwischen den Transienten der verschiedenen
-Raumkoordinaten. Dieser Term ist sehr kompliziert. Deshalb wird er bei der RANS-Methode
-durch simplere, sogenannte ``Turbulenzmodelle'' ersetzt.
+Er enthält gewissermassen die Korrelation zwischen den Transienten der verschiedenen Raumkoordinaten und wird deshalb auch als Reynoldsspannungstensor bezeichnet,
+und ist folgendermasen aufgebaut.
+
+%aufbau des Tensors
+\begin{equation}
+    R_{ij} = -\rho\overline{u'_i u'_j} = \begin{bmatrix}
+    R_{11} & R_{12} & R_{13} \\
+    R_{21} & R_{22} & R_{23} \\
+    R_{31} & R_{32} & R_{33}
+    \end{bmatrix}
+\end{equation}
+
+Wobei die Diagonalen $R_{11}$, $R_{22}$ und $R_{33}$ die drei Normalspannungen sind.
+Und Zusammengesetzten Therme $R_{12} = R_{21}$, $R_{13} = R_{31}$ und $R_{23} = R_{32}$ sind die Schubspannungen.
+
+Sofort ist ersichtlich das für das befüllen des Reynoldsspannungstensor 6 Therme notwending sind,
+mittels Trubulenzmodellen kann dies jedoch auf elegante weise auf (meist) zwei zu berechnende skalarfelder reduziert werden. 

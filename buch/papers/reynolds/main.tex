@@ -30,9 +30,14 @@ denn um alle diese Wirbel zu simulieren müsste man eine Simulation mit unendlic
 Dies ist auch mit modernen Rechenressourcen nicht zu bewerkstelligen.
 Daher lässt sich auch schliessen das Simulationen von turbulenten Strömungen per se immer nur eine Näherung an die Realität sind.
 Denn es wird immer kleine und/oder kurze Wirbel geben, die durch die Simulation nicht aufgelöst werden können,
-und da diese nicht aufgelösten Wirbel in echt auch Energie umwandeln, kann eine turbulente Strömung numerisch nicht Simuliert werden.
+und da diese nicht aufgelösten Wirbel in Realität auch Energie umwandeln, kann eine turbulente Strömung numerisch nicht exakt Simuliert werden.
+
+
+\input{papers/reynolds/teil0.tex}
+
 
 \subsubsection{Praktische anwendungsbeispiele}
+\label{subsubsec:domain-desc}
 
 Um dem Leser oder der Leserin ein möglichst Praxis relevantes Verständnis der Problematik zu vermitteln werden im nachfolgenden teil viele Beispiele von CFD-Simulationen gezeigt.
 Dabei wird ausschliesslich die in Grafik~\ref{fig:SimDomain} gezeigte Geometrie verwendet.
@@ -48,21 +53,21 @@ Das Mesh ist so gewählt das es in der Tiefe nur ein Element hat, bzw. so dass d
 
 \textit{(Mesh bezeichnet die Unterteilung des zu Simulierenden Volumen in einzelne Zellen, in denen die Navier Stokes Gleichungen gelöst werden)}
 
-\subsection{Reynoldsaveraging als «Lösung» des Zeitlichen Problems}
+\subsubsection{Turbulenzmodelle}
 
-Um das Problem der nicht unendlich kleinen Zeitschritte zu mindern, wurde Reynoldsaveraging entwickelt was die Effekte der kurzen Eddys zwischen zwei Zeitschritten im sogenannten Reynoldsspannungstensor zusammenfasst.
-Welcher dann durch ein Turbulenzmodelle beschrieben wird kann.
-Durch die Verwendung eines Turbulenzmodells werden aber weitere (meist 2 oder 3) Felder zur Simulation hinzugefügt. Was zu zusätzlicher Simulationszeit führt.
-Im Inkompressiblen und Isothermen fall kann eine Simulation mit eine Turbulenzmodell mit drei Feldern gut einmal doppelt so lange dauern wie eine Simulation ohne Turbulenzmodell.
+Wie bereits im verherigen Abschnitt erwähnt bestehen Turbulenzmodelle meist aus zwei skalarfelder.
+Jedoch gibt es auch Zusammengesetzte Modelle die aus mehreren Modellen bestehen.
+Dabei gibt es zusammengesetzte Modelle die für verschieden bereich der Simulation verschiedene Modelle benützen um die jeweiligen begebenheite besser zu repräsentieren.
+Sowie zusammengesetzte Modelle die zeitliche und räumliche Mittelung in einem Modell vereinen.
+Logischerweise gilt jedoch die Faustregel je komplizierter ein Modell ist desto höher ist auch der Rechenaufwand.
 
-\subsubsection{Verscheiden Turbulenzmodelle}
-
-Das wohl meistverbreitete Turbulenzmodell ist das k-$\epsilon$ Modell das mit zwei Feldern auskommt. Das k Feld für die Turbulente kinetische Energie, und das epsilon Feld für die Eddy Viskosität, was aufgrund der Turbulenzen eine hypotetische Viskosität darstellt.
-Folgen eine nicht komplete liste von Trubulenzmodellen für RANS:
+Das wohl meistverbreitete Turbulenzmodell ist das k-$\epsilon$ Modell das mit zwei Feldern auskommt. Das k Feld für die Turbulente kinetische Energie,
+und das epsilon Feld für die Eddy Viskosität, was eine aufgrund der Turbulenzen errechnete hypotetische Viskosität darstellt.
+Folgend eine nicht komplete liste von Trubulenzmodellen für RANS:
 -	K-$\epsilon$
--	Quadratisch/Kubisch K-$\epsilon$
 -	K-$\omega$
--	Shear Stress Transport (SST)
+-	Shear Stress Transport (SST) (Kombineirtes Modell)
+-	Quadratisch/Kubisch K-$\epsilon$
 -	RANS-LES kombinierte Modell (>=4 Felder)
 
 Jedes dieser Turbulenzmodell hat seine Eigenheiten und spezifische Einsatz Bereiche.
@@ -70,7 +75,37 @@ So ist das K-$\epsilon$ Modell zum Beispiel nicht geeignet für schwach turbulen
 wo es die Effekte der Verwirbelungen tendenziell überschätzt.~\ref{fig:k-e}
 Hingegen ist das k-$\omega$ Modell in diesen Bereichen besser geeignet.~\ref{fig:k-w}
 Das SST-Modell kombiniert die beiden Modell so das im Wandbereich,
-wo die misten Turbulenzen auftreten, k-$\epsilon$ verwendet wird und um mittleren Bereich k-$\omega$.~\ref{fig:SST}
+wo die misten Turbulenzen auftreten, k-$\epsilon$ verwendet wird und um mittleren Bereich k-$\omega$.~\ref{fig:SST}.
+Die verwendung des Richtigen turbulnezmodlls in der richtigen Simulation erfordert jedcoh sehr viel erfahrung sowie ein sehr gutes praktisches verständniss der Simulierten Strömung.
+Und trotzdem muss an dieser Stelle noch mals erwähnt werden das ich durch die verwendung von Turbulenzmodellen, simulationen von turbulenten Störmunge bestenfalls eine näherungen sind.
+Darum werden CFD-Simulationen vorwigende für optimierungsprobleme eingesetzt, da meherer Simulationen in relation zu einander oft relativ genau sind. (Vorausgesetzt die Grenze zwischen Lamiinar und Turbulent befindet sich nicht im simulierten Bereich).
+
+Wenn man also zum Beipiel in der in \ref{subsubsec:domain-desc} beschreiben Simulation den Kreis durch ein eiförmige Geometrie ersetzen würde könnte würde man in den Simulationsergenissen eine klare Veränderung feststellen.
+Diese veränderung würde in den meisten fällen auch ca. der Veränderung in der Realität entsprechen, die Ergenises der einzelnen Simulationen stimmen jdoch meist nicht wirklich mit den realen Begebenheiten überein.
+
+Beispiel anhand vom K-$\epsilon$:
+
+Mit den beiden Feldern k und $\epsilon$ kann die Turbulente Viskosität wie folgt errechnte werden.
+
+\begin{equation}
+    \mu_t = \rho C_\mu \frac{k^2}{\varepsilon}
+\end{equation}
+
+Wobei $C_\mu$ eine Modellkonstante ist $\approx 0.09$
+Dammit könne alle sechs Threme des Reynoldsspannungstensor folgendermasen berechnete werden:
+Die Diagonalen Therme $R_{11}$, $R_{22}$ und $R_{33}$:
+
+\begin{equation}
+    R_{ii} = \mu_t \left(2\frac{\partial U_i}{\partial x_i}\right) - \frac{2}{3}\rho k
+\end{equation}
+
+Und den Thremen $R_{12} = R_{21}$, $R_{13} = R_{31}$ und $R_{23} = R_{32}$
+
+\begin{equation}
+    R_{ij} = R_{ji} = \mu_t \left(\frac{\partial U_i}{\partial x_j} + \frac{\partial U_j}{\partial x_i}\right)
+\end{equation}
+
+
 
 \begin{figure}
     \includegraphics[width=\textwidth]{papers/reynolds/images/dns.png}
@@ -97,7 +132,6 @@ wo die misten Turbulenzen auftreten, k-$\epsilon$ verwendet wird und um mittlere
 \end{figure}
 
 
-\input{papers/reynolds/teil0.tex}
 % \input{papers/reynolds/teil1.tex}
 % \input{papers/reynolds/teil2.tex}
 % \input{papers/reynolds/teil3.tex}
