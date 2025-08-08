@@ -8,28 +8,32 @@ folgt, dass das geometrische Produkt zwischen $\eone$ und $\etwo$
   \eone \etwo &= \eone \cdot \etwo + \eone \wedge \etwo \\
   &= \eone \wedge \etwo
   \end{aligned}
+  \label{geoalgebra:eq:eot}
 \end{equation}
 ergibt.
-Anstelle immer $\eone \wedge \etwo$ zu schreiben, kann somit auch einfach $\eone \etwo$ geschrieben werden.
-Diese Schreibweise wird in der geometrischen Algebra oft sogar noch weiter zu $\eot$ verkürzt. Im Folgenden bedeutet
-$\eot$ also der Bivektor $\eone \wedge \etwo$.
-
-Ausserdem folgt aus \eqref{geoalgebra:lemma:a_squared}, dass
+Daraus folgt, dass
 \begin{equation}
   \begin{aligned}
   \eone^2 &= \eone \cdot \eone + \eone \wedge \eone \\
   &= \eone \cdot \eone \\
-  &= 1
+  &= 1.
   \end{aligned}
 \end{equation}
-ergibt.
 
-Desweiteren ergibt 
+Der Ausdruck $\eone \etwo$ wird im Folgenden zu $\eot$ verkürzt.
+In \eqref{geoalgebra:eq:eot} wurde aber gezeigt, dass $\eone \etwo$ eben
+genau $\eone \wedge \etwo$ entspricht. Es gilt
 \begin{equation}
-  \begin{aligned}
-  \mathbf{e}_{121} = -\mathbf{e}_{112} = -\etwo.
-  \end{aligned}
+  \eot = \eone \wedge \etwo.
+  \label{geoalgebra:eq:eot_wedge}
 \end{equation}
+Analog dazu bedeutet $\mathbf{e}_{121} = \eone \etwo \eone$.
+Anders als in \eqref{geoalgebra:eq:eot_wedge}lässt sich durch Anwenden von \eqref{geoalgebra:eq:antikommutativ}
+aber zeigen, dass
+\begin{equation}
+  \mathbf{e}_{121} = - \mathbf{e}_{112} = -\etwo. 
+\end{equation}
+
 Jedesmal, wenn ein Index ``getauscht'' wird ($\mathbf{e}_{121} = -\mathbf{e}_{112}$), wird auch das Vorzeichen
 gewechselt.
 

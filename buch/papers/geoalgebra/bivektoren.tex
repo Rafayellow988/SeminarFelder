@@ -126,18 +126,17 @@ Derselbe Bivektor kann aber auch über Vektoren in andere Richtungen erreicht we
 
 
 \subsection{Bivektoren im dreidimensionalen Raum}
-Bivektoren sind in allen Räumen genauso orientierte Flächen wie in zwei Dimensionen.
-Anstelle, dass wir jedoch das Resultat einfach so erhalten, erhalten wir \emph{Projektionen}
+Bivektoren sind in allen Dimensionen genauso orientierte Flächen wie in zwei Dimensionen.
+Statt, dass wir jedoch das Resultat einfach so erhalten, erhalten wir \emph{Projektionen}
 auf alle von den Standardbasisvektoren aufgespannten Ebenen.
 
 In \eqref{geoalgebra:eq:wedgeprodukt-dreidimensional} haben wir das Wedgeprodukt zwischen zwei Vektoren
 in drei Dimensionen bereits hergeleitet. Wir erhielten drei Summanden aus Wedgeprodukten mit skalaren Faktoren
 \begin{align*}
 &(a_1 b_2 - a_2 b_1) \eone \wedge \etwo \\
-+&(a_2 b_3 - a_3 b_2) \etwo \wedge \ethree \\
-+&(a_3 b_1 - a_1 b_3) \ethree \wedge \eone.
+  &+(a_2 b_3 - a_3 b_2) \etwo \wedge \ethree \\
+  &+(a_3 b_1 - a_1 b_3) \ethree \wedge \eone.
 \end{align*}
-
 Der Term $a_1 b_2 - a_2 b_1$ ist der Flächeninhalt der \emph{Projektion} (oder des ``Schattens'') des aufgespannten Parallelogramms auf die $\eone$-$\etwo$-Ebene.
 Analog dazu ist $a_2 b_3 - a_3 b_2$ der Flächeninhalt der Projektion auf die $\etwo$-$\ethree$-Ebene und $a_3 b_1 - a_1 b_3$ der Flächeninhalt
 der Projektion auf die $\ethree$-$\eone$-Ebene (siehe \autoref{geoalgebra:fig:bivectors-3d}).
@@ -164,7 +163,7 @@ immer weg, da diese Produkte $0$ ergeben. Ausserdem werden vertauschte Reihenfol
 \end{equation}
 Wir erhalten also für jede Kombination von verschiedenen Basisvektoren eines Vektorraums eine Komponente.
 \begin{satz}
-Sei $N$ die Dimension des Vektorraumes. Die Anzahl Komponenten $K$ berechnet sich als
+Sei $N$ die Dimension des Vektorraumes. Die Dimension $K$ des Raums der Bivektoren berechnet sich als
   \begin{equation}
     \label{geoalgebra:eq:components-bivectors}
     K = \binom{N}{2}.
