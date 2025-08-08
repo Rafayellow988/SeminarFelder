@@ -26,7 +26,8 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 	In der Abbildung~\ref{fourier:fig:schwarzkoerper} ist das Experiment dargestellt. Ein hohler Metallwürfel mit einem Loch wird erwärmt. 
 	Die ganze elektromagnetische Strahlung, die von aussen in das Loch eindringt, wird im Inneren absorbiert und ist visualisiert durch den blauer Pfeil. 
 	Die austretende Strahlung wird nur vom Würfel Inneren abgegeben, siehe die roten Pfeile. 
-	Der schwarze Strahler ist in Wirklichkeit das Loch und nicht das Material selbst, obschon man dazu ein geeignetes Material benötigt! Nun misst man welche Intensität von welcher Wellenlänge aus dem Loch ausdringt, diese hängt auch von der Temperatur des Metallwürfel ab. 
+	Der schwarze Strahler ist in Wirklichkeit das Loch und nicht das Material selbst, obschon man dazu ein geeignetes Material benötigt!
+	Nun misst man welche Intensität von welcher Wellenlänge aus dem Loch ausdringt, diese hängt auch von der Temperatur des Metallwürfel ab. 
 	
 	Gut zu wissen ist, dass jedes Objekt über dem absoluten Nullpunkt elektromagnetische Wellen abstrahlt. 
 	Sehen tut man dies bei Raumtemperatur nicht, da die Strahlungintensität im sichtbaren Wellenbereich, zwischen 400nm und 780nm, extrem gering ist. 
@@ -169,7 +170,8 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 	\]
 	Die Herleitung dieses Spektrums erfolgt in zwei Schritten:
 	\begin{itemize}
-		\item Abschnitt~\ref{fourier:subsection:werkzeugeQuantenmechanik} führt die grundlegenden Werkzeuge der Quantenmechanik ein, darunter Bra-Ket-Notation, Erwartungswerte, Operatoren und die Unschärferelation.
+		\item Abschnitt~\ref{fourier:subsection:werkzeugeQuantenmechanik} führt die grundlegenden Werkzeuge der Quantenmechanik ein,
+		darunter Bra-Ket-Notation, Erwartungswerte, Operatoren und die Unschärferelation.
 		\item Abschnitt~\ref{fourier:subsection:Leiteroperatoren} wendet diese Konzepte auf den harmonischen Oszillator an.
 		Dort werden sogenannte Leiteroperatoren eingeführt, mit deren Hilfe sich das Spektrum ableiten lässt.
 	\end{itemize}
@@ -184,8 +186,10 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 	Viele physikalische Systeme lassen sich näherungsweise durch ihn beschreiben.
 	Seine Quantisierung bildet die Grundlage der Quantenfeldtheorie.
 
-	Ein wesentliches Beispiel ist das elektromagnetische Feld. Wie in Kapitel~\ref{fourier:section:AnwendungAufFeld} dargestellt, lässt es sich in Moden zerlegen, von denen jede einem quantenmechanischen Oszillator entspricht.
-	Die Zustände dieser Oszillatoren --- sogenannte Photonenzahlenzustände --- erklären, warum Licht nicht kontinuierlich, sondern in diskreten Paketen (Photonen) emittiert und absorbiert wird.
+	Ein wesentliches Beispiel ist das elektromagnetische Feld.
+	Wie in Kapitel~\ref{fourier:section:AnwendungAufFeld} dargestellt, lässt es sich in Moden zerlegen, von denen jede einem quantenmechanischen Oszillator entspricht.
+	Die Zustände dieser Oszillatoren --- sogenannte Photonenzahlenzustände ---
+	erklären, warum Licht nicht kontinuierlich, sondern in diskreten Paketen (Photonen) emittiert und absorbiert wird.
 	
 	Auch in der Festkörperphysik und Quantenoptik ist der Oszillator zentral.
 	Er beschreibt Gitterschwingungen (Phononen), Lichtfelder und Resonanzen in elektrischen Schaltungen.
@@ -207,7 +211,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		
 		\item \textbf{Vertauschungsrelation}:
 		Beschreibt die grundlegende Eigenschaft von Operatoren, wie sie miteinander vertauschen oder nicht vertauschen.
-		Insbesondere ist sie entscheidend, um Produkte von Operatoren umzuschreiben und wird später bei der Definition der Leiteroperatoren (Abschnitt \ref{fourier:subsection:Leiteroperatoren}) angewendet.
+		Insbesondere ist sie entscheidend, um Produkte von Operatoren umzuschreiben und wird später bei der Definition der Leiteroperatoren (Abschnitt~\ref{fourier:subsection:Leiteroperatoren}) angewendet.
 	\end{itemize}
 
 	Diese Konzepte sind nicht nur theoretisch relevant, sondern bilden die Grundlage für das Verständnis von Photonen, Feldern und quantisierten Schwingungen im weiteren Verlauf.
@@ -278,7 +282,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		Dabei gilt:
 		\begin{itemize}
 			\item Der Operator $A$ wirkt zunächst auf den Ket $|\psi\rangle$, also auf die Wellenfunktion $\psi(x)$ von rechts.
-			\item Anschliessend wird das Ergebnis mit dem Bra $\langle \psi|$ bzw. der komplex-konjugierten Wellenfunktion $\psi^*(x)$ multipliziert.
+			\item Anschliessend wird das Ergebnis mit dem Bra $\langle \psi|$ beziehungsweise der komplex-konjugierten Wellenfunktion $\psi^*(x)$ multipliziert.
 			\item Durch Integration über alle Orte $x$ erhält man den Mittelwert --- den Erwartungswert.
 		\end{itemize}
 		Das Ergebnis $\langle A \rangle$ ist also der theoretische Durchschnittswert, den man bei vielen Messungen der Grösse $A$ im Zustand $|\psi\rangle$ erhält.
@@ -314,13 +318,15 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		\begin{equation}
 			|\langle\varphi | \chi\rangle|^2 \le \langle\varphi | \varphi\rangle \langle\chi | \chi\rangle.
 		\end{equation}
-		Diese Relation setzt eine obere Schranke dafür, wie stark zwei Zustände miteinander überlappen können. Sie beschreibt also, wie ähnlich sich zwei Zustände in ihrer quantenmechanischen Beschreibung überhaupt sein können.
+		Diese Relation setzt eine obere Schranke dafür, wie stark zwei Zustände miteinander überlappen können.
+		Sie beschreibt also, wie ähnlich sich zwei Zustände in ihrer quantenmechanischen Beschreibung überhaupt sein können.
 		Der Ausdruck $|\langle\varphi|\chi\rangle|^2$ misst die Überlappung der beiden Zustände, also gewissermassen, wie ähnlich sie sich sind.
 		Die Terme $\langle\varphi|\varphi\rangle$ und $\langle\chi|\chi\rangle$ entsprechen dabei den Quadraten der Längen (Normen) der Zustände.
 		Der Betrag des Skalarprodukts kann also niemals grösser werden als das Produkt der Normen, ganz analog zur klassischen Vektoranalysis.
 		Das Quadrat auf der linken Seite ergibt sich, weil die Ungleichung eine Aussage über den Betrag des Skalarprodukts ist, während die rechte Seite stets reell und positiv ist.
 		Diese Form der Ungleichung bildet die mathematische Grundlage für die Herleitung der heisenbergschen Unschärferelation.
-		Die Zustände $|\varphi\rangle$ und $|\chi\rangle$ sind hier in der Bra-Ket-Notation geschrieben, einer kompakten Notation für Zustände in der Quantenmechanik, wie sie in Abschnitt~\ref{fourier:subsubsection:braKetNotation} eingeführt wurde.
+		Die Zustände $|\varphi\rangle$ und $|\chi\rangle$ sind hier in der Bra-Ket-Notation geschrieben, einer kompakten Notation für Zustände in der Quantenmechanik,
+		wie sie in Abschnitt~\ref{fourier:subsubsection:braKetNotation} eingeführt wurde.
 
 		Setzt man
 		\begin{equation}
@@ -330,7 +336,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		\begin{equation}
 			\sigma_x^2 = \langle\varphi | \varphi\rangle \text{ und } \sigma_p^2 = \langle\chi | \chi\rangle
 		\end{equation}
-		für die sogenannten Standardabweichungen --- ein Mass für die „Streuung“ oder Unschärfe --- zusammen mit der Vertauschungsrelation (siehe Abschnitt \ref{fourier:equation:Vertauschungsrelation})
+		für die sogenannten Standardabweichungen --- ein Mass für die „Streuung“ oder Unschärfe --- zusammen mit der Vertauschungsrelation (siehe Abschnitt~\ref{fourier:equation:Vertauschungsrelation})
 		\begin{equation}
 			\langle\psi | [\hat{x},\hat{p}] | \psi\rangle = i\hbar
 		\end{equation}
@@ -398,7 +404,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		Das bedeutet:
 		Seine Eigenwerte entsprechen den möglichen Energie-Messwerten des Systems.
 		Und seine Eigenfunktionen beschreiben stationäre Zustände mit konstanter Energie.
-		Ein weiterer wichtiger Punkt ist, dass die Struktur von \( \hat{H} \) direkt von den Vertauschungsrelationen (siehe Abschnitt \ref{fourier:equation:Vertauschungsrelation}) von \( \hat{x} \) und \( \hat{p} \) abhängt:
+		Ein weiterer wichtiger Punkt ist, dass die Struktur von \( \hat{H} \) direkt von den Vertauschungsrelationen (siehe Abschnitt~\ref{fourier:equation:Vertauschungsrelation}) von \( \hat{x} \) und \( \hat{p} \) abhängt:
 		\begin{equation}
 			[\hat{x}, \hat{p}] = i \hbar
 		\end{equation}
@@ -419,9 +425,9 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		Solche Berechnungen sind nicht nur theoretisch relevant, sondern liefern konkrete Vorhersagen für Experimente.
 		Sie zeigen, wie Operatoren mit Zuständen kombiniert werden, um physikalische Grössen wie Energie, Ort oder Impuls zu berechnen.
 
-		Der Hamilton-Operator steht somit im Zentrum der quantenmechanischen Theorie.
-		Er fasst die Energie- und Dynamikstruktur eines Systems in einem einzigen Objekt zusammen.
-
+		Der Hamilton-Operator $\hat{H}$ fasst alle wesentlichen Informationen über das System zusammen:
+		Er beschreibt die Energie und steuert gleichzeitig die zeitliche Entwicklung des Quantenzustands gemäss der Schrödinger-Gleichung.
+		Damit bildet $\hat{H}$ das Herzstück der Quantenmechanik.
 
 	\subsubsection{Vertauschungsrelation\label{fourier:subsubsection:Vertauschungsrelation}}
 		In der Quantenmechanik sind Operatoren nicht immer vertauschbar.
@@ -544,7 +550,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			\[
 				H|\psi_n\rangle = E_n|\psi_n\rangle.
 			\]
-			Für den Erzeugungsoperator $a^+$ gilt aus der Definition des Kommutators (siehe Abschnitt \ref{fourier:equation:Vertauschungsrelation})
+			Für den Erzeugungsoperator $a^+$ gilt aus der Definition des Kommutators (siehe Abschnitt~\ref{fourier:equation:Vertauschungsrelation})
 			\[
 				H a^+ = a^+ H + [H, a^+].
 			\]
@@ -621,22 +627,26 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		\subsubsection{Bemerkung zu Energiegrenzen\label{fourier:subsubsection:BemerkungBegrenztheitDerEnergie}}
 			Der Vernichtungsoperator $a$ kann nur bis zum Grundzustand angewendet werden.
 			Eine weitere Anwendung würde unphysikalische Zustände erzeugen.
-			Nach oben existiert formal kein Limit, allerdings setzt die reale Physik praktische Grenzen (beispielsweise durch Wechselwirkungen, Instabilität oder Gravitationseffekte bei extremer Energiedichte).
+			Nach oben existiert formal kein Limit, allerdings setzt die reale Physik praktische Grenzen
+			(beispielsweise durch Wechselwirkungen, Instabilität oder Gravitationseffekte bei extremer Energiedichte).
 
-		\subsubsection{Messung von Energie\label{fourier:subsubsection:MessungQuantisierterEnergie}}
-			Die Energie eines Systems wird über den Erwartungswert des Hamilton-Operators gemessen:
-			\begin{equation}
-				\langle\varphi|\hat{H}|\varphi\rangle = E.
-			\end{equation}
-			Für Eigenzustände gilt:
-			\begin{equation}
-				\hat{H}|\varphi_n\rangle = E_n|varphi_n\rangle.
-			\end{equation}
-			Durch Anwendung von $a$ oder $a^+$ auf $|\varphi_n\rangle$ wird der Zustand in ein höheres oder tieferes Energieniveau verschoben:
+		\subsubsection{Messung quantisierter Energie\label{fourier:subsubsection:MessungQuantisierterEnergie}}
+			Die Energie eines quantenmechanischen Systems wird durch den Erwartungswert des Hamilton-Operators bestimmt:
 			\[
-				\hat{H}a^+|\varphi_n\rangle = E_\text{n+1}a^+|\varphi_n\rangle, \qquad \hat{H}a|\varphi_n\rangle = E_\text{n-1}a|\varphi_n\rangle.
+				\langle \varphi | \hat{H} | \varphi \rangle = E.
 			\]
-			Diese algebraische Struktur beschreibt den Übergang zwischen diskreten Energieniveaus, wie der etwa bei der Emission oder Absorption einzelner Quanten (beispielsweise Photonen) auftritt.
+			Im Allgemeinen liefert eine Messung einen Mittelwert, der von der Überlagerung der Zustände abhängt.
+
+			Erst wenn der Zustand $|\varphi_n\rangle$ ein Eigenzustand von $\hat{H}$ mit Eigenwert $E_n$ ist,
+			\[
+				\hat{H}|\varphi_n\rangle = E_n |\varphi_n\rangle,
+			\]
+			ergibt die Messung mit Sicherheit den diskreten Wert $E_n$.
+
+			Die Leiteroperatoren $a^+$ und $a$ verbinden diese Energieeigenzustände, indem sie die Energie um jeweils $\hbar\omega$ erhöhen oder senken. 
+			Physikalisch entsprechen diese Übergänge der Emission oder Absorption eines einzelnen Quants (zum Beispiel eines Photons) und sind die Grundlage für das diskrete Spektrum des Systems.
+
+			Somit beschreibt die algebraische Struktur nicht nur die diskreten Energiewerte, sondern auch die quantisierten Übergänge zwischen ihnen, die in experimentellen Messungen beobachtet werden können.
 
 \section{Fazit\label{fourier:section:fazit}}
 \kopfrechts{Fazit}
