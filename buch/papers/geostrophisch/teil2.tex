@@ -9,7 +9,7 @@
 \section{Richardsons Ansatz \label{geostrophisch:section:richardsonAnsatz}}
 \kopfrechts{Teil 2}
 
-Richardson wählte einen innovativen, aber im Grunde sehr simplen Ansatz:  
+Richardson wählte einen innovativen, aber im Grunde sehr einfachen Ansatz:  
 Statt vereinfachter Modelle verwendete er ein vollständiges System bestehend aus vier Differentialgleichungen.
 Die erste Gleichung:
 \begin{equation}
@@ -17,38 +17,66 @@ Die erste Gleichung:
 	\label{eq:navstok}
 \end{equation}
 ist eine Form der Navier-Stokes-Gleichung für rotierende Bezugssysteme.
-Sie beschreibt die Beschleunigung von Luftmassen, sowie werden darin die Corioliskraft und Druckgradienten berücksichtigt.
+Wobei $\frac{D\vec{v}}{Dt}$ die zeitliche Ableitung aller Geschwindigkeitskomponenten in Nord-, Ost- und Vertikalrichtungen entspricht. 
+Sie beschreibt die Beschleunigung von Luftmassen und ausserdem werden darin die Corioliskraft und der Druckgradient berücksichtigt.
 Als nächstes verwendete er die Kontinuitätsgleichung:
 \begin{equation}
 	\frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \vec{v}) = 0 \\,
 	\label{eq:kont}
 \end{equation}
 welche die Massenerhaltung beschreibt.
-Also in anderen Worten die Luft kann nicht verschwinden oder aus dem nichts Auftauchen. 
-Zudem brauchte er noch eine Gleichung welche die Energie beschreibt, dazu diente 
+Also in anderen Worten die Luft kann nicht verschwinden oder aus dem nichts auftauchen. 
+Zudem brauchte er noch eine Gleichung, welche die Energie beschreibt, dazu diente 
 \begin{equation}
 	\frac{Ds}{Dt} = Q \\.
 	\label{eq:enrgy}
 \end{equation}
-Damit werden Temperatur Änderungen durch Transport sowie Expansion und Kompression der Luftmassen ausgedrückt.
+Damit werden Temperaturänderungen durch Transport sowie Expansion und Kompression der Luftmassen ausgedrückt.
 Als letztes verwendete er noch das ideale Gasgesetz:
 \begin{equation}
 	p = \rho R T,
 	\label{eq:gasgesetz}
 \end{equation}
-dieses ist die Physikalische Verbindung von Druck, Temperatur und Dichte eines Gases.  
+dieses ist die physikalische Verbindung von Druck, Temperatur und Dichte eines Gases.  
 
-Er konstruierte eine Schachbrettartiges Gitter und legte es über die Karte von Europa.
-Siehe Abbildung~\ref{bild:karteEuropa} dies ist Richardsons Karte mit dem Gitter. 
-
-Nun wollte er für jeden dieser Gitterpunkte das beschriebene Gleichungssystem numerisch von Hand lösen. 
+Er konstruierte eine schachbrettartiges Gitter und legte es über die Karte von Europa (Abbildung~\ref{bild:karteEuropa}).
+Nun wollte er für jeden dieser Gitterpunkte das beschriebene Gleichungssystem numerisch von Hand lösen.
+Für einen alleine dauerten diese Berechnungen sehr lange und somit brauchte er für die Vorhersage viel zu lange.
+Aufgrund dessen hatte Richardson eine Traumvorstellung von einer Einrichtung zur Berechnung der Wettervorhersagen für die ganze Welt.
+Diese besteht aus einer grossen Kuppel, welche im Innern eine Weltkarte an der Wand hat. 
+Darin sitzen rundherum etwa 64000 Leute, die je zu ihrem zugewiesenen Bereich die Daten der Atmosphäre erhalten und damit die Berechnungen machen müssen. 
+Ihre Resultate geben sie an die Benachbarten Mitarbeiter weiter und das grosse Rechnen beginnt von vorn. 
+In der Mitte auf dem Podest steht eine Art \glqq Dirigent\grqq, welcher den Leuten die zu langsam oder schnell sind mittels einer Lampe Signale gibt.
+Siehe Abbildung ~\ref{bild:richardsonsTraum}, eine Illustration von Richardsons Traumvorstellung.  
 
 \begin{figure}
 	\centering
 	\includegraphics{eingeteilte_Karte.jpg}
-	\caption{ll}
+	\caption{Gitter zur numerischen Approximation der Felder, welche das Wetter beeinflussen.
+		Wie man sehen kann ist das Gitter sehr grob und somit ungenau.}
 	\label{bild:karteEuropa}
 \end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics{Richardsons_Traum.jpg}
+	\caption{Traumvorstellung von Richardson einer Station zur Wettervorhersage. 
+	Rundherum hängt eine Weltkarte und Leute berechnen ständig die Atmosphäre zu ihrem Bereich.}
+	\label{bild:richardsonsTraum}
+\end{figure}
+
+\subsection{Falsche erste Vorhersage}
+
+Wie schon erwähnt war seine aller erste Vorhersage aus dem Buch \cite{geostrophisch:wpbnp} weit von dem realen Wetter entfernt.
+Weshalb war seine erste Vorhersage so falsch? 
+Sein scheitern lag bestimmt nicht an mangelndem physikalischen Verständnis oder fehlerhafter Idee. 
+Sondern viel mehr an praktischen Problemen.
+Seine Anfangsdaten waren nicht im geostrophischen Gleichgewicht. 
+% Hier Weiter
+Sein Gitter war viel zu Grob aufgebaut. 
+Für die ganze Schweiz war nur ein Gitterpunkt eingebaut, also soll in der ganzen Schweiz das gleiche Wetter herrschen? 
+Das ist offensichtlich nicht der Fall, durch die Alpen gibt es oft starke Unterschiede der Witterung im Vergleich zum Flachland.
+ 
 
 
 
