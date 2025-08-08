@@ -510,9 +510,9 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			\]
 			ergibt.
 			Der Erwartungswert der Energie ist also gleich dem Eigenwert, wenn der Zustand $|\varphi\rangle$ ein Eigenzustand des Hamilton-Operators ist.
-			
-			Das heisst, man kann jetzt ausrechnen, wie $a$ und $a^+$ die Energie ändern.
-			Zunächst verwenden wir die Vertauschungsrelationen:
+
+			Jetzt kann man leicht nachvollziehen, wie die Operatoren $a$ und $a^+$ die Energie eines Zustands verändern.
+			Die grundlegenden Vertauschungsrelationen lauten:
 			\[
 				[H, a^+] = \hbar\omega a^+
 				\qquad
@@ -520,23 +520,30 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 				\qquad
 				[H, a] = -\hbar\omega a
 			\]
-			Daraus folgt:
-			\[
-				H a^+ |\psi_n\rangle = a^+ H|\psi_n\rangle + [H, a^+]|\psi_n\rangle = a^+ E_n|\psi_n\rangle + \hbar\omega a^+ |\psi_n\rangle = (E_n + \hbar\omega)a^+|\psi_n\rangle
-			\]
-			und
-			\[
-				H a|\psi_n\rangle = a H|\psi_n\rangle + [H, a]|\psi_n\rangle = a E_n|\psi_n\rangle - \hbar\omega a|\psi_n\rangle = (E_n - \hbar\omega)a|\psi_n\rangle
-			\]
-			Also:
-			\begin{equation}
-				H a^+ |\psi_n\rangle =  (E_n + \hbar\omega)a^+ |\psi_n\rangle \quad \text{(mehr Energie)}
-			\end{equation}
-			\begin{equation}
-				H a |\psi_n\rangle = (E_n - \hbar\omega)a | \psi_n\rangle \quad \text{(weniger Energie)}
-			\end{equation}
-			Das zeigt, dass der Erzeugungsoperator $a^+$ die Energie um $\hbar\omega$ erhöht, während der Vernichtungsoperator $a$ sie um $\hbar\omega$ verringert.
+			Diese sagen aus, wie sich $a$ und $a^+$ mit dem Hamilton-Operator $H$ verhalten.
 
+			Nehmen wir nun an, $|\psi_n\rangle$ ist ein Energieeigenzustand mit Energie $E_n$, also:
+			\[
+				H|\psi_n\rangle = E_n|\psi_n\rangle.
+			\]
+			Dann ergibt sich für den Erzeugungsoperator $a^+$:
+			\[
+				H a^+|\psi_n\rangle = (E_n + \hbar\omega)a^+|\psi_n\rangle.
+			\]
+			Der neue Zustand $a^+|\psi_n\rangle$ hat also die Energie $E_n + \hbar\omega$.
+			
+			Ebenso ergibt sich für den Vernichtungsoperator a:
+			\[
+				H a |\psi_n\rangle = (E_n - \hbar\omega)a|\psi_n\rangle.
+			\]
+			Der neue Zustand $a|\psi_n\rangle$ hat entsprechend die Energie $E_n - \hbar\omega$.
+
+			Fazit:
+			\begin{itemize}
+				\item Der Operator $a^+$ \emph{erhöht die Energie} eines Zustands um $\hbar\omega$.
+				\item Der Operator $a$ \emph{verringert die Energie} eines Zustands um $\hbar\omega$.
+			\end{itemize}
+			
 			Die Operatoren $a^+$ (Erzeugungsoperator) und $a$ (Vernichtungsoperator) verändern die Teilchenzahl der Zustände:
 			\[
 				a^+|\psi_n\rangle = \sqrt{n+1}\,|\psi_\text{n+1}\rangle,
