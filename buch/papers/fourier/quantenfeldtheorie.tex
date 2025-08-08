@@ -496,15 +496,16 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			\begin{equation}
 				\langle\psi|\hat{H}|\psi\rangle = \langle\psi|E|\psi\rangle.
 			\end{equation}
-			Gilt $|\psi\rangle$ als Eigenzustand von $\hat{H}$ mit Eigenwert $E$, so folgt:
-			\[
+			Gilt $|\psi\rangle$ als Eigenzustand von $\hat{H}$ mit Eigenwert $E$, so folgt
+			\begin{equation}
 				\hat{H}|\psi\rangle = E|\psi\rangle.
-			\]
-			Weil $E$ nur eine Zahl ist, lässt sich der Ausdruck vereinfachen:
+			\end{equation}
+			Weil $E$ nur eine Zahl ist, lässt sich
 			\[
-				\langle\psi|E|\psi\rangle = E \langle\psi|\psi\rangle.
+				\langle\psi|E|\psi\rangle = E \langle\psi|\psi\rangle
 			\]
-			Für normierte Zustände gilt $\langle\psi|\psi\rangle = 1$ (siehe Formel~\ref{fourier:equation:normEinesZustands}), womit sich
+			schreiben.
+			Für normierte Zustände gilt $\langle\psi|\psi\rangle = 1$ (siehe Formel~\ref{fourier:equation:normEinesZustands}), womit sich schliesslich
 			\[
 				E \langle\psi|\psi\rangle = E \cdot 1 = E
 			\]
@@ -520,50 +521,43 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 				\qquad
 				[H, a] = -\hbar\omega a
 			\]
-			Diese sagen aus, wie sich $a$ und $a^+$ mit dem Hamilton-Operator $H$ verhalten.
+			Diese geben an, wie sich $a$ und $a^+$ mit dem Hamilton-Operator $H$ verhalten.
 
-			Nehmen wir nun an, $|\psi_n\rangle$ ist ein Energieeigenzustand mit Energie $E_n$, also:
+			Sei nun $|\psi_n\rangle$ ein Energieeigenzustand:
 			\[
 				H|\psi_n\rangle = E_n|\psi_n\rangle.
 			\]
-			Dann ergibt sich für den Erzeugungsoperator $a^+$:
+			Für den Erzeugungsoperator $a^+$ erhält man:
 			\[
-				H a^+|\psi_n\rangle = (E_n + \hbar\omega)a^+|\psi_n\rangle.
+				H a^+|\psi_n\rangle = a^+ H|\psi_n\rangle + [H, a^+]|\psi_n\rangle = a^+ E_n|\psi_n\rangle + \hbar\omega a^+|\psi_n\rangle,
 			\]
-			Der neue Zustand $a^+|\psi_n\rangle$ hat also die Energie $E_n + \hbar\omega$.
-			
-			Ebenso ergibt sich für den Vernichtungsoperator a:
+			und somit
+			\begin{equation}
+				H a^+|\psi_n\rangle = (E_n + \hbar\omega)a^+|\psi_n\rangle.	
+			\end{equation}
+			Analog folgt für den Vernichtungsoperator a:
 			\[
+				H a |\psi_n\rangle = a H|\psi_n\rangle + [H, a]|\psi_n\rangle = a E_n|\psi_n\rangle - \hbar\omega a|\psi_n\rangle,
+			\]
+			und damit
+			\begin{equation}
 				H a |\psi_n\rangle = (E_n - \hbar\omega)a|\psi_n\rangle.
-			\]
-			Der neue Zustand $a|\psi_n\rangle$ hat entsprechend die Energie $E_n - \hbar\omega$.
+			\end{equation}
+			Die Operatoren verändern also die Energie eines Zustands um $\pm\hbar\omega$.
 
-			Fazit:
-			\begin{itemize}
-				\item Der Operator $a^+$ \emph{erhöht die Energie} eines Zustands um $\hbar\omega$.
-				\item Der Operator $a$ \emph{verringert die Energie} eines Zustands um $\hbar\omega$.
-			\end{itemize}
-			
-			Die Operatoren $a^+$ (Erzeugungsoperator) und $a$ (Vernichtungsoperator) verändern die Teilchenzahl der Zustände:
-			\[
-				a^+|\psi_n\rangle = \sqrt{n+1}\,|\psi_\text{n+1}\rangle,
-				\qquad
-				a|\psi_n\rangle = \sqrt{n}\,|\psi_\text{n-1}\rangle.
-			\]
-			Dabei wird der Erzeugungsoperator $a^+$ auf die Wellenfunktion $|\psi_n\rangle$ angewendet und hebt den Zustand auf das nächsthöhere Energieniveau $|\psi_{n+1}\rangle$ an.
-			Umgekehrt senkt der Vernichtungsoperator $a$ den Zustand um ein Energieniveau auf $|\psi_{n-1}\rangle$.
-			
-			\textit{Bemerkung:} 
-			Die Wurzeln entstehen aus der Normierung der Zustände.
-			Die Faktoren $\sqrt{n+1}$ beziehungsweise $\sqrt{n}$ sorgen dafür, dass die Zustände $|\psi_{n\pm1}\rangle$ korrekt normiert bleiben, wenn die Operatoren wirken.
-			Ohne diese Faktoren würde sich die Länge (Norm) der Zustände verändern.
-			Dies bedeutet:
-			\begin{itemize}
-				\item Der Operator $a^+$ erhöht die Quantenzahl $n$ um eins – er \textbf{erzeugt} also ein zusätzliches Quant (z.\,B. ein Photon).
-				\item Der Operator $a$ senkt die Quantenzahl $n$ um eins – er \textbf{vernichtet} ein Quant.
-			\end{itemize}
+			Die Wirkung auf die Zustände selbst lautet:
+			\begin{equation}
+				a^+|\psi_n\rangle = \sqrt{n+1}|\psi_{n+1}\rangle, \qquad a|\psi_n\rangle = \sqrt{n}|\psi_{n-1}\rangle.
+			\end{equation}
+			Die Faktoren $\sqrt{n+1}$ beziehungsweise $\sqrt{n}$ stammen aus der Normierung und stellen sicher, dass $|\psi_{n\pm 1}$ weiterhin normiert bleiben.
 
-			Diese Operatoren erlauben eine elegante algebraische Beschreibung der Quantenzustände, ohne dass komplexe Differentialgleichungen gelöst werden müssen.
+			\emph{Fazit:}
+			\begin{itemize}
+				\item $a^+$ erhöht die Quantenzahl $n$ um eins und die Energie um $\hbar\omega$ ---
+				es wird ein zusätzliches Quant erzeugt.
+				\item $a$ senkt $n$ um eins und die Energie um $\hbar\omega$ ---
+				ein Quant wird vernichtet.
+			\end{itemize}
 
 		\subsubsection{Energieeigenwerte\label{fourier:subsubsection:Energieeigenwerte}}
 			Da $\hat{H} = \hbar\omega(N + \frac{1}{2})$, folgt:
