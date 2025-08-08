@@ -231,4 +231,26 @@ Wobei die Diagonalen $R_{11}$, $R_{22}$ und $R_{33}$ die drei Normalspannungen s
 Und Zusammengesetzten Therme $R_{12} = R_{21}$, $R_{13} = R_{31}$ und $R_{23} = R_{32}$ sind die Schubspannungen.
 
 Sofort ist ersichtlich das für das befüllen des Reynoldsspannungstensor 6 Therme notwending sind,
-mittels Trubulenzmodellen kann dies jedoch auf elegante weise auf (meist) zwei zu berechnende skalarfelder reduziert werden. 
+mittels Trubulenzmodellen kann dies jedoch auf elegante weise auf (meist) zwei zu berechnende skalarfelder reduziert werden.
+
+Beispiel anhand vom K-$\epsilon$:
+
+Mit den beiden Feldern k und $\epsilon$ kann die Turbulente Viskosität wie folgt errechnte werden.
+
+\begin{equation}
+    \mu_t = \rho C_\mu \frac{k^2}{\varepsilon}
+\end{equation}
+
+Wobei $C_\mu$ eine Modellkonstante ist $\approx 0.09$
+Dammit könne alle sechs Threme des Reynoldsspannungstensor folgendermasen berechnete werden:
+Die Diagonalen Therme $R_{11}$, $R_{22}$ und $R_{33}$:
+
+\begin{equation}
+    R_{ii} = \mu_t \left(2\frac{\partial U_i}{\partial x_i}\right) - \frac{2}{3}\rho k
+\end{equation}
+
+Und den Thremen $R_{12} = R_{21}$, $R_{13} = R_{31}$ und $R_{23} = R_{32}$
+
+\begin{equation}
+    R_{ij} = R_{ji} = \mu_t \left(\frac{\partial U_i}{\partial x_j} + \frac{\partial U_j}{\partial x_i}\right)
+\end{equation}

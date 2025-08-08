@@ -76,36 +76,6 @@ wo es die Effekte der Verwirbelungen tendenziell überschätzt.~\ref{fig:k-e}
 Hingegen ist das k-$\omega$ Modell in diesen Bereichen besser geeignet.~\ref{fig:k-w}
 Das SST-Modell kombiniert die beiden Modell so das im Wandbereich,
 wo die misten Turbulenzen auftreten, k-$\epsilon$ verwendet wird und um mittleren Bereich k-$\omega$.~\ref{fig:SST}.
-Die verwendung des Richtigen turbulnezmodlls in der richtigen Simulation erfordert jedcoh sehr viel erfahrung sowie ein sehr gutes praktisches verständniss der Simulierten Strömung.
-Und trotzdem muss an dieser Stelle noch mals erwähnt werden das ich durch die verwendung von Turbulenzmodellen, simulationen von turbulenten Störmunge bestenfalls eine näherungen sind.
-Darum werden CFD-Simulationen vorwigende für optimierungsprobleme eingesetzt, da meherer Simulationen in relation zu einander oft relativ genau sind. (Vorausgesetzt die Grenze zwischen Lamiinar und Turbulent befindet sich nicht im simulierten Bereich).
-
-Wenn man also zum Beipiel in der in \ref{subsubsec:domain-desc} beschreiben Simulation den Kreis durch ein eiförmige Geometrie ersetzen würde könnte würde man in den Simulationsergenissen eine klare Veränderung feststellen.
-Diese veränderung würde in den meisten fällen auch ca. der Veränderung in der Realität entsprechen, die Ergenises der einzelnen Simulationen stimmen jdoch meist nicht wirklich mit den realen Begebenheiten überein.
-
-Beispiel anhand vom K-$\epsilon$:
-
-Mit den beiden Feldern k und $\epsilon$ kann die Turbulente Viskosität wie folgt errechnte werden.
-
-\begin{equation}
-    \mu_t = \rho C_\mu \frac{k^2}{\varepsilon}
-\end{equation}
-
-Wobei $C_\mu$ eine Modellkonstante ist $\approx 0.09$
-Dammit könne alle sechs Threme des Reynoldsspannungstensor folgendermasen berechnete werden:
-Die Diagonalen Therme $R_{11}$, $R_{22}$ und $R_{33}$:
-
-\begin{equation}
-    R_{ii} = \mu_t \left(2\frac{\partial U_i}{\partial x_i}\right) - \frac{2}{3}\rho k
-\end{equation}
-
-Und den Thremen $R_{12} = R_{21}$, $R_{13} = R_{31}$ und $R_{23} = R_{32}$
-
-\begin{equation}
-    R_{ij} = R_{ji} = \mu_t \left(\frac{\partial U_i}{\partial x_j} + \frac{\partial U_j}{\partial x_i}\right)
-\end{equation}
-
-
 
 \begin{figure}
     \includegraphics[width=\textwidth]{papers/reynolds/images/dns.png}
@@ -130,6 +100,14 @@ Und den Thremen $R_{12} = R_{21}$, $R_{13} = R_{31}$ und $R_{23} = R_{32}$
     \caption{Mit SST Turbulenzmodell}
     \label{fig:SST}
 \end{figure}
+
+
+Die verwendung des Richtigen turbulnezmodlls in der richtigen Simulation erfordert jedcoh sehr viel erfahrung sowie ein sehr gutes praktisches verständniss der Simulierten Strömung.
+Und trotzdem muss an dieser Stelle noch mals erwähnt werden das ich durch die verwendung von Turbulenzmodellen, simulationen von turbulenten Störmunge bestenfalls eine näherungen sind.
+Darum werden CFD-Simulationen vorwigende für optimierungsprobleme eingesetzt, da meherer Simulationen in relation zu einander oft relativ genau sind.
+(Vorausgesetzt die Grenze zwischen Lamiinar und Turbulent befindet sich nicht im simulierten Bereich).
+Wenn man also zum Beipiel in der in \ref{subsubsec:domain-desc} beschreiben Simulation den Kreis durch ein eiförmige Geometrie ersetzen würde könnte würde man in den Simulationsergenissen eine klare Veränderung feststellen.
+Diese veränderung würde in den meisten fällen auch ca. der Veränderung in der Realität entsprechen, die Ergenises der einzelnen Simulationen stimmen jdoch meist nicht wirklich mit den realen Begebenheiten überein.
 
 
 % \input{papers/reynolds/teil1.tex}
