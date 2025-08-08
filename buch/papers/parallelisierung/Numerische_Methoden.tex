@@ -12,13 +12,11 @@ Bisher wurden Feldgleichungen und deren Lösungen aus einer theoretischen und ab
 Dies ist grundlegend für das Verständnis der zugrundeliegenden Konzepte.
 
 Um den praktischen Nutzen dieser mächtigen Theorie jedoch voll auszuschöpfen, ist ein Übergang von dieser idealisierten, kontinuierlichen und grenzenlosen Sichtweise hin zu einer realitätsnahen, diskreten und physikalisch eingeschränkten Betrachtung erforderlich.
-
 Konkret bedeutet dies, dass wir die Feldgleichungen diskretisieren müssen.
 
 Ein prominentes Beispiel dafür ist das numerische Wettermodell des ECMWF (European Centre for Medium-Range Weather Forecasts), das auf Grundlage eines breiten Spektrums aktueller und vergangener Wetterdaten versucht, möglichst präzise Vorhersagen für die kommenden zehn Tage zu treffen.
 
 Als wichtigste und somit einflussreichste Parameter dieses Modells gelten der Luftdruck, die Lufttemperatur, die Windgeschwindigkeit bzw. -richtung, die Luftfeuchtigkeit sowie diverse Niederschlagsparameter \cite{ecmwf2023}.
-
 Diese Messwerte liegen jedoch nur mit begrenzter zeitlicher und räumlicher Auflösung vor.
 
 Sie bestimmen somit die Feinheit des zugrundeliegenden Datenrasters – ein Umstand, der sich später als entscheidend erweisen wird.
@@ -26,37 +24,27 @@ Sie bestimmen somit die Feinheit des zugrundeliegenden Datenrasters – ein Umst
 \subsection{Diskretisierung statt Interpolation}
 
 Angesichts der Tatsache, dass die Messwerte nur in diskreter Form vorliegen, stellt sich die Frage, warum man nicht versucht, diese durch geeignete Interpolation wieder in ein kontinuierliches Datenset zu überführen, um dann die bekannten kontinuierlichen Gleichungen analytisch auszuwerten.
-
 Diese Fragestellung allein könnte den Umfang dieses gesamten Papers einnehmen.
-
 Daher sollen im Folgenden nur einige ausgewählte, nicht abschließende Aspekte diskutiert werden.
 
 Ein erster wesentlicher Punkt ist, dass Interpolation ein rein mathematisches Verfahren darstellt, das keinerlei physikalische Gesetzmäßigkeiten berücksichtigt.
-
 In der Praxis führt dies dazu, dass verrauschte und durch das Abtasten bereits verfälschte Messwerte durch Interpolation weiter verfälscht werden können.
 
 Eine mögliche Lösung wäre, die Interpolation um ein physikalisches Modell zu erweitern, welches die Lücken auf plausible Weise schließt.
-
 Dabei würde jedoch ein weiteres physikalisches Modell entstehen, das letztlich nur dazu dient, Daten für das eigentliche Modell zu liefern – was den methodischen Aufwand verdoppelt, ohne zwingend zusätzliche Erkenntnisse zu bringen.
 
 Ein weiterer zentraler Vorteil numerischer Verfahren liegt in ihrer Fähigkeit, auch Gleichungen zu lösen, die keine geschlossene analytische Lösung besitzen.
-
 Dies ist insbesondere in der Strömungsmechanik von Bedeutung.
-
 Ein Beispiel dafür ist die Navier-Stokes-Gleichung, welche die Bewegung von Flüssigkeiten und Gasen beschreibt.
-
 Für den allgemeinen dreidimensionalen Fall ist bis heute keine Lösung in geschlossener Form bekannt.
 
 Numerische Verfahren ermöglichen jedoch näherungsweise Lösungen mit vernachlässigbar kleinen Fehlern, sofern geeignete Diskretisierung und Randbedingungen gegeben sind.
-
 Allen klassischen numerischen Methoden zur Lösung partieller Differentialgleichungen ist gemeinsam, dass sie das kontinuierliche, analytische Problem in ein algebraisches Gleichungssystem mit endlich vielen Unbekannten überführen.
-
 Dieses lässt sich anschließend mit numerischen Verfahren der linearen Algebra effizient auf dem Computer lösen.
 
 \subsection{Überblick über numerische Methoden zur Lösung von Feldgleichungen}
 
 Zur numerischen Lösung partieller Differentialgleichungen existieren verschiedene etablierte Methoden, die je nach Anwendungsgebiet unterschiedliche Vor- und Nachteile aufweisen.
-
 Drei der wichtigsten Verfahren werden im Folgenden kurz vorgestellt.
 
 \subsubsection{Finite-Differenzen-Methode (FDM)}
@@ -97,16 +85,13 @@ Daher wird im nächsten Abschnitt die FDM im Detail erläutert und anhand eines 
 \subsection{Beispiel FDM}
 
 Als Ausgangslage wird die allgemeine Wärmeleitungsgleichung betrachtet.
-
 \begin{equation}
 	\frac{\partial T}{\partial t}
 	=
 	\alpha \Delta T.
 	\label{parallelisierung:Wärmeleitung_alg}
 \end{equation}
-
 Im folgenden wird im 2D-Raum gearbeitet also resultiert
-
 \begin{equation}
 	\frac{\partial T}{\partial t}
 	=
@@ -119,12 +104,9 @@ Im folgenden wird im 2D-Raum gearbeitet also resultiert
 \end{equation}
 
 
-
-
 \subsubsection{Diskretisierung der Variablen}
 
 Als erstes müssen die Variablen diskretisiert werden. Dies tun wir indem wir ein Gitter über den gesamten Bereich (zeitlich, sowie räumlich) legen, also
-
 Im Raum:
 \begin{equation}
 	x_i
@@ -137,9 +119,7 @@ Im Raum:
 	=
 	j \cdot \Delta y,
 \end{equation}
-
 Und in der Zeit:
-
 \begin{equation}
 	t^n
 	=
@@ -147,13 +127,11 @@ Und in der Zeit:
 \end{equation}
 
 Somit wird unsere resultierende, diskrete Temperaturfunktion die Form
-
 \begin{equation}
 	T^n_{i,j}
 	=
 	T(x_i,y_j,t^n)
 \end{equation}
-
 haben.
 
 
@@ -162,11 +140,11 @@ haben.
 Die partielle Ableitung der Temperaturfunktion \( T \) nach der Zeit wird durch eine explizite Vorwärtsdifferenz approximiert:
 
 \begin{equation}
+	\label{parallelisierung:discrete_time_derivative}
 	\left. \frac{\partial T}{\partial t}\right|_{(i,j,n)}
 	\approx
 	\frac{T_{i,j}^{n+1} - T_{i,j}^n}{\Delta t}.
 \end{equation}
-
 Dies entspricht der zeitlichen Änderungsrate von \( T \) am diskreten Gitterpunkt \( (x_i, y_j, t^n) \).
 
 \subsubsection{Diskretisierung des Raums}
@@ -183,26 +161,196 @@ Zusätzlich bestimmen wir die Rückwärtsdifferenz
 	\left. \frac{\partial T}{\partial x} \right|{(i,j,n)}
 	\approx \frac{T_{i,j}^n - T_{i-1,j}^n}{\Delta x},
 \end{equation}
-
 um mittels einer letzen Anwendung des Differentialquotienten die Änderung dieser beiden Änderungen, also genau das was die zweite Ableitung beschreibt, diskret zu bestimmen
-
 \begin{equation}
 	\frac{\partial^2 T}{\partial x^2} \approx
 	\frac{ \left( \frac{T_{i+1,j}^n - T_{i,j}^n}{\Delta x} \right) - \left( \frac{T_{i,j}^n - T_{i-1,j}^n}{\Delta x} \right) }{\Delta x}.
 \end{equation}
-
 Schlussendlich vereinfacht sich dies zu 
-
 \begin{equation}
-	\left. \frac{\partial^2 T}{\partial x^2} \right|{(i,j,n)} \approx \frac{T{i+1,j}^n - 2T_{i,j}^n + T_{i-1,j}^n}{(\Delta x)^2}.
+	\label{parallelisierung:discrete_x_derivative}
+	\left. \frac{\partial^2 T}{\partial x^2} \right|{(i,j,n)} \approx \frac{T_{i+1,j}^n - 2T_{i,j}^n + T_{i-1,j}^n}{(\Delta x)^2}.
 \end{equation}
 
 Für die y-Richtung folgt analog
-
 \begin{equation}
-	\left. \frac{\partial^2 T}{\partial y^2} \right|{(i,j,n)} \approx \frac{T{i,j+1}^n - 2T_{i,j}^n + T_{i,j-1}^n}{(\Delta y)^2}.
+	\label{parallelisierung:discrete_y_derivative}
+	\left. \frac{\partial^2 T}{\partial y^2} \right|{(i,j,n)} \approx \frac{T_{i,j+1}^n - 2T_{i,j}^n + T_{i,j-1}^n}{(\Delta y)^2}.
 \end{equation}
 
-Womit die Diskretisierung des Raums abgeschlossen ist.
+
+Nun setzen wir die in (\ref{parallelisierung:discrete_time_derivative}), (\ref{parallelisierung:discrete_x_derivative}) und (\ref{parallelisierung:discrete_y_derivative}) gefundenen Gleichungen in die Ursprüngliche zweidimensionale Wärmeleitungsgleichung (\ref{parallelisierung:Wärmeleitung_2D})ein.
+Somit erhalten wir 
+
+\begin{equation}
+	\label{parallelisierung:update_formula_unsorted}
+	\frac{T_{i,j}^{n+1} - T_{i,j}^n}{\Delta t}
+	=
+	\alpha \left(
+	\frac{T_{i+1,j}^n - 2 T_{i,j}^n + T_{i-1,j}^n}{(\Delta x)^2}
+	+
+	\frac{T_{i,j+1}^n - 2 T_{i,j}^n + T_{i,j-1}^n}{(\Delta y)^2}
+	\right),
+\end{equation}
+womit die diskretisierung der Wärmeleitungsgleichung mittels der Finiten-Differenzen-Methode gezeigt ist.
+
+\subsubsection{Explizite Update Formel}
+
+Aufgrund der lokalität und kausalität der Feldgleichungen ist die Temperatur eines Gitterpunkts \( (x_i, y_j)\) zu einem bestimmten Zeitpunkt in der Zukunft \( (t^n)\) sprich \(T_{i,j}^{n+1}\) nur von dem  vergangenen Zustand eben dieses Gitterpunkts und desen direkten Nachbbaren abhängig.
+Dies ist  in der nach \(T_{i,j}^{n+1}\) umgestellten Formel (\ref{parallelisierung:update_formula_unsorted}) ersichtlich:
+\begin{equation}
+	\label{parallelisierung:update_formula_sorted}
+	T_{i,j}^{n+1}
+	=
+	T_{i,j}^n
+	+
+	\alpha \, \Delta t \left(
+	\frac{T_{i+1,j}^n - 2 T_{i,j}^n + T_{i-1,j}^n}{(\Delta x)^2}
+	+
+	\frac{T_{i,j+1}^n - 2 T_{i,j}^n + T_{i,j-1}^n}{(\Delta y)^2}
+	\right)
+\end{equation}
+
+Aus Übersichtsgründen fassen wir alle Konstanten (\(\alpha, \Delta t, \Delta x, \Delta y) \) zu einer neuen Konstanten zusammen.
+Als praktische vereinfachung dazu legen wir fest das wir mit einem quadratischen Raumgitter arbeiten. Somit setzen wir  \(\Delta l = \Delta x = \Delta y\) und
+\begin{equation}
+	\label{parallelisierung:lambda}
+	\lambda 
+	:= 
+	\frac{\alpha \Delta t}{(\Delta l)^2}.
+\end{equation}
+
+Nun sind wir in der Lage Formel \ref{parallelisierung:update_formula_sorted} kompakt und übersichtlich zu schreiben:
+
+\begin{equation}
+	T_{i,j}^{n+1}
+	=
+	T_{i,j}^n +
+	\lambda \left(
+	T_{i+1,j}^n + T_{i-1,j}^n + T_{i,j+1}^n + T_{i,j-1}^n - 4 T_{i,j}^n
+	\right).
+\end{equation}
+Diese Formel wird als explizite update Formel bezeichent, da sie iterativ auf Grundlage von gemesenen Daten oder zuvor berechneten Datenpunkten den nächsten Zeitschritt auswertet.
+
+Es ist nun klar ersichtlich das die Temperatur an einem Punkt (\(x_i, y_j\)) zu einem gegebenen Zeitpunkt \(t^{n+1}\)  von der Temperatur an diesem Punkt zum Zeitpunkt \(t^n\) und der Wärmeflussbilanz zu den 4 direkten Nachbarquadraten abhängig ist.
+
+\subsubsection{Stabilitätskriterien}
+
+
+\begin{table}[H]
+	\centering
+	\caption{Stabilitätsbedingungen der expliziten Finite-Differenzen-Methode}
+	\label{parallelisierung:tab:stabilitaet_fdm}
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{Dimension} & \textbf{Stabilitätsbedingung} \\
+		\hline
+		1D & 
+		\( \displaystyle \lambda = \frac{\alpha \, \Delta t}{(\Delta x)^2} \leq \frac{1}{2} \) \\
+		\hline
+		2D & 
+		\( \displaystyle \lambda_x + \lambda_y =
+		\frac{\alpha \, \Delta t}{(\Delta x)^2} +
+		\frac{\alpha \, \Delta t}{(\Delta y)^2} \leq \frac{1}{2} \) \\
+		\hline
+		3D & 
+		\( \displaystyle \lambda_x + \lambda_y + \lambda_z =
+		\frac{\alpha \, \Delta t}{(\Delta x)^2} +
+		\frac{\alpha \, \Delta t}{(\Delta y)^2} +
+		\frac{\alpha \, \Delta t}{(\Delta z)^2} \leq \frac{1}{2} \) \\
+		\hline
+	\end{tabular}
+\end{table}
+
+Die in \ref{parallelisierung:lambda} eingeführte Konstante \(\lambda\) ist dafür verantwortlich, ob die gewünschte FDM-Anwendung stabil ist.
+Tabelle \ref{parallelisierung:tab:stabilitaet_fdm} zeigt die Stabilitätsbedingungen für Probleme verschiedener Dimensionen.
+Diese ergeben sich aus der Analyse des Verstärkungsverthaltens einzelner Fehlerkomponenten mittels Fourier-Analyse.
+
+Auf eine ausführliche Herleitung dieser Stabilitätsgrenzen wird an dieser Stelle aus Gründen der Komplexität und des Umfangs verzichtet. %ev in Anhang beifügen
+
+In unserem Fall gilt also
+
+
+
+
+
+\begin{equation}
+	\lambda_x + \lambda_y
+	=
+	\frac{\alpha \, \Delta t}{(\Delta x)^2} +
+	\frac{\alpha \, \Delta t}{(\Delta y)^2} \leq
+	\frac{1}{2}
+\end{equation}
+und mit \(\Delta l = \Delta x = \Delta y\) und somit \(\lambda = \lambda_x = \lambda_y\) wird daraus 
+
+
+
+\begin{equation}
+	2\lambda
+	=  
+	2\frac{\alpha \, \Delta t}{(\Delta l)^2} \leq \frac{1}{2} 
+	\Rightarrow
+	\lambda
+	=
+	\frac{\alpha \, \Delta t}{(\Delta l)^2} \leq 
+	\frac{1}{4}.
+\end{equation}
+Lösen wir den Wärmediffusionskoeffizietn \(\alpha\) nach seinen Komponenten auf erhalten wir
+
+\begin{equation}
+	\lambda
+	=
+	\frac{\kappa}{\rho c} \cdot \frac{\Delta t}{(\Delta l)^2}
+	\leq
+	\frac{1}{4}
+\end{equation}
+
+wobei:
+\begin{center}
+	\begin{tabular}{lll}
+		$\kappa$ & Wärmeleitfähigkeit & $\mathrm{W/(m \cdot K)}$ \\
+		$\rho$   & Dichte des Materials & $\mathrm{kg/m^3}$ \\
+		$c$      & spezifische Wärmekapazität & $\mathrm{J/(kg \cdot K)}$
+	\end{tabular}
+\end{center}
+und vollständigkeitshalber:
+\begin{center}
+	\begin{tabular}{lll}
+		$\Delta t$ & Zeitauflösung & $\mathrm{s}$ \\
+		$\Delta l$   & Längenauflösung & $\mathrm{m}$ \\
+	\end{tabular}
+\end{center}
+
+Beispielsweise kann man erkennen das bei feiner werdenden räumlichen Auflösung (\(\Delta l \downarrow \)) und gleichbleiebenden Materialien eine höhere zeitliche Auflösung (\(\Delta t \downarrow\)) notwendig ist um die Stabilität zu wahren.
+
+\subsubsection{Stabilitätsexperiment}
+
+Im folgenden soll die Stabilitätsbedinung an einem Experiment demonstriert werden.
+
+Gegeben ist ein 9x9 cm Stahl-Plättchen (ohne 3 Dimension) welches wir am Linken und Rechten Rand konstant auf einer Temperatur von 100 Grad haltenmit folgenden Eigenschaften:
+
+\begin{center}
+	\begin{tabular}{llll}
+		Wärmeleitfähigkeit &$\kappa$ & 50 &
+		$\mathrm{W/(m \cdot K)}$ \\
+		Dichte des Materials & $\rho$   &  7850 &$\mathrm{kg/m^3}$ \\
+		spezifische Wärmekapazität & $c$      &  470 & $\mathrm{J/(kg \cdot K)}$
+	\end{tabular}
+\end{center}
+
+Uns stehen 100 Messsonden zur Verfügung. Wenn wir diese in einem 10x10 Grid mit regelmässigen Abständen auf der Platte verteilen resultiert dabei ein \(\Delta l = \Delta x = \Delta y = 1.11m.\)
+
+Somit müssen wir nur noch \(\Delta t\) bestimmen, welches wir mit 1s so wählen das
+
+\begin{equation}
+	\lambda
+	=
+	\frac{\kappa}{\rho c} \cdot \frac{\Delta t}{(\Delta l)^2}
+	\Rightarrow
+	\frac{50}{7850 \cdot 470} \cdot \frac{1}{0.01^2}
+	= 0.135
+\end{equation}
+
+unsere Stabilitätbedinung gut erfüllt ist.
 
 
