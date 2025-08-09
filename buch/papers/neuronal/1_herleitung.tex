@@ -23,18 +23,20 @@ Dabei gilt die Randbedingung
 \end{equation}
 sowie die Anfangsbedingungen
 \begin{equation}
-    \begin{aligned}
-        \varphi(x, t = 0) &= f(x) \qquad x \in \Omega \\
-        \partial_t \varphi(x, t = 0) &= g(x) \qquad x \in \Omega.
-    \end{aligned}
+\varphi(x, t = 0) = f(x) \qquad x \in \Omega 
+\label{neuronal:anfangsbedingung_voll}
+\end{equation}
+\begin{equation}
+\partial_t \varphi(x, t = 0) = g(x) \qquad x \in \Omega.
+\label{neuronal:anfangsbedingung_partiel}
 \end{equation}
 Hierbei ist:
 \begin{itemize}
     \item $\varphi(x, t)$ das gesuchte Feld,
-    \item $\mathcal{D}$ ein beliebiger Differentialoperator auf $\varphi$ (siehe \eqref{neuronal:bsp_differentialoperator}),
+    \item $\mathcal{D}$ ein beliebiger Differentialoperator auf $\varphi$ (siehe \eqref{neuronal:bsp_differentialoperator} für ein Beispiel),
     \item $f(x)$ und $g(x)$ bekannte Funktionen, die die Anfangsbedingungen definieren,
-    \item $\Omega$ der Bereich, in dem das Feld definiert ist,
-    \item $\partial \Omega$ der Rand des Feldes,
+    \item $\Omega$ das Gebiet, in dem das Feld definiert ist,
+    \item $\partial \Omega$ der Rand des Gebietes,
     \item $[0,T]$ das betrachtete Zeitintervall.
 \end{itemize}
 
@@ -44,23 +46,23 @@ Randbedingungen sind entscheidend, um die Lösung der Feldgleichung eindeutig zu
 
 
 Die Anfangsbedingungen beschreiben den Zustand des Feldes zu Beginn des betrachteten Zeitintervalls.
-Die erste Anfangsbedingung, $\varphi(x, t = 0) = f(x)$, gibt die Form des Feldes zum Zeitpunkt $t = 0$ an.
-Die zweite Anfangsbedingung, $\partial_t \varphi(x, t = 0) = g(x)$, beschreibt die zeitliche Änderung des Feldes zum Zeitpunkt $t = 0$.
+Die erste Anfangsbedingung \eqref{neuronal:anfangsbedingung_voll}, gibt die Form des Feldes zum Zeitpunkt $t = 0$ an.
+Die zweite Anfangsbedingung \eqref{neuronal:anfangsbedingung_partiel}, beschreibt die zeitliche Änderung des Feldes zum Zeitpunkt $t = 0$.
 Diese Bedingungen sind notwendig, um die Dynamik des Feldes über die Zeit hinweg zu bestimmen.
 
-Als Beispiel für den Differentialoperator $\mathcal{D}$, dieser könnte
+Der Differentialoperator $\mathcal{D}$ könnte z.B. 
 \begin{equation}
     \mathcal{D}(\varphi(x, y, t)) = \frac{\partial^2 \varphi}{\partial t^2} - c^2 \left( \frac{\partial^2 \varphi}{\partial x^2} + \frac{\partial^2 \varphi}{\partial y^2} \right)
     \label{neuronal:bsp_differentialoperator}
 \end{equation}
-sein.
-Setzt man dies in die Gleichung \eqref{neuronal:generelle_feldgleichung} ein, erhält man die Wellengleichung in zwei Dimensionen.
+sein, setzt man dies in die Gleichung \eqref{neuronal:generelle_feldgleichung} ein, erhält man die Wellengleichung in zwei Dimensionen.
 
-Das Ziel dieses Papers ist es, die Lösung $\varphi(x, t)$ mit einem neuronalen Netzwerk $\hat{\varphi}(x, t; \vartheta)$ zu approximieren.
+Das Ziel dieses Papers ist, die Lösung $\varphi(x, t)$ mit einem neuronalen Netzwerk $\hat{\varphi}(x, t; \vartheta)$ zu approximieren.
 Das Netzwerk verfügt über einen Vektor \( \vartheta \in \mathbb{R}^n \) von \emph{trainierbaren Parametern}.
 Diese Parameter sollen so gewählt werden, dass das neuronale Netzwerk $\hat{\varphi}(x, t; \vartheta)$ die gesuchte Funktion $\varphi(x, t)$ möglichst genau approximiert.
 
 \subsection{Aufbau neuronaler Netzwerke}\label{neuronal:subsection:struktur_nn}
+\kopfrechts{Aufbau neuronaler Netzwerke}
 In diesem Abschnitt wird erläutert, was neuronale Netzwerke sind und wie sie aufgebaut sind.
 Grundsätzlich bestehen neuronale Netzwerke aus der Verkettung mehrerer Teilfunktionen:
 
@@ -68,20 +70,19 @@ Grundsätzlich bestehen neuronale Netzwerke aus der Verkettung mehrerer Teilfunk
     \hat{\varphi}(x, t; \vartheta) = f_j \circ \ldots \circ f_i \ldots \circ f_1(x, t).
     \label{neuronal:nn_ausformuliert}
 \end{equation}
-
 Jede Teilfunktion \( f_i \) setzt sich aus einer affinen Transformation und einer anschliessenden nicht-linearen Aktivierungsfunktion \( g_i \) zusammen:
 
 \begin{align*}
-    f_i\colon \mathbb{R}^q & \longrightarrow \mathbb{R}^p \\
-    v & \longmapsto g_i(A_i v + b_i)
+    f_i\colon \mathbb{R}^q & \longrightarrow \mathbb{R}^p \colon \quad v \longmapsto g_i(A_i v + b_i)
 \end{align*}
-
 Hierbei ist \( v \in \mathbb{R}^q \), \( A_i \in \mathbb{R}^{p \times q} \) und \( b_i \in \mathbb{R}^p \). 
 Die Elemente aller Matrizen \( A_i \) und Vektoren \( b_i \) bilden den Vektor \( \vartheta \) der \emph{trainierbaren Parameter} des Netzwerks.
 Die Aktivierungsfunktion \( g_i \) wird elementweise auf das Ergebnis der affinen Transformation angewendet.
 Die Wahl der Aktivierungsfunktion hängt stark von der zu approximierenden Funktion ab und kann beispielsweise der hyperbolische Tangens sein.
 
-Die Definitions- und Wertebereiche der Teilfunktionen \( f_i \) sind flexibel wählbar, jedoch muss der Wertebereich einer jeden Teilfunktion \( f_i \) mit dem Definitionsbereich der nachfolgenden Teilfunktion \( f_{i+1} \) übereinstimmen.
+Die Definitions- und Wertebereiche der Teilfunktionen \( f_i \) sind flexibel wählbar. 
+Es genügt, dass der Wertebereich jeder Teilfunktion \( f_I \) eine Teilmenge des Definitionsbereichs der nachfolgenden Teilfunktion \( f_{i+1} \) ist.
+% jedoch muss der Wertebereich einer jeden Teilfunktion \( f_i \) mit dem Definitionsbereich der nachfolgenden Teilfunktion \( f_{i+1} \) übereinstimmen.
 Zudem sind der Definitionsbereich der ersten Teilfunktion und der Wertebereich der letzten Teilfunktion strikt vorgegeben. 
 Zur Approximation der Lösung der Feldgleichung, müssen diese Bereiche \( \mathbb{R}^2 \) bzw. \( \mathbb{R} \) sein.
 
@@ -106,6 +107,7 @@ out = activation(t2(temp))
 \end{lstlisting}
 
 \subsection{Formulierung als Optimierungsproblem}\label{neuronal:subsection:optimierungsproblem}
+\kopfrechts{Formulierung als Optimierungsproblem}
 In diesem Abschnitt wird die Wahl der \emph{trainierbaren Parameter} $\vartheta$ des neuronalen Netzwerks behandelt.
 Die Auswahl von $\vartheta$ stellt im Wesentlichen ein Minimierungsproblem dar.
 Die grundlegende Idee besteht darin, eine Funktion \( L(\vartheta) \) zu definieren, die den Approximationsfehler des Netzwerks quantifiziert.
@@ -136,59 +138,52 @@ und die Randbedingung
 umformuliert.
 Anschliessend wird das neuronale Netzwerk $\hat{\varphi}$ für $\varphi$ substituiert
 \begin{equation}
-    \left(\mathcal{D}(\hat{\varphi}(x, t; \vartheta))\right)^2 \qquad x \in \Omega, \quad t \in [0,T]
-    \label{neuronal:feldgleichung_umformuliert_netz}
-\end{equation}
-\begin{equation}
     \begin{aligned}
-        \left(f(x) - \hat{\varphi}(x, t = 0; \vartheta)\right)^2 \qquad x \in \Omega\\
-        \left(g(x) - \partial_t \hat{\varphi}(x, t = 0; \vartheta)\right)^2 \qquad x \in \Omega
+        &\left(\mathcal{D}(\hat{\varphi}(x, t; \vartheta))\right)^2 \qquad \qquad \quad x \in \Omega, \quad t \in [0,T]\\
+        &\left(f(x) - \hat{\varphi}(x, t = 0; \vartheta)\right)^2 \qquad x \in \Omega\\
+        &\left(g(x) - \partial_t \hat{\varphi}(x, t = 0; \vartheta)\right)^2 \quad \: x \in \Omega\\
+        &\left(\hat{\varphi}(x, t; \vartheta)\right)^2 \qquad \qquad \qquad \: \: x \in \partial \Omega, \quad t \in [0,T].
     \end{aligned}
-    \label{neuronal:anfangsbedingung_umformuliert_netz}
-\end{equation}
-\begin{equation}
-    \begin{aligned}
-        \left(\hat{\varphi}(x, t; \vartheta)\right)^2 \qquad x \in \partial \Omega, \quad t \in [0,T].
-    \end{aligned}
-    \label{neuronal:randbedingung_umformuliert_netz}
+    \label{neuronal:umformuliert_nn}
 \end{equation}
 Ziel ist es, $\vartheta$ so zu wählen, dass alle diese Terme möglichst nahe bei 0 liegen.
 Anders ausgedrückt, soll $\vartheta$ so gewählt werden, dass die Terme minimiert werden.
 
 Es ist wichtig zu beachten, dass die Terme für alle $x$ und $t$ in den jeweiligen Bereichen minimal werden sollen.
-Daher müssen $x$ und $t$ diskretiert werden, bevor $L(\vartheta)$ definiert werden kann.
+Daher müssen $x$ und $t$ diskretisiert werden, bevor $L(\vartheta)$ definiert werden kann.
 
 \subsection{Diskretisierung}\label{neuronal:subsection:diskretierung}
+\kopfrechts{Diskretisierung}
 Für die Diskretisierung werden drei Datensätze benötigt
 \begin{equation}
     \begin{aligned}
-        F &= \{\, (x, t) \,|\, x \in \Omega \setminus \partial \Omega\,, t \in (0,T] \,\}\\
-        A &= \{\, (x, t) \,|\, x \in \Omega \setminus \partial \Omega\,, t = 0 \,\}\\
-        B &= \{\, (x, t) \,|\, x \in \partial \Omega\,, t \in [0, T] \,\}.
+        F &\subset \{\, (x, t) \,|\, x \in \Omega \setminus \partial \Omega\,, t \in (0,T] \,\}\\
+        A &\subset \{\, (x, t) \,|\, x \in \Omega \setminus \partial \Omega\,, t = 0 \,\}\\
+        B &\subset \{\, (x, t) \,|\, x \in \partial \Omega\,, t \in [0, T] \,\}.
     \end{aligned}
 \end{equation}
-Jeder Datensatz besteht aus $k$ Punkten, die aus einer Gleichverteilung in den jeweiligen Bereichen stammen.
+Die Punkte dieser Datensätze stammen aus einer Gleichverteilung in den jeweiligen Bereichen.
 Es gelten:
 \begin{itemize}
     \item Die Feldgleichung für die Punkte in $F$
     \item Die Anfangsbedingungen für die Punkte in $A$
     \item Die Randbedingungen für die Punkte in $B$
 \end{itemize}
-Die Terme \eqref{neuronal:feldgleichung_umformuliert_netz}, \eqref{neuronal:anfangsbedingung_umformuliert_netz} und \eqref{neuronal:randbedingung_umformuliert_netz}, werden über die zugehörigen Datensätze summiert und gemittelt
+Die Terme \eqref{neuronal:umformuliert_nn}, werden nun über die zugehörigen Datensätze summiert und gemittelt
 \begin{equation}
-    \frac{1}{k} \sum_{F}^{} \left(\mathcal{D}(\hat{\varphi}(x_i, t_i; \vartheta))\right)^2
+  \frac{1}{\lvert F \rvert} \sum_{F}^{} \left(\mathcal{D}(\hat{\varphi}(x_i, t_i; \vartheta))\right)^2
     \label{neuronal:feldgleichung_umformuliert_netz_disk}
 \end{equation}
 \begin{equation}
     \begin{aligned}
-        \frac{1}{k} \sum_{A}^{} \left(f(x_i) - \hat{\varphi}(x_i, t_i = 0; \vartheta)\right)^2\\
-        \frac{1}{k} \sum_{A}^{} \left(g(x_i) - \partial_t \hat{\varphi}(x_i, t_i = 0; \vartheta)\right)^2
+        \frac{1}{\lvert A \rvert} \sum_{A}^{} \left(f(x_i) - \hat{\varphi}(x_i, t_i = 0; \vartheta)\right)^2\\
+        \frac{1}{\lvert A \rvert} \sum_{A}^{} \left(g(x_i) - \partial_t \hat{\varphi}(x_i, t_i = 0; \vartheta)\right)^2
     \end{aligned}
     \label{neuronal:anfangsbedingung_umformuliert_netz_disk}
 \end{equation}
 \begin{equation}
     \begin{aligned}
-        \frac{1}{k} \sum_{B}^{} \left(\hat{\varphi}(x_i, t_i; \vartheta)\right)^2 &.
+        \frac{1}{\lvert B \rvert} \sum_{B}^{} \left(\hat{\varphi}(x_i, t_i; \vartheta)\right)^2 &.
     \end{aligned}
     \label{neuronal:randbedingung_umformuliert_netz_disk}
 \end{equation}
@@ -196,10 +191,10 @@ Diese Terme hängen nur noch von $\vartheta$ ab und sollen nach wie vor möglich
 Durch Addition der obigen Terme kann nun \( L(\vartheta) \) wie folgt definiert werden
 \begin{equation}
     \begin{aligned}
-        L(\vartheta) =\quad &\frac{1}{k} \sum_{F}^{} \left(\mathcal{D}(\hat{\varphi}(x_i, t_i; \vartheta))\right)^2\\
-        + &\frac{1}{k} \sum_{A}^{} \left(\left(f(x_i) - \hat{\varphi}(x_i, t_i = 0; \vartheta)\right)^2
+        L(\vartheta) =\quad &\frac{1}{\lvert F \rvert} \sum_{F}^{} \left(\mathcal{D}(\hat{\varphi}(x_i, t_i; \vartheta))\right)^2\\
+        + &\frac{1}{\lvert A \rvert} \sum_{A}^{} \left(\left(f(x_i) - \hat{\varphi}(x_i, t_i = 0; \vartheta)\right)^2
         + \left(g(x_i) - \partial_t \hat{\varphi}(x_i, t_i = 0; \vartheta)\right)^2\right)\\
-        + &\frac{1}{k} \sum_{B}^{} \left(\hat{\varphi}(x_i, t_i; \vartheta)\right)^2.
+        + &\frac{1}{\lvert B \rvert} \sum_{B}^{} \left(\hat{\varphi}(x_i, t_i; \vartheta)\right)^2.
     \end{aligned}
     \label{neuronal:optimierung}
 \end{equation}
@@ -218,6 +213,7 @@ Die Wahl der Parameter des neuronalen Netzwerks ist nun ein Minimierungsproblem:
 \end{aufgabe}
 
 \subsection{Lösen des Minimierungsproblems}\label{neuronal:subsection:lösen_optimierungsproblem}
+\kopfrechts{Lösen des Minimierungsproblems}
 \( L \) lässt sich aus zwei Gründen nicht analytisch minimieren:
 \begin{enumerate}
     \item \( L \) hängt von \( \vartheta \in \mathbb{R}^n \) ab. 
@@ -232,9 +228,13 @@ Das bedeutet, dass stattdessen ein numerischer Algorithmus verwendet werden muss
     \begin{enumerate}
         \item Initialisiere \( \vartheta_1 \) mit Anfangswerten.
         \item \textbf{Schleife} von \( i = 1 \) bis \( i = m - 1 \):
-        \begin{itemize}
-            \item Berechne neue Parameterwerte: \( \vartheta_{i+1} = \vartheta_i - \varepsilon \nabla_\vartheta L\left(\vartheta_i\right) \). (Erklärung unten)
-        \end{itemize}
+        \begin{description}
+            \item \quad \;\, Berechne neue Parameterwerte: (Erklärung unten)
+            \begin{flalign}
+                \vartheta_{i+1} = \vartheta_i - \varepsilon \nabla_\vartheta L\left(\vartheta_i\right)&&
+                \label{neuronal:gradient_descent_formel}
+            \end{flalign}
+        \end{description}
         \item Gebe die Parameter \( \vartheta_m \) zurück.
     \end{enumerate}
     \label{neuronal:gradient_descent}
@@ -245,7 +245,7 @@ Der Algorithmus wird beendet, sobald sich der Wert von \( L \) über mehrere Ite
 
 Dieser Algorithmus basiert auf dem Verhalten des Gradienten.
 Der Gradient von $L$ -- ausgewertet an einem beliebigen Punkt -- ist ein Vektor, der in die Richtung des stärksten Anstiegs auf $L$ zeigt.
-Durch das Minus in der Formel geht man in die entgegengesetzte Richtung, wo es wahrscheinlich abwärts geht.
+Durch das Minus in der Formel \eqref{neuronal:gradient_descent_formel} geht man in die entgegengesetzte Richtung, wo es wahrscheinlich abwärts geht.
 Mit $\varepsilon$ wird die Schrittgrösse gesteuert, um zu verhindern, dass ein Minimum überschritten wird.
 
 Abbildung~\ref{fig:gradientenabstieg_beispiel} veranschaulicht ein exemplarisches Beispiel eines Gradientenabstiegs.
@@ -280,12 +280,22 @@ Grund dafür ist, dass der Algorithmus genau auf diesen Punkten landen müsste.
 Ein bisschen daneben bedeutet dass es eine Richtung gibt, in die es abwärts -- und somit weg von diesen Punkten -- geht.
 
 \subsection{Qualitätsbewertung}\label{neuronal:subsection:qualitätsbewertung}
+\kopfrechts{Qualitätsbewertung}
 Für die Beurteilung der Qualität der Approximation bietet sich zunächst der Wert von \( L(\vartheta) \) nach Abschluss des Optimierungsalgorithmus an.
 Dieser Wert entspricht dem mittleren Approximationsfehler, der bei den Datenpunkten aus der Diskretisierung auftritt.
 
-Eine weitere Möglichkeit ist es, einen Teil der drei Datensätze aus \ref{neuronal:subsection:diskretierung} nicht im Optimierungsalgorithmus zu verwenden, sondern zuvor abzutrennen.
-Anschliessend wird eine neue Funktion \( L^1(\vartheta) \) definiert, die analog zu \eqref{neuronal:optimierung} aufgebaut ist, mit dem Unterschied, dass nun über die abgetrennten (Teil-)Datensätze summiert wird.
+Eine weitere Möglichkeit ist es, die drei Datensätze aus \ref{neuronal:subsection:diskretierung} in je zwei Teile aufzuteilen
+\begin{equation*}
+    \begin{aligned}
+        F &= F_t \cup F_k\\
+        A &= A_t \cup A_k\\
+        B &= B_t \cup B_k.
+    \end{aligned}
+\end{equation*}
+In der Funktion $L(\vartheta)$ wird über die drei Teil-Datensätze mit Index $t$ summiert.
+Zudem wird eine neue Funktion \( L^1(\vartheta) \) analog zu $L(\vartheta)$ definiert, mit dem Unterschied, dass nun über die drei Teil-Datensätze mit Index $k$ summiert wird.
 Da diese Funktion nie explizit durch den Optimierungsalgorithmus minimiert wurde, dient sie als Mass für den mittleren Approximationsfehler bei Datenpunkten, die nicht in der Diskretisierung enthalten waren.
+Damit dies gilt muss sichergestellt werden, dass $F_t \cap F_k = \emptyset$ ist (analog für $A$ und $B$), ansonsten ist $L^1(\vartheta)$ nicht unabhängig von $L(\vartheta)$.
 
 Eine letzte Möglichkeit zur Qualitätsbewertung ist der direkte Vergleich mit Lösungen, die durch alternative Verfahren gefunden wurden.
 Existiert beispielsweise eine analytische Lösung der Feldgleichung oder wurde eine Lösung durch die Finite-Elemente-Methode gefunden, kann damit verglichen werden.

@@ -17,6 +17,26 @@ def error_plot(train_error, test_error):
     plt.tight_layout()
     plt.show()
 
+def snapshot_plot(model, device, t=0.0):
+    m = 200
+    x = np.linspace(-1, 1, m)
+
+    x_tensor = torch.tensor(x.reshape(-1, 1), device=device)
+    t_tensor = torch.full_like(x_tensor, t)
+
+    with torch.no_grad():
+        u = model(t_tensor, x_tensor).cpu().numpy().flatten()
+
+    plt.figure(figsize=(6, 4), dpi=150)
+    plt.plot(x, u, label=f"t = {t:.2f}")
+    plt.xlabel("x")
+    plt.ylabel("u(x, t)")
+    plt.title(f"1D Burgers-Gleichung bei t = {t}")
+    plt.grid(True)
+    plt.legend()
+    plt.tight_layout()
+    plt.show()
+
 def solution_plot(model, device):
     n, m = 100, 200
     X = np.linspace(-1, +1, m)

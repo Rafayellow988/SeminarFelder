@@ -1,7 +1,7 @@
 import torch.nn as nn
 import torch.optim as optim
 import torch
-from Residuals import burgers_equation_residual, initial_boundary_loss, initial_condition_loss, boundary_condition_loss
+from Residuals import burgers_equation_residual, initial_boundary_loss
 from Data import get_data
 
 class BurgersNet(nn.Module):
