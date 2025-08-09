@@ -10,14 +10,14 @@
             \pgfmathsetmacro{\dx}{(\y - (\x*\x))}
             \pgfmathsetmacro{\dy}{(\x - (\y^3))}
             \pgfmathsetmacro{\mag}{(8*sqrt((\dx*\dx)+(\dy*\dy)) + 0.0001)}
-            \draw[blue!50, ->] ({\x}, {\y}) -- ++(
-                {\dx * 0},
-                {\dy / sqrt(\dy*\dy + 0.0001) / 10}
-            );
-            \draw[red!50, ->] ({\x}, {\y}) -- ++(
-                {\dx / sqrt(\dx*\dx + 0.0001) / 10},
-                {\dy * 0}
-            );
+            % \draw[blue!50, ->] ({\x}, {\y}) -- ++(
+            %     {\dx * 0},
+            %     {\dy / sqrt(\dy*\dy + 0.0001) / 10}
+            % );
+            % \draw[red!50, ->] ({\x}, {\y}) -- ++(
+            %     {\dx / sqrt(\dx*\dx + 0.0001) / 10},
+            %     {\dy * 0}
+            % );
             \draw[->, thick] ({\x}, {\y}) -- ++(
                 {\dx / \mag},
                 {\dy / \mag}
@@ -36,7 +36,7 @@
     \end{pgfonlayer}
 
 
-    \begin{scope}[yshift=-4cm, xshift=-1.25cm, scale=2]
+    \begin{scope}[yshift=-3.5cm, xshift=-1.25cm, scale=2]
         \begin{pgfonlayer}{background}
             \node[fill=red!10, minimum width=4cm, minimum height=4cm] (center) at (0,0) {};
         \end{pgfonlayer}
@@ -62,7 +62,7 @@
         \end{pgfonlayer}
     \end{scope}
 
-    \begin{scope}[yshift=-4cm, xshift=1.25cm, scale=2, yshift=-1cm, xshift=-1cm]
+    \begin{scope}[yshift=-3.5cm, xshift=1.25cm, scale=2, yshift=-1cm, xshift=-1cm]
         \begin{pgfonlayer}{background}
             \node[fill=blue!10, minimum width=4cm, minimum height=4cm] (oneone) at (1,1) {};
         \end{pgfonlayer}
@@ -88,11 +88,11 @@
         \draw[draw=blue!10, ultra thick, ->] (oneoneref) to[out=-80, in=80] (oneone);
     \end{pgfonlayer}
 
-    \node at (0, -2.5) {
-        $\begin{aligned}
-            \dot{x} &= y - x^2 \\
-            \dot{y} &= x - y^3
-        \end{aligned}$
-    };
+    % \node at (0, -2.5) {
+    %     $\begin{aligned}
+    %         \dot{x} &= y - x^2 \\
+    %         \dot{y} &= x - y^3
+    %     \end{aligned}$
+    % };
 
 \end{tikzpicture}
