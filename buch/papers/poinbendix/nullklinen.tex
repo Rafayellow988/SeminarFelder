@@ -12,12 +12,17 @@ In einem zweiten Abschnitt \ref{poinbendix:subsection:limesmengen} werden dann d
 
 Die Punkte bei denen die Ableitungen entlang einer Koordinatenachse null werden (e.g.: $\dot{x}=0$), befinden sich auf Kurven welche Nullklinen genannt werden. %TODO reference
 Somit werden Nullklinen in 2D immer von einem vertikalen ($x$-Nullkline) oder einem horizontalen ($y$-Nullkline) Fluss durchflossen.
-Daraus folgt, dass Schnittpunkte zweier Nullklinen in 2D Nullstellen sind.
+Daraus folgt, dass Schnittpunkte zweier Nullklinen Nullstellen sind (in 2D).
 Alle Ableitungen werden also null ($\dot{x}=\dot{y}=0$) und Bahnkurven welche zu diesen Punkten kommen enden sofort.
 
 Die Nullklinen unterteilen die Ebene in unterschiedliche Sektoren, welche jeweils eine bestimmte Flussrichtung haben.
 Da das dynamische System stetig ist, gibt es keine Sprünge in den Nullklinen.
-Deshalb werden die z.B. die $x$-Nullklinen zwischen zwei Nullstellen immer entweder von Oben oder von Unten durchflossen, es gibt keine Flussrichtungswechsel (die Flussgeschwindigkeit kann aber sehr wohl variieren).
+
+Dies bedeutet, dass eine $x$-Nullkline in einem Abschnitt zwischen zwei Nullstellen zum Beispiel immer von Oben nach Unten durchflossen wird ($\dot{y} < 0$).
+Die vertikale Flussgeschwindigkeit kann dabei variieren.
+Nachdem eine Nullstelle erreicht wird, kann die Flussrichtung wechseln.
+
+Wie man Anhand von Nullklinen mögliche Bahnkurven vorhersagen kann, wird anhand des folgenden Beispiels gezeigt.
 
 \begin{beispiel} \label{poinbendix:beispiel:nullklinen}
 
@@ -26,18 +31,39 @@ Für das dynamische System
     \dot{x} &= y - x^2 \\
     \dot{y} &= x - y^3
 \end{align*}
-findet man die $x$- und $y$-Nullklinen als Funktionen von $x$
+können durch Nullsetzen die $x$- und $y$-Nullklinen als Funktionen von $x$ gefunden werden
 \begin{align*}
     y_x(x) &= x^2 \\
     y_y(x) &= \sqrt[3]{x}.
 \end{align*}
+Durch Gleichsetzen der beiden Nullklinen
+\begin{align*}
+    x^2 &= \sqrt[3]{x} \\
+    x^6 &= x \\
+\end{align*}
+erhält man dann zwei Nullstellen an den Punkten $(0, 0)$ und $(1, 1)$.
 
+In Abbildung \ref{poinbendix:fig:nullklinen} sieht man wie sich die $x$-Nullkline (rot) und die $y$-Nullkline an den beiden Nullstellen kreuzen.
+Es ergeben sich 5 Regionen mit unterschiedlicher Flussrichtung.
 
+Wenn man sich diese Regionen um die Nullpunkte genauer anschaut, kann man schon eine ungefähre Vorstellung von möglichen Bahnkurven bekommen (siehe die beiden vergrösserten Ausschnitte in Abbildung \ref{poinbendix:fig:nullklinen}).
+Zur Erinnerung, die Ableitungen können nur auf den Nullklinen ihre Richtung wechseln.
+Daraus folgt, dass ein einzelner Punkt pro Region genügt, um den (generellen) Fluss in der gesamten Region vorherzusagen.
+Nehmen wir den Punkt $(-2, 0)$, welcher in der Region links liegt.
+Dann erhalten wir
+\begin{align*}
+    \dot{x} &= y - x^2 &= -4 \\
+    \dot{y} &= x - y^3 &= -2.
+\end{align*}
+Somit gehen die Bahnkurven in der linken Region nach unten links, wobei sie durch die $y$-Nullkline $y_y(x) = \sqrt[3]{x}$ nach unten beschränkt werden.
+
+Mit derselben Methode können auch die anderen 4 Regionen analysiert werden.
 
 \begin{figure}
     \centering
     \input{papers/poinbendix/images/nullklinen.tikz} %TODO fix Pfeile, remove equation
-    \caption{Die Nullklinen unterteilen die Ebene in 4 Quadranten mit unterschiedlicher Flussrichtung. Darstellung von Nicolas Tobler.}
+    \caption{Die Nullklinen unterteilen die Ebene in 5 Teile mit jeweils unterschiedlicher Flussrichtung. Die $x$-Nullkline ist rot und die $y$-Nullkline blau eingezeichnet.
+    Ausserdem wird für ein Raster von Punkten die Flussrichtung als schwarze Pfeile angezeigt. Zwei Regionen werden noch gezoomt gezeigt. Darstellung von Nicolas Tobler.}
     \label{poinbendix:fig:nullklinen}
 \end{figure}
 
