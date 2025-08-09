@@ -6,14 +6,14 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\chapter{Thema\label{chapter:reynolds}}
-\kopflinks{Thema}
+\chapter{Reynolds-averaged-Naviorstokes\label{chapter:reynolds}}
+\kopflinks{Reynolds-averaged-Naviorstokes}
 \begin{refsection}
 \chapterauthor{Sebastian Eggli und Damian Birchler}
 
-\subsection{Einleitung}
+\section{Einleitung}
 
-\subsubsection{Warum CFD-Simulation?}
+\subsection{Warum CFD-Simulation?}
 
 Für kostspielige Bauteile oder Bauteil die ein grosses optimierungspotenzial haben,
 loht es sich deren Funktionstüchtigkeit vorgängig mittels CFD Simulationen zu überprüfen.
@@ -21,7 +21,7 @@ Ein Beispiel dafür könnte ein Turbinenrad eine Wasserkraftanlage sein,
 da dies einerseits ein sehr kostspieliges Bauteil ist (meist mehrere Mio. CHF),
 und andererseits viel Möglichkeiten für Parametrisierte Optimierung bietet.
 
-\subsubsection{Das Problem der Turbulenz}
+\subsection{Das Problem der Turbulenz}
 
 Das Konzept der turbulenten und laminaren Strömungen sollte bereits aus den Grundlagen der Fluiddynamik bekannt sein, darum wird hier nicht näher auf die unterschied eingegangen.
 Es ist jedoch wichtig zu verstehen das bei turbulenten Strömungen Wirbel, auch Eddys genannt, von verschiedenen Grössen und zeitlicher Dauer entstehen.
@@ -36,7 +36,9 @@ und da diese nicht aufgelösten Wirbel in Realität auch Energie umwandeln, kann
 \input{papers/reynolds/teil0.tex}
 
 
-\subsubsection{Praktische anwendungsbeispiele}
+\section{Praktische anwendung}
+
+\subsection{Simulationsdomäne}
 \label{subsubsec:domain-desc}
 
 Um dem Leser oder der Leserin ein möglichst Praxis relevantes Verständnis der Problematik zu vermitteln werden im nachfolgenden teil viele Beispiele von CFD-Simulationen gezeigt.
@@ -53,7 +55,7 @@ Das Mesh ist so gewählt das es in der Tiefe nur ein Element hat, bzw. so dass d
 
 \textit{(Mesh bezeichnet die Unterteilung des zu Simulierenden Volumen in einzelne Zellen, in denen die Navier Stokes Gleichungen gelöst werden)}
 
-\subsubsection{Turbulenzmodelle}
+\subsection{Verschiedene Turbulenzmodelle}
 
 Wie bereits im verherigen Abschnitt erwähnt bestehen Turbulenzmodelle meist aus zwei skalarfelder.
 Jedoch gibt es auch Zusammengesetzte Modelle die aus mehreren Modellen bestehen.
@@ -64,43 +66,45 @@ Logischerweise gilt jedoch die Faustregel je komplizierter ein Modell ist desto 
 Das wohl meistverbreitete Turbulenzmodell ist das k-$\epsilon$ Modell das mit zwei Feldern auskommt. Das k Feld für die Turbulente kinetische Energie,
 und das epsilon Feld für die Eddy Viskosität, was eine aufgrund der Turbulenzen errechnete hypotetische Viskosität darstellt.
 Folgend eine nicht komplete liste von Trubulenzmodellen für RANS:
--	K-$\epsilon$
--	K-$\omega$
--	Shear Stress Transport (SST) (Kombineirtes Modell)
--	Quadratisch/Kubisch K-$\epsilon$
--	RANS-LES kombinierte Modell (>=4 Felder)
+
+\begin{itemize}
+    \item k-$\epsilon$
+    \item k-$\omega$
+    \item Shear Stress Transport (SST) (Kombineirt aus k-$\epsilon$ und k-$\omega$)
+    \item Quadratisch/Kubisch K-$\epsilon$
+    \item RANS-LES kombinierte Modell (>=4 Felder)
+\end{itemize}
 
 Jedes dieser Turbulenzmodell hat seine Eigenheiten und spezifische Einsatz Bereiche.
-So ist das K-$\epsilon$ Modell zum Beispiel nicht geeignet für schwach turbulente Strömungen,
+So ist das k-$\epsilon$ Modell zum Beispiel nicht geeignet für schwach turbulente Strömungen,
 wo es die Effekte der Verwirbelungen tendenziell überschätzt.~\ref{fig:k-e}
 Hingegen ist das k-$\omega$ Modell in diesen Bereichen besser geeignet.~\ref{fig:k-w}
 Das SST-Modell kombiniert die beiden Modell so das im Wandbereich,
-wo die misten Turbulenzen auftreten, k-$\epsilon$ verwendet wird und um mittleren Bereich k-$\omega$.~\ref{fig:SST}.
+wo die misten Turbulenzen auftreten, k-$\epsilon$ verwendet wird und um mittleren Bereich,
+wo die Turbulenzen schwacher ausgeprägt sind, k-$\omega$.~\ref{fig:SST} verwendet wird.
+Wegen dieser Charakteristik ist das SST modell auch eins der realististen modelle, braucht jedoch drei Felder (k, $\epsilon$ und $\omega$)
+was den Rechenaufwand erhöht.
+In den Bilder ~\ref{fig:ohne},~\ref{fig:k-e},~\ref{fig:k-w} und ~\ref{fig:SST}
+wird ein verglich zwischen den verschidenen Modellen sowie eine Simulation ohne Reynoldsaveraging gezeigt.
 
 \begin{figure}
-    \includegraphics[width=\textwidth]{papers/reynolds/images/dns.png}
-    \caption{Ohne Turbulenzmodell}
-    \label{fig:DNS}
+  \centering
+  \includegraphics[width=0.45\textwidth]{papers/reynolds/images/dns.png}
+  \caption{Ohne Reynolds-Averaging}
+  \label{fig:ohne}
+  \centering
+  \includegraphics[width=0.45\textwidth]{papers/reynolds/images/k-e.png}
+  \caption{Mit k-$\epsilon$ Turbulenzmodell}
+  \label{fig:k-e}
+  \centering
+  \includegraphics[width=0.45\textwidth]{papers/reynolds/images/k-w.png}
+  \caption{Mit k-$\omega$ Turbulenzmodell}
+  \label{fig:k-w}
+  \centering
+  \includegraphics[width=0.45\textwidth]{papers/reynolds/images/sst.png}
+  \caption{Mit SST Turbulenzmodell}
+  \label{fig:SST}
 \end{figure}
-
-\begin{figure}
-    \includegraphics[width=\textwidth]{papers/reynolds/images/k-e.png}
-    \caption{Mit k-$\epsilon$ Turbulenzmodell}
-    \label{fig:k-e}
-\end{figure}
-
-\begin{figure}
-    \includegraphics[width=\textwidth]{papers/reynolds/images/k-w.png}
-    \caption{Mit k-$\omega$ Turbulenzmodell}
-    \label{fig:k-w}
-\end{figure}
-
-\begin{figure}
-    \includegraphics[width=\textwidth]{papers/reynolds/images/sst.png}
-    \caption{Mit SST Turbulenzmodell}
-    \label{fig:SST}
-\end{figure}
-
 
 Die verwendung des Richtigen turbulnezmodlls in der richtigen Simulation erfordert jedcoh sehr viel erfahrung sowie ein sehr gutes praktisches verständniss der Simulierten Strömung.
 Und trotzdem muss an dieser Stelle noch mals erwähnt werden das ich durch die verwendung von Turbulenzmodellen, simulationen von turbulenten Störmunge bestenfalls eine näherungen sind.
