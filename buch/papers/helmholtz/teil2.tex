@@ -10,14 +10,44 @@
 \label{helmholtz:section:teil2}}
 \kopfrechts{Teil 2}
 
-Die Grundidee der Helmholtz-Zerlegung besteht darin, dass ein glattes (differenziebares) Vektorfeld $\mathbf{F}$, welches unendlich schnell genug abfällt,eindeutig in ein wirbelfreien (irrotationalen) Teil und einen quellenfreien (solenoidalen) Teil zerlegt werden kann.
+Die Grundidee der Helmholtz-Zerlegung besteht darin, dass ein glattes (differenziebares) Vektorfeld $\mathbf{F}$, welches unendlich schnell genug abfällt, in zwei orthogonale Komponenten zerlegenlässt. Und zwar in ein eindeutig wirbelfreien (irrotationalen) Teil und einen quellenfreien (solenoidalen) Teil. Diese Zerlegung spiegelt die physikalischen Eigenschaften des Vektorfeldes wider und ist insbesondere in der Akustik, Strömungsmechanik und Elektrodynamik von zentraler Bedeutung.
 
 \begin{equation}
-\mathbf{F} =  \underbrace{-\nabla \Phi}_{Skalarpotential} + \underbrace{\nabla \times \mathbf{\Psi}}_{Vektorpotential}
+\underbrace{\mathbf{F}}_{\text{zu zerlegendes Vektorfeld}} =  \underbrace{-\nabla \Phi}_{Skalarpotential} + \underbrace{\nabla \times \mathbf{\Psi}}_{Vektorpotential}
 \label{helmholtz:equationAllgemein}
 \end{equation}
 
-Der erste Term $ \nabla \Phi $ hat keine Rotation ($\nabla \times (-\nabla \Phi) = 0$) und wird auch irrotational (wirbelfrei) bezeichnet. Der zweite Term $\nabla \times \mathbf{\Psi}$ hat gemäss der Definition immer Divergenz null ($\nabla \cdot (\nabla \times \mathbf{\Psi}) = 0$) und wird auch solenoidal (quellenfrei) genannt. \newline
+\begin{itemize}
+\item Der erste Term $ \nabla \Phi $ ist wirbelfrei (irrotational), da Rotation verschwindet (Warum genau ???) ($\nabla \times (-\nabla \Phi) = 0$) 
+\begin{itemize}
+\item Dieser Anteil hat keine Rotation: $\nabla \times (-\nabla \Phi) = 0$
+\item Die Feldlinien verlaufen strahlenförmig von Quellen zu Senken
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{}
+        \centering
+        \includegraphics[scale=0.3]{papers/helmholtz/images/Quelle.png}
+        \caption{F}
+        \label{fig:quelle}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{}
+        \centering
+        \includegraphics[scale=0.3]{papers/helmholtz/images/Senke.png} 
+        \caption{F}
+        \label{fig:senke}
+    \end{subfigure}
+    \caption{}
+    \label{fig:vergleich}
+\end{figure}
+\end{itemize}
+\item Der zweite Term $\nabla \times \mathbf{\Psi}$ hat gemäss der Definition immer Divergenz null ($\nabla \cdot (\nabla \times \mathbf{\Psi}) = 0$) und wird auch solenoidal (quellenfrei) genannt. \newline
+\begin{itemize}
+\item Dieser Anteil hat keine Divergenz:$\nabla \cdot (\nabla \times \mathbf{\Psi}) = 0$
+\item Die Feldlinien bilden geschlossene Schleifen (ähnlich einem Magnetfeld).
+\end{itemize}
+\end{itemize}
+
 
 \begin{tabular}[h]{l|l|l|l}
 \hline
