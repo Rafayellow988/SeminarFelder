@@ -1,0 +1,94 @@
+%
+% fourierGrundlagen.tex -- Mathematische Grundlagen der Fourier Reihe & Transformation
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+
+\section{Fourier-Reihe\label{fourier:section:GrundlagenFourierAnalyse}}
+\kopfrechts{Fourier-Reihe}
+
+
+Mit der Fourier-Reihe lassen sich periodische Funktionen, wie ein Rechteck- oder Dreiecksignal, mit skalierten Sinus- und Kosinusschwingungen darstellen. 
+Um die Reihe aufzustellen, muss man nur drei Arten von Koeffizienten bestimmen. 
+
+\begin{itemize}
+	\item $\frac{a_0}{2}$ ist der Mittelwert der Funktion. 
+	$a_0$ entspricht dem Integral der Funktion über eine Periode geteilt durch die Periode.
+	Die Multiplikation mit 2 ist reine Konvention.
+	
+	\begin{equation}
+		a_0 = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t) \, dt
+	\end{equation}
+	
+	\item Die $a_n$ definieren den geraden Anteil der Funktion. $\omega$ ist die Kreisfrequenz und ist definiert durch $\omega = 2\pi f$. 
+	$n$ ist der Summations- oder Frequenzindex, später wird eine Summe über $n$ gebildet.
+	
+	\begin{equation}
+		a_n = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t) \cos\left(n\omega t\right) dt
+	\end{equation}
+	
+	\item Die $b_n$ definieren den ungeraden Anteil der Funktion:
+	
+	\begin{equation}
+		b_n = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t) \sin\left(n\omega t\right) dt
+	\end{equation}
+	
+\end{itemize}
+
+
+Sind alle Koeffizienten bestimmt, lassen sich fast alle Funktionen perfekt approximieren.
+Die $a_n$ und $b_n$ skalieren die Amplituden der Schwingungen in abhängigkeit zu $n>=1$. 
+Je nach Funktion können diese Faktoren durchaus komplizierte Funktionen annehmen.
+Generell nehmen die Amplituden mit höherem $n$ ab, ob linear, quadratisch oder höherer Ordnung lässt sich im Allgemeinen nicht bestimmen.
+Mit jedem weiteren Summanden der Reihe steigt die enthaltene Frequenz linear mit $n$ an.
+Das ist die Fourier-Reihe:
+
+
+\begin{equation}
+f(t) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left( a_n \cos\left( n\omega t \right) + b_n \sin\left( n \omega t \right) \right)
+\end{equation}
+
+
+Eine Ausnaheme sind Funktionen mit Sprungstellen, wie in Abbildung~\ref{fourier:fig:fourierrechteck} gezeigt wird.
+Bei dieser Rechteckfunktion wurden die Reihe bis $n = 5$ berechnet.
+Bei solchen Funktionen tritt das sogenannte Gibbsche Phänomen auf.
+In der Nähe eines Sprungs entsteht ein charakteristischer Überschwinger, der selbst bei unendlich vielen Summanden nicht verschwindet.
+Das Gleichheitszeichen $=$ gilt daher nur eingeschränkt. 
+Nun folgen zwei Bespiele.
+
+\input{papers/fourier/fig/fig-fourier_Rechteck.tex}
+
+\begin{equation}
+	f_1(t) = \frac{1}{2} + \sum_{\substack{n=1 \\ n\ \text{ungerade}}}^{5} \frac{2}{\pi n} \sin\left( \pi n t \right)
+\end{equation}
+
+$f_1(t)$ entspricht der roten Funktion in Abbildung~\ref{fourier:fig:fourierrechteck}. 
+Der Mittelwert $a_0$ entspricht $\frac{1}{2}$. 
+Die Rechteck Funktion ist abzüglich $a_0$ eine ungerade Funktion, da gilt $f_1(t) = -f_1(t)$. 
+Daher ist der gerade Anteil $a_n$ stets Null. 
+Zudem wurde noch eine Vereinfachung von $b_n$ vorgenommen, da der Term bei geraden $n$ Null wird, summiert man nur über ungerade $n$. 
+
+
+\input{papers/fourier/fig/fig-fourier_Dreieck.tex}
+
+
+\begin{equation}
+	f_2(t) = \sum_{\substack{n=1 \\ n\ \text{ungerade}}}^{5} \frac{-8}{\pi^2 n^2} \cos(n\pi t)
+\end{equation}
+
+$f_2(t)$ entspricht der roten Funktion in Abbildung~\ref{fourier:fig:fourierdreieck} und überdeckt das Original beinahe perfekt. 
+Dies mit nur drei Iterationen!
+Der Mittelwert $a_0$ ist hier 0. 
+Die Dreieck Funktion ist eine gerade Funktion, da gilt $f_1(t) = f_1(-t)$. 
+Daher ist der ungerade Anteil $a_n$ stets Null. 
+Wie beim ersten Beispiel wurde $b_n$ vereinfacht, man summiert nur über ungerade $n$. 
+Bei der Fourier-Reihenbildung kann man sich viel Zeit ersparen, wenn man zuerst überprüft, ob es sich um eine gerade oder ungerade Funktion handelt.
+So kann man ohne zu rechnen $a_n$ oder $b_n$ gleich Null setzen.
+
+%bei der Quantenmechanik rechnet man stets komplex. maybe noch erwähnen: die komplexe Fourier-Reihe
+
+
+
