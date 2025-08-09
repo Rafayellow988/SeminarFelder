@@ -6,11 +6,9 @@ Die Bahnen in diesen Systemen sind dann zu einem gewissen Grad vorhersagbar durc
 Ein Beispiel dazu findet sich im nächsten Abschnitt \ref{poinbendix:subsection:nullklinen}.
 In einem zweiten Abschnitt \ref{poinbendix:subsection:limesmengen} werden dann die sogenannten Limesmengen eingeführt, welche der Kern des Satzes von Poincaré-Bendixson bilden.
 
-%TODO Nullklinen erklären anhand Beispie
-%TODO Verhalten von Bahnkurven anhand Nullklinen analysieren
 \subsection{Nullklinen} \label{poinbendix:subsection:nullklinen}
 
-Die Punkte bei denen die Ableitungen entlang einer Koordinatenachse null werden (e.g.: $\dot{x}=0$), befinden sich auf Kurven welche Nullklinen genannt werden. %TODO reference
+Die Punkte bei denen die Ableitungen entlang einer Koordinatenachse null werden (e.g.: $\dot{x}=0$), befinden sich auf Kurven welche Nullklinen genannt werden.
 Somit werden Nullklinen in 2D immer von einem vertikalen ($x$-Nullkline) oder einem horizontalen ($y$-Nullkline) Fluss durchflossen.
 Daraus folgt, dass Schnittpunkte zweier Nullklinen Nullstellen sind (in 2D).
 Alle Ableitungen werden also null ($\dot{x}=\dot{y}=0$) und Bahnkurven welche zu diesen Punkten kommen enden sofort.
@@ -61,9 +59,8 @@ Mit derselben Methode können auch die anderen 4 Regionen analysiert werden.
 
 \begin{figure}
     \centering
-    \input{papers/poinbendix/images/nullklinen.tikz} %TODO fix Pfeile, remove equation
-    \caption{Die Nullklinen unterteilen die Ebene in 5 Teile mit jeweils unterschiedlicher Flussrichtung. Die $x$-Nullkline ist rot und die $y$-Nullkline blau eingezeichnet.
-    Ausserdem wird für ein Raster von Punkten die Flussrichtung als schwarze Pfeile angezeigt. Die Gebiete um die  Nullstellen werden noch gezoomt gezeigt. Darstellung von Nicolas Tobler.}
+    \input{papers/poinbendix/images/nullklinen.tikz}
+    \caption{Darstellung der Nullklinen und der Flussrichtungen aus Beispiel \ref{poinbendix:beispiel:nullklinen}. Die $x$-Nullkline ist rot und die $y$-Nullkline blau eingezeichnet. Darstellung von Nicolas Tobler.}
     \label{poinbendix:fig:nullklinen}
 \end{figure}
 
@@ -94,7 +91,13 @@ Schauen wir uns die einfache, eindimensionale Differenzialgleichung
     \dot{x} = \sin x,
 \end{equation*}
 mit einem Startpunkt von $p = \frac{\pi}{2}$ an.
-Am Punkt $p$ haben wir eine positive Ableitung ($\dot{p} = 1$), und der Punkt wird eingeschlossen von zwei Nullstellen $0$ und $\pi$.
+Am Punkt $p$ haben wir eine positive Ableitung ($\dot{x} = 1$), und der Punkt wird eingeschlossen von zwei Nullstellen $0$ und $\pi$.
 Daraus folgt, dass beide Limesmengen auf die Nullstellen fallen $\alpha(p) = 0$ und $\omega(p) = \pi$.
-%TODO Plot example
+Eine Darstellung dieses Beispiels findet sich in Abbildung \ref{poinbendix:fig:limesmenge}.
+\begin{figure}
+    \centering
+    \input{papers/poinbendix/images/limesmenge_1d.tikz}
+    \caption{Darstellung der Limesmengen aus Beispiel \ref{poinbendix:beispiel:1dlimesmengen}.}
+    \label{poinbendix:fig:limesmenge}
+\end{figure}
 \end{beispiel}
