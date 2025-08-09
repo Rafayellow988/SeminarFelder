@@ -1,5 +1,6 @@
 \section{Spiegelungen}
-\renewcommand{\m}{\mathbf{m}}
+\renewcommand{\v}{\hat{\mathbf{v}}}
+\subsection{Spiegelung in der traditionellen Vektorgeometrie}
 Wir betrachten den Vektor
 \begin{equation}
 \a = a_1 \eone + a_2 \etwo.
@@ -8,6 +9,13 @@ Wenn man \autoref{geoalgebra:fig:reflection} betrachtet, fällt schnell auf, das
 $\a'$ genau eine Komponente negativ wird:
 \begin{equation}
 \a' = -a_1 \eone + a_2 \etwo.
+\end{equation}
+
+\subsection{Projektion eines Vektors}
+Sei ein beliebiger Vektor $\a$ und ein beliebiger Einheitsvektor $\v$ (\autoref{geoalgebra:fig:reflection}).
+Der auf $\v$ projezierte Vektor $\a_{||}$ erhält man durch
+\begin{equation}
+  \a_{||} = (\v \cdot \a) \v.
 \end{equation}
 \begin{figure}
   \begin{center}
