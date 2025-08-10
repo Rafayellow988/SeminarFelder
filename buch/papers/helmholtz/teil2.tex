@@ -61,6 +61,97 @@ Vektorpotential & $\mathbf{\Psi}$ & $\nabla \cdot (\nabla \times \mathbf{\Psi}) 
 
 Hierzu müssen jedoch die Potentiale $\Phi $ und $\mathbf{\Psi}$ berechnet werden. Dies kann auf verschiedene Methoden gemacht werden abhängig von den Ranbedingungen.
 
+\subsubsection{Herleitung der Identität}
+Sei $\Phi$ ein zweimal stetig differenzierbares Skalarfeld.
+
+\begin{enumerate}
+    \item \textbf{Zuerst berechnen wir den Gradienten $\nabla\Phi$:}
+    $$
+    \nabla \Phi =
+    \begin{pmatrix}
+        \frac{\partial \Phi}{\partial x} \\
+        \frac{\partial \Phi}{\partial y} \\
+        \frac{\partial \Phi}{\partial z}
+    \end{pmatrix}
+    $$
+
+    \item \textbf{Nun berechnen wir die Rotation dieses Gradientenfeldes:}
+    
+    Wir wenden die Definitionsformel der Rotation auf den Gradientenvektor an.
+    $$
+    \nabla \times (\nabla \Phi) =
+    \begin{pmatrix}
+        \frac{\partial}{\partial y}\left(\frac{\partial \Phi}{\partial z}\right) - \frac{\partial}{\partial z}\left(\frac{\partial \Phi}{\partial y}\right) \\
+        \frac{\partial}{\partial z}\left(\frac{\partial \Phi}{\partial x}\right) - \frac{\partial}{\partial x}\left(\frac{\partial \Phi}{\partial z}\right) \\
+        \frac{\partial}{\partial x}\left(\frac{\partial \Phi}{\partial y}\right) - \frac{\partial}{\partial y}\left(\frac{\partial \Phi}{\partial x}\right)
+    \end{pmatrix}
+    $$
+
+    \item \textbf{Den Satz von Schwarz anwenden:}
+    
+    Wir schreiben die gemischten Ableitungen aus:
+    $$
+    =
+    \begin{pmatrix}
+        \frac{\partial^2 \Phi}{\partial y \partial z} - \frac{\partial^2 \Phi}{\partial z \partial y} \\
+        \frac{\partial^2 \Phi}{\partial z \partial x} - \frac{\partial^2 \Phi}{\partial x \partial z} \\
+        \frac{\partial^2 \Phi}{\partial x \partial y} - \frac{\partial^2 \Phi}{\partial y \partial x}
+    \end{pmatrix}
+    $$
+    Auch hier sorgt der \textbf{Satz von Schwarz} dafür, dass sich die Terme in jeder Komponente gegenseitig aufheben.
+    $$
+    =
+    \begin{pmatrix}
+        0 \\
+        0 \\
+        0
+    \end{pmatrix} = \mathbf{0}
+    $$
+\end{enumerate}
+
+\begin{enumerate}
+    \item \textbf{Berechnung der Rotation $\nabla \times \mathbf{\Psi}$:}
+    
+    Zuerst wenden wir den Rotations-Operator auf $\mathbf{\Psi}$ an:
+    \[
+    \nabla \times \mathbf{\Psi} =
+    \begin{pmatrix}
+        \frac{\partial \Psi_z}{\partial y} - \frac{\partial \Psi_y}{\partial z} \\
+        \frac{\partial \Psi_x}{\partial z} - \frac{\partial \Psi_z}{\partial x} \\
+        \frac{\partial \Psi_y}{\partial x} - \frac{\partial \Psi_x}{\partial y}
+    \end{pmatrix}
+    \]
+
+    \item \textbf{Berechnung der Divergenz des Ergebnisses:}
+    
+    Nun wenden wir den Divergenz-Operator auf das resultierende Vektorfeld an. Dies geschieht durch die Summe der partiellen Ableitungen der Komponenten nach der jeweiligen Koordinate.
+    
+    \begin{align*}
+    % Schritt 1: Definition der Divergenz anwenden
+    \nabla \cdot (\nabla \times \mathbf{\Psi}) &= \frac{\partial}{\partial x}\left( \frac{\partial \Psi_z}{\partial y} - \frac{\partial \Psi_y}{\partial z} \right) + \frac{\partial}{\partial y}\left( \frac{\partial \Psi_x}{\partial z} - \frac{\partial \Psi_z}{\partial x} \right) + \frac{\partial}{\partial z}\left( \frac{\partial \Psi_y}{\partial x} - \frac{\partial \Psi_x}{\partial y} \right) \\[1em]
+    % Schritt 2: Die Ableitungen ausführen
+    &= \frac{\partial^2 \Psi_z}{\partial x \partial y} - \frac{\partial^2 \Psi_y}{\partial x \partial z} + \frac{\partial^2 \Psi_x}{\partial y \partial z} - \frac{\partial^2 \Psi_z}{\partial y \partial x} + \frac{\partial^2 \Psi_y}{\partial z \partial x} - \frac{\partial^2 \Psi_x}{\partial z \partial y} \\[1em]
+    % Schritt 3: Terme umsortieren, um Paare zu bilden
+    &= \left( \frac{\partial^2 \Psi_x}{\partial y \partial z} - \frac{\partial^2 \Psi_x}{\partial z \partial y} \right) + \left( \frac{\partial^2 \Psi_y}{\partial z \partial x} - \frac{\partial^2 \Psi_y}{\partial x \partial z} \right) + \left( \frac{\partial^2 \Psi_z}{\partial x \partial y} - \frac{\partial^2 \Psi_z}{\partial y \partial x} \right)
+    \end{align*}
+    
+    \item \textbf{Anwendung des Satzes von Schwarz:}
+    
+    Nach dem \textbf{Satz von Schwarz} ist die Reihenfolge der partiellen Ableitungen bei zweimal stetig differenzierbaren Funktionen irrelevant. Daher gilt:
+    \[
+    \frac{\partial^2 f}{\partial x \partial y} = \frac{\partial^2 f}{\partial y \partial x}
+    \]
+    Angewendet auf unsere Gleichung bedeutet dies, dass jeder Term in den Klammern Null ergibt:
+    \begin{align*}
+    \nabla \cdot (\nabla \times \mathbf{\Psi}) &= \underbrace{\left( \frac{\partial^2 \Psi_x}{\partial y \partial z} - \frac{\partial^2 \Psi_x}{\partial y \partial z} \right)}_{=0} + \underbrace{\left( \frac{\partial^2 \Psi_y}{\partial z \partial x} - \frac{\partial^2 \Psi_y}{\partial z \partial x} \right)}_{=0} + \underbrace{\left( \frac{\partial^2 \Psi_z}{\partial x \partial y} - \frac{\partial^2 \Psi_z}{\partial x \partial y} \right)}_{=0} \\[1em]
+    &= 0 + 0 + 0 \\[1em]
+    &= 0
+    \end{align*}
+
+\end{enumerate}
+
+\textbf{Ergebnis:} Damit ist die Identität $\nabla \cdot (\nabla \times \mathbf{\Psi}) = 0$ bewiesen.
+
 \subsection{Helmholtz-Zerlegung und Komplexe Schallintensität}
 
 Bei näherer Betrachtung ist zu erkennen, dass die Gleichung \eqref{helmholtz:equationAllgemein} dieselbe Struktur wie die Komplexe Schallintensität \eqref{helmholtz:equationIntensitaetKomplex} hat. Somit kann die Zerlegung wie folgt vorgenommen werden
