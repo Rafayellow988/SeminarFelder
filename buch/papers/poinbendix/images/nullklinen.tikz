@@ -1,4 +1,4 @@
-\begin{tikzpicture}[>=stealth', auto, node distance=2cm, scale=2]
+\begin{tikzpicture}[>=latex, >=stealth', auto, node distance=2cm, scale=2]
 
     \begin{pgfonlayer}{background}
         \node[fill=red!10, minimum width=2cm, minimum height=2cm] (centerref) at (0,0) {};

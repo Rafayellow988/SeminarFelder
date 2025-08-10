@@ -3,7 +3,7 @@
 \begin{satz}[Poincaré-Bendixson]
 \label{poinbendix:satz:poinbendix}
 $\Phi_t(p) \in \Xi^r(\mathbb{S}^2)$ sei ein $r$-fach differenzierbares, zweidimensionales dynamisches System mit Startpunkt $p \in \mathbb{S}^2$.
-Dann gilt für die Omega Limesmenge $\omega(p)$ eine der folgenden Optionen:
+Dann gilt für die Omega-Limesmenge $\omega(p)$ eine der folgenden Optionen:
 \begin{enumerate}
 \item $\omega(p)$ ist eine Nullstelle
 \item $\omega(p)$ ist ein geschlossener Orbit
@@ -85,6 +85,7 @@ Das Gleichungssystem
 erzeugt dabei kreisrunde Orbits um den Nullpunkt herum.
 Der Nullpunkt ist also eine Nullstelle und stellt damit eine weitere Omega-Limesmenge dar.
 Die ganze Situation ist in Abbildung \ref{poinbendix:fig:fall_2} zu sehen.
+\end{beispiel}
 
 \begin{figure}
 \centering
@@ -93,8 +94,6 @@ Die ganze Situation ist in Abbildung \ref{poinbendix:fig:fall_2} zu sehen.
     Anfangspunkte mit unterschiedlichem Radius haben unterschiedliche Orbitale als Omega Limesmengen.}
 \label{poinbendix:fig:fall_2}
 \end{figure}
-
-\end{beispiel}
 
 Es gibt aber auch die zweite Variante, wo verschiedene Bahnkurven auf den selben Orbit konvergieren, wie im folgenden Beispiel gezeigt wird.
 
@@ -128,16 +127,16 @@ Diese Erkenntnis hilft zu verstehen, wie ein periodisches Verhalten wie in den o
 \subsection{Fall 3: $\omega(p)$ ist ein geschlossener Orbit welcher Singularitäten verbindet} \label{poinbendix:subsection:fall3}
 
 Der dritte Fall ist aus der Definition am schwierigsten zu verstehen.
-Dabei nähern sich Bahnkurven einem geschlossenen Orbit an wie im zweiten Beispiel von Fall 2 \ref{poinbendix:beispiel:fall2_2}.
+Dabei nähern sich Bahnkurven einem geschlossenen Orbit an wie im vorherigen Beispiel \ref{poinbendix:beispiel:fall2_2}.
 Nun gibt es aber die Besonderheit, dass auf diesem Orbit Nullstellen auftreten können.
-Dies führt dazu, dass sich die Bahnkurven zwar immer mehr dem Orbit annähern, aber stoppen sobald er erreicht ist.
+Dies führt dazu, dass sich die Bahnkurven zwar immer mehr dem Orbit annähern, aber stoppen, sobald er erreicht ist.
 Es ist also unklar, in welcher Nullstelle die Omega Limesmenge zu liegen kommt.
 
 Auch dieser Fall wird wieder anhand eines Beispiels gezeigt.
 
 \begin{beispiel} \label{poinbendix:beispiel:fall3}
 
-Dieses Beispiel basiert auf dem Vorherigen Beispiel \ref{poinbendix:beispiel:fall2_2}.
+Dieses Beispiel basiert auf dem vorherigen Beispiel \ref{poinbendix:beispiel:fall2_2}.
 Die Ableitung des Radius $\dot{r}$ wird dabei unverändert belassen.
 Aber die Ableitung des Winkels $\dot{\varphi}$ wird angepasst und damit ergibt sich das Differentialgleichungssystem
 \begin{align*}
@@ -160,6 +159,8 @@ Aber wählt man $a=1$, dann entstehen drei Nullstellen bei
 Ausserhalb des Einheitskreises ist $r(2-r)<1$ und die Differenzialgleichung zum Radius $\dot{r}$ hat keine Nullstelle (ausser dem Nullpunkt).
 Somit drehen die Bahnkurven im Uhrzeigersinn, bis sie sich dem Einheitskreis angenähert haben.
 Abbildung \ref{poinbendix:fig:fall_3} zeigt die Situation, wobei die Nullstellen mit einem \textit{X} dargestellt werden.
+\end{beispiel}
+
 \begin{figure}
 \centering
     \input{papers/poinbendix/images/fall_3_polar.pgf}
@@ -167,5 +168,3 @@ Abbildung \ref{poinbendix:fig:fall_3} zeigt die Situation, wobei die Nullstellen
     Der periodischen Orbit als Omega-Limesmenge wird unterbrochen durch drei Nullstellen welche mit einem \textit{X} markiert sind.}
 \label{poinbendix:fig:fall_3}
 \end{figure}
-
-\end{beispiel}
