@@ -1,2 +1,37 @@
 \section{Rotationen}
+\renewcommand{\u}{\hat{\mathbf{u}}}
 \subsection{Rotationen sind zwei aufeinanderfolgende Spiegelungen}
+Eine Rotation kann durch zwei aufeinanderfolgende Spiegelungen ausgedrückt werden (siehe
+\autoref{geoalgebra:fig:rotation-as-two-reflections}).
+\begin{figure}
+  \begin{center}
+\input{papers/geoalgebra/assets/rotations/rotations-as-two-reflections.tex}
+  \end{center}
+  \caption{eine rotation kann durch zwei aufeinanderfolgende spiegelungen abgebildet werden}
+\label{geoalgebra:fig:rotation-as-two-reflections}
+\end{figure}
+
+\subsection{Rotation eines Vektors}
+Man betrachte den Vektor $\mathbf{x}$, der zunächst an $\v$ und danach an $\u$ gespiegelt werden
+sollte (siehe \autoref{geoalgebra:fig:rotation}). $\mathbf{x}'$ wird analog zu berechnet durch
+\begin{equation}
+\mathbf{x}' = \v \mathbf{x} \v.
+\end{equation}
+Analog dazu kann der neu entstandene Vektor $\mathbf{x}'$ an $\u$ gespiegelt werden
+\begin{equation}
+\mathbf{x}'' = \u \mathbf{x}' \u.
+\end{equation}
+Die ganze Rotation wird somit durch
+\begin{equation}
+\mathbf{x}'' = \u \v \mathbf{x} \v \u
+\end{equation}
+berechnet.
+\begin{figure}
+  \begin{center}
+\input{papers/geoalgebra/assets/rotations/rotation-of-a-vector.tex}
+  \end{center}
+  \caption{eine rotation kann durch zwei aufeinanderfolgende spiegelungen abgebildet werden}
+\label{geoalgebra:fig:rotation}
+\end{figure}
+
+
