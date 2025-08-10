@@ -9,21 +9,53 @@
 \section{Geostrophische Näherung / heutiger Ansatz
 \label{geostrophisch:section:geoNäherung}}
 \kopfrechts{Teil 3}
-Der Heutige Ansatz... 
-
+\subsection{Geostrophische Näherung}
 \begin{equation}
-\boldsymbol{
-f\, *\vec{k} \times \vec{v}_g 
+f\, (\vec{k} \times \vec{v}_g) 
 +
 \frac{1}{\rho} \nabla p
 =
 0
-}
-\label{geostrophisch:equation3}
+\label{geostrophisch:equation5}
 \end{equation}
-Die Gleichung besagt, der geostrophische Wind entsteht genau dann, wenn sich die Druckgradientenkraft\eqref{geostrophisch:equation2} und die Corioliskraft\eqref{geostrophisch:equation1} ausgleichen.
-Heisst \eqref{geostrophisch:equation1} Corioliskraft ist gleich \eqref{geostrophisch:equation2} Gradientenkraft.
+Von der geostrophischen Näherung spricht man also, wenn man annimmt, dass sich die Druckgradientkraft und die Corioliskraft im Gleichgewicht befinden und alle anderen Kräfte vernachlässigt werden können. In diesem Fall wirken beide Kräfte gleich stark, aber in entgegengesetzte Richtungen, sodass kein weiterer Beschleunigungseffekt auf die Luftmasse wirkt und sie parallel zu den Isobaren strömt - es entsteht der sogenannte geostrophische Wind.
 
+\vspace{1em}
 
+Da die genaue Masse eines Luftpakets meist nicht bekannt ist, betrachtet man beide Kräfte pro Masseneinheit. Entsprechend handelt es sich bei den dargestellten Gleichungen um spezifische Kräfte, also Beschleunigungen.
 
+\vspace{1em}
+
+Mathematisch entspricht das dem Gleichgewicht zwischen der Druckgradientkraft nach Gleichung\eqref{geostrophisch:equation4} und der Corioliskraft nach Gleichung\eqref{geostrophisch:equation2}.
+
+\subsection{Heutiger Ansatz}
+
+Der heutige Ansatz in der numerischen Wettervorhersage entspricht im Wesentlichen der Vision von Lewis Fry Richardson, allerdings mit den Möglichkeiten moderner Hochleistungsrechner.
+
+\begin{itemize}
+    \item Die Atmosphäre wird in ein dreidimensionales Gitter unterteilt, das sowohl horizontale als auch vertikale Auflösung umfasst.
+    \item Auf jedem Gitterpunkt werden die fundamentalen Erhaltungsgleichungen (insbesondere die Navier-Stokes-Gleichungen) gelöst, um die Entwicklung von Wind, Temperatur, Luftdruck und weiteren Grössen zu berechnen.
+    \item Dabei kommen umfangreiche Echtzeitdaten zum Einsatz, die durch Satelliten, Bojen, Flugzeuge und Wetterstationen bereitgestellt werden.
+    \item Hochleistungsrechner (Supercomputer) berechnen die Entwicklung der atmosphärischen Zustandsgrössen iterativ in kleinen Zeitschritten – dies bildet die Grundlage der numerischen Wettervorhersage (Numerical Weather Prediction, NWP).
+\end{itemize}
+
+Die Gleichung zur Beschreibung der zeitlichen Änderung des Wasserdampfgehalts (die sogenannte „7.~Gleichung“) wurde in diesem Zusammenhang bewusst ausgelassen, unter anderem weil die Atmosphäre in früheren Modellen als deutlich trockener angenommen wurde als heute.
+
+\subsection{Die siebte Gleichung}
+
+Die siebte Gleichung im System der atmosphärischen Grundgleichungen beschreibt die zeitliche Änderung des spezifischen Wasserdampfgehalts in der Luft. Sie stellt eine Erhaltungsgleichung dar und berücksichtigt sowohl den Transport von Feuchtigkeit durch advektive Prozesse als auch Quellen und Senken wie Kondensation, Verdunstung oder Niederschlag.
+In ihrer allgemeinen Form lautet sie:
+\begin{equation}
+\frac{\partial q_v}{\partial t} + \vec{v} \cdot \nabla q_v = S_q
+\label{geostrophisch:equation6}
+\end{equation}
+Diese Gleichung ist entscheidend für die Beschreibung von Wolkenbildung, Niederschlagsprozessen und der allgemeinen Feuchteverteilung in der Atmosphäre.
+
+\subsection{Moderne Umsetzung nach Richardson} 
+
+Aufbauend auf den theoretischen Grundlagen und der Methodik von Richardson wurde ein eigener Ansatz entwickelt, der mithilfe heutiger Rechenleistung die Berechnung des geostrophischen Windes automatisiert.
+Hierfür wurde ein Python-Programm erstellt, das auf Basis realer atmosphärischer Druckdaten die horizontalen Druckgradienten ermittelt und unter Berücksichtigung der Corioliskraft den geostrophischen Wind berechnet.
+Das Programm visualisiert die Resultate in Form von Vektorfeldern, sodass sowohl Geschwindigkeit als auch Richtung des Windes anschaulich dargestellt werden.
+
+Dieser moderne Ansatz verbindet die historischen Ideen Richardsons mit den heutigen Möglichkeiten der Datenverarbeitung und Visualisierung, wodurch eine präzisere und deutlich schnellere Analyse atmosphärischer Strömungen möglich wird.
 

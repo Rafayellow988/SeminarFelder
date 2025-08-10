@@ -9,28 +9,41 @@
 \section{Geschichte\label{geostrophisch:section:geschichte}}
 \kopfrechts{Geschichte}
 
-Die Anfänge der numerischen Wettervorhersage gehen auf den britischen Mathematiker und Physiker \textbf{Lewis Fry Richardson} (1881–1953) zurück.  
-In seinem Werk \textit{Weather Prediction by Numerical Process} (1922) formulierte Richardson als Erster die Idee, eine numerische Wettervorhersage durch das explizite Lösen eines physikalisch fundierten Gleichungssystems zu bestimmen.  
+Die Anfänge der numerischen Wettervorhersage gehen auf den britischen Mathematiker und Physiker \emph{Lewis Fry Richardson} (1881–1953) zurück (Abbildung~\ref{bild:portraitRichi}).
+Schon in jungen Jahren entdeckte er sein Interesse an der Mathematik und wie man diese einsetzen kann um die Menschheit voranzubringen.
+Er entwickelte eine neue spezielle Methode, um analytisch nicht lösbare Partielle Differentialgleichungen zu lösen. 
+Besagte Methode wurde in einem Artikel veröffentlicht.
+Anschliessend forschte er an praktischen Anwendungsmöglichkeiten für seine entwickelte Methode.
+In seinem Werk \cite{geostrophisch:wpbnp} (1922) formulierte Richardson als Erster die Idee, eine numerische Wettervorhersage durch das explizite Lösen eines physikalisch fundierten Gleichungssystems zu bestimmen.  
 Damit legte er den theoretischen Grundstein für die moderne Wettermodellierung.
-Für diese Erste Vorhersage von 6 Stunden brauchte er etwa 6 Wochen Zeit für die Berechnungen.
-Zudem wich diese auch noch weit von der Realität ab.
-Warum das so war und warum seine Arbeit trotzdem so wichtig für heutige Wettervorhersagen ist, darauf gehen wir in den folgenden Kapiteln ein. 
+Da er in diesem Buch ein praktisch gerechnetes Beispiel inkludieren wollte, führte er die Berechnung seiner Idee einmal praktisch durch.
+Für diese erste Vorhersage von 6 Stunden brauchte er etwa 6 Wochen Zeit für die Berechnungen.
+Doch seine erste Vorhersage wich sehr stark von der Realität ab.
+Was dabei schief ging und wieso seine Arbeit doch so grundlegend Wichtig für heutige Wettervorhersagen ist, wird in ~\ref{geostrophisch:subsection:failedPrediction} genauer beschrieben.
+
+Während Richardson das Buch \cite{geostrophisch:wpbnp} (1922) verfasste, war er als Krankenwagenfahrer im Krieg tätig. 
+Obwohl er Pazifist war und nichts mit dem Krieg zu tun haben wollte, wurde er aufgefordert seinen Teil beizutragen. 
+Die atmosphärischen Daten für seine Berechnungen findet er in einem Bericht vom 20. Mai 1910. 
+An diesem Tag war ein \glqq Internationaler Ballon-Tag\grqq, in ganz Europa lies man Wetterballone aufsteigen, welche Daten der Atmosphäre sammelten.
+Von dieser Messung um 7:00 Uhr wollte er das Wetter 6 Stunden Vorhersagen. 
+Nach Abschluss des Manuskripts lagerte Richardson es in einem Schuppen, in dem er auch Brennmaterial aufbewahrte.
+So ging das Buch verloren und wurde erst Monate später unter einem Kohlehaufen wieder aufgefunden.
+Diese Anekdote erwähnt er in zwei Nüchternen Sätzen im Vorwort des Buches, dabei hätte es fast jahrelange Arbeit gekostet. 
+
+Richardsons numerischer Ansatz war seiner Zeit voraus.
+Das Buch war damals nicht in der Fachwelt anerkannt und wurde nicht viel verkauft. 
+Seine Methode wurde als zu Theoretisch und nicht umsetzbar betitelt. 
+Er erforderte enorme Rechenleistung, die damals nur durch Handberechnungen möglich war und daher für praktische Vorhersagen ungeeignet schien.  
+Erst Jahrzehnte später, mit dem Aufkommen elektronischer Computer, konnte seine Methode effizient umgesetzt werden.  
+Die von ihm verwendeten Gleichungen, insbesondere in Verbindung mit der geostrophischen Näherung, bilden noch heute die Grundlage moderner Wettermodelle.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics{Portrait_Richardson.jpg}
-	\caption{Portraitfoto von Richardson}
+	\caption{Lewis Fry Richardson, 1881-1953, Autor des Buches \cite{geostrophisch:wpbnp} und damit Begründer der numerischer Wettervorhersage.}
 	\label{bild:portraitRichi}
 \end{figure}
 
-Siehe ~\ref{bild:portraitRichi} das ist ein Portrait Foto von Richardson.
-
-\begin{itemize}
-	\item \textbf{Bewegungsgleichungen:} Horizontale und vertikale Impulsbilanz
-	\item \textbf{Kontinuitätsgleichung:} Erhaltung der Masse
-	\item \textbf{Energiegleichung:} Thermodynamische Prozesse
-	\item \textbf{Zustandsgleichung:} Zusammenhang zwischen Druck, Temperatur und Dichte
-\end{itemize}
 
 
 
