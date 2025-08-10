@@ -82,66 +82,69 @@ Wir sehen, dass durch den Hodge-Operator die $E$ und $B$ ihre Plätze tauschen.
 Nun wenden wir die äussere Ableitung an und erhalten
 \begin{align*}
 	d{\ast} F
-	&= d \, \Bigg(
+	= &\phantom{+} d \, \Bigg(
 	\frac{E_{1}}{c} \, dx^2 \wedge dx^3
 	- \frac{E_{2}}{c} \, dx^1 \wedge dx^3
-	+ \frac{E_{3}}{c} \, dx^1 \wedge dx^2 \\
-	&\quad
-	+ B_3 \, dx^0 \wedge dx^3
+	+ \frac{E_{3}}{c} \, dx^1 \wedge dx^2 
+	\\
+	&+ B_3 \, dx^0 \wedge dx^3
 	+ B_2 \, dx^0 \wedge dx^2
 	+ B_1 \, dx^0 \wedge dx^1
 	\Bigg) \\[1ex]
-	&= \frac{1}{c} \frac{\partial E_1}{\partial x^0} \, dx^0 \wedge dx^2 \wedge dx^3
+	= \phantom{+} &\frac{1}{c} \frac{\partial E_1}{\partial x^0} \, dx^0 \wedge dx^2 \wedge dx^3
 	+ \frac{1}{c} \frac{\partial E_1}{\partial x^1} \, dx^1 \wedge dx^2 \wedge dx^3
-	- \frac{1}{c} \frac{\partial E_2}{\partial x^0} \, dx^0 \wedge dx^1 \wedge dx^3 \\
-	&\quad
-	- \frac{1}{c} \frac{\partial E_2}{\partial x^2} \, dx^2 \wedge dx^1 \wedge dx^3
+	- \frac{1}{c} \frac{\partial E_2}{\partial x^0} \, dx^0 \wedge dx^1 \wedge dx^3 
+	\\
+	- &\frac{1}{c} \frac{\partial E_2}{\partial x^2} \, dx^2 \wedge dx^1 \wedge dx^3
 	+ \frac{1}{c} \frac{\partial E_3}{\partial x^0} \, dx^0 \wedge dx^1 \wedge dx^2
-	+ \frac{1}{c} \frac{\partial E_3}{\partial x^3} \, dx^3 \wedge dx^1 \wedge dx^2 \\
-	&\quad
-	+ \frac{\partial B_3}{\partial x^1} \, dx^1 \wedge dx^0 \wedge dx^3
-	+ \frac{\partial B_3}{\partial x^2} \, dx^2 \wedge dx^0 \wedge dx^3
-	+ \frac{\partial B_2}{\partial x^1} \, dx^1 \wedge dx^0 \wedge dx^2 \\
-	&\quad
-	+ \frac{\partial B_2}{\partial x^3} \, dx^3 \wedge dx^0 \wedge dx^2
-	+ \frac{\partial B_1}{\partial x^2} \, dx^2 \wedge dx^0 \wedge dx^1
-	+ \frac{\partial B_1}{\partial x^3} \, dx^3 \wedge dx^0 \wedge dx^1 \\[2ex]
-	&= \left(
-	\frac{1}{c} \frac{\partial E_1}{\partial x^1}
+	+ \frac{1}{c} \frac{\partial E_3}{\partial x^3} \, dx^3 \wedge dx^1 \wedge dx^2 
+	\\
+	+&\phantom{\frac{1}{c}} \frac{\partial B_3}{\partial x^1} \, dx^1 \wedge dx^0 \wedge dx^3
+	+ \phantom{\frac{1}{c}} \frac{\partial B_3}{\partial x^2} \, dx^2 \wedge dx^0 \wedge dx^3
+	+ \phantom{\frac{1}{c}} \frac{\partial B_2}{\partial x^1} \, dx^1 \wedge dx^0 \wedge dx^2 \\
+	+&\phantom{\frac{1}{c}} \frac{\partial B_2}{\partial x^3} \, dx^3 \wedge dx^0 \wedge dx^2
+	+ \phantom{\frac{1}{c}} \frac{\partial B_1}{\partial x^2} \, dx^2 \wedge dx^0 \wedge dx^1
+	+ \phantom{\frac{1}{c}} \frac{\partial B_1}{\partial x^3} \, dx^3 \wedge dx^0 \wedge dx^1 
+	\\[2ex]
+	= \phantom{+} &\left(
+	\phantom{+} \frac{1}{c} \frac{\partial E_1}{\partial x^1}
 	+ \frac{1}{c} \frac{\partial E_2}{\partial x^2}
 	+ \frac{1}{c} \frac{\partial E_3}{\partial x^3}
-	\right) dx^1 \wedge dx^2 \wedge dx^3 \\
-	&\quad
-	+ \left(
-	\frac{1}{c} \frac{\partial E_1}{\partial x^0}
-	+ \frac{\partial B_2}{\partial x^3}
-	- \frac{\partial B_3}{\partial x^2}
-	\right) dx^0 \wedge dx^2 \wedge dx^3 \\
-	&\quad
-	+ \left(
+	\right) dx^1 \wedge dx^2 \wedge dx^3 
+	\\
+	+ &\left(
+	\phantom{+} \frac{1}{c} \frac{\partial E_1}{\partial x^0}
+	+ \phantom{\frac{1}{c}} \frac{\partial B_2}{\partial x^3}
+	- \phantom{\frac{1}{c}} \frac{\partial B_3}{\partial x^2}
+	\right) dx^0 \wedge dx^2 \wedge dx^3 
+	\\
+	+ &\left(
 	-\frac{1}{c} \frac{\partial E_2}{\partial x^0}
-	+ \frac{\partial B_1}{\partial x^3}
-	- \frac{\partial B_3}{\partial x^1}
-	\right) dx^0 \wedge dx^1 \wedge dx^3 \\
-	&\quad
-	+ \left(
-	\frac{1}{c} \frac{\partial E_3}{\partial x^0}
-	+ \frac{\partial B_1}{\partial x^2}
-	- \frac{\partial B_2}{\partial x^1}
+	+ \phantom{\frac{1}{c}} \frac{\partial B_1}{\partial x^3}
+	- \phantom{\frac{1}{c}} \frac{\partial B_3}{\partial x^1}
+	\right) dx^0 \wedge dx^1 \wedge dx^3 
+	\\
+	+ &\left(
+	\phantom{+} \frac{1}{c} \frac{\partial E_3}{\partial x^0}
+	+ \phantom{\frac{1}{c}} \frac{\partial B_1}{\partial x^2}
+	- \phantom{\frac{1}{c}} \frac{\partial B_2}{\partial x^1}
 	\right) dx^0 \wedge dx^1 \wedge dx^2.
 \end{align*}
 \subsubsection{Berechnung $\ast d {\ast} F$}
 Wenden wir nun noch einmal den Hodge-Operator auf die erhaltene 3-Form an, ergibt sich gemäss Tabelle ~\ref{maxwell:section:teil1:Hodge-Tabelle}
 \begin{align*}
-	\ast d {\ast} F = 
-	&\left( \frac{1}{c}\frac{\partial E_1}{\partial x^1} + \frac{1}{c}\frac{\partial E_2}{\partial x^2} + \frac{1}{c}\frac{\partial E_3}{\partial x^3} \right) (-dx^0) +
-	\left(\frac{1}{c}\frac{\partial E_1}{\partial x^0} + \frac{\partial B_2}{\partial x^3} - \frac{\partial B_3}{\partial x^2} \right) (-dx^1)\\
-	& + \left( -\frac{1}{c}\frac{\partial E_2}{\partial x^0} + \frac{\partial B_1}{\partial x^3} - \frac{\partial B_3}{\partial x^1} \right) dx^2 +
+	\ast d {\ast} F 
+	= 
+	\phantom{+} &\left(\phantom{+} \frac{1}{c}\frac{\partial E_1}{\partial x^1} + \frac{1}{c}\frac{\partial E_2}{\partial x^2} + \frac{1}{c}\frac{\partial E_3}{\partial x^3} \right) (-dx^0) +
+	\left(\frac{1}{c}\frac{\partial E_1}{\partial x^0} + \frac{\partial B_2}{\partial x^3} - \frac{\partial B_3}{\partial x^2} \right) (-dx^1)
+	\\
+	+ &\left( -\frac{1}{c}\frac{\partial E_2}{\partial x^0} + \phantom{\frac{1}{c}} \frac{\partial B_1}{\partial x^3} - \phantom{\frac{1}{c}} \frac{\partial B_3}{\partial x^1} \right) \quad dx^2 \: \, +
 	\left( \frac{1}{c}\frac{\partial E_3}{\partial x^0} + \frac{\partial B_1}{\partial x^2} - \frac{\partial B_2}{\partial x^1} \right) (-dx^3).\\[2ex]
 	=
-	&\left( -\frac{1}{c}\frac{\partial E_1}{\partial x^1} -\frac{1}{c}\frac{\partial E_2}{\partial x^2} - \frac{1}{c}\frac{\partial E_3}{\partial x^3} \right) dx^0 +
-	\left(-\frac{1}{c}\frac{\partial E_1}{\partial x^0} - \frac{\partial B_2}{\partial x^3} + \frac{\partial B_3}{\partial x^2} \right) dx^1\\
-	& + \left( -\frac{1}{c}\frac{\partial E_2}{\partial x^0} + \frac{\partial B_1}{\partial x^3} - \frac{\partial B_3}{\partial x^1} \right) dx^2 +
+	\phantom{+} &\left( -\frac{1}{c}\frac{\partial E_1}{\partial x^1} -\frac{1}{c}\frac{\partial E_2}{\partial x^2} - \frac{1}{c}\frac{\partial E_3}{\partial x^3} \right) dx^0 +
+	\left(-\frac{1}{c}\frac{\partial E_1}{\partial x^0} - \frac{\partial B_2}{\partial x^3} + \frac{\partial B_3}{\partial x^2} \right) dx^1
+	\\
+	+ &\left( -\frac{1}{c}\frac{\partial E_2}{\partial x^0} + \phantom{\frac{1}{c}} \frac{\partial B_1}{\partial x^3} - \phantom{\frac{1}{c}} \frac{\partial B_3}{\partial x^1} \right) dx^2 +
 	\left( -\frac{1}{c}\frac{\partial E_3}{\partial x^0} - \frac{\partial B_1}{\partial x^2} + \frac{\partial B_2}{\partial x^1} \right) dx^3.
 \end{align*}
 %Damit wir nun wieder auf etwas physikalisch Sinnvolles kommen, ersetzen wir alle $dx^0$ mit $cdt$, $dx^1$ mit $dx$, %$dx^2$ mit $dy$ und $dx^3$ mit $dz$ und erhalten
@@ -151,14 +154,19 @@ Damit wir nun wieder auf etwas physikalisch Sinnvolles kommen, ersetzen wir
 \end{equation}
 und erhalten
 \begin{align*}
-	\ast d {\ast} F = 
-	&\left( -\frac{1}{c}\frac{\partial E_1}{\partial x} -\frac{1}{c}\frac{\partial E_2}{\partial y} - \frac{1}{c}\frac{\partial E_3}{\partial z} \right) c\,dt +
-	\left(-\frac{1}{c}\frac{\partial E_1}{\partial ct} - \frac{\partial B_2}{\partial z} + \frac{\partial B_3}{\partial y} \right) dx\\
-	& + \left( -\frac{1}{c}\frac{\partial E_2}{\partial ct} + \frac{\partial B_1}{\partial z} - \frac{\partial B_3}{\partial x} \right) dy +
-	\left( -\frac{1}{c}\frac{\partial E_3}{\partial ct} - \frac{\partial B_1}{\partial y} + \frac{\partial B_2}{\partial x} \right) dz\\[2ex]
-	=&\left( -\frac{\partial E_1}{\partial x} -\frac{\partial E_2}{\partial y} - \frac{\partial E_3}{\partial z} \right) dt +
-	\left(-\frac{1}{c^2}\frac{\partial E_1}{\partial t} - \frac{\partial B_2}{\partial z} + \frac{\partial B_3}{\partial y} \right) dx\\
-	& + \left( -\frac{1}{c^2}\frac{\partial E_2}{\partial t} + \frac{\partial B_1}{\partial z} - \frac{\partial B_3}{\partial x} \right) dy +
+	\ast d {\ast} F 
+	= 
+	\phantom{+} &\left( -\frac{1}{c}\frac{\partial E_1}{\partial x} -\frac{1}{c}\frac{\partial E_2}{\partial y} - \frac{1}{c}\frac{\partial E_3}{\partial z} \right) c \, dt +
+	\left(-\frac{1}{c}\frac{\partial E_1}{\partial ct} - \frac{\partial B_2}{\partial z} + \frac{\partial B_3}{\partial y} \right) dx
+	\\
+	+ &\left( -\frac{1}{c}\frac{\partial E_2}{\partial ct} + \phantom{\frac{1}{c}} \frac{\partial B_1}{\partial z} - \phantom{\frac{1}{c}} \frac{\partial B_3}{\partial x} \right) \phantom{c \,}dy +
+	\left( -\frac{1}{c}\frac{\partial E_3}{\partial ct} - \frac{\partial B_1}{\partial y} + \frac{\partial B_2}{\partial x} \right) dz
+	\\[2ex]
+	=
+	\phantom{+} &\left( -\phantom{\frac{1}{c^2}}\frac{\partial E_1}{\partial x} -\frac{\partial E_2}{\partial y} - \frac{\partial E_3}{\partial z} \right) dt +
+	\left(-\frac{1}{c^2}\frac{\partial E_1}{\partial t} - \frac{\partial B_2}{\partial z} + \frac{\partial B_3}{\partial y} \right) dx
+	\\
+	+ &\left( -\frac{1}{c^2}\frac{\partial E_2}{\partial t} + \frac{\partial B_1}{\partial z} - \frac{\partial B_3}{\partial x} \right) dy +
 	\left( -\frac{1}{c^2}\frac{\partial E_3}{\partial t} - \frac{\partial B_1}{\partial y} + \frac{\partial B_2}{\partial x} \right) dz.
 \end{align*}
 Dieser Ausdruck soll nun also alle Teile der einen Seite der inhomogenen Maxwell-Gleichungen enthalten.

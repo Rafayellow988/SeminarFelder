@@ -64,37 +64,46 @@ Wir verwenden also die 1-Form
 \end{equation}
 Um nun zu prüfen, was die äussere Ableitung von $A$ ergibt, rechnen wir
 \begin{align*}
-	dA = 
-	& \frac{1}{c}\frac{\partial (-\varphi)}{\partial x^1} \,dx^1 \wedge dx^0
+	dA = \phantom{+}
+	 \frac{1}{c} &\frac{\partial (-\varphi)}{\partial x^1} \,dx^1 \wedge dx^0
 	+ \frac{1}{c}\frac{\partial (-\varphi)}{\partial x^2} \,dx^2 \wedge dx^0
-	+ \frac{1}{c}\frac{\partial (-\varphi)}{\partial x^3} \,dx^3 \wedge dx^0\\
-	& + \frac{\partial A_1}{\partial x^0} \,dx^0 \wedge dx^1
+	+ \frac{1}{c}\frac{\partial (-\varphi)}{\partial x^3} \,dx^3 \wedge dx^0
+	\\
+	+ \phantom{\frac{1}{c}} &\frac{\partial A_1}{\partial x^0} \,dx^0 \wedge dx^1
 	+ \frac{\partial A_1}{\partial x^2} \,dx^2 \wedge dx^1
-	+ \frac{\partial A_1}{\partial x^3} \,dx^3 \wedge dx^1\\
-	& + \frac{\partial A_2}{\partial x^0} \,dx^0 \wedge dx^2
+	+ \frac{\partial A_1}{\partial x^3} \,dx^3 \wedge dx^1
+	\\
+	+ \phantom{\frac{1}{c}} &\frac{\partial A_2}{\partial x^0} \,dx^0 \wedge dx^2
 	+ \frac{\partial A_2}{\partial x^1} \,dx^1 \wedge dx^2
-	+ \frac{\partial A_2}{\partial x^3} \,dx^3 \wedge dx^2\\
-	& + \frac{\partial A_3}{\partial x^0} \,dx^0 \wedge dx^3
+	+ \frac{\partial A_2}{\partial x^3} \,dx^3 \wedge dx^2
+	\\
+	+ \phantom{\frac{1}{c}} &\frac{\partial A_3}{\partial x^0} \,dx^0 \wedge dx^3
 	+ \frac{\partial A_3}{\partial x^1} \,dx^1 \wedge dx^3
-	+ \frac{\partial A_3}{\partial x^2} \,dx^2 \wedge dx^3\\[2ex] =
-	& \left(\frac{1}{c}\frac{\partial (-\varphi)}{\partial x^1}-\frac{\partial A_1}{\partial x^0}\right) dx^1 \wedge dx^0 +
-	\left(\frac{1}{c}\frac{\partial (-\varphi)}{\partial x^2}-\frac{\partial A_2}{\partial x^0}\right) dx^2 \wedge dx^0 +
-	\left(\frac{1}{c}\frac{\partial (-\varphi)}{\partial x^3}-\frac{\partial A_3}{\partial x^0}\right) dx^3 \wedge dx^0\\
-	& + \left(\frac{\partial A_1}{\partial x^2}-\frac{\partial A_2}{\partial x^1}\right) dx^2 \wedge dx^1 +
-	\left(\frac{\partial A_1}{\partial x^3}-\frac{\partial A_3}{\partial x^1}\right) dx^3 \wedge dx^1 +
-	\left(\frac{\partial A_2}{\partial x^3}-\frac{\partial A_3}{\partial x^2}\right) dx^3 \wedge dx^2.				
+	+ \frac{\partial A_3}{\partial x^2} \,dx^2 \wedge dx^3
+	\\[2ex] 
+	=
+	\phantom{+} & \left(\frac{1}{c}\frac{\partial (-\varphi)}{\partial x^1}-\frac{\partial A_1}{\partial x^0}\right) dx^1 \wedge dx^0 
+	+ \left(\frac{1}{c}\frac{\partial (-\varphi)}{\partial x^2}-\frac{\partial A_2}{\partial x^0}\right) dx^2 \wedge dx^0
+	\\
+	+ &\left(\frac{1}{c}\frac{\partial (-\varphi)}{\partial x^3}-\frac{\partial A_3}{\partial x^0}\right) dx^3 \wedge dx^0
+	+ \left(\frac{\partial A_1}{\partial x^2}-\frac{\partial A_2}{\partial x^1}\right) dx^2 \wedge dx^1
+	\\
+	+ & \left(\frac{\partial A_1}{\partial x^3}-\frac{\partial A_3}{\partial x^1}\right) dx^3 \wedge dx^1 
+	+ \left(\frac{\partial A_2}{\partial x^3}-\frac{\partial A_3}{\partial x^2}\right) dx^3 \wedge dx^2.				
 \end{align*}
 Wir wissen, dass $dx^0 = c\,dt$ entspricht und nutzen dies hier aus, um die Klammerausdrücke besser interpretieren zu können.
 In der Ableitung nach der Koordinate $x^0$ verbirgt sich nämlich noch der Faktor $c$ im Nenner.
 Um zu zeigen dass dies so funktioniert, wechseln wir kurz in die anderen Koordinaten und erhalten
 \begin{align*}
-	dA = 
-	& \left(\frac{1}{c}\frac{\partial (-\varphi)}{\partial x}-\frac{1}{c}\frac{\partial A_1}{\partial t}\right) dx \wedge c\,dt +
-	\left(\frac{1}{c}\frac{\partial (-\varphi)}{\partial y}-\frac{1}{c}\frac{\partial A_2}{\partial t}\right) dy \wedge c\,dt +
-	\left(\frac{1}{c}\frac{\partial (-\varphi)}{\partial z}-\frac{1}{c}\frac{\partial A_3}{\partial t}\right) dz \wedge c\,dt\\
-	& + \left(\frac{\partial A_1}{\partial y}-\frac{\partial A_2}{\partial x}\right) dy \wedge dx +
-	\left(\frac{\partial A_1}{\partial z}-\frac{\partial A_3}{\partial x}\right) dz \wedge dx +
-	\left(\frac{\partial A_2}{\partial z}-\frac{\partial A_3}{\partial y}\right) dz \wedge dy.
+	dA = \phantom{\frac{1}{c}}
+	& \left(\frac{1}{c}\frac{\partial (-\varphi)}{\partial x}-\frac{1}{c}\frac{\partial A_1}{\partial t}\right) dx \wedge c\,dt 
+	+ \left(\frac{1}{c}\frac{\partial (-\varphi)}{\partial y}-\frac{1}{c}\frac{\partial A_2}{\partial t}\right) dy \wedge c\,dt 
+	\\
+	+ &\left(\frac{1}{c}\frac{\partial (-\varphi)}{\partial z}-\frac{1}{c}\frac{\partial A_3}{\partial t}\right) dz \wedge c\,dt
+	+ \left(\frac{\partial A_1}{\partial y}-\frac{\partial A_2}{\partial x}\right) dy \wedge dx 
+	\\
+	+ &\left(\frac{\partial A_1}{\partial z}-\frac{\partial A_3}{\partial x}\right) dz \wedge dx 
+	+ \left(\frac{\partial A_2}{\partial z}-\frac{\partial A_3}{\partial y}\right) dz \wedge dy.
 \end{align*}
 \begin{comment}
 Diesen Teil oben rausgenommen da hier die c verschwinden (vermutlich irrelevant:)
@@ -107,23 +116,28 @@ Diesen Teil oben rausgenommen da hier die c verschwinden (vermutlich irrelevant:
 \end{comment}
 Setzen wir hier die obigen Formeln für $E$ und $B$ ein erhalten wir
 \begin{align*}
-	dA = 
-	& \frac{E_1}{c} \,dx \wedge c\,dt +
+	dA = \phantom{+}
+	\frac{E_1}{c} \,dx &\wedge c\,dt +
 	\frac{E_2}{c} \,dy \wedge c\,dt +
-	\frac{E_3}{c} \,dz \wedge c\,dt\\
-	& - B_3 \,dy \wedge dx +
-	B_2 \,dz \wedge dx -
-	B_1 \,dz \wedge dy.
+	\frac{E_3}{c} \,dz \wedge c\,dt
+	\\
+	\, - \, B_3 \, dy &\wedge \phantom{c}dx +
+	\, B_2 \,  \, dz \wedge \phantom{c} dx -
+	\, B_1 \, \, dz \wedge \phantom{c} dy.
 \end{align*}
 Wechseln wir nun wieder in die ursprünglichen Koordinaten ergibt sich
 \begin{align*}
-	dA =&  \frac{E_1}{c} \,dx^1 \wedge dx^0 +
+	dA = \phantom{+}
+	& \frac{E_1}{c} \,dx^1 \wedge dx^0 +
 	\frac{E_2}{c} \,dx^2 \wedge dx^0 +
-	\frac{E_3}{c} \,dx^3 \wedge dx^0\\
-	& - B_3 \,dx^2 \wedge dx^1 +
-	B_2 \,dx^3 \wedge dx^1 -
-	B_1 \,dx^3 \wedge dx^2\\[2ex] = 
-	& \begin{pmatrix}
+	\frac{E_3}{c} \,dx^3 \wedge dx^0
+	\\
+	- \, &B_3 \, dx^2 \wedge dx^1 +
+	\, B_2 \, \, dx^3 \wedge dx^1 -
+	\, B_1 \, \, dx^3 \wedge dx^2
+	\\[2ex] 
+	= \quad 
+	&\begin{pmatrix}
 		0 & -E_1/c & -E_2/c & -E_3/c \\ E_1/c & 0 & B_3 & -B_2 \\ E_2/c & -B_3 & 0 & B_1 \\ E_3/c & B_2 & -B_1 & 0 
 	\end{pmatrix},
 \end{align*}
