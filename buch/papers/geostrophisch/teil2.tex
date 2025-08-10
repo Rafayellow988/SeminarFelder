@@ -7,7 +7,7 @@
 % !TEX encoding = UTF-8
 %
 \section{Richardsons Ansatz \label{geostrophisch:section:richardsonAnsatz}}
-\kopfrechts{Teil 2}
+\kopfrechts{Richardsons Ansatz}
 
 Richardson wählte einen innovativen, aber im Grunde sehr einfachen Ansatz:  
 Statt vereinfachter Modelle verwendete er ein vollständiges System bestehend aus vier Differentialgleichungen.
@@ -53,29 +53,37 @@ Siehe Abbildung ~\ref{bild:richardsonsTraum}, eine Illustration von Richardsons 
 	\centering
 	\includegraphics{eingeteilte_Karte.jpg}
 	\caption{Gitter zur numerischen Approximation der Felder, welche das Wetter beeinflussen.
-		Wie man sehen kann ist das Gitter sehr grob und somit ungenau.}
+		Wie man sehen kann ist das Gitter sehr grob und somit ungenau.
+		In der Schweiz nur ein Gitterpunkt. 
+		}
 	\label{bild:karteEuropa}
 \end{figure}
 
 \begin{figure}
 	\centering
-	\includegraphics{Richardsons_Traum.jpg}
+	\includegraphics[scale=0.8]{Richardsons_Traum.jpg}
 	\caption{Traumvorstellung von Richardson einer Station zur Wettervorhersage. 
 	Rundherum hängt eine Weltkarte und Leute berechnen ständig die Atmosphäre zu ihrem Bereich.}
 	\label{bild:richardsonsTraum}
 \end{figure}
 
-\subsection{Falsche erste Vorhersage}
+\subsection{Grund der Fehlerhaften Vorhersage \label{geostrophisch:subsection:failedPrediction}}
 
-Wie schon erwähnt war seine aller erste Vorhersage aus dem Buch \cite{geostrophisch:wpbnp} weit von dem realen Wetter entfernt.
+Trotz seines bahnbrechenden Ansatzes war Richardsons erste Wettervorhersage weit von der Realität entfernt. 
+Sein Ergebnis sagte für den folgenden Tag einen Luftdruckanstieg von über \SI{145}{\hecto\pascal} voraus, was ein physikalisch völlig unrealistischer Wert ist. 
 Weshalb war seine erste Vorhersage so falsch? 
 Sein scheitern lag bestimmt nicht an mangelndem physikalischen Verständnis oder fehlerhafter Idee. 
 Sondern viel mehr an praktischen Problemen.
-Seine Anfangsdaten waren nicht im geostrophischen Gleichgewicht. 
-% Hier Weiter
-Sein Gitter war viel zu Grob aufgebaut. 
-Für die ganze Schweiz war nur ein Gitterpunkt eingebaut, also soll in der ganzen Schweiz das gleiche Wetter herrschen? 
-Das ist offensichtlich nicht der Fall, durch die Alpen gibt es oft starke Unterschiede der Witterung im Vergleich zum Flachland.
+In der Atmosphäre kompensieren sich unter großräumigen Bedingungen normalerweise der Druckgradient und die Corioliskraft näherungsweise, sodass sich ein nahezu stationärer, geostrophischer Wind einstellt.
+Doch die Daten vom 20. Mai 1910, welche mittels den Wetterballonen aufgezeichnet wurden, befanden sich nicht im geostrophischen Gleichgewicht.
+Grund dafür waren regionale Wetterstörungen wie Tiefdruckgebiete, Fronten und vertikale Strömungen, welche den idealisierten Ausgleich zwischen Druckgradient- und Corioliskraft verhinderten.
+Zudem wirkten in der unteren Troposphäre Reibungseinflüsse und kleinräumige Turbulenz, sodass Windgeschwindigkeit und -richtung deutlich von den geostrophischen Werten abwichen.
+Die punktuell und zu unterschiedlichen Zeitpunkten erhobenen Messungen führten darüber hinaus zu inkonsistenten Druck- und Windfeldern.
+Richardson setzte diese Rohdaten unverändert in seine Bewegungsgleichungen ein, ohne vorher eine Anpassung vorzunehmen.
+Dadurch traten in seiner Modellrechnung große Beschleunigungen auf, die schlussendlich zu seiner stark fehlerhaften Wettervorhersage führten.
+Erst Jahrzehnte später wurde klar, dass für stabile numerische Prognosen ein Anfangszustand im geostrophischen Gleichgewicht oder zumindest nahe daran essentiell ist.
+
+
  
 
 
