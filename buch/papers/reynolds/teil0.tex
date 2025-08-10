@@ -99,10 +99,10 @@ und daher
 Turbulenz kann auf sehr kleinen zeitlichen und räumlichen Skalen auftreten.
 Insbesondere können diese viel kleiner als $\Delta t$ sein. Um die Turbulenz in dieser
 Grössenordnung abbilden zu können, wird eine sehr kleine zeitliche und räumliche Diskretisierung
-benötigt. Dies führt zu grossem Rechenaufwand. Meistens interessieren die Vorgänge unter
-einer gewissen Grössenordnung jedoch nicht. Versucht man aber, einfach den Zeitschritt
+benötigt. Dies führt zu grossem Rechenaufwand. Meistens sind die Vorgänge unter
+einer gewissen Grössenordnung jedoch nicht von grossem Interesse. Versucht man aber, einfach den Zeitschritt
 (und die Gitterweite) zu erhöhen, ohne die zu lösenden Navier-Stokes-Gleichungen
-anzupassen, kann dies zu numerischen Instabilitäten führen.
+anzupassen, kann dies zu numerischen Instabilitäten und falschen Ergebnissen führen.
 
 \subsection{Reynolds-Averaging}
 Eine Art, die Gleichungen anzupassen ist ``Reynolds-Averaging''. Mit Reynolds-Averaging verfolgt
@@ -252,9 +252,10 @@ Wobei $C_\mu$ eine Modellkonstante ist $\approx 0.09$
 
 Die turbulente Viskosität ist in ~\ref{fig:mu-t} dargestellt.
 Der Wert der turbulenten Viskosität ist dort am höchsten, wo auch die meisten Turbulenzen auftreten.
-Die Grafik ~\ref{fig:mu-t} ist es ein sehr anschauliches Beispiel,
+Die Grafik ~\ref{fig:mu-t} ist dafür ein sehr anschauliches Beispiel,
 da man genau an den Orten mit den höchsten Werten der turbulenten Viskosität die vollständige Ablösung
-der Grenzschicht erwarten würde (Im Bereich nach der Ablösung der Grenzschicht entstehen die meisten Turbulenzen).
+der Grenzschicht erwarten würde. 
+\footnote{Im Bereich nach der Ablösung der Grenzschicht entstehen die meisten Turbulenzen.}
 
 Dammit können alle sechs Terme des Reynolds-Spannungstensors folgendermassen berechnet werden:
 
