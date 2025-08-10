@@ -148,11 +148,11 @@ Die Ableitung des Radius $\dot{r}$ wird dabei unverändert belassen.
 Aber die Ableitung des Winkels $\dot{\varphi}$ wird angepasst und damit ergibt sich das Differentialgleichungssystem
 \begin{align*}
     \dot{r}       &= r(1-r^2) \\
-    \dot{\varphi} &= -1 + ar(2-r) \sin 3\varphi.
+    \dot{\varphi} &= -1 + a\big(1 - |r - 1|\big) \sin 3\varphi.
 \end{align*}
 Die Ableitung des Winkels $\dot{\varphi}$ kann nun durch den Parameter $a$ verändert werden.
 Wenn $a=0$ ist, dann haben wir die unveränderte Situation von Beispiel \ref{poinbendix:beispiel:fall2_2} und erhalten den Einheitskreis als Orbit (ohne Nullstelle!).
-Da auf dem Einheitskreis $r(2-r)=1$ ist, kann die Ableitung zum Winkel noch stärker vereinfacht werden zu
+Da auf dem Einheitskreis $1 - |r-1|=1$ ist, kann die Ableitung zum Winkel noch stärker vereinfacht werden zu
 \begin{equation*}
     \dot{\varphi} = -1 + a \sin 3\varphi.
 \end{equation*}
@@ -163,8 +163,9 @@ Aber wählt man $a=1$, dann entstehen drei Nullstellen bei
     3\varphi &= \frac{\pi}{2} + k\pi, k \in \mathbb{Z} \\
     \varphi &= \frac{\pi}{6} + \frac{k\pi}{3}, k \in \mathbb{Z}.
 \end{align*}
-Ausserhalb des Einheitskreises ist $r(2-r)<1$ und die Differenzialgleichung zum Radius $\dot{r}$ hat keine Nullstelle (ausser dem Nullpunkt).
+Ausserhalb des Einheitskreises ist $1 - |r-1|<1$ und die Differenzialgleichung zum Radius $\dot{r}$ hat keine Nullstelle (ausser dem Nullpunkt).
 Somit drehen die Bahnkurven im Uhrzeigersinn, bis sie sich dem Einheitskreis angenähert haben.
+Durch die Veränderung der Drehgeschwindigkeit werden die Bahnkurven verzogen.
 Abbildung \ref{poinbendix:fig:fall_3} zeigt die Situation, wobei die Nullstellen mit einem \textit{X} dargestellt werden.
 \end{beispiel}
 
