@@ -17,8 +17,9 @@ Die erste Gleichung:
 	\label{eq:navstok}
 \end{equation}
 ist eine Form der Navier-Stokes-Gleichung für rotierende Bezugssysteme.
-Wobei $\frac{D\vec{v}}{Dt}$ die zeitliche Ableitung aller Geschwindigkeitskomponenten in Nord-, Ost- und Vertikalrichtungen entspricht. 
+$\frac{D\vec{v}}{Dt}$ entspricht der zeitlichen Ableitung aller Geschwindigkeitskomponenten in Nord-, Ost- und Vertikalrichtungen. 
 Sie beschreibt die Beschleunigung von Luftmassen und ausserdem werden darin die Corioliskraft und der Druckgradient berücksichtigt.
+
 Als nächstes verwendete er die Kontinuitätsgleichung:
 \begin{equation}
 	\frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \vec{v}) = 0 \\,
@@ -26,12 +27,14 @@ Als nächstes verwendete er die Kontinuitätsgleichung:
 \end{equation}
 welche die Massenerhaltung beschreibt.
 Also in anderen Worten die Luft kann nicht verschwinden oder aus dem nichts auftauchen. 
+
 Zudem brauchte er noch eine Gleichung, welche die Energie beschreibt, dazu diente 
 \begin{equation}
 	\frac{Ds}{Dt} = Q \\.
 	\label{eq:enrgy}
 \end{equation}
 Damit werden Temperaturänderungen durch Transport sowie Expansion und Kompression der Luftmassen ausgedrückt.
+
 Als letztes verwendete er noch das ideale Gasgesetz:
 \begin{equation}
 	p = \rho R T,
@@ -41,20 +44,20 @@ dieses ist die physikalische Verbindung von Druck, Temperatur und Dichte eines G
 
 Er konstruierte eine schachbrettartiges Gitter und legte es über die Karte von Europa (Abbildung~\ref{bild:karteEuropa}).
 Nun wollte er für jeden dieser Gitterpunkte das beschriebene Gleichungssystem numerisch von Hand lösen.
-Für einen alleine dauerten diese Berechnungen sehr lange und somit brauchte er für die Vorhersage viel zu lange.
+Alleine dauerten diese Berechnungen sehr lange und somit brauchte er für die Vorhersage viel zu viel Zeit.
 Aufgrund dessen hatte Richardson eine Traumvorstellung von einer Einrichtung zur Berechnung der Wettervorhersagen für die ganze Welt.
 Diese besteht aus einer grossen Kuppel, welche im Innern eine Weltkarte an der Wand hat. 
 Darin sitzen rundherum etwa 64000 Leute, die je zu ihrem zugewiesenen Bereich die Daten der Atmosphäre erhalten und damit die Berechnungen machen müssen. 
-Ihre Resultate geben sie an die Benachbarten Mitarbeiter weiter und das grosse Rechnen beginnt von vorn. 
-In der Mitte auf dem Podest steht eine Art \glqq Dirigent\grqq, welcher den Leuten die zu langsam oder schnell sind mittels einer Lampe Signale gibt.
-Siehe Abbildung ~\ref{bild:richardsonsTraum}, eine Illustration von Richardsons Traumvorstellung.  
+Ihre Resultate geben sie an die benachbarten Mitarbeiter weiter und das grosse Rechnen beginnt von vorn. 
+In der Mitte auf dem Podest steht eine Art \glqq Dirigent\grqq, welcher den Leuten, die zu langsam oder zu schnell arbeiten, mittels Lampe Signale gibt und diese darauf hinweisen.
+Siehe Abbildung~\ref{bild:richardsonsTraum}, eine Illustration von Richardsons Traumvorstellung.  
 
 \begin{figure}
 	\centering
 	\includegraphics{eingeteilte_Karte.jpg}
 	\caption{Gitter zur numerischen Approximation der Felder, welche das Wetter beeinflussen.
 		Wie man sehen kann ist das Gitter sehr grob und somit ungenau.
-		In der Schweiz nur ein Gitterpunkt. 
+		In der Schweiz zum Beispiel hatt es nur ein Gitterpunkt. 
 		}
 	\label{bild:karteEuropa}
 \end{figure}
@@ -67,7 +70,7 @@ Siehe Abbildung ~\ref{bild:richardsonsTraum}, eine Illustration von Richardsons 
 	\label{bild:richardsonsTraum}
 \end{figure}
 
-\subsection{Grund der Fehlerhaften Vorhersage \label{geostrophisch:subsection:failedPrediction}}
+\subsection{Grund der fehlerhaften Vorhersage \label{geostrophisch:subsection:failedPrediction}}
 
 Trotz seines bahnbrechenden Ansatzes war Richardsons erste Wettervorhersage weit von der Realität entfernt. 
 Sein Ergebnis sagte für den folgenden Tag einen Luftdruckanstieg von über \SI{145}{\hecto\pascal} voraus, was ein physikalisch völlig unrealistischer Wert ist. 

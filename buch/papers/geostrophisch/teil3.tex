@@ -26,7 +26,7 @@ Da die genaue Masse eines Luftpakets meist nicht bekannt ist, betrachtet man bei
 
 \vspace{1em}
 
-Mathematisch entspricht das dem Gleichgewicht zwischen der Druckgradientkraft nach Gleichung\eqref{geostrophisch:equation4} und der Corioliskraft nach Gleichung\eqref{geostrophisch:equation2}.
+Mathematisch entspricht das dem Gleichgewicht zwischen der Druckgradientkraft nach Gleichung \eqref{geostrophisch:equation4} und der Corioliskraft nach Gleichung \eqref{geostrophisch:equation2}.
 
 \subsection{Heutiger Ansatz}
 
@@ -36,20 +36,40 @@ Der heutige Ansatz in der numerischen Wettervorhersage entspricht im Wesentliche
     \item Die Atmosphäre wird in ein dreidimensionales Gitter unterteilt, das sowohl horizontale als auch vertikale Auflösung umfasst.
     \item Auf jedem Gitterpunkt werden die fundamentalen Erhaltungsgleichungen (insbesondere die Navier-Stokes-Gleichungen) gelöst, um die Entwicklung von Wind, Temperatur, Luftdruck und weiteren Grössen zu berechnen.
     \item Dabei kommen umfangreiche Echtzeitdaten zum Einsatz, die durch Satelliten, Bojen, Flugzeuge und Wetterstationen bereitgestellt werden.
-    \item Hochleistungsrechner (Supercomputer) berechnen die Entwicklung der atmosphärischen Zustandsgrössen iterativ in kleinen Zeitschritten – dies bildet die Grundlage der numerischen Wettervorhersage (Numerical Weather Prediction, NWP).
+    \item Hochleistungsrechner (Supercomputer) berechnen die Entwicklung der atmosphärischen Zustandsgrössen iterativ in kleinen Zeitschritten – diese bildet die Grundlage der numerischen Wettervorhersage (Numerical Weather Prediction, NWP).
 \end{itemize}
 
 Die Gleichung zur Beschreibung der zeitlichen Änderung des Wasserdampfgehalts (die sogenannte „7.~Gleichung“) wurde in diesem Zusammenhang bewusst ausgelassen, unter anderem weil die Atmosphäre in früheren Modellen als deutlich trockener angenommen wurde als heute.
 
 \subsection{Die siebte Gleichung}
 
-Die siebte Gleichung im System der atmosphärischen Grundgleichungen beschreibt die zeitliche Änderung des spezifischen Wasserdampfgehalts in der Luft. Sie stellt eine Erhaltungsgleichung dar und berücksichtigt sowohl den Transport von Feuchtigkeit durch advektive Prozesse als auch Quellen und Senken wie Kondensation, Verdunstung oder Niederschlag.
+In der klassischen Formulierung der atmosphärischen Grundgleichungen besteht das System aus sieben Gleichungen:  
+\begin{itemize}
+    \item drei Bewegungsgleichungen (Navier-Stokes in x-, y- und z-Richtung),
+    \item die Kontinuitätsgleichung (Massenerhaltung),
+    \item die Energiegleichung,
+    \item die Zustandsgleichung (ideales Gas),
+    \item und die Feuchtegleichung.
+\end{itemize}
+
+Letztere wird daher als \textbf{siebte Gleichung} bezeichnet. Sie beschreibt die zeitliche änderung des spezifischen Wasserdampfgehalts $q_v$ in der Luft. Dabei handelt es sich um eine Erhaltungsgleichung, die sowohl den Transport von Feuchtigkeit als auch Quellen und Senken wie Kondensation, Verdunstung oder Niederschlag berücksichtigt.  
+
 In ihrer allgemeinen Form lautet sie:
+
 \begin{equation}
 \frac{\partial q_v}{\partial t} + \vec{v} \cdot \nabla q_v = S_q
-\label{geostrophisch:equation6}
+\tag{19.10}
 \end{equation}
-Diese Gleichung ist entscheidend für die Beschreibung von Wolkenbildung, Niederschlagsprozessen und der allgemeinen Feuchteverteilung in der Atmosphäre.
+
+mit:  
+\begin{itemize}
+    \item $q_v$: spezifischer Wasserdampfgehalt in kg Wasserdampf pro kg feuchter Luft $[\mathrm{kg/kg}]$
+    \item $\vec{v}$: Windvektor (Strömungsgeschwindigkeit der Luft)
+    \item $S_q$: Quell- und Senkenterm (z. B. durch Phasenübergänge wie Kondensation oder Verdunstung)
+\end{itemize}
+
+Diese Gleichung ist von zentraler Bedeutung für die Beschreibung der Feuchteverteilung in der Atmosphäre und damit für die Modellierung von Wolkenbildung, Niederschlagsprozessen und die Vorhersage des Wetters.
+
 
 \subsection{Moderne Umsetzung nach Richardson} 
 
