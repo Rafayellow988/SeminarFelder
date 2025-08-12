@@ -81,8 +81,7 @@ Die Aktivierungsfunktion \( g_i \) wird elementweise auf das Ergebnis der affine
 Die Wahl der Aktivierungsfunktion hängt stark von der zu approximierenden Funktion ab und kann beispielsweise der hyperbolische Tangens sein.
 
 Die Definitions- und Wertebereiche der Teilfunktionen \( f_i \) sind flexibel wählbar. 
-Es genügt, dass der Wertebereich jeder Teilfunktion \( f_I \) eine Teilmenge des Definitionsbereichs der nachfolgenden Teilfunktion \( f_{i+1} \) ist.
-% jedoch muss der Wertebereich einer jeden Teilfunktion \( f_i \) mit dem Definitionsbereich der nachfolgenden Teilfunktion \( f_{i+1} \) übereinstimmen.
+Jedoch muss der Wertebereich einer jeden Teilfunktion \( f_i \) eine Teilmenge des Definitionsbereichs der nachfolgenden Teilfunktion \( f_{i+1} \) sein.
 Zudem sind der Definitionsbereich der ersten Teilfunktion und der Wertebereich der letzten Teilfunktion strikt vorgegeben. 
 Zur Approximation der Lösung der Feldgleichung, müssen diese Bereiche \( \mathbb{R}^2 \) bzw. \( \mathbb{R} \) sein.
 
@@ -114,7 +113,7 @@ Die grundlegende Idee besteht darin, eine Funktion \( L(\vartheta) \) zu definie
 Anschliessend wird diese Funktion minimiert, um die optimalen Parameter $\vartheta$ zu finden, die eine bestmögliche Approximation ermöglichen.
 
 Um \( L(\vartheta) \) zu konstruieren, werden die Feldgleichung und die Anfangs- und Randbedingungen zunächst umgeformt.
-Alle Terme werden auf eine Seite gebracht und anschliessend quadriert, um positive Fehlerwerte zu erhalten.
+Alle Terme werden auf eine Seite gebracht und anschliessend quadriert.
 Für die Feldgleichung ergibt dies
 \begin{equation}
     \left(\mathcal{D}(\varphi(x, t))\right)^2 = 0 \qquad x \in \Omega, \quad t \in [0,T].
@@ -147,7 +146,7 @@ Anschliessend wird das neuronale Netzwerk $\hat{\varphi}$ für $\varphi$ substit
     \label{neuronal:umformuliert_nn}
 \end{equation}
 Ziel ist es, $\vartheta$ so zu wählen, dass alle diese Terme möglichst nahe bei 0 liegen.
-Anders ausgedrückt, soll $\vartheta$ so gewählt werden, dass die Terme minimiert werden.
+Da zuvor quadriert wurde, lässt sich dies erreichen indem $\vartheta$ so gewählt wird, dass die Terme minimal werden.
 
 Es ist wichtig zu beachten, dass die Terme für alle $x$ und $t$ in den jeweiligen Bereichen minimal werden sollen.
 Daher müssen $x$ und $t$ diskretisiert werden, bevor $L(\vartheta)$ definiert werden kann.
