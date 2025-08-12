@@ -16,12 +16,16 @@ Für den einfachsten und üblichsten Fall, nimmt man oft ein \emph{lineares Medi
 Solch ein Medium nennt man \emph{linear}, wenn dessen Definition sowohl \emph{additiv}
 \[
     f(x_{1} + y_{1}, \ldots, x_{n} + y_{n}) 
-    = f(x_{1}, \ldots, x_{n}) + f(y_{1}, \ldots, y_{n}),
+    = 
+    f(x_{1}, \ldots, x_{n}) 
+    + 
+    f(y_{1}, \ldots, y_{n}),
 \]
 als auch \emph{homogen}
 \[
     f(\lambda x_{1}, \ldots, \lambda x_{n}) 
-    = \lambda f(x_{1}, \ldots, x_{n})
+    = 
+    \lambda f(x_{1}, \ldots, x_{n})
 \]
 ist.
 Hierbei ist angemerkt, dass $x_{k}$, $y_{k}$ und $\lambda$ nicht rein reell sein müssen, 
@@ -32,7 +36,8 @@ Im Kontext dieses Papers wird besonders die Elastizität eines Mediums betrachte
 welche durch
 \[
     D % TODO: Allenfalls Symbole anpassen, sodass die nicht gleich sind wie im Intro elmag zeugs
-    = \frac{\varepsilon}{E}
+    = 
+    \frac{\varepsilon}{E}
     \quad
     (E = \text{const.})\label{particles:eq:lin-elastizitaet}
 \]
@@ -47,13 +52,19 @@ $E$ eine Elastizitätskonstante.
 Das Superpositionsprinzip fasst die Bedingungen zur Linearität in eine Formel zusammen, nämlich
 \[
     T(\lambda x + \mu y)
-    = \lambda T(x) + \mu T(y).
+    = 
+    \lambda T(x) 
+    + 
+    \mu T(y).
 \]
 Drückt man die Deformation $D$ aus Formel~\ref{particles:eq:lin-elastizitaet} als eine Funktion von $\varepsilon$ aus
 und stellt man die Formel ein wenig um zu 
 \[
     D(\varepsilon)
-    = \frac{1}{E} \cdot \varepsilon,
+    = 
+    \frac{1}{E} 
+    \cdot 
+    \varepsilon,
 \]
 so kann man daraus folgern, dass es sich hierbei ebenfalls um eine lineare Funktion handelt, 
 sofern $E = \text{const.}$ eingehalten wird. % NOTE: Könnte man auch als $\frac{\partial E}{\partial \varepsilon} \overset{!}{=} 0 \quad \forall \varepsilon$ schreiben
@@ -71,18 +82,22 @@ zweidimensionale Feldgleichung herleiten,
 indem man die Komponenten der Gleichung mit Vektoren substituiert % NOTE: Darf man das?
 \[
     \mathbf{D} 
-    =   \frac{1}{E}
-        \cdot \bm{\varepsilon}
-    =   \begin{bmatrix}
-            D_1\\
-            D_2
-        \end{bmatrix}
-    =   \frac{1}{E}
-        \cdot 
-        \begin{bmatrix}
-            \varepsilon_1\\
-            \varepsilon_2
-        \end{bmatrix}.
+    =   
+    \frac{1}{E}
+    \cdot
+    \bm{\varepsilon}
+    =   
+    \begin{bmatrix}
+        D_1\\
+        D_2
+    \end{bmatrix}
+    =   
+    \frac{1}{E}
+    \cdot 
+    \begin{bmatrix}
+        \varepsilon_1\\
+        \varepsilon_2
+    \end{bmatrix}.
 \]
 
 \mytodo{Allenfalls noch verallgemeinertes Hookesches Gesetz erwähnen? Ist jedoch fast etwas zu komplex in diesem Kontext\ldots}
@@ -104,6 +119,6 @@ indem man die Komponenten der Gleichung mit Vektoren substituiert % NOTE: Darf m
 
 
 % TODO: Bezug zur Simulation
-\mynote{Diskretisierte Wellengleichung(?)}
+\mynote{Diskretisierte Wellengleichung als Bezug zur Simulation(?)}
 
 % TODO: Grafik aus Simulation -> Besonders zeigen, dass z.B. Wellen mehrerer Quellen nur lokal interferieren, den weiteren Verlauf aber nicht stören (Zwei Lichtwellen)
