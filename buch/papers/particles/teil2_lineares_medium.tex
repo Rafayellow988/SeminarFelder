@@ -40,7 +40,7 @@ gegeben ist.
 $D$ beschreibt hier die \emph{Deformation},
 $\varepsilon$ den mechanischen Stress oder Druck und % TODO: Bezug auf Formeln im Intro nehmen
 $E$ eine Elastizitätskonstante.
-% NOTE: Eigentlich Hookesches Gesetz? Falls ja: E -> D; D -> \Delta l; \varepsilon -> F
+% NOTE: Eigentlich Hookesches Gesetz? Falls ja Symbole folgendermassen anpassen: E -> D; D -> \Delta l; \varepsilon -> F
 
 
 \subsection{Superpositionsprinzip}
@@ -56,7 +56,7 @@ und stellt man die Formel ein wenig um zu
     = \frac{1}{E} \cdot \varepsilon,
 \]
 so kann man daraus folgern, dass es sich hierbei ebenfalls um eine lineare Funktion handelt, 
-sofern $E = \text{const.}$ eingehalten wird.
+sofern $E = \text{const.}$ eingehalten wird. % NOTE: Könnte man auch als $\frac{\partial E}{\partial \varepsilon} \overset{!}{=} 0 \quad \forall \varepsilon$ schreiben
 Folglich ist das angenommene Medium also linear und erfüllt somit auch die Superpositionsbedingungen.
 Dies vereinfacht die Berechnung des Feldes enorm, 
 da nicht für jedes einzelne $\varepsilon$ ein separates $E$ berechnet werden muss. 
@@ -64,9 +64,30 @@ da nicht für jedes einzelne $\varepsilon$ ein separates $E$ berechnet werden mu
 
 % TODO: Folgendes irgendwo besser einbringen:
 \subsection{Feldgleichung}
-Da die Elastizitätsgleichung allgemeingültig geschrieben ist, % NOTE: Stimmt das überhaupt?
-wird hier noch die Feldgleichung für ein zweidimensionales, diskretes Feld hergeleitet,
-welches so in der Simulation verwendet wird.
+Das Hookesche Gesetz, so wie es einleitend erwähnt ist, 
+beschreibt im Grunde genommen nur den eindimensionalen Fall. 
+Jedoch kann man aufgrund der Superposition eine vereinfachte,
+zweidimensionale Feldgleichung herleiten, 
+indem man die Komponenten der Gleichung mit Vektoren substituiert % NOTE: Darf man das?
+\[
+    \mathbf{D} 
+    =   \frac{1}{E}
+        \cdot \bm{\varepsilon}
+    =   \begin{bmatrix}
+            D_1\\
+            D_2
+        \end{bmatrix}
+    =   \frac{1}{E}
+        \cdot 
+        \begin{bmatrix}
+            \varepsilon_1\\
+            \varepsilon_2
+        \end{bmatrix}.
+\]
+
+\mytodo{Allenfalls noch verallgemeinertes Hookesches Gesetz erwähnen? Ist jedoch fast etwas zu komplex in diesem Kontext\ldots}
+
+\mynote{Dürfen wir hier einfach substituieren oder braucht es allenfalls eine bessere Herleitung?}
 % TODO: Herleitung Feldgleichung aus Elastizitätsgleichung etc.
 % In der Elastizitätsgleichung ist die Feldgleichung zwar gewissermassen enthalten,
 % jedoch ist sie nicht direkt ersichtlich. 
@@ -74,10 +95,15 @@ welches so in der Simulation verwendet wird.
 
 % NOTE: Idee: "Wir reden zwar von dem hier, aber können dies auch auf z.B. das elektrische- / magnetische-Medium anwenden."
 
-% NOTE: Plan ist es, erst einen groben Aufbau erstellen, Flurin macht dann Verfeinerung
+% TODO: Wellengleichung, Referenz auf 9.2 Wellengleichung
+\subsection{Wellengleichung}
+\mytodo{Auf 9.2 Wellengleichung referenzieren und darauf aufbauen. Zweidimensionalen Fall erläutern (herleiten?)}
 
-% TODO: Wellengleichung
+\mytodo{Verbindung von Hookeschem Gesetz zur Wellengleichung machen. }
+% \mytodo{Wellengleichung}
+
 
 % TODO: Bezug zur Simulation
+\mynote{Diskretisierte Wellengleichung(?)}
 
 % TODO: Grafik aus Simulation -> Besonders zeigen, dass z.B. Wellen mehrerer Quellen nur lokal interferieren, den weiteren Verlauf aber nicht stören (Zwei Lichtwellen)
