@@ -84,7 +84,7 @@ Daher wird im nächsten Abschnitt die FDM im Detail erläutert und anhand eines 
 
 \subsection{Beispiel FDM}
 
-Als Ausgangslage wird die allgemeine Wärmeleitungsgleichung betrachtet.
+Als Ausgangslage wird die allgemeine Wärmeleitungsgleichung betrachtet als
 \begin{equation}
 	\frac{\partial T}{\partial t}
 	=
@@ -107,7 +107,7 @@ Im folgenden wird im 2D-Raum gearbeitet also resultiert
 \subsubsection{Diskretisierung der Variablen}
 
 Als erstes müssen die Variablen diskretisiert werden. Dies tun wir indem wir ein Gitter über den gesamten Bereich (zeitlich, sowie räumlich) legen, also
-Im Raum:
+Im Raum als
 \begin{equation}
 	x_i
 	=
@@ -119,7 +119,7 @@ Im Raum:
 	=
 	j \cdot \Delta y,
 \end{equation}
-Und in der Zeit:
+Und in der Zeit als
 \begin{equation}
 	t^n
 	=
@@ -137,7 +137,7 @@ haben.
 
 \subsubsection{Diskretisierung der Zeit}
 
-Die partielle Ableitung der Temperaturfunktion \( T \) nach der Zeit wird durch eine explizite Vorwärtsdifferenz approximiert:
+Die partielle Ableitung der Temperaturfunktion \( T \) nach der Zeit wird durch eine explizite Vorwärtsdifferenz approximiert mit
 
 \begin{equation}
 	\label{parallelisierung:eq:discrete_time_derivative}
@@ -148,7 +148,7 @@ Die partielle Ableitung der Temperaturfunktion \( T \) nach der Zeit wird durch 
 Dies entspricht der zeitlichen Änderungsrate von \( T \) am diskreten Gitterpunkt \( (x_i, y_j, t^n) \).
 
 \subsubsection{Diskretisierung des Raums}
-Auch hier beginen wir mit der einmaligen Anwendungen des Diefferentielquotientsen (Vorwärts), um die erste Ableitung, zunächst in x-Richtung zu approximieren:
+Auch hier beginen wir mit der einmaligen Anwendungen des Diefferentielquotientsen (Vorwärts), um die erste Ableitung, zunächst in x-Richtung zu approximieren verwenden wir
 
 \begin{equation}
 	\left. \frac{\partial T}{\partial x} \right|{(i,j,n)}
@@ -161,7 +161,7 @@ Zusätzlich bestimmen wir die Rückwärtsdifferenz
 	\left. \frac{\partial T}{\partial x} \right|{(i,j,n)}
 	\approx \frac{T_{i,j}^n - T_{i-1,j}^n}{\Delta x},
 \end{equation}
-um mittels einer letzen Anwendung des Differentialquotienten die Änderung dieser beiden Änderungen, also genau das was die zweite Ableitung beschreibt, diskret zu bestimmen
+um mittels einer letzen Anwendung des Differentialquotienten die Änderung dieser beiden Änderungen, also genau das was die zweite Ableitung beschreibt, diskret zu bestimmen als
 \begin{equation}
 	\frac{\partial^2 T}{\partial x^2} \approx
 	\frac{ \left( \frac{T_{i+1,j}^n - T_{i,j}^n}{\Delta x} \right) - \left( \frac{T_{i,j}^n - T_{i-1,j}^n}{\Delta x} \right) }{\Delta x}.
@@ -192,14 +192,14 @@ Somit erhalten wir
 	\frac{T_{i,j+1}^n - 2 T_{i,j}^n + T_{i,j-1}^n}{(\Delta y)^2}
 	\right),
 \end{equation}
-womit die diskretisierung der Wärmeleitungsgleichung mittels der Finiten-Differenzen-Methode gezeigt ist.
+womit die Diskretisierung der Wärmeleitungsgleichung mittels der Finiten-Differenzen-Methode gezeigt ist.
 
 \subsubsection{Explizite Update Formel}
 \label{parallelisierung:sec:update_formel}
 
 
-Aufgrund der lokalität und kausalität der Feldgleichungen ist die Temperatur eines Gitterpunkts \( (x_i, y_j)\) zu einem bestimmten Zeitpunkt in der Zukunft \( (t^n)\) sprich \(T_{i,j}^{n+1}\) nur von dem  vergangenen Zustand eben dieses Gitterpunkts und desen direkten Nachbbaren abhängig.
-Dies ist  in der nach \(T_{i,j}^{n+1}\) umgestellten Formel (\ref{parallelisierung:eq:update_formula_unsorted}) ersichtlich:
+Aufgrund der Lokalität und Kausalität der Feldgleichungen ist die Temperatur eines Gitterpunkts \( (x_i, y_j)\) zu einem bestimmten Zeitpunkt in der Zukunft \( (t^n)\) sprich \(T_{i,j}^{n+1}\) nur von dem  vergangenen Zustand eben dieses Gitterpunkts und dessen direkten Nachbarn abhängig.
+Dies ist  in der nach \(T_{i,j}^{n+1}\) umgestellten Formel (\ref{parallelisierung:eq:update_formula_unsorted}) 
 \begin{equation}
 	\label{parallelisierung:eq:update_formula_sorted}
 	T_{i,j}^{n+1}
@@ -212,9 +212,10 @@ Dies ist  in der nach \(T_{i,j}^{n+1}\) umgestellten Formel (\ref{parallelisieru
 	\frac{T_{i,j+1}^n - 2 T_{i,j}^n + T_{i,j-1}^n}{(\Delta y)^2}
 	\right)
 \end{equation}
+ersichtlich.
 
 Aus Übersichtsgründen fassen wir alle Konstanten (\(\alpha, \Delta t, \Delta x, \Delta y) \) zu einer neuen Konstanten zusammen.
-Als praktische vereinfachung dazu legen wir fest das wir mit einem quadratischen Raumgitter arbeiten. Somit setzen wir  \(\Delta l = \Delta x = \Delta y\) und
+Als praktische Vereinfachung dazu legen wir fest das wir mit einem quadratischen Raumgitter arbeiten. Somit setzen wir  \(\Delta l = \Delta x = \Delta y\) und
 \begin{equation}
 	\label{parallelisierung:eq:lambda}
 	\lambda 
@@ -222,7 +223,7 @@ Als praktische vereinfachung dazu legen wir fest das wir mit einem quadratischen
 	\frac{\alpha \Delta t}{(\Delta l)^2}.
 \end{equation}
 
-Nun sind wir in der Lage Formel \ref{parallelisierung:eq:update_formula_sorted} kompakt und übersichtlich zu schreiben:
+Nun sind wir in der Lage Formel \ref{parallelisierung:eq:update_formula_sorted} kompakt und übersichtlich zu schreiben als
 
 \begin{equation}
 	\label{parallelisierung:eq:update_formel}
@@ -233,7 +234,7 @@ Nun sind wir in der Lage Formel \ref{parallelisierung:eq:update_formula_sorted} 
 	T_{i+1,j}^n + T_{i-1,j}^n + T_{i,j+1}^n + T_{i,j-1}^n - 4 T_{i,j}^n
 	\right).
 \end{equation}
-Diese Formel wird als explizite update Formel bezeichent, da sie iterativ auf Grundlage von gemesenen Daten oder zuvor berechneten Datenpunkten den nächsten Zeitschritt auswertet.
+Diese Formel wird als explizite update Formel bezeichnet, da sie iterativ auf Grundlage von gemessenen Daten oder zuvor berechneten Datenpunkten den nächsten Zeitschritt auswertet.
 
 Es ist nun klar ersichtlich das die Temperatur an einem Punkt (\(x_i, y_j\)) zu einem gegebenen Zeitpunkt \(t^{n+1}\)  von der Temperatur an diesem Punkt zum Zeitpunkt \(t^n\) und der Wärmeflussbilanz zu den 4 direkten Nachbarquadraten abhängig ist.
 
@@ -270,13 +271,13 @@ Tabelle~\ref{parallelisierung:tab:stabilitaet_fdm} fasst die Stabilitätsbedingu
 
 Aus Gründen der Lesbarkeit wird die vollständige Herleitung dieser Bedingungen an dieser Stelle nicht wiedergegeben.
 
-Für den zweidimensionalen Fall gilt:
+Für den zweidimensionalen Fall gilt
 \begin{equation}
 	\lambda_x + \lambda_y =
 	\frac{\alpha \, \Delta t}{(\Delta x)^2} +
 	\frac{\alpha \, \Delta t}{(\Delta y)^2} \leq \frac{1}{2}.
 \end{equation}
-Mit \(\Delta l = \Delta x = \Delta y\) folgt \(\lambda = \lambda_x = \lambda_y\), sodass sich ergibt:
+Mit \(\Delta l = \Delta x = \Delta y\) folgt \(\lambda = \lambda_x = \lambda_y\), sodass sich die Formel ergibt zu
 \begin{equation}
 	2\lambda = 2 \frac{\alpha \, \Delta t}{(\Delta l)^2} \leq \frac{1}{2}
 	\quad \Rightarrow \quad
@@ -306,7 +307,7 @@ Das Material besitzt die Eigenschaften:
 		spezifische Wärmekapazität & \(c\) &  470 & \(\mathrm{J/(kg \cdot K)}\)
 	\end{tabular}
 \end{center}
-Somit ergibt sich die thermische Diffusität wie folgt:
+Somit ergibt sich die thermische Diffusität wie folgt zu
 
 
 \[
@@ -319,7 +320,7 @@ Somit ergibt sich die thermische Diffusität wie folgt:
 
 \paragraph{Fall 1: Stabile Simulation}  
 Mit \(100\) Messpunkten in einem \(10\times 10\)-Raster beträgt der Abstand \(\Delta l = 0.01\,\mathrm{m}\).  
-Für \(\Delta t = 1\,\mathrm{s}\) ergibt sich:
+Für \(\Delta t = 1\,\mathrm{s}\) ergibt sich
 \[
 \lambda =
 \alpha \cdot \frac{\Delta t}{(\Delta l)^2}
@@ -337,7 +338,7 @@ Die Simulation konvergiert nach 234 Iterationen zum stabilen Endzustand (Abbildu
 \end{figure}
 
 \paragraph{Fall 2: Instabile Simulation}  
-Erhöhen wir die Auflösung auf \(15\times 15\) Messpunkte (\(\Delta l = 0.006\,\mathrm{m}\)), bei gleichem \(\Delta t = 1\,\mathrm{s}\), so folgt:
+Erhöhen wir die Auflösung auf \(15\times 15\) Messpunkte (\(\Delta l = 0.006\,\mathrm{m}\)), bei gleichem \(\Delta t = 1\,\mathrm{s}\), daraus folgt
 \[
 \lambda =
 10^{-5} \cdot \frac{1}{0.006^2}
@@ -359,7 +360,7 @@ Zunächst scheint die Simulation noch plausibel (Abbildung~\ref{parallelisierung
 	\label{parallelisierung:fig:simulation_15x15_0.376_6it}
 \end{figure}
 
-Die Ursache lässt sich durch Umformung der Update-Formel verdeutlichen:
+Die Ursache lässt sich durch Umformung der Update-Formel verdeutlichen mit
 \begin{equation}
 	T_{i,j}^{n+1}
 	=
@@ -372,7 +373,7 @@ Für \(\lambda > \tfrac14\) wird der Koeffizient \((1-4\lambda)\) negativ — da
 Dies führt dazu, dass Unterschiede zwischen benachbarten Zellen nicht geglättet, sondern verstärkt werden: es entstehen Über- und Unterschwinger, die sich mit jeder Iteration vergrößern.
 
 \paragraph{Fall 3: Wiederherstellung der Stabilität}  
-Durch Verringerung von \(\Delta t\) auf \(0.5\,\mathrm{s}\) ergibt sich:
+Durch Verringerung von \(\Delta t\) auf \(0.5\,\mathrm{s}\) ergibt sich
 \[
 \lambda =
 \frac{50}{7850 \cdot 470} \cdot \frac{0.5}{0.006^2}
