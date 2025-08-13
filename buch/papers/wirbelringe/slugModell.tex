@@ -33,7 +33,7 @@ Die in Abschnitt \ref{Wirbelringe:Stokes} genannte Formel für die Zirkulation k
 \begin{equation*}
 \Gamma 
 \approx 
-\frac{1}{2}UL
+\frac{1}{2}u_pL
 \end{equation*}
 vereinfacht werden.
 
@@ -48,13 +48,12 @@ Dies funktioniert aber nur unter folgenden Annahmen:
     \item Der entstehende Wirbelring ist achsensymmetrisch.
 \end{itemize} 
 
-Zunächst die Grundlagen:
 Grundsätzlich wird die Länge und das Volumen eines Slugs als
 \begin{align}
+    \label{Wirbelringe:eq:sluglaenge}
     L
     &=
     \int_{0}^{T}u_p(t)\,dt\\
-    \label{Wirbelringe:eq:sluglaenge}
     V
     &=
     LA
@@ -102,7 +101,7 @@ als Drehimpuls eines rotierenden Fluidvolumens
     =
     \int_{V}\rho\cdot\vec{x}\times\vec{v}\,d\mathbf{V}
     =
-    \int_{V}\rho\cdot({\textstyle \frac{1}{2}}\vec{x}\times\vec{\omega})\,d\mathbf{V}
+    \int_{V}\rho\cdot\biggl({\textstyle \frac{1}{2}}\vec{x}\times\vec{\omega}\biggr)\,d\mathbf{V}
     =
     \frac{\rho}{2}\int_{V}\vec{x}\times\vec{\omega}\,d\mathbf{V}
     \label{Wirbelringe:eq:Drehimpuls}
