@@ -11,27 +11,26 @@
 
 \subsection{Ziel und Inhalt unserer Arbeit}
 OpenFOAM ist eine Open Source Software zur Berechnung von Strömungsfeldern. 
-
 Das Ziel dieses Papers ist es dem Leser einen Überblick zu verschaffen was OpenFOAM ist und anhand eines 
-Anwendungsbeispiels zeigen, wie eine simple Simulation selbst durchgeführt werden kann.
-%TODO
-%XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Anwendungsbeispiels zu zeigen, wie eine einfache Simulation selbst durchgeführt werden kann.
+
 
 \subsection{Was ist eigentlich OpenFOAM?\label{openfoam:section:WasIstOpenFoam}}
 OpenFOAM ist, wie der Name sagt, eine Open Source Software die unter der GNU
-General Public License Kostenlos zugänglich ist und dadurch auch für Kommerzielle Zwecke 
+General Public License Kostenlos zugänglich ist und dadurch auch für kommerzielle Zwecke 
 verwendet werden kann. 
 
-Bei OpenFOAM handelt es sich um eine \emph{CFD} Software, dies steht für \emph{C}omputational \emph{F}luid \emph{D}ynamics also Numerische Strömungsdynamik.
-OpenFOAM kann dementsprechend verwendet werden um näherungsweise Lösungen für 
-Strömungsmechanische Probleme zu finden.
+Bei OpenFOAM handelt es sich um eine \emph{CFD} Software, dies steht für \emph{C}omputational \emph{F}luid \emph{D}ynamics also numerische Strömungsdynamik.
+OpenFOAM kann dementsprechend verwendet werden, um näherungsweise Lösungen für 
+strömungsmechanische Probleme zu finden.
 Es können zum Beispiel Widerstandsbeiwerte von Autos oder die Wirbelschleppen einer Tragfläche simuliert werden.
-Dabei liegen für OpenFOAM im Vergleich zu anderer CFD-Software die Stärken nicht bei Nutzerfreundlichkeit oder Geschwindigkeit, sondern bei der Anpassbarkeit, zum einen da es sich um offene Software aber auch dadurch das OpenFOAM entwickelt wurde mit dem Ziel für die Erweiterbarkeit durch den Nutzer zu ermöglichen. Dies macht es weniger praktikabel die Software als Simulator zum Lösen von Standardproblemen anzuwenden, sondern für das Entwickeln von Solver für neue Problemstellungen für die noch keine herkömmliche Solver existieren.
+Dabei liegen für OpenFOAM im Vergleich zu anderer CFD-Software die Stärken nicht bei Nutzerfreundlichkeit oder Geschwindigkeit, sondern bei der Anpassbarkeit, zum einen da es sich um offene Software handelt andererseits aber auch dadurch, dass OpenFOAM entwickelt wurde mit dem Ziel, die Erweiterbarkeit durch den Nutzer zu ermöglichen.
+Dies macht es weniger praktikabel, die Software als Simulator zum Lösen von Standardproblemen anzuwenden, sondern für das Entwickeln von Solvern für neue Problemstellungen, für die noch keine herkömmliche Solvern existieren.
 
 OpenFOAM wird seit 2004 hauptsächlich von OpenCFD Ltd entwickelt, es wird jedoch auch aktiv durch die Community weiterentwickelt.
-Die getesteten Releases werden alle 6 Monate herausgegeben. \cite{openfoam:greenshieldsweller2022}
+Die getesteten Releases werden alle sechs Monate herausgegeben \cite{openfoam:greenshieldsweller2022}.
 
 \subsection{Was macht OpenFOAM?}
-Zum Simulieren Strömungsmechanischer Probleme muss man die Partiellen Differenziellen Gleichungen (v.a Erhaltungssätze) die das Verhalten des Mediums beschreiben, ausgehend von Initial- und Grenzbedingungen, lösen.
-Dabei beschreiben die Differenziellen Gleichungen Felder für die Simulationsgrößen wie Geschwindigkeit, Druck, Temperatur, Dichte und je nach Anwendung noch viele mehr. OpenFOAM nutzt die Manipulation von solchen Feldern, um eine Numerische Lösung zu finden. Daher kommt auch das Akronym FOAM dies steht für Field Operation And Manipulation.
+Zum Simulieren strömungsmechanischer Probleme muss man die partiellen Differenzialgleichungen (v. a. Erhaltungssätze), die das Verhalten des Mediums beschreiben, ausgehend von Initial- und Grenzbedingungen, lösen.
+Dabei beschreiben die Differenzialgleichungen Felder für die Simulationsgrößen wie Geschwindigkeit, Druck, Temperatur, Dichte und je nach Anwendung noch viele mehr. OpenFOAM nutzt die Manipulation von solchen Feldern, um eine numerische Lösung zu finden. Daher kommt auch das Akronym FOAM, es steht für Field Operation And Manipulation.
 
