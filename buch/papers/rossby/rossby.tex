@@ -1,8 +1,11 @@
 
-Rossby-Wellen, auch planetare Wellen genannt, sind grossräumige Wellenerscheinungen, die in erster Linie durch die Breitenabhängigkeit des Coriolis-Parameters verursacht werden. Diese Breitenabhängigkeit wird durch den sogenannten \emph{Beta-Term}
+Rossby-Wellen, auch planetare Wellen genannt, sind grossräumige
+Wellenerscheinungen, die in erster Linie durch die Breitenabhängigkeit des
+Coriolis-Parameters verursacht werden. Diese Breitenabhängigkeit wird durch den
+sogenannten \emph{Beta-Term}
 \begin{equation}
 	\beta = \frac{\partial f}{\partial y}
-	\label{eq:beta_term}
+	\label{rossby:eq:beta_term}
 \end{equation}
 beschrieben. Bewegt sich ein Luftpaket meridional, erfährt es eine Änderung seiner planetaren Vorticity \(f\). Unter der Erhaltung der potenziellen Vorticity erzwingt dies eine kompensierende Änderung der relativen Vorticity~\(\zeta\), was zu einer wellenförmigen Rückstellbewegung führt. Diese Dynamik macht Rossby-Wellen zu einer direkten Konsequenz der PV-Erhaltung auf einer Kugel oder Beta-Ebene.
 
@@ -10,40 +13,41 @@ beschrieben. Bewegt sich ein Luftpaket meridional, erfährt es eine Änderung se
 
 Abschnitt inspiriert von \cite{rossby:mueller2018}.
 
-In Äquatornähe dominiert eine mittlere Ost–West-Strömung mit Geschwindigkeit \(U\). Betrachten wir kleine Störungen \((u,v)\) dieser Strömung:
+In Äquatornähe dominiert eine mittlere Ost–West-Strömung mit Geschwindigkeit
+\(U\). Betrachten wir kleine Störungen \((u,v)\) dieser Strömung:
 \begin{equation}
 	u' = U + u, \quad v' = v, \quad \text{mit } |u|, |v| \ll U.
-	\label{eq:perturbation}
+	\label{rossby:eq:perturbation}
 \end{equation}
 Für eine quellenfreie Strömung existiert eine Stromfunktion~\(\psi\):
 \begin{equation}
 	u = -\frac{\partial \psi}{\partial y}, \quad v = \frac{\partial \psi}{\partial x}.
-	\label{eq:stream_function}
+	\label{rossby:eq:stream_function}
 \end{equation}
 Die relative Vorticity ergibt sich zu
 \begin{equation}
 	\zeta = \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y} = \Delta \psi,
-	\label{eq:relative_vorticity}
+	\label{rossby:eq:relative_vorticity}
 \end{equation}
 und die absolute Vorticity ist \(\zeta + f\) mit \(f = f(y)\). Unter der Annahme, dass die absolute Vorticity in der reibungsfreien Strömung erhalten bleibt,
 \begin{equation}
 	\frac{d}{dt} (\zeta + f) = 0,
-	\label{eq:absolute_vorticity_conservation}
+	\label{rossby:eq:absolute_vorticity_conservation}
 \end{equation}
 und unter Verwendung der Näherungen
 \begin{equation}
 	u \ll U, \quad \frac{\partial \zeta}{\partial y} \ll \frac{\partial f}{\partial y} = \beta, \quad v = \frac{\partial \psi}{\partial x},
-	\label{eq:linear_approximations}
+	\label{rossby:eq:linear_approximations}
 \end{equation}
 erhält man die linearisierte Vorticity-Gleichung
 \begin{equation}
 	\frac{\partial \zeta}{\partial t} + U \frac{\partial \zeta}{\partial x} + \beta \frac{\partial \psi}{\partial x} = 0.
-	\label{eq:linear_vorticity_equation}
+	\label{rossby:eq:linear_vorticity_equation}
 \end{equation}
 Mit \(\zeta = \Delta \psi\) folgt
 \begin{equation}
 	\frac{\partial \Delta \psi}{\partial t} + U \frac{\partial \Delta \psi}{\partial x} + \beta \frac{\partial \psi}{\partial x} = 0.
-	\label{eq:linear_vorticity_equation_psi}
+	\label{rossby:eq:linear_vorticity_equation_psi}
 \end{equation}
 
 \subsubsection{Wellenlösung und Dispersionsrelation}
@@ -51,31 +55,37 @@ Mit \(\zeta = \Delta \psi\) folgt
 Wir setzen eine ebene Welle der Form
 \begin{equation}
 	\psi(x,y,t) = \cos(kx + ly - \omega t)
-	\label{eq:wave_solution}
+	\label{rossby:eq:wave_solution}
 \end{equation}
 ein und erhalten die Dispersionsrelation
 \begin{equation}
 	\omega = U k - \frac{\beta k}{k^2 + l^2}.
-	\label{eq:dispersion_relation}
+	\label{rossby:eq:dispersion_relation}
 \end{equation}
 Die Phasengeschwindigkeit lautet
 \begin{equation}
 	c = \frac{\omega}{k} = U - \frac{\beta}{k^2 + l^2}.
-	\label{eq:phase_speed}
+	\label{rossby:eq:phase_speed}
 \end{equation}
 Daraus folgt, dass sich Rossby-Wellen relativ zur mittleren Strömung stets nach Westen ausbreiten. In der Atmosphäre bedeutet dies: Selbst bei einer nach Osten gerichteten Grundströmung (z. B. im Jetstream) bewegt sich die Wellenform gegen die Strömung. Rossby-Wellen sind besonders stabil und können über viele Tage bestehen, wodurch sie grossräumig die Lage von Hoch- und Tiefdrucksystemen und die Pfade von Wetterfronten beeinflussen.
 
-
 \subsection{Rossby-Wellen und Wetterextreme}
 
-Ein eindrucksvolles Beispiel für den Einfluss quasi-stationärer Rossby-Wellen auf Extremwetterereignisse ist der Sommer 2010.
-In dieser Periode dominierten atmosphärische Zirkulationsmuster mit einer Wellenzahl \(k = 7\), die zu gleichzeitigen, aber geographisch weit entfernten Extremen führten.
+Ein eindrucksvolles Beispiel für den Einfluss quasi-stationärer Rossby-Wellen
+auf Extremwetterereignisse ist der Sommer 2010. In dieser Periode dominierten
+atmosphärische Zirkulationsmuster mit einer Wellenzahl \(k = 7\), die zu
+gleichzeitigen, aber geographisch weit entfernten Extremen führten.
 
 Über Westrussland etablierte sich ein blockierendes Hochdruckgebiet, das über Wochen bestehen blieb und eine extreme Hitzewelle mit Temperaturen über 40\,$^\circ$C auslöste.
 Die anhaltende Trockenheit begünstigte grossflächige Waldbrände und dichten Smog, besonders im Raum Moskau, mit tausenden Todesopfern.
 
-Zur gleichen Zeit erlebte Pakistan ungewöhnlich starken Monsunregen.
-Ein persistentes Tiefdruckgebiet führte zu einer Jahrhundertflut, von der über 20 Millionen Menschen betroffen waren.
+Zur gleichen Zeit erlebte Pakistan ungewöhnlich starken Monsunregen. Ein
+persistentes Tiefdruckgebiet führte zu einer Jahrhundertflut, von der über 20
+Millionen Menschen betroffen waren.
 
-Beide Ereignisse lassen sich durch dasselbe planetare Wellenmuster erklären: Die quasi-stationäre Rossby-Welle blockierte die Westwinddrift, sodass ein stabiles Hoch über Russland und ein stationäres Tief über Pakistan bestehen blieben.
-Dieses Beispiel verdeutlicht, wie grossskalige Dynamik auf der planetaren Skala direkte, langanhaltende Auswirkungen auf regionale Extremwetterlagen haben kann \cite{rossby:petoukhov2013}.
+Beide Ereignisse lassen sich durch dasselbe planetare Wellenmuster erklären:
+Die quasi-stationäre Rossby-Welle blockierte die Westwinddrift, sodass ein
+stabiles Hoch über Russland und ein stationäres Tief über Pakistan bestehen
+blieben. Dieses Beispiel verdeutlicht, wie grossskalige Dynamik auf der
+planetaren Skala direkte, langanhaltende Auswirkungen auf regionale
+Extremwetterlagen haben kann \cite{rossby:petoukhov2013}.
