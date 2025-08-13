@@ -3,9 +3,10 @@
 
 Abbildung~\ref{fig:zonal_wind} zeigt ein idealisiertes zonales Windfeld, bei dem ausschliesslich eine Ost–West-Strömung vorliegt (\(v = 0\)).
 Die Geschwindigkeit hängt von der geographischen Breite \(\theta\) ab und folgt der Beziehung
-\[
+\begin{equation}
 	u = U_0 \cdot \sin^2(\theta).
-\]
+\label{eq:zonal_wind}
+\end{equation}
 Ein Druckgradient oder eine vertikale Struktur sind nicht berücksichtigt – es handelt sich um ein rein theoretisches, horizontal homogenes Modell.
 
 \begin{figure}
@@ -18,9 +19,10 @@ Ein Druckgradient oder eine vertikale Struktur sind nicht berücksichtigt – es
 \noindent
 Abbildung~\ref{fig:meridional_wind} zeigt dagegen ein idealisiertes meridionales Windfeld, bei dem nur eine Nord–Süd-Strömung existiert (\(u = 0\)).
 Die Geschwindigkeit hängt hier von der Breite ab nach
-\[
+\begin{equation}
 	v = V_0 \cdot \cos(\theta).
-\]
+\label{eq:meridional_wind}
+\end{equation}
 Auch dieses Feld ist frei von Druckgradienten und vertikaler Struktur und dient der isolierten Betrachtung meridionaler Strömungskomponenten.
 
 \begin{figure}
@@ -35,17 +37,20 @@ Auch dieses Feld ist frei von Druckgradienten und vertikaler Struktur und dient 
 Die Erde rotiert einmal pro Tag um ihre eigene Achse. In einem rotierenden Bezugssystem wie der Erde treten dabei Scheinkräfte auf, die in der klassischen Mechanik berücksichtigt werden müssen. Eine davon ist die {Corioliskraft}, welche bewegte Luft- und Wassermassen auf der {Nordhalbkugel} nach rechts und auf der {Südhalbkugel} nach links ablenkt. Ihre Wirkung ist maximal an den Polen und verschwindet am Äquator. Die Corioliskraft ist keine reale Kraft, sondern eine Folge der Drehung des Koordinatensystems.
 
 Mathematisch wird sie beschrieben durch
-\[
+\begin{equation}
 	\vec{F}_C = -2m(\vec{\Omega} \times \vec{v}),
-\]
+\label{eq:coriolis_force}
+\end{equation}
 wobei \(m\) die Masse, \(\vec{\Omega}\) der Rotationsvektor der Erde und \(\vec{v}\) die Geschwindigkeit relativ zur Erdoberfläche ist. In atmosphärischen Anwendungen wird häufig nur die Vertikalkomponente betrachtet, was zur Definition des {Coriolis-Parameters}
-\[
+\begin{equation}
 	f = 2\Omega \sin(\varphi)
-\]
+\label{eq:coriolis_parameter}
+\end{equation}
 führt. Dessen Breitenänderung ist durch den \(\beta\)-Parameter gegeben:
-\[
+\begin{equation}
 	\beta = \frac{\partial f}{\partial y} = \frac{2 \Omega \cos(\varphi)}{a},
-\]
+\label{eq:beta_parameter}
+\end{equation}
 mit dem Erdradius \(a\) und der Nord–Süd-Koordinate \(y\).
 
 \paragraph{Rechenbeispiel: Velofahren in Zürich}
@@ -75,17 +80,21 @@ Dieser Effekt ist massgeblich für die Westwinddrift in den mittleren Breiten un
 Die $\beta$-Ebene ist eine lokale Approximation der Erdkugel in der Umgebung einer bestimmten geographischen Breite~$\phi_0$
 (Abbildung~\ref{fig:beta_plane}).
 Ziel dieser Vereinfachung ist es, die Breitenabhängigkeit der Corioliskraft in mathematischen Modellen handhabbar zu machen.
-\[
+\begin{equation}
 	f(y) = f_0 + \beta y,
-\]
+\label{eq:beta_plane}
+\end{equation}
 wobei $y$ die meridionale (Nord–Süd-)Entfernung vom Referenzbreitenkreis ist. Der Term
-\[
+\begin{equation}
 	f_0 = 2\Omega \sin(\phi_0)
-\]
+\label{eq:coriolis_parameter_ref}
+\end{equation}
 bezeichnet den Coriolisparameter an der Referenzbreite, und
-\[
+\begin{equation}
 	\beta = \left.\frac{\partial f}{\partial y}\right|_{\phi_0} = \frac{2\Omega \cos(\phi_0)}{a}
-\]
+\label{eq:beta_parameter_ref}
+\end{equation}
+
 beschreibt die Änderung von $f$ mit der geographischen Breite; $a$ ist der Erdradius. Diese Darstellung erlaubt es, lokale Phänomene wie Rossby-Wellen auf einer idealisierten Ebene zu analysieren, ohne die volle Kugelgeometrie der Erde berücksichtigen zu müssen.
 
 \begin{figure}

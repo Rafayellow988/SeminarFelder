@@ -1,8 +1,9 @@
 
 Rossby-Wellen, auch planetare Wellen genannt, sind grossräumige Wellenerscheinungen, die in erster Linie durch die Breitenabhängigkeit des Coriolis-Parameters verursacht werden. Diese Breitenabhängigkeit wird durch den sogenannten \emph{Beta-Term}
-\[
+\begin{equation}
 	\beta = \frac{\partial f}{\partial y}
-\]
+	\label{eq:beta_term}
+\end{equation}
 beschrieben. Bewegt sich ein Luftpaket meridional, erfährt es eine Änderung seiner planetaren Vorticity \(f\). Unter der Erhaltung der potenziellen Vorticity erzwingt dies eine kompensierende Änderung der relativen Vorticity~\(\zeta\), was zu einer wellenförmigen Rückstellbewegung führt. Diese Dynamik macht Rossby-Wellen zu einer direkten Konsequenz der PV-Erhaltung auf einer Kugel oder Beta-Ebene.
 
 \subsubsection{Lineare Theorie barotroper Rossby-Wellen}
@@ -10,48 +11,58 @@ beschrieben. Bewegt sich ein Luftpaket meridional, erfährt es eine Änderung se
 Abschnitt inspiriert von \cite{rossby:mueller2018}.
 
 In Äquatornähe dominiert eine mittlere Ost–West-Strömung mit Geschwindigkeit \(U\). Betrachten wir kleine Störungen \((u,v)\) dieser Strömung:
-\[
+\begin{equation}
 	u' = U + u, \quad v' = v, \quad \text{mit } |u|, |v| \ll U.
-\]
+	\label{eq:perturbation}
+\end{equation}
 Für eine quellenfreie Strömung existiert eine Stromfunktion~\(\psi\):
-\[
+\begin{equation}
 	u = -\frac{\partial \psi}{\partial y}, \quad v = \frac{\partial \psi}{\partial x}.
-\]
+	\label{eq:stream_function}
+\end{equation}
 Die relative Vorticity ergibt sich zu
-\[
+\begin{equation}
 	\zeta = \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y} = \Delta \psi,
-\]
+	\label{eq:relative_vorticity}
+\end{equation}
 und die absolute Vorticity ist \(\zeta + f\) mit \(f = f(y)\). Unter der Annahme, dass die absolute Vorticity in der reibungsfreien Strömung erhalten bleibt,
-\[
+\begin{equation}
 	\frac{d}{dt} (\zeta + f) = 0,
-\]
+	\label{eq:absolute_vorticity_conservation}
+\end{equation}
 und unter Verwendung der Näherungen
-\[
+\begin{equation}
 	u \ll U, \quad \frac{\partial \zeta}{\partial y} \ll \frac{\partial f}{\partial y} = \beta, \quad v = \frac{\partial \psi}{\partial x},
-\]
+	\label{eq:linear_approximations}
+\end{equation}
 erhält man die linearisierte Vorticity-Gleichung
-\[
+\begin{equation}
 	\frac{\partial \zeta}{\partial t} + U \frac{\partial \zeta}{\partial x} + \beta \frac{\partial \psi}{\partial x} = 0.
-\]
+	\label{eq:linear_vorticity_equation}
+\end{equation}
 Mit \(\zeta = \Delta \psi\) folgt
-\[
+\begin{equation}
 	\frac{\partial \Delta \psi}{\partial t} + U \frac{\partial \Delta \psi}{\partial x} + \beta \frac{\partial \psi}{\partial x} = 0.
-\]
+	\label{eq:linear_vorticity_equation_psi}
+\end{equation}
 
 \subsubsection{Wellenlösung und Dispersionsrelation}
 
 Wir setzen eine ebene Welle der Form
-\[
+\begin{equation}
 	\psi(x,y,t) = \cos(kx + ly - \omega t)
-\]
+	\label{eq:wave_solution}
+\end{equation}
 ein und erhalten die Dispersionsrelation
-\[
+\begin{equation}
 	\omega = U k - \frac{\beta k}{k^2 + l^2}.
-\]
+	\label{eq:dispersion_relation}
+\end{equation}
 Die Phasengeschwindigkeit lautet
-\[
+\begin{equation}
 	c = \frac{\omega}{k} = U - \frac{\beta}{k^2 + l^2}.
-\]
+	\label{eq:phase_speed}
+\end{equation}
 Daraus folgt, dass sich Rossby-Wellen relativ zur mittleren Strömung stets nach Westen ausbreiten. In der Atmosphäre bedeutet dies: Selbst bei einer nach Osten gerichteten Grundströmung (z. B. im Jetstream) bewegt sich die Wellenform gegen die Strömung. Rossby-Wellen sind besonders stabil und können über viele Tage bestehen, wodurch sie grossräumig die Lage von Hoch- und Tiefdrucksystemen und die Pfade von Wetterfronten beeinflussen.
 
 
