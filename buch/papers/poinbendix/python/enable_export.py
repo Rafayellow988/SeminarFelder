@@ -39,6 +39,6 @@ def set_plot_settings(fig, ax, width=4.5, height=2.5): # Call after plot generat
     fig.set_size_inches(w=width, h=height)
 
 def set_polar_plot_settings(fig, ax, width=4.5, height=2.5): # Call after plot generated!
-    ax.set_rticks([0.5, 1, 2, 3])  # Less radial ticks
-    ax.set_rmax(3)
+    ax.set_rticks([0.5, 1, 2])  # Less radial ticks
+    ax.set_rmax(2)
     fig.set_size_inches(w=width, h=height)
