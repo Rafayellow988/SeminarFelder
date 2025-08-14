@@ -9,14 +9,14 @@
 \section{Mathematische Modellbildung
 \label{openfoam:section:teil1}}
 \kopfrechts{Mathematische Modellbildung}
-Zum Simulieren von Strömungen benötigen wir zuerst ein Modell, das das Verhalten der Flüssigkeit, möglichst umfassend und genau beschreibt. 
+Zum Simulieren von Strömungen benötigen wir zuerst ein Modell, das das Verhalten der Flüssigkeit möglichst umfassend und genau beschreibt. 
 Hierbei werden meist die Navier-Stokes-Gleichungen benutzt, welche noch mit Randbedingungen und Zustandsgleichungen erweitert werden können. 
 Oft werden die Euler-Gleichungen anstelle Der Navier-Stokes-Gleichungen verwendet, da diese weniger Rechenaufwand benötigen.
 Dies aber auf Kosten der Genauigkeit.
 
 Zudem benötigen wir ein Lösungsverfahren, das einen Anfangszustand und das mathematische Modell zu einer numerischen Lösung verarbeiten kann, dies ist nötig, da für die Navier-Stokes-Gleichungen keine analytische Lösung existiert.
-Für die Euler-Gleichungen würden Analytische Lösungen existieren, diese sind jedoch aufwändig zu berechnen.
-Deswegen werden auch zum lösen der Euler-Gleichungen Numerische Methoden verwendet.
+Für die Euler-Gleichungen würden analytische Lösungen existieren, diese sind jedoch aufwändig zu berechnen.
+Deswegen werden auch zum Lösen der Euler-Gleichungen numerische Methoden verwendet.
 Hierbei kommen meist die Finite-Differenzen-Methode (FDM), die Finite-Volumen-Methode (FVM) und die Finite-Elemente-Methode (FEM) zum Einsatz. 
 
 \subsection{Stationär oder zeitabhängig?}
@@ -27,8 +27,8 @@ Bei einer Simulation wird meist simuliert, bis der stationäre Zustand bis auf e
 Dadurch kann man sich Simulationsaufwand ersparen da sobald der stationäre Zustand erreicht wird das Resultat nicht mehr ändert und so keine neuen Ergebnisse gefunden werden können.
 
 \subsection{Modellierung der Flüssigkeit}
-Im Kontext der CFD-Simulation nimmt man an, dass eine Flüssigkeit nicht aus einzelnen Teilen wie Atomen oder Molekülen besteht, sondern man nimmt an sie sei Kontinuierlich. 
-Zudem wird angenommen, dass sämtliche Eigenschaften, die sich von Punkt zu Punkt innerhalb der Flüssigkeit stetig und die Ableitung davon ebenfalls stetig sind. 
+Im Kontext der CFD-Simulation nimmt man an, dass eine Flüssigkeit nicht aus einzelnen Teilen wie Atomen oder Molekülen besteht, sondern man nimmt an, sie sei kontinuierlich. 
+Zudem wird angenommen, dass sämtliche Eigenschaften der Flüssigkeit stetig und die Ableitung davon ebenfalls stetig sind. %Besser formulieren
 
 Zudem hat eine Flüssigkeit noch weitere Eigenschaften wie die Dichte. 
 Diese kann hier aber nicht immer als konstant angesehen werden, da man ansonsten bei kompressiblen Flüssigkeiten einen Teil der Energie, welcher für das Komprimieren derselben verwendet wird, nicht beachten würde.
@@ -59,22 +59,22 @@ Diese Massenänderung berechnet man ausgehend vom Integral zum berechnen der Mas
 \[M 
 = 
 \int_{V} \rho \, dV\]
-im Kontrollvolumen V.
-Um die Massenänderung zu erhalten leitet man dieses Integral noch partiell ab und erhält so
+im Kontrollvolumen $V$.
+Um die Massenänderung zu erhalten, leitet man dieses Integral noch partiell nach $t$ ab und erhält so
 \[\frac{\partial M}{\partial t}
 =
 \frac{\partial }{\partial t} \int_{V}\rho dV.\]
-Hier nimmt man die Ableitung auf der rechten Seite noch in das Integral hinein da dies einem Später das rechnen etwas erleichtert.
+Hier nimmt man die Ableitung auf der rechten Seite noch in das Integral hinein, da dies einem später das Rechnen etwas erleichtert.
 
-Setzt man nun die beiden Terme der Massenänderung	gleich erhält man die Gleichung 
+Setzt man nun die beiden Terme der Massenänderung gleich, erhält man die Gleichung 
 \[\int_{S}\rho\vb{u}\cdot d\vb{S} 
 =
 \int_{V} \frac{\partial \rho}{\partial t} \, dV .\] 
 Bei dieser Gleichung kann man nun auf der linken Seite mit dem Gaussschen Integralsatz das Oberflächen Integral in ein Flächenintegral umwandeln es wird also zu
-\[\int_{V}\nabla\cdot(\rho\vb{u}) \, dV
+\[\int_{V}\nabla\cdot(\rho\vb{u}) \, dV.
 =
 \int_{V}\frac{\partial \rho}{\partial t}  \, dV \]
-mit dem Ändern der Flussrichtung und Umschreiben der Gleichung kann man die rechte Seite auf null setzen, wodurch 
+Mit dem Ändern der Flussrichtung und Umschreiben der Gleichung kann man die rechte Seite auf null setzen, wodurch 
 \[\int_{V}\nabla\cdot(\rho\vb{u})  \, dV + \int_{V}\frac{\partial \rho}{\partial t}  \, dV 
 = 
 0\] 
@@ -110,7 +110,8 @@ Dieses Volumen weist nun eine Impulsänderung die
 entspricht.
 Hier wird nicht mehr die partielle Ableitung verwendet, da das Kontrollvolumen nicht an einem festen Ort ist.
 Anstelle der partiellen Ableitung wird eine substantielle Ableitung \[\frac{D}{Dt}\] verwendet, da diese die Änderung des Feldes an einem bewegten Teilchen beschreibt.
-Als nächstes berechnet man die gesamte Kraft auf die Oberfläche des Volumens $V$ in dem man alle Kräfte $\vb{f} = \vb{t}\,dS$, die auf die Oberflächenstücke $dS$ wirken, integriert.
+
+Als nächstes berechnet man die gesamte Kraft auf die Oberfläche des Volumens $V$, in dem man alle Kräfte $\vb{f} = \vb{t}\,dS$, die auf die Oberflächenstücke $dS$ wirken, integriert.
 $\vb{t} dS$ ist hier gleich $(\vb{n\cdot\sigma}dS)$. 
 Daraus erhält man die Kraft 
 \[\vb{F} 
@@ -119,7 +120,7 @@ Daraus erhält man die Kraft
 = \int_{S} (d\vb{S}\cdot\vb{\sigma})
 .\]
 Dies ist nun wieder ein Flächenintegral, das mit dem gaussschen Integralsatz in ein Volumenintegral umgewandelt werden kann.
-Dadurch ergibt sich, dass
+Dadurch ergibt sich
 \[\vb{F} 
 =
 \int_{V}\nabla \cdot \vb{\sigma}\, dV
@@ -129,11 +130,11 @@ Zuletzt berechnen wir noch den Einfluss anderer Kräfte wie die Schwerkraft auf 
 Dazu integrieren wir die normalisierte Volumenkraft $\vb{b}$, über alle Volumenstücke $dV$ wodurch wir das Integral 
 \[\vb{F} 
 =
-\int_{V}\rho\vb{b}, dV
+\int_{V}\rho\vb{b}\, dV
 \]
 erhalten.
-Die normalisierte Volumenkraft ist dabei zum Beispiel die Schwerkraft, die das Gesamte Volumen wirkt. 
-Sie wird noch auf die Masse normalisiert man erhält also eine Beschleunigung.
+Die normalisierte Volumenkraft ist dabei zum Beispiel die Schwerkraft, die das gesamte Volumen wirkt. 
+Sie wird noch auf die Masse normalisiert, man erhält also eine Beschleunigung.
 
 Nun können wir die Impulsänderung des Volumens gleich der Summe der darauf wirkenden Kräfte setzen und die Integrale in einem Integral zusammenfassen. Daraus erhalten wir, mit der Bedingung die Masse im Volumen sei konstant, die Gleichung 
 \[\int_{V} \rho \frac{D\vb{u}}{Dt} - \nabla \cdot \vb{\sigma} -\rho \vb{b}\, dV
@@ -149,15 +150,15 @@ Das Integral kann man weglassen, wodurch wir die Differentialgleichung
 \end{equation}
 erhalten.
 
-Zuletzt kann man noch die substantielle Ableitung in eine partielle umwandeln, damit wir die gleiche Form wie für die Massenerhaltungsgleichung erhalten.
+Zuletzt kann man noch die substantielle Ableitung in eine partielle Ableitung umwandeln, damit wir die gleiche Form wie für die Massenerhaltungsgleichung erhalten.
 Dazu nutzen wir die Definition der substantiellen Ableitung
 \[
 \frac{D\Phi(\vb{x},t)}{Dt}
 :=
 \frac{\partial \Phi}{\partial t}+(\vb{u}\cdot \nabla)\Phi
 ,\] 
-die beschreibt wie die substantielle Ableitung mit der partiellen zusammenhängt.
-eingesetzt in die Differentialgleichung erhalten wir so 
+die beschreibt, wie die substantielle Ableitung mit der partiellen zusammenhängt.
+Eingesetzt in die Differentialgleichung erhalten wir so 
 \begin{equation}
 \label{openfoam:euler2}
 \rho\frac{\partial\vb{u}}{\partial t} + \nabla \cdot(\rho\vb{u}\otimes \vb{u})
@@ -165,9 +166,9 @@ eingesetzt in die Differentialgleichung erhalten wir so
 \nabla \cdot \vb{\sigma} +\rho \vb{b}.
 \end{equation}
 Diese Form erleichtert die Berechnung, da sie nicht mehr die Impulsänderung einer sich bewegenden Menge Flüssigkeit beschreibt, sondern die Impulsänderung der sich momentan an einem Ort befindenden Masse. 
-Man kann also anstelle ein sich durch den Raum bewegendes Masseteilchen ein festes Volumenelement simulieren, welches bei der Fluiddynamik-Simulation die bevorzugte Methode ist.
+Man kann also anstelle ein sich durch den Raum bewegendes Masseteilchen ein festes Volumenelement simulieren, welches bei der Fluid-dynamik-Simulation die bevorzugte Methode ist.
 Auch zu sehen ist hier das dyadische Produkt das mit $\vb{u}\otimes \vb{u}$ gebildet wird.
-Es wird verwendet, um mit dem Term $\nabla \cdot(\rho\vb{u}\otimes \vb{u}$, eine Advektion zu beschreiben.
+Es wird verwendet, um mit dem Term $\nabla \cdot(\rho\vb{u}\otimes \vb{u})$, eine Advektion zu beschreiben.
 
 \subsubsection{Energieerhaltung}
 Die dritte der Euler-Gleichungen wurde nicht wie die der Masse- und Impulserhaltung von Leonhard Euler hergeleitet, sie wird jedoch auch als Euler-Gleichung bezeichnet.
@@ -176,20 +177,20 @@ Das Gesetz der Energieerhaltung besagt, dass die gesamte Energie in einem isolie
 Diese Energie setzt sich im Fall der Fluiddynamik aus kinetischer, potenzieller und thermischer Energie zusammen.
 Sie wird verändert durch mechanische Arbeit, die äussere Kräfte leisten. Ebenso können Wärmequellen den Wärmeinhalt beeinflussen.
 
-Um die Energieerhaltung zu beschreiben muss also die Änderung der thermischen Energie $e$ und die der kinetischen $K$ bestimmt werden.
-Bei $e$ und  $K$ handelt es sich jeweils um eine Spezifische, also auf die Masse Normalisierte, Energie.
+Um die Energieerhaltung zu beschreiben, muss also die Änderung der thermischen Energie $e$ und die der kinetischen $K$ bestimmt werden.
+Bei $e$ und  $K$ handelt es sich jeweils um eine spezifische, also auf die Masse normalisierte, Energie.
 Deswegen wird im Term 
 \[\rho \frac{De}{Dt}+  \rho \frac{DK}{Dt}
-,\]
+\]
 der die totale Energieänderung beschreibt, die Energie jeweils mit der Dichte $\rho$ multipliziert.
 
 Nun muss anhand des Zuflusses mechanischer und thermischer Energie die Änderung der totalen Energie bestimmt werden.
-Dabei wird noch zwischen Internen und Externen Energiequellen unterschieden.
+Dabei wird noch zwischen internen und externen Energiequellen unterschieden.
 Total muss man also zwischen vier unterschiedlichen Quellen unterscheiden, die eine Änderung der Energie im Kontrollvolumen verursachen.
-Die Änderung der thermischen Energie wird durch die Terme  $- \nabla \cdot \vb{q}$ und  $\rho r$ dargestellt, wobei der Erste einen Zufluss durch die Oberfläche des Kontrollvolumens und der Zweite eine Energiequelle im inneren dessen beschreibt.
-Dabei sind $\vb{q}$ und $r$ auf Fläche respektive Volumen normalisierte Hitzequellen.
+Die Änderung der thermischen Energie wird durch die Terme  $- \nabla \cdot \vb{q}$ und  $\rho r$ dargestellt, wobei der Erste einen Zufluss durch die Oberfläche des Kontrollvolumens und der zweite eine Energiequelle im Inneren desselben beschreibt.
+Dabei sind $\vb{q}$ und $r$ auf Fläche respektive Volumen normalisierte Wärmequellen.
 Die mechanischen Energiequellen werden durch die Terme $\nabla \cdot (\sigma \cdot \vb{u})$ und $\rho \vb{b} \cdot \vb{u}$ beschrieben.
-Hier handelt es sich beim ersten Term wieder um einen Zufluss an Mechanischer Energie durch die Oberfläche des Kontrollvolumens.  Der zweite Term beschreibt hier aber die Änderung der potenziellen Energie aufgrund Kräften, wie der Schwerkraft, die auf die gesamte Masse im Volumen wirken.
+Hier handelt es sich beim ersten Term wieder um einen Zufluss an mechanischer Energie durch die Oberfläche des Kontrollvolumens.  Der zweite Term beschreibt hier aber die Änderung der potenziellen Energie aufgrund von Kräften, wie der Schwerkraft, die auf die gesamte Masse im Volumen wirken.
 Aus allen diesen Termen zusammen lässt sich die Differentialgleichung
 \begin{equation}
 \label{openfoam:euler3}
@@ -203,13 +204,8 @@ bilden.
 Die Navier-Stokes-Gleichungen sind eine Erweiterung der Euler-Gleichungen, welche zusätzlich noch die Viskosität der Flüssigkeit berücksichtigen.
 Dadurch können Flüssigkeiten genauer modelliert werden als mit den Euler-Gleichungen, da in Fällen, in denen die Reibung der Flüssigkeit einen grossen Einfluss auf das Resultat hat, das Modell vollständiger ist.
 
-Die erste Gleichung, die wir benötigen, ist die Massenerhaltungs-Gleichung 
-\[\nabla \cdot \vb{u}
-=
-0
-.
-\]
-Diese haben wir schon, in einer etwas umfassenderen Form, in Gleichung \eqref{openfoam:euler1} erhalten.
+Die erste Gleichung, die wir benötigen, ist die Massenerhaltungs-Gleichung.
+Diese haben wir schon in Gleichung \eqref{openfoam:euler1} erhalten.
 
 Dazu kommt noch die Navier-Stokes-Impulserhaltungsgleichung.
 Sie beschreibt die Veränderung des Impulses in einem Kontrollvolumen aufgrund innerer Kräfte durch einen Druckunterschied, Reibungskräfte durch Flüssigkeitsbewegung und Kräfte die von aussen auf das ganze Volumen wirken.
@@ -232,16 +228,15 @@ Diese drei Terme zusammen beschreiben die Impulsänderung
 =
 - \nabla p + \mu \Delta \vb{u} +\rho \vb{b} 
 .\end{equation}
-
-Dadurch das diese Impulserhaltungsgleichung die Reibung der Flüssigkeit beachtet, eignet sie sich besser um turbulente Flüssigkeiten zu simulieren. 
+Dadurch das diese Impulserhaltungsgleichung die Reibung der Flüssigkeit beachtet, eignet sie sich besser, um turbulente Flüssigkeiten zu simulieren. 
 
 \subsection{Randbedingungen}
 \label{openfoam:randbedingungen}
-Mit den Randbedingungen definiert man, wie die Flüssigkeit mit dem Rand des Gebietes, auf welchem man das Mathematische Modell der Flüssigkeit anwendet, interagiert.
+Mit den Randbedingungen definiert man, wie die Flüssigkeit mit dem Rand des Gebietes, auf welchem man das mathematische Modell der Flüssigkeit anwendet, interagiert.
 Dabei kann man für verschiedene Gebiete des Randes jeweils unterschiedliche Bedingungen wählen, um zum Beispiel einen Fluss von einem Eingang durch das Volumen zu einem Ausgang zu beschreiben.
 
-Zum Rand gehört die Begrenzung des Gebietes auf das man das Modell der Flüssigkeit anwenden will, aber auch die Oberflächen der Objekte die sich innerhalb dieses Gebietes befinden.
-Den Raum zwischen dem äusseren Rand und dem Rand des Objektes nennt man Lösungs-Domain, in dieser Region befindet sich die Flüssigkeit deren Verhalten man berechnen möchte.
+Zum Rand gehört die Begrenzung des Gebietes, auf das man das Modell der Flüssigkeit anwenden will, aber auch die Oberflächen der Objekte die sich innerhalb dieses Gebietes befinden.
+Den Raum zwischen dem äusseren Rand und dem Rand des Objektes nennt man Lösungs-Domain, in dieser Region befindet sich die Flüssigkeit, deren Verhalten man berechnen möchte.
 
 \subsubsection{Inlet}
 Im Falle eines Inlets wird ein fester Wert auf einen Bereich des Randes festgelegt. 
@@ -250,24 +245,23 @@ Druck und Geschwindigkeit sind aber nicht unabhängig voneinander, dadurch muss 
 So erhält man drei Bedingungen 
 \begin{align*}
  \nabla p(\vb{x}) &= 0 \\
- \vb{u}(\vb{x}) &= \vb{u}_{in} \\
- T(\vb{x}) &= T_{in}
+ \vb{u}(\vb{x}) &= \vb{u}_{\text{in}} \\
+ T(\vb{x}) &= T_{\text{in}}
 \end{align*}
 für einen Bereich des Randes $\vb{x}$.
-
-Diese Bedingungen führen dazu dass auf diesem Teil des Randes die Flüssigkeit mit Geschwindigkeit $\vb{u}_{in}$ und Temperatur $T_{in}$ in die Lösungs-Domain fliesst.
+Diese Bedingungen führen dazu dass auf diesem Teil des Randes die Flüssigkeit mit Geschwindigkeit $\vb{u}_{\text{in}}$ und Temperatur $T_{\text{in}}$ in die Lösungs-Domain fliesst.
 
 \subsubsection{Outlet}
 Ein Outlet wird meist genau umgekehrt modelliert als ein Inlet.
 Dabei wird die Temperatur und Geschwindigkeit nicht auf einen festen Wert gelegt, sondern es wird der Gradient dieser Variablen auf null gesetzt und der Druck wird auf einen festen Wert gelegt.
 Dies führt zu den Bedingungen
 \begin{align*}
- p(\vb{x}) &= p_{out} \\
+ p(\vb{x}) &= p_{\text{out}} \\
  \nabla\vb{u}(\vb{x}) &= 0 \\
  \nabla T(\vb{x}) &= 0
 \end{align*}
 für einen Bereich des Randes $\vb{x}$.
-Diese Bedingungen resultieren darin, dass dieser Bereich des Randes den selben Druck, $p_{out}$,  wie die Umgebung ausserhalb der Lösungs-Domain aufweist.
+Diese Bedingungen resultieren darin, dass dieser Bereich des Randes den selben Druck, $p_{\text{out}}$,  wie die Umgebung ausserhalb der Lösungs-Domain aufweist.
 Das führt dazu dass die Flüssigkeit frei aus der Lösungs-Domain fliessen kann.
 
 \subsubsection{Wände}
@@ -284,16 +278,17 @@ Mathematisch beschreibt man dies mit den Bedingungen
 diese gelten für alle undurchlässigen Bereiche des Randes und die Oberfläche des Objektes.
 
 \section{Übersetzung des Modells in OpenFOAM}
-\subsection{Objekt Modellierung}
-Bei der CFD Simulation müssen ein oder mehrere Objekte modelliert werden dessen Wirkung auf die Flüssigkeit simuliert werden soll. 
+\subsection{Objektmodellierung}
+Bei der CFD Simulation müssen ein oder mehrere Objekte modelliert werden, deren Wirkung auf die Flüssigkeit simuliert werden soll. 
 Dazu muss die Flüssigkeit und das Objekt selbst modelliert werden, aber auch wie die Flüssigkeit und das Objekt interagieren.
 
 Zum Modellieren der Objekte kann man eine beliebige CAD Software benutzen, für OpenFOAM muss dieses Modell dann jedoch konvertiert werden.
 Dazu enthält OpenFOAM das Programm \textbf{snappyHexMesh}.
-Es verarbeitet das 3D Modell zusammen mit einem einfacheren Modell für die Begrenzung der Lösungs-Domain. 
-Daraus resultiert ein Modell der Lösungs-Domain, also dem Raum in dem sich die Flüssigkeit in der Simulation befindet.
+Es verarbeitet das 3D-Modell zusammen mit einem einfacheren Modell für den Rand der Lösungs-Domain. 
+Daraus resultiert ein Modell der Lösungs-Domain, also dem Raum, in dem sich die Flüssigkeit in der Simulation befindet.
+
 Zudem wird dieser Raum in Zellen unterteilt.
-Diese Diskretisierung ist nötig, damit die finite Volumen methode verwendet werden kann.
+Diese Diskretisierung ist nötig, damit die Finite Volumen Methode verwendet werden kann.
 Ein Beispiel dafür ist in Bild \ref{openfoam:fig:SD_Modell_vergleich} zu sehen.
 Ausserdem werden auf die Oberfläche dieses Modells, die den Rand aus dem Kapitel \ref{openfoam:randbedingungen} darstellt, die Randbedingungen angewandt.
 \begin{figure}
@@ -304,10 +299,10 @@ Ausserdem werden auf die Oberfläche dieses Modells, die den Rand aus dem Kapite
 \end{figure}
 
 In Bild \ref{openfoam:fig:sim_grid} ist zudem ein Beispiel für die Unterteilung der Geometrie in Zellen zu sehen.
-Darauf ist zu sehen wie \textbf{snappyHexMesh} das Gitter Skaliert.
-So besteht in der Umgebung des Objektes das Gitter aus Kleinen Zellen und weiter Entfernt davon aus Grösseren.
-Der Grund dafür ist dass an orten weiter entfernt von einer Oberfläche die Zellengrösse einen kleineren Einfluss auf die Genauigkeit des Resultates hat.
-Man kann so also Rechenaufwand einsparen, indem man nur an Orten kleine Zellen verwendet, an denen die Influenz der Objekte auf die Flüssigkeit gross ist.
+Darauf ist zu sehen wie \textbf{snappyHexMesh} das Gitter skaliert.
+So besteht in der Umgebung des Objektes das Gitter aus kleinen Zellen und weiter entfernt davon aus grösseren.
+Der Grund dafür ist, dass an Orten weiter entfernt von einer Oberfläche die Zellengrösse einen kleineren Einfluss auf die Genauigkeit des Resultates hat.
+Man kann so also Rechenaufwand einsparen, indem man nur an Orten kleine Zellen verwendet, an denen der Einfluss der Objekte auf die Flüssigkeit gross ist.
 \begin{figure}
 	\centering
 	\includegraphics[scale=0.1]{papers/openfoam/Bilder/grid.png }
@@ -319,14 +314,14 @@ Das Netz kann theoretisch aus beliebigen Polyedern bestehen.
 Dies ist aber nicht unbedingt vorteilhaft, denn es ist anzustreben ein Seitenverhältnis der Zellen von ungefähr eins zu wählen. 
 Dadurch kann Zeit beim Verarbeiten der 3D Modellen gespart werden.
 
-\subsection{Software basiertes Lösen von Differentialgleichungen}
-Wenn ein Modell für die Flüssigkeit, die Randbedingungen, das Objekt und dessen Umgebung vorhanden ist benötigt man nun ein Verfahren, um eine Lösung zu finden. 
+\subsection{Softwarebasiertes Lösen von Differentialgleichungen}
+Wenn ein Modell für die Flüssigkeit, die Randbedingungen, das Objekt und dessen Umgebung vorhanden ist, benötigt man nun ein Verfahren, um eine Lösung zu finden. 
 Dazu muss die Software als Erstes eine Diskretisierung der Differentialgleichungen, die die Flüssigkeit beschreiben, durchführen.
 Dafür wird das schon diskretisierte Netz der Lösungsdomain genutzt um die komplexen Differentialgleichungen, wie die der Navier-Stokes-Gleichungen, in lineare Gleichungen für jede einzelne der Zellen umzuwandeln.
 Um diese Linearisierung zu erreichen, werden jeweils die Eigenschaften der Flüssigkeit, wie Druck, Geschwindigkeit oder Temperatur, am Ort der Zellen durch die Werte in allen benachbarten Zellen berechnet.
 So wird der Wert in jeder Zelle, z.B. für Druck $p_N$ mit einem Koeffizienten $ a_{N} $ multipliziert und danach mit allen anderen addiert das Resultat davon ist jeweils ein weiterer Koeffizient $b_N$.
 Dabei werden die Koeffizienten $a_{NN}$ und $b_{N }$ jeweils aus den Differentialgleichungen hergeleitet, die Methode dafür unterscheidet sich je nach welcher Methode (FDM, FVM oder FEM).
-Dies führt dazu dass die meisten der Koeffizienten $a_{}$ null sind da die Werte einer Zelle nur von den Zellen die direkt an sie angrenzen abhängig sind.
+Dies führt dazu, dass die meisten der Koeffizienten $a_{}$ null sind da die Werte einer Zelle nur von den direkt angrenzenden Zellen abhängig sind.
 Diese Summen kann man nun in Matrizen-Form bringen, dadurch erhält man für jede Eigenschaft eine Gleichung der Form
 \begin{equation}
 \begin{bmatrix}
@@ -353,6 +348,6 @@ b_{N}
 \end{bmatrix}
 .
 \end{equation}
-Um nun den $p$ Vektor zu berechnen wird nicht der Gauss Algorithmus verwendet, da dies für Matrizen der Grösse, die in CFD Simulationen entstehen nicht effizient ist.
-Anstelle davon werden Iterative Methoden wie die Gauss-Seidel Methode verwendet.
+Um nun den $p$ Vektor zu berechnen wird nicht der Gauss-Algorithmus verwendet, da dies für Matrizen der Grösse, die in CFD Simulationen entstehen, nicht effizient ist.
+Stattdessen werden iterative Methoden wie die Gauss-Seidel-Methode verwendet.
 Diese führen schon nach wenigen Iterationen zu einer recht genauen Lösung.
