@@ -113,7 +113,8 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 	
 	%Schrödinger
 	Erwin Schrödinger formulierte 1926 eine Gleichung, die das Verhalten von Teilchen als Wellen beschreibt. 
-	Sie bildet die Grundlage der Quantenmechanik. Die Lösung dieser Gleichung ist die Wellenfunktion $\psi(x, t)$. Sie liefert keine feste Bahn, sondern eine Wahrscheinlichkeitsverteilung für den Aufenthaltsort eines Teilchens.
+	Sie bildet die Grundlage der Quantenmechanik. Die Lösung dieser Gleichung ist die Wellenfunktion $\psi(x, t)$.
+	Sie liefert keine feste Bahn, sondern eine Wahrscheinlichkeitsverteilung für den Aufenthaltsort eines Teilchens.
 	Die eindimensionale zeitabhängige Schrödinger-Gleichung lautet:
 	
 	\begin{equation}\label{fourier:equation:zeitabhaengigeSchroedingerGleichung}
@@ -190,7 +191,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 	Ein wesentliches Beispiel ist das elektromagnetische Feld.
 	Wie in Kapitel~\ref{fourier:section:AnwendungAufFeld} dargestellt, lässt es sich in Moden zerlegen, von denen jede einem quantenmechanischen Oszillator entspricht.
 	Die Zustände dieser Oszillatoren --- sogenannte Photonenzahlenzustände ---
-	erklären, warum Licht nicht kontinuierlich, sondern in diskreten Paketen (Photonen) emittiert und absorbiert wird.
+	erklären, warum Licht nicht kontinuierlich, sondern in diskreten Paketen emittiert und absorbiert wird, die Photonen genannt werden.
 	
 	Auch in der Festkörperphysik und Quantenoptik ist der Oszillator zentral.
 	Er beschreibt Gitterschwingungen (Phononen), Lichtfelder und Resonanzen in elektrischen Schaltungen.
@@ -198,21 +199,25 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 
 \subsection{Einführung in Werkzeuge der Quantenmechanik\label{fourier:subsection:werkzeugeQuantenmechanik}}
 	Um die quantenmechanische Beschreibung des harmonischen Oszillators vollständig zu verstehen, ist eine neue mathematische Sprache erforderlich.
-	
-	In den folgenden Abschnitten werden vier zentrale Werkzeuge vorgestellt:
+	In den folgenden Abschnitten werden zentrale Werkzeuge vorgestellt:
 	\begin{itemize}
 		\item \textbf{Bra-Ket-Notation}:
 		Dient zur kompakten Darstellung von Zuständen und Operatoren im Hilbertraum.
 
-		\item \textbf{Heisenbergsche Unschärferelation}:
+		\item \textbf{Erwartungswert eines Operators}:
+		Beschreibt den Mittelwert der Messergebnisse eines Operators in einem Zustand und wird mithilfe der Bra-Ket-Notation ermittelt.  
+
+		\item \textbf{Vertauschungsrelation}:
+		Beschreibt die grundlegende Eigenschaft von Operatoren, wie sie miteinander vertauschen oder nicht vertauschen.
+		Insbesondere ist sie entscheidend, um Produkte von Operatoren umzuschreiben und wird später bei der Definition der Leiteroperatoren
+		(Abschnitt~\ref{fourier:subsection:Leiteroperatoren}) angewendet.
+
+		\item \textbf{Heisenbergs Unschärferelation}:
 		Beschreibt die fundamentale Grenze der gleichzeitigen Bestimmbarkeit von Ort und Impuls.
 
 		\item \textbf{Hamilton-Operator und Schrödinger-Gleichung}:
 		Zwei zentrale mathematische Werkzeuge, mit denen sich die Dynamik quantenmechanischer Systeme vollständig beschreiben lässt.
 		
-		\item \textbf{Vertauschungsrelation}:
-		Beschreibt die grundlegende Eigenschaft von Operatoren, wie sie miteinander vertauschen oder nicht vertauschen.
-		Insbesondere ist sie entscheidend, um Produkte von Operatoren umzuschreiben und wird später bei der Definition der Leiteroperatoren (Abschnitt~\ref{fourier:subsection:Leiteroperatoren}) angewendet.
 	\end{itemize}
 
 	Diese Konzepte sind nicht nur theoretisch relevant, sondern bilden die Grundlage für das Verständnis von Photonen, Feldern und quantisierten Schwingungen im weiteren Verlauf.
@@ -230,7 +235,6 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			Es steht symbolisch für eine Messung oder einen Test auf diesen Zustand.
 			Formal ist es das komplex-konjugierte und transponierte Objekt zum Ket.
 		\end{itemize}
-		
 		Beispiele:
 		\begin{itemize}
 		\item $|0\rangle$ kann den Grundzustand eines Systems beschreiben.
@@ -242,7 +246,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		wobei $\alpha$ und $\beta$ $\in \mathbb{C}$.
 		\end{itemize}
 
-		Die Norm eines Zustands ergibt sich aus seinem Skalarprodukt mit sich selbst:
+		Die \emph{Norm} eines Zustands ergibt sich aus seinem Skalarprodukt mit sich selbst:
 		\begin{equation}\label{fourier:equation:normEinesZustands}
 			\langle \psi | \psi \rangle = \int \psi^*(x)\psi(x)dx = 1 \quad \text{(für normierte Zustände)}.
 		\end{equation}
@@ -276,11 +280,6 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			\langle H \rangle = \langle \psi|\hat{H}|\psi \rangle
 		\end{equation}
 		geschrieben.
-
-		In der Dirac-Notation bezeichnet $|\psi\rangle$ den \emph{Ket}, also den Zustandsvektor des Systems.
-		Der Ausdruck $\langle \psi |$ ist der zugehörige \emph{Bra}, also die komplex konjugiert transponierte Version von $|\psi\rangle$.
-		Zusammen bilden sie einen sogenannten \emph{Bra-Ket} (inneres Produkt).
-		Dabei gilt:
 		\begin{itemize}
 			\item Der Operator $A$ wirkt zunächst auf den Ket $|\psi\rangle$, also auf die Wellenfunktion $\psi(x)$ von rechts.
 			\item Anschliessend wird das Ergebnis mit dem Bra $\langle \psi|$ beziehungsweise der komplex-konjugierten Wellenfunktion $\psi^*(x)$ multipliziert.
@@ -293,7 +292,19 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			\hat{A} | \psi \rangle = a | \psi \rangle \Rightarrow \langle A \rangle = a.
 		\end{equation}
 		Dabei ist $a$ der \emph{Eigenwert}, der dem Eigenzustand $|\psi\rangle$ des Operators $\hat{A}$ zugeordnet ist. 
-		Man erhält also bei jeder Messung denselben Wert a, was typisch für beispielsweise einen stationären Energiezustand ist.
+		Man erhält also bei jeder Messung denselben Wert $a$, was typisch für beispielsweise einen stationären Energiezustand ist.
+
+	\subsubsection{Vertauschungsrelation\label{fourier:subsubsection:Vertauschungsrelation}}
+		In der Quantenmechanik sind Operatoren nicht immer vertauschbar.
+		Das heisst, die Reihenfolge, in der sie angewendet werden, spielt eine wichtige Rolle.
+		Die Vertauschungsrelation quantifiziert diese Eigenschaft und ist ein zentralses algebraisches Werkzeug.
+
+		Für zwei Operatoren $A$ und $B$ definiert man den Kommutator als
+		\begin{equation}\label{fourier:equation:Vertauschungsrelation}
+			[A, B] = AB - BA.
+		\end{equation}
+		Ist dieser Ausdruck ungleich null, so vertauschen die Operatoren nicht.
+		Diese Relation ermöglicht es, Operatorprodukte umzuschreiben und ist die Grundlage für viele Berechnungen im harmonischen Oszillator.
 
 	\subsubsection{Heisenbergs Unschärferelation%
 	\label{fourier:subsubsection:unschaerferelation}}
@@ -326,9 +337,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		Der Betrag des Skalarprodukts kann also niemals grösser werden als das Produkt der Normen, ganz analog zur klassischen Vektoranalysis.
 		Das Quadrat auf der linken Seite ergibt sich, weil die Ungleichung eine Aussage über den Betrag des Skalarprodukts ist, während die rechte Seite stets reell und positiv ist.
 		Diese Form der Ungleichung bildet die mathematische Grundlage für die Herleitung der heisenbergschen Unschärferelation.
-		Die Zustände $|\varphi\rangle$ und $|\chi\rangle$ sind hier in der Bra-Ket-Notation geschrieben, einer kompakten Notation für Zustände in der Quantenmechanik,
-		wie sie in Abschnitt~\ref{fourier:subsubsection:braKetNotation} eingeführt wurde.
-
+		
 		Setzt man
 		\begin{equation}
 			|\varphi\rangle = (\hat{x} - \langle \hat{x} \rangle) |\psi\rangle \quad |\chi\rangle = (\hat{p} - \langle \hat{p} \rangle) | \psi\rangle,
@@ -337,7 +346,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		\begin{equation}
 			\sigma_x^2 = \langle\varphi | \varphi\rangle \text{ und } \sigma_p^2 = \langle\chi | \chi\rangle
 		\end{equation}
-		für die sogenannten Standardabweichungen --- ein Mass für die „Streuung“ oder Unschärfe --- zusammen mit der Vertauschungsrelation (siehe Abschnitt~\ref{fourier:equation:Vertauschungsrelation})
+		für die sogenannten Standardabweichungen --- ein Mass für die „Streuung“ oder Unschärfe --- zusammen mit der Vertauschungsrelation (siehe Abschnitt~\ref{fourier:subsubsection:Vertauschungsrelation})
 		\begin{equation}
 			\langle\psi | [\hat{x},\hat{p}] | \psi\rangle = i\hbar
 		\end{equation}
@@ -349,7 +358,6 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		\begin{equation}\label{fourier:equation:FormUnschaerferelation}
 			\sigma_x \sigma_p \ge \frac{\hbar}{2}.
 		\end{equation}
-
 		Hier bedeuten $\sigma_x$ und $\sigma_p$ die Unschärfen (Standardabweichungen) in Ort und Impuls.
 		Die Unschärferelation sagt also:
 		Je genauer der Ort eines Teilchens bekannt ist (kleines $\sigma_x$), desto unschärfer muss sein Impuls ($\sigma_p$) sein --- und umgekehrt.
@@ -388,15 +396,16 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		
 		In der Ortsdarstellung gilt:
 		\begin{equation}
-			\hat{x} = x, \qquad \hat{p} = -i\hbar \frac{\partial}{\partial x}
+			\hat{x} = x, \qquad \hat{p} = -i\hbar \frac{\partial}{\partial x}.
 		\end{equation}
-		Setzt man dies ein, ergibt sich die konkrete Form des Hamilton-Operators:
+		Setzt man dies ein, ergibt sich die konkrete Form
 		\begin{equation}
 			\hat{H} = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x)
 		\end{equation}
+		des Hamilton-Operators.
 		Dieser Operator ist zentral in der zeitabhängigen Schrödinger-Gleichung (\ref{fourier:equation:zeitabhaengigeSchroedingerGleichung}):
 		\begin{equation}
-			i\hbar \frac{\partial}{\partial t} \psi(x,t) = \hat{H} \psi(x,t)
+			i\hbar \frac{\partial}{\partial t} \psi(x,t) = \hat{H} \psi(x,t).
 		\end{equation}
 		Sie beschreibt, wie sich der Zustand eines Systems mit der Zeit verändert.
 		Die Lösung dieser Gleichung ist die sogenannte Wellenfunktion \( \psi(x,t) \).
@@ -405,9 +414,10 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		Das bedeutet:
 		Seine Eigenwerte entsprechen den möglichen Energie-Messwerten des Systems.
 		Und seine Eigenfunktionen beschreiben stationäre Zustände mit konstanter Energie.
-		Ein weiterer wichtiger Punkt ist, dass die Struktur von \( \hat{H} \) direkt von den Vertauschungsrelationen (siehe Abschnitt~\ref{fourier:equation:Vertauschungsrelation}) von \( \hat{x} \) und \( \hat{p} \) abhängt:
-		\begin{equation}
-			[\hat{x}, \hat{p}] = i \hbar
+		Ein weiterer wichtiger Punkt ist, dass die Struktur von \( \hat{H} \) direkt von den Vertauschungsrelationen
+		(siehe Abschnitt~\ref{fourier:subsubsection:Vertauschungsrelation}) von \( \hat{x} \) und \( \hat{p} \) abhängt:
+		\begin{equation}\label{fourier:equation:Vertauschungsrelation_x_p}
+			[\hat{x}, \hat{p}] = i \hbar.
 		\end{equation}
 
 		Diese Beziehung führt, wie gesehen, zur Unschärferelation.
@@ -429,18 +439,6 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 		Der Hamilton-Operator $\hat{H}$ fasst alle wesentlichen Informationen über das System zusammen:
 		Er beschreibt die Energie und steuert gleichzeitig die zeitliche Entwicklung des Quantenzustands gemäss der Schrödinger-Gleichung.
 		Damit bildet $\hat{H}$ das Herzstück der Quantenmechanik.
-
-	\subsubsection{Vertauschungsrelation\label{fourier:subsubsection:Vertauschungsrelation}}
-		In der Quantenmechanik sind Operatoren nicht immer vertauschbar.
-		Das heisst, die Reihenfolge, in der sie angewendet werden, spielt eine wichtige Rolle.
-		Die Vertauschungsrelation quantifiziert diese Eigenschaft und ist ein zentralses algebraisches Werkzeug.
-
-		Für zwei Operatoren $A$ und $B$ definiert man den Vertauscher (Kommutator) als
-		\begin{equation}\label{fourier:equation:Vertauschungsrelation}
-			[A, B] = AB - BA.
-		\end{equation}
-		Ist dieser Ausdruck ungleich null, so vertauschen die Operatoren nicht.
-		Diese Relation ermöglicht es, Operatorprodukte umzuschreiben und ist die Grundlage für viele Berechnungen im harmonischen Oszillator.
 
 	\subsubsection{Ausblick\label{fourier:subsubsection:Ausblick}}
 		Mit den bisher eingeführten Werkzeugen lässt sich der quantenmechanische harmonische Oszillator vollständig verstehen.
@@ -466,6 +464,10 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			\begin{equation}\label{fourier:equation:HamiltonOperatorDimLos}
 				H = \frac{1}{2}(P^2 + Q^2).
 			\end{equation}
+			Auch $Q$ und $P$ vertauschen nicht, aus (\ref{fourier:equation:Vertauschungsrelation_x_p}) folgt
+			\[
+				[Q,P] = i.
+			\]
 
 		\subsubsection{Definition der Leiteroperatoren\label{fourier:subsubsection:DefinitionLeiteroperatoren}}
 			Der Ausdruck~\ref{fourier:equation:HamiltonOperatorDimLos} lässt sich faktorisieren:
@@ -551,7 +553,7 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			\[
 				H|\psi_n\rangle = E_n|\psi_n\rangle.
 			\]
-			Für den Erzeugungsoperator $a^+$ gilt aus der Definition des Kommutators (siehe Abschnitt~\ref{fourier:equation:Vertauschungsrelation})
+			Für den Erzeugungsoperator $a^+$ gilt aus der Definition des Kommutators (siehe Abschnitt~\ref{fourier:subsubsection:Vertauschungsrelation})
 			\[
 				H a^+ = a^+ H + [H, a^+].
 			\]
@@ -559,15 +561,15 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			\[
 				H a^+|\psi_n\rangle = a^+ H|\psi_n\rangle + [H, a^+]|\psi_n\rangle.
 			\]
-			Da $\psi_n\rangle$ ein Eigenzustand von $H$ mit Energie $E_n$ ist, folgt
+			Da $|\psi_n\rangle$ ein Eigenzustand von $H$ mit Energie $E_n$ ist, folgt
 			\[
 				H|\psi_n\rangle = E_n|\psi_n\rangle
 			\]
 			und somit
 			\[
-				H a^+|\psi_n\rangle = a^+ E_n|\psi_n\rangle + [H, a^+]|\psi_n.
+				H a^+|\psi_n\rangle = a^+ E_n|\psi_n\rangle + [H, a^+]|\psi_n\rangle.
 			\]
-			Mit $[H, a^+] = \hbar\omega~a^+$ wird der Ausdruck zugehörige
+			Mit $[H, a^+] = \hbar\omega~a^+$ wird der zugehörige Ausdruck
 			\[
 				H a^+|\psi_n\rangle = E_n a^+|\psi_n\rangle + \hbar\omega~a^+|\psi_n\rangle.
 			\]
@@ -586,15 +588,18 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			\begin{equation}
 				a^+|\psi_n\rangle = \sqrt{n+1}|\psi_{n+1}\rangle, \qquad a|\psi_n\rangle = \sqrt{n}|\psi_{n-1}\rangle.
 			\end{equation}
-			Die Faktoren $\sqrt{n+1}$ beziehungsweise $\sqrt{n}$ stammen aus der Normierung und stellen sicher, dass $|\psi_{n\pm 1}$ weiterhin normiert bleiben.
+			Die Faktoren $\sqrt{n+1}$ beziehungsweise $\sqrt{n}$ stammen aus der Normierung und stellen sicher, dass $|\psi_{n\pm 1}\rangle$ weiterhin normiert bleiben.
 
-			\emph{Fazit:}
+			Zusammenfassend wirken die Leiteroperatoren wie folgt auf Energiezustände:
 			\begin{itemize}
 				\item $a^+$ erhöht die Quantenzahl $n$ um eins und die Energie um $\hbar\omega$ ---
 				es wird ein zusätzliches Quant erzeugt.
 				\item $a$ senkt $n$ um eins und die Energie um $\hbar\omega$ ---
 				ein Quant wird vernichtet.
 			\end{itemize}
+
+			Physikalisch entsprechen diese Übergänge der Emission oder Absorption eines einzelnen Quants (zum Beispiel eines Photons) und sind die Grundlage für das diskrete Spektrum des Systems.
+			Somit beschreibt die algebraische Struktur nicht nur die diskreten Energiewerte, sondern auch die quantisierten Übergänge zwischen ihnen, die in experimentellen Messungen beobachtet werden können.
 
 		\subsubsection{Energieeigenwerte\label{fourier:subsubsection:Energieeigenwerte}}
 			Da $\hat{H} = \hbar\omega(N + \frac{1}{2})$, folgt:
@@ -630,24 +635,6 @@ Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
 			Eine weitere Anwendung würde unphysikalische Zustände erzeugen.
 			Nach oben existiert formal kein Limit, allerdings setzt die reale Physik praktische Grenzen
 			(beispielsweise durch Wechselwirkungen, Instabilität oder Gravitationseffekte bei extremer Energiedichte).
-
-		\subsubsection{Messung quantisierter Energie\label{fourier:subsubsection:MessungQuantisierterEnergie}}
-			Die Energie eines quantenmechanischen Systems wird durch den Erwartungswert des Hamilton-Operators bestimmt:
-			\[
-				\langle \varphi | \hat{H} | \varphi \rangle = E.
-			\]
-			Im Allgemeinen liefert eine Messung einen Mittelwert, der von der Überlagerung der Zustände abhängt.
-
-			Erst wenn der Zustand $|\varphi_n\rangle$ ein Eigenzustand von $\hat{H}$ mit Eigenwert $E_n$ ist,
-			\[
-				\hat{H}|\varphi_n\rangle = E_n |\varphi_n\rangle,
-			\]
-			ergibt die Messung mit Sicherheit den diskreten Wert $E_n$.
-
-			Die Leiteroperatoren $a^+$ und $a$ verbinden diese Energieeigenzustände, indem sie die Energie um jeweils $\hbar\omega$ erhöhen oder senken. 
-			Physikalisch entsprechen diese Übergänge der Emission oder Absorption eines einzelnen Quants (zum Beispiel eines Photons) und sind die Grundlage für das diskrete Spektrum des Systems.
-
-			Somit beschreibt die algebraische Struktur nicht nur die diskreten Energiewerte, sondern auch die quantisierten Übergänge zwischen ihnen, die in experimentellen Messungen beobachtet werden können.
 
 \section{Fazit\label{fourier:section:fazit}}
 \kopfrechts{Fazit}

@@ -26,7 +26,7 @@ Neu besteht
 	u(x,t) = \frac{a_0(t)}{2} + \sum_{n=1}^{\infty} \left( a_n(t) \cos(n \omega x) + b_n(t) \sin(n \omega x) \right)
 \end{equation}
 aus einer unendlichen Anzahl von Schwingungen.
-Alle drei Arten von Fourier Koeffizienten erhält man durch die Integral-Rechnungen im Abschnitt \ref{fourier:section:GrundlagenFourierAnalyse}. 
+Alle drei Arten von Fourier Koeffizienten erhält man durch die Integral-Rechnungen im Abschnitt~\ref{fourier:section:GrundlagenFourierAnalyse}. 
 Da das Ziel ist, $x$ zu eliminieren, integriert man über eine Periode nach $x$.
 Somit entstehen Fourier-Koeffizienten, die von $t$ abhängig sind. 
 Nun wird $u(x,t)$ in seiner Summenform in die Wellengleichung eingesetzt. 
@@ -35,7 +35,7 @@ Dazu muss $u(x,t)$ je zwei Mal nach $t$ und $x$ abgeleitet werden:
 \begin{equation}
 	\begin{aligned}
 		\frac{\partial^2 u(x,t)}{\partial t^2}
-		&= \frac{1}{2}\ddot{a}_0(t) + \sum_{n=1}^{\infty}\Bigl(\ddot{a}_n(t)\cos(n\omega x)+ \ddot{b}_n(t)\sin(n\omega x)
+		&= \frac{1}{2}\ddot{a}_0(t) + \sum_{n=1}^{\infty}\Bigl(\ddot{a}_n(t)\cos(n\omega x)+ \ddot{b}_n(t)\sin(n\omega x))
 		\\
 		\frac{\partial^2 u(x,t)}{\partial x^2}
 		&= \sum_{n=1}^{\infty}\left(-n^2\omega^2\,a_n(t)\cos(n\omega x)-n^2\omega^2\,b_n(t)\sin(n\omega x)\right).
@@ -84,19 +84,19 @@ Es entstehen die folgenden zwei Arten von gewöhnlichen Differentialgleichungen:
 	  \quad   \text{und} \quad  \frac{d^2}{dt^2} b_n(t) + b_n(t) n^2 \omega^2 c^2 = 0
 \end{equation}
 
-Die Struktur der Wellengleichungen aus \eqref{eq:ODE_Wellengleichung} entsprechen formal der Bewegungsgleichung eines ungedämpften Federpendels: 
+Die Struktur der Wellengleichungen aus~\eqref{eq:ODE_Wellengleichung} entsprechen formal der Bewegungsgleichung eines ungedämpften Federpendels: 
 \begin{equation}\label{eq:loesungFederpendel}
 	\frac{d^2}{dt^2}x(t) + \omega^2 x(t) = 0
 \end{equation}
 
-Die allgemeine Lösung von \eqref{eq:loesungFederpendel} lautet  
+Die allgemeine Lösung von~\eqref{eq:loesungFederpendel} lautet  
 \begin{equation}
 	x(t) = A \cos(\omega t) + B \sin(\omega t)
 	%\quad\text{oder}\quad
 	%x(t) = C \cos(\omega t - \varphi).
 \end{equation}
 Dieses Ergebnis beschreibt die Frequenz und Amplitude, mit der eine Masse an einer Feder schwingt.  
-Da beide Gleichungen identische Struktur aufweisen, ergibt sich für \eqref{eq:ODE_Wellengleichung} 
+Da beide Gleichungen identische Struktur aufweisen, ergibt sich für~\eqref{eq:ODE_Wellengleichung} 
 \begin{equation}
 	a_n(t) = A_n \cos(n \omega c t) + B_n \sin(n \omega c t)
 	\quad\text{und}\quad
