@@ -1,0 +1,76 @@
+\documentclass[border=3pt]{standalone}
+% https://tikz.net/spherical_volume/
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+
+\begin{document}
+
+% Axis view angles
+\tdplotsetmaincoords{70}{110}
+
+% Parameters
+\pgfmathsetmacro{\rvec}{5}               % radius
+\pgfmathsetmacro{\thetavec}{20}          % starting polar angle (from z-axis)
+\pgfmathsetmacro{\phivec}{30}            % starting azimuthal angle (in x-y plane)
+\pgfmathsetmacro{\dthetavec}{40}         % angular "width" in polar direction
+\pgfmathsetmacro{\dphivec}{40}           % angular "height" in azimuthal direction
+
+
+\pgfsetlayers{main}
+
+\begin{tikzpicture}[tdplot_main_coords]
+
+% Origin and points on spherical shell
+\coordinate (O) at (0,0,0);
+\tdplotsetcoord{A}{\rvec}{\thetavec}{\phivec}
+\tdplotsetcoord{B}{\rvec}{\thetavec + \dthetavec}{\phivec}
+\tdplotsetcoord{C}{\rvec}{\thetavec + \dthetavec}{\phivec + \dphivec}
+\tdplotsetcoord{D}{\rvec}{\thetavec}{\phivec + \dphivec}
+
+\node at (A) {A};
+\node at (B) {B};
+\node at (C) {C};
+\node at (D) {D};
+
+% Axes
+\draw[thick,-latex] (O) -- (7,0,0) node[pos=1.1]{$x$};
+\draw[thick,-latex] (O) -- (0,7,0) node[pos=1.05]{$y$};
+\draw[thick,-latex] (O) -- (0,0,6) node[pos=1.05]{$z$};
+
+% Edges
+\draw (O) -- (A);
+\draw (O) -- (B);
+\draw (O) -- (C);
+\draw[dashed] (O) -- (D);
+
+% Arcs
+% \tdplotsetrotatedcoords{\alphaRot}{\betaRot}{\gammaRot}
+% \pgfmathsetmacro{\arclenFront}{\dthetavec / 2}
+% \tdplotdrawarc[tdplot_rotated_coords, thick]{(O)}{\rvec}{0}{\arclenFront}{}{}
+% \tdplotsetrotatedcoords{40}{-40}{360}
+% \tdplotdrawarc[tdplot_rotated_coords, thick]{(O)}{\rvec}{0}{\dphivec}{}{}
+
+% Rotate coordinate system to draw φ arc at fixed θ
+\tdplotsetrotatedcoords{\thetavec}{-90}{0}
+% \tdplotdrawarc[tdplot_rotated_coords, thick]{(O)}{\rvec}{\phivec}{\phivec + \dphivec}{}{}
+\tdplotdrawarc[tdplot_rotated_coords, thick]{(O)}{0}{1}{2}{}{}
+
+
+
+\foreach \phi in {0,5,...,40} {
+  \pgfmathsetmacro{\px}{\rvec * sin(\thetavec * pi / 180) * cos((\phivec + \phi) * pi / 180)}
+  \pgfmathsetmacro{\py}{\rvec * sin(\thetavec * pi / 180) * sin((\phivec + \phi) * pi / 180)}
+  \pgfmathsetmacro{\pz}{\rvec * cos(\thetavec * pi / 180)}
+  \path coordinate (P\phi) at (\px,\py,\pz);
+}
+
+\draw[thick]
+  \foreach \phi in {0,5,...,40} { (P\phi) };
+% Shaded curved surface
+% \fill[black!50, opacity=0.5] (A) to[bend left=2] (D) to[bend left=6] (C) to[bend right=2.5] (B) to[bend right=4] cycle;
+
+
+
+\end{tikzpicture}
+
+\end{document}
