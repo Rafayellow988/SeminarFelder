@@ -59,8 +59,6 @@ f(t) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left( a_n \cos\left( n\omega t \righ
 
 \begin{beispiel}
 
-\input{papers/fourier/fig/fig-fourier_Dreieck.tex}
-
 Im Beispiel zur Dreiecksfunktion (Abbildung~\ref{fourier:fig:fourierdreieck}) entspricht  
 \begin{equation}
 	f_1(t) = \sum_{\substack{n=1 \\ n\ \text{ungerade}}}^{5} \frac{-8}{\pi^2 n^2} \cos(n\pi t)
@@ -70,13 +68,14 @@ Da $f_1$ gerade ist, sind alle Sinuskoeffizienten $b_n=0$ und die Kosinuskoeffiz
 Der Mittelwert ist $a_0=0$.  
 Bei der Fourier-Reihenbildung kann man sich viel Zeit ersparen, wenn man zuerst überprüft, ob es sich um eine gerade oder ungerade Funktion handelt.
 So kann man ohne zu rechnen $a_n$ oder $b_n$ gleich Null setzen.
+
+\input{papers/fourier/fig/fig-fourier_Dreieck.tex}
+
 \end{beispiel}
 
 Während sich die Dreiecksfunktion aufgrund ihrer Stetigkeit beliebig genau durch eine Fourier-Reihe darstellen lässt, zeigt sich bei Funktionen mit Sprungstellen ein anderes Verhalten. Ein solches Beispiel wird im Folgenden betrachtet.
 
 \begin{beispiel}
-
-\input{papers/fourier/fig/fig-fourier_Rechteck.tex}
 
 In der Rechtecksfunktion (Abbildung~\ref{fourier:fig:fourierrechteck}) mit Sprungstelle tritt das gibbssche Phänomen auf.  
 In der Nähe eines Sprungs entsteht ein charakteristischer Überschwinger, der selbst bei unendlich vielen Summanden nicht verschwindet.
@@ -87,6 +86,8 @@ Die Fourier-Reihe bis $n=5$ lautet
 \end{equation}
 und entspricht der roten Kurve.  
 Da die Rechteckfunktion um den Mittelwert $\frac{a_0}{2}=\frac{1}{2}$ ungerade ist, sind alle Cosinuskoeffizienten $a_n=0$ und die Sinuskoeffizienten bleiben nur für ungerade $n$ ungleich $0$.  
+
+\input{papers/fourier/fig/fig-fourier_Rechteck.tex}
 
 \end{beispiel}
 
