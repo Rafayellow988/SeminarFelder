@@ -28,7 +28,7 @@ Dadurch kann man sich Simulationsaufwand ersparen da sobald der stationäre Zust
 
 \subsection{Modellierung der Flüssigkeit}
 Im Kontext der CFD-Simulation nimmt man an, dass eine Flüssigkeit nicht aus einzelnen Teilen wie Atomen oder Molekülen besteht, sondern man nimmt an, sie sei kontinuierlich. 
-Zudem wird angenommen, dass sämtliche Eigenschaften der Flüssigkeit stetig und die Ableitung davon ebenfalls stetig sind. %Besser formulieren
+Ausserdem wird angenommen, dass sämtliche Eigenschaften der Flüssigkeit stetig sind. 
 
 Zudem hat eine Flüssigkeit noch weitere Eigenschaften wie die Dichte. 
 Diese kann hier aber nicht immer als konstant angesehen werden, da man ansonsten bei kompressiblen Flüssigkeiten einen Teil der Energie, welcher für das Komprimieren derselben verwendet wird, nicht beachten würde.
@@ -59,7 +59,7 @@ Diese Massenänderung berechnet man ausgehend vom Integral zum berechnen der Mas
 \[M 
 = 
 \int_{V} \rho \, dV\]
-im Kontrollvolumen $V$.
+im Kontrollvolumen $V.$
 Um die Massenänderung zu erhalten, leitet man dieses Integral noch partiell nach $t$ ab und erhält so
 \[\frac{\partial M}{\partial t}
 =
@@ -71,9 +71,9 @@ Setzt man nun die beiden Terme der Massenänderung gleich, erhält man die Gleic
 =
 \int_{V} \frac{\partial \rho}{\partial t} \, dV .\] 
 Bei dieser Gleichung kann man nun auf der linken Seite mit dem Gaussschen Integralsatz das Oberflächen Integral in ein Flächenintegral umwandeln es wird also zu
-\[\int_{V}\nabla\cdot(\rho\vb{u}) \, dV.
+\[\int_{V}\nabla\cdot(\rho\vb{u}) \, dV
 =
-\int_{V}\frac{\partial \rho}{\partial t}  \, dV \]
+\int_{V}\frac{\partial \rho}{\partial t}  \, dV .\]
 Mit dem Ändern der Flussrichtung und Umschreiben der Gleichung kann man die rechte Seite auf null setzen, wodurch 
 \[\int_{V}\nabla\cdot(\rho\vb{u})  \, dV + \int_{V}\frac{\partial \rho}{\partial t}  \, dV 
 = 
@@ -112,12 +112,14 @@ Hier wird nicht mehr die partielle Ableitung verwendet, da das Kontrollvolumen n
 Anstelle der partiellen Ableitung wird eine substantielle Ableitung \[\frac{D}{Dt}\] verwendet, da diese die Änderung des Feldes an einem bewegten Teilchen beschreibt.
 
 Als nächstes berechnet man die gesamte Kraft auf die Oberfläche des Volumens $V$, in dem man alle Kräfte $\vb{f} = \vb{t}\,dS$, die auf die Oberflächenstücke $dS$ wirken, integriert.
-$\vb{t} dS$ ist hier gleich $(\vb{n\cdot\sigma}dS)$. 
-Daraus erhält man die Kraft 
+$\vb{t} dS$ ist hier gleich $(\vb{n\cdot\sigma}dS)$.
+Dabei ist $\sigma$ der Spannungstensor ist, welcher genutzt wird um die drei Spannungsvektoren zusammenzufassen.
+Durch das bilden des Skalarproduktes, mit Spannungstensor und Normalenvektor, kann jeweils der Spannungsvektor in Richtung $\vb{n}$ gefunden werden.
+So erhält man die Kraft 
 \[\vb{F} 
 =
 \int_{S}\vb{f}\, dS
-= \int_{S} (d\vb{S}\cdot\vb{\sigma})
+= \int_{S} (\vb{\sigma}\cdot d\vb{S})
 .\]
 Dies ist nun wieder ein Flächenintegral, das mit dem gaussschen Integralsatz in ein Volumenintegral umgewandelt werden kann.
 Dadurch ergibt sich
@@ -141,7 +143,7 @@ Nun können wir die Impulsänderung des Volumens gleich der Summe der darauf wir
 =
 0.
 \]
-Das Integral kann man weglassen, wodurch wir die Differentialgleichung
+Das Integral kann man wie bei \ref{openfoam:euler1} dank Lemma \ref{maxwell:lemma:ampere} weglassen, wodurch wir die Differentialgleichung
 \begin{equation}
 \label{openfoam:euler2_1}
 \rho \frac{D\vb{u}}{Dt}
@@ -169,7 +171,34 @@ Diese Form erleichtert die Berechnung, da sie nicht mehr die Impulsänderung ein
 Man kann also anstelle ein sich durch den Raum bewegendes Masseteilchen ein festes Volumenelement simulieren, welches bei der Fluid-dynamik-Simulation die bevorzugte Methode ist.
 Auch zu sehen ist hier das dyadische Produkt das mit $\vb{u}\otimes \vb{u}$ gebildet wird.
 Es wird verwendet, um mit dem Term $\nabla \cdot(\rho\vb{u}\otimes \vb{u})$, eine Advektion zu beschreiben.
-
+Das dyadische Produkt, auch Tensorprodukt genannt, beschreibt die Matrizenmultiplikation.
+Wendet man es auf den Geschwindigkeitsvektor $\vb{u}$ an, erhält man
+\begin{equation}
+\vb{u}\otimes \vb{u}
+= 
+\begin{bmatrix}
+	u_x u_x &  u_x u_y & u_x u_z \\
+	u_y u_x &  u_y u_y & u_y u_z \\
+	u_z u_x &  u_z u_y & u_z u_z \\
+\end{bmatrix}
+.
+\end{equation}
+Wenn man nun noch die Divergenz dieser Matrix berechnet, resultiert
+\begin{equation}
+\nabla \cdot 
+\begin{bmatrix}
+	u_x u_x &  u_x u_y & u_x u_z \\
+	u_y u_x &  u_y u_y & u_y u_z \\
+	u_z u_x &  u_z u_y & u_z u_z \\
+\end{bmatrix}
+= 
+\begin{bmatrix}
+	\frac{\partial u_x u_x}{\partial x} &  \frac{\partial u_x u_y}{\partial y} & \frac{\partial u_x u_z}{\partial z} \\
+	\frac{\partial u_y u_x}{\partial x} &  \frac{\partial u_y u_y}{\partial y} & \frac{\partial u_y u_z}{\partial z} \\
+	\frac{\partial u_z u_x}{\partial x} &  \frac{\partial u_z u_y}{\partial y} & \frac{\partial u_z u_z}{\partial z}  \\
+\end{bmatrix}
+.
+\end{equation}
 \subsubsection{Energieerhaltung}
 Die dritte der Euler-Gleichungen wurde nicht wie die der Masse- und Impulserhaltung von Leonhard Euler hergeleitet, sie wird jedoch auch als Euler-Gleichung bezeichnet.
 
@@ -187,7 +216,7 @@ der die totale Energieänderung beschreibt, die Energie jeweils mit der Dichte $
 Nun muss anhand des Zuflusses mechanischer und thermischer Energie die Änderung der totalen Energie bestimmt werden.
 Dabei wird noch zwischen internen und externen Energiequellen unterschieden.
 Total muss man also zwischen vier unterschiedlichen Quellen unterscheiden, die eine Änderung der Energie im Kontrollvolumen verursachen.
-Die Änderung der thermischen Energie wird durch die Terme  $- \nabla \cdot \vb{q}$ und  $\rho r$ dargestellt, wobei der Erste einen Zufluss durch die Oberfläche des Kontrollvolumens und der zweite eine Energiequelle im Inneren desselben beschreibt.
+Die Änderung der thermischen Energie wird durch die Terme  $- \nabla \cdot \vb{q}$ und  $\rho r$ dargestellt, wobei der erste einen Zufluss durch die Oberfläche des Kontrollvolumens und der zweite eine Energiequelle im Inneren desselben beschreibt.
 Dabei sind $\vb{q}$ und $r$ auf Fläche respektive Volumen normalisierte Wärmequellen.
 Die mechanischen Energiequellen werden durch die Terme $\nabla \cdot (\sigma \cdot \vb{u})$ und $\rho \vb{b} \cdot \vb{u}$ beschrieben.
 Hier handelt es sich beim ersten Term wieder um einen Zufluss an mechanischer Energie durch die Oberfläche des Kontrollvolumens.  Der zweite Term beschreibt hier aber die Änderung der potenziellen Energie aufgrund von Kräften, wie der Schwerkraft, die auf die gesamte Masse im Volumen wirken.
@@ -248,8 +277,8 @@ So erhält man drei Bedingungen
  \vb{u}(\vb{x}) &= \vb{u}_{\text{in}} \\
  T(\vb{x}) &= T_{\text{in}}
 \end{align*}
-für einen Bereich des Randes $\vb{x}$.
-Diese Bedingungen führen dazu dass auf diesem Teil des Randes die Flüssigkeit mit Geschwindigkeit $\vb{u}_{\text{in}}$ und Temperatur $T_{\text{in}}$ in die Lösungs-Domain fliesst.
+für einen Punkt des Randes $\vb{x}$.
+Wendet man diese Bedingungen auf allen Punkten in einem Bereich an, führen sie dazu, dass auf diesem Teil des Randes die Flüssigkeit mit Geschwindigkeit $\vb{u}_{\text{in}}$ und Temperatur $T_{\text{in}}$ in die Lösungs-Domain fliesst.
 
 \subsubsection{Outlet}
 Ein Outlet wird meist genau umgekehrt modelliert als ein Inlet.
@@ -260,8 +289,8 @@ Dies führt zu den Bedingungen
  \nabla\vb{u}(\vb{x}) &= 0 \\
  \nabla T(\vb{x}) &= 0
 \end{align*}
-für einen Bereich des Randes $\vb{x}$.
-Diese Bedingungen resultieren darin, dass dieser Bereich des Randes den selben Druck, $p_{\text{out}}$,  wie die Umgebung ausserhalb der Lösungs-Domain aufweist.
+für einen Punkt des Randes $\vb{x}$.
+Wendet man diese Bedingungen auf allen Punkten in einem Bereich an, resultiert dies darin, dass dieser Bereich des Randes den selben Druck, $p_{\text{out}}$,  wie die Umgebung ausserhalb der Lösungs-Domain aufweist.
 Das führt dazu dass die Flüssigkeit frei aus der Lösungs-Domain fliessen kann.
 
 \subsubsection{Wände}
@@ -278,6 +307,14 @@ Mathematisch beschreibt man dies mit den Bedingungen
 diese gelten für alle undurchlässigen Bereiche des Randes und die Oberfläche des Objektes.
 
 \section{Übersetzung des Modells in OpenFOAM}
+Um die mathematischen Modelle für eine Numerische Simulation zu verwenden, müssen sie in eine Form gebracht werden welche von einem Algorithmus verwendet werden kann um eine Lösung zu berechnen.
+Dazu wird die Lösungs-Domain diskretisiert, es wird also die Geometrie von einem kontinuierlichen Raum in Zellen unterteilt.
+Ausserdem müssen auch die verschiedenen Differentialgleichungen, die das Verhalten der Flüssigkeit beschreiben, diskretisiert werden.
+Dies führt dazu dass die kontinuierlichen Felder für Druck, Geschwindigkeit und Temperatur zu jeweils einem Wert, der zu einer der Zellen gehört, werden.
+Diese Werte verändern sich auch nicht mehr kontinuierlich sondern in diskreten Zeitschritten.
+Zudem müssen die Rand- und Ausgangsbedingungen auf das Gitter angewandt werden.
+
+
 \subsection{Objektmodellierung}
 Bei der CFD Simulation müssen ein oder mehrere Objekte modelliert werden, deren Wirkung auf die Flüssigkeit simuliert werden soll. 
 Dazu muss die Flüssigkeit und das Objekt selbst modelliert werden, aber auch wie die Flüssigkeit und das Objekt interagieren.
@@ -319,9 +356,9 @@ Wenn ein Modell für die Flüssigkeit, die Randbedingungen, das Objekt und desse
 Dazu muss die Software als Erstes eine Diskretisierung der Differentialgleichungen, die die Flüssigkeit beschreiben, durchführen.
 Dafür wird das schon diskretisierte Netz der Lösungsdomain genutzt um die komplexen Differentialgleichungen, wie die der Navier-Stokes-Gleichungen, in lineare Gleichungen für jede einzelne der Zellen umzuwandeln.
 Um diese Linearisierung zu erreichen, werden jeweils die Eigenschaften der Flüssigkeit, wie Druck, Geschwindigkeit oder Temperatur, am Ort der Zellen durch die Werte in allen benachbarten Zellen berechnet.
-So wird der Wert in jeder Zelle, z.B. für Druck $p_N$ mit einem Koeffizienten $ a_{N} $ multipliziert und danach mit allen anderen addiert das Resultat davon ist jeweils ein weiterer Koeffizient $b_N$.
-Dabei werden die Koeffizienten $a_{NN}$ und $b_{N }$ jeweils aus den Differentialgleichungen hergeleitet, die Methode dafür unterscheidet sich je nach welcher Methode (FDM, FVM oder FEM).
-Dies führt dazu, dass die meisten der Koeffizienten $a_{}$ null sind da die Werte einer Zelle nur von den direkt angrenzenden Zellen abhängig sind.
+So wird der Wert in jeder Zelle, z.B. für Druck $p_{k}$ mit einem Koeffizienten $ a_{i} $ multipliziert und danach mit allen anderen addiert das Resultat davon ist jeweils ein weiterer Koeffizient $b_{k}$.
+Dabei werden die Koeffizienten $a_{k,i}$ und $b_{k }$ jeweils aus den Differentialgleichungen hergeleitet, die Methode dafür unterscheidet sich je nach welcher Methode (FDM, FVM oder FEM).
+Dies führt dazu, dass die meisten der Koeffizienten $a_{k,i}$ null sind da die Werte einer Zelle nur von den direkt angrenzenden Zellen abhängig sind.
 Diese Summen kann man nun in Matrizen-Form bringen, dadurch erhält man für jede Eigenschaft eine Gleichung der Form
 \begin{equation}
 \begin{bmatrix}
