@@ -80,11 +80,36 @@ Das Programm visualisiert die Resultate in Form von Vektorfeldern, sodass sowohl
 Dieser moderne Ansatz verbindet die historischen Ideen Richardsons mit den heutigen Möglichkeiten der Datenverarbeitung und Visualisierung, wodurch eine präzisere und deutlich schnellere Analyse atmosphärischer Strömungen möglich wird.
 
 Das Programm bezieht die Daten der Atmosphäre von einer Internet Seite namens OpenWeatherMap.
-Als erstes habe ich eine Liste mit den Städten und dazugehörigen Koordinaten, der Orte die ich auf der Karte gerne angezeigt haben möchte.
+Als erstes haben wir eine Liste erstellt mit den Städten und dazugehörigen Koordinaten, der Orte die wir auf der Karte gerne angezeigt haben möchten.
 Anschliessend werden von allen Ortschaften die Druckdaten von der Internetseite gelesen.
-Danach wird ein Gitter mit den Koordinaten der Ortschaften erstellt, indem zuerst die Längen- und Breitengrade vom kleinsten bis zum grössten Wert in konstante Schritte aufgeteilt werden.
-Danach wird für jeden Punkt im Gitter der Luftdruck interpoliert.
+Danach erstellen wir ein Gitter mit den Koordinaten der Ortschaften, indem wir zuerst die Längen- und Breitengrade vom kleinsten bis zum grössten Wert mit konstanten Schritten aufteilen.
+Anschliessend interpolieren wir für jeden Punkt im Gitter den lokalen Luftdruck.
+Druckgradienten müssen wir in X- sowie Y-Richtung einzeln berechnen.
+Doch dafür brauchen wir zuerst noch die Längen- und Breitengradabstände ($dx$, $dy$).
+Der Längengradabstand berechnet sich wie folgt
+\begin{equation}
+	\frac{2 \pi R}{360^\circ} \cos(\phi), 
+\end{equation}
+wobei das R für den Erdradius ($\approx\SI{6371}{\kilo\meter}$) steht. 
+Die Breitengrade sind Parallelkreise und deren Umfang nimmt vom Äquator zu den Polen ab.
+Deren Abstand ist Konstant $\approx\SI{111}{\kilo\meter}$.
 
-Nachfolgen mein Python Code zum Programm
-\lstinputlisting{papers/geostrophisch/PythonCode/geostrophischeNaeherungLiveData.py}
+
+Nachfolgen mein Python Code zum Programm:
+\lstinputlisting[style=pycode]{papers/geostrophisch/PythonCode/geostrophischeNaeherungLiveData.py}
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.8]{Python28042025.png}
+	\caption{}
+	\label{bild:28042025}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.8]{Python15082025.png}
+	\caption{}
+	\label{bild:15082025}
+\end{figure}
+
 
