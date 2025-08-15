@@ -11,7 +11,8 @@
 % TODO: Quellenangaben
 % [ ]: https://en.wikipedia.org/wiki/Linearity
 % [ ]: Lineare Algebra: Eine anwendungsorientierte Einführung, Seite: 27, ISBN: 978-3-662-67865-7, Published: 01 September 2023, DOI: https://doi.org/10.1007/978-3-662-67866-4
-% \subsection{Linearität} % TODO: Allenfalls folgendes als subsection "Linearität" schreiben.
+
+\subsection{Was ist Linearität?}
 Für den einfachsten und üblichsten Fall, nimmt man oft ein \emph{lineares Medium} an.
 Solch ein Medium nennt man \emph{linear}, wenn dessen Definition sowohl \emph{additiv}
 \[
@@ -29,27 +30,36 @@ als auch \emph{homogen}
 \]
 ist.
 Hierbei ist angemerkt, dass $x_{k}$, $y_{k}$ und $\lambda$ nicht rein reell sein müssen, 
-sondern einem beliebigen Vektorraum angehören können. % Alternativ: "[...] angehörig sein können."
-Diese Definition ist auch bekannt unter dem Term \emph{Superpositionsprinzip}, 
-worauf im nächsten Unterabschnitt noch weiter darauf eingegangen wird. % TODO: Etwas umschreiben, dass es schöner in den Fluss des Textes passt.
-Im Kontext dieses Papers wird besonders die Elastizität eines Mediums betrachtet, 
-welche durch
+sondern einem beliebigen Vektorraum angehören können, 
+was für den zweidimensionalen Fall wichtig ist.
+
+In der Wellentheorie bedeutet dies, 
+dass die Materialeigenschaften---beispielsweise die Elastizität---nicht von der Amplitude der Welle abhängen.
+Diese Elastizität eines Mediums lässt sich durch das \emph{Hookesche Gesetz} \mytodo{Citation}
 \[
-    D % TODO: Allenfalls Symbole anpassen, sodass die nicht gleich sind wie im Intro elmag zeugs
+    \Delta l
     = 
-    \frac{\varepsilon}{E}
+    \frac{F}{D}
     \quad
-    (E = \text{const.})\label{particles:eq:lin-elastizitaet}
+    (D = \text{const.} 
+    \Rightarrow 
+    \frac{\partial D}{\partial F} 
+    \overset{!}{=} 
+    0 
+    \quad 
+    \forall F)
+    \label{particles:eq:hookesches-gesetz}
 \]
-gegeben ist. 
-$D$ beschreibt hier die \emph{Deformation},
-$\varepsilon$ den mechanischen Stress oder Druck und % TODO: Bezug auf Formeln im Intro nehmen
-$E$ eine Elastizitätskonstante.
-% NOTE: Eigentlich Hookesches Gesetz? Falls ja Symbole folgendermassen anpassen: E -> D; D -> \Delta l; \varepsilon -> F
+beschreiben.
+Dabei beschreibt $\Delta l$ die ändernde Distanz zweier Punkte,
+$F$ die dazwischen wirkende Kraft und $D$ einen Proportionalitätsfaktor.
+Mittels Substitution kann man nun darauf schliessen, 
+dass es sich hierbei tatsächlich um eine lineare Funktion handeln muss.
 
 
 \subsection{Superpositionsprinzip}
-Das Superpositionsprinzip fasst die Bedingungen zur Linearität in eine Formel zusammen, nämlich
+Das Superpositionsprinzip fasst die Bedingungen zur Linearität nochmal etwas schöner in eine Formel zusammen, 
+nämlich
 \[
     T(\lambda x + \mu y)
     = 
@@ -57,52 +67,73 @@ Das Superpositionsprinzip fasst die Bedingungen zur Linearität in eine Formel z
     + 
     \mu T(y).
 \]
-Drückt man die Deformation $D$ aus Formel~\ref{particles:eq:lin-elastizitaet} als eine Funktion von $\varepsilon$ aus
-und stellt man die Formel ein wenig um zu 
-\[
-    D(\varepsilon)
-    = 
-    \frac{1}{E} 
-    \cdot 
-    \varepsilon,
-\]
-so kann man daraus folgern, dass es sich hierbei ebenfalls um eine lineare Funktion handelt, 
-sofern $E = \text{const.}$ eingehalten wird. % NOTE: Könnte man auch als $\frac{\partial E}{\partial \varepsilon} \overset{!}{=} 0 \quad \forall \varepsilon$ schreiben
-Folglich ist das angenommene Medium also linear und erfüllt somit auch die Superpositionsbedingungen.
-Dies vereinfacht die Berechnung des Feldes enorm, 
-da nicht für jedes einzelne $\varepsilon$ ein separates $E$ berechnet werden muss. 
+Blickt man wieder auf die Wellentheorie, so bedeutet dies, 
+dass sich Wellen in linearen Medien überlagern, 
+sich aber nicht gegenseitig beeinflussen.
+Dies kann man schön anhand zweier sich kreuzende Laserstrahlen im Vakuum veranschaulichen, 
+wie sie in Abbildung \mytodo{Abbildung zweier Laserstrahlen, die sich kreuzen, lokal interferieren, jedoch den weiteren Verlauf nicht verändern.} gezeigt werden.
+Lokal interferieren diese Laserstrahlen zwar, stören jedoch nicht ihren weiteren Verlauf. 
+
+\mytodo{Irgendwo sollte man noch ein Beispiel mit $E$- oder $B$-Feld einbringen}
+
+
+\subsection{Schwinger-Limit}
+Bei extrem hohen Feldstärken tritt ein neues Phänomen auf, 
+wobei hier das Vakuum selbst, nichtlinear wird.
+Dieser Übergang zur Nichtlinearität nennt man das \emph{Schwinger-Limit}, 
+benannt nach Julian Schwinger, welcher 1951 dieses Phänomen erstmals theoretisiert hatte.
+Da es sich hierbei um elektrische und magnetische Feldstärken im Bereich von $10^{18}\,\frac{\text{V}}{\text{m}}$ und $10^9\,\text{T}$ handelt,
+konnte dieses Limit lange nicht überprüft werden und ist auch heute noch nicht eindeutig erforscht.
+
+Im nächsten Abschnitt soll diese theoretische Barriere jedoch überschritten werden und 
+die Auswirkung eines solchen nichtlinearen Mediums etwas genauer unter die Lupe genommen werden.
+
+% Drückt man die Deformation $D$ aus Formel~\ref{particles:eq:lin-elastizitaet} als eine Funktion von $\varepsilon$ aus
+% und stellt man die Formel ein wenig um zu 
+% \[
+%     D(\varepsilon)
+%     = 
+%     \frac{1}{E} 
+%     \cdot 
+%     \varepsilon,
+% \]
+% so kann man daraus folgern, dass es sich hierbei ebenfalls um eine lineare Funktion handelt, 
+% sofern $E = \text{const.}$ eingehalten wird. % NOTE: Könnte man auch als $\frac{\partial E}{\partial \varepsilon} \overset{!}{=} 0 \quad \forall \varepsilon$ schreiben
+% Folglich ist das angenommene Medium also linear und erfüllt somit auch die Superpositionsbedingungen.
+% Dies vereinfacht die Berechnung des Feldes enorm, 
+% da nicht für jedes einzelne $\varepsilon$ ein separates $E$ berechnet werden muss. 
 
 
 % TODO: Folgendes irgendwo besser einbringen:
-\subsection{Feldgleichung}
-Das Hookesche Gesetz, so wie es einleitend erwähnt ist, 
-beschreibt im Grunde genommen nur den eindimensionalen Fall. 
-Jedoch kann man aufgrund der Superposition eine vereinfachte,
-zweidimensionale Feldgleichung herleiten, 
-indem man die Komponenten der Gleichung mit Vektoren substituiert % NOTE: Darf man das?
-\[
-    \mathbf{D} 
-    =   
-    \frac{1}{E}
-    \cdot
-    \bm{\varepsilon}
-    =   
-    \begin{bmatrix}
-        D_1\\
-        D_2
-    \end{bmatrix}
-    =   
-    \frac{1}{E}
-    \cdot 
-    \begin{bmatrix}
-        \varepsilon_1\\
-        \varepsilon_2
-    \end{bmatrix}.
-\]
+% \subsection{Feldgleichung}
+% Das Hookesche Gesetz, so wie es einleitend erwähnt ist, 
+% beschreibt im Grunde genommen nur den eindimensionalen Fall. 
+% Jedoch kann man aufgrund der Superposition eine vereinfachte,
+% zweidimensionale Feldgleichung herleiten, 
+% indem man die Komponenten der Gleichung mit Vektoren substituiert % NOTE: Darf man das?
+% \[
+%     \mathbf{D} 
+%     =   
+%     \frac{1}{E}
+%     \cdot
+%     \bm{\varepsilon}
+%     =   
+%     \begin{bmatrix}
+%         D_1\\
+%         D_2
+%     \end{bmatrix}
+%     =   
+%     \frac{1}{E}
+%     \cdot 
+%     \begin{bmatrix}
+%         \varepsilon_1\\
+%         \varepsilon_2
+%     \end{bmatrix}.
+% \]
 
-\mytodo{Allenfalls noch verallgemeinertes Hookesches Gesetz erwähnen? Ist jedoch fast etwas zu komplex in diesem Kontext\ldots}
+% \mytodo{Allenfalls noch verallgemeinertes Hookesches Gesetz erwähnen? Ist jedoch fast etwas zu komplex in diesem Kontext\ldots}
 
-\mynote{Dürfen wir hier einfach substituieren oder braucht es allenfalls eine bessere Herleitung?}
+% \mynote{Dürfen wir hier einfach substituieren oder braucht es allenfalls eine bessere Herleitung?}
 % TODO: Herleitung Feldgleichung aus Elastizitätsgleichung etc.
 % In der Elastizitätsgleichung ist die Feldgleichung zwar gewissermassen enthalten,
 % jedoch ist sie nicht direkt ersichtlich. 
@@ -111,14 +142,14 @@ indem man die Komponenten der Gleichung mit Vektoren substituiert % NOTE: Darf m
 % NOTE: Idee: "Wir reden zwar von dem hier, aber können dies auch auf z.B. das elektrische- / magnetische-Medium anwenden."
 
 % TODO: Wellengleichung, Referenz auf 9.2 Wellengleichung
-\subsection{Wellengleichung}
-\mytodo{Auf 9.2 Wellengleichung referenzieren und darauf aufbauen. Zweidimensionalen Fall erläutern (herleiten?)}
+% \subsection{Wellengleichung}
+% \mytodo{Auf 9.2 Wellengleichung referenzieren und darauf aufbauen. Zweidimensionalen Fall erläutern (herleiten?)}
 
-\mytodo{Verbindung von Hookeschem Gesetz zur Wellengleichung machen. }
+% \mytodo{Verbindung von Hookeschem Gesetz zur Wellengleichung machen. }
 % \mytodo{Wellengleichung}
 
 
 % TODO: Bezug zur Simulation
-\mynote{Diskretisierte Wellengleichung als Bezug zur Simulation(?)}
+% \mynote{Diskretisierte Wellengleichung als Bezug zur Simulation(?)}
 
 % TODO: Grafik aus Simulation -> Besonders zeigen, dass z.B. Wellen mehrerer Quellen nur lokal interferieren, den weiteren Verlauf aber nicht stören (Zwei Lichtwellen)
