@@ -10,51 +10,70 @@ Algebra.
 Angenommen, wir haben die
 zwei Vektoren $\mathbf{v}_1, \mathbf{v}_2$ und bilden das Wedgeprodukt
 \begin{equation}
-  B = \mathbf{v}_1 \wedge \mathbf{v}_2
+  B = \mathbf{v}_1 \wedge \mathbf{v}_2,
 \end{equation}
 erhalten wir ein neues mathematisches Konzept, den \emph{Bivektor} $B$.
-Ein Bivektor unterscheidet sich grundsätzlich von einem Vektor (siehe \ref{geoalgebra:section:bivektoren}).
+Ein Bivektor unterscheidet sich grundsätzlich von einem Vektor (siehe \autoref{geoalgebra:section:bivektoren}).
 
-\subsection{Definition in zwei Dimensionen}
+\subsection{Definition und grundlegende Axiome}
+\label{geoalgebra:section:axiome}
 Um das Wedgeprodukt definieren zu können, benötigen wir einige wenige Axiome, d.h. grundlegende Annahmen, die wir treffen,
 um uns eine Algebra darauf aufzubauen. Somit definieren wir
 
-\begin{satz}
-  Das Wedgeprodukt eines Vektors mit sich selbst ist 0.
+\begin{axiom}
+  Das Wedgeprodukt ist \em{antikommutativ}
 
-  $
-  \mathbf{v}_i \wedge \mathbf{v}_i = 0
-  $.
-\end{satz}
-\begin{satz}
-Das Wedgeprodukt ist antikommutativ
+  \begin{equation}
+  \mathbf{v}_i \wedge \mathbf{v}_j = -\mathbf{v}_j \wedge \mathbf{v}_i.
+  \end{equation}
+  \label{geoalgebra:eq:antikommutativ}
+\end{axiom}
+Daraus folgt:
+\begin{lemma}
+  \label{geoalgebra:lemma:null}
+  Das Wedgeprodukt eines Vektors mit sich selbst ist $0$
+  \begin{equation*}
+  \mathbf{v}_i \wedge \mathbf{v}_i = 0.
+  \end{equation*}
+\end{lemma}
 
-  $
-  \mathbf{v}_i \wedge \mathbf{v}_j = -\mathbf{v}_j \wedge \mathbf{v}_i
-  $.
-  \label{geoalgebra:satz:antikommutativ}
-\end{satz}
-und
-\begin{satz}
-Es gilt das Distributivgesetz
+\begin{axiom}
+  Es gilt das \em{Distributivgesetz}
+  \begin{equation*}
+  \mathbf{v}_i \wedge (\mathbf{v}_j + \mathbf{v}_k) = \mathbf{v}_i \wedge \mathbf{v}_j + \mathbf{v}_i \wedge \mathbf{v}_k.
+  \end{equation*}
+\end{axiom}
 
-  $
-  \mathbf{v}_i \wedge (\mathbf{v}_j + \mathbf{v}_k) = \mathbf{v}_i \wedge \mathbf{v}_j + \mathbf{v}_i \wedge \mathbf{v}_k
-  $.
-\end{satz}
+\begin{axiom}
+  Das Wedgeprodukt ist bilinear in beiden Faktoren
+  \begin{equation}
+  \mathbf{v}_i \wedge (\lambda \mathbf{v}_j + \mu \mathbf{v}_k) 
+  = \lambda (\mathbf{v}_i \wedge \mathbf{v}_j) + \mu (\mathbf{v}_i \wedge \mathbf{v}_k).
+    \label{geoalgebra:eq:bilinear}
+  \end{equation}
+\end{axiom}
 
-Mit diesen Axiomen können wir bereits das Wedgeprodukt zwischen zwei
+Für die Definition von \emph{Trivektoren} benötigen wir desweiteren noch das Axiom
+\begin{axiom}
+  Das Wedgeprodukt ist \em{assoziativ}
+  \begin{equation*}
+    (\mathbf{a} \wedge \mathbf{b}) \wedge \mathbf{c} = \mathbf{a} \wedge (\mathbf{b} \wedge \mathbf{c})
+  \end{equation*}
+\end{axiom}
+
+\subsection{Das Wedgeprodukt in zwei Dimensionen}
+\renewcommand{\subsectionautorefname}{Abschnitt}
+Mit den Axiomen aus \autoref{geoalgebra:section:axiome} können wir bereits das Wedgeprodukt zwischen zwei
 Vektoren in der zwei Dimensionen herleiten.
 Dazu machen wir uns zu nutze, dass wir jeden Vektor als
-Linearkombination von den Einheitsvektoren beschreiben können.
+Linearkombination von den Standardbasisvektoren beschreiben können.
 Es gilt
 \begin{align}
-  \mathbf{v} &= \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} \\
-    &= v_1 \mathbf{e}_1 + v_2 \mathbf{e}_2.
+  \mathbf{v} &= \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = v_1 \mathbf{e}_1 + v_2 \mathbf{e}_2.
 \end{align}
 
 \begin{definition}
-  Wir betrachten die beiden (zweidimensionalen) Vektoren $\mathbf{u},
+  Wir betrachten die beiden zweidimensionalen Vektoren $\mathbf{u},
   \mathbf{v}$.
   Das Wedgeprodukt von $\mathbf{u}$ und $\mathbf{v}$ ist
 
@@ -65,12 +84,12 @@ Es gilt
     &= u_1 \eone \wedge (v_1 \eone + v_2 \etwo) + u_2 \etwo \wedge (v_1 \eone + v_2 \etwo) \\
     &= u_1 \eone \wedge v_1 \eone + u_1 \eone \wedge v_2 \etwo + u_2 \etwo \wedge v_1 \eone + u_2 \etwo \wedge v_2 \etwo \\
     &= u_1 v_1 (\underbrace{\eone \wedge \eone}_{0}) + u_1 v_2 (\eone \wedge \etwo) + u_2 v_1 (\etwo \wedge \eone) + u_2 v_2 (\underbrace{\etwo \wedge \etwo}_{0}) \\
-    &= (u_1 v_2 - u_2 v_1) \eone \wedge \etwo
+    &= (u_1 v_2 - u_2 v_1) \eone \wedge \etwo.
     \end{aligned}
+    \label{geoalgebra:eq:2d-wedgeproduct}
   \end{equation}
 \end{definition}
-
-Das Wedgeprodukt in zwei Dimensionen kann auch als Determinante
+\noindent Der Skalarfaktor im letzten Ausdruck ist eine Determinante und kann daher als
 \begin{equation}
   \begin{vmatrix}
     u_1 & v_1 \\
@@ -80,7 +99,7 @@ Das Wedgeprodukt in zwei Dimensionen kann auch als Determinante
 \end{equation}
 beschrieben werden.
 
-\subsection{Das Wedgeprodukt in höheren Dimensionen}
+\subsection{Das Wedgeprodukt in drei Dimensionen}
 Zunächst wollen wir uns nochmals unser bereits bekanntes
 Vektorprodukt ansehen.
 \begin{definition}
@@ -100,7 +119,7 @@ herleiten.
 
 \begin{definition}
 Wir betrachten die \emph{dreidimensionalen} Vektoren $\mathbf{a}, \mathbf{b}$.
-Das Wedgeprodukt dazwischen ist
+Das Wedgeprodukt von $\mathbf{a}$ und $\mathbf{b}$ ist
 \begin{equation}
   \begin{aligned}
       \mathbf{a} \wedge \mathbf{b} &= (a_1 \eone + a_2 \etwo + a_3 \ethree) \wedge (b_1 \eone + b_2 \etwo + b_3 \ethree) \\
@@ -112,9 +131,10 @@ Das Wedgeprodukt dazwischen ist
       &\quad+ (a_3 b_1 - a_1 b_3) \ethree \wedge \eone.
   \end{aligned}
 \end{equation}
+\label{geoalgebra:eq:wedgeprodukt-dreidimensional}
 \end{definition}
-Wir stellen fest, dass die Koeffizienten hinter den drei entstandenen Wedgeprodukten
-gleich sind, wie die Komponenten des Vektorprodukts (in \eqref{geoalgebra:eq:vektorprodukt}).
+\noindent Wir stellen fest, dass die Koeffizienten hinter den drei entstandenen Wedgeprodukten
+gleich sind, wie die Komponenten des Vektorprodukts in \eqref{geoalgebra:eq:vektorprodukt}.
 
 \subsection{Rückblick}
 Hier wollen wir einen kurzen Rückblick vornehmen. Wir haben zunächst
