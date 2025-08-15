@@ -302,8 +302,8 @@ Dabei ist die Dicke dieser unbewegten Luftschicht abhängig von der Luftgeschwin
 Mathematisch beschreibt man dies mit den Bedingungen
 \begin{align*}
  \nabla p(\vb{x}) &= 0 \\
-\vb{u}(\vb{x}) &= 0 \\
-,\end{align*}
+\vb{u}(\vb{x}) &= 0 ,\\
+\end{align*}
 diese gelten für alle undurchlässigen Bereiche des Randes und die Oberfläche des Objektes.
 
 \section{Übersetzung des Modells in OpenFOAM}
@@ -331,7 +331,7 @@ Ausserdem werden auf die Oberfläche dieses Modells, die den Rand aus dem Kapite
 \begin{figure}
 	\centering
 	\includegraphics[scale=0.1]{papers/openfoam/Bilder/vergleich_solution_domain_object.png}
-	\caption{Vergleich der Solution Domain (links) und dem 3D Modell des Objektes (rechts)}
+	\caption{Vergleich der Solution Domain (links) und dem 3D-1Modell des Objektes (rechts)}
 	\label{openfoam:fig:SD_Modell_vergleich}
 \end{figure}
 
@@ -350,7 +350,7 @@ Zudem ist auch zu sehen, dass die Zellen nicht unbedingt Würfel sein müssen.
 Das Netz kann theoretisch aus beliebigen Polyedern bestehen.
 Dies ist aber nicht unbedingt vorteilhaft, denn es ist anzustreben ein Seitenverhältnis der Zellen von ungefähr eins zu wählen. 
 Dadurch kann Zeit beim Verarbeiten der 3D Modellen gespart werden.
-
+Das Vorgehen für diesen Prozess wird in Kapitel \ref{openfoam:section:Mesh erstellen} noch etwas ausführlicher erklärt.
 \subsection{Softwarebasiertes Lösen von Differentialgleichungen}
 Wenn ein Modell für die Flüssigkeit, die Randbedingungen, das Objekt und dessen Umgebung vorhanden ist, benötigt man nun ein Verfahren, um eine Lösung zu finden. 
 Dazu muss die Software als Erstes eine Diskretisierung der Differentialgleichungen, die die Flüssigkeit beschreiben, durchführen.
