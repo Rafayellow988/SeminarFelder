@@ -46,39 +46,5 @@ und anhand numerischer Simulation deren Auswirkungen auf die Wellenausbreitung z
 % - Diskretisierung
 % - Verbindung zur Simulation (?)
 \input{papers/particles/teil4_fazit.tex} % TODO: Fazit: Was könnten wir hier beobachtet haben?
-
-% Felder werden oft als linear angenommen. 
-% So nimmt man in der Physik oft an, dass eine Verdoppelung der Spannung in einem Spannungsfeld mit einer Verdoppelung der Deformation einhergeht.
-% Die Beziehung zwischen der Spannung $\sigma$ und der Deformation $\varepsilon$ kann dann einfach durch das Hookesche Gesetz~\cite{todo} als
-% \[
-%     \sigma = C \varepsilon \label{particles:gleichung:hooke}
-% \]
-% beschrieben werden. % TODO: Cite
-% Dabei ist der Elastizitätstensor $C$ unabhängig von der Deformation.
-% Ohne Annahme dieser Unabhängigkeit wäre das Lösen solcher Probleme deutlich schwieriger.
-
-% Im Elektromagnetismus werden ähnliche Vereinfachungen gemacht. 
-% Die elektrische Flussdichte $D$ wird dabei ebenfalls durch den Tensor $\varepsilon$ als
-% \[
-%     D = \varepsilon E \label{particles:eq:D}
-% \]
-% in ein lineares Verhältnis mit der elektrischen Feldstärke $E$ gebracht.
-% Dasselbe gilt bei dem magnetischen Fluss $H$ und der magnetischen Feldstärke $B$, die durch
-% \[
-%     H = \mu B \label{particles:eq:H}
-% \]
-% mit dem Tensor $\mu$ in ein lineares Verhältnis gebracht werden.
-
-% Dass der in~\ref{particles:gleichung:hooke} beschriebene, lineare Zusammenhang für hohe Deformationen nicht mehr stimmt, ist intuitiv.
-% Ein Bauteil, das immer weiter deformiert wird, wird irgendwann seine Widerstandskraft verlieren und brechen oder permanent verformt werden.
-% Abbildung~\ref{particles:abb:deformationskurve} zeigt als Beispiel die Spannungs-Dehnungs-Kennlinie einer gängigen Aluminiumlegierung. % TODO: Abb.
-% Es ist dabei klar zu erkennen, dass die Abhängigkeit der Spannung von der Deformation besonders bei hohen Deformationen keineswegs linear ist.
-% Ist die Beanspruchung des Materials jedoch klein, so kann zur Berechnung das Hookesche Gesetz~\ref{particles:gleichung:hooke} verwendet werden.
-% Dies erleichtert die Simulation des Spannungsfelds im Bauteil erheblich.
-
-% Bei den Elektromagnetischen Feldern soll eine solche Nichtlinearität auch auftreten.
-% Die Schwinger-Grenze, welche von \textbf{wer auch immer} in~\cite{todo} postuliert wird, markiert dabei die Feldstärken, ab denen die in~\ref{particles:eq:D} und~\ref{particles:eq:H} gezeigten Beziehungen nichtlinear werden. % TODO: Cite, evtl. umschreiben
-
-% Dieses Paper soll ein Phänomen, welches bei der Simulation eines solchen nichtlinearen Feldes entsteht, aufzeigen.
 \printbibliography[heading=subbibliography]
 \end{refsection}
