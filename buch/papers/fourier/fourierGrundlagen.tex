@@ -31,7 +31,7 @@ Der Summations- bzw. Frequenzindex wird mit $n$ bezeichnet, über den im Folgend
 	\begin{equation}
 		a_n = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t) \cos\left(n\omega t\right) dt.
 	\end{equation}
-	Die $a_n$ skalieren den geraden Anteil der Funktion, also die Cosinus-Anteile. 
+	Die $a_n$ skalieren den geraden Anteil der Funktion, also die Cosinusanteile. 
 	Eine gerade Funktion ist definiert durch die Eigenschaft $f_1(-t) = f_1(t)$. 
 	
 	
@@ -39,14 +39,14 @@ Der Summations- bzw. Frequenzindex wird mit $n$ bezeichnet, über den im Folgend
 	\begin{equation}
 		b_n = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t) \sin\left(n\omega t\right) dt
 	\end{equation}
-	Die $b_n$ skalieren den ungeraden Anteil der Funktion, also die Sinus-Anteile. 
+	Die $b_n$ skalieren den ungeraden Anteil der Funktion, also die Sinusanteile. 
 	Eine ungerade Funktion ist definiert durch die Eigenschaft $f_1(-t) = -f_1(t)$. 
 	
 \end{itemize}
 
 
 Sind alle Koeffizienten bestimmt, lässt sich nahezu jede periodische Funktion beliebig genau approximieren.
-Die Koeffizienten $a_n$ und $b_n$ gewichten die Cosinus- bzw Sinus-Anteile der Schwingung für $n \ge 1$.
+Die Koeffizienten $a_n$ und $b_n$ gewichten die Sinusanteile und Cosinusanteile der Schwingung für $n \ge 1$.
 Je nach Ausgangsfunktion können die Abhängigkeiten der Koeffizienten von $n$ komplexe Formen annehmen.
 Im Allgemeinen nehmen die Amplituden mit wachsendem $n$ ab und das Abklingverhalten hängt von der Funktion ab und lässt sich nicht verallgemeinern.
 Mit jedem Summanden der Reihe erhöht sich die Frequenz des Terms proportional zum Index $n$.
@@ -68,9 +68,7 @@ Da $f_1$ gerade ist, sind alle Sinuskoeffizienten $b_n=0$ und die Kosinuskoeffiz
 Der Mittelwert ist $a_0=0$.  
 Bei der Fourier-Reihenbildung kann man sich viel Zeit ersparen, wenn man zuerst überprüft, ob es sich um eine gerade oder ungerade Funktion handelt.
 So kann man ohne zu rechnen $a_n$ oder $b_n$ gleich Null setzen.
-
 \input{papers/fourier/fig/fig-fourier_Dreieck.tex}
-
 \end{beispiel}
 
 Während sich die Dreiecksfunktion aufgrund ihrer Stetigkeit beliebig genau durch eine Fourier-Reihe darstellen lässt, zeigt sich bei Funktionen mit Sprungstellen ein anderes Verhalten. Ein solches Beispiel wird im Folgenden betrachtet.
@@ -86,9 +84,7 @@ Die Fourier-Reihe bis $n=5$ lautet
 \end{equation}
 und entspricht der roten Kurve.  
 Da die Rechteckfunktion um den Mittelwert $\frac{a_0}{2}=\frac{1}{2}$ ungerade ist, sind alle Cosinuskoeffizienten $a_n=0$ und die Sinuskoeffizienten bleiben nur für ungerade $n$ ungleich $0$.  
-
 \input{papers/fourier/fig/fig-fourier_Rechteck.tex}
-
 \end{beispiel}
 
 
