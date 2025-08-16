@@ -11,7 +11,7 @@
 \kopfrechts{Mathematische Modellbildung}
 Zum Simulieren von Strömungen benötigen wir zuerst ein Modell, das das Verhalten der Flüssigkeit möglichst umfassend und genau beschreibt. 
 Hierbei werden meist die Navier-Stokes-Gleichungen benutzt, welche noch mit Randbedingungen und Zustandsgleichungen erweitert werden können. 
-Oft werden die Euler-Gleichungen anstelle Der Navier-Stokes-Gleichungen verwendet, da diese weniger Rechenaufwand benötigen.
+Oft werden aber auch die Euler-Gleichungen anstelle Der Navier-Stokes-Gleichungen verwendet, da diese weniger Rechenaufwand benötigen.
 Dies aber auf Kosten der Genauigkeit.
 
 Zudem benötigen wir ein Lösungsverfahren, das einen Anfangszustand und das mathematische Modell zu einer numerischen Lösung verarbeiten kann, dies ist nötig, da für die Navier-Stokes-Gleichungen keine analytische Lösung existiert.
@@ -21,19 +21,19 @@ Hierbei kommen meist die Finite-Differenzen-Methode (FDM), die Finite-Volumen-Me
 
 \subsection{Stationär oder zeitabhängig?}
 Bei der Strömungsmechanik wird zuerst unterschieden, ob es sich um eine stationäre oder zeitabhängige Strömung handelt.
-Das heisst es ist entweder der Fall, dass an jedem Ort im Raum die Geschwindigkeit, der sich dort befindenden Flüssigkeit  konstant ist oder dass sich diese Grösse ändert.
+Das heisst es ist entweder der Fall, dass an jedem Ort im Raum die Geschwindigkeit, der sich dort befindenden Flüssigkeit  konstant ist oder dass sich diese Grösse dauernd ändert.
 
 Bei einer Simulation wird meist simuliert, bis der stationäre Zustand bis auf einen kleinen Fehler erreicht wird.
 Dadurch kann man sich Simulationsaufwand ersparen da sobald der stationäre Zustand erreicht wird das Resultat nicht mehr ändert und so keine neuen Ergebnisse gefunden werden können.
 
 \subsection{Modellierung der Flüssigkeit}
 Im Kontext der CFD-Simulation nimmt man an, dass eine Flüssigkeit nicht aus einzelnen Teilen wie Atomen oder Molekülen besteht, sondern man nimmt an, sie sei kontinuierlich. 
-Ausserdem wird angenommen, dass sämtliche Eigenschaften der Flüssigkeit stetig sind. 
+Ausserdem geht man davon aus, dass sämtliche Eigenschaften der Flüssigkeit stetig sind. 
 
 Zudem hat eine Flüssigkeit noch weitere Eigenschaften wie die Dichte. 
 Diese kann hier aber nicht immer als konstant angesehen werden, da man ansonsten bei kompressiblen Flüssigkeiten einen Teil der Energie, welcher für das Komprimieren derselben verwendet wird, nicht beachten würde.
 Dies wiederum würde im Fall, dass die Kompressibilität beachtet werden muss, zu Abweichungen zwischen Simulation und Realität führen.
-Zudem müssen die Viskosität und die spezifische Wärmekapazität beschrieben werden.
+Auch müssen die Viskosität und die spezifische Wärmekapazität beschrieben werden.
 
 \subsection{Die Euler-Gleichungen}
 Die Euler-Gleichungen beschreiben das Verhalten der Strömung eines reibungsfreien Fluiden, also eines laminaren Flusses, dessen Reibung vernachlässigt werden kann. 
@@ -41,7 +41,7 @@ Das bedeutet, sie können nicht für alle Probleme eingesetzt werden.
 Sobald Reibungskräfte einen substantiellen Einfluss auf die Strömung haben, weist das berechnete Ergebnis eine Abweichung zur Realität auf.
 
 \subsubsection{Massenerhaltung}
-Das Gesetz der Massenerhaltung beschreibt, dass in einem geschlossenen System sich die Masse nicht verändert, ohne dass man Masse hinzufügt oder entfernt. 
+Das Gesetz der Massenerhaltung beschreibt, dass sich die Masse in einem geschlossenen System nicht verändern kann, ohne dass man Masse hinzufügt oder entfernt. 
 Dieses Verhalten beschreibt die zweite Euler-Gleichung, indem die Veränderung der Masse durch den Fluss von Masse durch eine Systemgrenze beschrieben wird.
 
 Die erste Euler-Gleichung geht aus der Idee hervor, dass man ein beliebiges Volumen $V$ hat, das fest im Raum liegt. Durch ein Oberflächenstück 
@@ -64,7 +64,7 @@ Um die Massenänderung zu erhalten, leitet man dieses Integral noch partiell nac
 \[\frac{\partial M}{\partial t}
 =
 \frac{\partial }{\partial t} \int_{V}\rho dV.\]
-Hier nimmt man die Ableitung auf der rechten Seite noch in das Integral hinein, da dies einem später das Rechnen etwas erleichtert.
+Hier nimmt man die Ableitung auf der rechten Seite noch in das Integral hinein, da dies später das Rechnen erleichtert.
 
 Setzt man nun die beiden Terme der Massenänderung gleich, erhält man die Gleichung 
 \[\int_{S}\rho\vb{u}\cdot d\vb{S} 
@@ -92,7 +92,7 @@ Dies kann nun in einem letzten Schritt in die Differentialgleichung
 = 
 0
 \end{equation}
-umwandeln.
+umgewandelt werden.
 Wieso dies möglich ist wird im Lemma \ref{maxwell:lemma:ampere} erläutert.
 
 \subsubsection{Impulserhaltung}
@@ -113,7 +113,7 @@ Anstelle der partiellen Ableitung wird eine substantielle Ableitung \[\frac{D}{D
 
 Als nächstes berechnet man die gesamte Kraft auf die Oberfläche des Volumens $V$, in dem man alle Kräfte $\vb{f} = \vb{t}\,dS$, die auf die Oberflächenstücke $dS$ wirken, integriert.
 $\vb{t} dS$ ist hier gleich $(\vb{n\cdot\sigma}dS)$.
-Dabei ist $\sigma$ der Spannungstensor ist, welcher genutzt wird um die drei Spannungsvektoren zusammenzufassen.
+Dabei ist $\sigma$ der Spannungstensor, welcher genutzt wird um die drei Spannungsvektoren zusammenzufassen.
 Durch das bilden des Skalarproduktes, mit Spannungstensor und Normalenvektor, kann jeweils der Spannungsvektor in Richtung $\vb{n}$ gefunden werden.
 So erhält man die Kraft 
 \[\vb{F} 
