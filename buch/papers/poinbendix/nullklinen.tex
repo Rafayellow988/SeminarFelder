@@ -73,14 +73,14 @@ Mit derselben Methode können auch die anderen 4 Regionen analysiert werden.
 
 Limesmengen beinhalten alle Punkte, welche von Bahnkurven nach unendlicher Zeit erreicht werden.
 Dies können einzelne Punkte sein, periodische oder nicht periodische Bahnen oder Kombinationen davon.
-Dabei startet man bei einem beliebigen Punkt $p$ und schaut sich das Verhalten in positiver und negativer Zeit an.
+Dabei startet man bei einem beliebigen Punkt $p \in M$ und schaut sich das Verhalten in positiver und negativer Zeit an.
 
 \begin{definition}[Limesmengen]
 Die Alpha- und Omega-Limesmengen
 \label{poinbendix:def:limesmengen}
 \begin{align*}
-    \alpha(p) &= \lim_{t\to-\infty} \Phi_t(p) \\
-    \omega(p) &= \lim_{t\to\infty} \Phi_t(p)
+    \alpha(p) &= \{q\in M; \; \Phi_t(p) \to q \; \text{für} \; t \to -\infty\} \\
+    \omega(p) &= \{q\in M; \; \Phi_t(p) \to q \; \text{für} \; t \to \infty\}
 \end{align*}
 beschreiben das Verhalten eines dynamischen Systems $\Phi_t(p)$ nach unendlicher Zeit $t$.
 \end{definition}
