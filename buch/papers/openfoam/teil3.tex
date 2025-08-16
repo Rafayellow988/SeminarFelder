@@ -11,12 +11,12 @@
 \kopfrechts{Anwendungsbeispiel}
 Wie wir gesehen haben, kann OpenFOAM sehr viel.
 Wir werden jetzt an einem Beispiel zeigen, was man für eine eigene Simulation alles braucht und wie man sie durchführt.
-Für ein anschauliches Beispiel haben wir ein Objekt gewählt, welches alle Studenten der OST-Rapperswil kennen: den Campus Rapperswil.
+Für ein anschauliches Beispiel haben wir ein Modell gewählt, welches alle Studenten der OST-Rapperswil kennen: den Campus Rapperswil.
 Das Ziel der Simulation ist, zu sehen, wie der Wind um die Gebäude strömt und mit ihnen interagiert, das Bild auf dem Buchumschlag wird das Resultat sein.
 
 %Übersicht Kapitel -----------------------------------------------------------------------------------------
 \subsection{Übersicht \label{openfoam:section:Übersicht}}
-Wir besitzen ein 3D-Objekt, im Beispiel im Massstab 1:1.
+Wir besitzen ein 3D-Modell, im Beispiel im Massstab 1:1.
 Um die Simulation durchführen zu können, benötigen wir einen Simulationsraum, eine grosse Box, die den Campus umschliesst.
 Es wird definiert, wie sich die Seiten dieser Box verhalten sollen: Eingang, Ausgang oder Wand.
 Diese Box wird dann in viele einzelne Zellen aufgeteilt.
@@ -25,7 +25,7 @@ die nötigen Differentialgleichungen für die lokalen Informationen gerechnet.
 Das Ergebnis kann dann mit einem Auswertungstool angesehen und ausgewertet werden.
 
 OpenFOAM arbeitet für jede Simulation mit einem sogenannten \texttt{Case}-Ordner (Abb. \ref{fig:ordStrktSim}). 
-Darin sind alle Parameter, 3D-Objekte und Anfangsbedingungen abgelegt.
+Darin sind alle Parameter, 3D-Modelle und Anfangsbedingungen abgelegt.
 Nach der Simulation sind hier die Zeitverzeichnisse mit den Simulationsresultate für jeden Zeitpunkt abgelegt.
 
 OpenFOAM arbeitet mit SI-Einheiten, alle Werte müssen in Meter, Kilogramm und Sekunden angegeben werden. 
@@ -49,7 +49,7 @@ Bevor mit der Simulation begonnen wird, müssen einige Entscheidungen getroffen 
     Gibt es Möglichkeiten Symmetrien auszunutzen, um den Rechenaufwand zu minimieren?
     \item Die Randbedingungen müssen festgelegt werden, wo strömt das Fluid in die Simulation ein, wo verlässt es sie.
     \item Wie verhalten sich die Wände, tragen sie zu Turbulenzen bei oder nicht?
-    \item Sind die Wände genug weit vom Objekt entfernt, dass ihr Einfluss auf das Ergebnis vernachlässigbar ist?
+    \item Sind die Wände genug weit vom Modell entfernt, dass ihr Einfluss auf das Ergebnis vernachlässigbar ist?
 \end{itemize} 
 Diese Überlegungen sind essenziell, um ein realistisches und stabiles Simulationsmodell aufzubauen.
 
@@ -69,27 +69,27 @@ Je mehr Zellen erstellt werden, desto genauer wird das Ergebnis der Simulation, 
 Mit jeder Zelle steigt jedoch der Rechenaufwand.
 Es muss ein Mittelweg gefunden werden, so viele Zellen wie nötig, so wenige wie möglich.
 
-Als nächstes wird das 3D-Objekt in den Simulationsraum eingebettet.
+Als nächstes wird das 3D-Modell in den Simulationsraum eingebettet.
 Mithilfe dem Programm \textbf{snappyHexMesh} wird das 3D-Objekt in  Zellen unterteilt und eingefügt. 
 Im Dokument \texttt{snappyHexMeshDict} werden die Parameter definiert:
 
 \begin{itemize}
-    \item \textit{geometry}: Definition des 3D-Objekts, zum Beispiel in Form einer STL-Datei.
+    \item \textit{geometry}: Definition des 3D-Modells, zum Beispiel in Form einer STL-Datei.
     \item \textit{castellatedMeshControls}: Erste Stufe des Meshing, steuert, wie die Quader am Anfang angenähert werden.
     \item \textit{snapControls}: Wie oft das Mesh verfeinert wird. 
-    In einem ersten Durchlauf wird das 3D-Objekt grob in Quader aufgeteilt (Abb. \ref{fig:snappygrobbild}),
+    In einem ersten Durchlauf wird das 3D-Modell grob in Quader aufgeteilt (Abb. \ref{fig:snappygrobbild}),
     in den folgenden Schritten wird die Annäherung an die Vorgabe immer besser (Abb. \ref{fig:snappyfeinbild}).
     Üblich sind 20 bis 40 Durchläufe, ist jedoch auch ein Abwägen zwischen dem Nutzen und dem erhöhten Rechenaufwand.
-    \item \textit{addLayersControls}: Im 3D-Mesh werden die Blöcke in der Nähe des Objekts verkleinert, 
+    \item \textit{addLayersControls}: Im 3D-Mesh werden die Blöcke in der Nähe des Modells verkleinert, 
     damit können die interessanten Bereiche räumlich genauer simuliert werden.
 \end{itemize}
 Spitze Kanten und Ecken korrekt darzustellen sind für \textbf{snappyHexMesh} eine Herausforderung.
-Das Programm \textbf{surfaceFeatureExtract} wird verwendet um diese Bereiche gesondert aus dem 3D-Objekt zu extrahieren.
+Das Programm \textbf{surfaceFeatureExtract} wird verwendet um diese Bereiche gesondert aus dem 3D-Modell zu extrahieren.
 Es wird vor \textbf{snappyHexMesh} ausgeführt und hilft, die Zellen genauer an der Geometrie auszurichten.
 Im Dokument \texttt{surfaceFeatureExtractDict} werden die Parameter definiert:
 
 \begin{itemize}
-    \item \textit{3D-Objekt}: Verweis auf das 3D-Objekt von wo die Features extrahiert werden sollen.
+    \item \textit{3D-Modell}: Verweis auf das 3D-Modell von wo die Features extrahiert werden sollen.
     \item \textit{includedAngle}: Winkel, ab welchem eine Kante als spitz gilt und extrahiert wird.
 \end{itemize}
 
@@ -167,8 +167,8 @@ Mit der folgenden Befehlsfolge kann eine einfache Simulation, stationär und ink
 
 \begin{enumerate}
     \item \textbf{blockMesh}: Generiert Simulationsraum.
-    \item \textbf{surfaceFeatureExtract}: Extrahiert scharfe Kanten und Ecken aus dem 3D-Objekt.
-    \item \textbf{snappyHexMesh}: Fügt das 3D-Objekt in den Simulationsraum ein.
+    \item \textbf{surfaceFeatureExtract}: Extrahiert scharfe Kanten und Ecken aus dem 3D-Modell.
+    \item \textbf{snappyHexMesh}: Fügt das 3D-Modell in den Simulationsraum ein.
     \item \textbf{simpleFoam}: Simulation, bei einem anderen Solver durch den entsprechenden ersetzen.
     \item \textbf{foamToVTK}: (nicht nötig, wenn die Ergebnisse auf Linux mit \texttt{paraFoam} ausgewertet werden)\\
     Exportiert die Simulationsergebnisse in ein VTK-kompatibles Format, welches dann in ParaView angesehen werden kann.
@@ -181,7 +181,7 @@ Für das Ausführen der Befehle muss in der Kommandozeile in den \texttt{Case}-O
 \texttt{Case\_Ordner}
 
 Dort können dann die Befehle nacheinander eingegeben werden.
-Erfahrungsgemäss kann \textbf{snappyHexMesh} und \textbf{simpleFoam}, je nach Einstellungen und Komplexität des 3D-Objekts, 
+Erfahrungsgemäss kann \textbf{snappyHexMesh} und \textbf{simpleFoam}, je nach Einstellungen und Komplexität des 3D-Modells, 
 lange dauern, mehrere Stunden sind möglich.
 Grosse Simulationen können mehrere 100 GB an Speicherplatz benötigen.
 
@@ -192,7 +192,7 @@ Es wird empfohlen mit einfachen Modellen, Tutorials und kurzen Simulationszeiten
 Nach der Simulation können die Ergebnisse ausgewertet werden. 
 Wir verwenden \texttt{ParaView} für die Auswertung. 
 Auf Linux-Systemen ist \texttt{paraFoam} verfügbar, dies wird hier jedoch nicht weiter verfolgt.
-Die Ergebnisse auch mit einem eigenen \texttt{Skript} ausgewertet und weiterverarbeitet werden.
+Die Ergebnisse können auch mit einem eigenen \texttt{Skript} ausgewertet und weiterverarbeitet werden.
 
 In ParaView öffnet man das \texttt{Case\_Ordner.OpenFOAM} Dokument im \texttt{Case}-Ordner.
 Abbildung \ref{fig:Beispiel_Paraview} zeigt die wichtigsten Bedienelemente.
