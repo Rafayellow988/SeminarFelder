@@ -18,7 +18,7 @@ f\, (\vec{k} \times \vec{v}_g)
 0
 \label{geostrophisch:equation5}
 \end{equation}
-Von der geostrophischen Näherung spricht man also, wenn man annimmt, dass sich die Druckgradientkraft und die Corioliskraft im Gleichgewicht befinden und alle anderen Kräfte vernachlässigt werden können. In diesem Fall wirken beide Kräfte gleich stark, aber in entgegengesetzte Richtungen, sodass kein weiterer Beschleunigungseffekt auf die Luftmasse wirkt und sie parallel zu den Isobaren strömt - es entsteht der sogenannte geostrophische Wind.
+Von der geostrophischen Näherung spricht man also, wenn man annimmt, dass sich die Druckgradientkraft und Corioliskraft im Gleichgewicht befinden und alle anderen Kräfte vernachlässigt werden können. In diesem Fall wirken beide Kräfte gleich stark, aber in entgegengesetzte Richtungen, sodass kein weiterer Beschleunigungseffekt auf die Luftmasse wirkt und sie parallel zu den Isobaren strömt - es entsteht der sogenannte geostrophische Wind.
 
 \vspace{1em}
 
@@ -79,7 +79,7 @@ Das Programm visualisiert die Resultate in Form von Vektorfeldern, sodass sowohl
 
 Dieser moderne Ansatz verbindet die historischen Ideen Richardsons mit den heutigen Möglichkeiten der Datenverarbeitung und Visualisierung, wodurch eine präzisere und deutlich schnellere Analyse atmosphärischer Strömungen möglich wird.
 
-Das Programm bezieht die Daten der Atmosphäre von einer Internet Seite namens OpenWeatherMap.
+Die Luftdruck Daten beziehen wir von einer Internetseite namens OpenWeatherMap.
 Als erstes haben wir eine Liste erstellt mit den Städten und dazugehörigen Koordinaten, der Orte die wir auf der Karte gerne angezeigt haben möchten.
 Anschliessend werden von allen Ortschaften die Druckdaten von der Internetseite gelesen.
 Danach erstellen wir ein Gitter mit den Koordinaten der Ortschaften, indem wir zuerst die Längen- und Breitengrade vom kleinsten bis zum grössten Wert mit konstanten Schritten aufteilen.
@@ -93,22 +93,30 @@ Der Längengradabstand berechnet sich wie folgt
 wobei das R für den Erdradius ($\approx\SI{6371}{\kilo\meter}$) steht. 
 Die Breitengrade sind Parallelkreise und deren Umfang nimmt vom Äquator zu den Polen ab.
 Deren Abstand ist Konstant $\approx\SI{111}{\kilo\meter}$.
+Aus diesen Werten können wir nun den Druckgradienten berechnen, indem wir die Druckänderung zwischen benachbarten Punkten durch die Abstände teilen.
+Jetzt haben wir schon so gut wie alles um den geostrophischen Wind zu berechnen, wir brauchen nur noch den Coriolis-Paramter $f$.
+Diesen berechnen wir wie in ~\ref{geostrophisch:subsection:coriolis} schon gezeigt. 
+Zur Farbgebung berechnen wir noch die Windgeschwindigkeit an jedem Punkt. 
+Alles was danach im Code kommt ist nur noch zur Darstellung der Daten und auf diese muss jetzt nicht genauer eingegangen werden.
 
-
-Nachfolgen mein Python Code zum Programm:
+Nachfolgend unser Python Code zum berechnen des geostrophischen Windes: 
 \lstinputlisting[style=pycode]{papers/geostrophisch/PythonCode/geostrophischeNaeherungLiveData.py}
 
 \begin{figure}
 	\centering
-	\includegraphics[scale=0.8]{Python28042025.png}
-	\caption{}
+	\includegraphics[width=\linewidth]{Python28042025.png}
+	\caption{Diese Abbildung zeigt den geostrophischen Wind berechnet durch das Python Programm.
+	Dieses Bild wurde am 28.04.2025 erstellt.
+	Man sieht sehr gut wo Tief und Hochdruck Gebiete liegen und wie der Wind Parallel um diese weht.}
 	\label{bild:28042025}
 \end{figure}
 
 \begin{figure}
 	\centering
-	\includegraphics[scale=0.8]{Python15082025.png}
-	\caption{}
+	\includegraphics[width=\textwidth]{Python15082025.png}
+	\caption{Eine Weitere Abbildung des geostrophischen Windes.
+	Diese wurde am 15.08.2025 erstellt.
+	}
 	\label{bild:15082025}
 \end{figure}
 

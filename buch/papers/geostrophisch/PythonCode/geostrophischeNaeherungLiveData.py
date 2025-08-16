@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from scipy.interpolate import griddata
 
 # OpenWeatherMap API-Key
-API_KEY = '549006cf934d41ca9792c5db2ae0b377'
+API_KEY = 'Input for API-Key'
 
 # Staedte ueber Mitteleuropa verteilt
 locations = {
