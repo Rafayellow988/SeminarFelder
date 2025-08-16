@@ -19,7 +19,7 @@ Dann gilt für die Omega-Limesmenge $\omega(p)$ eine der folgenden Optionen:
 \end{satz}
 
 Dies gilt auf der Kugeloberfläche $\mathbb{S}^2$ \cite{poinbendix:melo}.
-Bis anhin haben wir aber mehrheitlich über planare Fälle gesprochen, weshalb der nächste Abschnitt darauf eingeht wieso wir hier die Kugeloberfläche nehmen.
+Bis anhin haben wir aber mehrheitlich über planare Fälle gesprochen, weshalb der nächste Abschnitt darauf eingeht, wieso wir hier die Kugeloberfläche nehmen.
 In den darauffolgenden Abschnitten wird dann für jeden Fall jeweils ein Beispiel gezeigt.
 
 \subsection{Kugeloberfläche und Ebene} \label{poinbendix:subsection:kugeloberflaeche}
@@ -29,7 +29,7 @@ In Abbildung \ref{buch:koordinaten:diffmannig:fig:stereographisch} sieht man, da
 Somit ergibt sich für den Fall einer Nullstelle auf dem Nordpol eine divergierende Bahnkurve auf der Ebene.
 
 Auch wenn die Formulierung auf der Kugeloberfläche etwas eleganter ist, gilt der Satz von Poincaré-Bendixson sowohl auf der Ebene $\mathbb{R}^2$ wie auch auf der Kugeloberfläche $\mathbb{S}^2$.
-Allerdings gilt er nicht auf allen zweidimensionalen Abbildungen, so können zum Beispiel auf dem Torus Bahnkurven auftreten welche nicht wirklich periodisch sind, aber auch nicht auf eine Singularität fallen \cite{poinbendix:wiki}.
+Allerdings gilt er nicht auf allen zweidimensionalen Mannigfaltigkeiten, so können zum Beispiel auf dem Torus Bahnkurven auftreten welche nicht wirklich periodisch sind, aber auch nicht auf eine Singularität fallen \cite{poinbendix:wiki}.
 
 
 \subsection{Fall 1: $\omega(p)$ ist eine Nullstelle} \label{poinbendix:subsection:fall1}
@@ -45,12 +45,12 @@ Wir betrachten das folgende Differentialgleichungssystem:
     \dot{y} &= -y - x(1-x^2-y^2).
 \end{align*}
 Nullstellen sind Punkte wo beide Ableitungen Null sind.
-Zunächst substituieren wir den Klammerausdruck durch $a = (1-x^2-y^2)$ und setzen die Ableitung nach $x$ gleich Null
+Zunächst substituieren wir den Klammerausdruck durch $a = (1-x^2-y^2)$ und setzen die Ableitung nach $x$ gleich Null:
 \begin{align*}
     -x + ya &= 0 \\
     ya &= x.
 \end{align*}
-Nun setzen wir dieses Resultat in die Ableitung nach $y$ und setzen es gleich Null
+Nun setzen wir dieses Resultat in die Ableitung nach $y$ und setzen es gleich Null:
 \begin{align*}
     -y - ya^2 &= 0 \\
     y(a^2+1) &= 0.
@@ -58,12 +58,12 @@ Nun setzen wir dieses Resultat in die Ableitung nach $y$ und setzen es gleich Nu
 Nach dieser Untersuchung sehen wir, dass es nur eine reelle Nullstelle $x=y=0$ geben kann, da $a^2 + 1$ im reellen nie Null werden kann.
 
 Dieses Beispiel wurde gewählt da sehr schöne Bahnkurven entstehen.
-Wie diese Bahnkurven aussehen können sieht man in Abbildung \ref{poinbendix:fig:fixed_point_omega_set}.
+Wie diese Bahnkurven aussehen können, sieht man in Abbildung \ref{poinbendix:fig:fixed_point_omega_set}.
 \end{beispiel}
 
 Zu beachten gilt es, dass der Satz von Poincaré-Bendixson nur eine Aussage zu möglichen Lösungen ab einem Startpunkt $p$ macht.
 Dies würde unterschiedliche Fälle erlauben für ein einzelnes Differentialgleichungssystem.
-Das obige Beispiel zeigt aber einen häufigen Fall, dass nämlich diverse Startpunkte $p$ dieselbe Nullstelle als Omega Limesmenge haben.
+Das obige Beispiel zeigt aber einen häufigen Fall, dass nämlich diverse Startpunkte $p$ dieselbe Nullstelle als Omega-Limesmenge haben.
 
 \begin{figure}
     \centering
@@ -79,7 +79,7 @@ Im zweiten Fall fällt die Bahnkurve irgendwann auf einen geschlossenen Orbit.
 Ein geschlossener Orbit bedeutet, dass die Bahnkurve eine periodische Bewegung durchführt.
 
 Eine Variante ist, dass der Startpunkt $p$ bereits auf einem geschlossenen Orbit liegt.
-Also ist die Omega Limesmenge identische mit der Alpha Limesmenge.
+Also ist die Omega-Limesmenge identische mit der Alpha-Limesmenge.
 Diese Variante wird im folgenden Beispiel genauer gezeigt.
 
 
@@ -91,14 +91,14 @@ Das Gleichungssystem
 \end{align*}
 erzeugt dabei kreisrunde Orbits um den Nullpunkt herum.
 Der Nullpunkt ist also eine Nullstelle und stellt damit eine weitere Omega-Limesmenge dar.
-Die ganze Situation ist in Abbildung \ref{poinbendix:fig:fall_2} zu sehen.
+Diese Situation ist in Abbildung \ref{poinbendix:fig:fall_2} zu sehen.
 \end{beispiel}
 
 \begin{figure}
 \centering
     \input{papers/poinbendix/images/fall_2.pgf}
     \caption{Lösungen des Differentialgleichungssystems von Beispiel \ref{poinbendix:beispiel:fall2_1}.
-    Anfangspunkte mit unterschiedlichem Radius haben unterschiedliche Orbitale als Omega Limesmengen.}
+    Anfangspunkte mit unterschiedlichem Radius haben unterschiedliche Orbitale als Omega-Limesmengen.}
 \label{poinbendix:fig:fall_2}
 \end{figure}
 
@@ -113,7 +113,7 @@ Das Gleichungssystem
 in Polarkoordinaten kann als Illustration der Hopf-Bifurkation verwendet werden.
 Schaut man sich die Ableitung des Radius $r$ genauer an, erkennt man, dass diese bei $b = r^2$ verschwindet.
 Dies ist also eine Nullkline.
-Da die Ableitung zum Winkel $\varphi$ konstant ist, entsteht daher ein stabiler Zyklus mit Radius $\sqrt{b} \forall b > 0$.
+Da die Ableitung zum Winkel $\varphi$ konstant ist, entsteht daher ein stabiler Zyklus mit Radius $\sqrt{b} \; \forall \; b > 0$.
 Dies sieht man in Abbildung \ref{poinbendix:fig:fall_2_2}.
 
 Sobald allerdings $b < 0$ ist, ist die Ableitung zum Radius immer negativ, d.h. alle Startpunkte konvergieren gegen den Nullpunkt.
@@ -137,7 +137,7 @@ Der dritte Fall ist aus der Definition am schwierigsten zu verstehen.
 Dabei nähern sich Bahnkurven einem geschlossenen Orbit an wie im vorherigen Beispiel \ref{poinbendix:beispiel:fall2_2}.
 Nun gibt es aber die Besonderheit, dass auf diesem Orbit Nullstellen auftreten können.
 Dies führt dazu, dass sich die Bahnkurven zwar immer mehr dem Orbit annähern, aber stoppen, sobald er erreicht ist.
-Es ist also unklar, in welcher Nullstelle die Omega Limesmenge zu liegen kommt.
+Es ist also unklar, in welcher Nullstelle die Omega-Limesmenge zu liegen kommt.
 
 Auch dieser Fall wird wieder anhand eines Beispiels gezeigt.
 
@@ -166,13 +166,13 @@ Aber wählt man $a=1$, dann entstehen drei Nullstellen bei
 Ausserhalb des Einheitskreises ist $1 - |r-1|<1$ und die Differenzialgleichung zum Radius $\dot{r}$ hat keine Nullstelle (ausser dem Nullpunkt).
 Somit drehen die Bahnkurven im Uhrzeigersinn, bis sie sich dem Einheitskreis angenähert haben.
 Durch die Veränderung der Drehgeschwindigkeit werden die Bahnkurven verzogen.
-Abbildung \ref{poinbendix:fig:fall_3} zeigt die Situation, wobei die Nullstellen mit einem \textit{X} dargestellt werden.
+Abbildung \ref{poinbendix:fig:fall_3} zeigt die Situation, wobei die Nullstellen mit einem $\times$ dargestellt werden.
 \end{beispiel}
 
 \begin{figure}
 \centering
     \input{papers/poinbendix/images/fall_3_polar.pgf}
     \caption{Lösungen des Differentialgleichungssystems aus Beispiel \ref{poinbendix:beispiel:fall3}.
-    Der periodischen Orbit als Omega-Limesmenge wird unterbrochen durch drei Nullstellen welche mit einem \textit{X} markiert sind.}
+    Der periodischen Orbit als Omega-Limesmenge wird unterbrochen durch drei Nullstellen welche mit einem $\times$ markiert sind.}
 \label{poinbendix:fig:fall_3}
 \end{figure}
