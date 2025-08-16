@@ -10,7 +10,7 @@
 %    Anwendungen auf Felder, PDEs in ODE umwandeln (Grundlage, um Feldgleichungen als eine Familie von Oszillator-Gleichungen zu interpretieren) 
 
 
-\section{Anwendung auf Feld\label{fourier:section:AnwendungAufFeld}}
+\section{Anwendung auf ein Feld\label{fourier:section:AnwendungAufFeld}}
 \kopfrechts{Anwendung auf Feld}
 
 Eine gewöhnliche Differentialgleichung enthält Ableitungen nur nach einer unabhängigen Variable, während eine partielle Differentialgleichung Ableitungen nach mehreren unabhängigen Variablen enthält.  
@@ -20,7 +20,7 @@ Als Beispiel betrachten wir die eindimensionale Wellengleichung
 	\frac{\partial^2 u(x,t)}{\partial t^2} = c^2 \frac{\partial^2 u(x,t)}{\partial x^2}
 \end{equation}  
 mit Ausbreitungsgeschwindigkeit $c$. Dieses Modell beschreibt unter anderem elektromagnetische Felder.  
-Unter der Annahme, dass $u(x, t)$ eine periodisch Funktion von x ist, führen wir eine Fourierreihen-Entwicklung durch. 
+Unter der Annahme, dass $u(x, t)$ eine periodisch Funktion von $x$ ist, führen wir eine Fourierreihen-Entwicklung durch. 
 Neu besteht 
 \begin{equation}
 	u(x,t) = \frac{a_0(t)}{2} + \sum_{n=1}^{\infty} \left( a_n(t) \cos(n \omega x) + b_n(t) \sin(n \omega x) \right)
@@ -81,17 +81,17 @@ Es entstehen die folgenden zwei Arten von gewöhnlichen Differentialgleichungen:
 
 \begin{equation}\label{eq:ODE_Wellengleichung}
 	\frac{d^2}{dt^2} a_n(t) + a_n(t) n^2 \omega^2 c^2 = 0
-	  \quad   \text{und} \quad  \frac{d^2}{dt^2} b_n(t) + b_n(t) n^2 \omega^2 c^2 = 0
+	  \quad   \text{und} \quad  \frac{d^2}{dt^2} b_n(t) + b_n(t) n^2 \omega^2 c^2 = 0.
 \end{equation}
 
 Die Struktur der Wellengleichungen aus~\eqref{eq:ODE_Wellengleichung} entsprechen formal der Bewegungsgleichung eines ungedämpften Federpendels: 
 \begin{equation}\label{eq:loesungFederpendel}
-	\frac{d^2}{dt^2}x(t) + \omega^2 x(t) = 0
+	\frac{d^2}{dt^2}x(t) + \omega^2 x(t) = 0.
 \end{equation}
 
 Die allgemeine Lösung von~\eqref{eq:loesungFederpendel} lautet  
 \begin{equation}
-	x(t) = A \cos(\omega t) + B \sin(\omega t)
+	x(t) = A \cos(\omega t) + B \sin(\omega t).
 	%\quad\text{oder}\quad
 	%x(t) = C \cos(\omega t - \varphi).
 \end{equation}
