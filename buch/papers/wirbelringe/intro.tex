@@ -13,11 +13,9 @@ Zuletzt formulieren wir ein Modell, womit man zumindest angenähert selbst gezie
 
 In diesem Paper werden, wo nicht anders angegeben, nur ideale Fluide betrachtet.
 John von Neumann soll über die Theorie der idealen Fluide gesagt haben\cite{Wirbelringe:feynman1964lectures}: 
-
 \begin{quote}
     The theory of inviscid fluids is the study of «dry water».
 \end{quote}
-
 Für das Verständnis von Wirbelringen ist sie aber ausreichend.
 
 \subsection{Wirbel}
@@ -81,28 +79,27 @@ Nehmen wir an, dass \(\vec{A}\) zweimal stetig differenzierbar ist, so können w
     \end{pmatrix} \\
 \intertext{setzen. Mit der Definition der Divergenz ergibt sich}
 &=
-\frac{\partial^2 A_z}{\partial x \partial y} - \frac{\partial^2 A_y}{\partial x \partial z} + 
-\frac{\partial^2 A_x}{\partial y \partial z} - \frac{\partial^2 A_z}{\partial y \partial x} +
-\frac{\partial^2 A_y}{\partial z \partial x} - \frac{\partial^2 A_x}{\partial z \partial y}
+\frac{\partial^2 A_z}{\partial x\, \partial y} - \frac{\partial^2 A_y}{\partial x\, \partial z} + 
+\frac{\partial^2 A_x}{\partial y\, \partial z} - \frac{\partial^2 A_z}{\partial y\, \partial x} +
+\frac{\partial^2 A_y}{\partial z\, \partial x} - \frac{\partial^2 A_x}{\partial z\, \partial y}
 .\\
 \intertext{Der Satz von Schwarz besagt, dass es nicht auf die Reihenfolge der Ableitungen ankommt. Somit kann man sie paarweise anordnen:}\\
 &=
-\frac{\partial^2 A_z}{\partial x \partial y} - \frac{\partial^2 A_z}{\partial y \partial x} + 
-\frac{\partial^2 A_x}{\partial y \partial z} - \frac{\partial^2 A_x}{\partial z \partial y} +
-\frac{\partial^2 A_y}{\partial z \partial x} - \frac{\partial^2 A_y}{\partial x \partial z}.
+\frac{\partial^2 A_z}{\partial x\, \partial y} - \frac{\partial^2 A_z}{\partial y\, \partial x} + 
+\frac{\partial^2 A_x}{\partial y\, \partial z} - \frac{\partial^2 A_x}{\partial z\, \partial y} +
+\frac{\partial^2 A_y}{\partial z\, \partial x} - \frac{\partial^2 A_y}{\partial x\, \partial z}.
 \\
 \intertext{Da sich die Ableitungen dadurch aufheben, folgt}
 &=
-\overbrace{\frac{\partial^2 A_z}{\partial x \partial y} - \frac{\partial^2 A_z}{\partial x \partial y}}^0 + 
-\overbrace{\frac{\partial^2 A_x}{\partial y \partial z} - \frac{\partial^2 A_x}{\partial y \partial z}}^0 +
-\overbrace{\frac{\partial^2 A_y}{\partial x \partial z} - \frac{\partial^2 A_y}{\partial x \partial z}}^0
+\overbrace{\frac{\partial^2 A_z}{\partial x\, \partial y} - \frac{\partial^2 A_z}{\partial x\, \partial y}}^0 + 
+\overbrace{\frac{\partial^2 A_x}{\partial y\, \partial z} - \frac{\partial^2 A_x}{\partial y\, \partial z}}^0 +
+\overbrace{\frac{\partial^2 A_y}{\partial x\, \partial z} - \frac{\partial^2 A_y}{\partial x\, \partial z}}^0
 \\
 &=
 0.
 \end{align*}
-
- Somit gilt 
- \begin{equation} 
+Somit gilt 
+\begin{equation} 
     \label{Wirbelringe:eq:wIdent} 
     \operatorname{div} \big( \operatorname{rot} ( \vec{A} ) \big) 
     = 
