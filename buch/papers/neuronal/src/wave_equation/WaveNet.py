@@ -3,9 +3,6 @@ import torch.optim as optim
 import torch
 import boundaries
 from Residuals import total_loss, wave_equation_residual, boundary_condition_loss, initial_condition_loss
-from FourierEmbedding import FourierEmbedding
-
-embedder = FourierEmbedding()
 
 class WaveNet(nn.Module):
     train_error = []

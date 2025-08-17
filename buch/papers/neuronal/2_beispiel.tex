@@ -24,6 +24,7 @@ Sämtliche Resultate können mit dem Code im GitHub Repository \cite{neuronal:gi
 Im Repository ist zusätzlich eine Readme-Datei abgelegt, welche einige Punkte bezüglich Reproduzierbarkeit klärt.
 
 \subsection{Wellengleichung in zwei Dimensionen}\label{neuronal:subsection:wellengleichung}
+\kopfrechts{Wellengleichung}
 Die zu lösende Gleichung lautet
 \begin{equation}
     \frac{\partial^2 u}{\partial t^2} = c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right).
@@ -80,7 +81,7 @@ Der konkrete Aufbau des neuronalen Netzwerks ist somit wie folgt:
 \end{itemize}
 Das Netzwerk verfügt somit über 33'793 Parameter.
 In der letzten Teilfunktion \( f_{4} \) wird keine Aktivierungsfunktion verwendet.
-Grund dafür ist das der hyperbolische Tangens den Wertebereich \((-1, 1)\) hat, das Netzwerk aber zur Approximation der Wellengleichung den Wertebereich \( \mathbb{R} \) haben soll.
+Grund dafür ist, dass der hyperbolische Tangens den Wertebereich \((-1, 1)\) hat, das Netzwerk aber zur Approximation der Wellengleichung den Wertebereich \( \mathbb{R} \) haben soll.
 
 Wie im Abschnitt \ref{neuronal:subsection:diskretierung} beschrieben, werden insgesamt drei Datensätze verwendet.
 Alle drei Datensätze bestehen aus je 50'000 Datenpunkten.
@@ -90,8 +91,9 @@ Beendet man den Optimierungsalgorithmus nach 1500 Iterationen, findet sich eine 
 Die Werte von $L(\vartheta)$ und $L^1(\vartheta)$ sind 4.011 bzw. 0.878 (siehe Abbildung \ref{fig:fehler_wave_good}), was zunächst nicht besonders vielversprechend ist.
 Zusätzliche Iterationen des Optimierungsalgorithmus reduzieren zwar den Wert von $L(\vartheta)$ weiter, doch der Wert von $L^1(\vartheta)$ beginnt wieder anzusteigen.
 Dies ist ein klassisches Phänomen im Gebiet des maschinellen Lernens und wird als \emph{Overfitting} bezeichnet.
-\emph{Overfitting} bedeutet, dass das neuronale Netzwerk die Datenpunkte aus $L(\vartheta)$ ``auswendig'' lernt und als Resultat bei Datenpunkten aus $L^1(\vartheta)$ versagt.
-Insofern wurde der Optimierungsalgorithmus nach 1500 Iterationen beendet, obwohl die Approximationsfehler nicht sehr tief sind.
+\emph{Overfitting} bedeutet, dass das neuronale Netzwerk die Datenpunkte $F_t\cup A_t \cup B_t$, mit denen $L(\vartheta)$ berechnet wird, ``auswendig'' lernt.
+Als Resultat versagt das Netzwerk bei den Datenpunkten $F_k\cup A_k \cup B_k$, mit denen $L^1(\vartheta)$ berechnet wird.
+Daher wurde der Optimierungsalgorithmus nach 1500 Iterationen beendet, obwohl die Approximationsfehler nicht sehr tief sind.
 \begin{figure}
     \centering
     \hspace*{-0.1\textwidth}
@@ -121,25 +123,25 @@ Die Approximation ist als Animation über den gesamten Zeitraum $t \in [0, 2]$ i
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{papers/neuronal/images/prediction_wave_t0.png}
-    \caption{Wellengleichung t = 0}
+    \caption{Wellengleichung $t = 0$}
     \label{fig:wellen_t0}
 \end{figure}
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{papers/neuronal/images/prediction_wave_t04.png}
-    \caption{Wellengleichung t = 0.4}
+    \caption{Wellengleichung $t = 0.4$}
     \label{fig:wellen_t04}
 \end{figure}
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{papers/neuronal/images/prediction_wave_t136.png}
-    \caption{Wellengleichung t = 1.36}
+    \caption{Wellengleichung $t = 1.36$}
     \label{fig:wellen_t136}
 \end{figure}
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{papers/neuronal/images/prediction_wave_t164.png}
-    \caption{Wellengleichung t = 1.64}
+    \caption{Wellengleichung $t = 1.64$}
     \label{fig:wellen_t164}
 \end{figure}
 
@@ -152,10 +154,11 @@ Die Approximation ist als Animation über den gesamten Zeitraum $t \in [0, 2]$ i
     \\[\smallskipamount]
     \includegraphics[width=0.48\textwidth]{papers/neuronal/images/wave_solution_t0375.png}\hfill
     \includegraphics[width=0.48\textwidth]{papers/neuronal/images/wave_solution_t045.png}
-    \caption{Lösungs-Plot der Wellengleichung zu verschiedenen Zeiten und y = 0.5}\label{fig:loesung_wellen_fix_yt}
+    \caption{Lösungs-Plot der Wellengleichung zu verschiedenen Zeiten und $y = 0.5$}\label{fig:loesung_wellen_fix_yt}
 \end{figure}
 
 \subsection{Burgers-Gleichung}\label{neuronal:subsection:burgers_gleichung}
+\kopfrechts{Burgers-Gleichung}
 Die Burgers-Gleichung ist gegeben als
 \begin{equation}
     \frac{\partial u}{\partial t} + u \frac{\partial u}{\partial x} = \nu \frac{\partial^2 u}{\partial x^2}.
@@ -185,7 +188,7 @@ Das neuronale Netzwerk zur Lösung der Burgers-Gleichung ist folgendermassen auf
 \end{itemize}
 Das Netzwerk verfügt somit über 3441 Parameter.
 In der letzten Teilfunktion \( f_{10} \) wird keine Aktivierungsfunktion verwendet.
-Grund dafür ist das der hyperbolische Tangens den Wertebereich \((-1, 1)\) hat, das Netzwerk aber zur Approximation der Burgers-Gleichung den Wertebereich \( \mathbb{R} \) haben soll.
+Grund dafür ist, dass der hyperbolische Tangens den Wertebereich \((-1, 1)\) hat, das Netzwerk aber zur Approximation der Burgers-Gleichung den Wertebereich \( \mathbb{R} \) haben soll.
 
 Wie im Abschnitt \ref{neuronal:subsection:diskretierung} beschrieben, werden insgesamt drei Datensätze verwendet.
 Der Datensatz \( F \), in dem die Burgers-Gleichung gilt, besteht aus 5000 Datenpunkten.
@@ -221,6 +224,3 @@ Dieses Verhalten wird deutlich, wenn man den Lösungsplot zu fixen Zeiten erstel
     \includegraphics[width=0.48\textwidth]{papers/neuronal/images/burgers_solution_t06.png}
     \caption{Lösungs-Plot der Burgers-Gleichung zu verschiedenen Zeiten}\label{fig:loesung_burgers_fix_zeit}
 \end{figure}
-
-Der gesamte Code zur Umsetzung ist im GitHub-Repository des Seminars abgelegt \cite{neuronal:github_source_code}.
-
