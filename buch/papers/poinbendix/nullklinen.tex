@@ -71,18 +71,25 @@ Mit derselben Methode können auch die anderen 4 Regionen analysiert werden.
 
 \subsection{Limesmengen} \label{poinbendix:subsection:limesmengen}
 
-Limesmengen beinhalten alle Punkte, welche von Bahnkurven nach unendlicher Zeit erreicht werden.
-Dies können einzelne Punkte sein, periodische oder nicht periodische Bahnen oder Kombinationen davon.
+Limesmengen beinhalten alle Punkte, welchen sich Bahnkurven unendlich oft annähern.
+Dies können einzelne Punkte sein, periodische Bahnen, oder Kombinationen davon.
 Dabei startet man bei einem beliebigen Punkt $p \in M$ und schaut sich das Verhalten in positiver und negativer Zeit an.
 
-\begin{definition}[Limesmengen]
-Die Alpha- und Omega-Limesmengen
+Formell betrachtet bestehen die Limesmengen aus sogenannten Häuffungspunkten, also allen Punkten, denen die Bahn beliebig nahe kommt.
+\begin{definition}[Häuffungspunkte]
 \label{poinbendix:def:limesmengen}
+$q$ ist ein Häufungspunkt der Bahn $\Phi_t(p)$, wenn es für jedes $\epsilon > 0$ und jedes $N > 0$ einen Zeitpunkt $t > N$ gibt, sodass der Abstand $d(\Phi_t(p),q) < \epsilon$ ist.
+\end{definition}
+
+Ist die Bahnkurve periodisch, so werden die Häuffungspunkte immer wieder nach diskreten Zeitpunkten $t_i$ erreicht.
+\begin{definition}[Limesmengen]
+\label{poinbendix:def:limesmengen}
+Die Alpha- und Omega-Limesmengen
 \begin{align*}
-    \alpha(p) &= \{q\in M; \; \Phi_t(p) \to q \; \text{für} \; t \to -\infty\} \\
-    \omega(p) &= \{q\in M; \; \Phi_t(p) \to q \; \text{für} \; t \to \infty\}
+    \alpha(p) &= \{q\in M; \; \Phi_{t_i}(p) \to q \; \text{für eine Sequenz} \; t_i \to -\infty\} \\
+    \omega(p) &= \{q\in M; \; \Phi_{t_i}(p) \to q \; \text{für eine Sequenz} \; t_i \to \infty\}
 \end{align*}
-beschreiben das Verhalten eines dynamischen Systems $\Phi_t(p)$ nach unendlicher Zeit $t$.
+beschreiben das Verhalten eines dynamischen Systems $\Phi_{t_i}(p)$ nach einer gegen Unendlich strebenden Folge von Zeitpunkten $t_i$.
 \end{definition}
 
 Vereinfacht gesagt, beschreibt $\alpha(p)$, von wo aus die Bahnkurve den Punkt $p$ erreicht und $\omega(p)$ wohin sich die Bahnkurve danach fortbewegt\footnote{Alpha und Omega sind der erste, respektive letzte Buchstabe im griechischen Alphabet, weshalb die Benennung der Limesmengen intuitiv Sinn ergibt.}.
