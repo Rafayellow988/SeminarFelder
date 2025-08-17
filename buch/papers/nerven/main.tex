@@ -215,9 +215,9 @@ dargestelt werden.
 \end{figure}
 \section{Hodgkin-Huxley Modell}
 \subsection{Einleitung}
-Das Hodgkin-Huxley-Modell wurde 1952 von den britischen Physiologen Alan Hodgkin und Andrew Huxley entwickelt. Es beschreibt das elektrophysiologische Verhalten von Nervenzellen, genauer gesagt den Aktionspotentialverlauf entlang einer Nervenfaser. Das Modell basiert auf experimentellen Messungen am Riesenaxon des Tintenfisches und erklärt, wie sich die elektrische Spannung entlang einer Nervenzelle über die Zeit verändert. Dieses Modell wurde zum ersten Mal erfolgreich verwendet, um den komplexen Ionenfluss durch die Zellmembran quantitativ zu beschreiben. Es bildet die Grundlage für viele spätere Modelle wie das FitzHugh-Nagumo-Modell, welches in dieser Arbeit vertieft behandelt wird.
+Das Hodgkin-Huxley-Modell wurde 1952 von den britischen Physiologen Alan Hodgkin und Andrew Huxley entwickelt. Es beschreibt das elektrophysiologische Verhalten von Nervenzellen, genauer gesagt den Aktionspotentialverlauf entlang einer Nervenfaser. Das Modell basiert auf experimentellen Messungen am Riesenaxon des Tintenfisches und erklärt, wie sich die elektrische Spannung entlang einer Nervenzelle über die Zeit verändert. Dieses Modell wurde zum ersten Mal erfolgreich verwendet, um den komplexen Ionenfluss durch die Zellmembran quantitativ zu beschreiben. Es bildet die Grundlage für viele spätere Modelle wie das FitzHugh-Nagumo-Modell, welches in dieser Arbeit vertiefter behandelt wird.
 \subsection{Nutzen}
-Der grösste Beitrag des Hodgkin-Huxley-Modells liegt in der mathematischen Beschreibung der biologischen Realität: Es verbindet biologische Prozesse wie Natrium- und Kaliumkanalbewegungen mit einem System nichtlinearer Differentialgleichungen. Das Modell erklärt das Zustandekommen eines Aktionspotentials und erlaubt Simulationen und Vorhersagen für Nervenreaktionen auf Reize. Es ist bis heute in der Neuroinformatik, Biophysik und mathematischen Neurowissenschaft von zentraler Bedeutung und diente als Grundlage für realistische neuronale Netzwerke.
+Der grösste Beitrag des Hodgkin-Huxley-Modells liegt in der mathematischen Beschreibung der biologischen Realität: Es verbindet biologische Prozesse wie Natrium- und Kaliumkanalbewegungen mit einem nichtlinearer Differentialgleichungens-System. Das Modell erklärt das Zustandekommen eines Aktionspotentials und erlaubt Simulationen und Vorhersagen für Nervenreaktionen auf Reize. Es ist bis heute in der Neuroinformatik, Biophysik und mathematischen Neurowissenschaft von zentraler Bedeutung und diente als Grundlage für realistische neuronale Netzwerke.
 \subsection{Mathematische Grundlagen}
 Das Hodgkin-Huxley-Modell basiert auf der elektrischen Leitfähigkeit der Membrane und stellt die Nervenmembrane als ein elektrisches Schaltbild dar: bestehend aus einer Kapazität $C_m$, und mehreren stromleitenden Kanälen für spezifische Ionen.
 Die fundamentale Gleichung ist der einzige Ausschnitt vom Hodgkin-Huxley-Modell welches aus natürlichen und biologischen Beobachtungen entstanden ist, die restlichen Gleichungen und Beobachtungen hängen nicht deutlich von molekularen Mechanismen zusammen.
@@ -259,7 +259,7 @@ Die Torvariablen folgen jeweils differentiellen Gleichungen erster Ordnung, z.B.
 	\frac{dh}{dt} &= \alpha_h (1 - h) - \beta_h h \tag{3.13}
 \end{align}
 
-Ähnliche Gleichungen gelten für $dn/dt$ und $dh/dt$. Dabei sind $\alpha_m$ und $\beta_m$ spannungsgesteuerte Übergangsraten, die empirisch durch Hodgkin und Huxley bestimmt wurden.
+Dabei sind $\alpha_m$ und $\beta_m$ spannungsgesteuerte Übergangsraten, die empirisch durch Hodgkin und Huxley bestimmt wurden.
 Diese Differentialgleichungen beschreiben wie m,h und n jeweils vom Membranpotential V abhängig sind.
 \subsubsection{Mathematische Einordnung der Gleichung}
 Mathematisch handelt es sich beim Hodgkin-Huxley-Modell um ein System von vier gekoppelten nichtlinearen Differentialgleichungen:
@@ -270,7 +270,7 @@ Es gehört zur Klasse der nichtlinearen dynamischen Systeme, genauer gesagt zu e
 Das Hodgkin-Huxley-Modell ist nicht nur ein Meilenstein der Biologie, sondern auch ein Paradebeispiel dafür, wie mathematische Modellierung biologische Prozesse quantitativ erfassen kann. Die Gleichungen geben Verständnis über die Entstehung und Ausbreitung elektrischer Signale in Nervenzellen und sind bis heute unverzichtbar in der Neurophysik und mathematischen Biologie.
 \section{FitzHugh-Nagumo-Modell}
 Das FitzHugh-Nagumo-Modell ist eine mathematische Vereinfachung des Hodgkin-Huxley-Modells. Entwickelt wurde es in den 1960er-Jahren von Richard FitzHugh und Jinichi Nagumo, um die komplexe Dynamik des neuronalen Aktionspotentials auf ein qualitativ ähnliches, aber mathematisch reduziertes System zurückzuführen.
-Das Modell abstrahiert die Nervenaktivität auf zwei Hauptvariablen:
+Das Modell vereinfacht die Nervenaktivität auf zwei Hauptvariablen:
 1.	Das Membranpotential v(t)
 2.	Eine Erholungsvariable w(t), die langsame Rückstellprozesse modelliert
 Ziel war es, ein System zu formulieren, das zwar die fundamentalen Eigenschaften wie Reizantwort, Erregbarkeit und Rückkehr zum Ruhezustand bewahrt, aber deutlich einfacher zu analysieren ist. 
@@ -280,11 +280,11 @@ Das FitzHugh-Nagumo-Modell erlaubt eine qualitative Analyse neuronaler Aktivitä
 •	Beschreibung von Refraktärzeiten
 •	Untersuchung der Stabilität von Ruhezuständen
 •	Analyse von Schwellwertverhalten bei Reizen
-•	Einsatz in räumlich ausgedehnten Modellen (z.B. als Reaktions-Diffusions-System für Ausbreitung von Signalen im Gewebe)
-Gerade in der Mathematik ist das Modell besonders beliebt, da es sich ideal für phasenraumanalytische Methoden eignet – insbesondere für die Betrachtung von Nullklinen, Fixpunkten und Limitzyklen.
+•	Einsatz in räumlich ausgedehnten Modellen (z.B. als Reaktions-System für Ausbreitung von Signalen im Gewebe)
+Gerade in der Mathematik ist das Modell besonders beliebt, da es sich ideal für phasenraumanalytische Methoden eignet – insbesondere für die Betrachtung von Nullklinen und Fixpunkten.
 \subsubsection{Mathematische Beschreibung des Modells}
 Das FitzHugh-Nagumo-Modell besteht aus einem System zweier gekoppelter nichtlinearer Differentialgleichungen 1. Ordnung:
-Diese Differentialgleichung wurden aus der fundamtalen Formel vom Hodkin-Huxley-Modell hergeleitet, jedoch ist diese sehr komplex und wird in der Arbeit nicht weiter erklärt. Aus der fundamentalen Formel vom Hodkin-Huxley-Modell wurden diese zwei gekoppelten nichtlinearen Differentialgleichung 1.Ordnung:
+Diese Differentialgleichung wurden aus der fundamtalen Formel vom Hodkin-Huxley-Modell hergeleitet, jedoch ist diese Herleitung sehr komplex und wird in der Arbeit nicht weiter erklärt. Aus der fundamentalen Formel vom Hodkin-Huxley-Modell wurden diese zwei gekoppelten nichtlinearen Differentialgleichung 1.Ordnung:
 \[
 \begin{aligned}
 	\frac{dv}{dt} &= v - \frac{v^3}{3} - w + I_{\text{ext}} \\
@@ -302,7 +302,7 @@ Diese Differentialgleichung wurden aus der fundamtalen Formel vom Hodkin-Huxley-
 	\item $a, b$: Systemparameter, die die Dynamik und Stabilität beeinflussen
 \end{itemize}
 Das ist ein 2-Dimensionales-System, also ebenes System von gewöhnlichen Differentialgleichungen. Dies veringert den mathematischen Aufwand und macht es uns sehr einfach Eigenschaften mithilfe des Modells zu indentifizieren.
-Mit w und v als stetig und differenzierbar sind die Ergebnisse mithilfe von Nullklinien sehr leicht indentifizierbar.
+Mit w und v als stetig und differenzierbar sind die Ergebnisse mithilfe von Nullklinien sehr leicht zu finden.
 Interpretation:
 •	Die erste Gleichung beschreibt die schnelle Aktivierung des Neurons: sie enthält eine nichtlineare Rückkopplung durch den Term $v^3$, die für die typische „Spike“-Form des Aktionspotentials sorgt.
 •	Die zweite Gleichung reguliert die langsame Erholung und Rückführung zum Ruhezustand.
@@ -311,7 +311,7 @@ Das FitzHugh-Nagumo-Modell ist ein typisches Beispiel für ein Relaxationsoszill
 •	Sprunghaftes Verhalten (z.B. plötzlicher Aktionspotentialanstieg)
 •	Rückkehr zum Ausgangszustand (Refraktärphase)
 •	Nichtlineare Dynamik mit Sättigung und Schwellenwertverhalten
-Mathematisch ist es ein nichtlineares ODE-System (System gewöhnlicher Differentialgleichungen) und wird häufig mit Phasenporträts analysiert.
+Mathematisch ist es ein nichtlineares ODE-System (System gewöhnlicher Differentialgleichungen).
 \subsubsection{$Analyse der Nullklinen$}
 Die Nullklinen sind die geometrischen Orte im Phasenraum (v,w), an denen sich die jeweiligen Zeitableitungen nicht verändern (also gleich null sind). Sie sind ein zentrales Werkzeug zur Analyse des Systems.
 \textbf{v-Nullkline:} $\dfrac{dv}{dt} = 0$
