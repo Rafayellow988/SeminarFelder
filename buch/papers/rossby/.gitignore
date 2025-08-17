@@ -1,2 +1,15 @@
 *.pyc
 src/
+slides/
+papers/
+*.lfs
+*.log
+*.toc
+*.aux
+*.out
+*.bbl
+*.blg
+*.dvi
+*.snm
+images/weather/
+images/rotating_earth/
