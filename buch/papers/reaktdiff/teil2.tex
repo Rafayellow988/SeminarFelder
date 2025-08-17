@@ -9,14 +9,14 @@
 \section{Oszilierende Muster
 \label{reaktdiff:section:teil2}}
 \kopfrechts{Teil 2}
-Zum Schluss dieses Papers werden Systeme beleuchtet welche oszilieren.
+Zum Schluss dieses Papers werden Systeme beleuchtet welche oszillieren.
 Hierfür wird die Lotka-Volterra-Reaktion als Beispiel genommen.
 
 
 \subsection{Lotka-Volterra Reaktion 
 \label{reaktdiff:subsection:bonorum}}
 
-Die Lotka-Volterra-Reaktion\cite{Wikipedia_LotkaVolterra_2025}  besteht ebenfalls wie die Turing-Muster aus einem Reaktionsdiffusionsmodell mit zwei Gleichungen.
+Die Lotka-Volterra-Reaktion \cite{Wikipedia_LotkaVolterra_2025}  besteht ebenfalls wie die Turing-Muster aus einem Reaktionsdiffusionsmodell mit zwei Gleichungen.
 Der grosse Unterschied zu den Turing-Mustern ist, dass die Lotka-Volterra-Reaktion bereits ohne Diffusion instabil ist.
 Die Lotka-Volterra-Reaktion (oder Gleichung) wird ebenfalls benutzt, um das klassische Räuber-Beute-Modell zu beschreiben.
 
@@ -70,7 +70,7 @@ Somit erhält man
 als Eigenewerte.
 Die Eigenwerte sind rein imaginär
 Dies bedeutet, dass eine kleine Störung im System keine Dämpfung erfährt.
-Es entsteht eine oszillierendes Muster.
+Es entsteht ein oszillierendes Muster (siehe Abbildung \ref{reaktdiff:fig:lv}).
 
 \subsubsection{Simulation der LV-Reaktion}
 
@@ -82,8 +82,8 @@ Somit befindet sich das Gleichgewicht bei
 \end{equation}
 Die Eigenwerte haben den Betrag \(\omega = \sqrt{\alpha\gamma} = \sqrt{1 \cdot 1.5} \approx 1.225\).
 Die FFT der Simulation ist in Abbildung \ref{reaktdiff:fig:lvfft} zu sehen.
-Die rote Linie zeigt die berechnete Frequenz \(f = \omega / 2 \Pi \approx 0.195\,\text{Hz}\).
-In der Grafik sieht man, dass die brechnete Frequanz nicht ganz mit der Dominanten Frequenz der Simulation übereinstimmt.
+Die rote Linie zeigt die berechnete Frequenz \(f = \omega / 2 \pi \approx 0.195\,\text{Hz}\).
+In der Grafik sieht man, dass die berechnete Frequenz nicht ganz mit der dominanten Frequenz der Simulation übereinstimmt.
 Diese Abweichung kann durch numerische Effekte erklärt werden.
 
 \begin{figure}
@@ -91,7 +91,8 @@ Diese Abweichung kann durch numerische Effekte erklärt werden.
     \includegraphics[width=0.32\linewidth]{papers/reaktdiff/images/LotkaVolterra/lv_n1.png}
     \includegraphics[width=0.32\linewidth]{papers/reaktdiff/images/LotkaVolterra/lv_n300.png}
     \includegraphics[width=0.32\linewidth]{papers/reaktdiff/images/LotkaVolterra/lv_n999.png}
-    \caption{Verlauf der Simulation (Links nach Rechts) der Reaktions-Diffusiongleichung mit Lotak-Volterra Modell(\ref{reaktdiff:equation:lvsys}) als Reaktionsterm. Die erste Grafik zeigt den Anfangszustand. Die Oszilation ist in den Grafiken 2 und 3 angedeutet jedoch schwer mit statischen Bilder darzustellen.}
+    \caption{Verlauf der Simulation (Links nach Rechts) der Reaktions-Diffusiongleichung mit Lotka-Volterra Modell \eqref{reaktdiff:equation:lvsys}
+     als Reaktionsterm. Die erste Grafik zeigt den Anfangszustand. Die Oszillation ist in den Grafiken 2 und 3 angedeutet, jedoch schwer mit statischen Bilder darzustellen.}
     \label{reaktdiff:fig:lv}
 \end{figure}
 
