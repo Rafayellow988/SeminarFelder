@@ -1,8 +1,14 @@
 
 \subsection{Idealisiertes zonales und meridionales Windfeld}
 
+In der Meteorologie werden Windgeschwindigkeiten in ein rechtwinkliges Koordinatensystem zerlegt. 
+Die {zonal}e Komponente \(u\) beschreibt die Geschwindigkeit in Ost-West-Richtung, 
+die {meridional}e Komponente \(v\) jene in Nord-Süd-Richtung. 
+Positive Werte von \(u\) stehen für eine Strömung nach Osten, positive Werte von \(v\) für eine Strömung nach Norden.
+
+
 Abbildung~\ref{fig:zonal_wind} zeigt ein idealisiertes zonales Windfeld, bei
-dem ausschliesslich eine Ost–West-Strömung vorliegt (\(v = 0\)). Die
+dem ausschliesslich eine Ost-West-Strömung vorliegt (\(v = 0\)). Die
 Geschwindigkeit hängt von der geographischen Breite \(\theta\) ab und folgt der
 Beziehung
 \begin{equation}
@@ -34,14 +40,14 @@ Auch dieses Feld ist frei von Druckgradienten und vertikaler Struktur und dient 
 	\label{fig:meridional_wind}
 \end{figure}
 
-\subsection{Die Drehung der Erde und die Corioliskraft}
+\subsection{Die Drehung der Erde und die Coriolis-Kraft}
 
 Die Erde rotiert einmal pro Tag um ihre eigene Achse. In einem rotierenden
 Bezugssystem wie der Erde treten dabei Scheinkräfte auf, die in der klassischen
-Mechanik berücksichtigt werden müssen. Eine davon ist die {Corioliskraft},
+Mechanik berücksichtigt werden müssen. Eine davon ist die {Coriolis-Kraft},
 welche bewegte Luft- und Wassermassen auf der {Nordhalbkugel} nach rechts und
 auf der {Südhalbkugel} nach links ablenkt. Ihre Wirkung ist maximal an den
-Polen und verschwindet am Äquator. Die Corioliskraft ist keine reale Kraft,
+Polen und verschwindet am Äquator. Die Coriolis-Kraft ist keine reale Kraft,
 sondern eine Folge der Drehung des Koordinatensystems.
 
 Mathematisch wird sie beschrieben durch
@@ -59,11 +65,11 @@ führt. Dessen Breitenänderung ist durch den \(\beta\)-Parameter gegeben:
 	\beta = \frac{\partial f}{\partial y} = \frac{2 \Omega \cos(\varphi)}{a},
 	\label{rossby:eq:beta_parameter}
 \end{equation}
-mit dem Erdradius \(a\) und der Nord–Süd-Koordinate \(y\).
+mit dem Erdradius \(a\) und der Nord-Süd-Koordinate \(y\).
 
 \paragraph{Rechenbeispiel: Velofahren in Zürich}
 
-Wir berechnen die Corioliskraft auf einen Radfahrer in Zürich.
+Wir berechnen die Coriolis-Kraft auf einen Radfahrer in Zürich.
 
 \begin{description}
 	\item[Gegeben:] Geschwindigkeit \(v = 8.33\,\mathrm{m/s}\) (30\,km/h), Masse \(m =
@@ -90,7 +96,7 @@ Dieser Effekt ist massgeblich für die Westwinddrift in den mittleren Breiten un
 Die $\beta$-Ebene ist eine lokale Approximation der Erdkugel in der Umgebung
 einer bestimmten geographischen Breite~$\phi_0$
 (Abbildung~\ref{fig:beta_plane}). Ziel dieser Vereinfachung ist es, die
-Breitenabhängigkeit der Corioliskraft in mathematischen Modellen handhabbar zu
+Breitenabhängigkeit der Coriolis-Kraft in mathematischen Modellen handhabbar zu
 machen.
 \begin{equation}
 	f(y) = f_0 + \beta y,
