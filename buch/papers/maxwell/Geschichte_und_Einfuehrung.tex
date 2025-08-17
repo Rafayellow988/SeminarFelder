@@ -35,7 +35,7 @@ Charles Augustin de Coulomb entdeckte und bestätigte durch umfangreiche Experim
 \]
 Ob er von der Entdeckung Priestleys wusste ist nicht bekannt.
 
-Als Hans Christian Ørsted an einem Tag im Jahre 1820 eine Vorlesung in Physik hielt, beobachtete er die Ablenkung einer Kompassnadel durch einen stromdurchflossenen Draht und endteckte somit zufällig die magnetische Wirkung des elektrischen Stromes.
+Als Hans Christian Ørsted an einem Tag im Jahre 1820 eine Vorlesung in Physik hielt, beobachtete er die Ablenkung einer Kompassnadel durch einen stromdurchflossenen Draht und entdeckte somit zufällig die magnetische Wirkung des elektrischen Stromes.
 
 André-Marie Ampère wurde auf Ørsteds Fund aufmerksam und verfolgte dieses Phenomen weiter.
 Er erkannte eine sehr wichtige Eigenschaft: Die Magnetnadel des Kompasses richtet sich immer senkrecht zum stromdurchflossenen Leiter aus.
@@ -44,7 +44,8 @@ Dies konnte er durch viele Versuche ein wenig später sogar beweisen.
 Ampère fand in diesen Versuchen heraus, dass sich zwei Leiter, in denen die elektrische Stromrichtung gleich ist, anziehen, und dass sie eine Abstossungskraft ausüben, wenn die Stromrichtung entgegengesetzt ist.
 Er formulierte eine Gleichung, die besagt, dass elektrische Ströme magnetische Wirbelfelder hervorrufen, deren Stärke durch die Stromstärke gegeben ist.
 Das Gesetz wird ampèrsches Gesetz oder auch Durchflutungssatz gennant und wird in Integralform
-\[
+\begin{equation}
+\label{maxwell:equasion:ampere}
 \oint_{\d A}
 \vec{H}
 \cdot
@@ -56,7 +57,7 @@ d\vec{l}
 d\vec{s}
 =
 I
-\]
+\end{equation}
 oder als differentielle Form
 \[
 \nabla
@@ -218,13 +219,14 @@ Nach ihm wurden über 100 mathematische und wissenschaftliche Konzepte benannt, 
 Dieses Gesetz konnte er durch Coulombs Beobachtungen, dass das elektrische Feld einer Punktladung radial quadratisch abnimmt, folgern.
 Durch diese radiale Abnahme musste auch der elektrisch Fluss durch eine Kugel, in der die Ladung eingeschlossen ist, konstant sein.
 Somit lässt sich daraus schliessen, dass das Integral des elektrischen Flusses über diese Kugeloberfläche genau der darin enthaltenen Ladung entspricht \cite{maxwell:Gaußscher_Integralsatz}
-\[
+\begin{equation}
+\label{maxwell:equasion:elektrisch}
 \oint_{A=\d V} \vec{D} \cdot d\vec{s}
 =
 \int_{V} \rho_{\text{frei}}\, dv
 =
 Q_{\text{frei}} ,
-\]
+\end{equation}
 wobei $\rho_{\text{frei}}$ die freie Ladungsdichte und $Q_{\text{frei}}$ die gesamten freien Ladungen in der Kugel sind. $\varepsilon_0$ entspricht der Permitivität im Vakuum. Dies ist auch gerade eine Anwendung vom gaussschen Integralsatz aus der Mathematik.
 Die Gleichung lässt sich natürlich auch mit der elektrischen Feldstärke ausdrücken. Da $\vec{D} = \varepsilon_0 \vec{E}$ gilt, folgt
 \[
@@ -442,23 +444,86 @@ Mit seinen 25 Jahren war er mit Abstand der jüngste Professor am College.%https
 Seine Studien über den Elektromagnetismus begann er aber bereits 1850 und führte er bis 1870 fort. 
 Während dieser Zeit machte er Bekanntschaft mit Michael Faraday, mit welchem er eine langjährige Freundschaft pflegte.
 Inspiriert von Faradays Idee eines Feldes anstatt einer Fernwirkung, versuchte er, dessen Ideen mathematisch auszuarbeiten.
-ampere au
-gaussB von Gauss E abgeleitet
-verschiebungsstrom kommt no
+
+Ein sehr entscheidender Schritt in Maxwells arbeiten war die Einführung des Verschiebungsstromes.
+Dabei handelt es sich um eine Erweiterung des Ampère-Gesetzes \eqref{maxwell:equasion:ampere}.
+Dieses Gesetz gilt nur im stationären Fall.
+Das Problem dabei ist der Kondensator.
+Während des Ladens und Entladens ist zwischen den Kondensatorplatten ein Magnetfeld messbar, obwohl dort kein Strom fliesst.
+Das wäre ein Widerspruch für das Ampère-Gesetz, welches besagt, dass magnetische Wirbelfelder durch elektrische Ströme entstehen.
+Somit führte Maxwell den Verschiebungsstrom
+\[
+\vec{J}_D = \frac{\d \vec{D}}{\d t}
+\]
+ein, welcher diesen Widerspruch beseitigte.
+Der vollständige Durchflutungsstatz lautet nun in integraler Form
+\[
+\oint_{\d A}
+\vec{H}
+\cdot
+d\vec{l}
+=
+\iint_{A}
+\frac{\d \vec{D}}{\d t} 
+\,
+d\vec{s}
++
+I
+\]
+und 
+\[
+\nabla
+\times
+\vec{H}
+=
+\mu_0 \vec{J}
++
+\mu_0 \varepsilon_0 \frac{\d \vec{E}}{\d t}
+\]
+in differentieller Form.
+
+Die Existenz magnetischer Monopole wurde schon von Petrus Peregrinus widerlegt.
+Für dieses Phänomen entwickelte Maxwell das gausssche Gesetz für Magnetfelder:
+\[
+\iint_{A}
+\vec{B} \cdot d\vec{s}
+=
+0
+\]
+\[
+\nabla \cdot \vec{B} = 0 .
+\]
+Der Name kommt vom gaussschen Gesetz für Elektrische Felder \eqref{maxwell:equasion:elektrisch}, welches starke ähnlichkeiten besitzt.
+Die differentielle Form ist sehr intuitiv, denn wenn die Divergenz eines Feldes gleich null ist, gibt es keine Quellen. 
+In unserem Fall hier keine magnetischen Quellen oder Monopole. %cite gleichungen wiki
+
+Maxwells Entdeckungen legten den Grundstein für die Relativitätstheorie und der Quantenphysik.
+Viele Physiker sehen in ihm den einflussreichsten Wissenschaftler des 19. Jahrhunderts, vergleichbar mit Newton und Einstein.
+Albert Einstein selbst beschrieb Maxwells Arbeiten als die tiefgründigsten und fruchtbarsten, die die Physik seit Newton erlebt hat.
+
+Die Gleichungen von Maxwell hatten anfangs aber nicht die Form, wie wir sie heute kennen. 
+Seine gesamten Leistungen der Elektrodynamik umfassten 20 Gleichungen.
+Der Mann, welche sie in der modernen Form der Vektoranalysis formulierte, war Oliver Heaviside, ein selbstgelernter Mathematiker, im Jahre 1884. %cite heaviside
+
+Die Geschichte der Elektrodynamik brachte also vier Gleichungen
+\begin{align*}
+	\nabla \cdot \vec{E} &= \frac{\rho}{\varepsilon_0} ,
+	\\
+	\nabla \cdot \vec{B} &= 0 ,
+	\\
+	\nabla \times \vec{E} &= - \frac{\d \vec{B}}{\d t} 
+	\\
+	\intertext{und}
+	\nabla \times \vec{B} &= \mu_0 \vec{J} + \mu_0 \varepsilon_0 \frac{\d \vec{E}}{\d t}
+\end{align*}
+hervor, um alle elektromagnetischen Phänomene zu beschreiben.
+In den folgenden Kapiteln versuchen wir, die Probleme der Gleichungen zu erläutern, sie zu verallgemeinern und zu vereinfachen.
 
 
 
 %deutsche und englische artikel
 %https://en.wikipedia.org/wiki/History_of_Maxwell%27shistor.achtung falsch!
 
-%axwell also introduced the concept of the electromagnetic field in comparison to force lines that Faraday described.[1
 
-%His discoveries helped usher in the era of modern physics, laying the foundations for such fields as relativity, also being the one to introduce the term into physics,[10] and quantum mechanics.[18][19] Many physicists regard Maxwell as the 19th-century scientist having the greatest influence on 20th-century physics. His contributions to the science are considered by many to be of the same magnitude as those of Isaac Newton and Albert Einstein.[20] On the centenary of Maxwell's birthday, his work was described by Einstein as the "most profound and the most fruitful that physics has experienced since the time of Newton".[21] When Einstein visited the University of Cambridge in 1922, he was told by his host that he had done great things because he stood on Newton's shoulders; Einstein replied: "No I don't. I stand on the shoulders of Maxwell."[22] Tom Siegfried described Maxwell as "one of those once-in-a-century geniuses who perceived the physical world with sharper senses than those around him".[23]
-folgt noch: Geschichte Maxwell, war der erste der die relativität in betracht zog!! wichtig
-Heaviside,
-relativität mit einstein?
-differentailformen eher nicht
-bei maxwell 20 gleichhungne zerst, evtl sagen was es alles war, war nähmlich glaubs mehr drin als jetzt in den vier heuteigen
-herletungen für die restlichen zwei gleichungen? könnte man verweise auf gauuss stokes oder die lemmas machen, denke ned ausführlich
 
 
