@@ -157,23 +157,39 @@ Damit wir nun wieder auf etwas physikalisch leichter Verständliches kommen, ers
 	dx^0 = c\,dt, \quad dx^1 = dx, \quad dx^2 = dy, \quad dx^3 = dz,
 \end{equation}
 und erhalten
-\begin{align}
+\begin{align*}
 	\ast d {\ast} F 
 	= 
 	\phantom{+} &\left( -\frac{1}{c}\frac{\partial E_1}{\partial x} -\frac{1}{c}\frac{\partial E_2}{\partial y} - \frac{1}{c}\frac{\partial E_3}{\partial z} \right) c \, dt +
-	\left(-\frac{1}{c}\frac{\partial E_1}{\partial ct} - \frac{\partial B_2}{\partial z} + \frac{\partial B_3}{\partial y} \right) dx \notag
+	\left(-\frac{1}{c}\frac{\partial E_1}{\partial ct} - \frac{\partial B_2}{\partial z} + \frac{\partial B_3}{\partial y} \right) dx
 	\\
 	+ &\left( -\frac{1}{c}\frac{\partial E_2}{\partial ct} + \phantom{\frac{1}{c}} \frac{\partial B_1}{\partial z} - \phantom{\frac{1}{c}} \frac{\partial B_3}{\partial x} \right) \phantom{c \,}dy +
-	\left( -\frac{1}{c}\frac{\partial E_3}{\partial ct} - \frac{\partial B_1}{\partial y} + \frac{\partial B_2}{\partial x} \right) dz \notag
+	\left( -\frac{1}{c}\frac{\partial E_3}{\partial ct} - \frac{\partial B_1}{\partial y} + \frac{\partial B_2}{\partial x} \right) dz
 	\\[2ex]
 	=
 	\phantom{+} &\left( -\phantom{\frac{1}{c^2}}\frac{\partial E_1}{\partial x} -\frac{\partial E_2}{\partial y} - \frac{\partial E_3}{\partial z} \right) dt +
 	\left(-\frac{1}{c^2}\frac{\partial E_1}{\partial t} - \frac{\partial B_2}{\partial z} + \frac{\partial B_3}{\partial y} \right) dx
-	\label{maxwell:section:inhomogeneMaxwellgleichungen:linkeSeite}
+	%\label{maxwell:section:inhomogeneMaxwellgleichungen:linkeSeite}
 	\\
 	+ &\left( -\frac{1}{c^2}\frac{\partial E_2}{\partial t} + \frac{\partial B_1}{\partial z} - \frac{\partial B_3}{\partial x} \right) dy +
-	\left( -\frac{1}{c^2}\frac{\partial E_3}{\partial t} - \frac{\partial B_1}{\partial y} + \frac{\partial B_2}{\partial x} \right) dz. \notag
+	\left( -\frac{1}{c^2}\frac{\partial E_3}{\partial t} - \frac{\partial B_1}{\partial y} + \frac{\partial B_2}{\partial x} \right) dz.
+\end{align*}
+Mit Hilfe der Lichtgeschwindigkeit im Vakuum 
+\begin{equation*}
+	c = \frac{1}{\sqrt{\varepsilon_0 \mu_0}}
+\end{equation*}
+können wir die Gleichung noch etwas umformulieren und erhalten
+\begin{align}
+	\ast d {\ast} F
+	=
+	\phantom{+} &\left( -\phantom{\varepsilon_0\mu_0}\frac{\partial E_1}{\partial x} -\frac{\partial E_2}{\partial y} - \frac{\partial E_3}{\partial z} \right) dt +
+	\left(-\varepsilon_0\mu_0\frac{\partial E_1}{\partial t} - \frac{\partial B_2}{\partial z} + \frac{\partial B_3}{\partial y} \right) dx
+	\label{maxwell:section:inhomogeneMaxwellgleichungen:linkeSeite}
+	\\
+	+ &\left( -\varepsilon_0\mu_0\frac{\partial E_2}{\partial t} + \frac{\partial B_1}{\partial z} - \frac{\partial B_3}{\partial x} \right) dy +
+	\left( -\varepsilon_0\mu_0\frac{\partial E_3}{\partial t} - \frac{\partial B_1}{\partial y} + \frac{\partial B_2}{\partial x} \right) dz. \notag
 \end{align}
+
 Dieser Ausdruck soll nun also alle Teile der einen Seite der inhomogenen Maxwell-Gleichungen enthalten.
 Wir erkennen die Divergenz der elektrischen Feldstärke, die Rotation der magnetischen Flussdichte und die zeitliche Ableitung der elektrischen Feldstärke in den jeweiligen Komponenten.
 \subsection{Bestimmung der Viererstromdichte $J$}
@@ -186,17 +202,25 @@ Der erste Term von \eqref{maxwell:section:inhomogeneMaxwellgleichungen:linkeSeit
 	-\frac{\rho}{\varepsilon_0} \,dt
 \end{equation*}
 entsprechen.
-Die anderen Terme mit $dx,dy,dz$ können wir mit Hilfe der Lichtgeschwindigkeit im Vakuum 
+
+Die anderen drei Terme mit $dx,dy,dz$ deuten stark auf die linke Seite der Ampère-Maxwell-Gleichung gemäss \eqref{maxwell:section:inhomogeneMaxwellgleichungen:ampereMaxwell} hin.
+Beachten wir, dass 
 \begin{equation*}
-	c = \frac{1}{\sqrt{\varepsilon_0 \mu_0}}
+	\nabla \times \vec{B} = 
+	\begin{pmatrix}
+		\frac{\partial B_3}{\partial y} - \frac{\partial B_2}{\partial z}\\[1ex]
+		\frac{\partial B_1}{\partial z} - \frac{\partial B_3}{\partial x}\\[1ex]
+		\frac{\partial B_2}{\partial x} - \frac{\partial B_1}{\partial y}
+	\end{pmatrix}
 \end{equation*}
-umformulieren.
-Bei Betrachtung der zweiten Komponente
-\begin{equation*}
-	\left(-\varepsilon_0 \mu_0 \frac{\partial E_1}{\partial t} - \frac{\partial B_2}{\partial z} + \frac{\partial B_3}{\partial y}\right)dx
-\end{equation*}
-erkennen wir, dass diese gleich $\mu_0 J_1$ sein muss, damit die Ampère-Maxwell-Gleichung erfüllt werden kann.
-Aufgrund der gleichen Struktur folgt, dass die dritte Komponente $\mu_0 J_2$, und die vierte Komponente $\mu_0 J_3$ sein muss.
+gilt, erkennen wir nun deutlich, dass gemäss \eqref{maxwell:section:inhomogeneMaxwellgleichungen:ampereMaxwell},
+\begin{align*}
+	&\left(-\varepsilon_0\mu_0\frac{\partial E_1}{\partial t} - \frac{\partial B_2}{\partial z} + \frac{\partial B_3}{\partial y} \right) dx = \mu_0 J_1 \, dx\\
+	&\left( -\varepsilon_0\mu_0\frac{\partial E_2}{\partial t} + \frac{\partial B_1}{\partial z} - \frac{\partial B_3}{\partial x} \right) dy = \mu_0 J_2 \, dy\\
+	&\left( -\varepsilon_0\mu_0\frac{\partial E_3}{\partial t} - \frac{\partial B_1}{\partial y} + \frac{\partial B_2}{\partial x} \right) dz = \mu_0 J_3 \, dz
+\end{align*}
+gelten muss.
+
 Nun haben wir also herausgefunden dass
 \begin{equation}
 	\ast d {\ast} F = -\frac{\rho}{\varepsilon_0}\,dt + \mu_0 (J_1 \,dx +  J_2 \,dy +  J_3 \,dz)
