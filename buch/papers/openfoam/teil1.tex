@@ -11,8 +11,8 @@
 \kopfrechts{Mathematische Modellbildung}
 Zum Simulieren von Strömungen benötigen wir zuerst ein Modell, das das Verhalten der Flüssigkeit möglichst umfassend und genau beschreibt. 
 Hierbei werden meist die Navier-Stokes-Gleichungen benutzt, welche noch mit Randbedingungen und Zustandsgleichungen erweitert werden können. 
-Oft werden aber auch die Euler-Gleichungen anstelle Der Navier-Stokes-Gleichungen verwendet, da diese weniger Rechenaufwand benötigen.
-Dies aber auf Kosten der Genauigkeit.
+Oft werden aber auch die Euler-Gleichungen anstelle der Navier-Stokes-Gleichungen verwendet, da diese weniger Rechenaufwand benötigen,
+dies aber auf Kosten der Genauigkeit.
 
 Zudem benötigen wir ein Lösungsverfahren, das einen Anfangszustand und das mathematische Modell zu einer numerischen Lösung verarbeiten kann, dies ist nötig, da für die Navier-Stokes-Gleichungen keine analytische Lösung existiert.
 Für die Euler-Gleichungen würden analytische Lösungen existieren, diese sind jedoch aufwändig zu berechnen.
@@ -23,8 +23,8 @@ Hierbei kommen meist die Finite-Differenzen-Methode (FDM), die Finite-Volumen-Me
 Bei der Strömungsmechanik wird zuerst unterschieden, ob es sich um eine stationäre oder zeitabhängige Strömung handelt.
 Das heisst es ist entweder der Fall, dass an jedem Ort im Raum die Geschwindigkeit, der sich dort befindenden Flüssigkeit  konstant ist oder dass sich diese Grösse dauernd ändert.
 
-Bei einer Simulation wird meist simuliert, bis der stationäre Zustand bis auf einen kleinen Fehler erreicht wird.
-Dadurch kann man sich Simulationsaufwand ersparen da sobald der stationäre Zustand erreicht wird das Resultat nicht mehr ändert und so keine neuen Ergebnisse gefunden werden können.
+Wenn die Resultate kaum mehr ändern, ist der Stationäre Zustand erreicht und es können keine neuen Resultate mehr erwartet werden.
+Dadurch kann man sich Simulationsaufwand sparen.
 
 \subsection{Modellierung der Flüssigkeit}
 Im Kontext der CFD-Simulation nimmt man an, dass eine Flüssigkeit nicht aus einzelnen Teilen wie Atomen oder Molekülen besteht, sondern man nimmt an, sie sei kontinuierlich. 
@@ -36,7 +36,7 @@ Dies wiederum würde im Fall, dass die Kompressibilität beachtet werden muss, z
 Auch müssen die Viskosität und die spezifische Wärmekapazität beschrieben werden.
 
 \subsection{Die Euler-Gleichungen}
-Die Euler-Gleichungen beschreiben das Verhalten der Strömung eines reibungsfreien Fluiden, also eines laminaren Flusses, dessen Reibung vernachlässigt werden kann. 
+Die Euler-Gleichungen beschreiben das Verhalten der Strömung eines reibungsfreien Fluids, also eines laminaren Flusses, dessen Reibung vernachlässigt werden kann. 
 Das bedeutet, sie können nicht für alle Probleme eingesetzt werden. 
 Sobald Reibungskräfte einen substantiellen Einfluss auf die Strömung haben, weist das berechnete Ergebnis eine Abweichung zur Realität auf.
 
@@ -55,12 +55,12 @@ Aus dem Massenstrom des Oberflächensegments kann man dann mit dem Oberflächeni
 den gesamten Massenstrom berechnen. Dieser Massenstrom muss nun gleich sein wie die Massenänderung 
 \[\frac{\partial M}{\partial t}\]
 der in dem Volumen enthaltenen Flüssigkeit.
-Diese Massenänderung berechnet man ausgehend vom Integral zum berechnen der Masse 
+Diese Massenänderung berechnet man ausgehend vom Integral zum Berechnen der Masse 
 \[M 
 = 
 \int_{V} \rho \, dV\]
 im Kontrollvolumen $V.$
-Um die Massenänderung zu erhalten, leitet man dieses Integral noch partiell nach $t$ ab und erhält so
+Um die Massenänderung zu erhalten, leitet man dieses Integral partiell nach $t$ ab und erhält so
 \[\frac{\partial M}{\partial t}
 =
 \frac{\partial }{\partial t} \int_{V}\rho dV.\]
@@ -70,7 +70,7 @@ Setzt man nun die beiden Terme der Massenänderung gleich, erhält man die Gleic
 \[\int_{S}\rho\vb{u}\cdot d\vb{S} 
 =
 \int_{V} \frac{\partial \rho}{\partial t} \, dV .\] 
-Bei dieser Gleichung kann man nun auf der linken Seite mit dem Gaussschen Integralsatz das Oberflächen Integral in ein Flächenintegral umwandeln es wird also zu
+Bei dieser Gleichung kann man nun auf der linken Seite mit dem gaussschen Integralsatz das Oberflächenintegral in ein Volumenintegral umwandeln es wird also zu
 \[\int_{V}\nabla\cdot(\rho\vb{u}) \, dV
 =
 \int_{V}\frac{\partial \rho}{\partial t}  \, dV .\]
@@ -93,7 +93,7 @@ Dies kann nun in einem letzten Schritt in die Differentialgleichung
 0
 \end{equation}
 umgewandelt werden.
-Wieso dies möglich ist wird im Lemma \ref{maxwell:lemma:ampere} erläutert.
+Wieso dies möglich ist, wird im Lemma \ref{maxwell:lemma:ampere} erläutert.
 
 \subsubsection{Impulserhaltung}
 Die zweite Euler-Gleichung beschreibt das Gesetz der Impulserhaltung. 
@@ -102,7 +102,7 @@ Dies wird beschrieben, indem man die Änderung des Impulses eines Systems auf nu
 Diese Impulsänderung besteht aus den aussen anliegenden Kräften und den Kräften, wie Schwerkraft, die auf das ganze System wirken.
 Bei der Impulserhaltung geht man fast gleich vor wie beim Herleiten der Gleichung für die Massenerhaltung.
 Man geht ebenfalls von einem beliebigen Volumen Flüssigkeit, $V$, aus.
-Bei der Impulserhaltung ist dieses Volumen aber nicht mehr an einem festen Ort sondern es bewegt sich durch den Raum.
+Bei der Impulserhaltung ist dieses Volumen aber nicht mehr an einem festen Ort, sondern es bewegt sich durch den Raum.
 Ausserdem ist der Masseninhalt nicht mehr beliebig, sondern das Volumen beinhaltet eine feste Menge Masse.
 
 Dieses Volumen weist nun eine Impulsänderung die
@@ -114,7 +114,7 @@ Anstelle der partiellen Ableitung wird eine substantielle Ableitung \[\frac{D}{D
 Als nächstes berechnet man die gesamte Kraft auf die Oberfläche des Volumens $V$, in dem man alle Kräfte $\vb{f} = \vb{t}\,dS$, die auf die Oberflächenstücke $dS$ wirken, integriert.
 $\vb{t} dS$ ist hier gleich $(\vb{n\cdot\sigma}dS)$.
 Dabei ist $\sigma$ der Spannungstensor, welcher genutzt wird um die drei Spannungsvektoren zusammenzufassen.
-Durch das bilden des Skalarproduktes, mit Spannungstensor und Normalenvektor, kann jeweils der Spannungsvektor in Richtung $\vb{n}$ gefunden werden.
+Der Spannungsvektor, der auf die Oberfläche mit Normalenrichtung $\vb{n}$ wirkt, ist das Produkt des Spannungstensors mit $\vb{n}$.
 So erhält man die Kraft 
 \[\vb{F} 
 =
@@ -171,7 +171,7 @@ Diese Form erleichtert die Berechnung, da sie nicht mehr die Impulsänderung ein
 Man kann also anstelle ein sich durch den Raum bewegendes Masseteilchen ein festes Volumenelement simulieren, welches bei der Fluid-dynamik-Simulation die bevorzugte Methode ist.
 Auch zu sehen ist hier das dyadische Produkt das mit $\vb{u}\otimes \vb{u}$ gebildet wird.
 Es wird verwendet, um mit dem Term $\nabla \cdot(\rho\vb{u}\otimes \vb{u})$, eine Advektion zu beschreiben.
-Das dyadische Produkt, auch Tensorprodukt genannt, beschreibt die Matrizenmultiplikation.
+Das dyadische Produkt, auch Tensorprodukt genannt, beschreibt eine Matrix aller Komponenten der Vektoren miteinander Multipliziert.
 Wendet man es auf den Geschwindigkeitsvektor $\vb{u}$ an, erhält man
 \begin{equation}
 \vb{u}\otimes \vb{u}
@@ -193,9 +193,9 @@ Wenn man nun noch die Divergenz dieser Matrix berechnet, resultiert
 \end{bmatrix}
 = 
 \begin{bmatrix}
-	\frac{\partial u_x u_x}{\partial x} &  \frac{\partial u_x u_y}{\partial y} & \frac{\partial u_x u_z}{\partial z} \\
-	\frac{\partial u_y u_x}{\partial x} &  \frac{\partial u_y u_y}{\partial y} & \frac{\partial u_y u_z}{\partial z} \\
-	\frac{\partial u_z u_x}{\partial x} &  \frac{\partial u_z u_y}{\partial y} & \frac{\partial u_z u_z}{\partial z}  \\
+	\frac{\partial u_x u_x}{\partial x} +  \frac{\partial u_x u_y}{\partial y} + \frac{\partial u_x u_z}{\partial z} \\
+	\frac{\partial u_y u_x}{\partial x} +  \frac{\partial u_y u_y}{\partial y} + \frac{\partial u_y u_z}{\partial z} \\
+	\frac{\partial u_z u_x}{\partial x} +  \frac{\partial u_z u_y}{\partial y} + \frac{\partial u_z u_z}{\partial z}  \\
 \end{bmatrix}
 .
 \end{equation}
@@ -204,12 +204,12 @@ Die dritte der Euler-Gleichungen wurde nicht wie die der Masse- und Impulserhalt
 
 Das Gesetz der Energieerhaltung besagt, dass die gesamte Energie in einem isolierten System konstant bleibt.
 Diese Energie setzt sich im Fall der Fluiddynamik aus kinetischer, potenzieller und thermischer Energie zusammen.
-Sie wird verändert durch mechanische Arbeit, die äussere Kräfte leisten. Ebenso können Wärmequellen den Wärmeinhalt beeinflussen.
+Sie wird durch mechanische Arbeit, die äussere Kräfte leisten, verändert. Ebenso können Wärmequellen den Wärmeinhalt beeinflussen.
 
-Um die Energieerhaltung zu beschreiben, muss also die Änderung der thermischen Energie $e$ und die der kinetischen $K$ bestimmt werden.
+Um die Energieerhaltung zu beschreiben, muss also die Änderung der thermischen Energie $e$ und die der kinetischen Energie $K$ bestimmt werden.
 Bei $e$ und  $K$ handelt es sich jeweils um eine spezifische, also auf die Masse normalisierte, Energie.
 Deswegen wird im Term 
-\[\rho \frac{De}{Dt}+  \rho \frac{DK}{Dt}
+\[\rho \frac{De}{Dt}+  \rho \frac{DK}{Dt},
 \]
 der die totale Energieänderung beschreibt, die Energie jeweils mit der Dichte $\rho$ multipliziert.
 
@@ -264,13 +264,13 @@ Dadurch das diese Impulserhaltungsgleichung die Reibung der Flüssigkeit beachte
 Mit den Randbedingungen definiert man, wie die Flüssigkeit mit dem Rand des Gebietes, auf welchem man das mathematische Modell der Flüssigkeit anwendet, interagiert.
 Dabei kann man für verschiedene Gebiete des Randes jeweils unterschiedliche Bedingungen wählen, um zum Beispiel einen Fluss von einem Eingang durch das Volumen zu einem Ausgang zu beschreiben.
 
-Zum Rand gehört die Begrenzung des Gebietes, auf das man das Modell der Flüssigkeit anwenden will, aber auch die Oberflächen der Objekte die sich innerhalb dieses Gebietes befinden.
+Zum Rand gehört die Begrenzung des Gebietes, auf das man das Modell der Flüssigkeit anwenden will, aber auch die Oberflächen der Objekte, die sich innerhalb dieses Gebietes befinden.
 Den Raum zwischen dem äusseren Rand und dem Rand des Objektes nennt man Lösungs-Domain, in dieser Region befindet sich die Flüssigkeit, deren Verhalten man berechnen möchte.
 
 \subsubsection{Inlet}
-Im Falle eines Inlets wird ein fester Wert auf einen Bereich des Randes festgelegt. 
+Im Falle eines Inlets wird auf einen Bereich des Randes ein fester Wert festgelegt. 
 So werden zum Beispiel die Geschwindigkeit und Temperatur einer Region fest bestimmt.
-Druck und Geschwindigkeit sind aber nicht unabhängig voneinander, dadurch muss der Druck frei belassen werden und es wird anstelle eines festen Wertes der Gradient des Druckes fest auf 0 gesetzt.
+Druck und Geschwindigkeit sind aber nicht unabhängig voneinander, daher muss der Druck frei belassen werden und es wird anstelle eines festen Wertes der Gradient des Druckes fest auf 0 gesetzt.
 So erhält man drei Bedingungen 
 \begin{align*}
  \nabla p(\vb{x}) &= 0 \\
@@ -302,15 +302,15 @@ Dabei ist die Dicke dieser unbewegten Luftschicht abhängig von der Luftgeschwin
 Mathematisch beschreibt man dies mit den Bedingungen
 \begin{align*}
  \nabla p(\vb{x}) &= 0 \\
-\vb{u}(\vb{x}) &= 0 ,\\
+\vb{u}(\vb{x}) &= 0 ,
 \end{align*}
 diese gelten für alle undurchlässigen Bereiche des Randes und die Oberfläche des Objektes.
 
 \section{Übersetzung des Modells in OpenFOAM}
-Um die mathematischen Modelle für eine Numerische Simulation zu verwenden, müssen sie in eine Form gebracht werden welche von einem Algorithmus verwendet werden kann um eine Lösung zu berechnen.
+Um die mathematischen Modelle für eine numerische Simulation zu verwenden, müssen sie in eine Form gebracht werden welche von einem Algorithmus verwendet werden kann um eine Lösung zu berechnen.
 Dazu wird die Lösungs-Domain diskretisiert, es wird also die Geometrie von einem kontinuierlichen Raum in Zellen unterteilt.
 Ausserdem müssen auch die verschiedenen Differentialgleichungen, die das Verhalten der Flüssigkeit beschreiben, diskretisiert werden.
-Dies führt dazu dass die kontinuierlichen Felder für Druck, Geschwindigkeit und Temperatur zu jeweils einem Wert, der zu einer der Zellen gehört, werden.
+Dies führt dazu, dass die kontinuierlichen Felder für Druck, Geschwindigkeit und Temperatur zu jeweils einem Wert, der zu einer der Zellen gehört, werden.
 Diese Werte verändern sich auch nicht mehr kontinuierlich sondern in diskreten Zeitschritten.
 Zudem müssen die Rand- und Ausgangsbedingungen auf das Gitter angewandt werden.
 
@@ -327,11 +327,11 @@ Daraus resultiert ein Modell der Lösungs-Domain, also dem Raum, in dem sich die
 Zudem wird dieser Raum in Zellen unterteilt.
 Diese Diskretisierung ist nötig, damit die Finite Volumen Methode verwendet werden kann.
 Ein Beispiel dafür ist in Bild \ref{openfoam:fig:SD_Modell_vergleich} zu sehen.
-Ausserdem werden auf die Oberfläche dieses Modells, die den Rand aus dem Kapitel \ref{openfoam:randbedingungen} darstellt, die Randbedingungen angewandt.
+Auf die Oberfläche dieses Modells, die den Rand aus dem Kapitel \ref{openfoam:randbedingungen} darstellt, werden die Randbedingungen angewandt.
 \begin{figure}
 	\centering
 	\includegraphics[scale=0.1]{papers/openfoam/Bilder/vergleich_solution_domain_object.png}
-	\caption{Vergleich der Solution Domain (links) und dem 3D-1Modell des Objektes (rechts)}
+	\caption{Vergleich der Solution Domain (links) und dem 3D-Modell des Objektes (rechts)}
 	\label{openfoam:fig:SD_Modell_vergleich}
 \end{figure}
 
@@ -356,7 +356,8 @@ Wenn ein Modell für die Flüssigkeit, die Randbedingungen, das Objekt und desse
 Dazu muss die Software als Erstes eine Diskretisierung der Differentialgleichungen, die die Flüssigkeit beschreiben, durchführen.
 Dafür wird das schon diskretisierte Netz der Lösungsdomain genutzt um die komplexen Differentialgleichungen, wie die der Navier-Stokes-Gleichungen, in lineare Gleichungen für jede einzelne der Zellen umzuwandeln.
 Um diese Linearisierung zu erreichen, werden jeweils die Eigenschaften der Flüssigkeit, wie Druck, Geschwindigkeit oder Temperatur, am Ort der Zellen durch die Werte in allen benachbarten Zellen berechnet.
-So wird der Wert in jeder Zelle, z.B. für Druck $p_{k}$ mit einem Koeffizienten $ a_{i} $ multipliziert und danach mit allen anderen addiert das Resultat davon ist jeweils ein weiterer Koeffizient $b_{k}$.
+So wird der Wert in jeder Zelle, z.B. für Druck $p_{k}$ mit einem Koeffizienten $ a_{i} $ multipliziert und danach mit allen anderen addiert.
+Das Resultat ist jeweils ein weiterer Koeffizient $b_{k}$.
 Dabei werden die Koeffizienten $a_{k,i}$ und $b_{k }$ jeweils aus den Differentialgleichungen hergeleitet, die Methode dafür unterscheidet sich je nach welcher Methode (FDM, FVM oder FEM).
 Dies führt dazu, dass die meisten der Koeffizienten $a_{k,i}$ null sind da die Werte einer Zelle nur von den direkt angrenzenden Zellen abhängig sind.
 Diese Summen kann man nun in Matrizen-Form bringen, dadurch erhält man für jede Eigenschaft eine Gleichung der Form

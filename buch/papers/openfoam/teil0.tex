@@ -23,7 +23,7 @@ verwendet werden kann.
 Bei OpenFOAM handelt es sich um eine \emph{CFD} Software, dies steht für \emph{C}omputational \emph{F}luid \emph{D}ynamics, also numerische Strömungsdynamik.
 OpenFOAM kann dementsprechend verwendet werden, um näherungsweise Lösungen für 
 strömungsmechanische Probleme zu finden.
-Es können zum Beispiel Widerstandsbeiwerte von Autos oder die Wirbelschleppen einer Tragfläche simuliert werden.
+Es können zum Beispiel Widerstandsbeiwerte von Autos oder die Wirbelschleppen einer Tragfläche simuliert werden, zum Thema Wirbelschleppen gibt es noch ein Kapitel im Teil \ref{chapter:wirbelringe} über Wirbelringe.
 Dabei liegen für OpenFOAM im Vergleich zu anderer CFD-Software die Stärken nicht bei Nutzerfreundlichkeit oder Geschwindigkeit, sondern bei der Anpassbarkeit, zum einen da es sich um offene Software handelt, andererseits aber auch dadurch, dass OpenFOAM entwickelt wurde mit dem Ziel, die Erweiterbarkeit durch den Nutzer zu ermöglichen.
 Dies macht es weniger praktikabel, die Software als Simulator zum Lösen von Standardproblemen anzuwenden, sondern für das Entwickeln von Solvern für neue Problemstellungen, für die noch keine herkömmliche Solvern existieren.
 
@@ -31,10 +31,10 @@ OpenFOAM wird seit 2004 hauptsächlich von OpenCFD Ltd entwickelt, es wird jedoc
 Die getesteten Releases werden alle sechs Monate herausgegeben \cite{openfoam:greenshieldsweller2022}.
 
 \subsection{Was macht OpenFOAM?}
-Zum Simulieren strömungsmechanischer Probleme muss man die partiellen Differenzialgleichungen (v. a. Erhaltungssätze), die das Verhalten des Mediums beschreiben, ausgehend von Anfangs- und Randbedingungen, lösen.
+Zum Simulieren strömungsmechanischer Probleme muss man die partiellen Differenzialgleichungen (v. a. Erhaltungssätze), die das Verhalten des Mediums beschreiben, ausgehend von Anfangs- und Randbedingungen lösen.
 Dabei beschreiben die Differenzialgleichungen Felder für die Simulationsgrößen wie Geschwindigkeit, Druck, Temperatur, Dichte und je nach Anwendung noch viele mehr. OpenFOAM nutzt die Manipulation von solchen Feldern, um eine numerische Lösung zu finden. Daher kommt auch das Akronym FOAM, es steht für Field Operation And Manipulation.
 
-In dieser Arbeit wird zuerst erläutert was für mathematische Modelle benötigt werden, um das verhalten einer Flüssigkeit zu beschreiben.
+In dieser Arbeit wird zuerst erläutert was für mathematische Modelle benötigt werden, um das Verhalten einer Flüssigkeit zu beschreiben.
 Dafür werden die Euler-Gleichungen, die Navier-Stokes-Gleichungen und einige Randbedingungen vorgestellt.
 Danach wird gezeigt wie OpenFOAM diese Modelle verwendet um eine CFD-Simulation durchzuführen.
 Zuletzt wird ein kleines Anwendungsbeispiel für OpenFOAM gezeigt.
