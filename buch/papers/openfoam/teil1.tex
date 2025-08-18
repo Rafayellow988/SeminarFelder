@@ -204,7 +204,7 @@ Die dritte der Euler-Gleichungen wurde nicht wie die der Masse- und Impulserhalt
 
 Das Gesetz der Energieerhaltung besagt, dass die gesamte Energie in einem isolierten System konstant bleibt.
 Diese Energie setzt sich im Fall der Fluiddynamik aus kinetischer, potenzieller und thermischer Energie zusammen.
-Sie wird verändert durch mechanische Arbeit, die äussere Kräfte leisten. Ebenso können Wärmequellen den Wärmeinhalt beeinflussen.
+Sie wird durch mechanische Arbeit, die äussere Kräfte leisten, verändert. Ebenso können Wärmequellen den Wärmeinhalt beeinflussen.
 
 Um die Energieerhaltung zu beschreiben, muss also die Änderung der thermischen Energie $e$ und die der kinetischen Energie $K$ bestimmt werden.
 Bei $e$ und  $K$ handelt es sich jeweils um eine spezifische, also auf die Masse normalisierte, Energie.
@@ -268,7 +268,7 @@ Zum Rand gehört die Begrenzung des Gebietes, auf das man das Modell der Flüssi
 Den Raum zwischen dem äusseren Rand und dem Rand des Objektes nennt man Lösungs-Domain, in dieser Region befindet sich die Flüssigkeit, deren Verhalten man berechnen möchte.
 
 \subsubsection{Inlet}
-Im Falle eines Inlets wird ein fester Wert auf einen Bereich des Randes festgelegt. 
+Im Falle eines Inlets wird auf einen Bereich des Randes ein fester Wert festgelegt. 
 So werden zum Beispiel die Geschwindigkeit und Temperatur einer Region fest bestimmt.
 Druck und Geschwindigkeit sind aber nicht unabhängig voneinander, daher muss der Druck frei belassen werden und es wird anstelle eines festen Wertes der Gradient des Druckes fest auf 0 gesetzt.
 So erhält man drei Bedingungen 
@@ -327,11 +327,11 @@ Daraus resultiert ein Modell der Lösungs-Domain, also dem Raum, in dem sich die
 Zudem wird dieser Raum in Zellen unterteilt.
 Diese Diskretisierung ist nötig, damit die Finite Volumen Methode verwendet werden kann.
 Ein Beispiel dafür ist in Bild \ref{openfoam:fig:SD_Modell_vergleich} zu sehen.
-Ausserdem werden auf die Oberfläche dieses Modells, die den Rand aus dem Kapitel \ref{openfoam:randbedingungen} darstellt, die Randbedingungen angewandt.
+Auf die Oberfläche dieses Modells, die den Rand aus dem Kapitel \ref{openfoam:randbedingungen} darstellt, werden die Randbedingungen angewandt.
 \begin{figure}
 	\centering
 	\includegraphics[scale=0.1]{papers/openfoam/Bilder/vergleich_solution_domain_object.png}
-	\caption{Vergleich der Solution Domain (links) und dem 3D-1Modell des Objektes (rechts)}
+	\caption{Vergleich der Solution Domain (links) und dem 3D-Modell des Objektes (rechts)}
 	\label{openfoam:fig:SD_Modell_vergleich}
 \end{figure}
 
