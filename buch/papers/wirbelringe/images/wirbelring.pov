@@ -44,7 +44,7 @@ union {
 
 #declare tangent_phi = radians(20); // Change this value for different positions
 #declare tangent_length = 0.3;      // Length of the tangent arrow
-#declare tangent_color = rgb<1,0,1>; // Arrow color
+#declare tangent_color = rgb<0.29,0,0.51>; // Arrow color
 
 #declare tangent_point = kreispunkt(tangent_phi);
 #declare tangent_dir = < -sin(tangent_phi), 0, cos(tangent_phi) >;
@@ -84,16 +84,27 @@ union {
 #end
 
 #declare wfarbe = rgb<0.8,0,0>;
-
-#declare phistart = radians(50);
-#declare phiend = radians(360);
-#declare phisteps = 72;
+#declare phistart = radians(45);
+#declare phiend = radians(375);
+#declare phisteps = 32;
 #declare phistep = (phiend - phistart) / phisteps;
 #declare phi = phistart;
-#while (phi < phiend - phistep/2)
-	#declare wfarbe = CHSV2RGB(<degrees(phi), 1, 1, 0, 0>);
-	wirbel(-phi + radians(1), wfarbe)
-	#declare phi = phi + phistep;
-#end
+#declare counter = 0;
 
+// RGB Farbwechsel generieren
+
+#while (phi < phiend - phistep/2)
+    #if (mod(counter,3) = 0)
+        #declare wfarbe = rgb<1,0,0>; // rot
+    #elseif (mod(counter,3) = 1)
+        #declare wfarbe = rgb<0,1,0>; // grün
+    #else
+        #declare wfarbe = rgb<0,0,1>; // blau
+    #end
+
+    wirbel(-phi + radians(1), wfarbe)
+
+    #declare phi = phi + phistep;
+    #declare counter = counter + 1;
+#end
 

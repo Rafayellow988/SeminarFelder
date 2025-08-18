@@ -70,7 +70,7 @@ Nun kann noch der lineare Impuls eines zylindrischen Slugs als
 \begin{align}
     I_{\text{slug}}
     &=
-    m_{\text{slug}}v_0\\
+    m_{\text{slug}}u_0\\
     \intertext{definiert werden. Da die Masse}
     m_{\text{slug}}
     &=
@@ -78,20 +78,20 @@ Nun kann noch der lineare Impuls eines zylindrischen Slugs als
     \intertext{ist, folgt}
     I_{\text{slug}}
     &=
-    \rho ALv_0
+    \rho ALu_0
     \label{Wirbelringe:eq:slugImp}.
 \end{align}
 Der Drehimpuls eines kontinuierlichen Mediums
 \begin{equation*}
     \vec{I}
     =
-    \int_{V}\rho(\vec{x})\vec{x}\times\vec{v}(\vec{x})\,d\mathbf{V}
+    \int_{V}\rho(\vec{x}\,)\vec{x}\times\vec{v}(\vec{x}\,)\,d\mathbf{V}
 \end{equation*}
 kann durch Einsetzen der Vektor-Identität für Rotationstensoren \cite{Wirbelringe:batchelor1967}
 \begin{equation*}
     \vec{x}\times\vec{v}
     =
-    \frac{1}{2}\int_{V}\vec{x}\times(\nabla\times\vec{v})\,d\mathbf{V}
+    \frac{1}{2}\int_{V}\vec{x}\times(\nabla\times\vec{v}\,)\,d\mathbf{V}
     =
     \frac{1}{2}\vec{x}\times\vec{\omega}
 \end{equation*}
@@ -171,7 +171,7 @@ umgewandelt werden kann, ergibt sich mittels Einsetzen in Gleichung \eqref{Wirbe
 \begin{equation*}
     \Gamma
     =
-    \frac{2v_0AL}{\pi D^2}.
+    \frac{2u_0AL}{\pi D^2}.
 \end{equation*}
 Setzt man dann noch
 \begin{equation*}
@@ -184,7 +184,7 @@ ein, erhält man
     \label{Wirbelringe:eq:naeherungZirkulation}
     \Gamma
     =
-    2v_0L\frac{r_w^2}{D^2}
+    2u_0L\frac{r_w^2}{D^2}
 \end{equation}
 zur Berechnung der Zirkulation.
 
