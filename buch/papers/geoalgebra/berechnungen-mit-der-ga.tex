@@ -1,35 +1,39 @@
 \newcommand{\eot}{\mathbf{e}_{12}}
 % \newcommand{\eott}{\mathbf{e}_{123}}
 \section{Berechnungen mit der geometrischen Algebra}
-Da für beliebige Einheitsvektoren $\eone, \etwo$ das Skalarprodukt $\eone \cdot \etwo = 0$ ergibt,
+Da für beliebige Standardbasisvektoren $\eone, \etwo$ das Skalarprodukt $\eone \cdot \etwo = 0$ ergibt,
 folgt, dass das geometrische Produkt zwischen $\eone$ und $\etwo$
 \begin{equation}
   \begin{aligned}
   \eone \etwo &= \eone \cdot \etwo + \eone \wedge \etwo \\
   &= \eone \wedge \etwo
   \end{aligned}
+  \label{geoalgebra:eq:eot}
 \end{equation}
 ergibt.
-Anstelle immer $\eone \wedge \etwo$ zu schreiben, kann somit auch einfach $\eone \etwo$ geschrieben werden.
-Diese Schreibweise wird in der geometrischen Algebra oft sogar noch weiter zu $\eot$ verkürzt. Im Folgenden bedeutet
-$\eot$ also der Bivektor $\eone \wedge \etwo$.
-
-Ausserdem folgt aus \eqref{geoalgebra:lemma:a_squared}, dass
+Daraus folgt, dass
 \begin{equation}
   \begin{aligned}
   \eone^2 &= \eone \cdot \eone + \eone \wedge \eone \\
   &= \eone \cdot \eone \\
-  &= 1
+  &= 1.
   \end{aligned}
 \end{equation}
-ergibt.
 
-Desweiteren ergibt 
+Der Ausdruck $\eone \etwo$ wird im Folgenden zu $\eot$ verkürzt.
+In \eqref{geoalgebra:eq:eot} wurde aber gezeigt, dass $\eone \etwo$ eben
+genau $\eone \wedge \etwo$ entspricht. Es gilt
 \begin{equation}
-  \begin{aligned}
-  \mathbf{e}_{121} = -\mathbf{e}_{112} = -\etwo.
-  \end{aligned}
+  \eot = \eone \wedge \etwo.
+  \label{geoalgebra:eq:eot_wedge}
 \end{equation}
+Analog dazu bedeutet $\mathbf{e}_{121} = \eone \etwo \eone$.
+Anders als in \eqref{geoalgebra:eq:eot_wedge}lässt sich durch Anwenden von \eqref{geoalgebra:eq:antikommutativ}
+aber zeigen, dass
+\begin{equation}
+  \mathbf{e}_{121} = - \mathbf{e}_{112} = -\etwo. 
+\end{equation}
+
 Jedesmal, wenn ein Index ``getauscht'' wird ($\mathbf{e}_{121} = -\mathbf{e}_{112}$), wird auch das Vorzeichen
 gewechselt.
 
@@ -45,7 +49,7 @@ B &= 1 + \eone + 2 \eot.
 \end{align}
 
 Mit der geometrischen Algebra ist ähnlich zu den komplexen Zahlen eine Algebra definiert,
-mit welcher normal gerechnet werden kann. So können zum Beispiel Multivektoren addiert
+mit welcher gerechnet werden kann. So können zum Beispiel Multivektoren addiert
 \begin{equation}
 \begin{aligned}
 A + B &= (2 + 3 \eone + \eot) + (1 + \eone + 2 \eot) \\
@@ -62,7 +66,7 @@ A  B &= (2 + 3 \eone + \eot) (1 + \eone + 2 \eot) \\
 \end{aligned}
 \end{equation}
 
-Desweiteren ist das geometrische Produkt assoziativ
+Ausserdem ist das geometrische Produkt assoziativ
 \begin{equation}
 A (B C) = (A B) C
 \end{equation}

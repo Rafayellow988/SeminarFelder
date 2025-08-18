@@ -62,19 +62,18 @@ Für die Definition von \emph{Trivektoren} benötigen wir desweiteren noch das A
 \end{axiom}
 
 \subsection{Das Wedgeprodukt in zwei Dimensionen}
-
+\renewcommand{\subsectionautorefname}{Abschnitt}
 Mit den Axiomen aus \autoref{geoalgebra:section:axiome} können wir bereits das Wedgeprodukt zwischen zwei
 Vektoren in der zwei Dimensionen herleiten.
 Dazu machen wir uns zu nutze, dass wir jeden Vektor als
-Linearkombination von den Einheitsvektoren beschreiben können.
+Linearkombination von den Standardbasisvektoren beschreiben können.
 Es gilt
 \begin{align}
-  \mathbf{v} &= \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} \\
-    &= v_1 \mathbf{e}_1 + v_2 \mathbf{e}_2.
+  \mathbf{v} &= \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = v_1 \mathbf{e}_1 + v_2 \mathbf{e}_2.
 \end{align}
 
 \begin{definition}
-  Wir betrachten die beiden (zweidimensionalen) Vektoren $\mathbf{u},
+  Wir betrachten die beiden zweidimensionalen Vektoren $\mathbf{u},
   \mathbf{v}$.
   Das Wedgeprodukt von $\mathbf{u}$ und $\mathbf{v}$ ist
 
@@ -90,8 +89,7 @@ Es gilt
     \label{geoalgebra:eq:2d-wedgeproduct}
   \end{equation}
 \end{definition}
-
-Der Skalarfaktor im letzten Ausdruck ist eine Determinante und kann daher als
+\noindent Der Skalarfaktor im letzten Ausdruck ist eine Determinante und kann daher als
 \begin{equation}
   \begin{vmatrix}
     u_1 & v_1 \\
@@ -133,8 +131,9 @@ Das Wedgeprodukt von $\mathbf{a}$ und $\mathbf{b}$ ist
       &\quad+ (a_3 b_1 - a_1 b_3) \ethree \wedge \eone.
   \end{aligned}
 \end{equation}
-\label{geoalgebra:eq:wedgeprodukt-dreidimensional} \end{definition}
-Wir stellen fest, dass die Koeffizienten hinter den drei entstandenen Wedgeprodukten
+\label{geoalgebra:eq:wedgeprodukt-dreidimensional}
+\end{definition}
+\noindent Wir stellen fest, dass die Koeffizienten hinter den drei entstandenen Wedgeprodukten
 gleich sind, wie die Komponenten des Vektorprodukts in \eqref{geoalgebra:eq:vektorprodukt}.
 
 \subsection{Rückblick}

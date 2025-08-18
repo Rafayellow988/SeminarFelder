@@ -1,0 +1,137 @@
+%
+% common.tex -- gemeinsame Definitionen
+%
+% (c) 2019 Michael Schmid, Hochschule Rapperswil
+%
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{epic}
+\usepackage{color}
+\usepackage{textpos}
+\usepackage{algorithm}
+\usepackage{array}
+\usepackage{listings}
+\usepackage{ifthen}
+\usepackage{adjustbox}
+\usepackage{neuralnetwork}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{lmodern}
+\usepackage{pgffor}
+\usepackage{tikz}
+\usetikzlibrary{arrows,matrix,positioning}
+\usetikzlibrary{overlay-beamer-styles}
+% \usetikzlibrary{matrix.skeleton}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{svg}
+\usepackage{bm}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{ost}{rgb}{0.640625,0,0.53125} % UBC Blue (primary)
+
+\usetikzlibrary{calc,fadings}
+\tikzfading[name=fade l,left color=transparent!100,right color=transparent!0]
+\tikzfading[name=fade r,right color=transparent!100,left color=transparent!0]
+\tikzfading[name=fade d,bottom color=transparent!100,top color=transparent!0]
+\tikzfading[name=fade u,top color=transparent!100,bottom color=transparent!0]
+
+% this "frames" a rectangle node
+\newcommand\framenode[2][10pt]{
+    \fill[white,path fading=fade u] (#2.south west) rectangle ($(#2.south east)+(0, #1)$);
+    \fill[white,path fading=fade d] (#2.north west) rectangle ($(#2.north east)+(0,-#1)$);
+    \fill[white,path fading=fade l] (#2.south east) rectangle ($(#2.north east)+(-#1,0)$);
+    \fill[white,path fading=fade r] (#2.south west) rectangle ($(#2.north west)+( #1,0)$);
+}
+
+\lstdefinestyle{Python}{
+  numbers=left,
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=l,
+  framerule=0pt,
+  framesep=-1pt,
+  xleftmargin=1em,
+  language=Python,
+  showstringspaces=false,
+  basicstyle=\scriptsize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{red},
+  numberstyle=\ttfamily\tiny,
+  backgroundcolor=\color{backcolour}
+}
+
+\lstdefinestyle{C++}{
+  numbers=left,
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=l,
+  framerule=0pt,
+  framesep=-1pt,
+  xleftmargin=1em,
+  language=C++,
+  showstringspaces=false,
+  basicstyle=\scriptsize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{red},
+  numberstyle=\ttfamily\tiny,
+  backgroundcolor=\color{backcolour}
+}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=magenta,
+    filecolor=magenta,      
+    urlcolor=magenta,
+    pdfpagemode=FullScreen,
+    }
+
+\usetikzlibrary{fit}
+\tikzset{%
+  highlight/.style={rectangle,rounded corners,fill=red!15,draw,fill opacity=0.5,inner sep=0pt}
+}
+\newcommand{\tikzmark}[2]{\tikz[overlay,remember picture,baseline=(#1.base)] \node (#1) {#2};}
+%
+\newcommand{\Highlight}[1][submatrix]{%
+    \tikz[overlay,remember picture]{
+    \node[highlight,fit=(left.north west) (right.south east)] (#1) {};}
+}
+\lstdefinestyle{C++}{
+  numbers=left,
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=l,
+  framerule=0pt,
+  framesep=-1pt,
+  xleftmargin=1em,
+  language=C++,
+  showstringspaces=false,
+  basicstyle=\scriptsize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  % identifierstyle=\color{blue},
+  stringstyle=\color{red},
+  numberstyle=\ttfamily\tiny,
+  backgroundcolor=\color{backcolour},
+  morekeywords={restrict},
+  emph={int,char,double,float,unsigned,RNG_CONTEXT, void,bool,int8_t, int64_t, int32_t, uint16_t, int16_t, inner_shake256_context,uint8_t, fpr, size_t, uint64_t, uint32_t, pragma},
+  emphstyle={\color{blue}},
+}
+
+\lstset{style=Python}
+
+
+
+\usetikzlibrary{shapes.geometric}
+\mode<beamer>{%
+\usetheme[]{Frankfurt}}
+\beamertemplatenavigationsymbolsempty
+\usecolortheme[named=ost]{structure}\title[]{Rossby Wellen}
+% \institute[icai]{ICAI Interdisciplinary Center for Artificial Intelligence}
+\author[The author]{Michael Schmid}\date[]{\today}
+\newboolean{presentation}
