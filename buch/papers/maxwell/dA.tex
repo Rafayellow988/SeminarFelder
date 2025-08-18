@@ -3,7 +3,7 @@
 \kopfrechts{dA}
 Den Faraday-Tensor haben wir definiert als
 \begin{equation}
-	F = \begin{pmatrix}
+	F_{\mu\nu} = \begin{pmatrix}
 		0 & -E_1/c & -E_2/c & -E_3/c \\ E_1/c & 0 & B_3 & -B_2 \\ E_2/c & -B_3 & 0 & B_1 \\ E_3/c & B_2 & -B_1 & 0 
 	\end{pmatrix}.
 	\label{maxwell:section:dA:Faraday-Tensor}
@@ -51,7 +51,7 @@ Jetzt haben wir zwei Formeln gefunden, mit welchen sich die elektrische Feldstä
 Aus den beiden hergeleiteten Gleichungen
 \begin{align*}
 	\vec{B} &= \nabla \times \vec{A},\\
-	\vec{E} &= -\nabla \varphi -\frac{\partial \vec{A}}{\partial t},
+	\vec{E} &= -\nabla \varphi -\frac{\partial \vec{A}}{\partial t}
 \end{align*}
 können wir bereits erkennen, dass die gesuchte 1-Form die drei Komponenten des magetischen Vektorpotentials und das elektrische Potential enthalten muss.
 Zusätzlich müssen wir auf die Vorzeichen achten und den Faktor $c$, der in der Definition \eqref{maxwell:section:dA:Faraday-Tensor} von $F$ vorkommt, unterbringen.
