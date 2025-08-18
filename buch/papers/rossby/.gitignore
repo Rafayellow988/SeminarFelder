@@ -1,7 +1,8 @@
 *.pyc
-src/
+src/data/
 slides/
 papers/
+*.lock
 *.lfs
 *.log
 *.toc
