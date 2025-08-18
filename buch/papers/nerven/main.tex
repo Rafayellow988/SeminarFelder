@@ -140,79 +140,6 @@ Durch die ungleiche Verteilung von Natrium- und Kaliumionen ensteht so wieder ei
     \label{fig:Hyperpolarisation}
 \end{figure}
 
-\section{Verhalten bei Anregung}
-\subsection{Formelparameter}
-In den vorigen Kapiteln wurde die Parameter der Nullklinien des Fitzhugh-Nagume Modells folgendermassen definiert.
-\(a = -0.7, b = 0.8, \epsilon = 0.8, I = 0\), somit werden aus den allgemeinen Nullklinien, \( w = v - \frac{v^3}{3} + I\)
-und \(w = \frac{v + a}{b}\) die spezifischen Nullklinien \( w = v - \frac{v^3}{3}\)
-und \(w = \frac{v + 0.7}{0.8}\).
-Der stationäre Punkt, welcher von Objekten im Vektorfeld angestrebt werden befindet sich bei \((1.2 |-0.6)\).
-Der Parameter I ist als 0 definiert, dies bedeutet es findet keine Anregung statt.
-In Abbildung \ref{fig:Parameter} sind das Vektrofeld und die Nullklinien erkennbar, wenn das Modell nicht angeregt wird.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\textwidth]{papers/nerven/Bilder/Anregung1.png}
-    \caption{Parameter}
-    \label{fig:Parameter}
-\end{figure}
-\subsection{Schwache Anregung}
-Wenn das Nullklinienmodell angeregt werden soll, muss der Parameter I verändert werden.
-Beispielweise kann I = 0.1 Volt definiert werden.
-Dadurch wird die v-Nullklinie um 0.1 in positive w-Richtung verschoben.
-Somit verändern sich die Nullklinien zu \( w = v - \frac{v^3}{3} + 0.1\)
-und \(w = \frac{v + 0.7}{0.8}\) und der stationäre Punkt wandert zu \((1.1 |-0.5)\).
-Der ursprüngliche stationäre Punkt ist jetzt nicht mehr stabil und wird vom Vektorfeld in den neuen stationären Punkt
-gezwungen.
-Dies geschieht entlang des Vektorfelds, was bei dieser schwachen Anregung nur eine kurze Trajektorie ergibt.
-In Abbildung \ref{fig:schwacheAnregung} lässt sich die Trajektorie zwischen den stationären Punkten erkennen, sowie
-deren Auslenkung in v-Richtung.
-Da die Anregung von I = 0.1 sehr schwach ist, fällt auch die Auslenkung der Trajektorie in v-Richtung mit 0.2 klein aus und
-nimmt sofort wieder ab. 
-Dieser Effekt tritt auf, wenn die Nervenzelle mit einer Spannung unterhalb der Schwellenspannung angeregt wird.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\textwidth]{papers/nerven/Bilder/schwacheAnregung.png}
-    \caption{Schwache Anregung}
-    \label{fig:schwacheAnregung}
-\end{figure}
-\subsection{Starke Anregung}
-Um den Effekt, der bei einer Nervenzelle bei Anregung über der Schwellenspannung auftritt, beobachten zu können, muss
-der Parameter I erhöht werden.
-Beispielweise wird hier I = 0.3 Volt definiert.
-Dadurch wird die v-Nullklinie um 0.3 in positive w-Richtung verschoben.
-Somit verändern sich die Nullklinien zu \( w = v - \frac{v^3}{3} + 0.3\)
-und \(w = \frac{v + 0.7}{0.8}\) und der stationäre Punkt wandert zu \((1 |-0.3)\).
-Der ursprüngliche stationäre Punkt ist wird wieder instabil und vom Vektorfeld in den neuen stationären Punkt
-gezwungen.
-Dies geschieht entlang des Vektorfelds, was bei dieser stärkeren Anregung eine lange Trajektorie ergibt.
-In Abbildung \ref{fig:starkeAnregung} lässt sich die Trajektorie zwischen den stationären Punkten erkennen, sowie
-deren Auslenkung in v-Richtung.
-Durch das Vektorfeld muss der ursprüngliche stationäre Punkt, bei einer Anregung von I = 0.3 eine grosse Kurve
-beschreiben um den neuen stationären Punkt zu erreichen.
-Die Auslenkung in v-Richtung ist dadurch mit -3 auch viel grösser und es lässt sich ein impulsartiger Verlauf erkennen.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\textwidth]{papers/nerven/Bilder/starkeAnregung.png}
-    \caption{Starke Anregung}
-    \label{fig:starkeAnregung}
-\end{figure}
-
-\subsection{Vergleich mit Aktionspotential}
-Den Verlauf der Auslenkung der Trajektorie in v-Richtung bei einer starken Anregung des Fitzhugh-Nagumo-Modells, lässt
-sich mit dem Verlauf des Aktionspotentials der Nervenzelle vergleichen. 
-In Abbildung \ref{fig:Vergleich} sind links die Auslenkung in v-Richtung und rechts der Verlauf des Aktionspotentials
-erkennbar.
-Der Verlauf der Auslenkung in v-Richtung ist an der v-Achse gespiegelt um die Abbildungen besser vergleichen zu können.
-In der Abbildung lassen sich die einzelnen Phasen, Depolarisation, Repolarisation und Hyperpolarisation erkennen, die
-sowohl im Verlauf der Auslenkung in v-Richtung und im Verlauf des Aktionspotentials auftreten.
-Somit kann mit dem Nullklinienmodell des Fitzhugh-Nagumo-Modells der Verlauf des Aktionspotentials einer Nervenzelle
-dargestelt werden.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\textwidth]{papers/nerven/Bilder/Vergleich.png}
-    \caption{Vergleich v-Auslenkung Aktionspotential}
-    \label{fig:Vergleich}
-\end{figure}
 \section{Hodgkin-Huxley Modell}
 \subsection{Einleitung}
 Das Hodgkin-Huxley-Modell wurde 1952 von den britischen Physiologen Alan Hodgkin und Andrew Huxley entwickelt. Es beschreibt das elektrophysiologische Verhalten von Nervenzellen, genauer gesagt den Aktionspotentialverlauf entlang einer Nervenfaser. Das Modell basiert auf experimentellen Messungen am Riesenaxon des Tintenfisches und erklärt, wie sich die elektrische Spannung entlang einer Nervenzelle über die Zeit verändert. Dieses Modell wurde zum ersten Mal erfolgreich verwendet, um den komplexen Ionenfluss durch die Zellmembran quantitativ zu beschreiben. Es bildet die Grundlage für viele spätere Modelle wie das FitzHugh-Nagumo-Modell, welches in dieser Arbeit vertieft behandelt wird.
@@ -258,13 +185,17 @@ Die Torvariablen folgen jeweils differentiellen Gleichungen erster Ordnung, z.B.
 	\frac{dm}{dt} &= \alpha_m (1 - m) - \beta_m m \tag{3.12} \\
 	\frac{dh}{dt} &= \alpha_h (1 - h) - \beta_h h \tag{3.13}
 \end{align}
-
+\noindent
 Ähnliche Gleichungen gelten für $dn/dt$ und $dh/dt$. Dabei sind $\alpha_m$ und $\beta_m$ spannungsgesteuerte Übergangsraten, die empirisch durch Hodgkin und Huxley bestimmt wurden.
 Diese Differentialgleichungen beschreiben wie m,h und n jeweils vom Membranpotential V abhängig sind.
 \subsubsection{Mathematische Einordnung der Gleichung}
-Mathematisch handelt es sich beim Hodgkin-Huxley-Modell um ein System von vier gekoppelten nichtlinearen Differentialgleichungen:
-•	Eine Gleichung für das Membranpotential V(t)
-•	Drei Gleichungen für die Torvariablen m(t),h(t),n(t)
+Mathematisch handelt es sich beim Hodgkin-Huxley-Modell um ein System von vier gekoppelten nichtlinearen
+Differentialgleichungen:
+\begin{itemize}
+    \item Eine Gleichung für das Membranpotential V(t)
+    \item Drei Gleichungen für die Torvariablen m(t),h(t),n(t)
+\end{itemize}
+\noindent
 Es gehört zur Klasse der nichtlinearen dynamischen Systeme, genauer gesagt zu einem System von gewöhnlichen Differentialgleichungen. Die Nichtlinearität entsteht durch die Potenzen (z.B. $m^3$) und das Produkt der Torvariablen mit V.
 \subsubsection{Fazit}
 Das Hodgkin-Huxley-Modell ist nicht nur ein Meilenstein der Biologie, sondern auch ein Paradebeispiel dafür, wie mathematische Modellierung biologische Prozesse quantitativ erfassen kann. Die Gleichungen geben Verständnis über die Entstehung und Ausbreitung elektrischer Signale in Nervenzellen und sind bis heute unverzichtbar in der Neurophysik und mathematischen Biologie.
@@ -276,11 +207,14 @@ Das Modell abstrahiert die Nervenaktivität auf zwei Hauptvariablen:
 Ziel war es, ein System zu formulieren, das zwar die fundamentalen Eigenschaften wie Reizantwort, Erregbarkeit und Rückkehr zum Ruhezustand bewahrt, aber deutlich einfacher zu analysieren ist. 
 \subsubsection{Nutzen des FitzHugh-Nagumo-Modells}
 Das FitzHugh-Nagumo-Modell erlaubt eine qualitative Analyse neuronaler Aktivität mit einfachen Mitteln:
-•	Simulation von Aktionspotentialen
-•	Beschreibung von Refraktärzeiten
-•	Untersuchung der Stabilität von Ruhezuständen
-•	Analyse von Schwellwertverhalten bei Reizen
-•	Einsatz in räumlich ausgedehnten Modellen (z.B. als Reaktions-Diffusions-System für Ausbreitung von Signalen im Gewebe)
+\begin{itemize}
+    \item Simulation von Aktionspotentialen
+    \item Beschreibung von Refraktärzeiten
+    \item Untersuchung der Stabilität von Ruhezuständen
+    \item Analyse von Schwellwertverhalten bei Reizen
+    \item Einsatz in räumlich ausgedehnten Modellen (z.B. als Reaktions-Diffusions-System für Ausbreitung von Signalen im Gewebe)
+\end{itemize}
+\noindent
 Gerade in der Mathematik ist das Modell besonders beliebt, da es sich ideal für phasenraumanalytische Methoden eignet – insbesondere für die Betrachtung von Nullklinen, Fixpunkten und Limitzyklen.
 \subsubsection{Mathematische Beschreibung des Modells}
 Das FitzHugh-Nagumo-Modell besteht aus einem System zweier gekoppelter nichtlinearer Differentialgleichungen 1. Ordnung:
@@ -306,13 +240,16 @@ Mit w und v als stetig und differenzierbar sind die Ergebnisse mithilfe von Null
 Interpretation:
 •	Die erste Gleichung beschreibt die schnelle Aktivierung des Neurons: sie enthält eine nichtlineare Rückkopplung durch den Term $v^3$, die für die typische „Spike“-Form des Aktionspotentials sorgt.
 •	Die zweite Gleichung reguliert die langsame Erholung und Rückführung zum Ruhezustand.
-\subsubsection{$Mathematische Einordnung$}
-Das FitzHugh-Nagumo-Modell ist ein typisches Beispiel für ein Relaxationsoszillator-System, bei dem zwei Variablen auf unterschiedlichen Zeitskalen miteinander gekoppelt sind. Solche Systeme sind bekannt für:
-•	Sprunghaftes Verhalten (z.B. plötzlicher Aktionspotentialanstieg)
-•	Rückkehr zum Ausgangszustand (Refraktärphase)
-•	Nichtlineare Dynamik mit Sättigung und Schwellenwertverhalten
+\subsubsection{Mathematische Einordnung}
+Das FitzHugh-Nagumo-Modell ist ein typisches Beispiel für ein Relaxationsoszillator-System, bei dem zwei Variablen auf
+unterschiedlichen Zeitskalen miteinander gekoppelt sind. Solche Systeme sind bekannt für:
+\begin{itemize}
+    \item Sprunghaftes Verhalten (z.B. plötzlicher Aktionspotentialanstieg)
+    \item Rückkehr zum Ausgangszustand (Refraktärphase)
+    \item Nichtlineare Dynamik mit Sättigung und Schwellenwertverhalten
+\end{itemize}
 Mathematisch ist es ein nichtlineares ODE-System (System gewöhnlicher Differentialgleichungen) und wird häufig mit Phasenporträts analysiert.
-\subsubsection{$Analyse der Nullklinen$}
+\subsubsection{Analyse der Nullklinen}
 Die Nullklinen sind die geometrischen Orte im Phasenraum (v,w), an denen sich die jeweiligen Zeitableitungen nicht verändern (also gleich null sind). Sie sind ein zentrales Werkzeug zur Analyse des Systems.
 \textbf{v-Nullkline:} $\dfrac{dv}{dt} = 0$
 
@@ -325,7 +262,7 @@ Nach $w$ umgestellt:
 \[
 w = v - \frac{v^3}{3} + I_{\text{ext}}
 \]
-
+\noindent
 Das ist eine \textbf{kubische Kurve} im Phasenraum, typischerweise mit \textbf{S-Form}.  
 Sie gibt an, wo das Membranpotential im Gleichgewicht ist (für festes $w$).
 
@@ -337,21 +274,103 @@ Setze:
 \[
 \varepsilon (v + a - b w) = 0 \Rightarrow v + a - b w = 0 \Rightarrow w = \frac{v + a}{b}
 \]
-
+\noindent
 Das ist eine \textbf{lineare Gerade} im Phasenraum.  
 Sie gibt an, wo sich die Erholungsvariable im Gleichgewicht befindet (für festes $v$).
 Der Schnittpunkt beider Nullklinen ist ein Gleichgewichtspunkt des Systems: Dort gilt sowohl $dvdt=0\frac{dv}{dt} = 0dtdv=0$ als auch $dwdt=0\frac{dw}{dt} = 0dtdw=0$. Dieser Punkt kann je nach Parametern stabil, instabil oder ein Oszillatorzentrum sein.
-\subsubsection{$Bedeutung$}
+\subsubsection{Bedeutung}
 Das Verhalten des Systems kann durch die Phasenporträtanalyse qualitativ vorhergesagt werden:
-•	Wenn der Fixpunkt stabil ist, kehrt das System nach einem kleinen Reiz dorthin zurück → Ruhe.
-•	Bei instabilem Fixpunkt (Sattel, Fokus) kommt es zu Limitzyklen → rhythmisches Feuern.
-•	Der Verlauf der Trajektorien im Phasenraum zeigt den zeitlichen Verlauf des Aktionspotentials.
+\begin{itemize}
+    \item Wenn der Fixpunkt stabil ist, kehrt das System nach einem kleinen Reiz dorthin zurück → Ruhe.
+    \item Bei instabilem Fixpunkt (Sattel, Fokus) kommt es zu Limitzyklen → rhythmisches Feuern.
+    \item Der Verlauf der Trajektorien im Phasenraum zeigt den zeitlichen Verlauf des Aktionspotentials.
+\end{itemize}
 Die S-Form der v-Nullkline erzeugt Sprungdynamik:
-•	Linker Ast: Ruhe
-•	Mittlerer Ast: instabil (Schwellwert)
-•	Rechter Ast: Aktivierung („Spike“)
-Das FitzHugh-Nagumo-Modell ist eine elegante und reduktive Darstellung neuronaler Erregung, das die komplexe Biologie auf zwei mathematisch gut fassbare Prozesse reduziert. Seine Stärke liegt in der Analyse der Dynamik im Phasenraum, insbesondere über die Nullklinen und Fixpunkte. Es eignet sich hervorragend zur Simulation, Theoriebildung und Lehre – und bildet eine solide mathematische Brücke zwischen Biologie und dynamischer Systemtheorie.
+\begin{itemize}
+    \item Linker Ast: Ruhe
+    \item Mittlerer Ast: instabil (Schwellwert)
+    \item Rechter Ast: Aktivierung („Spike“)
+\end{itemize}
+\noindent
+Das FitzHugh-Nagumo-Modell ist eine elegante und reduktive Darstellung neuronaler Erregung, das die komplexe Biologie
+auf zwei mathematisch gut fassbare Prozesse reduziert. 
+Seine Stärke liegt in der Analyse der Dynamik im Phasenraum, insbesondere über die Nullklinen und Fixpunkte. 
+Es eignet sich hervorragend zur Simulation, Theoriebildung und Lehre – und bildet eine solide mathematische Brücke zwischen Biologie und dynamischer Systemtheorie.
 
+
+\section{Verhalten bei Anregung}
+\subsection{Formelparameter}
+In den vorigen Kapiteln wurde die Parameter der Nullklinien des Fitzhugh-Nagume Modells folgendermassen definiert.
+\(a = -0.7, b = 0.8, \epsilon = 0.8, I_ext = 0\), somit werden aus den allgemeinen Nullklinien, \( w = v - \frac{v^3}{3} + I_ext\)
+und \(w = \frac{v + a}{b}\) die spezifischen Nullklinien \( w = v - \frac{v^3}{3}\)
+und \(w = \frac{v + 0.7}{0.8}\).
+Der stationäre Punkt, welcher von Objekten im Vektorfeld angestrebt werden befindet sich bei \((1.2 |-0.6)\).
+Der Parameter I ist als 0 definiert, dies bedeutet es findet keine Anregung statt.
+In Abbildung \ref{fig:Parameter} sind das Vektrofeld und die Nullklinien erkennbar, wenn das Modell nicht angeregt wird.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{papers/nerven/Bilder/Anregung1.png}
+    \caption{Parameter}
+    \label{fig:Parameter}
+\end{figure}
+\subsection{Schwache Anregung}
+Wenn das Nullklinienmodell angeregt werden soll, muss der Parameter I verändert werden.
+Beispielweise kann I = 0.1 Volt definiert werden.
+Dadurch wird die v-Nullklinie um 0.1 in positive w-Richtung verschoben.
+Somit verändern sich die Nullklinien zu \( w = v - \frac{v^3}{3} + 0.1\)
+und \(w = \frac{v + 0.7}{0.8}\) und der stationäre Punkt wandert zu \((1.1 |-0.5)\).
+Der ursprüngliche stationäre Punkt ist jetzt nicht mehr stabil und wird vom Vektorfeld in den neuen stationären Punkt
+gezwungen.
+Dies geschieht entlang des Vektorfelds, was bei dieser schwachen Anregung nur eine kurze Trajektorie ergibt.
+In Abbildung \ref{fig:schwacheAnregung} lässt sich die Trajektorie zwischen den stationären Punkten erkennen, sowie
+deren Auslenkung in v-Richtung.
+Da die Anregung von I = 0.1 sehr schwach ist, fällt auch die Auslenkung der Trajektorie in v-Richtung mit 0.2 klein aus und
+nimmt sofort wieder ab. 
+Dieser Effekt tritt auf, wenn die Nervenzelle mit einer Spannung unterhalb der Schwellenspannung angeregt wird.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{papers/nerven/Bilder/schwacheAnregung.png}
+    \caption{Schwache Anregung}
+    \label{fig:schwacheAnregung}
+\end{figure}
+\subsection{Starke Anregung}
+Um den Effekt, der bei einer Nervenzelle bei Anregung über der Schwellenspannung auftritt, beobachten zu können, muss
+der Parameter I erhöht werden.
+Beispielweise wird hier I = 0.3 Volt definiert.
+Dadurch wird die v-Nullklinie um 0.3 in positive w-Richtung verschoben.
+Somit verändern sich die Nullklinien zu \( w = v - \frac{v^3}{3} + 0.3\)
+und \(w = \frac{v + 0.7}{0.8}\) und der stationäre Punkt wandert zu \((1 |-0.3)\).
+Der ursprüngliche stationäre Punkt ist wird wieder instabil und vom Vektorfeld in den neuen stationären Punkt
+gezwungen.
+Dies geschieht entlang des Vektorfelds, was bei dieser stärkeren Anregung eine lange Trajektorie ergibt.
+In Abbildung \ref{fig:starkeAnregung} lässt sich die Trajektorie zwischen den stationären Punkten erkennen, sowie
+deren Auslenkung in v-Richtung.
+Durch das Vektorfeld muss der ursprüngliche stationäre Punkt, bei einer Anregung von I = 0.3 eine grosse Kurve
+beschreiben um den neuen stationären Punkt zu erreichen.
+Die Auslenkung in v-Richtung ist dadurch mit -3 auch viel grösser und es lässt sich ein impulsartiger Verlauf erkennen.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{papers/nerven/Bilder/starkeAnregung.png}
+    \caption{Starke Anregung}
+    \label{fig:starkeAnregung}
+\end{figure}
+
+\subsection{Vergleich mit Aktionspotential}
+Den Verlauf der Auslenkung der Trajektorie in v-Richtung bei einer starken Anregung des Fitzhugh-Nagumo-Modells, lässt
+sich mit dem Verlauf des Aktionspotentials der Nervenzelle vergleichen. 
+In Abbildung \ref{fig:Vergleich} sind links die Auslenkung in v-Richtung und rechts der Verlauf des Aktionspotentials
+erkennbar.
+Der Verlauf der Auslenkung in v-Richtung ist an der v-Achse gespiegelt um die Abbildungen besser vergleichen zu können.
+In der Abbildung lassen sich die einzelnen Phasen, Depolarisation, Repolarisation und Hyperpolarisation erkennen, die
+sowohl im Verlauf der Auslenkung in v-Richtung und im Verlauf des Aktionspotentials auftreten.
+Somit kann mit dem Nullklinienmodell des Fitzhugh-Nagumo-Modells der Verlauf des Aktionspotentials einer Nervenzelle
+dargestelt werden.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{papers/nerven/Bilder/Vergleich.png}
+    \caption{Vergleich v-Auslenkung Aktionspotential}
+    \label{fig:Vergleich}
+\end{figure}
 %HAllo
 %Ein paar Hinweise für die korrekte Formatierung des Textes
 %
