@@ -6,20 +6,268 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Gebietsunterteilung\label{parallelisierung:sec:Gebietsunterteilung}}
-\kopfrechts{Gebietsunterteilung}
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua \cite{parallelisierung:bibtex}.
-At vero eos et accusam et justo duo dolores et ea rebum.
-Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-dolor sit amet.
+\section{Gebietsunterteilung}
+\label{parallelisierung:sec:dd}
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua.
-At vero eos et accusam et justo duo dolores et ea rebum.  Stet clita
-kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-amet.
+\subsection{Motivation}
+
+Wie im Kapitel der numerischen Methoden gezeigt, führt eine Verfeinerung der Raum- und Zeitauflösung zwar zu genaueren Ergebnissen der Simulation, jedoch auch zu einem erheblich höheren Rechenaufwand. 
+Mit zunehmender Raumgitter-Feinheit steigt die Anzahl der Unbekannten quadratisch (in 2D) bzw. kubisch (in 3D).  
+Um diese steigende Komplexität effizient bewältigen zu können, bietet sich die Methode der \emph{Gebietsunterteilung} an.
+
+Feldgleichungen wie die Wärmeleitungsgleichung haben wie bereits diskutiert eine lokale Struktur: 
+der Wert in einem Gitterpunkt hängt nur von den direkten Nachbarn (räumlich und zeitlich) ab.  
+Diese Eigenschaft ermöglicht es, ein großes Problem in mehrere kleinere Teilprobleme zu zerlegen, sie separat zu berechnen und anschließend wieder konsistent zusammenzufügen.
+
+
+
+\subsection{Mathematische Zerlegung}
+
+Sei $\Omega \subset \mathbb{R}^2$ das gesamte Gebiet, diskretisiert durch ein kartesisches Gitter.  
+Wir zerlegen $\Omega$ in $P$ disjunkte Teilgebiete $\Omega_p$:
+\begin{equation}
+	\Omega = \bigcup_{p=1}^P \Omega_p,
+	\qquad 
+	\Omega_p \cap \Omega_q = \emptyset \quad \text{für } p \neq q.
+\end{equation}
+
+Das bedeutet:
+\begin{itemize}
+	\item Das Gesamtgebiet setzt sich vollständig aus den Teilgebieten zusammen.
+	\item Jedes Gitterelement gehört genau zu einem Teilgebiet.
+	\item Die Teilgebiete überlappen sich nicht, können sich aber an den Rändern berühren.
+\end{itemize}
+
+Anschaulich entspricht dies einem Puzzle: 
+jedes Teilgebiet ist ein Puzzlestück, das nahtlos mit den Nachbarstücken zusammenpassen muss.
+
+\subsection{Beispiel: 2D-Wärmeleitungsgleichung}
+
+Betrachten wir erneut die zweidimensionale Wärmeleitungsgleichung
+\begin{equation}
+	\frac{\partial T}{\partial t} = 
+	\alpha \left(
+	\frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2}
+	\right).
+\end{equation}
+
+Mit der Finite-Differenzen-Methode (FDM) ergibt sich wie in Kapitel \ref{parallelisierung:sec:numerische-methoden} gezeigt für ein quadratisches Gitter mit $\Delta x=\Delta y=\Delta l$ und $\lambda=\alpha\,\Delta t/(\Delta l)^2$ die explizite Update-Formel:
+\begin{equation}
+	T_{i,j}^{n+1}
+	=
+	T_{i,j}^{n}
+	+
+	\lambda \left(
+	T_{i+1,j}^{n}+T_{i-1,j}^{n}+T_{i,j+1}^{n}+T_{i,j-1}^{n}-4\,T_{i,j}^{n}
+	\right).
+	\label{eq:update-dd}
+\end{equation}
+
+Für innere Punkte eines Teilgebiets $\Omega_p$ kann \eqref{eq:update-dd} direkt berechnet werden.  
+An den Schnittkanten hingegen werden Werte aus benachbarten Teilgebieten benötigt.
+
+\subsection{Kopplungsbedingungen an der Schnittkante}
+
+Damit die Zerlegung konsistent bleibt, müssen an den Schnittstellen (also an den Rändern) zwischen Teilgebieten bestimmte Kopplungsbedingungen erfüllt sein:
+
+\subsubsection*{Kontinuität der Lösung}
+Die Temperatur muss an der Schnittkante stetig sein:
+\begin{equation}
+	T_{\Omega_p}(x,y,t) = T_{\Omega_q}(x,y,t)
+	\qquad \forall (x,y) \in \partial \Omega_p \cap \partial \Omega_q.
+\end{equation}
+
+\subsubsection*{Kontinuität des Flusses}
+Auch der Wärmefluss muss stetig sein.  
+Nach Fourier gilt:
+\begin{equation}
+	- \kappa \, \nabla T_{\Omega_p} \cdot n
+	=
+	- \kappa \, \nabla T_{\Omega_q} \cdot n
+	\qquad \forall (x,y) \in \partial \Omega_p \cap \partial \Omega_q.
+\end{equation}
+Physikalisch heißt das: Es darf keine künstliche Wärmequelle oder -senke an der Schnittkante entstehen.
+
+\subsection{Diskrete Umsetzung mit Ghost-Zellen}
+
+In der FDM-Diskretisierung wird dies durch \emph{Ghost-Zellen} realisiert:
+\begin{itemize}
+	\item Jedes Teilgebiet speichert an seinen Rändern eine zusätzliche Schicht von Gitterpunkten.
+	\item Diese Ghost-Zellen enthalten die Werte aus den benachbarten Teilgebieten.
+	\item Nach jedem Zeitschritt werden die Ghost-Zellen synchronisiert.
+\end{itemize}
+
+Dadurch kann jedes Teilgebiet seine Update-Formel lokal anwenden, ohne direkten Zugriff auf fremde Datenstrukturen zu benötigen.
+
+\subsection{Praktische Aspekte}
+
+\subsubsection {Lastverteilung und Kommunikation.}
+Die Kosten pro Zeitschritt sind proportional zur Anzahl der Gitterpunkte im Teilgebiet 
+($\mathcal{O}(|\Omega_p|)$).  
+Die Kommunikationskosten entstehen durch den Austausch von Ghost-Zellen und hängen von der Länge der Schnittkante ab.  
+Für eine effiziente Parallelisierung ist es daher vorteilhaft, Subdomains mit möglichst kleinem 
+Umfang/Flächen-Verhältnis zu wählen.  
+In 2D bedeutet dies, dass quadratische Teilgebiete günstiger sind als lange, schmale Streifen; 
+im 3D-Fall spricht man analog vom Oberflächen/Volumen-Verhältnis.  
+
+\subsubsection {Stabilität.}
+Die Stabilitätskriterien der expliziten Finite-Differenzen-Methode gelten auch bei der Gebietsunterteilung unverändert.  
+Insbesondere muss in 2D für ein quadratisches Gitter stets
+\[
+\lambda = \frac{\alpha \Delta t}{(\Delta l)^2} \leq \tfrac{1}{4}
+\]
+gelten.  
+Diese Bedingung ist lokal in jedem Teilgebiet genauso einzuhalten wie global.  
+
+
+
+\subsubsection{Stationärer Grenzfall und Matrixformulierung}
+
+Für $n \to \infty$ strebt das explizite Zeitschrittverfahren \eqref{eq:update-dd} gegen ein stationäres Temperaturfeld. 
+Dann verschwindet die zeitliche Ableitung, und die Wärmeleitungsgleichung reduziert sich im allgemeinen auf die Laplace-Gleichung
+
+
+\begin{equation}
+	\nabla^2 T
+	= 
+	0.
+\end{equation}
+
+Dieser speziealfall läst sich besonders einfach zu 
+\begin{equation}
+	\mathbf{A} \vec{u}
+	=
+	\vec{b}
+\end{equation}
+numerisch approximieren.
+Um dies nachzuvollziehen betrachten wir ein kleines Beispiel.
+
+\subsubsection*{Beispiel: $4\times 4$-Gitter mit Dirichlet-Randbedingungen}
+
+Wir betrachten ein quadratisches Gitter mit $4\times 4$ Punkten.  
+Die äußeren Werte (Rand) seien fest vorgegeben (z.\,B. $T=0$), sodass nur die \emph{inneren} Punkte Unbekannte sind.  
+Das Gitter sieht dann schematisch so aus:
+
+\[
+\begin{array}{cccc}
+	R & R & R & R \\
+	R & I & I & R \\
+	R & I & I & R \\
+	R & R & R & R \\
+\end{array}
+\]
+
+- $R =$ Randpunkt (bekannt)  
+- $I =$ innerer Punkt (unbekannt)
+
+Somit gibt es $2\times 2 = 4$ innere Unbekannte: 
+\[
+T_{2,2}, \quad T_{2,3}, \quad T_{3,2}, \quad T_{3,3}.
+\]
+
+
+Für einen inneren Punkt $(i,j)$ lautet die Diskretisierung:
+\[
+-4T_{i,j} + T_{i+1,j} + T_{i-1,j} + T_{i,j+1} + T_{i,j-1} = 0.
+\]
+
+Damit ergeben sich im Beispiel die folgenden Gleichungen:
+
+\begin{align*}
+	-4T_{2,2} + T_{3,2} + T_{2,3} &= 0, \\
+	-4T_{2,3} + T_{3,3} + T_{2,2} &= 0, \\
+	-4T_{3,2} + T_{2,2} + T_{3,3} &= 0, \\
+	-4T_{3,3} + T_{2,3} + T_{3,2} &= 0.
+\end{align*}
+
+\subsubsection*{Matrixformulierung}
+
+Wir ordnen die Unbekannten in einem Vektor
+\[
+\mathbf{u} =
+\begin{bmatrix}
+	T_{2,2} \\ T_{2,3} \\ T_{3,2} \\ T_{3,3}
+\end{bmatrix}.
+\]
+
+Dann können die obigen Gleichungen in Matrixform geschrieben werden als:
+\[
+\underbrace{\begin{bmatrix}
+		-4 &  1 &  1 &  0 \\
+		1 & -4 &  0 &  1 \\
+		1 &  0 & -4 &  1 \\
+		0 &  1 &  1 & -4
+\end{bmatrix}}_{A}
+\begin{bmatrix}
+	T_{2,2} \\ T_{2,3} \\ T_{3,2} \\ T_{3,3}
+\end{bmatrix}
+=
+\underbrace{\begin{bmatrix}
+		0 \\ 0 \\ 0 \\ 0
+\end{bmatrix}}_{\mathbf{b}}.
+\]
+
+\subsubsection*{Interpretation}
+\begin{itemize}
+	\item Die Matrix $A$ enthält die typische Struktur der \emph{5-Punkt-Stern-Approximation}: 
+	\item Auf der Diagonalen '$-4$' für den jeweiligen Punkt,
+	\item '$-1$' an den Positionen der direkten Nachbarn.  
+	\item Der rechte Seitenvektor $\vec{b}$ enthält die Beiträge der Randwerte.  
+	In diesem Beispiel mit $T=0$ am Rand ist $\vec{b}=\vec{0}$.  
+	Wären die Randwerte ungleich null, würden sie hier erscheinen. 
+\end{itemize}
+Damit sehen wir, wie aus der Laplace-Gleichung in diskreter Form ein lineares Gleichungssystem
+\[
+\mathbf{A} \vec{u}
+=
+\vec{b}
+\]
+entsteht.
+
+\subsubsection*{Lösung des stationären Systems}
+
+Im Beispiel oben gilt am gesamten Rand $T=0$, daher ist die rechte Seite $\vec{b}=\vec{0}$.
+Das stationäre Gleichungssystem
+\[
+\mathbf{A}\,\vec{u}=\vec{b}
+\]
+hat wegen der streng diagonaldominanten, symmetrisch positiv definiten Matrix $A$ die eindeutige Lösung
+\[
+\vec{u}=\vec{0},
+\]
+d.\,h. alle vier inneren Temperaturen sind im stationären Zustand gleich null:
+\[
+T_{2,2}=T_{2,3}=T_{3,2}=T_{3,3}=0.
+\]
+Physikalisch klar: der Rand hält das System bei $0^\circ$C; durch reine Diffusion kann sich im Gleichgewicht kein anderes Niveau im Inneren halten.
+
+
+\subsubsection{Bedeutung für Simulationen}
+
+Die obige Herleitung zeigt, dass der stationäre Grenzfall auf ein lineares Gleichungssystem
+\(
+A \mathbf{u} = \mathbf{b}
+\)
+führt.  
+
+\begin{itemize}
+	\item Im \emph{zeitabhängigen Fall} erfolgt die Berechnung schrittweise durch       das Update-Schema 
+	\eqref{eq:update-dd}. Die Kopplung der Teilgebiete geschieht dabei explizit durch den 
+	Austausch von Ghost-Zellen an den Schnittkanten.  
+	
+	\item Im \emph{stationären Fall} löst man direkt das Gleichungssystem. 
+	Durch die Gebietsunterteilung ergibt sich dabei eine Blockstruktur: 
+	die innere Dynamik jedes Teilgebiets kann lokal berechnet werden, 
+	während die globale Kopplung nur über die Werte an den Interfaces berücksichtigt werden muss.  
+	Effiziente Verfahren (z.\,B. Schur-Komplement oder iterative Domänendecomposition-Methoden) 
+	nutzen diese Struktur gezielt aus, um den Kommunikationsaufwand zu reduzieren.
+\end{itemize}
+
+
+\medskip
+\noindent
+Damit zeigt sich: unabhängig davon, ob man eine zeitabhängige oder stationäre Simulation betrachtet, 
+bleibt die Grundidee gleich – die Wechselwirkung zwischen Teilgebieten beschränkt sich auf die Schnittkanten. 
+Diese Lokalität ist die Grundlage für effiziente Parallelisierung.
 
 
