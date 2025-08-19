@@ -225,7 +225,9 @@ Koordinatenlinien bedingten Änderungen der Komponenten $A^i$
 kompensiert werden müssen.
 
 \begin{definition}[paralleltransportiertes Vektorfeld]
-Ein Vektorfeld $A^i$ heisst paralleltransportiert entlang der Richtung
+\index{paralleles Vektorfeld}%
+\index{Vektorfeld!parallel}%
+Ein Vektorfeld $A^i$ heisst parallel entlang der Richtung
 $X$ mit Komponenten $\xi^k$, wenn die kovariante Ableitung
 \begin{equation*}
 \nabla_X A
@@ -1186,9 +1188,283 @@ Ausgerechnet sind die Christoffel-Symbole
 \Gamma^2_{22}
 &=
 0.
+\qedhere
 \end{aligned}
 \]
 \end{beispiel}
+
+%
+% Axiomatische Konstruktion der kovarianten Ableitung
+%
+\subsection{Axiomatische Konstruktion der kovarianten Ableitung}
+In der bisherigen Entwicklung wurde die kovariante Ableitung vor allem
+aus der Darstellung~\eqref{buch:zusammenhang:paralleltransport:eqn:kovabl}
+durch Berechnung der Christoffel-Symbole und das Studium ihrer
+Eigenschaften entwickelt.
+Damit lassen sich weitere Abstraktionen vermeiden.
+Es ist aber auch möglich, die kovariante Ableitung als ein Operator
+mit geeigneten Eigenschaften axiomatisch zu beschreiben und dann zu
+zeigen, dass es genau einen solchen Operator gibt.
+Dies verlangt etwas abstraktere Konstruktionen, ermöglicht aber
+die Verallgmeinerung auf beliebige Tensorfelder.
+Diese Vorgehensweise soll in diesem Abschnitt durchgeführt werden.
+
+\subsubsection{Vektorbündel}
+Das Tangentialbündel $TM$ einer differenzierbaren Mannigfaltigkeit
+bestand für jeden Punkt $p\in M$ aus einem Vektorraum $T_pM$, dessen
+Elemente wir mit Differentialoperatoren identifiziert haben, die
+auf Funktionen auf der Mannigfaltigkeit wirken.
+Diese letzte Eigenschaft ist nur für Tangentialvektoren sinnvoll.
+Um zum Beispiel ein Kraftfeld auf einer Mannigfaltigkeit zu beschreiben,
+möchten wir ebenfalls jedem Punkt der Mannigfaltigkeit Vektoren
+zuordnen können, aber diese Vektoren haben nichts mit den Funktionen
+auf der Mannigfaltigkeit zu tun.
+Wir müssen also das Konzept des Tangentialbündels noch etwas
+erweitern, so dass in jedem Punkt Vektoren aus einem beliebigen
+Vektorraum ausgewählt werden können.
+
+Auch aus rein mathematischer Motivation ist es nötig, die Idee des
+Tangentialbündels zu erweitern.
+Zum Beispiel bilden die $k$-Formen in einem Punkt einen
+$\binom{n}{k}$-dimensionalen, reellen Vektorraum.
+Eine Verallgemeinerung des Konzepts des Tangentialbündels ist also
+bereits aufgetreten, wir haben es nur nicht abstrakt definiert.
+Dies soll jetzt nachgeholt werden.
+
+Das Tangentialbündel ist nicht einfach nur eine Menge von Vektoren.
+In jedem Punkt $p\in M$ gibt es den Vektorraum $T_pM$ der Tangentialvektoren.
+Es gibt aber auch ein Konzept der Stetigkeit für Tangentialvektorfelder.
+Ein solches ist eine Funktion $X\colon M\mapsto TM$ derart, dass 
+$X(p)\in T_pM$ ist.
+Ausserdem sollen Vektoren $X(p)$ und $X(q)$ in zwei Punkten $p,q\in M$,
+die nahe beeinander liegen, ebenfalls nahe beeinander sein.
+Weiter möchten wir mit Koordinaten arbeiten können, so wie das für $M$
+selbst auch möglich ist.
+Schliesslich möchten wir die Vektorraumstruktur in verschiedenen
+Punkten miteinander vergleichen können.
+Für das Tangentialbündel ist jeder Tangentialraum $T_pM$ ein
+$n$-dimensionaler reeller Vektorraum, also $T_pM \equiv \mathbb{R}^n$.
+Alle diese Forderungen führen auf die folgende Definition.
+
+\begin{definition}[Vektorraumbündel]
+Sei $M$ eine differenzierbare Mannigfaltigkeit und $V$ ein reeller
+Vektorraum.
+Ein \emph{differenzierbares Vektorraumbündel} über $M$ mit Faser $V$
+ist eine differenzierbare Mannigfaltigkeit $E$ mit einer Abbildung
+$\pi\colon E\to M$ mit folgenden Eigenschaften.
+Jeder Punkt $p\in M$ hat eine offene Umgebung $U\subset M$ mit einem
+Diffeomorphismus
+\[
+\varphi\colon \pi^{-1}(U) \to U \times V
+\]
+derart, dass $\operatorname{pr}_1\circ\varphi =\pi$, d.~h.
+$\varphi(e)$ kann in der Form $\varphi(e) = (\pi(e), v)$ mit $v\in V$
+geschrieben werden.
+Eine solche Abbildung $\varphi$ heisst eine \emph{Bündelkarte}.
+Für zwei Bündelkarten $\varphi_\alpha$ und $\varphi_\beta$ mit
+Kartengebieten $U_\alpha$ und $U_\beta$ ist die Kartenwechselabbildung
+\[
+\varphi_\beta
+\circ
+\varphi_\alpha^{-1}
+\colon
+U_\alpha\cap U_\beta \times V
+\to
+U_\alpha\cap U_\beta \times V
+\]
+$E$ heisst \emph{Totalraum} des Bündels, $M$ heisst die \emph{Basis}
+und $\pi$ ist die \emph{Bündelprojektion}.
+Die Punkte von $E$, die auf den Punkt $p\in M$ abgebildet werden,
+heisst die \emph{Faser} $E_p=\pi^{-1}(p)\subset E$ über dem Punkt $p$.
+\end{definition}
+
+\begin{beispiel}
+Zu jeder Mannigfaltigkeit $M$ und jedem endlichdimensionalen
+reellen Vektorraum $V$ gibt es das Bündel $M\times V$ mit
+der Bündelprojektion
+\[
+\operatorname{pr}_1
+\colon
+M\times V \to M
+:
+(p,v) \mapsto p.
+\]
+Dieses Vektorraumbündel über $M$ heisst das \emph{triviale Bündel}
+mit Faser $V$.
+\end{beispiel}
+
+\begin{beispiel}
+\label{buch:zusammenhang:kovabl:beispiel:0d}
+Die identische Abbildung $M\to M:p\mapsto p$ ist ein Vektorraumbündel
+mit dem 0-dimensionalen Vektorraum $\{0\}$ als Faser.
+\end{beispiel}
+
+Wenn man Mannigfaltigkeiten miteinander vergleichen will, konstruiert
+man Abbildungen zwischen diesen Mannigfaltigkeiten.
+Da Vektorraumbündel aus zwei Mannigfaltigkeiten bestehen, die durch
+die Bündelprojektion $\pi$ miteinander verbunden sind, müssen
+Bündelabbildungen aus Abbildungen der Totalräume und der
+Basismannigfaltigkeiten zusammengesetzt sein.
+Ausserdem muss innerhalb der Fasern die Vektorraumstruktur zum
+Ausdruck kommen.
+Die folgende Definition erreicht dies.
+
+\begin{definition}[Bündelabbildung]
+Seien $\pi\colon E \to M$ und $\psi\colon F\to N$ zwei Vektorraumbündel
+mit Fasern $V$ und $W$.
+Eine \emph{Bündelabbildung} ist eine Abbildung $f\colon E\to F$ und
+eine Abbildung $g\colon M\to N$ derart, dass
+dass es eine Abbildung $g\colon M\to N$ gibt, derart dass 
+$g\circ\pi=\psi\circ f$.
+Ausserdem ist für jeden Punkt $p\in M$ die Einschränkung von $f$ auf
+$\pi^{-1}(p)$ eine lineare Abbildung
+\[
+f_{|\pi^{-1}(p)}
+\colon
+\pi^{-1}(p)
+\to
+\pi^{-1}(g(p)).
+\]
+Sie heisst die \emph{Faserabbildung}.
+\end{definition}
+
+\begin{beispiel}
+Beispiel~\ref{buch:zusammenhang:kovabl:beispiel:0d} hat gezeigt, dass
+man die Mannigfaltigkeit $M$ als ein Vektorraumbündel mit Faser $\{0\}$
+betrachten kann.
+Die Definition einer Bündelabbildung $M\to E$ besagt dann, dass 
+$f$ jedem Punkt $p$ genau ein Vektor in der Faser $E_p$ zuordnet.
+\end{beispiel}
+
+\begin{definition}
+Sei $\pi\colon E\to M$ ein Vektorraumbündel.
+Eine Bündelabbildung $f\colon M\to E$ hat die Eigenschaft
+$\pi\circ f=\operatorname{id}_M$ und heisst ein \emph{Schnitt}
+des Bündels.
+Die Menge der Schnitte eines Vektorraumbündels wird mit $\Gamma(E)$
+bezeichnet.
+\end{definition}
+
+In einer Bündelkarte $\varphi_\alpha:\pi^{-1}(U_\alpha) \to U_\alpha\times V$
+ist ein Schnitt der Graph einer Funktion $U_\alpha\to V$.
+
+\begin{beispiel}
+Sei $\pi\colon E\to M$ ein Vektorraumbündel und 
+\end{beispiel}
+
+\subsubsection{Zusammenhang}
+Der Begriff des Zusammenhangs soll die Eigenschaften einer Ableitung 
+eines Vektors entlang einer Kurve in einer Mannigfaltigkeit beschreiben.
+Wir brauchen daher ein Vektorraumbündel $\pi\colon E\to M$, welches
+die Vektoren enthält, die abgeleitet werden sollen.
+Ein differenzierbarer Schnitt von $E$ ist eine vektorwertige
+Funktion, die Werte in der jeweils ``richtigen'' Faser annimmt.
+Es müssen also Schnitte abgeleitet werden.
+Die Richtung der Ableitung wird durch ein Feld von Tangentialvektoren
+an die Mannigfaltigkeit gegeben.
+
+\begin{definition}
+Ein \emph{Zusammenhang} ist eine Abbildung
+\index{Zusammenhang}%
+\[
+\nabla 
+\colon
+\Gamma(TM)\times \Gamma(E) \to \Gamma(E)
+:
+(X,Y) \mapsto \nabla_X Y
+\]
+mit folgenden Eigenschaften:
+\begin{enumerate}
+\item $\nabla_X Y$ ist $C^\infty(M)$-linear in $X$, d.~h. für 
+$f_1,f_2\in C^{\infty}(M)$, $X_1,X_2\in \Gamma(TM)$ und $Y\in\Gamma(E)$ gilt
+\[
+\nabla_{f_1X_1+f_2X_2}Y
+=
+f_1\nabla_{X_1}Y + f_2\nabla_{X_2}F.
+\]
+\item $\nabla_X Y$ ist linear in $Y$, d.~h. für $a_1,a_2\in\mathbb{R}$
+und $Y_1,Y_2\in \Gamma(E)$ gilt
+\[
+\nabla_X(a_1Y_1+a_2Y_2)
+=
+a_1\nabla_XY_1
++
+a_2\nabla_XY_2
+\]
+für jedes $X\in\Gamma(TM)$.
+\item
+$\nabla$ erfüllt die Produktregel: für $f\in C^\infty(M)$ gilt
+\index{Produktregel für Zusammenhang}%
+\[
+\nabla_X (fY)
+=
+(X\cdot f)Y + f\nabla_X Y
+\]
+für $X\in\Gamma(TM)$ und $Y\in\Gamma(E)$.
+\end{enumerate}
+\end{definition}
+
+Die Produktregel-Bedingung hat die interessante Konsequenz, dass der
+Wert von $\nabla_XY$ in einem Punkt $p\in M$ nur vom Vektor $X(p)$ und
+von den Werten von $Y$ in einer beliebig kleinen Umgebung des Punktes
+$p$ in $M$ abhängt.
+Wir beweisen dies nicht vollständig, sondern überlegen uns nur die
+folgende Eigenschaft, mit deren Hilfe ein volständiger Beweis geführt
+werden kann \cite[Proposition 4.5]{buch:leerm}.
+
+\begin{lemma}
+Sei $\nabla$ ein Zusammenhang im Vektorraumbündel $\pi\colon E\to M$,
+$X\in \Gamma(TM)$, $Y\in \Gamma(E)$ und $p\in M$.
+Dann hängt die kovariante Ableitung $\nabla_XY$ im Punkt $p$ nur von
+den Werten von $X$ und $Y$ in einer beliebig kleinen Umgebung von $p$
+ab.
+Genauer: wenn $X=\tilde{X}$ und $Y=\tilde{Y}$ in einer Umgebung von
+$p$ ist, dann ist $\nabla_{\tilde{X}}\tilde{Y} = \nabla_XY$ im Punkt $p$.
+\end{lemma}
+
+\begin{proof}
+Wir müssen zeigen, dass $\nabla_X(Y-\tilde{Y})=0$ ist im Punkt $p$.
+Die Differenz $Y-\tilde{Y}$ ist $=0$ in einer Umgebung von $p$.
+Es genügt also zu zeigen, dass $\nabla_XY=0$ im Punkt $p$, wenn $Y=0$
+ist in einer Umgebung $U$ des Punktes $p$.
+Sei $\varphi\in C^\infty(M)$ derart, dass $\varphi(p)=1$ und 
+$\varphi$ ist verschieden von $0$ nur innerhalb von $U$.
+Dann ist das Produkt $\varphi Y=0$, innerhalb von $U$ weil $Y$ verschwindet
+und ausserhalb von $U$ weil dort $\varphi$ verschwindet.
+Wendet man $\nabla_X$ darauf an, folgt aus den Rechenregeln:
+\[
+0
+=
+\nabla X(\varphi Y)
+=
+(X\cdot \varphi)Y
++
+\varphi\nabla_X Y
+\qquad\Rightarrow\qquad
+\varphi\nabla_X Y
+=
+-(X\cdot\varphi)Y.
+\]
+An der Stelle $p$ wird die linke Seite zu $\nabla_XY$ und die rechte
+Seite verschwindet.
+Es folgt, dass $\nabla_XY=0$ ist im Punkt $p$.
+
+Ähnlich müssen wir jetzt auch noch zeigen, dass $\nabla_XY=0$ ist,
+wenn $X=0$ ist in einer Umgebung von $p$.
+Für eine Funktion $\varphi\in C^\infty(M)$ wie im ersten Teil des Beweises
+folgt diesmal
+\[
+0
+=
+\nabla_{\varphi X}Y
+=
+\varphi\nabla_XY.
+\]
+Im Punkt $p$ ist $\varphi(p)=1$ und damit folgt für die rechte Seite
+$\nabla_XY=0$.
+\end{proof}
+
+\subsubsection{Kovariante Ableitung von Tensorfeldern}
 
 %
 % Geodäten

@@ -7,77 +7,88 @@
 % !TEX encoding = UTF-8
 %
 
-\section{Fourierreihe\label{fourier:section:GrundlagenFourierAnalyse}}
-\kopfrechts{Fourierreihe}
+\section{Fourier-Reihe\label{fourier:section:GrundlagenFourierAnalyse}}
+\kopfrechts{Fourier-Reihe}
 
 
-Mit der Fourier-Reihe lassen sich periodisch wiederholende Funktionen, wie ein Rechteck- oder Dreiecksignal, mit skalierten Sinus- und Kosinus-Schwingungen darstellen.
-Um die Reihe aufzustellen, braucht man nur 3 Koeffizienten zu bestimmen. 
+Mit einer Fourier-Reihe lassen sich periodische Funktionen, wie eines Rechteck- oder Dreieckssignals, mit skalierten Sinus- und Kosinusschwingungen darstellen.  
+Dabei bezeichnet $T$ die Periodendauer und $\omega$ die Kreisfrequenz, wobei gilt $\omega = \frac{2\pi}{T}$.
+Zur Aufstellung der Fourier-Reihe müssen lediglich drei Arten von Koeffizienten bestimmt werden. 
+Der Summations- bzw. Frequenzindex wird mit $n$ bezeichnet, über den im Folgenden summiert wird.
+
+
+
 
 \begin{itemize}
-	\item $a_0$ ist der Mittelwert, der Funktion. 
-	Dieser entspricht dem Integral über eine Periode und schliesslich geteilt durch die Periode. 
 	
+	\item $\frac{a_0}{2}$ ist der Mittelwert der Funktion und lässt sich berechnen als
 	\begin{equation}
-		a_0 = \frac{1}{T} \int_{t_0}^{t_0 + T} f(t) \, dx
+		a_0 = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t) \, dt,
 	\end{equation}
+	wobei die Multiplikation mit 2 reine Konvention ist.
 	
-	\item $a_n$ beschreibt den geraden Anteil der Funktion.
-	
+	\item $a_n$ ist definieren mit 
 	\begin{equation}
-		a_n = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t) \cos\left(\frac{2\pi n t}{T}\right) dt
+		a_n = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t) \cos\left(n\omega t\right) dt.
 	\end{equation}
+	Die $a_n$ skalieren den geraden Anteil der Funktion, also die Cosinusanteile. 
+	Eine gerade Funktion ist definiert durch die Eigenschaft $f_1(-t) = f_1(t)$. 
 	
-	\item $b_n$ beschreibt den ungeraden Anteil der Funktion.
 	
+	\item $b_n$ ist definieren mit 
 	\begin{equation}
-		b_n = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t) \sin\left(\frac{2\pi n t}{T}\right) dt
+		b_n = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t) \sin\left(n\omega t\right) dt
 	\end{equation}
+	Die $b_n$ skalieren den ungeraden Anteil der Funktion, also die Sinusanteile. 
+	Eine ungerade Funktion ist definiert durch die Eigenschaft $f_1(-t) = -f_1(t)$. 
 	
 \end{itemize}
 
-Mit allen Koeffizienten bestimmt und genügend Zeit um unendlich Summen zu berechnen lassen sich fast alle Funktionen nachahmen.
-Bei Funktionen mit Sprungstellen tritt das Gibbsche Phänomen auf.
-Dies erklärt einen Überschwinger nach einem Sprung. Auch wenn man die unendliche Summe bildet, wird dieser Überschwinger nicht verschwinden.
-Das $=$ Zeichen stimmt also nur bedingt.
-Anhand der Abbildung \dots sieht man sehr schön, wie die Rechteckfunktion mit Schwingungen nachgeahmt wird. % todo: insert reference instead of \dots
 
-\[
-f(t) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left( a_n \cos\left( \frac{2\pi n}{T} x \right) + b_n \sin\left( \frac{2\pi n}{T} x \right) \right)
-\]
+Sind alle Koeffizienten bestimmt, lässt sich nahezu jede periodische Funktion beliebig genau approximieren.
+Die Koeffizienten $a_n$ und $b_n$ gewichten die Sinusanteile und Cosinusanteile der Schwingung für $n \ge 1$.
+Je nach Ausgangsfunktion können die Abhängigkeiten der Koeffizienten von $n$ komplexe Formen annehmen.
+Im Allgemeinen nehmen die Amplituden mit wachsendem $n$ ab und das Abklingverhalten hängt von der Funktion ab und lässt sich nicht verallgemeinern.
+Mit jedem Summanden der Reihe erhöht sich die Frequenz des Terms proportional zum Index $n$.
+Die Fourier-Reihe lautet dann 
 
-\begin{tikzpicture}
-	\begin{axis}[
-		axis lines = middle,
-		xlabel = {$t$},
-		ylabel = {$f(t)$},		
-		domain=0:6,
-		samples=1000,
-		xtick={0,1,2,3,4,5,6},
-		ytick={0,1},
-		enlargelimits,
-		width=\textwidth
-		]
-		\addplot[thick] {mod(floor(x),2) == 0 ? 1 : 0};
-		\addplot[blue, thick] {(1/2) + 
-			(2/pi)*sin(pi * deg(x)) + 
-			(2/(3*pi))*sin(pi *3*deg(x)) +
-			(2/(5*pi))*sin(pi *5*deg(x))};
-	\end{axis}
-\end{tikzpicture}
-
-$a_0$ ist bei 
-
-%da es bei der Wellen Gleichung und schwingungen keine sprungstellen gibt, spielt das Gibbsche phenomen keine Rolle. 
-%Das muss noch geschrieben werden. 
-%bei der Quantenmechanik rechnet man stets komplex.
-%Theorie zur fourierreihe sollte man noch komplex machen.
-%Bei präsentation maybe noch mit sin und cos
+\begin{equation}\label{eq:fourier}
+f(t) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left( a_n \cos\left( n\omega t \right) + b_n \sin\left( n \omega t \right) \right).
+\end{equation}
 
 
-% Todo: löschen, wenn nicht mehr gebraucht
-%\subsection{Fouriertransformation\label{fourier:subsection:fouriertransformation}}
+\begin{beispiel}
 
-%\section{Von Fourier zu Feldern
-%\label{fourier:section:vonFourierZuFeldern}}
-%In diesem Kapitel wird die Verbindung von Fourierreihen/ Fouriertransformationen und Feldern aufgezeigt.
+Im Beispiel zur Dreiecksfunktion (Abbildung~\ref{fourier:fig:fourierdreieck}) entspricht  
+\begin{equation}
+	f_1(t) = \sum_{\substack{n=1 \\ n\ \text{ungerade}}}^{5} \frac{-8}{\pi^2 n^2} \cos(n\pi t)
+\end{equation}
+der roten Kurve und überdeckt das Original nahezu perfekt und das mit nur drei Summanden.  
+Da $f_1$ gerade ist, sind alle Sinuskoeffizienten $b_n=0$ und die Kosinuskoeffizienten bleiben nur für ungerade $n$ ungleich $0$.  
+Der Mittelwert ist $a_0=0$.  
+Bei der Fourier-Reihenbildung kann man sich viel Zeit ersparen, wenn man zuerst überprüft, ob es sich um eine gerade oder ungerade Funktion handelt.
+So kann man ohne zu rechnen $a_n$ oder $b_n$ gleich Null setzen.
+\input{papers/fourier/fig/fig-fourier_Dreieck.tex}
+\end{beispiel}
+
+Während sich die Dreiecksfunktion aufgrund ihrer Stetigkeit beliebig genau durch eine Fourier-Reihe darstellen lässt, zeigt sich bei Funktionen mit Sprungstellen ein anderes Verhalten. Ein solches Beispiel wird im Folgenden betrachtet.
+
+\begin{beispiel}
+
+In der Rechtecksfunktion (Abbildung~\ref{fourier:fig:fourierrechteck}) mit Sprungstelle tritt das gibbssche Phänomen auf.  
+In der Nähe eines Sprungs entsteht ein charakteristischer Überschwinger, der selbst bei unendlich vielen Summanden nicht verschwindet.
+Das Gleichheitszeichen in \eqref{eq:fourier} gilt daher nur eingeschränkt.  
+Die Fourier-Reihe bis $n=5$ lautet
+\begin{equation}
+	f_2(t) = \frac{1}{2} + \sum_{\substack{n=1 \\ n\ \text{ungerade}}}^{5} \frac{2}{\pi n} \sin\left( \pi n t \right)
+\end{equation}
+und entspricht der roten Kurve.  
+Da die Rechteckfunktion um den Mittelwert $\frac{a_0}{2}=\frac{1}{2}$ ungerade ist, sind alle Cosinuskoeffizienten $a_n=0$ und die Sinuskoeffizienten bleiben nur für ungerade $n$ ungleich $0$.  
+\input{papers/fourier/fig/fig-fourier_Rechteck.tex}
+\end{beispiel}
+
+
+
+
+
+
