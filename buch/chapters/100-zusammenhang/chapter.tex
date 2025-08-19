@@ -1464,7 +1464,270 @@ Im Punkt $p$ ist $\varphi(p)=1$ und damit folgt für die rechte Seite
 $\nabla_XY=0$.
 \end{proof}
 
+%
+% Tensorbündel
+%
+\subsubsection{Tensorbündel}
+Aus einem Vektorraumbündel $\pi\colon E\to M$ lässt sich ein neues
+Vektorraumbündel konstruieren, dessen Faser beliebige Tensorprodukte
+der Fasern des ursprünglichen Bündels sind.
+Dazu muss nur gezeigt werden, wie lokal im Bündel Tensorprodukte
+konstruiert werden sollen.
+Wir bezeichnen daher den Faserraum wieder mit $V$ und betrachten
+lokal das Bündel als triviales Bündel mit Hilfe einer Bündelkarte
+\[
+\varphi_\alpha
+\colon
+\pi^{-1}(U_\alpha)
+\to
+U_\alpha\times V 
+\]
+beschreiben können.
+
+Zur Beschreibung des Tensorproduktes verwenden wir die Darstellung
+mit Hilfe einer Basis.
+Sei also $v_1,\dots,v_m\in V$ eine Basis des Faservektorraums.
+Dann ist das $p$-fache Tensorprodukt von $V$ der Vektorraum aufgespannt
+von der Basis aus Tensoren der Form
+\[
+v_{i_1}\otimes \cdots\otimes v_{i_p}
+\]
+mit $i_1,\dots,i_p\in \{1,\dots,m\}$.
+Der Vektorraum des $p$-fachen Tensorproduktes ist also
+\[
+V^{p\otimes}
+=
+\underbrace{ V\otimes\cdots\otimes V }_{\displaystyle p}
+=
+\langle
+v_{i_1}\otimes\cdots\otimes v_{i_p}
+\mid
+1\le
+i_1,\dots,i_p 
+\le m
+\rangle.
+\]
+Durch Auswahl nur der antisymmetrischen Tensoren lässt sich auch
+der Vektorraum der $k$-Vektoren aufgespannt von den Vektoren
+\[
+v_{i_1}\wedge\cdots\wedge v_{i_p}
+\]
+mit $1\le i_1 < \dots < i_p\le m$.
+So entsteht der Vektorraum 
+\[
+V^{\wedge p}
+=
+\underbrace{V\wedge\dots\wedge V}_{\displaystyle p}
+=
+\langle
+v_{i_1}\wedge\cdots\wedge v_{i_p}
+\mid
+1\le i_1 < \dots < i_p\le m
+\rangle
+\]
+der $k$-Vektoren.
+
+Diese Konstruktion kann jetzt auch für ein Vektorraumbündel
+durchgeführt werden.
+Dazu wählt man wie vorhin eine Basis in $V$. 
+Die Abbildungen
+\[
+V_i
+\colon
+U_\alpha \to U_\alpha\times V
+:
+p\mapsto (p,v_i)
+\]
+sind $C^\infty(U_\alpha)$-linear unabhängige Schnitte des trivialen
+Bündels $U_\alpha\times F$.
+Zusammensetzung mit der Abbildung $\varphi_\alpha^{-1}$ macht aus den
+Schnitten $V_i$ $C^\infty(M)$-linear unabhängige Schnitte
+\[
+E_i
+\colon
+U_\alpha \to \pi^{-1}(U_\alpha)
+:
+p \mapsto \varphi_\alpha^{-1}(p,v_i).
+\]
+Das $p$-fache Tensorprodukt $E^{p\otimes}=E\otimes\dots\otimes E$ von $E$ 
+ist das Vektorraumbündel mit Faser $V^{p\otimes}$, welches lokal über der
+offenen Menge $U_\alpha\subset M$ durch die Schnitte 
+\[
+E_{i_1}\otimes \dots \otimes E_{i_p}
+\]
+mit
+$i_1,\dots,i_p\in\{1,\dots,m\}$
+aufgespannt wird.
+
+Nach dem gleichen Muster können auch Vektorraumbündel von
+antisymmetrischen $k$-Vektoren konstruiert werden.
+Ebenso ist es möglich, die verschiedenen Tensorpotenz oder
+äusseren Potenzen mit Hilfe der direkten Summe zu einer Algebra
+von Tensoren oder einer äusseren Algebra zusammenzubauen.
+
+Zum Vektorraum $V$ ist $V^*$ der duale Vektorraum der Linearformen
+auf $V$, also der linearen Abbildung von $V$ nach $\mathbb{R}$.
+Zu einer Basis $\{v_i\mid i=1,\dots,m\}$ von $V$ lässt sich dann
+die {\em duale Basis} aus den Linearformen $\beta_i$ konstruieren, die
+\index{duale Basis}%
+durch die Werte
+\[
+\langle \beta_i,v_k\rangle
+=
+\beta_i (v_k)
+=
+\delta_{ik}
+\]
+auf den Basisvektoren definiert ist.
+Damit lässt sich auch das Vektorraumbünden $E^*$ der Linearformen
+auf $E$ konstruieren.
+Wendet man die Konstruktion des Tensorprodukts oder des Wedge-Produkts
+auf das Bündel $E^*$ an, entsteht das Bündel der 
+$p$-Formen.
+
+Die Konstruktionen, die in früheren Kapiteln für Tangentialvektoren
+und Differentialformen aufgebaut wurden, sind also auf 
+Vektorraumbündel mit beliebigen Fasern verallgemeinerungsfähig.
+Die früheren Konstruktionen sind Spezialfälle für das Tangentialbündel
+$TM$.
+
+%
+% Kovariante Ableitung von Tensorfeldern
+%
 \subsubsection{Kovariante Ableitung von Tensorfeldern}
+Ein Zusammenhang auf einem Vektorraumbündel $\pi\colon E\to M$ lässt
+sich zu einem Zusammenhang auf dem Tensorbündel erweitern.
+Da ein Zusammenhang linear ist, muss nur definiert werden, wie
+der Zusammenhang auf Tensorprodukten von Vektoren wirkt.
+Dies führt auf den folgenden Satz.
+
+\begin{satz}
+Sei $\pi\colon E\to M$ eine Vektorraumbündel und 
+$\nabla \colon TM\times \Gamma(E)\to\Gamma(E)$
+ein Zusammenhang.
+Dann gibt es genau einen Zusammenhang
+$\nabla \colon TM \times \Gamma(E^{\otimes p})\to\Gamma(E^{\otimes p})$
+auf $E^{\otimes p}$, der
+\[
+\nabla_X(Y_1\otimes\dots\otimes Y_p)
+=
+(\nabla_XY_1) \otimes\dots\otimes Y_p
++
+\dots
++
+Y_1\otimes\dots\otimes (\nabla_XY_p)
+\]
+erfüllt.
+Es gibt genau einen Zusammenhang auf $E^{\wedge p}$, der
+\[
+\nabla_X(Y_1\wedge\dots\wedge Y_p)
+=
+(\nabla_XY_1)\wedge\dots\wedge Y_p
++
+\dots
++
+Y_1\wedge\dots\wedge(\nabla_XY_p)
+\]
+erfüllt.
+\end{satz}
+
+Auch auf dem dualen Vektorraumbündel $E^*$ lässt sich ein Zusammenhang
+definieren.
+Dazu beachte man, dass sich aus einer Linearform $\beta\in\Gamma(E^*)$
+und einem Vektorfeld $Y\in \Gamma(E)$ die Funktion
+$\langle\beta,Y\rangle$ definieren lässt.
+Für Funktionen stimmt die kovariante Ableitung mit der Wirkung des
+Vektors $X$ überein.
+Da die Abbildung $(\beta,Y)\to\langle\beta,Y\rangle$ bilinear ist,
+muss die Ableitung die Form einer Produktregel annehmen, also
+\[
+\nabla_X\langle \beta,Y\rangle
+=
+X\cdot \langle \beta,Y\rangle
+=
+\langle \nabla_X\beta,Y\rangle
++
+\langle \beta,\nabla_X Y\rangle.
+\]
+Aufgelöst nach $\nabla_X\beta$ wird dies zu
+\begin{equation}
+\langle \nabla_X\beta,Y\rangle
+=
+X\cdot \langle \beta,Y\rangle
+-
+\langle \beta,\nabla_X Y\rangle.
+\label{buch:zusammenhang:kovarianteableitung:eqn:dual}
+\end{equation}
+Indem man für $Y$ die Schnitte einer Basis einsetzt, 
+legt
+\eqref{buch:zusammenhang:kovarianteableitung:eqn:dual}
+die Werte der Linearform $\nabla_X\beta$ auf allen Basisvektoren
+fest.
+
+Wir verzichten für die Konstruktion der kovarianten Ableitung auf $E^*$
+auf einen formellen Beweis und beschränken uns darauf, eine Schwierigkeit
+der Definition \eqref{buch:zusammenhang:kovarianteableitung:eqn:dual}
+zu adressieren.
+Der Wert von $\nabla_X\beta$ im Punkt $p\in M$ ist festgelegt durch
+die Werte auf den Vektoren $Y(p)$.
+Multipliziert man $Y$ mit einer Funktion, die an der Stelle $p$ den Wert
+$1$ hat, dann ändert sich der Wert auf der linken Seite nicht, aber
+auf der rechten Seite treten zusätzlich Ableitungen von $f$ auf.
+Sei also $f$ eine Funktion auf $M$ mit $f(p)=1$.
+Setzt man $fY$ anstelle von $Y$ in die Definition
+\eqref{buch:koordinaten:tangentialvektoren:def:einsteinschesummenkonvention}
+ein, erhält man
+\begin{align*}
+\langle
+\nabla_X \beta,fY
+\rangle
+&=
+X\cdot\langle \beta,fY\rangle
+-
+\langle \beta,\nabla_X(fY)\rangle
+\\
+&=
+X\cdot(f\langle \beta,Y\rangle)
+-
+\langle \beta,
+(X\cdot f)Y
++
+f\nabla_XY
+\rangle
+\\
+&=
+(X\cdot f)\langle \beta,Y\rangle
++
+fX\cdot \langle \beta,Y\rangle
+-
+\langle \beta,
+(X\cdot f)Y
+\rangle
+-
+\langle \beta,
+f\nabla_XY
+\rangle
+\\
+&=
+(X\cdot f)
+\langle \beta,Y\rangle
++
+f X\cdot \langle \beta,Y\rangle
+-
+(X\cdot f) \langle \beta, Y \rangle
+-
+f\langle \beta, \nabla_XY \rangle
+\\
+&=
+f X\cdot \langle \beta,Y\rangle
+-
+f\langle \beta, \nabla_XY \rangle
+\\
+&=
+\langle \nabla_X\beta,Y\rangle.
+\end{align*}
+Der Faktor $f$ hat also keinen Einfluss auf den Wert von
+\eqref{buch:zusammenhang:kovarianteableitung:eqn:dual}.
 
 %
 % Geodäten
