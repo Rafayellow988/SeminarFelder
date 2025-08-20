@@ -13,12 +13,14 @@ Geschwindigkeitsfeldes:
     \vec{\zeta} = \nabla \times \vec{u}.
     \label{rossby:eq:vorticity}
 \end{equation}
-Für grossräumige Strömungen in der Atmosphäre betrachtet man hauptsächlich die vertikale Komponente dieser Rotation, die sogenannte \emph{relative Vorticity}. In kartesischen Koordinaten ergibt sich diese im einfachsten Fall zu:
+Für grossräumige Strömungen in der Atmosphäre betrachtet man hauptsächlich die vertikale Komponente dieser Rotation, die sogenannte \emph{relative Vorticity}.
+In kartesischen Koordinaten ergibt sich diese im einfachsten Fall zu:
 \begin{equation}
     \zeta = \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y},
     \label{rossby:eq:relative_vorticity}
 \end{equation}
-wobei \(u\) und \(v\) die zonale bzw. meridionale Windkomponente bezeichnen. Positive Vorticity (\(\zeta > 0\)) steht für eine zyklonale Rotation (auf der Nordhalbkugel gegen den Uhrzeigersinn), negative Vorticity (\(\zeta < 0\)) für eine antizyklonale Rotation (im Uhrzeigersinn).
+wobei \(u\) und \(v\) die zonale bzw. meridionale Windkomponente bezeichnen.
+Positive Vorticity (\(\zeta > 0\)) steht für eine zyklonale Rotation (auf der Nordhalbkugel gegen den Uhrzeigersinn), negative Vorticity (\(\zeta < 0\)) für eine antizyklonale Rotation (im Uhrzeigersinn).
 \begin{figure}
     \centering
     % Erste Reihe
@@ -62,7 +64,7 @@ muss diese planetare Rotation bei der Beschreibung der Gesamtdrehung
 berücksichtigt werden. Daraus ergibt sich der Begriff der \emph{absoluten
     Vorticity}, welche die Summe aus relativer und planetarer Vorticity darstellt.
 
-Die planetare Vorticity wird durch den sogenannten \emph{Coriolis-Parameter} \(
+Die planetare Vorticity wird durch den \emph{Coriolis-Parameter} \(
 f = 2 \Omega \sin \varphi \) beschrieben, wobei \( \Omega \) die
 Erdrotationsrate und \( \varphi \) die geographische Breite ist. Dieser
 Ausdruck ergibt sich aus der Projektion der Erdrotation auf die lokale
@@ -78,7 +80,7 @@ wobei \( \zeta \) die relative und \( f \) die planetare Vorticity ist.
 
 \subsection{Potenzielle Vorticity und ihre Erhaltung}
 
-Die \emph{potenzielle Vorticity} (PV) erweitert das Konzept der \emph{absoluten
+Die \emph{potenzielle Vorticity} erweitert das Konzept der \emph{absoluten
     Vorticity} um die vertikale Struktur der Atmosphäre. In ihrer Erhaltungsform
 ist sie ein zentrales Werkzeug zur Beschreibung grossskaliger Strömungen und
 Wellenprozesse.
@@ -101,8 +103,7 @@ potenziellen Vorticity entlang der Trajektorie eines Luftpakets:
 Unter den genannten Bedingungen treten weder Reibung noch diabatische Wärmeflüsse auf, und die Masse der Luftsäule bleibt erhalten.
 Damit heben sich Änderungen in \(\zeta\), \(f\) und \(H\) entlang der Bewegung eines Luftpakets gegenseitig so auf, dass das Verhältnis \((\zeta + f)/H\) konstant bleibt.
 
-Die PV-Erhaltung erklärt viele grossskalige atmosphärische Phänomene: Wird ein
-Luftpaket nach Norden transportiert (höheres \(f\)), so muss es zyklonale
+Die Erhaltung der potenziellen Vorticity erklärt viele grossskalige atmosphärische Phänomene: Wird ein Luftpaket nach Norden transportiert (höheres \(f\)), so muss es zyklonale
 Vorticity (\(\zeta > 0\)) abbauen oder sich ausdehnen (\(H \uparrow\)), um
 \(q\) konstant zu halten. Bei einer südlichen Verlagerung gilt der umgekehrte
 Mechanismus. Diese Dynamik ist eine der physikalischen Grundlagen für das
