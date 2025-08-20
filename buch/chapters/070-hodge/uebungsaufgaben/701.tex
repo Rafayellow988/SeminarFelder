@@ -75,7 +75,7 @@ x^1\\x^2
 \begin{pmatrix*}[r]
 -5&2\\ 3&-1
 \end{pmatrix*}
-}_{\displaystyle = A}
+}_{\displaystyle = A^{-1}}
 \begin{pmatrix}
 y^1\\y^2
 \end{pmatrix}.
@@ -193,11 +193,11 @@ A^tA
 \egroup
 \\
 &=
-10\frac{\partial^2}{\partial (x^1)^2}
+10\frac{\partial^2}{\partial (y^1)^2}
 +
-34\frac{\partial^2}{\partial x^1\,\partial x^2}
+34\frac{\partial^2}{\partial y^1\,\partial y^2}
 +
-29\frac{\partial^2}{\partial (x^2)^2}.
+29\frac{\partial^2}{\partial (y^2)^2}.
 \end{align*}
 \item
 Aus den Formeln für die Variablentransformation folgt
@@ -233,7 +233,7 @@ g
 \sum_{i=1}^n
 \biggl(\sum_{k=1} a^i\mathstrut_k\,dx^k\biggr)
 \otimes
-\biggl(\sum_{k=1} a^i\mathstrut_l\,dx^l\biggr)
+\biggl(\sum_{l=1} a^i\mathstrut_l\,dx^l\biggr)
 =
 \sum_{k,l=1}^2
 \biggl(
