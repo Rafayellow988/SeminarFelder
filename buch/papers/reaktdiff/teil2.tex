@@ -26,20 +26,23 @@ Wieder werden \(u(x,t)\) und \(v(x,t)\) verwendet um die Konzentration an einem 
 Die Reaktionsterme
 \begin{equation}
      f(u,v) = \alpha u -  \beta v, \quad g(u,v)= \delta uv - \gamma
+      \label{reaktdiff:equation:lvsys}
 \end{equation}
 bestehen neben den Konzentration \(u,v\) aus den Konstanten \(\alpha\),\(\beta\), \(\delta\) und \(\gamma\).
 
 Das dazugehörige Reaktionsdiffusionssystem
-\begin{align}
-    \frac{\partial u}{\partial t} &= D_u \Delta u + \alpha u - \beta u v, \\
+\begin{align*}
+    \frac{\partial u}{\partial t} &= D_u \Delta u + \alpha u - \beta u v,
+    %\label{reaktdiff:equation:lv1}
+    \\
     \frac{\partial v}{\partial t} &= D_v \Delta v + \delta u v - \gamma v
-    \label{reaktdiff:equation:lvsys}
-\end{align}
+    %\label{reaktdiff:equation:lv2}
+\end{align*}
 besteht wieder aus \(D_u,D_v > 0\).
 Das System hat Nullstellen bei  \(u = 0,v = 0\) (trivial) und bei \(u = \frac{\gamma}{\delta}, v = \frac{\alpha}{\beta}\).
 Um die Stabilität an diesen Punkten zu untersuchen, wird wie auch zuvor im Kapitel das System linearisiert und an der interessanten Nullstelle untersucht.
 Die Jacobi-Matrix des Systems lautet
-\begin{equation}
+\begin{equation*}
         J(u,v) =
         \begin{pmatrix}
         \frac{\partial f}{\partial u} & \frac{\partial f}{\partial v} \\
@@ -50,36 +53,36 @@ Die Jacobi-Matrix des Systems lautet
         \alpha - \beta v & -\beta u \\
         \delta v & \delta u - \gamma
         \end{pmatrix}.
-\end{equation}
+\end{equation*}
 An der Stelle \(u = \frac{\gamma}{\delta}, v = \frac{\alpha}{\beta}\) ergibt das
-\begin{equation}
+\begin{equation*}
          J\left(\frac{\gamma}{\delta},\frac{\alpha}{\beta}\right) =
         \begin{pmatrix}
         0 & -\beta \cdot\frac{\gamma}{\delta} \\
         \delta \cdot \frac{\alpha}{\beta} & 0
         \end{pmatrix}. 
-\end{equation}
+\end{equation*}
 Somit erhält man
-\begin{equation}
+\begin{equation*}
     \lambda^2 + \sqrt{\frac{\delta \alpha \cdot \beta \gamma}{\delta \beta}}
      = 
      \lambda^2 + \alpha \gamma = 0 
      \Rightarrow
      \lambda = \pm j \sqrt{a\gamma}
-\end{equation}
+\end{equation*}
 als Eigenewerte.
-Die Eigenwerte sind rein imaginär
-Dies bedeutet, dass eine kleine Störung im System keine Dämpfung erfährt.
+Die Eigenwerte sind rein imaginär.
+Das bedeutet, dass eine kleine Störung im System keine Dämpfung erfährt.
 Es entsteht ein oszillierendes Muster (siehe Abbildung \ref{reaktdiff:fig:lv}).
 
 \subsubsection{Simulation der LV-Reaktion}
 
 Für die Simulation werden die Werte \(\alpha = 1, \beta = 0.1, \gamma = 1.5, \delta = 0.75\) verwendet.
 Somit befindet sich das Gleichgewicht bei
-\begin{equation}
+\begin{equation*}
     u = \frac{\gamma}{\delta} = \frac{1.5}{0.75} = 2, 
     v = \frac{\alpha}{\beta} = \frac{1}{0.1} = 10.
-\end{equation}
+\end{equation*}
 Die Eigenwerte haben den Betrag \(\omega = \sqrt{\alpha\gamma} = \sqrt{1 \cdot 1.5} \approx 1.225\).
 Die FFT der Simulation ist in Abbildung \ref{reaktdiff:fig:lvfft} zu sehen.
 Die rote Linie zeigt die berechnete Frequenz \(f = \omega / 2 \pi \approx 0.195\,\text{Hz}\).
@@ -91,7 +94,7 @@ Diese Abweichung kann durch numerische Effekte erklärt werden.
     \includegraphics[width=0.32\linewidth]{papers/reaktdiff/images/LotkaVolterra/lv_n1.png}
     \includegraphics[width=0.32\linewidth]{papers/reaktdiff/images/LotkaVolterra/lv_n300.png}
     \includegraphics[width=0.32\linewidth]{papers/reaktdiff/images/LotkaVolterra/lv_n999.png}
-    \caption{Verlauf der Simulation (Links nach Rechts) der Reaktions-Diffusiongleichung mit Lotka-Volterra Modell \eqref{reaktdiff:equation:lvsys}
+    \caption{Verlauf der Simulation (links nach rechts) der Reaktions-Diffusiongleichung mit Lotka-Volterra Modell \eqref{reaktdiff:equation:lvsys}
      als Reaktionsterm. Die erste Grafik zeigt den Anfangszustand. Die Oszillation ist in den Grafiken 2 und 3 angedeutet, jedoch schwer mit statischen Bilder darzustellen.}
     \label{reaktdiff:fig:lv}
 \end{figure}
