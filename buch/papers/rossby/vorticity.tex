@@ -10,50 +10,50 @@ um seine eigene vertikale Achse zu drehen.
 Mathematisch ist die Vorticity definiert als Rotation des
 Geschwindigkeitsfeldes:
 \begin{equation}
-    \vec{\zeta} = \nabla \times \vec{u}.
-    \label{rossby:eq:vorticity}
+	\vec{\zeta} = \nabla \times \vec{u}.
+	\label{rossby:eq:vorticity}
 \end{equation}
 Für grossräumige Strömungen in der Atmosphäre betrachtet man hauptsächlich die vertikale Komponente dieser Rotation, die sogenannte \emph{relative Vorticity}.
 In kartesischen Koordinaten ergibt sich diese im einfachsten Fall zu:
 \begin{equation}
-    \zeta = \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y},
-    \label{rossby:eq:relative_vorticity}
+	\zeta = \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y},
+	\label{rossby:eq:relative_vorticity}
 \end{equation}
 wobei \(u\) und \(v\) die zonale bzw. meridionale Windkomponente bezeichnen.
 Positive Vorticity (\(\zeta > 0\)) steht für eine zyklonale Rotation (auf der Nordhalbkugel gegen den Uhrzeigersinn), negative Vorticity (\(\zeta < 0\)) für eine antizyklonale Rotation (im Uhrzeigersinn).
 \begin{figure}
-    \centering
-    % Erste Reihe
-    \begin{minipage}{0.32\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{papers/rossby/images/vorticity_plot0.pdf}\\
-        {\small \( \vec{u} = (2,0),\ \zeta = 0\)}
-    \end{minipage}
-    \begin{minipage}{0.32\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{papers/rossby/images/vorticity_plot1.pdf}\\
-        {\small \( \vec{u} = (y,0),\ \zeta = -1\)}
-    \end{minipage}
-    \begin{minipage}{0.32\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{papers/rossby/images/vorticity_plot2.pdf}\\
-        {\small \( \vec{u} = (y^2,0),\ \zeta = -2y\)}
-    \end{minipage}
+	\centering
+	% Erste Reihe
+	\begin{minipage}{0.32\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{papers/rossby/images/vorticity_plot0.pdf}\\
+		{\small \( \vec{u} = (2,0),\ \zeta = 0\)}
+	\end{minipage}
+	\begin{minipage}{0.32\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{papers/rossby/images/vorticity_plot1.pdf}\\
+		{\small \( \vec{u} = (y,0),\ \zeta = -1\)}
+	\end{minipage}
+	\begin{minipage}{0.32\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{papers/rossby/images/vorticity_plot2.pdf}\\
+		{\small \( \vec{u} = (y^2,0),\ \zeta = -2y\)}
+	\end{minipage}
 
-    % Zweite Reihe
-    \begin{minipage}{0.32\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{papers/rossby/images/vorticity_plot3.pdf}\\
-        {\small \( \vec{u} = (-y,x),\ \zeta = 2\)}
-    \end{minipage}
-    \begin{minipage}{0.32\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{papers/rossby/images/vorticity_plot4.pdf}\\
-        {\small \( \vec{u} = (y,-x),\ \zeta = -2\)}
-    \end{minipage}
+	% Zweite Reihe
+	\begin{minipage}{0.32\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{papers/rossby/images/vorticity_plot3.pdf}\\
+		{\small \( \vec{u} = (-y,x),\ \zeta = 2\)}
+	\end{minipage}
+	\begin{minipage}{0.32\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{papers/rossby/images/vorticity_plot4.pdf}\\
+		{\small \( \vec{u} = (y,-x),\ \zeta = -2\)}
+	\end{minipage}
 
-    \caption{Beispiele für verschiedene Vorticity-Fälle in idealisierten Strömungsfeldern.}
-    \label{fig:vorticity_examples}
+	\caption{Beispiele für verschiedene Vorticity-Fälle in idealisierten Strömungsfeldern.}
+	\label{fig:vorticity_examples}
 \end{figure}
 
 \subsection{Absolute Vorticity}
@@ -62,7 +62,7 @@ Die bisher betrachtete relative Vorticity beschreibt die Rotation eines
 Luftpakets relativ zum Erdboden. Da sich jedoch auch die Erde selbst dreht,
 muss diese planetare Rotation bei der Beschreibung der Gesamtdrehung
 berücksichtigt werden. Daraus ergibt sich der Begriff der \emph{absoluten
-    Vorticity}, welche die Summe aus relativer und planetarer Vorticity darstellt.
+	Vorticity}, welche die Summe aus relativer und planetarer Vorticity darstellt.
 
 Die planetare Vorticity wird durch den \emph{Coriolis-Parameter} \(
 f = 2 \Omega \sin \varphi \) beschrieben, wobei \( \Omega \) die
@@ -70,8 +70,8 @@ Erdrotationsrate und \( \varphi \) die geographische Breite ist. Dieser
 Ausdruck ergibt sich aus der Projektion der Erdrotation auf die lokale
 Vertikale. Die absolute Vorticity ergibt sich somit zu:
 \begin{equation}
-    \eta = \zeta + f
-    \label{rossby:eq:absolute_vorticity}
+	\eta = \zeta + f
+	\label{rossby:eq:absolute_vorticity}
 \end{equation}
 wobei \( \zeta \) die relative und \( f \) die planetare Vorticity ist.
 
@@ -81,24 +81,87 @@ wobei \( \zeta \) die relative und \( f \) die planetare Vorticity ist.
 \subsection{Potenzielle Vorticity und ihre Erhaltung}
 
 Die \emph{potenzielle Vorticity} erweitert das Konzept der \emph{absoluten
-    Vorticity} um die vertikale Struktur der Atmosphäre. In ihrer Erhaltungsform
+	Vorticity} um die vertikale Struktur der Atmosphäre. In ihrer Erhaltungsform
 ist sie ein zentrales Werkzeug zur Beschreibung grossskaliger Strömungen und
 Wellenprozesse.
 
 Unter vereinfachten Bedingungen, barotrope, reibungsfreie Atmosphäre mit
 konstantem Luftvolumen, lautet die Definition:
 \begin{equation}
-    q = \frac{\zeta + f}{H},
-    \label{rossby:eq:potential_vorticity}
+	q = \frac{\zeta + f}{H},
+	\label{rossby:eq:potential_vorticity}
 \end{equation}
 wobei \(\zeta\) die relative Vorticity, \(f\) den Coriolis-Parameter und \(H\) die effektive Schichthöhe der betrachteten Luftsäule bezeichnet.
 Dieser Ausdruck berücksichtigt sowohl die horizontale Rotation als auch die vertikale Ausdehnung eines Luftpakets.
 
+
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}[scale=1.05, >=stealth]
+		% params
+		\def\R{0.35} \def\r{0.12}
+		\def\H{3.0}  \def\dH{0.8}
+		\def\DX{5.2}
+
+		% guide rays (dashed perspective)
+		\draw[dashed] (-0.2,\H) -- (\DX+0.2,\H+\dH);
+		\draw[dashed] (-0.2,0)  -- (\DX+0.2,\dH);
+
+		% center cylinder (height H)
+		\draw (0,0) ellipse ({\R} and {\r});
+		\draw (-\R,0) -- (-\R,\H);
+		\draw (\R,0) -- (\R,\H);
+		\draw (0,\H) ellipse ({\R} and {\r});
+		\node[above] at (0,\H+0.35) {$\zeta$};
+		\draw[->] (1.4,1.7) -- (0.7,1.7);
+
+		% right cylinder (H+dH)
+		\begin{scope}[xshift=\DX cm]
+			\draw (0,\dH) ellipse ({\R} and {\r});
+			\draw (-\R,\dH) -- (-\R,\H+\dH);
+			\draw (\R,\dH) -- (\R,\H+\dH);
+			\draw (0,\H+\dH) ellipse ({\R} and {\r});
+			\node[above] at (0,\H+\dH+0.35) {$\zeta+\mathrm{d}\zeta$};
+			\node[right] at (\R+0.25,\H/2+\dH) {$H+\mathrm{d}H$};
+			\draw[->] (-1.4,1.7+\dH) -- (-0.7,1.7+\dH);
+		\end{scope}
+
+		% left cylinder (H-dH)
+		\begin{scope}[xshift={- \DX cm}]
+			\draw (0,-\dH) ellipse ({\R} and {\r});
+			\draw (-\R,-\dH) -- (-\R,\H-\dH);
+			\draw (\R,-\dH) -- (\R,\H-\dH);
+			\draw (0,\H-\dH) ellipse ({\R} and {\r});
+			\node[above] at (0,\H-\dH+0.35) {$\zeta-\mathrm{d}\zeta$};
+			\node[left]  at (-\R-0.25,\H/2-\dH) {$H-\mathrm{d}H$};
+		\end{scope}
+
+		% spin symbols on tops
+		\foreach \x/\y in {- \DX/\H-\dH, 0/\H, \DX/\H+\dH}{
+				\begin{scope}[xshift=\x cm]
+					\draw (0,\y+0.2) circle (0.15);
+					\draw[->] (0.15,\y+0.2) arc (0:300:0.15);
+				\end{scope}
+			}
+
+		% captions
+		\node[align=center] at (-\DX,-1.2)
+		{$H\downarrow \Rightarrow |\zeta|\downarrow$\\[2pt]\emph{vortex squashing}\\ horizontal divergence};
+		\node[align=center] at (\DX,-1.2)
+		{$H\uparrow \Rightarrow |\zeta|\uparrow$\\[2pt]\emph{vortex stretching}\\ horizontal convergence};
+	\end{tikzpicture}
+
+
+	\caption{Schematische Darstellung der Erhaltung der potenziellen Vorticity entlang der Trajektorie eines Luftpakets.}
+	\label{fig:pv_conservation}
+\end{figure}
+
 Ein zentrales Ergebnis der quasi-geostrophischen Theorie ist die Erhaltung der
 potenziellen Vorticity entlang der Trajektorie eines Luftpakets:
 \begin{equation}
-    \frac{Dq}{Dt} = 0.
-    \label{rossby:eq:pv_conservation}
+	\frac{Dq}{Dt} = 0.
+	\label{rossby:eq:pv_conservation}
 \end{equation}
 Unter den genannten Bedingungen treten weder Reibung noch diabatische Wärmeflüsse auf, und die Masse der Luftsäule bleibt erhalten.
 Damit heben sich Änderungen in \(\zeta\), \(f\) und \(H\) entlang der Bewegung eines Luftpakets gegenseitig so auf, dass das Verhältnis \((\zeta + f)/H\) konstant bleibt.
