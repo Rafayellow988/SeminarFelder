@@ -31,7 +31,7 @@ mit welchen die Flächennormale
   \vec m = \frac{\vec r_u \times \vec r_v}{\sqrt{(\vec r_u \times \vec r_v)^2}} 
   \label{mongeampere:norm}
 \end{equation}
-wobei $(\dot)^2$ für das Skalarprodukt steht.
+beschrieben werden kann, wobei $(\cdot)^2$ für das Skalarprodukt steht.
 
 
 
@@ -40,7 +40,7 @@ wobei $(\dot)^2$ für das Skalarprodukt steht.
 \ref{mongeampere:section:teil2}.
 Die erste Fundamentalform beschreibt die innere Geometrie einer Fläche.
 Betrachtet man das Quadrate des Bogendifferential einer auf der Fläche 
-beschriebenen Kurve $s(u,v)$ so ist 
+beschriebenen Kurve $S(u,v)$ so ist 
 \begin{equation}
   \begin{split}
     \dd s^2 &= \dd x^2 + \dd y^2 + \dd z^2 \\
@@ -52,13 +52,79 @@ beschriebenen Kurve $s(u,v)$ so ist
 \end{equation}
 Rechnet man die Klammern aus erhält man 
 \begin{equation}
-  \begin{split}
-    \dd s^2 &=  \left(\pdv{x}{u}\right)^2\\
-          &= \left(\pdv{x}{u}\dd u + \pdv{x}{v}\dd v  \right)^2
-          + \left(\pdv{z}{u}\dd u + \pdv{z}{v}\dd v  \right)^2
-          + \left(\pdv{z}{u}\dd u + \pdv{z}{v}\dd v  \right)^2
-  \end{split}
-  \label{mongeampere:bogdiff}
+    \dd s^2 = E(u,v) \dd u^2 + 2F(u,v) \dd u \, \dd v + G()
+    \label{mongeampere:1fundform}
 \end{equation}
+mit fuck
+\begin{align}
+     E(u,v) &= \left(\pdv{x}{u} \right)^2 +
+     \left(\pdv{y}{u} \right)^2 +
+     \left(\pdv{z}{u} \right)^2 
+            &= \vec r_u^2\\
+     F(u,v) &= shit
+     \pdv{x}{u} \cdot \pdv{x}{v} +
+     \pdv{y}{u} \cdot \pdv{y}{v} +
+     \pdv{z}{u} \cdot \pdv{z}{v}
+            &= \vec r_u \cdot \vec r_v \\
+      G(u,v) &= \left(\pdv{x}{v} \right)^2 +
+     \left(\pdv{y}{v} \right)^2 +
+     \left(\pdv{z}{v} \right)^2 
+             &= \vec r_v ^2\\
+  \label{mongeampere:1fundbed}
+\end{align}
+Diese Forulierung vom Bogendifferential ist als erste Gausssche Fundamentalform bekannt.
+Man kann sie auch in Form des Metrischen Tensors 
+\begin{equation}
+  g_{ij} = \begin{pmatrix}
+    E & F \\
+    F & G \\
+  \end{pmatrix}
+  \label{mongeampere:erstmettens}
+\end{equation}
+beschreiben.
 
+\subsection{Zweite Fundamentalform}
+Die zweite Gaussche Fundamentalform befasst sich mit der äusseren Geometrie einer 
+Fläche und beschreibt wie sich die Tangente entlang einer Flächenkurve verändert.
+Dafür betrachten wir wieder die Kurve $S(u,v)$ mit einem Tangeteneinheitsvektor 
+$\vec t$;
+Da die Kurve auf der Fläche liegt ist $\vec t$ in jedem Punkt senkrecht auf der 
+Flächennormale $\vec m$, womit $\vec t \cdot \vec m = 0$ gilt. 
+Berechnen wir nun 
+\begin{equation}
+  \dv{\vec t \cdot \vec m}{s}
+  \label{mongeampere:2fund0}
+\end{equation}
+erhalten wir 
+\begin{equation}
+  \dv{\vec t}{s} \cdot \vec m + \vec t \cdot \dv{\vec m}{s} = 0. 
+  \label{mongeampere:2fund1}
+\end{equation}
+Der Term $\dd \vec t / \dd s = \varrho^{-1} \vec n$ beschreibt einen Vektor in Richtung der Kurvennormalen 
+$\vec n$ mit der Länge $\varrho^{-1}$, welche den inversen Krümmungsradius der Kurve 
+darstellt.
+Somit können wir \eqref{mongeampere:2fund1} umformen nach
+\begin{equation}
+  \frac{\vec n \cdot \vec m}{\varrho} = - \frac{\dd \vec r \cdot \dd \vec m }{\dd s^2} 
+  \label{mongeampere:2fund2}
+\end{equation}
+Rechnet man den Zähler als Funktion der Parameter $u, v$ aus, erhält man die zweite 
+Gausssche Fundamentalform
+\begin{equation}
+  \mathrm{I\!I} = L(u, v) \dd u^2 + 2 M (u,v) \dd u \dd v + N(u,v) \dd v^2.
+  \label{mongeampere:2fund}
+\end{equation}
+mit den Koeffizienten
+\begin{align*}
+  L &= \vec r_{uu} \cdot m \\ 
+  M &= \vec r_{uv} \cdot m \\
+  N &= \vec r_{vv} \cdot m.
+  \label{mongeampere:2fundkoef}
+\end{align*}
+Die zweite Gausssche Fundamentalform beschreibt wie start sich die Fläche an einem Punkt
+von der Tangentialebene entfernt, wenn sich die Parameter etwas ändern.
+Wie stark sich die Fläche von der Tangentialebene entfernt hat einen Zusammenhang mit der Krümmung der Fläche.
 
+In \eqref{mongeampere:2fund2} haben wir die zweite Fundamentalform in Richtung einer Flächenkruve mit
+dem Quadrat ihres Bigendifferentiales normalisiert.
+Damit erhielten wir den Anteil der Krümmung der Flächenkruve, die von der Krümmung der Fläche kommt.
