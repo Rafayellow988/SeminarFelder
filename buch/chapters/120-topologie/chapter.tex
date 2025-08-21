@@ -72,21 +72,168 @@ folgenden Abschnitten skizziert werden.
 % Triangulationen
 %
 \subsection{Triangulationen}
+Eine Triangulation einer Fläche zerlegt die Fläche in Dreiecke,
+Kanten und Punkte.
+Dabei müssen Ecken und Kanten von benachbarten Dreiecken aufeinander
+fallen.
+Es ist zum Beispiel nicht zulässig, dass eine Ecke eines Dreiecks
+auf einen inneren Punkt einer Kante eines Nachbardreiecks fällt.
 
 %
 % Simplizes
 %
 \subsubsection{Simplizes}
+Punkte, Kanten und Dreieck sind die vertraute Spezialfälle des allgemeinen
+Konzeptes eines Simplex.
+
+\begin{definition}[Simplex]
+\index{Simplex}%
+Ein \emph{$n$-dimensionales Simplex} ist die Menge
+\[
+\Delta_n
+=
+\{
+(t_0,\dots,t_n)
+\subset
+[0,1]^{n+1}
+\mid
+t_0+\dots+t_n=1
+\}.
+\]
+\end{definition}
+
+Im Falle $n=0$ besteht $\Delta_0$ nur aus der Zahl $1$.
+$\Delta_1$ besteht aus Paaren $(t_0,t_1)$ mit $t_0+t_1=1$, die
+als die Strecke zwischen $(1,0)$ und $(0,1)$ visualisiert
+werden.
+Ebenso besteht die Menge $\Delta_2$ aus den Punkten der Ebene mit
+der Gleichung $t_1+t_2+t_3=1$ im postiven Oktanten eines
+dreidimensionalen kartesischen Koordinatensystems mit Koordinaten
+$t_1$, $t_2$ und $t_3$.
+
+In der Teilmenge
+\[
+\Delta_{n,i}
+=
+\{
+(t_0,\dots,t_n)
+\subset
+[0,1]^{n+1}
+\mid
+t_0+\dots+t_n=1
+\wedge
+t_i=0
+\}
+\subset
+\Delta_n
+\]
+sind $n+1$-Tupel, deren $i$-Koordinate verschwindet.
+Die Mengen $\Delta_{n,i}$ heissen die \emph{Seitenflächen}
+\index{Seitenfläche}%
+des Simplex $\Delta_n$.
+
+Für die verbleibenden Koordinaten gilt wegen $t_i=0$ ebenfalls
+\[
+t_0+\dots+t_i+\dots+t_n
+=
+t_0+\dots+\widehat{t_i}+\dots+t_n
+=
+1,
+\]
+Wobei der Hut bedeutet, dass dieser Term weggelassen wird.
+Man kann die Menge also durch die Abbildung
+\[
+\iota_i
+\colon
+\Delta_{n-1}
+\to
+\Delta_{n,i}
+:
+(t_0,\dots,t_{n-1})
+\mapsto
+(t_0,\dots,0,\dots,t_{n-1})
+\]
+parametrisieren.
+Die Abbildung $\iota_i$ ist bijektiv, stetig und die Umkehrung ist
+ebenfalls stetig.
+Die Seitenflächen $\Delta_{n,i}$ sind also Simplizes kleinerer 
+Dimension.
+
+Zwei Seitenflächen stossen zusammen in einer Menge, die ein Simplex
+der Dimension $n-2$ ist.
+Die gemeinsamen Punkte der beiden Seitenflächen $\Delta_{n,i}$ und
+$\Delta_{n,k}$ bilden die Menge
+\[
+\Delta_{n,ik}
+=
+\{
+(t_0,\dots,t_n)
+\mid
+t_0+\dots+t_n=1
+\wedge
+t_i=0
+\wedge
+t_k=0
+\},
+\]
+die sich nach dem gleichen Muster wie die Seitenfläche mit der Menge
+$\Delta_{n-2}$ identifizieren lässt.
+
+\begin{definition}[simplizialer Komplex]
+\index{simplizialer Komplex}%
+Ein \emph{simplizialer Komplex} ist ein topologischer Raum, der durch
+Zusammenfügen von endlich vielen Simplizes entlang von Untersimplizes
+kleinerer Dimension entsteht.
+\index{Dimension}%
+Die \emph{Dimension} eines simplizialen Komplexes ist die höchste Dimension
+der Simplizes, aus denen er besteht.
+\end{definition}
+
+Ein simplizialer Komplex der Dimension $n$ setzt sich also zusammen aus
+maximal $n$-dimensionalen Simplizes zusammen, die Seitenflächen oder
+Simplizes noch kleinerer Dimension gemeinsam haben können.
 
 %
-% Beliebige Dimension
+% Euler-Charakteristik einer Triangulation
 %
-\subsubsection{Beliebige Dimension}
+\subsubsection{Euler-Charakteristik eines simplizialen Komplexes}
+Eulers Entdeckung bezog sich auf Polyeder, die sich natürlich nur
+aus Ecken, Kanten und Flächen, also Simplizes der Dimension 0, 1
+bzw.~2.
+Bezeichnen wir die Anzahl der $k$-dimensionalen Simplizes mit $t_k$,
+dann wird die von Euler berachtete Summe 
+\begin{align*}
+E - K + K
+&=
+t_0
+-
+t_1
++
+t_2
+\intertext{Die wir auch}
+&=
+\sum_{k=0}^n (-1)^kt_k
+\end{align*}
+schreiben können.
+Diese Schreibweise lässt sich leicht auf beliebige Dimension
+verallgemeinern.
 
-%
-% Beliebige Dimension
-%
-\subsubsection{Euler-Charakteristik einer Triangulation}
+\begin{definition}[Euler-Charakteristik]
+Sei $S$ ein $n$-dimensionaler simplizialer Komplex in dem
+genau $k_i$ Simplizes der Dimension $i$ vorkommen.
+Dann ist die Summe
+\[
+\chi(S)
+=
+k_0 - k_1 + \dots + (-1)^n t_n
+=
+\sum_{i=0}^n (-1)^i k_i
+\]
+die \emph{Euler-Charakteristik} von $S$.
+\index{Euler-Charakteristik}%
+\end{definition}
+
+Für einen zweidimensionalen simplizialen Komplex
 
 \subsubsection{Verfeinerung der Triangulation}
 Die Definition der Euler-Charakteristik hängt von der Triangulation ab.
@@ -125,18 +272,98 @@ Aus der ursprünglichen Kante werden zwei und es kommen zwei neue Kanten
 dazu.
 Die Anzahl der Dreiecke wächst um zwei.
 Die Euler-Charakteristik ist neu
-\[
+\begin{align*}
 (E+1) - (K+3) - (F+2)
 =
-E-K+F +(1-3+2)
+E-K+F +(\underbrace{1-3+2}_{\displaystyle=0})
 =
 E-K+F,
-\]
+\end{align*}
 sie verändert sich also auch bei Unterteilung einer Kante nicht.
 
+In drei Dimensionen wird die Unterteilung etwas komplizierter.
+Ein zusätzlicher innerer Punkt in einem Tetraeder zerlegt
+es in vier Tetraeder mit dem neuen Punkt als Spitze und den
+Seitenflächen des ursprünglichen Tetraeders als Grundfläche.
+Für jede ursprüngliche Kante entsteht eine neue Fläche und
+für jede ursprüngliche Ecke eine neue Kante.
+Die Euler-Charakteristik wird daher zu
+\begin{align*}
+(E+1) - (K+4) + (F+6) - (V+3)
+&=
+E-K+F-V
++
+(\underbrace{1-4+6-3}_{\displaystyle=0})
+\\
+&=
+E-K+F-V
+=
+\chi(M),
+\end{align*}
+bleibt daher unverändert.
 
+Unterteilt man eine Dreiecksfläche durch einen inneren Punkt,
+müssen auch die beiden benachbarten Tetraeder unterteilt werden.
+Dabei entstehen fünf neue Kanten, sechs neue Flächen und vier
+neue Tetraeder.
+Die neue Euler-Charakteristik ist daher
+\begin{align*}
+(E+1) - (K+5) + (F+8) - (V+4)
+&=
+E-K+F-V
++(\underbrace{1-5+8-4}_{\displaystyle=0})
+\\
+&=
+E-K+F-V
+=
+\chi(M),
+\end{align*}
+ebenfalls unverändert.
+
+Schliesslich betrachten wir den Fall der Unterteilung einer Kante,
+die $n$ Tetraedern gemeinsam ist, mit $f$ Seitenflächen, die sich
+in der Kante treffen.
+Durch die Unterteilung wird aus jeder Seitenfläche zu zweien
+mit einer zusätzlichen Kante.
+Zusätzlich entsteht in jedem ursprünglichen Tetraeder ein zusätzliches
+Dreieck mit der gegenüberliegenden Kante als Basis und der neuen
+Ecke als Spitze.
+Die Zahl der Tetraeder erhöht sich ebenfalls um $n$.
+Die neue Euler-Charakteristik ist
+\begin{align*}
+(E+1)
+-
+(K+1+f)
++
+(F+f+n)
+-
+(V+n)
+&=
+E-K+F-V + (\underbrace{1-1-f+f+n-n}_{\displaystyle=0})
+\\
+&=
+E-K+F-V
+=
+\chi(M),
+\end{align*}
+wieder unverändert.
+
+Dieselbe Art von Rechnung lässt sich auch für Simplizes beliebig hoher
+Dimension durchführen.
+Ohne auf den detaillierten Beweis einzugehen, können wir schliessen,
+dass die Euler-Charakteristik eine Grösse ist, die nicht von der Unterteilung
+des Körpers in Simplizes abhängt.
+Die Euler-Charakteristik ist also eine topologische Invariante.
+
+%
+% Rand
+%
 \subsubsection{Rand}
 
+
+%
+% Homologie
+%
 \subsection{Homologie}
 
 %
