@@ -1,4 +1,4 @@
-%
+overle%
 % teil2.tex -- Beispiel-File für teil2 
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
@@ -17,29 +17,26 @@ Die Grundidee der Helmholtz-Zerlegung besteht darin, dass ein glattes (differenz
 \label{helmholtz:equationAllgemein}
 \end{equation}
 
+Die physikalische Bedeutung dieser Komponenten lässt sich wie folgt beschreiben:
+
 \begin{itemize}
-\item Der erste Term $ \nabla \Phi $ ist wirbelfrei (irrotational), da Rotation verschwindet (Warum genau ???) ($\nabla \times (-\nabla \Phi) = 0$) 
+\item Der erste Term $ \nabla \Phi $ ist wirbelfrei (irrotational), da Rotation verschwindet ($\nabla \times (-\nabla \Phi) = 0$) 
 \begin{itemize}
 \item Dieser Anteil hat keine Rotation: $\nabla \times (-\nabla \Phi) = 0$
 \item Die Feldlinien verlaufen strahlenförmig von Quellen zu Senken
-\begin{figure}[htbp]
-    \centering
-    \begin{subfigure}{}
-        \centering
-        \includegraphics[scale=0.3]{papers/helmholtz/images/Quelle.png}
-        \caption{F}
-        \label{fig:quelle}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{}
+\begin{table}[h]
+\centering
+\includegraphics[scale=0.3]{papers/helmholtz/images/Quelle.png}
+\caption{Quelle}
+\label{fig:quelle}
+\end{table}
+ \begin{table}[h]
         \centering
         \includegraphics[scale=0.3]{papers/helmholtz/images/Senke.png} 
-        \caption{F}
+        \caption{Senke}
         \label{fig:senke}
-    \end{subfigure}
-    \caption{}
-    \label{fig:vergleich}
-\end{figure}
+\end{table}
+
 \end{itemize}
 \item Der zweite Term $\nabla \times \mathbf{\Psi}$ hat gemäss der Definition immer Divergenz null ($\nabla \cdot (\nabla \times \mathbf{\Psi}) = 0$) und wird auch solenoidal (quellenfrei) genannt. \newline
 \begin{itemize}
@@ -48,7 +45,8 @@ Die Grundidee der Helmholtz-Zerlegung besteht darin, dass ein glattes (differenz
 \end{itemize}
 \end{itemize}
 
-
+\begin{table}[h]
+\centering
 \begin{tabular}[h]{l|l|l|l}
 \hline
 zu zerlegende Vektorfeld & $\mathbf{F}$ & & \\
@@ -58,14 +56,16 @@ skalares Potential & $\Phi $ & $\nabla \times (-\nabla \Phi) = 0$ & wirbelfrei\\
 Vektorpotential & $\mathbf{\Psi}$ & $\nabla \cdot (\nabla \times \mathbf{\Psi}) = 0$ & quellenfrei\\
 \hline
 \end{tabular}\newline
+\caption{Übersicht der Helmholtz-Zerlegung}
+\end{table}
 
-Hierzu müssen jedoch die Potentiale $\Phi $ und $\mathbf{\Psi}$ berechnet werden. Dies kann auf verschiedene Methoden gemacht werden abhängig von den Ranbedingungen.
+Um die Zerlegung anwenden zu können, müssen die Potentiale $\Phi $ und $\mathbf{\Psi}$ berechnet werden. Dies kann auf verschiedene Methoden gemacht werden abhängig von den Ranbedingungen.
 
-\subsubsection{Herleitung der Identität}
+\subsubsection{Nachweis der Wirbelfreiheit des irrotationalen Anteils}
 Sei $\Phi$ ein zweimal stetig differenzierbares Skalarfeld.
 
 \begin{enumerate}
-    \item \textbf{Zuerst berechnen wir den Gradienten $\nabla\Phi$:}
+    \item \textbf{Zuerst wird der Gradient $\nabla\Phi$ berechnet:}
     $$
     \nabla \Phi =
     \begin{pmatrix}
@@ -75,9 +75,9 @@ Sei $\Phi$ ein zweimal stetig differenzierbares Skalarfeld.
     \end{pmatrix}
     $$
 
-    \item \textbf{Nun berechnen wir die Rotation dieses Gradientenfeldes:}
+    \item \textbf{Nun die Rotation dieses Gradientenfeldes:}
     
-    Wir wenden die Definitionsformel der Rotation auf den Gradientenvektor an.
+    Die Definitionsformel der Rotation $\nabla \times F$ auf den Gradientenvektor anwenden.
     $$
     \nabla \times (\nabla \Phi) =
     \begin{pmatrix}
@@ -89,7 +89,7 @@ Sei $\Phi$ ein zweimal stetig differenzierbares Skalarfeld.
 
     \item \textbf{Den Satz von Schwarz anwenden:}
     
-    Wir schreiben die gemischten Ableitungen aus:
+    Zur besseren Übersicht werden die gemischten Ableitung ausgeschrieben:
     $$
     =
     \begin{pmatrix}
@@ -98,7 +98,7 @@ Sei $\Phi$ ein zweimal stetig differenzierbares Skalarfeld.
         \frac{\partial^2 \Phi}{\partial x \partial y} - \frac{\partial^2 \Phi}{\partial y \partial x}
     \end{pmatrix}
     $$
-    Auch hier sorgt der \textbf{Satz von Schwarz} dafür, dass sich die Terme in jeder Komponente gegenseitig aufheben.
+    Der \textbf{Satz von Schwarz} besagt, dass bei hinreichend stetigen Funktionen die Reihenfolge der partiellen Ableitungen vertauscht werden kann. Damit heben sich die Terme in jeder Komponente gegenseitig auf.
     $$
     =
     \begin{pmatrix}
@@ -109,10 +109,12 @@ Sei $\Phi$ ein zweimal stetig differenzierbares Skalarfeld.
     $$
 \end{enumerate}
 
+\subsubsection{Nachweis der Quellenfreiheit des solenoidalen Anteils}
+
 \begin{enumerate}
     \item \textbf{Berechnung der Rotation $\nabla \times \mathbf{\Psi}$:}
     
-    Zuerst wenden wir den Rotations-Operator auf $\mathbf{\Psi}$ an:
+    Zuerst wenden wird der Rotations-Operator auf $\mathbf{\Psi}$ angewnedet:
     \[
     \nabla \times \mathbf{\Psi} =
     \begin{pmatrix}
@@ -137,11 +139,11 @@ Sei $\Phi$ ein zweimal stetig differenzierbares Skalarfeld.
     
     \item \textbf{Anwendung des Satzes von Schwarz:}
     
-    Nach dem \textbf{Satz von Schwarz} ist die Reihenfolge der partiellen Ableitungen bei zweimal stetig differenzierbaren Funktionen irrelevant. Daher gilt:
+    Erneut nach dem \textbf{Satz von Schwarz} ist die Reihenfolge der partiellen Ableitungen bei zweimal stetig differenzierbaren Funktionen irrelevant. Daher gilt:
     \[
     \frac{\partial^2 f}{\partial x \partial y} = \frac{\partial^2 f}{\partial y \partial x}
     \]
-    Angewendet auf unsere Gleichung bedeutet dies, dass jeder Term in den Klammern Null ergibt:
+    Angewendet auf die verwendete Gleichung bedeutet dies, dass jeder Term in den Klammern Null ergibt:
     \begin{align*}
     \nabla \cdot (\nabla \times \mathbf{\Psi}) &= \underbrace{\left( \frac{\partial^2 \Psi_x}{\partial y \partial z} - \frac{\partial^2 \Psi_x}{\partial y \partial z} \right)}_{=0} + \underbrace{\left( \frac{\partial^2 \Psi_y}{\partial z \partial x} - \frac{\partial^2 \Psi_y}{\partial z \partial x} \right)}_{=0} + \underbrace{\left( \frac{\partial^2 \Psi_z}{\partial x \partial y} - \frac{\partial^2 \Psi_z}{\partial x \partial y} \right)}_{=0} \\[1em]
     &= 0 + 0 + 0 \\[1em]
@@ -153,6 +155,12 @@ Sei $\Phi$ ein zweimal stetig differenzierbares Skalarfeld.
 \textbf{Ergebnis:} Damit ist die Identität $\nabla \cdot (\nabla \times \mathbf{\Psi}) = 0$ bewiesen.
 
 \subsection{Helmholtz-Zerlegung und Komplexe Schallintensität}
+Wie in Kapitel Ref beschrieben,  stellt die komplexe Schallintensität $\mathbf{I}_c$ den Energietransport in einem Schallfeld dar und lässt sich in zwei fundamentale Komponenten zerlegen:
+
+\begin{itemize}
+\item \textbf{Aktive Intensität} $\mathbf{I}$
+\item \textbf{Reaktive Intensität} $\mathbf{Q}$
+\end{itemize}
 
 Bei näherer Betrachtung ist zu erkennen, dass die Gleichung \eqref{helmholtz:equationAllgemein} dieselbe Struktur wie die Komplexe Schallintensität \eqref{helmholtz:equationIntensitaetKomplex} hat. Somit kann die Zerlegung wie folgt vorgenommen werden
 
@@ -161,17 +169,16 @@ Bei näherer Betrachtung ist zu erkennen, dass die Gleichung \eqref{helmholtz:eq
 \label{helmholtz:KomplexeIntensitaet_Zerlegung}
 \end{equation}
 
+Dies entspricht der mathematischen Form der Helmholtz-Zerlegung.\\
+
+Die Helmholtz-Zerlegung erlaubt eine tiefere physikalische Interpretation der komplexen Schallintensität:
+
 \begin{equation}
 \mathbf{I}_c ~(\mathbf{r}) = \underbrace{\mathbf{I}~(\mathbf{r})}_{\nabla \cdot I = 0} + \underbrace{j\,\mathbf{Q}~(\mathbf{r})}_{\nabla \times Q = 0}
 \label{helmholtz:KomplexeIntensitaet_Zerlegung}
 \end{equation}
 
-\begin{itemize}
-\item $\nabla \cdot \mathbf{I} = 0$ aktive Intensität ist quellenfrei
-\item $\nabla \times \mathbf{I} = \frac{k}{c} \frac{\mathbf{I} \times \mathbf{Q}}{V}$ aktive Intensität kann wirbel enthalten
-\item $\nabla \times \mathbf{Q} = 0$ reaktive Intensität ist wirbelfrei
-\item $\nabla \cdot \mathbf{Q} = 2 \omega (T-V)$ reaktive Intensität hat Quellen oder Senken
-\end{itemize}
+Die Eigenschaften sind in xx beschrieben.
 
 
 \subsection{Greenscher Ansatz}
@@ -187,19 +194,25 @@ Ein möglicher Ansatz, um die partielle Differential Gleichung zu lösen ist der
 \label{helmholtz:DGL_idee_umformung}
 \end{equation}
 
+\begin{table}[h]
+\centering
 \begin{tabular}{ll}
   & Idee in Matrix \\
 $\Delta F = -4 \pi \rho$  & $Au = f$ \\
 $\underbrace{\frac{1}{4 \pi} \Delta F}_{invertiert} = \rho$ & $A^{-1}Au = A^{-1}f$  \\
 s & $u = A^{-1}f$  \\
 \end{tabular}
+\caption{Analogie zur Matrixinversion}
+\end{table}
+
+Grundlegend für diesen Ansatz ist die Beziehung:
 
 \begin{equation}
 \delta (\mathbf{x} - \mathbf{x'}) = \frac{1}{4 \pi} \nabla^2 \frac{1}{|\mathbf{x} - \mathbf{x'}|}
 \label{helmholtz:dirac}
 \end{equation}
 
-Einheitsmatrix mal Vektor gleich Matrix. 
+Diese Beziehung lässt sich analog zur Multiplikation mit der Einheitsmatrix verstehen.
 
 
 
@@ -207,32 +220,35 @@ Einheitsmatrix mal Vektor gleich Matrix.
 \mathbf{F}(\mathbf{r}) = -\frac{1}{4\pi} \int_V \mathbf{F}(\mathbf{r}') \nabla^2 \left( \frac{1}{|\mathbf{r} - \mathbf{r}'|} \right) dV'
 \end{equation}
 
-Die Identität
+Unter Verwendung der Vektoridentität:
 
 \begin{equation}
 \nabla^2 \mathbf{\Psi}= \underbrace{\nabla \Big( \nabla \cdot \mathbf{\Psi} \Big)}_{\text{Gradient}} -\underbrace{\nabla \times \Big(\nabla \times \mathbf{\Psi} \Big)}_{\text{Rotation}}
 \end{equation}
 
-Das Vektorfeld $\mathbf{F}$ kann nun geschrieben werden als:
+kann das Vektorfeld $\mathbf{F}$ geschrieben werden als:
 
 \begin{equation}
 \mathbf{F}(\mathbf{r}) = - \frac{1}{4 \pi} \nabla \bigg( \nabla \cdot \int_V \frac{\mathbf{F}(\mathbf{x}^{\prime})}{|\mathbf{r} - \mathbf{r}^{\prime}|} d\mathbf{x}^{\prime} \bigg) + \frac{1}{4 \pi} \nabla \times \bigg( \nabla \times \int_V \frac{\mathbf{F}(\mathbf{x}^{\prime})}{|\mathbf{r} - \mathbf{r}^{\prime}|} d\mathbf{x}^{\prime} \bigg)
 \end{equation}
 
+Diese Gleichung repräsentiert die Helmholtz-Zerlegung des Vektorfeldes $\mathbf{F}$.
 
 \subsection{Bedingungen
 \label{helmholtz:subsection:Bedingung}}
 
-Damit die Zerlegung vorgenommen werden kann bzw. darf, muss das Vektorfeld $\mathbf{A}$ 
+Damit die Zerlegung korrekt durchgeführt werden kann, muss das Vektorfeld $\mathbf{A}$ folgende Bedingungen erfüllen:
 
 \begin{itemize}
-\item \textbf{Glatt sein:} $\mathbf{A}$ stetig/kontinuirlich differenziebar sein (in $\mathbb{R}^3$ 2 mal differenziebar) in dem Gebiet
-\item \textbf{Abfallverhalten:} $\mathbf{A}$ schnell abfallen  $\mathbf{A}$ schneller als $1/r$. 
+\item \textbf{Glatt sein:} $\mathbf{A}$ muss stetig/kontinuirlich differenziebar sein (in $\mathbb{R}^3$ mindestens zweimal differenziebar) in dem betrachtenden Gebiet.
+\item \textbf{Abfallverhalten:} $\mathbf{A}$ muss schnell abfallen  $\mathbf{A}$ schneller als $1/r$. 
 \end{itemize}
 (Unsicher bei dieser Aussage. Formel?)
 
 %https://www.youtube.com/watch?v=RVlUe5gsAX4
 %https://icmp.lviv.ua/journal/zbirnyk.89/13002/art13002.pdf
+
+Diese Bedingungen stellen sicher, dass die Integrale in der Greenschen Formulierung konvergieren und die Zerlegung eindeutig ist.
 
 \subsection{Berechnung der Potentiale unbeschränkte Gebiete
 \label{helmholtz:subsection:Berechnung}}
