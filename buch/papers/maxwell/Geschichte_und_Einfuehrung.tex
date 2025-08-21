@@ -21,7 +21,7 @@ So beschrieb 1269 der Franzosen Petrus Peregrinus durch Experimente als erster d
 Während des 17. Jahrhunderts wurde viel mit Reibungselektrizität experimentiert. Der Begriff der ``Elektrizität'' wurde erstmals verwendet und die Unterschiede magnetischer und elektrische Wirkung wurde erkannt.
 Im Jahr 1767 erkannte Joseph Priestley, dass die elektrische Kraft quadratisch zum Abstand abnimmt, ein erster Hinweis auf das Coulomb-Gesetz \cite{maxwell:History_of_electromagnetic_theory}.
 
-\subsection{erste wissenschaftliche Erkenntnisse}
+\subsection{Erste wissenschaftliche Erkenntnisse}
 Ab dem Jahr 1785 nimmt die Entwicklung der Elektrodynamik richtig Fahrt auf.
 Charles Augustin de Coulomb entdeckte und bestätigte durch umfangreiche Experimente 1785, das die Kraft zwischen zwei Ladungen quadratisch mit dem Abstand ihres Mittelpunktes abnimmt \cite{maxwell:Charles-Augustin_de_Coulomb}:
 \[
@@ -31,11 +31,12 @@ Charles Augustin de Coulomb entdeckte und bestätigte durch umfangreiche Experim
 \cdot
 \frac{q_1 q_2}{r^2}
 \cdot
-\vec{r}_0.
+\vec{r}^{\,0}.
 \]
 Ob er von der Entdeckung Priestleys wusste ist nicht bekannt.
-%test
-Als Hans Christian Ørsted an einem Tag im Jahre 1820 eine Vorlesung in Physik hielt, beobachtete er die Ablenkung einer Kompassnadel durch einen stromdurchflossenen Draht und endteckte somit zufällig die magnetische Wirkung des elektrischen Stromes.
+
+Als Hans Christian Ørsted an einem Tag im Jahre 1820 eine Vorlesung in Physik hielt, beobachtete er die Ablenkung einer Kompassnadel durch einen stromdurchflossenen Draht und entdeckte somit zufällig die magnetische Wirkung des elektrischen Stromes.
+
 André-Marie Ampère wurde auf Ørsteds Fund aufmerksam und verfolgte dieses Phenomen weiter.
 Er erkannte eine sehr wichtige Eigenschaft: Die Magnetnadel des Kompasses richtet sich immer senkrecht zum stromdurchflossenen Leiter aus.
 Er nahm an, dass die die Ursache, die die Magnetnadel zur Bewegung führt, ein vom Strom im Leiter selbst verursachtes Magnetfeld sei.
@@ -43,7 +44,8 @@ Dies konnte er durch viele Versuche ein wenig später sogar beweisen.
 Ampère fand in diesen Versuchen heraus, dass sich zwei Leiter, in denen die elektrische Stromrichtung gleich ist, anziehen, und dass sie eine Abstossungskraft ausüben, wenn die Stromrichtung entgegengesetzt ist.
 Er formulierte eine Gleichung, die besagt, dass elektrische Ströme magnetische Wirbelfelder hervorrufen, deren Stärke durch die Stromstärke gegeben ist.
 Das Gesetz wird ampèrsches Gesetz oder auch Durchflutungssatz gennant und wird in Integralform
-\[
+\begin{equation}
+\label{maxwell:equasion:ampere}
 \oint_{\d A}
 \vec{H}
 \cdot
@@ -55,7 +57,7 @@ d\vec{l}
 d\vec{s}
 =
 I
-\]
+\end{equation}
 oder als differentielle Form
 \[
 \nabla
@@ -70,14 +72,14 @@ Jedoch sind sie so nicht ganz vollständig und werden später noch mal überarbe
 
 \subsubsection{Herleitung der differentiellen Form der Ampère-Gleichnug}
 
-Mit Hilfe des allgemeinen Satzes von Stokes(\ref{buch:green:green:satz:stokes})
+Mit Hilfe des allgemeinen Satzes von Stokes (\ref{buch:green:green:satz:stokes})
 \[
 \int_{M} d\omega
 =
 \int_{\d M} \omega
 \]
 können wir die differentielle Form der Ampère-Gleichung herleiten.
-Definieren wir eine 1-Form $\alpha$, die das $H$-Feld beschreibt:
+Dazu definieren wir eine 1-Form $\alpha$, die das $H$-Feld beschreibt:
 \[
 \alpha
 =
@@ -134,7 +136,7 @@ Damit ist gezeigt, dass die integrale Form der Gleichung
 	\vec{J} \cdot d\vec{s}
 	\notag
 	\\
-	\intertext{in der Gleichung \refeq{maxwell:equation:ampere:integral} eingesetzt wird}
+	\intertext{in der Gleichung \eqref{maxwell:equation:ampere:integral} eingesetzt wird}
 	\iint_{A}
 	(
 	\nabla \times \vec{H}
@@ -167,10 +169,10 @@ Dabei Stellt sich noch die Frage, warum die Integrale beim letzten Schritt wegge
 
 \begin{proof}
 	\label{maxwell:proof:ampere}
-	Mit einer Widerspruchsüberlegung lässt sich das lemma \ref{maxwell:lemma:ampere} beweisen.
+	Mit einer Widerspruchsüberlegung lässt sich das Lemma \ref{maxwell:lemma:ampere} beweisen.
 	Der Einfachheit halber setzen wir $\vec{X} = \vec{X}_1-\vec{X}_2$.
 	Nun wäre $\vec{X} \ne 0$ an einer bestimmten Stelle $P$, also $\vec{X}(P) \ne 0$.
-	Wählen wir jetzt ein ganz kleines Ebenenstück um diesen Punkt $P$ mit Normale $\hat{n}$ parallel zu $\vec{X}$, können wir $\vec{X}$ als konstante betrachten. 
+	Wählen wir jetzt ein ganz kleines Ebenenstück um diesen Punkt $P$ mit Normale $\hat{n}$ parallel zu $\vec{X}$, können wir $\vec{X}$ als konstant betrachten. 
 	Dann ist
 	\begin{align*}
 		\vec{X} \cdot d\vec{s} 
@@ -183,19 +185,20 @@ Dabei Stellt sich noch die Frage, warum die Integrale beim letzten Schritt wegge
 	\end{align*}
 	Dieser Widerspruch zeigt, dass $\vec{X} = 0$ sein muss.
 \end{proof}
-Das Lemma \ref{maxwell:lemma:ampere} kann nun auf Gleichung \refeq{maxwell:equation:ampere:differential} angewendent werden, und erhalten dadurch die Differentialform des ampèreschen Gesetzes ohne Integrale.
+Das Lemma \ref{maxwell:lemma:ampere} kann nun auf Gleichung \eqref{maxwell:equation:ampere:differential} angewendet werden, und erhalten dadurch die Differentialform des ampèreschen Gesetzes ohne Integrale.
 
 
 \subsection{Entdeckung des Induktionsgesetzes}
 
 Im Jahre 1821 gelang Michael Faraday ein Experiment, bei dem sich ein stromdurchflossener Leiter unter Einfluss eines Dauermagneten um seine Achse drehte.
-Er nannte dies die ``elektromagnetische Rotation'', was eine sehr wichtige Voraussetzung für die Entwicklung des Elektromotors war.
+Er nannte dies die ``elektromagnetische Rotation''.
+Dies war eine sehr wichtige Voraussetzung für die Entwicklung des Elektromotors. 
 Die Idee, dass man Magnetismus in Elektrizität umwandeln könnte, hatte er bereits 1822.
 Jedoch konnte er erst 1831, nach mehreren gescheiterten Versuchen und einer längeren Pause, in der er sich anderen Untersuchungen widmete, ein erfolgreiches Experiment durchführen.
 Faraday entdeckte die elektromagnetische Induktion!
 
 Fünf Jahre später konnte er erfolgreiche Versuche über den nach ihm benannten ``faradayschen Käfig'' erzielen.
-Der faradayscher Käfig hat die Eigenschaft, das in seinem Inneren kein elektrisches Feld vorhanden ist.
+Der faradaysche Käfig hat die Eigenschaft, das in seinem Inneren kein elektrisches Feld vorhanden ist.
 Um das zu erreichen, muss der Körper aus elektrisch leitfähigem Material bestehen.
 
 Faraday leistete in seinem Leben noch weitere Beiträge im Bereich der Elektrizität und im Magnetismus. 
@@ -204,29 +207,28 @@ Elektrische Kräfte oder auch die Gravitationskraft sollen durch Kraftlinien und
 Aussergewöhnlich war ausserdem auch seine Arbeitsweise.
 Seine veröffentlichten Errungenschaften beinhalteten wenig bis keine mathematischen Beweise, er konnte alles rein durch Experimente verifizieren \cite{maxwell:Michael_Faraday}.
 \begin{quote}
-	„Faraday sah im Geiste die den ganzen Raum durchdringenden Kraftlinien, wo die Mathematiker fernwirkende Kraftzentren sahen; Faraday sah ein Medium, wo sie nichts als Abstände sahen; Faraday suchte das Wesen der Vorgänge in den reellen Wirkungen, die sich in dem Medium abspielten, jene waren aber damit zufrieden, es in den fernwirkenden Kräften der elektrischen Fluida gefunden zu haben…“
-	
-	– James Clerk Maxwell: A Treatise on Electricity and Magnetism. Clarendon Press, 1873.
+	„Faraday sah im Geiste die den ganzen Raum durchdringenden Kraftlinien, wo die Mathematiker fernwirkende Kraftzentren sahen; Faraday sah ein Medium, wo sie nichts als Abstände sahen; Faraday suchte das Wesen der Vorgänge in den reellen Wirkungen, die sich in dem Medium abspielten, jene waren aber damit zufrieden, es in den fernwirkenden Kräften der elektrischen Fluida gefunden zu haben…“ \cite{maxwell:zitat}
 \end{quote}
 
 \subsection{Entdeckung des gaussschen Gesetzes}
 
 Carl Friedrich Gauss war ein sehr bedeutender Mathematiker und Theoretiker.
 Bereits während seiner Lebenszeit wurde er als ``Fürst der Mathematiker'' bezeichnet.
-Nach ihm wurden über 100 mathematische und wissenschaftliche Konzepte benannt, so auch in der Elektrodynamik.\cite{maxwell:Carl_Friedrich_Gauß}
-1825 formulierte er das ``Gaussches Gesetz für elektrische Felder''.
+Nach ihm wurden über 100 mathematische und wissenschaftliche Konzepte benannt, so auch in der Elektrodynamik \cite{maxwell:Carl_Friedrich_Gauß}.
+1825 formulierte er das ``gausssche Gesetz für elektrische Felder''.
 Dieses Gesetz konnte er durch Coulombs Beobachtungen, dass das elektrische Feld einer Punktladung radial quadratisch abnimmt, folgern.
 Durch diese radiale Abnahme musste auch der elektrisch Fluss durch eine Kugel, in der die Ladung eingeschlossen ist, konstant sein.
-Somit lässt sich daraus schliessen, dass das Integral des elektrischen Flusses über diese Kugeloberfläche genau der darin enthaltenen Ladung entspricht\cite{maxwell:Gaußscher_Integralsatz}
-\[
+Somit lässt sich daraus schliessen, dass das Integral des elektrischen Flusses über diese Kugeloberfläche genau der darin enthaltenen Ladung entspricht \cite{maxwell:Gaußscher_Integralsatz}
+\begin{equation}
+\label{maxwell:equasion:elektrisch}
 \oint_{A=\d V} \vec{D} \cdot d\vec{s}
 =
 \int_{V} \rho_{\text{frei}}\, dv
 =
 Q_{\text{frei}} ,
-\]
-wobei $\rho_{\text{frei}}$ die freie Ladungsdichte und $Q_{\text{frei}}$ die gesamten freien Ladungen in der Kugel sind. $\varepsilon_0$ enstpricht der Permitivität im Vakuum. Dies ist auch gerade eine Anwendung vom Gausschen Integralsatz aus der Mathematik.
-Die Gleichung lässt sich natürlich auch mit der elektrischen Feldstärke ausdrücken. Da $\vec{D} = \varepsilon_0 \vec{E}$ gilt, folgt:
+\end{equation}
+wobei $\rho_{\text{frei}}$ die freie Ladungsdichte und $Q_{\text{frei}}$ die gesamten freien Ladungen in der Kugel sind. $\varepsilon_0$ entspricht der Permitivität im Vakuum. Dies ist auch gerade eine Anwendung vom gaussschen Integralsatz aus der Mathematik.
+Die Gleichung lässt sich natürlich auch mit der elektrischen Feldstärke ausdrücken. Da $\vec{D} = \varepsilon_0 \vec{E}$ gilt, folgt
 \[
 \oint_{A=\d V} \vec{E} \cdot d\vec{s}
 =
@@ -261,7 +263,7 @@ Dafür integrieren wir bei
 =
 \int_{\d V} \omega .
 \]
-Wie bereits bei der Umformulierung des Ampère-Gesetz, definieren wir wieder eine 1-Form
+Wie bereits bei der Umformulierung des Ampère-Gesetzes, definieren wir wieder eine 1-Form
 \[
 \alpha
 =
@@ -300,11 +302,11 @@ bekommen.
 
 Der allgemeine Satz von Stokes für $\ast \alpha$ ist
 \[
-\int_{V} d \ast \alpha 
+\int_{V} d {\ast} \alpha 
 =
 \int_{\d V} \ast \alpha .
 \]
-Setzt man Gleichung \refeq{maxwell:equasion:gauss:zweiform} und \refeq{maxwell:equasion:gauss:dreiform} ein, erhalten wir
+Setzt man Gleichung \eqref{maxwell:equasion:gauss:zweiform} und \eqref{maxwell:equasion:gauss:dreiform} ein, erhalten wir
 \[
 \int_{\d V}
 E_x \, dy \wedge dz + E_y \, dz \wedge dx + E_z \, dx \wedge dy
@@ -330,7 +332,7 @@ Nun können wir in bei der integralen Form des Satzes von Gauss
 	&=
 	\frac{1}{\varepsilon_0}\int_{V} \rho \, dv
 	\\
-	\intertext{den Integralsatz \refeq{maxwell:equasion:gauss:gauss} einsetzen:}
+	\intertext{den Integralsatz \eqref{maxwell:equasion:gauss:gauss} einsetzen:}
 	\int_{V}
 	(\nabla \cdot \vec{E}) \, dv
 	&=
@@ -344,11 +346,11 @@ Nun können wir in bei der integralen Form des Satzes von Gauss
 
 \begin{lemma}
 	\label{maxwell:lemma:gauss}
-	Für den allgemeinen Satz von Stokes gilt für jedes noch so kleine Volumen
+	Sei $\rho$ eine im Punkt $x$ stetige Funktion. Dann ist der Grenzwert
 	\[
-	\lim_{\left| V \right| \to 0} \frac{1}{\left| V \right|} \int_{V} \rho \, dV = \rho(x),
+	\lim_{V\operatorname{diam}V\to 0} \frac{1}{|V|} \int_V \rho\,dV = \rho(x),
 	\]
-	falls $x\in V$ während des Grenzübergangs.
+für jede Folge von offenen Umgebungen $V$ des Punktes $x$, deren Durchmesser gegen 0 streben.
 \end{lemma}
 \begin{proof}
 	Die Funktion $\rho$ ist stetig in $x$. Das bedeutet, für jedes noch so kleine $\varepsilon > 0$ existiert ein $\delta > 0$.
@@ -366,7 +368,7 @@ Nun können wir in bei der integralen Form des Satzes von Gauss
 	\[
 	\left|\rho(y) - \rho(x)\right| < \varepsilon .
 	\]
-	Betrachten wir nun die Differenz zwischen dem Mittelwert über das volume $V$ und dem Wert $x$
+	Betrachten wir nun die Differenz zwischen dem Mittelwert über das Volumen $V$ und dem Wert $x$
 	\[
 	\left|
 	\frac{1}{\left|V\right|}
@@ -427,9 +429,9 @@ Nun können wir in bei der integralen Form des Satzes von Gauss
 
 
 \subsection{Maxwells Beiträge zur Elektrodynamik}
-Der wohl prägendste Namen in der Geschichte der Elektrodynamik ist wohl der von James Clerk Maxwell.
-Mit seiner Publikation ``A dynamical Theory of the Electromagnetic Field'' im Jahre 1865 beschrieb Maxwell, dass sich das magnetische und elektrische Feld in Form von Wellen mit Lichtgeschwindigkeit im Vakuum ausbreiten.
-Im selben Paper veröffentlichte er auch seine Finale Version seiner berühmten Gleichungen, doch wie kam es dazu?
+Der wohl prägendste Namen in der Geschichte der Elektrodynamik ist der von James Clerk Maxwell.
+Mit seiner Publikation ``A dynamical Theory of the Electromagnetic Field'' \cite{maxwell:maxwell:theory} im Jahre 1865 beschrieb Maxwell, dass sich das magnetische und elektrische Feld in Form von Wellen mit Lichtgeschwindigkeit im Vakuum ausbreiten.
+Im selben Paper veröffentlichte er auch die Finale Version seiner berühmten Gleichungen, doch wie kam es dazu?
 
 Schon im jungen Alter war Maxwell sehr fasziniert an der Geometrie. Bereits mit 13 Jahren, im Jahre 1844, gewann er den Mathematikwettbewerb seiner Schule, der angesehenen Edinburgh Academy.
 Sein Interesse ging weit über den gewöhnlichen Schulstoff hinweg.
@@ -437,22 +439,90 @@ Er beschäftigte sich hauptsächlich mit Verfahren über das Zeichnen mathematis
 
 Er führte sein Studium in der University of Edinburgh fort und wechselte später zur University of Cambridge.
 1865 wurde er Professor für Mathematik am Marischal College in Aberdeen.
-Mit seinen 25 war er mit Abstand der jüngste Professor am College.%https://en.wikipedia.org/wiki/James_Clerk_Maxwell
+Mit seinen 25 Jahren war er mit Abstand der jüngste Professor am College \cite{maxwell:maxwell}.
 
-Sein Studium über den Elektromagnetismus begann er aber bereits 1855 und dauerte bis 1870. In dieser Zeit veröffentlichte er mehrere Papers.
+Seine Studien über den Elektromagnetismus begann er aber bereits 1850 und führte er bis 1870 fort. 
+Während dieser Zeit machte er Bekanntschaft mit Michael Faraday, mit welchem er eine langjährige Freundschaft pflegte.
+Inspiriert von Faradays Idee eines Feldes anstatt einer Fernwirkung, versuchte er, dessen Ideen mathematisch auszuarbeiten.
 
- 
+Ein sehr entscheidender Schritt in Maxwells arbeiten war die Einführung des Verschiebungsstromes.
+Dabei handelt es sich um eine Erweiterung des Ampère-Gesetzes \eqref{maxwell:equasion:ampere}.
+Dieses Gesetz gilt nur im stationären Fall.
+Das Problem dabei ist der Kondensator.
+Während des Ladens und Entladens ist zwischen den Kondensatorplatten ein Magnetfeld messbar, obwohl dort kein Strom fliesst.
+Das wäre ein Widerspruch für das Ampère-Gesetz, welches besagt, dass magnetische Wirbelfelder durch elektrische Ströme entstehen.
+Somit führte Maxwell den Verschiebungsstrom
+\[
+\vec{J}_D = \frac{\d \vec{D}}{\d t}
+\]
+ein, welcher diesen Widerspruch beseitigte.
+Der vollständige Durchflutungsstatz lautet nun in integraler Form
+\[
+\oint_{\d A}
+\vec{H}
+\cdot
+d\vec{l}
+=
+\iint_{A}
+\frac{\d \vec{D}}{\d t} 
+\,
+d\vec{s}
++
+I
+\]
+und 
+\[
+\nabla
+\times
+\vec{H}
+=
+\mu_0 \vec{J}
++
+\mu_0 \varepsilon_0 \frac{\d \vec{E}}{\d t}
+\]
+in differentieller Form.
 
-%https://en.wikipedia.org/wiki/History_of_Maxwell%27s_equations
+Die Existenz magnetischer Monopole wurde schon von Petrus Peregrinus widerlegt.
+Für dieses Phänomen entwickelte Maxwell das gausssche Gesetz für Magnetfelder:
+\[
+\iint_{A}
+\vec{B} \cdot d\vec{s}
+=
+0
+\]
+\[
+\nabla \cdot \vec{B} = 0 .
+\]
+Der Name kommt vom gaussschen Gesetz für Elektrische Felder \eqref{maxwell:equasion:elektrisch}, welches starke ähnlichkeiten besitzt.
+Die differentielle Form ist sehr intuitiv, denn wenn die Divergenz eines Feldes gleich null ist, gibt es keine Quellen. 
+In unserem Fall hier keine magnetischen Quellen oder Monopole \cite{maxwell:equasions}.
 
-%axwell also introduced the concept of the electromagnetic field in comparison to force lines that Faraday described.[1
+Maxwells Entdeckungen legten den Grundstein für die Relativitätstheorie und der Quantenphysik.
+Viele Physiker sehen in ihm den einflussreichsten Wissenschaftler des 19. Jahrhunderts, vergleichbar mit Newton und Einstein.
+Albert Einstein selbst beschrieb Maxwells Arbeiten als die tiefgründigsten und fruchtbarsten, die die Physik seit Newton erlebt hat.
 
-%His discoveries helped usher in the era of modern physics, laying the foundations for such fields as relativity, also being the one to introduce the term into physics,[10] and quantum mechanics.[18][19] Many physicists regard Maxwell as the 19th-century scientist having the greatest influence on 20th-century physics. His contributions to the science are considered by many to be of the same magnitude as those of Isaac Newton and Albert Einstein.[20] On the centenary of Maxwell's birthday, his work was described by Einstein as the "most profound and the most fruitful that physics has experienced since the time of Newton".[21] When Einstein visited the University of Cambridge in 1922, he was told by his host that he had done great things because he stood on Newton's shoulders; Einstein replied: "No I don't. I stand on the shoulders of Maxwell."[22] Tom Siegfried described Maxwell as "one of those once-in-a-century geniuses who perceived the physical world with sharper senses than those around him".[23]
-folgt noch: Geschichte Maxwell, war der erste der die relativität in betracht zog!! wichtig
-Heaviside,
-relativität mit einstein?
-differentailformen eher nicht
-bei maxwell 20 gleichhungne zerst, evtl sagen was es alles war, war nähmlich glaubs mehr drin als jetzt in den vier heuteigen
+Die Gleichungen von Maxwell hatten anfangs aber nicht die Form, wie wir sie heute kennen. 
+Seine gesamten Leistungen der Elektrodynamik umfassten 20 Gleichungen.
+Der Mann, welche sie in der modernen Form der Vektoranalysis formulierte, war Oliver Heaviside, ein selbstgelernter Mathematiker, im Jahre 1884 \cite{maxwell:heaviside}.
+
+Die Geschichte der Elektrodynamik brachte also vier Gleichungen
+\begin{align*}
+	\nabla \cdot \vec{E} &= \frac{\rho}{\varepsilon_0} ,
+	\\
+	\nabla \cdot \vec{B} &= 0 ,
+	\\
+	\nabla \times \vec{E} &= - \frac{\d \vec{B}}{\d t} 
+	\\
+	\intertext{und}
+	\nabla \times \vec{B} &= \mu_0 \vec{J} + \mu_0 \varepsilon_0 \frac{\d \vec{E}}{\d t}
+\end{align*}
+hervor, um alle elektromagnetischen Phänomene zu beschreiben.
+In den folgenden Kapiteln versuchen wir, die Probleme der Gleichungen zu erläutern, sie zu verallgemeinern und zu vereinfachen.
+
+
+
+%deutsche und englische artikel
+%https://en.wikipedia.org/wiki/History_of_Maxwell%27shistor.achtung falsch!
 
 
 
