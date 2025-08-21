@@ -16,10 +16,10 @@ f\, (\vec{k} \times \vec{v}_g)
 +
 \frac{1}{\rho} \nabla p
 =
-0
+0.
 \label{geostrophisch:equation5}
 \end{equation}
-Von der geostrophischen Näherung spricht man also, wenn man annimmt, dass sich die Druckgradientkraft und Coriolis-Kraft im Gleichgewicht befinden und alle anderen Kräfte vernachlässigt werden können. In diesem Fall wirken beide Kräfte gleich stark, aber in entgegengesetzte Richtungen, sodass kein weiterer Beschleunigungseffekt auf die Luftmasse wirkt und sie parallel zu den Isobaren strömt - es entsteht der sogenannte geostrophische Wind.
+Von der geostrophischen Näherung spricht man also, wenn man annimmt, dass sich die Druckgradientkraft und Coriolis-Kraft im Gleichgewicht befinden und alle anderen Kräfte vernachlässigt werden können. In diesem Fall wirken beide Kräfte gleich stark, aber in entgegengesetzte Richtungen, sodass kein weiterer Beschleunigungseffekt auf die Luftmasse wirkt und sie parallel zu den Isobaren strömt. Es entsteht der sogenannte geostrophische Wind.
 
 \vspace{1em}
 
@@ -46,14 +46,14 @@ Die Gleichung zur Beschreibung der zeitlichen Änderung des Wasserdampfgehalts (
 
 In der klassischen Formulierung der atmosphärischen Grundgleichungen besteht das System aus sieben Gleichungen:  
 \begin{itemize}
-    \item drei Bewegungsgleichungen (Navier-Stokes in x-, y- und z-Richtung),
+    \item drei Bewegungsgleichungen (Navier-Stokes in $x$-, $y$- und $z$-Richtung),
     \item die Kontinuitätsgleichung (Massenerhaltung),
     \item die Energiegleichung,
     \item die Zustandsgleichung (ideales Gas),
     \item und die Feuchtegleichung.
 \end{itemize}
 
-Letztere wird daher als \textbf{siebte Gleichung} bezeichnet. Sie beschreibt die zeitliche Änderung des spezifischen Wasserdampfgehalts $q_v$ in der Luft. Dabei handelt es sich um eine Erhaltungsgleichung, die sowohl den Transport von Feuchtigkeit als auch Quellen und Senken wie Kondensation, Verdunstung oder Niederschlag berücksichtigt.  
+Letztere wird daher als \emph{siebte Gleichung} bezeichnet. Sie beschreibt die zeitliche Änderung des spezifischen Wasserdampfgehalts $q_v$ in der Luft. Dabei handelt es sich um eine Erhaltungsgleichung, die sowohl den Transport von Feuchtigkeit als auch Quellen und Senken wie Kondensation, Verdunstung oder Niederschlag berücksichtigt.  
 
 In ihrer allgemeinen Form lautet sie:
 
@@ -85,7 +85,7 @@ Als erstes haben wir eine Liste erstellt mit den Städten und dazugehörigen Koo
 Anschliessend werden von allen Ortschaften die Druckdaten von der Internetseite gelesen.
 Danach erstellen wir ein Gitter mit den Koordinaten der Ortschaften, indem wir zuerst die Längen- und Breitengrade vom kleinsten bis zum grössten Wert mit konstanten Schritten aufteilen.
 Anschliessend interpolieren wir für jeden Punkt im Gitter den lokalen Luftdruck.
-Druckgradienten müssen wir in \(X\)- sowie \(Y\)-Richtung einzeln berechnen.
+Druckgradienten müssen wir in \(x\)- sowie \(y\)-Richtung einzeln berechnen.
 Doch dafür brauchen wir zuerst noch die Längen- und Breitengradabstände ($dx$, $dy$).
 Der Längengradabstand berechnet sich wie folgt
 \begin{equation}
@@ -96,9 +96,9 @@ Die Breitengrade sind Parallelkreise und deren Umfang nimmt vom Äquator zu den 
 Deren Abstand ist konstant $\approx\SI{111}{\kilo\meter}$.
 Aus diesen Werten können wir nun den Druckgradienten berechnen, indem wir die Druckänderung zwischen benachbarten Punkten durch die Abstände teilen.
 Jetzt haben wir schon so gut wie alles um den geostrophischen Wind zu berechnen, wir brauchen nur noch den Coriolis-Parameter $f$.
-Diesen berechnen wir wie in ~\ref{geostrophisch:subsection:coriolis} schon gezeigt. 
+Diesen berechnen wir wie in~\ref{geostrophisch:subsection:coriolis} schon gezeigt. 
 Zur Farbgebung berechnen wir noch die Windgeschwindigkeit an jedem Punkt. 
-Alles was danach im Code kommt ist nur noch zur Darstellung der Daten und auf diese muss jetzt nicht genauer eingegangen werden.
+Alles was danach im Code kommt, ist nur noch zur Darstellung der Daten und auf diese muss jetzt nicht genauer eingegangen werden.
 
 Nachfolgend unser Python Code zum berechnen des geostrophischen Windes: 
 \lstinputlisting[style=pycode]{papers/geostrophisch/PythonCode/geostrophischeNaeherungLiveData.py}
