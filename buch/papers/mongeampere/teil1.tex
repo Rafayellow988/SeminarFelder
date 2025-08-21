@@ -6,7 +6,7 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Differentialgeometrie
+\section{Gaussche Krümmung
 \label{mongeampere:section:teil1}}
 \kopfrechts{Problemstellung}
 Damit wir verstehen wie die Monge Ampere Gleichung mit der 
@@ -14,17 +14,51 @@ Krümmung einer Fläche zusammenhängt, brauchen wir zuerst eine Methode die
 Krümmug einer Fläche yu beschreiben.
 Wir betrachten dabei die Fläche
 \begin{equation}
-  F(x, y, z) = 0
+  y = F(x, y)
   \label{mongeampere:area}
 \end{equation}
-oder in parameterform
+oder in Parameterform
 \begin{equation}
   x = \varphi(u,v), \quad y = \psi(u,v), \quad z = \omega(u,v)
   \label{mongeampere:areaparam}
 \end{equation}
+Die Fläche kann in der Parameterform auch als Radiusvektor $\vec r (u, v)$
+schreiben.
+Leitet man diesen Radiusvektor nach den Prametern $u$ und $v$ ab bekommnt man zwei Tangenten
+$\vec r_u$ und $\vec r_v$,
+mit welchen die Flächennormale 
+\begin{equation}
+  \vec m = \frac{\vec r_u \times \vec r_v}{\sqrt{(\vec r_u \times \vec r_v)^2}} 
+  \label{mongeampere:norm}
+\end{equation}
+wobei $(\dot)^2$ für das Skalarprodukt steht.
+
+
 
 \subsection{Erste Fundamentalform
 \label{mongeampere:subsection:finibus}}
 \ref{mongeampere:section:teil2}.
+Die erste Fundamentalform beschreibt die innere Geometrie einer Fläche.
+Betrachtet man das Quadrate des Bogendifferential einer auf der Fläche 
+beschriebenen Kurve $s(u,v)$ so ist 
+\begin{equation}
+  \begin{split}
+    \dd s^2 &= \dd x^2 + \dd y^2 + \dd z^2 \\
+          &= \left(\pdv{x}{u}\dd u + \pdv{x}{v}\dd v  \right)^2
+          + \left(\pdv{z}{u}\dd u + \pdv{z}{v}\dd v  \right)^2
+          + \left(\pdv{z}{u}\dd u + \pdv{z}{v}\dd v  \right)^2.
+  \end{split}
+  \label{mongeampere:bogdiff}
+\end{equation}
+Rechnet man die Klammern aus erhält man 
+\begin{equation}
+  \begin{split}
+    \dd s^2 &=  \left(\pdv{x}{u}\right)^2\\
+          &= \left(\pdv{x}{u}\dd u + \pdv{x}{v}\dd v  \right)^2
+          + \left(\pdv{z}{u}\dd u + \pdv{z}{v}\dd v  \right)^2
+          + \left(\pdv{z}{u}\dd u + \pdv{z}{v}\dd v  \right)^2
+  \end{split}
+  \label{mongeampere:bogdiff}
+\end{equation}
 
 
