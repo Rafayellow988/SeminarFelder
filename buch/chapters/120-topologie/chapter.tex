@@ -212,7 +212,7 @@ t_1
 t_2
 \intertext{Die wir auch}
 &=
-\sum_{k=0}^n (-1)^kt_k
+\sum_{k=0}^2 (-1)^kt_k
 \end{align*}
 schreiben können.
 Diese Schreibweise lässt sich leicht auf beliebige Dimension
@@ -233,8 +233,9 @@ die \emph{Euler-Charakteristik} von $S$.
 \index{Euler-Charakteristik}%
 \end{definition}
 
-Für einen zweidimensionalen simplizialen Komplex
-
+%
+% Verfeinerung der Triangulation
+%
 \subsubsection{Verfeinerung der Triangulation}
 Die Definition der Euler-Charakteristik hängt von der Triangulation ab.
 Wir müssen daher zeigen, dass eine Verfeinerung der Triangulation die
@@ -365,6 +366,234 @@ Die Euler-Charakteristik ist also eine topologische Invariante.
 % Homologie
 %
 \subsection{Homologie}
+
+\subsubsection{Vektorraum der Simplizes}
+Der Rand eines Simplexes ist nicht ein einzelnes Simplex, sondern
+eine Menge von Simplizes.
+Genau genommen müssen wir ausserdem auch noch die Orientierung eines
+Simplexes berücksichtigen.
+Ein zweidimensionales Simplex mit den Ecken $ABC$ hat als Rand
+die drei Simplizes $AB$, $BC$ und $AC$, aber das letzte wird in
+entgegengesetzter Richtung durchlaufen.
+
+\begin{definition}
+Sei $S$ ein $n$-dimensionaler simplizialer Komplex.
+Für jedes $k$, $0\le k\le n$ ist $C_k$ der reelle Vektorraum, aufgespannt
+von den Simplizes von $S$.
+\end{definition}
+
+
+
+\begin{beispiel}
+\label{buch:topologie:eulercharakteristik:bsp:dreieck}
+Wir betrachten den simplizialen Komplex, der aus nur einem Dreieck
+$\triangle ABC$ besteht.
+Die $0$-dimensionalen Simplizes sind die Ecken $A$, $B$ und $C$, 
+die eindimensionalen Simplizes sind die Kanten $AB$, $BC$ und $AC$.
+Deher sind die Vektorräume
+\begin{align*}
+C_0 &= \{ x_A A + x_B B + x_C C\mid x_A, x_B, x_C\in\mathbb{R}\}
+&
+\dim C_0 &= 3 \\
+\\
+C_1 &= \{ x_{AB} AB + x_{BC} BC + x_{AC} AC\mid x_{AB}, x_{BC}, x_{AC} \in\mathbb{R}\}
+&
+\dim C_1 &= 3 \\
+\\
+C_2 &= \{ x_{ABC} ABC\mid x_{ABC}\in\mathbb{R}\}
+&
+\dim C_2 &= 1
+\end{align*}
+\end{beispiel}
+
+%
+% Randoperator
+%
+\subsubsection{Randoperator}
+Da wir jetzt beliebige Simplizes linear kombinieren können, können
+wir auch den Rand eines Simplex als Linearkombination von nideriger
+dimensionalen Simplizes ausdrücken.
+
+\begin{definition}[Randoperator]
+Der $k$-dimensionale Randoperator ist die lineare Abbildung
+\[
+\partial_k
+\colon
+C_k \to C_{k+1}
+:
+P_0\dots P_k
+\mapsto
+\sum_{i=0}^k
+(-1)^i
+P_0\dots\widehat{P_i}\dots P_k.
+\]
+\index{Randoperator}%
+\end{definition}
+
+\begin{beispiel}
+Das Beispiel~\ref{buch:topologie:eulercharakteristik:bsp:dreieck}
+konstruiert die Vektorräume $C_k$ für ein Tetraeder.
+Der $0$-dimensionale Randoperator $\partial_0$ ist der Null-Operator.
+In höheren Dimension sind Randoperatoren
+\begin{align*}
+\partial_1 AB &= -B + A \\
+\partial_1 BC &= -C + B \\
+\partial_1 AC &= -C + A \\
+\partial_2 ABC &= AB - AC + BC
+\end{align*}
+\end{beispiel}
+
+\begin{satz}
+Der Rand eines Randes verschwindet, $\partial_{k-1}\circ\partial_k=0$.
+\end{satz}
+
+\begin{proof}
+Da der Randoperator linear ist, muss die Behauptung nur auf $k$-dimensionalen
+Simplizes verifiziert werden.
+Sei also $\sigma=P_0\dots P_k$ ein $k$-dimensionales Simplex.
+Der Randoperator ergibt
+\[
+\partial_k\sigma
+=
+\sum_{i=0}^k
+(-1)^i P_0\dots\widehat{P_i}\dots P_k.
+\]
+Die Summanden sind $k-1$-dimensionale Simplizes, deren Rand wir jetzt
+zusätzlich ausrechnen müssen.
+Dabei müssen erneut Punkte $P_j$ weggelassen und mit einem Vorzeichen versehen
+werden.
+Da das Vorzeichen von der Position und nicht vom Index abhängt, unterscheiden
+wird die Fälle $j<i$ und $j>i$:
+\begin{align*}
+\partial_{k-1}\partial_k \sigma
+&=
+\sum_{i=0}^k (-1)^i \partial_{k-1} P_0\dots \widehat{P_i}\dots P_k
+\\
+&=
+\sum_{i=0}^k
+\biggl(
+\sum_{j=0}^{i-1}
+(-1)^{i+j}P_0\dots\widehat{P_j}\dots \widehat{P_i}\dots P_k
++
+\sum_{j=i+1}^{k}
+(-1)^{i+j+1}P_0\dots\widehat{P_i}\dots \widehat{P_j}\dots P_k
+\biggr)
+\\
+&=
+\sum_{j<i}
+(-1)^{i+j}P_0\dots\widehat{P_j}\dots \widehat{P_i}\dots P_k
++
+\sum_{i<j}
+(-1)^{i+j+1}P_0\dots\widehat{P_i}\dots \widehat{P_j}\dots P_k.
+\intertext{Vertauschen wir die Namen der Summationsvariablen in der
+zweiten Summe und verwandeln wird den Summanden $+1$ im Exponenten
+in ein Vorzeichen vor der Summe, entsteht}
+&=
+\sum_{j<i}
+(-1)^{i+j}P_0\dots\widehat{P_j}\dots \widehat{P_i}\dots P_k
+-
+\sum_{j<i}
+(-1)^{i+j}P_0\dots\widehat{P_j}\dots \widehat{P_i}\dots P_k.
+\end{align*}
+Die beiden Summen heben sich weg, was die Behauptung beweist.
+\end{proof}
+
+%
+% Zyklen und Ränder
+%
+\subsubsection{Zyklen und Ränder}
+Der Randoperator ist ein linearer Operator und wird daher wesentlich
+durch Kennzahlen wie Rang und Dimension des Kernes charakterisiert.
+Wir geben Kern und Bild des Randoperators spezielle Namen.
+
+\begin{definition}[Zyklen und Ränder]
+Die Menge der $k$-dimensionalen {\em Zyklen} ist der Kern
+\index{Zyklus}%
+\[
+Z_k
+=
+\ker \partial_k 
+=
+\{ z\in C_k \mid \partial_kz = 0 \}
+\]
+des Randoperators.
+Die Menge der $k$-dimensionalen {\em Ränder } ist das Bild
+\index{Rand}%
+\[
+B_k
+=
+\operatorname{im} \partial_{k+1}
+=
+\{ \partial_{k+1}c\mid c\in C_{k+1} \}
+\]
+des $k+1$-dimensionalen Randoperators.
+\end{definition}
+
+Da $\partial_{k}\partial_{k+1}=0$ ist, werden Ränder in $B_k$
+von $\partial_k$ annihiliert.
+Dies bedeutet, dass Ränder immer auch Zyklen sind, dass also
+$B_k\subset Z_k$ für alle $k$ gilt.
+
+%
+% Homologievektorräume
+%
+\subsubsection{Homologievektorräume}
+Da die Ränder einen Untervektorraum des Raumes der Zyklen bilden,
+können wir die Quotientengruppen bilden und ihnen einen Namen geben.
+
+\begin{definition}[Homologievektorraum]
+Die Homologievektorraum in Dimension $k$ ist definiert als
+\[
+H_k(S,\mathbb{R})
+=
+Z_k / B_k.
+\]
+\end{definition}
+
+\begin{satz}
+\label{buch:topologie:eulercharakteristik:satz:homologieunterteilung}
+Ein Unterteilung des simplizialen Komplexes führt zu isomorphen
+Homologievektorräumen.
+\end{satz}
+
+\subsubsection{Betti-Zahlen und Euler-Charakteristik}
+Die Homologievektorräume sind endlichdimensionale Vektorräume.
+Ihre Dimension sagt etwas über die Komplexität des simplizialen
+Komplexes aus und verdient daher einen eigenen Namen.
+
+\begin{definition}[Betti-Zahlen]
+\index{Betti-Zahl}
+Die $k$-te \emph{Betti-Zahl} $\beta_k$ ist die Dimension
+\[
+\beta_k
+=
+\dim H_k(S,\mathbb{R}).
+\]
+\end{definition}
+
+\begin{satz}
+Eine Unterteilung des simplizialen Komplexes ändert die Betti-Zahlen
+nicht.
+\end{satz}
+
+\begin{proof}
+Gemäss Satz~\ref{buch:topologie:eulercharakteristik:satz:homologieunterteilung}
+ändert die Unterteilung die Homologie-Vektorräume nicht, also ändert sich
+auch deren Dimension nicht.
+\end{proof}
+
+\begin{satz}
+Die Euler-Charakteristik ist durch die Betti-Zahlen bestimmt,
+es gilt
+\[
+\chi(S)
+=
+\sum_{k=0}^n (-1)^k \beta_k.
+\]
+\end{satz}
+
+\begin{proof}
+\end{proof}
 
 %
 % Morse-Theorie
