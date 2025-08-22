@@ -76,5 +76,43 @@ Es gilt also
 \end{align}
 Das Skalarprodukt von zwei Einheitsvektoren $\u$ und $\v$ ist äquivalent zum Kosinus des Winkels dazwischen:
 \begin{equation}
-  \u \cdot \v = \cos{\theta}
+  \u \cdot \v = \cos{\theta}.
 \end{equation}
+
+Das Wedgeprodukt zwischen zwei Vektoren bildet wie bereits bekannt den Bivektor dazwischen, d.h. die orientierte Fläche.
+Da $\u$ und $\v$ Einheitsvektoren sind, beträgt die Fläche dazwischen genau $\sin{\theta}$. Für das Wedgeprodukt gilt daher
+\begin{equation}
+  \u \wedge \v = \sin{\theta} \cdot \eot.
+\end{equation}
+
+Daher sind $R$ und $\tilde{R}$:
+\begin{align}
+  R = \cos{\theta} + \sin{\theta} \dot \eot \\
+  R = \cos{\theta} - \sin{\theta} \dot \eot.
+\end{align}
+Dies erzeugt jedoch wie gesehen die Rotation um den doppelten Winkel $2 \theta$. Wir ersetzen $\alpha = 2\theta$ und erhalten die Rotation um
+den tatsächlichen Vektor $\alpha$
+\begin{equation}
+  \mathbf{x}'' = (\cos{\frac{\alpha}{2}} + \sin{\frac{\alpha}{2}} \eot) \mathbf{x} (\cos{\frac{\alpha}{2}} - \sin{\frac{\alpha}{2}} \eot).
+\end{equation}
+
+
+\begin{beispiel}
+Angenommen,
+\begin{align}
+  \mathbf{x} &= \eone + \etwo \\
+  \alpha &= \frac{\pi}{2}.
+\end{align}
+Somit gilt
+\begin{equation}
+  \newcommand{\fraction}{\frac{\sqrt{2}}{2}}
+  \begin{aligned}
+    \mathbf{x}'' &= (\cos{\frac{\alpha}{2}} + \sin{\frac{\alpha}{2}} \eot) (\eone + \etwo) (\cos{\frac{\alpha}{2}} - \sin{\frac{\alpha}{2}} \eot) \\
+    &= (\fraction + \fraction \eot)(\eone + (\fraction - \fraction \eot) \\
+    &= (\fraction \eone - \fraction \etwo + \fraction \etwo + \fraction \eone)(\fraction - \fraction \eot) \\
+    &= \sqrt{2} \eone (\fraction - \fraction \eot) \\
+    &= \eone - \etwo,
+  \end{aligned}
+\end{equation}
+was genau der Rotation entspricht!
+\end{beispiel}
