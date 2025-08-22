@@ -26,7 +26,7 @@ Die Reaktionsdiffusionsgleichungen für \(u\) und \(v\) lauten
     %\label{reaktdiff:equation:reaktdiff1}
     \frac{\partial u}{\partial t} &= D_u \Delta u + f(u,v)\\
     \label{reaktdiff:equation:reaktdiff2}
-    \frac{\partial v}{\partial t} &= D_v \Delta v + g(u,v)
+    \frac{\partial v}{\partial t} &= D_v \Delta v + g(u,v),
 \end{align*}
 wobei \(D_u, D_v > 0\) die Diffusionskoeffizienten der Komponenten \(u\) und \(v\) sind.
 
@@ -41,15 +41,15 @@ Man betrachte die Gleichungen
 \end{equation}
 
 \subsubsection{Linearisierung}
-Im Fokus liegt die Stationärlösung \(u_0, v_0\) der Gleichungen \eqref{reaktdiff:equation:reaktdiff2ohneDiff}, das heisst das \(f(u_0,v_0) = g(u_0,v_0) = 0\).
+Im Fokus liegt die Stationärlösung \(u_0, v_0\) der Gleichungen \eqref{reaktdiff:equation:reaktdiff2ohneDiff}, dass heisst das \(f(u_0,v_0) = g(u_0,v_0) = 0\).
 Nun wird eine kleine Störung $\delta$ zu $u_0$ und $v_0$ hinzugefügt, sodass gilt
 \begin{align*}
-    u &= u_0 + \delta u,\\
-    v &= v_0 + \delta v
+    u &= u_0 + \delta u\\
+    v &= v_0 + \delta v,
 \end{align*}
 wobei $\delta$ klein ist, das heißt $\delta \ll 1$.
 Jetzt kann man die Reaktionsterme linearisiern.
-Hierfür nutzt man die Taylorentwicklungen bis zum linearen Term.
+Hierfür nutzt man die Taylor-Entwicklungen bis zum linearen Term.
 Sie werden zu
 \begin{align}
     f(u,v) &\approx f(u_0,v_0) + f_u  u + f_v v\\
@@ -129,14 +129,14 @@ Dazu setzen wir \(\delta u(x,t) = c_k(t) e^{ikx} e^{\lambda t}\) und \(\delta v(
 Die Ableitungen werden zu
 \begin{align*}
     \frac{\partial\,\delta u}{\partial t} &= \sum_k \lambda\, c_k e^{i k x} e^{\lambda t}, &
-    \Delta \delta u &= \sum_k -k^2 c_k e^{i k x} e^{\lambda t} \\
+    \Delta \delta u &= \sum_k -k^2 c_k e^{i k x} e^{\lambda t},\\
     \frac{\partial\,\delta v}{\partial t} &= \sum_k \lambda\, d_k e^{i k x} e^{\lambda t}, &
-    \Delta \delta v &= \sum_k -k^2 d_k e^{i k x} e^{\lambda t}
+    \Delta \delta v &= \sum_k -k^2 d_k e^{i k x} e^{\lambda t}.
 \end{align*}
 Setzt man diese Ableitungen in die Gleichungen \eqref{reaktdiff:equation:reaktdiff2mitDiff1} und \eqref{reaktdiff:equation:reaktdiff2mitDiff2} ein, so erhält man
     \begin{align*}
         \lambda c_k &= -D_u k^2 c_k + f_u c_k + f_v d_k \\
-        \lambda d_k &= -D_v k^2 d_k + g_u c_k + g_v d_k
+        \lambda d_k &= -D_v k^2 d_k + g_u c_k + g_v d_k.
     \end{align*}
 Diese Gleichungen lassen sich in Matrixform schreiben, sodass gilt:
 \begin{equation*}
@@ -153,7 +153,7 @@ Diese Gleichungen lassen sich in Matrixform schreiben, sodass gilt:
     \begin{pmatrix}
     c_k \\
     d_k
-    \end{pmatrix}
+    \end{pmatrix}.
 \end{equation*}
 Vereinfacht man den rechete Seite der Gleichung mithilfe von 
 \begin{align*}
@@ -167,7 +167,7 @@ Vereinfacht man den rechete Seite der Gleichung mithilfe von
     \begin{pmatrix}
         D_u & 0\\
         0 & D_v
-    \end{pmatrix}.
+    \end{pmatrix}
 \end{align*}
 zu 
 \begin{equation*}
@@ -176,7 +176,7 @@ zu
     \begin{pmatrix}
         f_u - D_u k^2 & f_v\\
         g_u & g_v - D_v k^2
-    \end{pmatrix}
+    \end{pmatrix},
 \end{equation*}
 kann man erkennen, dass der Vektor aus \(c_k\) und \(d_k\) ein Eigenvektor der Matrix \(A(k)\) ist.
 
@@ -228,7 +228,7 @@ Die Eigenwerte der Matrix \(A\) sind
 Somit hat man eine Formel, mit der man für eine bestimmte Wellenzahl \(k\) die Eigenwerte \(\lambda\) bestimmen kann.
 Aus der Gleichung \eqref{reaktdiff:equation:reaktdiff2mitDiffFourierkAeig3} erhält man zwei Eigenwerte \(\lambda_1\) und \(\lambda_2\).
 Wenn nun einer dieser Eigenwerte einen positiven Realteil hat, wird die Stationärlösung instabil.
-Diese Instabilität ist verantworlich für die Musterbildung
+Diese Instabilität ist verantworlich für die Musterbildung.
 
 
 \section{Musterbildung
@@ -291,16 +291,16 @@ Diese Gleichung kann man nun umstellen zu
     %\label{reaktdiff:equation:reaktdiffbedingung3}
 \end{equation*}
 was eine weitere Bedingung für die Musterbildung in Reaktionsdiffusionssystemen.
-
+Wir sammeln die gefundenen Bedingungen im folgenden Satz.
 \begin{satz}
 \label{reaktdiff:satz:bedingungen}
-Damit es in einem Reaktions-Diffusionssystemen mit 2 Komponenten zur Musterbildung kommt, müssen folgende Bedingungen erfüllt sein:
-\begin{itemize}
-    \item \(\text{tr}(J) = f_u + g_v < 0\): Stabil ohne Diffusion
+Damit es in einem Reaktions-Diffusionssystemen mit zwei Komponenten zur Musterbildung kommt, müssen folgende Bedingungen erfüllt sein:
+\begin{enumerate}
+    \item \(\text{Tr}(J) = f_u + g_v < 0\): Stabil ohne Diffusion
     \item \(\det(J) = f_u g_v - f_v g_u > 0\): Keine Eigenwertinstabilität ohne Diffusion
     \item \(D_u g_v + D_v f_u < 2\sqrt{D_u D_v (f_u g_v - f_v g_u)}\)
     \item \(D_v \gg D_u\): Inhibitor diffundiert deutlich schneller
-\end{itemize}
+\end{enumerate}
 \end{satz}
 
 \subsection{Aktivator-Inhibitor System}
@@ -339,7 +339,7 @@ Zusammen mit den Resultaten von Satz \ref{reaktdiff:satz:bedingungen} ergeben si
             \item \(g_v < 0\): Inhibitor hemmt sich selbst
             \item \(f_v < 0\): Inhibitor hemmt den Aktivator
             \item \(g_u > 0\): Aktivator aktiviert den Inhibitor
-            \item \(\text{tr}(J) = f_u + g_v < 0\): Stabil ohne Diffusion
+            \item \(\text{Tr}(J) = f_u + g_v < 0\): Stabil ohne Diffusion
             \item \(\det(J) = f_u g_v - f_v g_u > 0\): Keine Eigenwertinstabilität ohne Diffusion
             \item \(D_u g_v + D_v f_u < 2\sqrt{D_u D_v (f_u g_v - f_v g_u)}\)
             \item \(D_v \gg D_u\): Inhibitor diffundiert deutlich schneller
@@ -419,7 +419,7 @@ Die Grafik zeigt, dass die dominanten Frequenzen sich unter der berechnten minim
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{papers/reaktdiff/images/simpleExample/fft_turing_1d.png}
-    \caption{FFT der Animation. Die rote Linie zeigt die theortische minimale Frequnez von \(f = k_{\min} / 2 \pi \approx 0.109\). Man sieht das die dominanten Frequenzen links des berechneten Minimums ist.}
+    \caption{FFT der Animation. Die rote Linie zeigt die theortische minimale Frequnez von \(f = k_{\min} / 2 \pi \approx 0.109\). Man sieht, dass die dominanten Frequenzen links des berechneten Minimums ist.}
     \label{reaktdiff:fig:easyfft}
 \end{figure}
 
@@ -442,7 +442,7 @@ In der Literatur werden viele weitere Reaktionsterme erwähnt.
 Einige wenig werden hier im Anschluss beleuchtet.
 Die folgenden Bilder zu den Modellen sind mit finiten Differenzen erstellt worden.
 
-Als estes wird das Gray-Scott Model berachtet.
+Als erstes wird das Gray-Scott Model berachtet.
 Die Reaktionsterme
 \begin{equation}
      f(u,v) = -uv^2 + F(1 - u), \quad g(u,v) = uv^2 - (F + k)v

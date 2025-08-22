@@ -20,7 +20,7 @@ Die Gleichung \eqref{reaktdiff:equation:fkpp} ist auch als Fisher-KPP-Gleichung 
 
 \subsection{Stabilitätsanalyse mit Fourier-Theorie
 \label{reaktdiff:subsection:fkppmathe}}
-Aus der Gleichung können die Stationärlösungen abgeleitet werden.
+Aus der Gleichung können die stationäre Lösungen abgeleitet werden.
 Setzten wir \(\frac{\partial c}{\partial t} = 0\) und \(\Delta c = 0\) erhalten wir die stationäre Lösung
 \begin{equation*}
 \label{reaktdiff:equation:stationaer}
@@ -43,14 +43,15 @@ Somit wird die Gleichung \eqref{reaktdiff:equation:störung0} zu
 \frac{\partial \epsilon}{\partial t} \approx D \frac{\partial^2 \epsilon}{\partial x^2}  + r\epsilon.
 \end{equation}
 Die Gleichung \ref{reaktdiff:equation:störung0vereinfach} ist eine lineare partielle Differentialgleichung.
-Dasselbe gilt für den Fall \(c = 1\).
-Für den Fall \(c = 1\) erhalten wir
+Dasselbe gilt für den Fall \(c = 1\) bei welchem wir
+%Für den Fall \(c = 1\) erhalten wir
 \begin{equation}
 \label{reaktdiff:equation:störung1}
-\frac{\partial \epsilon}{\partial t} = D \frac{\partial^2 \epsilon}{\partial x^2} - r\epsilon(1-\epsilon).
+\frac{\partial \epsilon}{\partial t} = D \frac{\partial^2 \epsilon}{\partial x^2} - r\epsilon(1-\epsilon)
 \end{equation}
+erhalten.
 Wieder können wir den Term \(1-\epsilon\) durch \(1\) ersetzen.
-Somit wird die Gleichung \ref{reaktdiff:equation:störung1} zu
+Somit wird die Gleichung \eqref{reaktdiff:equation:störung1} zu
 \begin{equation}
 \label{reaktdiff:equation:störung1vereinfach}
 \frac{\partial \epsilon}{\partial t} \approx D \frac{\partial^2 \epsilon}{\partial x^2} - r\epsilon.
@@ -100,14 +101,14 @@ c_k(t) = c_k(0) e^{(-r - D k^2)t}.
 \eqref{reaktdiff:equation:störung0vereinfachk3} und \eqref{reaktdiff:equation:störung1vereinfachk2} unterscheiden sich nur durch das Vorzeichen von \(r\).
 
 \subsubsection{Stabilität}
-Aus den beiden Gleichungen \eqref{reaktdiff:equation:störung0vereinfachk3} und \eqref{reaktdiff:equation:störung1vereinfachk2} können wir die Stabilität der Stationärlösungen \(c = 0\) und \(c = 1\) ablesen.
-Unter der Annahmen dass \(D\) und \(r\) immmer positiv sind, ist die Stationärlösungen \(c = 1\) stabil.
-Die Stationärlösung \(c = 0\) ist instabil wenn \(r-Dk^2 > 0\) und stabil wenn \(r-Dk^2 < 0\).
+Aus den beiden Gleichungen \eqref{reaktdiff:equation:störung0vereinfachk3} und \eqref{reaktdiff:equation:störung1vereinfachk2} können wir die Stabilität der stationären Lösungen \(c = 0\) und \(c = 1\) ablesen.
+Unter der Annahmen dass \(D\) und \(r\) immmer positiv sind, ist die stationär Lösungen \(c = 1\) stabil.
+Die stationäre Lösung \(c = 0\) ist instabil wenn \(r-Dk^2 > 0\) und stabil wenn \(r-Dk^2 < 0\).
 Somit werden kleine Störungen um \(c = 0\) wachsen, wenn \(k < \sqrt{\frac{r}{D}}\), und abklingen, wenn \(k > \sqrt{\frac{r}{D}}\).
 
 Wie bereits erwähnt, ist eine Anwendung der Fisher-KPP-Gleichung die Ausbreitung von Populationen.
-Die Stationärlösungen \(c = 0\) und \(c = 1\) entsprechen dem Fall, wo die Population nicht existiert und dem Fall wo die Population die maximale Grösse erreicht hat.
-Die Stabilität der Stationärlösungen \(c = 0\) und \(c = 1\) zeigt, dass die Population immer wachsen wird, wenn sie klein ist, und abklingen wird, wenn sie gross ist.
+Die Stationäre Lösungen \(c = 0\) und \(c = 1\) entsprechen dem Fall, wo die Population nicht existiert und dem Fall wo die Population die maximale Grösse erreicht hat.
+Die Stabilität der stationäre Lösungen \(c = 0\) und \(c = 1\) zeigt, dass die Population immer wachsen wird, wenn sie klein ist, und abklingen wird, wenn sie gross ist.
 
 \subsection{Wellenlösung in einer Raumdimension
 \label{reaktdiff:subsection:fkppwelle}}
@@ -135,14 +136,14 @@ Das ist die nichtlineare gewöhnliche Differentialgleichung für \(C(z)\)
     -vC'(z) - D C''(z) - rC(z)(1-C(z)) = 0.
 \end{equation}
 Für die Analyse untersuchen wir die Gleichung \eqref{reaktdiff:equation:fkppwelle3} im Grenzfall \(C(z) \ll 1\).
-Das heisst, dass \(1 - C(Z)\approx 1\).
+Das heisst, dass \(1 - C(z)\approx 1\).
 Um die Gleichung zu lösen, setzen wir \(C(z) = C(0) e^{\lambda z}\) ein.
 Somit wird die Gleichung \eqref{reaktdiff:equation:fkppwelle3} zu
 \begin{equation}
 \label{reaktdiff:equation:fkppwelle4}
 D\lambda^2 + v\lambda + r = 0.
 \end{equation}
-Die Lösung der Gleichung \eqref{reaktdiff:equation:fkppwelle4} ist
+Ihre Lösung ist
 \begin{equation}
 \label{reaktdiff:equation:fkppwelle5}
 \lambda = \frac{-v \pm \sqrt{v^2 - 4Dr}}{2D}.
