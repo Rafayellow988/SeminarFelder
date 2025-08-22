@@ -50,12 +50,12 @@ beschriebenen Kurve $S(u,v)$ so ist
   \end{split}
   \label{mongeampere:bogdiff}
 \end{equation}
-Rechnet man die Klammern aus erhält man 
+Rechnet man die Klammern aus, erhält man 
 \begin{equation}
-    \dd s^2 = E(u,v) \dd u^2 + 2F(u,v) \dd u \, \dd v + G()
+    \dd s^2 = E(u,v) \dd u^2 + 2F(u,v) \dd u \, \dd v + G(u,v)\dd v^2
     \label{mongeampere:1fundform}
 \end{equation}
-mit fuck
+mit
 \begin{align}
      E(u,v) &= \left(\pdv{x}{u} \right)^2 +
      \left(\pdv{y}{u} \right)^2 +
@@ -111,14 +111,14 @@ Somit können wir \eqref{mongeampere:2fund1} umformen nach
 Rechnet man den Zähler als Funktion der Parameter $u, v$ aus, erhält man die zweite 
 Gausssche Fundamentalform
 \begin{equation}
-  \mathrm{I\!I} = L(u, v) \dd u^2 + 2 M (u,v) \dd u \dd v + N(u,v) \dd v^2.
+  \mathrm{I\!I} = \dd \vec r \cdot \dd \vec m  = L(u, v) \dd u^2 + 2 M (u,v) \dd u \dd v + N(u,v) \dd v^2.
   \label{mongeampere:2fund}
 \end{equation}
 mit den Koeffizienten
 \begin{align*}
-  L &= \vec r_{uu} \cdot m \\ 
-  M &= \vec r_{uv} \cdot m \\
-  N &= \vec r_{vv} \cdot m.
+  L &= \vec r_{uu} \cdot \vec m \\ 
+  M &= \vec r_{uv} \cdot \vec m \\
+  N &= \vec r_{vv} \cdot \vec m.
   \label{mongeampere:2fundkoef}
 \end{align*}
 Die zweite Gausssche Fundamentalform beschreibt wie start sich die Fläche an einem Punkt
@@ -128,3 +128,60 @@ Wie stark sich die Fläche von der Tangentialebene entfernt hat einen Zusammenha
 In \eqref{mongeampere:2fund2} haben wir die zweite Fundamentalform in Richtung einer Flächenkruve mit
 dem Quadrat ihres Bigendifferentiales normalisiert.
 Damit erhielten wir den Anteil der Krümmung der Flächenkruve, die von der Krümmung der Fläche kommt.
+
+\subsection{Krümmung}
+Um den Begriff der Krümmung auf einer Fläche etwas besser zu verstehen
+untersuchen wir die Krümmung von Normalenschnitte.
+Ein Normanlenschnitt ist die Schnittkurve, zwischen der Fläche und der Ebene, welche durch einen Vektor auf 
+der Tangentialebene der Fläche und der Flächennormalen aufgespannt wird.
+Da die Normale eines Normalenschnittes bis auf das Vorzeichen gleich der Flächennormale ist, ist der 
+Krümmungsradius
+\begin{equation}
+  \frac{1}{R} = \pm \frac{L \dd u^2 + 2 M \dd u \dd v + N \dd v^2}
+                  {E \dd u^2 + 2F \dd u \, \dd v + G\dd v^2}.
+  \label{mongeampere:normkrum}
+\end{equation}
+Diese Formulierung erlaubt uns ein paar Eigenschaften der Fläche zu bestimmen.
+Da der Nenner $\dd s^2$ entspricht ist er immer positiv. 
+Teilen Wir den Zähler durch $\dd u^2$ erhalten wir den Quadratischen Term
+\begin{equation}
+   L + 2M \frac{\dd v}{\dd u} + N \frac{\dd v^2}{\dd u ^2}.
+  \label{mongemapere:dsik}
+\end{equation}
+Untersucht man die Diskriminante ergeben sich drei Fälle
+\begin{enumerate}
+  \item $M^2 - LN < 0$: Das Vorzeichen des Krümmungsradius ändert sich nicht, somit geht die Krümmung für alle 
+    Flächennormalen in dieselbe Richtung. 
+    Ein solcher Punkt wird \emph{elliptisch} genannt. Ein Beispiel ist, wie der 
+    Name schon vermuten lässt, eine Ellipse.
+  \item $M^2 - LN > 0$: Das Vorzeichen des Krümmungsradius ändert sich, somit wechselt die Richtung der Krümmung.
+    Ein solcher Punkt wird \emph{hyperbolisch} genannt. Ein Beispiel ist ein Sattelpunkt.
+  \item $M^2 - LN = 0$: Das Vorzeichen des Krümmungsradius ändert sich nicht, jedoch wird der Radius für einen 
+    bestimmten Normalenschnitt null. 
+    Ein solcher Punkt wird \emph{parabolisch} genannt. Eine prarbolische Fläche ist die Mantelfäche eines Zylinders. 
+\end{enumerate}
+
+\subsubsection{Hauptkrümmungsradien}
+Die Hauptkrümmungsradien an einem Punkt einer Fläche sind definiert als der kleinste und grösste Krümmungsradius an diesem Punkt.
+Anhand des Ausdrucks \eqref{mongeampere:normkrum} lassen sich auch die beiden Hauptkrümmungsradien berechnen.
+Dafür leiten wir den Term nach den Tangentenrichtungen $\frac{\dd v}{\dd u}$ und $\frac{\dd u}{\dd v}$ ab.
+Mit etwas Umformen erhalten wir die quadratische Gleichung
+\begin{equation}
+  (EG - F^2)\frac{1}{R^2} + (2FM - EN - GL)\frac{1}{R} + (LN-M^2) = 0.
+  \label{mongeampere:mainkrum}
+\end{equation}
+
+
+\subsection{Gausssche Krümmung}
+Die Krümmung wie wir sie in \eqref{mongeampere:2fund2} beschrieben haben hat das Problem, dass
+ihr Vorzeichen abhängig von der Normalenrichtung ist.
+Die Gausssche Krümmung ist ein Krümmungsmass, welches von solchen Faktoren ist.
+Sie is definiert als 
+\begin{equation}
+  K = \frac{1}{R_1 R_2} = \frac{LN-M^2}{EG-F^2}.
+  \label{mongemapere:gausskrumm}
+\end{equation}
+Da sie die beiden Hauptkrümmungsradien mulitipliziert ist sie immer positiv wenn 
+beide Krümmungradien das gleiche Vorzeichen haben, und negativ falls sie sich unterscheiden.
+Ausserdem lässt sich anhand des Voryeichens bestimmen ob ein Punkt elliptisch, hzperbolisch oder parabolisch 
+ist, da die Diskriminante der zweiten Normalform im Zähler ist.
