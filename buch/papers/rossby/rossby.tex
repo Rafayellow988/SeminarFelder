@@ -56,12 +56,10 @@ zu verstehen, suchen wir Lösungen in Form kleiner Abweichungen,
 die sich als Wellen ausbreiten. Ein naheliegender Ansatz ist eine
 ebene Welle mit den Wellenzahlen $k$ (in $x$-Richtung) und $l$
 (in $y$-Richtung) sowie der Kreisfrequenz $\omega$:
-
 \begin{equation}
 	\psi_{kl}(t,x,y) = \cos(kx + ly - \omega t).
 	\label{rossby:ebenewelle}
 \end{equation}
-
 Damit wir diese Form in die Bewegungsgleichung einsetzen können,
 benötigen wir ihre partiellen Ableitungen:
 \begin{align*}
@@ -89,17 +87,19 @@ Für unseren Ansatz ergibt das:
 	\\&\quad
 	+ U k (k^2+l^2)\sin(kx+ly-\omega t)
 	\\&\quad
-	- \beta k \sin(kx+ly-\omega t).
+	- \beta k \sin(kx+ly-\omega t) \\
+	&= \left( -\omega (k^2+l^2) + Uk (k^2+l^2) - \beta k \right) \sin(kx+ly-\omega t) \\
+	&= \left( (\omega - Uk)(k^2+l^2) + \beta k \right) \sin(kx+ly-\omega t).
 \end{align*}
-
 Die Funktion $\sin(kx+ly-\omega t)$ ist im Allgemeinen nicht null,
 daher muss ihr Vorfaktor verschwinden:
-\[
+\begin{equation}
 	(\omega - Uk)(k^2+l^2) + \beta k = 0.
-\]
+	\label{rossby:vorfaktor}
+\end{equation}
 
 \paragraph{Dispersionsrelation.}
-Aufgelöst nach $\omega$ ergibt sich:
+Die Gleichung \eqref{rossby:vorfaktor} aufgelöst nach $\omega$ ergibt
 \begin{align}
 	\omega
 	 & = Uk - \frac{\beta k}{k^2+l^2}.
