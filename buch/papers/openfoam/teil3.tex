@@ -62,7 +62,7 @@ Im Dokument \texttt{blockMeshDict} werden die Parameter definiert:
 
 \begin{itemize}
     \item \textit{backgroundMesh}: Definiert wie gross der Simulationsraum ist und wie er in diskrete Zelle unterteilt werden soll. Später baut das Programm \textbf{snappyHexMesh} darauf auf.
-    \item \textit{boundary}: Beschreibt die Ränder des Simulationsraum, weist jeder Fläche einen Namen und eine Bedingung (Eingang, Ausgang, Wand) zu
+    \item \textit{boundary}: Beschreibt die Ränder des Simulationsraum, weist jeder Fläche einen Namen und eine Bedingung (Inlet, Outlet, Wand) zu
 \end{itemize}
 Die Zellen im Simulationsraum bilden die Grundlage für die Simulation. 
 Je mehr Zellen erstellt werden, desto genauer wird das Ergebnis der Simulation, da die Berechnungen kleinräumiger erfolgen.
@@ -70,7 +70,7 @@ Mit jeder Zelle steigt jedoch der Rechenaufwand.
 Es muss ein Mittelweg gefunden werden, so viele Zellen wie nötig, so wenige wie möglich.
 
 Als nächstes wird das 3D-Modell in den Simulationsraum eingebettet.
-Mithilfe dem Programm \textbf{snappyHexMesh} wird das 3D-Objekt in  Zellen unterteilt und eingefügt. 
+Mithilfe dem Programm \textbf{snappyHexMesh} wird das 3D-Modell in  Zellen unterteilt und eingefügt. 
 Im Dokument \texttt{snappyHexMeshDict} werden die Parameter definiert:
 
 \begin{itemize}
@@ -171,7 +171,7 @@ Mit der folgenden Befehlsfolge kann eine einfache Simulation, stationär und ink
     \item \textbf{snappyHexMesh}: Fügt das 3D-Modell in den Simulationsraum ein.
     \item \textbf{simpleFoam}: Simulation, bei einem anderen Solver durch den entsprechenden ersetzen.
     \item \textbf{foamToVTK}: (nicht nötig, wenn die Ergebnisse auf Linux mit \texttt{paraFoam} ausgewertet werden)\\
-    Exportiert die Simulationsergebnisse in ein VTK-kompatibles Format, welches dann in ParaView angesehen werden kann.
+    Exportiert die Simulationsergebnisse in ein VTK-kompatibles Format, welches dann in \texttt{ParaView} angesehen werden kann.
     \item \textbf{paraFoam -touch}: (nicht nötig, wenn die Ergebnisse auf Linux mit \texttt{paraFoam} ausgewertet werden)\\
     Erstellt eine Projektdatei, die dann in \texttt{ParaView} geöffnet werden kann.
 \end{enumerate}
@@ -204,14 +204,14 @@ Abbildung \ref{fig:vorschWindWestBlocky} zeigt dasselbe Ergebnis, jedoch mit der
 \begin{figure}
     \centering
     \includegraphics[width=1\textwidth]{papers/openfoam/Bilder/Beispiel_Paraview.png}
-    \caption{Bedienung von ParaView\\ oben links: slice auswählen\\ oben mitte: Zeitschritte\\ unten links: Parameter}
+    \caption{Bedienung von \texttt{ParaView}\\ oben links: slice auswählen\\ oben mitte: Zeitschritte\\ unten links: Parameter}
     \label{fig:Beispiel_Paraview}
 \end{figure}
 
 \begin{figure}
     \centering
     \includegraphics[width=1\textwidth]{papers/openfoam/Bilder/vorschlag_Wind_Westen_10m_blocky.png}
-    \caption{Gleich wie der Buchumschlag, jedoch mit den einzelnen Simulationszellen sichtbar.}
+    \caption{Gleiches Bild wie auf dem Buchumschlag, jedoch mit den einzelnen Simulationszellen sichtbar.}
     \label{fig:vorschWindWestBlocky}
 \end{figure}
 
