@@ -9,25 +9,27 @@
 \section{Gleichungen mit einer Komponente
 \label{reaktdiff:section:einKomponent}}
 \kopfrechts{Teil 3}
-Die simpleste Reaktionsdiffusionsgleichung ist die welche nur einen Stoff beschreibt.
+Die einfachste Reaktionsdiffusionsgleichung ist die, welche nur einen Stoff beschreibt.
 Die Reaktionsdiffusionsgleichung ist in diesem Fall
 \begin{equation*}
 \label{reaktdiff:equation:fkpp}
 \frac{\partial c}{\partial t} = D \frac{\partial^2 c}{\partial x^2} + rc(1-c).
 \end{equation*}
-Um die komplexität zu reduzieren ist \(c\) eindimensional. 
-Die Gleichung \ref{reaktdiff:equation:fkpp} ist auch als Fisher-KPP-Gleichung\cite{reaktdiff:wikipedia_kpp_fisher} bekannt, benannt nach Roland Fisher, Andery Kolmogorov, Ivan Petrovsky und Nikolai Piskunov.
+Um die Komplexität zu reduzieren ist \(c\) eindimensional. 
+Die Gleichung \eqref{reaktdiff:equation:fkpp} ist auch als Fisher-KPP-Gleichung \cite{reaktdiff:wikipedia_kpp_fisher} bekannt, benannt nach Roland Fisher, Andrey Kolmogorov, Ivan Petrovsky und Nikolai Piskunov.
 
-\subsection{Mathematische Analyse mit Fourier
+\subsection{Stabilitätsanalyse mit Fourier-Theorie
 \label{reaktdiff:subsection:fkppmathe}}
 Aus der Gleichung können die Stationärlösungen abgeleitet werden.
-Setzten wir \(\frac{\partial c}{\partial t} = 0\) und \(\Delta c = 0\) erhalten wir die Stationärlösungen
+Setzten wir \(\frac{\partial c}{\partial t} = 0\) und \(\Delta c = 0\) erhalten wir die stationäre Lösung
 \begin{equation*}
 \label{reaktdiff:equation:stationaer}
 0 = rc(1-c).
 \end{equation*}
+
+\subsubsection{Linearisierung}
 Die Lösungen der Gleichung sind \(c = 0\) und \(c = 1\).
-Um nun das verhalten dieser Lösungen zu untersuchen, fügen wir eine kleine Störung \(\epsilon\) hinzu wobei \(\epsilon \ll 1\).
+Um nun das Verhalten dieser Lösungen zu untersuchen, fügen wir eine kleine Störung \(\epsilon\) hinzu, wobei \(\epsilon \ll 1\).
 
 Für den Fall \(c = 0\) erhalten wir
 \begin{equation}
@@ -35,13 +37,13 @@ Für den Fall \(c = 0\) erhalten wir
 \frac{\partial \epsilon}{\partial t} = D \frac{\partial^2 \epsilon}{\partial x^2} + r\epsilon(1-\epsilon).
 \end{equation}
 Da \(\epsilon\) sehr klein ist, kann man den Term \(1-\epsilon\) durch \(1\) ersetzen.
-Somit wird die Gleichung \ref{reaktdiff:equation:störung0} zu
+Somit wird die Gleichung \eqref{reaktdiff:equation:störung0} zu
 \begin{equation}
 \label{reaktdiff:equation:störung0vereinfach}
 \frac{\partial \epsilon}{\partial t} \approx D \frac{\partial^2 \epsilon}{\partial x^2}  + r\epsilon.
 \end{equation}
 Die Gleichung \ref{reaktdiff:equation:störung0vereinfach} ist eine lineare partielle Differentialgleichung.
-Das selbe gilt für den Fall \(c = 1\).
+Dasselbe gilt für den Fall \(c = 1\).
 Für den Fall \(c = 1\) erhalten wir
 \begin{equation}
 \label{reaktdiff:equation:störung1}
@@ -53,52 +55,63 @@ Somit wird die Gleichung \ref{reaktdiff:equation:störung1} zu
 \label{reaktdiff:equation:störung1vereinfach}
 \frac{\partial \epsilon}{\partial t} \approx D \frac{\partial^2 \epsilon}{\partial x^2} - r\epsilon.
 \end{equation}
-Die Gleichung \ref{reaktdiff:equation:störung1vereinfach} ist ebenfalls eine lineare partielle Differentialgleichung.
-Man sieht das der Unterschied zwischen den beiden Gleichungen \ref{reaktdiff:equation:störung0vereinfach} und \ref{reaktdiff:equation:störung1vereinfach} nur das Vorzeichen des \(r\epsilon\) Term ist.
-Um die Gleichungen zu lösen, setzen wir \(\epsilon(x,t) = c_k(t) e^{ikx}\) ein.
+Die Gleichung \eqref{reaktdiff:equation:störung1vereinfach} ist ebenfalls eine lineare partielle Differentialgleichung.
+Man sieht, dass der Unterschied zwischen den beiden Gleichungen \eqref{reaktdiff:equation:störung0vereinfach} und \eqref{reaktdiff:equation:störung1vereinfach} nur das Vorzeichen des \(r \epsilon\)-Terms ist.
+
+\subsubsection{Fourier-Ansatz}
+Die stationären Lösungen hängen nicht von den Raumkoordinaten ab.
+Eine allgemeine Lösung wird auch von \(x\) abhängen.
+Tatsächlich beboachtet man in der Natur bei solchen Systemen oft das Auftreten von regelmässigen oder periodischen Mustern, wie man auch in Abbildung \ref{reaktdiff:fig:fhn} und \ref{reaktdiff:fig:gs} sehen kann.
+Wir versuchen, diesen Mustern mit einem Fourier-Ansatz Rechnung zu tragen.
+
+Um die Gleichung zu lösen setzen wir \(\epsilon(x,t) = c_k(t)\, e^{ikx}\) ein.
 Die Ableitungen werden zu
 \begin{align*}
 \frac{\partial \epsilon}{\partial t} &= \dot{c}_k(t) e^{ikx},\\
 \frac{\partial^2 \epsilon}{\partial x^2} &= -k^2 c_k(t) e^{ikx}.
 \end{align*}
-Setzen wir diese Ableitungen in die Gleichung \ref{reaktdiff:equation:störung0vereinfach} ein, erhält man
+Durch Einsetzen dieser Ableitungen in die Gleichung \eqref{reaktdiff:equation:störung0vereinfach} ergibt sich
 \begin{equation}
 \label{reaktdiff:equation:störung0vereinfachk}
 \dot{c}_k(t) e^{ikx} = -D k^2 c_k(t) e^{ikx} + r c_k(t) e^{ikx}.
 \end{equation}
-Teilen wir die Gleichung \ref{reaktdiff:equation:störung0vereinfachk} durch \(e^{ikx}\) erhalten wir
+Teilen wir die Gleichung \eqref{reaktdiff:equation:störung0vereinfachk} durch \(e^{ikx}\) erhalten wir
 \begin{equation}
 \label{reaktdiff:equation:störung0vereinfachk2}
 \dot{c}_k(t) = -D k^2 c_k(t) + r c_k(t).
 \end{equation}
-Die Gleichung \ref{reaktdiff:equation:störung0vereinfachk2} ist eine gewöhnliche Differentialgleichung.
-Die Lösung der Gleichung \ref{reaktdiff:equation:störung0vereinfachk2} ist
+Die Gleichung \eqref{reaktdiff:equation:störung0vereinfachk2} ist eine gewöhnliche Differentialgleichung.
+Die Lösung der Gleichung \eqref{reaktdiff:equation:störung0vereinfachk2} ist
 \begin{equation}
 \label{reaktdiff:equation:störung0vereinfachk3}
 c_k(t) = c_k(0) e^{(r - D k^2)t}.
 \end{equation}
-Setzen wir nun die Gleichung \ref{reaktdiff:equation:störung0vereinfachk3} in die Gleichung \ref{reaktdiff:equation:störung1vereinfach} ein, erhalten wir
+Setzen wir nun die Gleichung \eqref{reaktdiff:equation:störung0vereinfachk3} in die Gleichung \eqref{reaktdiff:equation:störung1vereinfach} ein, erhalten wir
 \begin{equation}
 \label{reaktdiff:equation:störung1vereinfachk}
 \dot{c}_k(t) = -D k^2 c_k(t) - r c_k(t).
 \end{equation}
-Führen wir die selbe Rechnung wie bei der Gleichung \ref{reaktdiff:equation:störung0vereinfachk2} durch, erhalten wir
+Führen wir dieselbe Rechnung wie bei der 
+Gleichung \eqref{reaktdiff:equation:störung0vereinfachk2} durch, erhalten wir
 \begin{equation}
 \label{reaktdiff:equation:störung1vereinfachk2}
 c_k(t) = c_k(0) e^{(-r - D k^2)t}.
 \end{equation}
-Aus den beiden Gleichungen \ref{reaktdiff:equation:störung0vereinfachk3} und \ref{reaktdiff:equation:störung1vereinfachk2} können wir die Stabilität der Stationärlösungen \(c = 0\) und \(c = 1\) ablesen.
+\eqref{reaktdiff:equation:störung0vereinfachk3} und \eqref{reaktdiff:equation:störung1vereinfachk2} unterscheiden sich nur durch das Vorzeichen von \(r\).
+
+\subsubsection{Stabilität}
+Aus den beiden Gleichungen \eqref{reaktdiff:equation:störung0vereinfachk3} und \eqref{reaktdiff:equation:störung1vereinfachk2} können wir die Stabilität der Stationärlösungen \(c = 0\) und \(c = 1\) ablesen.
 Unter der Annahmen dass \(D\) und \(r\) immmer positiv sind, ist die Stationärlösungen \(c = 1\) stabil.
 Die Stationärlösung \(c = 0\) ist instabil wenn \(r-Dk^2 > 0\) und stabil wenn \(r-Dk^2 < 0\).
-Somit werden kleine Störungen um \(c = 0\) wachsen wenn \(k < \sqrt{\frac{r}{D}}\) und abklingen wenn \(k > \sqrt{\frac{r}{D}}\).
+Somit werden kleine Störungen um \(c = 0\) wachsen, wenn \(k < \sqrt{\frac{r}{D}}\), und abklingen, wenn \(k > \sqrt{\frac{r}{D}}\).
 
-Wie bereits erwähnt, ist eine Anwendeung der Fisher-KPP-Gleichung die Ausbreitung von Populationen.
-Die Stationärlösungen \(c = 0\) und \(c = 1\) entsprechen dem Fall wo die Population nicht existiert und dem Fall wo die Population die maximale Grösse erreicht hat.
-Die Stabilität der Stationärlösungen \(c = 0\) und \(c = 1\) zeigt, dass die Population immer wachsen wird wenn sie klein ist und abklingen wird wenn sie gross ist.
+Wie bereits erwähnt, ist eine Anwendung der Fisher-KPP-Gleichung die Ausbreitung von Populationen.
+Die Stationärlösungen \(c = 0\) und \(c = 1\) entsprechen dem Fall, wo die Population nicht existiert und dem Fall wo die Population die maximale Grösse erreicht hat.
+Die Stabilität der Stationärlösungen \(c = 0\) und \(c = 1\) zeigt, dass die Population immer wachsen wird, wenn sie klein ist, und abklingen wird, wenn sie gross ist.
 
-\subsection{Wellenlösung der Fisher-KPP-Gleichung
+\subsection{Wellenlösung in einer Raumdimension
 \label{reaktdiff:subsection:fkppwelle}}
-Die Fisher-KPP-Gleichung hat eine Wellenlösung.
+Die Fisher-KPP-Gleichung in einer Dimension hat eine Wellenlösung.
 Die Wellenlösung ist eine Lösung der Form
 \begin{equation*}
 \label{reaktdiff:equation:fkppwelle}
@@ -111,37 +124,37 @@ Für die Lösung benötigen wir die Ableitungen
 \\
 \frac{\partial^2 c}{\partial x^2} &= C''(z).
 \end{align*}
-Setzen wir die Ableitungen in die Fisher-KPP-Gleichung \ref{reaktdiff:equation:fkpp} ein, erhalten wir
+Setzen wir die Ableitungen in die Fisher-KPP-Gleichung \eqref{reaktdiff:equation:fkpp} ein, erhalten wir
 \begin{equation*}
 \label{reaktdiff:equation:fkppwelle2}
 -vC'(z) = D C''(z) + rC(z)(1-C(z)).
 \end{equation*}
-Das ist eine nichtlineare gewöhnliche Differentialgleichung für \(U(z)\)
+Das ist die nichtlineare gewöhnliche Differentialgleichung für \(C(z)\)
 \begin{equation}
     \label{reaktdiff:equation:fkppwelle3}
     -vC'(z) - D C''(z) - rC(z)(1-C(z)) = 0.
 \end{equation}
-Für die Analyse untersuchen wir die Gleichung \ref{reaktdiff:equation:fkppwelle3} im Grenzfall \(C(z) \ll 1\).
+Für die Analyse untersuchen wir die Gleichung \eqref{reaktdiff:equation:fkppwelle3} im Grenzfall \(C(z) \ll 1\).
+Das heisst, dass \(1 - C(Z)\approx 1\).
 Um die Gleichung zu lösen, setzen wir \(C(z) = C(0) e^{\lambda z}\) ein.
-Somit wird die Gleichung \ref{reaktdiff:equation:fkppwelle3} zu
+Somit wird die Gleichung \eqref{reaktdiff:equation:fkppwelle3} zu
 \begin{equation}
 \label{reaktdiff:equation:fkppwelle4}
 D\lambda^2 + v\lambda + r = 0.
 \end{equation}
-Die Lösung der Gleichung \ref{reaktdiff:equation:fkppwelle4} ist
+Die Lösung der Gleichung \eqref{reaktdiff:equation:fkppwelle4} ist
 \begin{equation}
 \label{reaktdiff:equation:fkppwelle5}
 \lambda = \frac{-v \pm \sqrt{v^2 - 4Dr}}{2D}.
 \end{equation}
-Aus der Gleichung \ref{reaktdiff:equation:fkppwelle5} ist ersichtlich, dass die Welle nur existiert wenn \(v \ge 2\sqrt{rD}\).
+Aus der Gleichung \eqref{reaktdiff:equation:fkppwelle5} ist ersichtlich, dass die Wellenlösung nur möglich ist, wenn \(v \ge 2\sqrt{rD}\).
 
 \subsection{Numerische Simulation der Fisher-KPP-Gleichung
 \label{reaktdiff:subsection:fkppsimulation}}
 Die Visualisierung der Fisher-KPP-Gleichung ist unspektakulär.
-Die Simulation zeigt eine Welle die sich mit konstanter Geschwindigkeit ausbreitet.
-Die Welle hat eine Geschwindigkeit von \(v = 2\sqrt{rD}\).
+Die Simulation in Abbildung \ref{reaktdiff:figure:fisher_kpp_simulation} zeigt eine Welle die sich mit konstanter Geschwindigkeit \(v = 2\sqrt{rD}\) ausbreitet.
 Denoch regt die Simulation zum Nachdenken an.
-Was wäre nun wenn es einen zweiten Stoff gäbe, welches die Reaktion beeinflusst?
+Was wäre nun wenn es einen zweiten Stoff gäbe, welcher die Reaktion beeinflusst?
 % besser 1D
 \begin{figure}
     \centering
