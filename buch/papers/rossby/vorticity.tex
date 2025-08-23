@@ -1,7 +1,7 @@
 
 \subsection{Vorticity – Wirbelstärke in der Atmosphäre}
 
-Die grossräumige Bewegung der Luft in der Atmosphäre lässt sich nicht nur durch
+Die grossräumige Bewegung der Luft in der Atmosphäre lässt sich nicht nur durch die
 Geschwindigkeit beschreiben, sondern auch durch ihre Rotationseigenschaften.
 Diese Eigenschaft wird durch die sogenannte \emph{Vorticity} (Wirbelstärke)
 quantifiziert. Physikalisch beschreibt sie die Tendenz eines Luftpakets, sich
@@ -39,7 +39,7 @@ Positive Vorticity (\(\zeta > 0\)) steht für eine zyklonale Rotation (auf der N
 		\includegraphics[width=\linewidth]{papers/rossby/images/vorticity_plot2.pdf}\\
 		{\small \( \vec{u} = (y^2,0),\ \zeta = -2y\)}
 	\end{minipage}
-
+	\\[15pt]
 	% Zweite Reihe
 	\begin{minipage}{0.32\linewidth}
 		\centering
@@ -81,7 +81,7 @@ wobei \( \zeta \) die relative und \( f \) die planetare Vorticity ist.
 \subsection{Potenzielle Vorticity und ihre Erhaltung}
 
 Die \emph{potenzielle Vorticity} erweitert das Konzept der \emph{absoluten
-	Vorticity} um die vertikale Struktur der Atmosphäre. In ihrer Erhaltungsform
+Vorticity} um die vertikale Struktur der Atmosphäre. In ihrer Erhaltungsform
 ist sie ein zentrales Werkzeug zur Beschreibung grossskaliger Strömungen und
 Wellenprozesse.
 
@@ -92,7 +92,18 @@ konstantem Luftvolumen, lautet die Definition:
 	\label{rossby:eq:potential_vorticity}
 \end{equation}
 wobei \(\zeta\) die relative Vorticity, \(f\) den Coriolis-Parameter und \(H\) die effektive Schichthöhe der betrachteten Luftsäule bezeichnet.
-Dieser Ausdruck berücksichtigt sowohl die horizontale Rotation als auch die vertikale Ausdehnung eines Luftpakets.
+Dieser Ausdruck berücksichtigt sowohl die horizontale Rotation als auch die vertikale Ausdehnung eines Luftpakets. 
+
+Man kann die potentielle Vorticity als die \emph{allgemeinere Erhaltungsgröße}
+verstehen, welche die Drehimpulserhaltung als Spezialfall umfasst. Während
+die Drehimpulserhaltung nur die axiale Rotation einer Luftsäule beschreibt,
+fasst die potentielle Vorticity zusätzlich Effekte der vertikalen Schichtung
+und der relativen Vorticity zusammen. Eine anschauliche Analogie ist die
+Eiskunstläufer:in, die ihre Rotationsgeschwindigkeit ändert, wenn sie die Arme
+an den Körper zieht oder ausstreckt: die Drehimpulserhaltung erzwingt eine
+Anpassung der Rotationsgeschwindigkeit an die veränderte Trägheit. In der
+Atmosphäre entspricht dies der Anpassung der Vorticity an Änderungen der
+Schichthöhe, wie sie in Gl.~\eqref{rossby:eq:potential_vorticity} beschrieben ist.
 
 
 
@@ -122,8 +133,8 @@ Dieser Ausdruck berücksichtigt sowohl die horizontale Rotation als auch die ver
 			\draw (-\Rtwo,{-\dH/2}) -- (-\Rtwo,{\H+\dH/2});
 			\draw ( \Rtwo,{-\dH/2}) -- ( \Rtwo,{\H+\dH/2});
 			\draw (0,{\H+\dH/2}) ellipse ({\Rtwo} and {\r});        % top
-			\node[above] at (0,{\H+\dH/2+0.35}) {$\zeta+\mathrm{d}\zeta$};
-			\node[right] at (\Rtwo+0.25,{\H/2}) {$H+\mathrm{d}H$};  % center the label
+			\node[above] at (0,{\H+\dH/2+0.35}) {$\zeta+d\zeta$};
+			\node[right] at (\Rtwo+0.25,{\H/2}) {$H+dH$};  % center the label
 			% \draw[->] (-1.4,{\H/2}) -- (-0.7,{\H/2});
 		\end{scope}
 
@@ -133,8 +144,8 @@ Dieser Ausdruck berücksichtigt sowohl die horizontale Rotation als auch die ver
 			\draw (-\Rthree,{ \dH/2}) -- (-\Rthree,{\H-\dH/2});
 			\draw ( \Rthree,{ \dH/2}) -- ( \Rthree,{\H-\dH/2});
 			\draw (0,{\H-\dH/2}) ellipse ({\Rthree} and {\r});        % top
-			\node[above] at (0,{\H-\dH/2+0.35}) {$\zeta-\mathrm{d}\zeta$};
-			\node[left]  at (-\Rthree-0.25,{\H/2}) {$H-\mathrm{d}H$}; % center the label
+			\node[above] at (0,{\H-\dH/2+0.35}) {$\zeta-d\zeta$};
+			\node[left]  at (-\Rthree-0.25,{\H/2}) {$H-dH$}; % center the label
 		\end{scope}
 		% spin symbols on tops
 		% spin symbols: use H±dH/2 so the midline matches
@@ -171,9 +182,9 @@ Dieser Ausdruck berücksichtigt sowohl die horizontale Rotation als auch die ver
 
 		% captions
 		\node[align=center] at (-\DX,-1.2)
-		{$H\downarrow \Rightarrow |\zeta|\downarrow$\\[2pt]\emph{vortex squashing}\\ horizontal divergence};
+		{$H\downarrow \quad \Rightarrow \quad |\zeta|\downarrow$\\[2pt]\emph{vortex squashing}\\ horizontal divergence};
 		\node[align=center] at (\DX,-1.2)
-		{$H\uparrow \Rightarrow |\zeta|\uparrow$\\[2pt]\emph{vortex stretching}\\ horizontal convergence};
+		{$H\uparrow \quad \Rightarrow \quad |\zeta|\uparrow$\\[2pt]\emph{vortex stretching}\\ horizontal convergence};
 	\end{tikzpicture}
 
 
@@ -185,7 +196,7 @@ Dieser Ausdruck berücksichtigt sowohl die horizontale Rotation als auch die ver
 		(\emph{vortex squashing}), während eine Vergrösserung ($H \uparrow$) über
 		Konvergenz zu einer Zunahme von $|\zeta|$ (\emph{vortex stretching}) führt.
 		Damit bleibt das Verhältnis $q=(\zeta+f)/H$ entlang der Trajektorie eines
-		Luftpakets konstant.%
+		Luftpakets konstant (eigene Darstellung inspieriert durch \cite{rossby:beal_pv}).%
 	}
 	\label{fig:pv_conservation}
 \end{figure}
