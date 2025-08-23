@@ -11,18 +11,22 @@
 \kopfrechts{Problemstellung}
 Damit wir verstehen wie die Monge Ampere Gleichung mit der 
 Krümmung einer Fläche zusammenhängt, brauchen wir zuerst eine Methode die 
-Krümmug einer Fläche yu beschreiben.
+Krümmug einer Fläche zu beschreiben.
 Wir betrachten dabei die Fläche
-\begin{equation}
-  y = F(x, y)
-  \label{mongeampere:area}
-\end{equation}
-oder in Parameterform
 \begin{equation}
   x = \varphi(u,v), \quad y = \psi(u,v), \quad z = \omega(u,v)
   \label{mongeampere:areaparam}
 \end{equation}
-Die Fläche kann in der Parameterform auch als Radiusvektor $\vec r (u, v)$
+Die Fläche kann man in der Parameterform auch als Radiusvektor
+\begin{equation}
+  \vec r (u, v) =
+  \begin{pmatrix}
+    x(u,v) \\
+    y(u,v) \\
+    z(u,v) \\
+  \end{pmatrix}
+  \label{mongeampere:rad}
+\end{equation}
 schreiben.
 Leitet man diesen Radiusvektor nach den Prametern $u$ und $v$ ab bekommnt man zwei Tangenten
 $\vec r_u$ und $\vec r_v$,
@@ -31,7 +35,7 @@ mit welchen die Flächennormale
   \vec m = \frac{\vec r_u \times \vec r_v}{\sqrt{(\vec r_u \times \vec r_v)^2}} 
   \label{mongeampere:norm}
 \end{equation}
-beschrieben werden kann, wobei $(\cdot)^2$ für das Skalarprodukt steht.
+beschrieben werden kann, wobei $(\cdot)^2$ für das Skalarprodukt eines Vektores mit sich selber steht.
 
 
 
@@ -61,7 +65,7 @@ mit
      \left(\pdv{y}{u} \right)^2 +
      \left(\pdv{z}{u} \right)^2 
             &= \vec r_u^2\\
-     F(u,v) &= shit
+     F(u,v) &= 
      \pdv{x}{u} \cdot \pdv{x}{v} +
      \pdv{y}{u} \cdot \pdv{y}{v} +
      \pdv{z}{u} \cdot \pdv{z}{v}
@@ -82,6 +86,12 @@ Man kann sie auch in Form des Metrischen Tensors
   \label{mongeampere:erstmettens}
 \end{equation}
 beschreiben.
+
+Die Koeffizienten der ersten Fundamentalform können auch für das Flächenelement verwendet werden mit
+\begin{equation}
+  \dd S = |\vec r_u \times \vec r_v|\dd u \dd v = \sqrt{EG-F^2} \dd u \dd v.
+  \label{mongeampere:ds}
+\end{equation}
 
 \subsection{Zweite Fundamentalform}
 Die zweite Gaussche Fundamentalform befasst sich mit der äusseren Geometrie einer 
@@ -160,7 +170,20 @@ Untersucht man die Diskriminante ergeben sich drei Fälle
     bestimmten Normalenschnitt null. 
     Ein solcher Punkt wird \emph{parabolisch} genannt. Eine prarbolische Fläche ist die Mantelfäche eines Zylinders. 
 \end{enumerate}
-
+In Abbildung \ref{mongeampere:arten} sind Beispiele zu den Flächentypen zu sehen.
+\begin{figure}
+	\centering
+	\subfigure[]{
+		\label{mongeampere:ellip}
+		\includegraphics[width=0.31\textwidth]{papers/mongeampere/fig/ellip}}
+	\subfigure[]{
+		\label{mongeampere:sattel}
+		\includegraphics[width=0.31\textwidth]{papers/mongeampere/fig/saddle}} 
+	\subfigure[]{
+		\label{mongeampere:para}
+		\includegraphics[width=0.31\textwidth]{papers/mongeampere/fig/para}}
+	\caption{(a) Elliptischer Punkt (b) Hyperbolischer Punkt  (c) Parabolischer Punkt}
+	\label{mongeampere:arten}\end{figure}
 \subsubsection{Hauptkrümmungsradien}
 Die Hauptkrümmungsradien an einem Punkt einer Fläche sind definiert als der kleinste und grösste Krümmungsradius an diesem Punkt.
 Anhand des Ausdrucks \eqref{mongeampere:normkrum} lassen sich auch die beiden Hauptkrümmungsradien berechnen.
@@ -175,13 +198,21 @@ Mit etwas Umformen erhalten wir die quadratische Gleichung
 \subsection{Gausssche Krümmung}
 Die Krümmung wie wir sie in \eqref{mongeampere:2fund2} beschrieben haben hat das Problem, dass
 ihr Vorzeichen abhängig von der Normalenrichtung ist.
-Die Gausssche Krümmung ist ein Krümmungsmass, welches von solchen Faktoren ist.
+Die Gausssche Krümmung ist ein Krümmungsmass, welches von solchen Faktoren unabhängig ist.
 Sie is definiert als 
 \begin{equation}
   K = \frac{1}{R_1 R_2} = \frac{LN-M^2}{EG-F^2}.
-  \label{mongemapere:gausskrumm}
+  \label{mongeampere:gausskrumm}
 \end{equation}
 Da sie die beiden Hauptkrümmungsradien mulitipliziert ist sie immer positiv wenn 
 beide Krümmungradien das gleiche Vorzeichen haben, und negativ falls sie sich unterscheiden.
 Ausserdem lässt sich anhand des Voryeichens bestimmen ob ein Punkt elliptisch, hzperbolisch oder parabolisch 
 ist, da die Diskriminante der zweiten Normalform im Zähler ist.
+
+Eine interessante Eigenschaft, welche Gauss als \emph{Theoreme egregium} publiziert hat, ist, dass
+die Gausssche Krümmung mit den Koeffizienten der ersten Fundamentalform und ihren Ableitungen beschrieben werden kann.
+Das Bedeutuet, dass die innere Geometrie einer Fläche bestimmt, welche Gausssche Krümmung sie hat.
+Im Umkehrschluss bedeutet das, dass eine Fläche nicht auf eine andere Fläche mit einer anderen Krümmung abbilden
+lässt, ohne das Längen oder Winkel gestreckt werden.
+Dieses Theorem erklärt also, wieso es keine längen und winkeltreue Abbildungen der Erdoberfläche gibt.
+
