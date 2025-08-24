@@ -24,37 +24,37 @@ Die Navier-Stokes-Gleichung für ein viskoses, inkompressibles, newtonisches Flu
     \label{reynolds:eqs:impulse}
     \frac{\partial u_i}{\partial t} + u_j \frac{\partial u_i}{\partial x_j} =
         f_i - \frac{1}{\rho} \frac{\partial p}{\partial x_i} + 
-        \nu \frac{\partial^2 u_i}{\partial x_j \partial x_j},\quad\text{für $i = 1,2,3$}.
+        \nu \frac{\partial^2 u_i}{\partial x_j \partial x_j},\quad\text{für $i = 1,2,3$}
 \end{equation}
 %
 wobei $u_i$ die Komponenten des Flussgeschwindigkeitsvektors und $p$ den Druck bezeichnet.
 
-Eine weitere fundamentale Gleichung, die das Verhalten eines Fluids beschreibt, ist die ``Kontinuitätsgleichung'',
+Eine weitere fundamentale Gleichung, die das Verhalten eines Fluids beschreibt, ist die \emph{Kontinuitätsgleichung},
 welche die Tatsache abbildet, dass Masse erhalten bleibt, d.h. in einem gegebenen Volumen Fluid keine Masse
 entstehen oder verschwinden kann, ausser sie fliesst über die Volumengrenze. Für ein inkompressibles Fluid lautet sie
 %
 \begin{equation}
     \label{reynolds:eqs:mass}
-    \frac{\partial u_i}{\partial x_i} = 0.
+    \frac{\partial u_i}{\partial x_i} = 0
 \end{equation}
 %
-Die Gleichungen machen Gebrauch von der ``Einsteinschen Summenkonvention'': Über Indizes, welche in einem Term doppelt
-erscheinen, wird summiert, so entspricht z.B. in Gleichung \refeq{reynolds:eqs:impulse}
+Die Gleichungen machen Gebrauch von der \emph{Einsteinschen Summenkonvention}: Über Indizes, welche in einem Term doppelt
+erscheinen, wird summiert, so entspricht z.B. in Gleichung \eqref{reynolds:eqs:impulse}
 %
 \begin{equation}
-u_j \frac{\partial u_i}{\partial x_j} = \sum_{j=1}^{3} u_j \frac{\partial u_i}{\partial x_j}.
+u_j \frac{\partial u_i}{\partial x_j} = \sum_{j=1}^{3} u_j \frac{\partial u_i}{\partial x_j}
 \end{equation}
 %
 Die Terme lassen sich wie folgt beschreiben:
 %
 \begin{enumerate}
-    \item $\frac{\partial u_i}{\partial x_i} = \operatorname{div}(\mathbf{u})$: ``Massengenerierung''.
+    \item $\frac{\partial u_i}{\partial x_i} = \operatorname{div}(\mathbf{u})$: \emph{Massengenerierung}.
     Aufgrund des Massenerhalts $ = 0$.
     \item $\frac{\partial u_i}{\partial t}$: Die zeitliche Änderung der Flussgeschwindigkeit (also die 
         Impulsänderung) and einem fixen, örtlichen Punkt.
     \item $u_j \frac{\partial u_i}{\partial x_j}$: Die Konvektion, also die Impulsänderung durch ``Abfliessen''
         von bewegten Teilchen.
-    \item $f_i$: Andere, allgemeine ``innere'' Kräfte, typischerweise die Gravitation.
+    \item $f_i$: Andere, allgemeine \emph{innere} Kräfte, typischerweise die Gravitation.
     \item $\frac{1}{\rho} \frac{\partial p}{\partial x_i}$: Das Druckgefälle.
     \item $\nu \frac{\partial^2 u_i}{\partial x_j \partial x_j} \overset{\text{def}}{=} \nu \Delta u_i$: Die Diffusion, also Änderung des Impulses
         aufgrund mikroskopischer Kollisionen und anderer Wechselwirkungen von Teilchen bzw.
@@ -115,7 +115,7 @@ einer gewissen Grössenordnung jedoch nicht von grossem Interesse. Versucht man 
 anzupassen, kann dies zu numerischen Instabilitäten und falschen Ergebnissen führen.
 %
 \subsection{Reynolds-Averaging}
-Eine Art, die Gleichungen anzupassen ist ``Reynolds-Averaging''. Mit Reynolds-Averaging verfolgt
+Eine Art, die Gleichungen anzupassen ist \emph{Reynolds-Averaging}. Mit Reynolds-Averaging verfolgt
 man das Ziel, sich auf Phänomene zu fokussieren, die in etwa eine Zeitspanne $\Delta t$ überdauern.
 Zeitlich schnellere Phänomene werden über eine Zeit von $\Delta t$ gemittelt.
 %
@@ -141,7 +141,7 @@ wie folgt umformen:
 \begin{equation}
     ( \rdecomp{u_j} ) \frac{\partial ( \rdecomp{u_i} )}{\partial x_j} =
         \frac{\partial \biggl[ ( \rdecomp{u_j} ) ( \rdecomp{u_i} ) \biggr]}{\partial x_j}
-        - \frac{\partial ( \rdecomp{u_j} )}{\partial x_j} ( \rdecomp{u_i} ).
+        - \frac{\partial ( \rdecomp{u_j} )}{\partial x_j} ( \rdecomp{u_i} )
 \end{equation}
 %
 Aus dem Massenerhalt (Gleichung \eqref{reynolds:eqs:mass}) folgt
@@ -155,10 +155,10 @@ und somit
 \begin{equation}
     \label{reynolds:eqs:der2}
     ( \rdecomp{u_j} ) \frac{\partial ( \rdecomp{u_i} )}{\partial x_j} =
-        \frac{\partial \bigl[ ( \rdecomp{u_j} ) ( \rdecomp{u_i} ) \bigr]}{\partial x_j}
+        \frac{\partial \bigl[ ( \rdecomp{u_j} ) ( \rdecomp{u_i} ) \bigr]}{\partial x_j}.
 \end{equation}
 %
-Setzen wir Gleichung \eqref{reynolds:eqs:der2} in Gleichung \eqref{reynolds:eqs:der1} ein erhalten wir
+Setzen wir Gleichung \eqref{reynolds:eqs:der2} in Gleichung \eqref{reynolds:eqs:der1} ein, erhalten wir
 %
 \begin{align}
     \rho \biggl(
@@ -170,7 +170,7 @@ Setzen wir Gleichung \eqref{reynolds:eqs:der2} in Gleichung \eqref{reynolds:eqs:
             \frac{\partial \bigl[ \ravg{u_i} \ravg{u_j}  + \ravg{u_j} u_i' + u_j' \ravg{u_i} + u_j' u_i' \bigr]}{\partial x_j}
         \biggr) = \\
     - \frac{\partial ( \rdecomp{p} )}{\partial x_i} + 
-    \mu \frac{\partial^2 ( \rdecomp{u_i} )}{\partial x_j \partial x_j}
+    \mu \frac{\partial^2 ( \rdecomp{u_i} )}{\partial x_j \partial x_j}.
 \end{align}
 %
 Als nächstes wird auf beide Seiten der Gleichung der Operator $\ravg{\cdot}$ angewendet.
@@ -211,15 +211,15 @@ gezogen:
 Mit der Vereinfachung (Kettenregel, Gleichungen \eqref{reynolds:eqs:ravg-partial} und \eqref{reynolds:eqs:mass})
 %
 \begin{align}
-    \frac{\partial ( \ravg{u_i} \ravg{u_j})}{\partial x_j} &= \\
-        \frac{\partial \ravg{u_i}}{\partial x_j} \ravg{u_j} +
-    \ravg{u_i} \frac{\partial \ravg{u_j}}{\partial x_j} &= \\
-        \frac{\partial \ravg{u_i}}{\partial x_j} \ravg{u_j} +
-    \ravg{u_i} \ravg{\frac{\partial u_j}{\partial x_j}} &= \\
-        \frac{\partial \ravg{u_i}}{\partial x_j} \ravg{u_j}
+    \frac{\partial ( \ravg{u_i} \ravg{u_j})}{\partial x_j} &=
+    \frac{\partial \ravg{u_i}}{\partial x_j} \ravg{u_j} +
+    \ravg{u_i} \frac{\partial \ravg{u_j}}{\partial x_j} \\
+    &= \frac{\partial \ravg{u_i}}{\partial x_j} \ravg{u_j} +
+    \ravg{u_i} \ravg{\frac{\partial u_j}{\partial x_j}} \\
+    &= \frac{\partial \ravg{u_i}}{\partial x_j} \ravg{u_j}
 \end{align}
 %
-erhalten wir am Ende
+schlussendlich erhalten wir
 %
 \begin{align}
     \label{reynolds:eqs:rans}
@@ -235,11 +235,11 @@ erhalten wir am Ende
 \end{align}
 %
 Die Gleichung \eqref{reynolds:eqs:rans} stellt die
-``Reynolds-gemittelten Navier-Stokes'' (oder englisch ``Reynolds-averaged
-Navier-Stokes (RANS)'')-Gleichung dar. Der einzige Term, in denen die transienten
+\emph{Reynolds-gemittelten Navier-Stokes-Gleichung} (oder englisch \emph{Reynolds-averaged
+Navier-Stokes (RANS)})-Gleichung dar. Der einzige Term, in dem die transienten
 Anteile vorkommen, ist
 %
-$$\frac{\partial - \rho \ravg{u_i' u_j'}}{\partial x_j}$$
+$$\frac{\partial - \rho (\ravg{u_i' u_j'})}{\partial x_j}$$
 %
 Er enthält die Korrelation
 %
@@ -254,7 +254,7 @@ bezeichnet, da er die Einheit einer Spannung hat. Der Reynolds-Spannungstensor s
             R_{11} & R_{12} & R_{13} \\
             R_{21} & R_{22} & R_{23} \\
             R_{31} & R_{32} & R_{33}
-        \end{bmatrix}.
+        \end{bmatrix}
 \end{equation}
 %
 wobei die Diagonalen $R_{11}$, $R_{22}$ und $R_{33}$ die drei Normalspannungen sind.
@@ -278,12 +278,11 @@ folgt berechnet werden:
 %
 Wobei $C_\mu \approx 0.09$ eine Modellkonstante ist.
 %
-Die turbulente Viskosität ist in ~\ref{fig:mu-t} dargestellt.
+Die turbulente Viskosität ist in Abbildung ~\ref{fig:mu-t} dargestellt.
 Der Wert der turbulenten Viskosität ist dort am höchsten, wo die meisten Turbulenzen auftreten.
 Die Abbildung ~\ref{fig:mu-t} ist dafür ein sehr anschauliches Beispiel,
 da man genau an den Orten mit den höchsten Werten der turbulenten Viskosität die vollständige Ablösung
-der Grenzschicht erwarten würde
-\footnote{Im Bereich nach der Ablösung der Grenzschicht entstehen die meisten Turbulenzen.}.
+der Grenzschicht erwarten würde\footnote{Im Bereich nach der Ablösung der Grenzschicht entstehen die meisten Turbulenzen.}.
 %
 Damit können alle sechs Terme des Reynolds-Spannungstensors folgendermassen berechnet werden:
 %
@@ -296,7 +295,7 @@ Die diagonalen Terme $R_{11}$, $R_{22}$ und $R_{33}$ sind
 und die Terme $R_{12} = R_{21}$, $R_{13} = R_{31}$ und $R_{23} = R_{32}$ sind
 %
 \begin{equation}
-    R_{ij} = R_{ji} = \mu_t (\frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i}).
+    R_{ij} = R_{ji} = \mu_t (\frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i})
 \end{equation}
 %
 \begin{figure}
