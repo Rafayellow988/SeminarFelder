@@ -6,12 +6,13 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Gaussche Krümmung
+\section{Gausssche Krümmung
 \label{mongeampere:section:teil1}}
-\kopfrechts{Problemstellung}
-Damit wir verstehen wie die Monge Ampere Gleichung mit der 
-Krümmung einer Fläche zusammenhängt, brauchen wir zuerst eine Methode die 
-Krümmug einer Fläche zu beschreiben.
+\kopfrechts{Gausssche Krümmung}
+Damit wir verstehen wie die Monge-Ampèresche Gleichung mit der 
+Krümmung einer Fläche zusammenhängt, brauchen wir zuerst eine Methode diese 
+Krümmug zu beschreiben.
+Die Herleitungen in diesem Kapitel basieren auf \cite{mongeampere:smirnow}.
 Wir betrachten dabei die Fläche
 \begin{equation}
   x = \varphi(u,v), \quad y = \psi(u,v), \quad z = \omega(u,v)
@@ -36,8 +37,6 @@ mit welchen die Flächennormale
   \label{mongeampere:norm}
 \end{equation}
 beschrieben werden kann, wobei $(\cdot)^2$ für das Skalarprodukt eines Vektores mit sich selber steht.
-
-
 
 \subsection{Erste Fundamentalform
 \label{mongeampere:subsection:finibus}}
@@ -76,7 +75,7 @@ mit
              &= \vec r_v ^2\\
   \label{mongeampere:1fundbed}
 \end{align}
-Diese Forulierung vom Bogendifferential ist als erste Gausssche Fundamentalform bekannt.
+Diese Forulierung vom Bogendifferential ist als erste Fundamentalform bekannt.
 Man kann sie auch in Form des Metrischen Tensors 
 \begin{equation}
   g_{ij} = \begin{pmatrix}
@@ -87,14 +86,15 @@ Man kann sie auch in Form des Metrischen Tensors
 \end{equation}
 beschreiben.
 
-Die Koeffizienten der ersten Fundamentalform können auch für das Flächenelement verwendet werden mit
+Die Koeffizienten der ersten Fundamentalform können auch für das Flächenelement mit
 \begin{equation}
   \dd S = |\vec r_u \times \vec r_v|\dd u \dd v = \sqrt{EG-F^2} \dd u \dd v.
   \label{mongeampere:ds}
 \end{equation}
+verwendet werden.
 
 \subsection{Zweite Fundamentalform}
-Die zweite Gaussche Fundamentalform befasst sich mit der äusseren Geometrie einer 
+Die zweite Fundamentalform befasst sich mit der äusseren Geometrie einer 
 Fläche und beschreibt wie sich die Tangente entlang einer Flächenkurve verändert.
 Dafür betrachten wir wieder die Kurve $S(u,v)$ mit einem Tangeteneinheitsvektor 
 $\vec t$;
@@ -131,9 +131,9 @@ mit den Koeffizienten
   N &= \vec r_{vv} \cdot \vec m.
   \label{mongeampere:2fundkoef}
 \end{align*}
-Die zweite Gausssche Fundamentalform beschreibt wie start sich die Fläche an einem Punkt
+Die zweite Fundamentalform beschreibt wie start sich die Fläche an einem Punkt
 von der Tangentialebene entfernt, wenn sich die Parameter etwas ändern.
-Wie stark sich die Fläche von der Tangentialebene entfernt hat einen Zusammenhang mit der Krümmung der Fläche.
+Wie stark sich die Fläche von der Tangentialebene entfernt, hat einen Zusammenhang mit der Krümmung der Fläche.
 
 In \eqref{mongeampere:2fund2} haben wir die zweite Fundamentalform in Richtung einer Flächenkruve mit
 dem Quadrat ihres Bigendifferentiales normalisiert.
@@ -152,13 +152,13 @@ Krümmungsradius
   \label{mongeampere:normkrum}
 \end{equation}
 Diese Formulierung erlaubt uns ein paar Eigenschaften der Fläche zu bestimmen.
-Da der Nenner $\dd s^2$ entspricht ist er immer positiv. 
-Teilen Wir den Zähler durch $\dd u^2$ erhalten wir den Quadratischen Term
+Da der Nenner $\dd s^2$ entspricht, ist er immer positiv. 
+Teilen wir den Zähler durch $\dd u^2$ erhalten wir den Quadratischen Term
 \begin{equation}
    L + 2M \frac{\dd v}{\dd u} + N \frac{\dd v^2}{\dd u ^2}.
   \label{mongemapere:dsik}
 \end{equation}
-Untersucht man die Diskriminante ergeben sich drei Fälle
+Untersucht man die Diskriminante dieses Terms ergeben sich drei Fälle
 \begin{enumerate}
   \item $M^2 - LN < 0$: Das Vorzeichen des Krümmungsradius ändert sich nicht, somit geht die Krümmung für alle 
     Flächennormalen in dieselbe Richtung. 
@@ -182,18 +182,20 @@ In Abbildung \ref{mongeampere:arten} sind Beispiele zu den Flächentypen zu sehe
 	\subfigure[]{
 		\label{mongeampere:para}
 		\includegraphics[width=0.31\textwidth]{papers/mongeampere/fig/para}}
-	\caption{(a) Elliptischer Punkt (b) Hyperbolischer Punkt  (c) Parabolischer Punkt}
+	\caption{(a) Elliptischer Punkt (b) Hyperbolischer Punkt  (c) Parabolischer Punkt. In rot sind die jeweiligen Hautpkrümmungen zu sehen.}
 	\label{mongeampere:arten}\end{figure}
 \subsubsection{Hauptkrümmungsradien}
 Die Hauptkrümmungsradien an einem Punkt einer Fläche sind definiert als der kleinste und grösste Krümmungsradius an diesem Punkt.
-Anhand des Ausdrucks \eqref{mongeampere:normkrum} lassen sich auch die beiden Hauptkrümmungsradien berechnen.
+Anhand des Ausdrucks \eqref{mongeampere:normkrum} lassen sich die beiden Hauptkrümmungsradien berechnen.
 Dafür leiten wir den Term nach den Tangentenrichtungen $\frac{\dd v}{\dd u}$ und $\frac{\dd u}{\dd v}$ ab.
 Mit etwas Umformen erhalten wir die quadratische Gleichung
 \begin{equation}
   (EG - F^2)\frac{1}{R^2} + (2FM - EN - GL)\frac{1}{R} + (LN-M^2) = 0.
   \label{mongeampere:mainkrum}
 \end{equation}
-
+Die Lösungen dieser Gleichung sind die beiden invertierten Hauptkrümmungsradien $R_1^{-1}$ und $R_2^{-1}$.
+Wie wir aber im folgenden Abschnitt sehen werden, brauchen wir für die Gausssche Krümmung die Gleichung nicht 
+zu lösen.
 
 \subsection{Gausssche Krümmung}
 Die Krümmung wie wir sie in \eqref{mongeampere:2fund2} beschrieben haben hat das Problem, dass
@@ -212,7 +214,7 @@ ist, da die Diskriminante der zweiten Normalform im Zähler ist.
 Eine interessante Eigenschaft, welche Gauss als \emph{Theoreme egregium} publiziert hat, ist, dass
 die Gausssche Krümmung mit den Koeffizienten der ersten Fundamentalform und ihren Ableitungen beschrieben werden kann.
 Das Bedeutuet, dass die innere Geometrie einer Fläche bestimmt, welche Gausssche Krümmung sie hat.
-Im Umkehrschluss bedeutet das, dass eine Fläche nicht auf eine andere Fläche mit einer anderen Krümmung abbilden
+Im Umkehrschluss folgt, dass sich eine Fläche nicht auf eine andere Fläche mit einer anderen Krümmung abbilden
 lässt, ohne das Längen oder Winkel gestreckt werden.
-Dieses Theorem erklärt also, wieso es keine längen und winkeltreue Abbildungen der Erdoberfläche gibt.
+Dieses Theorem erklärt also, wieso es keine längen und winkeltreue flache Abbildungen der Erdoberfläche gibt.
 
