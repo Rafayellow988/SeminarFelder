@@ -82,13 +82,13 @@ Das Skalarprodukt von zwei Einheitsvektoren $\u$ und $\v$ ist äquivalent zum Ko
 Das Wedgeprodukt zwischen zwei Vektoren bildet wie bereits bekannt den Bivektor dazwischen, d.h. die orientierte Fläche.
 Da $\u$ und $\v$ Einheitsvektoren sind, beträgt die Fläche dazwischen genau $\sin{\theta}$. Für das Wedgeprodukt gilt daher
 \begin{equation}
-  \u \wedge \v = \sin{\theta} \cdot \eot.
+  \u \wedge \v = \sin{\theta} \cdot \hat{B},
 \end{equation}
-
+wobei $\hat{B}$ ein Einheitsbivektor ist. In zwei Dimensionen bietet sich hier natürlich $\eot$ an.
 Daher sind $R$ und $\tilde{R}$:
 \begin{align}
-  R = \cos{\theta} + \sin{\theta} \dot \eot \\
-  R = \cos{\theta} - \sin{\theta} \dot \eot.
+  R = \cos{\theta} + \sin{\theta} \cdot \eot \\
+  R = \cos{\theta} - \sin{\theta} \cdot \eot.
 \end{align}
 Dies erzeugt jedoch wie gesehen die Rotation um den doppelten Winkel $2 \theta$. Wir ersetzen $\alpha = 2\theta$ und erhalten die Rotation um
 den tatsächlichen Vektor $\alpha$
@@ -107,12 +107,14 @@ Somit gilt
 \begin{equation}
   \newcommand{\fraction}{\frac{\sqrt{2}}{2}}
   \begin{aligned}
-    \mathbf{x}'' &= (\cos{\frac{\alpha}{2}} + \sin{\frac{\alpha}{2}} \eot) (\eone + \etwo) (\cos{\frac{\alpha}{2}} - \sin{\frac{\alpha}{2}} \eot) \\
-    &= (\fraction + \fraction \eot)(\eone + (\fraction - \fraction \eot) \\
-    &= (\fraction \eone - \fraction \etwo + \fraction \etwo + \fraction \eone)(\fraction - \fraction \eot) \\
-    &= \sqrt{2} \eone (\fraction - \fraction \eot) \\
+    \mathbf{x}'' &= \left( \cos{\frac{\alpha}{2}} + \sin{\frac{\alpha}{2}} \eot \right) (\eone + \etwo) \left(\cos{\frac{\alpha}{2}} - \sin{\frac{\alpha}{2}} \eot\right) \\
+    &= \left( \fraction + \fraction \eot \right) (\eone + \etwo) \left( \fraction - \fraction \eot \right) \\
+    &= \left( \fraction \eone - \fraction \etwo + \fraction \etwo + \fraction \eone \right) \left( \fraction - \fraction \eot \right) \\
+    &= \sqrt{2} \eone \left( \fraction - \fraction \eot \right) \\
     &= \eone - \etwo,
   \end{aligned}
 \end{equation}
 was genau der Rotation entspricht!
 \end{beispiel}
+Diese Rotationen funktionieren in beliebigen Dimensionen, in drei Dimensionen und höher muss jedoch darauf geachtet werden,
+dass man die Ebene für die Drehbasis korrekt wählt. Dies drückt sich durch den gewählten Einheitsbivektor $\hat{B}$ aus.
