@@ -71,7 +71,7 @@ Zuerst wenden wir den Hodge-Operator auf $F$ an und erhalten
 Die Hodge-Duale können aus der Tabelle \ref{maxwell:section:teil1:Hodge-Tabelle} entnommen werden und wir erhalten
 \begin{align*}
 	\ast F =
-	& \, \frac{E_{1}}{c} \, dx^2 \wedge dx^3 - \frac{E_{2}}{c} \, dx^1 \wedge dx^3 + \frac{E_{3}}{c} \, dx^1 \wedge dx^2 \\
+	\phantom{+} & \frac{E_{1}}{c} \, dx^2 \wedge dx^3 - \frac{E_{2}}{c} \, dx^1 \wedge dx^3 + \frac{E_{3}}{c} \, dx^1 \wedge dx^2 \\
 	 + & \, B_3 \, \, dx^0 \wedge dx^3 + \, B_2 \, \, dx^0 \wedge dx^2 + \, B_1 \, \, dx^0 \wedge dx^1.
 \end{align*}
 Die erhaltene 2-Form kann nun wieder als Matrix
@@ -96,45 +96,46 @@ Nun wenden wir die äussere Ableitung an und erhalten
 	+ B_2 \, dx^0 \wedge dx^2
 	+ B_1 \, dx^0 \wedge dx^1
 	\Bigg) \\[1ex]
-	= \phantom{+} &\frac{1}{c} \frac{\partial E_1}{\partial x^0} \, dx^0 \wedge dx^2 \wedge dx^3
+	= &\quad \frac{1}{c} \frac{\partial E_1}{\partial x^0} \, dx^0 \wedge dx^2 \wedge dx^3
 	+ \frac{1}{c} \frac{\partial E_1}{\partial x^1} \, dx^1 \wedge dx^2 \wedge dx^3
 	- \frac{1}{c} \frac{\partial E_2}{\partial x^0} \, dx^0 \wedge dx^1 \wedge dx^3 
 	\\
-	- &\frac{1}{c} \frac{\partial E_2}{\partial x^2} \, dx^2 \wedge dx^1 \wedge dx^3
+	&- \frac{1}{c} \frac{\partial E_2}{\partial x^2} \, dx^2 \wedge dx^1 \wedge dx^3
 	+ \frac{1}{c} \frac{\partial E_3}{\partial x^0} \, dx^0 \wedge dx^1 \wedge dx^2
 	+ \frac{1}{c} \frac{\partial E_3}{\partial x^3} \, dx^3 \wedge dx^1 \wedge dx^2 
 	\\
-	+&\phantom{\frac{1}{c}} \frac{\partial B_3}{\partial x^1} \, dx^1 \wedge dx^0 \wedge dx^3
+	&+\phantom{\frac{1}{c}} \frac{\partial B_3}{\partial x^1} \, dx^1 \wedge dx^0 \wedge dx^3
 	+ \phantom{\frac{1}{c}} \frac{\partial B_3}{\partial x^2} \, dx^2 \wedge dx^0 \wedge dx^3
 	+ \phantom{\frac{1}{c}} \frac{\partial B_2}{\partial x^1} \, dx^1 \wedge dx^0 \wedge dx^2 \\
-	+&\phantom{\frac{1}{c}} \frac{\partial B_2}{\partial x^3} \, dx^3 \wedge dx^0 \wedge dx^2
+	&+\phantom{\frac{1}{c}} \frac{\partial B_2}{\partial x^3} \, dx^3 \wedge dx^0 \wedge dx^2
 	+ \phantom{\frac{1}{c}} \frac{\partial B_1}{\partial x^2} \, dx^2 \wedge dx^0 \wedge dx^1
 	+ \phantom{\frac{1}{c}} \frac{\partial B_1}{\partial x^3} \, dx^3 \wedge dx^0 \wedge dx^1 
 	\\[2ex]
-	= \phantom{+} &\left(
+	= &\phantom{+} \: \left(
 	\phantom{+} \frac{1}{c} \frac{\partial E_1}{\partial x^1}
 	+ \frac{1}{c} \frac{\partial E_2}{\partial x^2}
 	+ \frac{1}{c} \frac{\partial E_3}{\partial x^3}
 	\right) dx^1 \wedge dx^2 \wedge dx^3 
 	\\
-	+ &\left(
+	&+ \left(
 	\phantom{+} \frac{1}{c} \frac{\partial E_1}{\partial x^0}
 	+ \phantom{\frac{1}{c}} \frac{\partial B_2}{\partial x^3}
 	- \phantom{\frac{1}{c}} \frac{\partial B_3}{\partial x^2}
 	\right) dx^0 \wedge dx^2 \wedge dx^3 
 	\\
-	+ &\left(
+	&+ \left(
 	-\frac{1}{c} \frac{\partial E_2}{\partial x^0}
 	+ \phantom{\frac{1}{c}} \frac{\partial B_1}{\partial x^3}
 	- \phantom{\frac{1}{c}} \frac{\partial B_3}{\partial x^1}
 	\right) dx^0 \wedge dx^1 \wedge dx^3 
 	\\
-	+ &\left(
+	&+ \left(
 	\phantom{+} \frac{1}{c} \frac{\partial E_3}{\partial x^0}
 	+ \phantom{\frac{1}{c}} \frac{\partial B_1}{\partial x^2}
 	- \phantom{\frac{1}{c}} \frac{\partial B_2}{\partial x^1}
 	\right) dx^0 \wedge dx^1 \wedge dx^2.
 \end{align*}
+
 \subsubsection{Berechnung von $\ast d {\ast} F$}
 Wenden wir nun noch einmal den Hodge-Operator auf die erhaltene 3-Form an, ergibt sich gemäss Tabelle ~\ref{maxwell:section:teil1:Hodge-Tabelle}
 \begin{align*}

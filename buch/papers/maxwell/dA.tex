@@ -62,34 +62,36 @@ Wir verwenden also die 1-Form
 	A = -\frac{\varphi}{c}\,dx^0 + A_1 \,dx^1 + A_2 \,dx^2 + A_3 \,dx^3.
 \end{equation}
 Um nun zu prüfen, was die äussere Ableitung von $A$ ergibt, rechnen wir
+
 \begin{align*}
-	dA = \phantom{+}
-	 \frac{1}{c} &\frac{\partial (-\varphi)}{\partial x^1} \,dx^1 \wedge dx^0
+	dA &= \phantom{+}
+	\frac{1}{c} \frac{\partial (-\varphi)}{\partial x^1} \,dx^1 \wedge dx^0
 	+ \frac{1}{c}\frac{\partial (-\varphi)}{\partial x^2} \,dx^2 \wedge dx^0
 	+ \frac{1}{c}\frac{\partial (-\varphi)}{\partial x^3} \,dx^3 \wedge dx^0
 	\\
-	+ \phantom{\frac{1}{c}} &\frac{\partial A_1}{\partial x^0} \,dx^0 \wedge dx^1
+	&\phantom{=}+ \phantom{\frac{1}{c}} \frac{\partial A_1}{\partial x^0} \,dx^0 \wedge dx^1
 	+ \frac{\partial A_1}{\partial x^2} \,dx^2 \wedge dx^1
 	+ \frac{\partial A_1}{\partial x^3} \,dx^3 \wedge dx^1
 	\\
-	+ \phantom{\frac{1}{c}} &\frac{\partial A_2}{\partial x^0} \,dx^0 \wedge dx^2
+	&\phantom{=}+ \phantom{\frac{1}{c}} \frac{\partial A_2}{\partial x^0} \,dx^0 \wedge dx^2
 	+ \frac{\partial A_2}{\partial x^1} \,dx^1 \wedge dx^2
 	+ \frac{\partial A_2}{\partial x^3} \,dx^3 \wedge dx^2
 	\\
-	+ \phantom{\frac{1}{c}} &\frac{\partial A_3}{\partial x^0} \,dx^0 \wedge dx^3
+	&\phantom{=}+ \phantom{\frac{1}{c}} \frac{\partial A_3}{\partial x^0} \,dx^0 \wedge dx^3
 	+ \frac{\partial A_3}{\partial x^1} \,dx^1 \wedge dx^3
 	+ \frac{\partial A_3}{\partial x^2} \,dx^2 \wedge dx^3
 	\\[2ex] 
-	=
-	\phantom{+} & \left(\frac{1}{c}\frac{\partial (-\varphi)}{\partial x^1}-\frac{\partial A_1}{\partial x^0}\right) dx^1 \wedge dx^0 
+	&=
+	\,\,\, \left(\frac{1}{c}\frac{\partial (-\varphi)}{\partial x^1}-\frac{\partial A_1}{\partial x^0}\right) dx^1 \wedge dx^0 
 	+ \left(\frac{1}{c}\frac{\partial (-\varphi)}{\partial x^2}-\frac{\partial A_2}{\partial x^0}\right) dx^2 \wedge dx^0
 	\\
-	+ &\left(\frac{1}{c}\frac{\partial (-\varphi)}{\partial x^3}-\frac{\partial A_3}{\partial x^0}\right) dx^3 \wedge dx^0
+	&\phantom{=} + \left(\frac{1}{c}\frac{\partial (-\varphi)}{\partial x^3}-\frac{\partial A_3}{\partial x^0}\right) dx^3 \wedge dx^0
 	+ \left(\frac{\partial A_1}{\partial x^2}-\frac{\partial A_2}{\partial x^1}\right) dx^2 \wedge dx^1
 	\\
-	+ & \left(\frac{\partial A_1}{\partial x^3}-\frac{\partial A_3}{\partial x^1}\right) dx^3 \wedge dx^1 
+	&\phantom{=} + \left(\frac{\partial A_1}{\partial x^3}-\frac{\partial A_3}{\partial x^1}\right) dx^3 \wedge dx^1 
 	+ \left(\frac{\partial A_2}{\partial x^3}-\frac{\partial A_3}{\partial x^2}\right) dx^3 \wedge dx^2.				
 \end{align*}
+
 Wir wissen, dass $dx^0 = c\,dt$ entspricht und nutzen dies hier aus, um die Klammerausdrücke besser interpretieren zu können.
 In der Ableitung nach der Koordinate $x^0$ verbirgt sich nämlich noch der Faktor $c$ im Nenner.
 Um dies zu veranschaulichen, wechseln wir kurz in die physikalische Darstellung gemäss \eqref{maxwell:koordinaten} und erhalten
