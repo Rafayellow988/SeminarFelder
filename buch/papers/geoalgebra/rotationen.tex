@@ -71,8 +71,8 @@ Der Ausdruck \eqref{geoalgebra:eq:rotation} kann mithilfe des Rotors $R = \u \v$
 dargestellt werden.
 Es gilt also
 \begin{align}
-  R &= \u \v = \u \cdot \v + \u \wedge \v \\
-  \tilde{R} &= \v \u = \u \cdot \v - \u \wedge \v.
+  R &= \u \v = \u \cdot \v - \v \wedge \u \\
+  \tilde{R} &= \v \u = \u \cdot \v + \v \wedge \u.
 \end{align}
 Das Skalarprodukt von zwei Einheitsvektoren $\u$ und $\v$ ist äquivalent zum Kosinus des Winkels dazwischen:
 \begin{equation}
@@ -82,18 +82,18 @@ Das Skalarprodukt von zwei Einheitsvektoren $\u$ und $\v$ ist äquivalent zum Ko
 Das Wedgeprodukt zwischen zwei Vektoren bildet wie bereits bekannt den Bivektor dazwischen, d.h. die orientierte Fläche.
 Da $\u$ und $\v$ Einheitsvektoren sind, beträgt die Fläche dazwischen genau $\sin{\theta}$. Für das Wedgeprodukt gilt daher
 \begin{equation}
-  \u \wedge \v = \sin{\theta} \cdot \hat{B},
+  \v \wedge \u = \sin{\theta} \cdot \hat{B},
 \end{equation}
 wobei $\hat{B}$ ein Einheitsbivektor ist. In zwei Dimensionen bietet sich hier natürlich $\eot$ an.
 Daher sind $R$ und $\tilde{R}$:
 \begin{align}
-  R = \cos{\theta} + \sin{\theta} \cdot \eot \\
-  R = \cos{\theta} - \sin{\theta} \cdot \eot.
+  R = \cos{\theta} - \sin{\theta} \cdot \eot \\
+  R = \cos{\theta} + \sin{\theta} \cdot \eot.
 \end{align}
 Dies erzeugt jedoch wie gesehen die Rotation um den doppelten Winkel $2 \theta$. Wir ersetzen $\alpha = 2\theta$ und erhalten die Rotation um
 den tatsächlichen Vektor $\alpha$
 \begin{equation}
-  \mathbf{x}'' = (\cos{\frac{\alpha}{2}} + \sin{\frac{\alpha}{2}} \eot) \mathbf{x} (\cos{\frac{\alpha}{2}} - \sin{\frac{\alpha}{2}} \eot).
+  \mathbf{x}'' = (\cos{\frac{\alpha}{2}} - \sin{\frac{\alpha}{2}} \eot) \mathbf{x} (\cos{\frac{\alpha}{2}} + \sin{\frac{\alpha}{2}} \eot).
 \end{equation}
 
 
@@ -107,14 +107,52 @@ Somit gilt
 \begin{equation}
   \newcommand{\fraction}{\frac{\sqrt{2}}{2}}
   \begin{aligned}
-    \mathbf{x}'' &= \left( \cos{\frac{\alpha}{2}} + \sin{\frac{\alpha}{2}} \eot \right) (\eone + \etwo) \left(\cos{\frac{\alpha}{2}} - \sin{\frac{\alpha}{2}} \eot\right) \\
-    &= \left( \fraction + \fraction \eot \right) (\eone + \etwo) \left( \fraction - \fraction \eot \right) \\
-    &= \left( \fraction \eone - \fraction \etwo + \fraction \etwo + \fraction \eone \right) \left( \fraction - \fraction \eot \right) \\
-    &= \sqrt{2} \eone \left( \fraction - \fraction \eot \right) \\
-    &= \eone - \etwo,
+    \mathbf{x}'' &= \left( \cos{\frac{\alpha}{2}} - \sin{\frac{\alpha}{2}} \eot \right) (\eone + \etwo) \left(\cos{\frac{\alpha}{2}} + \sin{\frac{\alpha}{2}} \eot\right) \\
+    &= \left( \fraction - \fraction \eot \right) (\eone + \etwo) \left( \fraction + \fraction \eot \right) \\
+    &= \left( \fraction \eone + \fraction \etwo + \fraction \etwo - \fraction \eone \right) \left( \fraction + \fraction \eot \right) \\
+    &= \sqrt{2} \etwo \left( \fraction + \fraction \eot \right) \\
+    &= -\eone + \etwo,
   \end{aligned}
 \end{equation}
 was genau der Rotation entspricht!
 \end{beispiel}
 Diese Rotationen funktionieren in beliebigen Dimensionen, in drei Dimensionen und höher muss jedoch darauf geachtet werden,
 dass man die Ebene für die Drehbasis korrekt wählt. Dies drückt sich durch den gewählten Einheitsbivektor $\hat{B}$ aus.
+
+\begin{beispiel}
+Angenommen, wir möchten den Vektor
+  \begin{equation}
+    \mathbf{x} = \begin{pmatrix} 2 \\ 3 \\ 4\end{pmatrix} = 2 \eone + 3 \etwo + 4 \ethree
+  \end{equation}
+an der Ebene $\eot$
+  \begin{equation}
+    \eot = \eone \wedge \etwo
+  \end{equation}
+um den Drehwinkel
+\begin{equation}
+  \alpha = \frac{\pi}{3}
+\end{equation}
+drehen.
+
+Somit ist
+  \begin{equation}
+    \newcommand{\fraca}{\frac{\sqrt{3}}{2}}
+    \newcommand{\fracb}{\frac{1}{2}}
+    \begin{aligned}
+    \mathbf{x}'' &= \left( \cos{\frac{\alpha}{2}} - \sin{\frac{\alpha}{2}} \eot \right) (2 \eone + 3 \etwo + 4 \ethree) \left(\cos{\frac{\alpha}{2}} + \sin{\frac{\alpha}{2}} \eot\right) \\
+      &= \left(\fraca - \fracb \eot \right) (2\eone + 3 \etwo + 4 \ethree) \left(\fraca + \fracb \eot \right) \\
+      &= \left(\sqrt{3} \eone + \frac{3\sqrt{3}}{2} \etwo + 2\sqrt{3}\ethree + \etwo - \frac{3}{2}\eone - 2 \mathbf{e}_{123}\right) \left(\fraca + \fracb \eot\right) \\
+      &= \left( \left( \sqrt{3} - \frac{3}{2} \right) \eone + \left(\frac{3\sqrt{3}}{2} + 1\right)\etwo + 2 \sqrt{3} \ethree - 2 \mathbf{e}_{123} \right) \left(\fraca + \fracb \eot\right) \\
+      &= \left(1 - \frac{3 \sqrt{3}}{2}\right) \eone + \left(\frac{3}{2} + \sqrt{3}\right) \etwo + 4 \ethree \\
+      &= \begin{pmatrix} 1 - \frac{3 \sqrt{3}}{2} \\ \frac{3}{2} + \sqrt{3} \\ 4 \end{pmatrix},
+    \end{aligned}
+  \end{equation}
+  was der Rotation um die $\eot$-Achse entspricht:
+  \begin{equation}
+    \begin{pmatrix}
+      \cos{\alpha} & -\sin{\alpha} & 0 \\
+      \sin{\alpha} & \cos{\alpha} & 0 \\
+      0 & 0 & 1
+    \end{pmatrix} \begin{pmatrix} 2 \\ 3 \\ 4 \end{pmatrix}.
+  \end{equation}
+\end{beispiel}
