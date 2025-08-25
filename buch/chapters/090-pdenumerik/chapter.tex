@@ -108,7 +108,8 @@ für $k=1,\dots,n-1$.
 %
 % Diskretisierter Laplace-Operator in zwei Dimensionen
 %
-\subsection{Diskretisierter Laplace-Operator in zwei Dimensionen}
+\subsection{Diskretisierter Laplace-Operator in zwei Dimensionen
+\label{buch:pdenumerik:fdm:subsection:laplace}}
 Auch für den zweidimensionalen Laplace-Operator wie in der Gleichung
 $\Delta u = f$ kann eine analoge Diskretisation durchgeführt
 werden.
@@ -315,6 +316,7 @@ Funktionen sehr kleinen Träger haben, so dass nur jeweils wenige
 Paare von Funktion $h'_k$ und $g'_i$ nichtverschwindendes Skalarprodukt
 haben.
 
+\subsubsection{Lineare Elemente}
 Damit die Resultate einfach interpretiert werden können, sollte es
 einen einfachen Zusammenhang zwischen den Koeffizienten $a_k$ und
 den Funktionswerten geben.
@@ -333,6 +335,7 @@ die auch in Abbildung~\ref{buch:pdenumerik:fem:fig:linear}
 dargestellt sind.
 Diese Funktionen können auch für die $h_k$ verwendet werden.
 
+\subsubsection{Kubische Elemente}
 Für die Differentialgleichung sind aber auch noch die 
 Ableitungen der Funktionen nötig.
 \input{chapters/090-pdenumerik/fig/fig-kubisch.tex}%
@@ -364,8 +367,8 @@ hH^1(x)
 H^1\biggl(\frac{x-x_i}{h}\biggr)
 =
 \begin{cases}
-x(1-x)^2         &\qquad -h\le x \le 0\\
-x(1+x)^2         &\qquad 0\le x \le h\\
+x(1+x)^2         &\qquad -h\le x \le 0\\
+x(1-x)^2         &\qquad 0\le x \le h\\
 0                &\qquad\text{sonst}
 \end{cases}
 \]
@@ -378,7 +381,7 @@ g^{1\prime}_i(x)\big|_{x=x_i}
 H^{1\prime}(x)\big|_{x=0}
 =
 \bigl(
-(1-x)^2-2x(1-x)
+(1+x)^2+2x(1+x)
 \bigr)\big|_{x=0}
 =
 1,
@@ -391,11 +394,98 @@ Wir schreiben dazu
 u(x)
 \approx
 \sum_{i=1}^n \bigl(u(x_i) g_i(x) + u'(x_i) g_i^1(x)\bigr).
+=
+\sum_{i=1}^n \bigl(u_i g_i(x) + u'_i g_i^1(x)\bigr).
 \label{buch:pdenumerik:fem:eqn:approx}
 \end{equation}
 Die Summe auf der rechten Seiten stimmt in den Gitterpunkten mit den
 Funktionswerten und den ersten Ableitungen überein.
 Auf die gleiche Art kann auch $f$ approximiert werden.
+
+\subsubsection{Höhere Dimension}
+Die bisher entwickelten Arten von Elementen sind jeweils entstanden
+durch Translation und Skalierung der einfachen Funktionen $H(x)$ und
+$H^1(x)$, die in diesem Zusammenhang auch \emph{Formfunktionen} genannt werden.
+\index{Formfunktion}%
+Die beiden Variablen $u_k$ und $u'_k$ in jedem Knoten des Gitters
+bestimmen die Approximationsfunktion vollständig, sie heissen auch
+die \emph{Knotenvariablen}.
+\index{Knotenvariable}%
+
+Jetzt da die Anforderungen an die Approximationsfunktionen etwas
+klarer sind, können wir auch formulieren, wie die Formfunktionen
+für die Ausdehnung der Methode auf höhere Dimensionen gestaltet sein
+müssen.
+Als Beispiel betrachten wir die Differentialgleichung 
+\[
+\Delta u = f
+\]
+auf einem Gebiet $G\subset\mathbb{R}^n$.
+Der Einfachheit halber nehmen wir an, dass $u$ auf dem Rand $\partial G$
+verschwinden soll, und verweisen für allgemeinere Randbedingungen auf
+die Literatur.
+Die Testfunktionen $v(x)$ werden daher so gewählt, dass sie auf dem
+Rand verschwinden.
+Die schwache Form der Gleichungen entsteht jetzt durch Multiplikation
+mit einer ebenfalls auf $G$ definierten Testfunktion $v(x)$ und
+Integration über das Gebiet:
+\[
+\langle \Delta u,v\rangle
+=
+\int_G \Delta u(x)\,v(x)\,dx
+=
+\int_G f(x) v(x)\,dx.
+\]
+Wegen $\Delta = \nabla\cdot\nabla$ kann das erste Integral mit
+dem Satz von Gauss, angewendet auf die Divergenz 
+\[
+\operatorname{div} \bigl((\operatorname{grad} u )\, v\bigr)
+=
+(\operatorname{div}\operatorname{grad}u)\, v
++
+\operatorname{grad u}\cdot\operatorname{grad}v
+=
+(\Delta u)\, v
++
+\nabla u\cdot\nabla v
+\]
+umgewandelt werden in das Integral
+\[
+\langle \Delta u,v\rangle
+=
+\int_G \Delta u(x)\,v(x)\,dx
+=
+\int_{\partial G}
+\nabla u(x)\, v(x)
+\cdot d\vec{n}
+-
+\int_G
+\nabla u(x)\cdot\nabla v(x)
+\,dx.
+\]
+Das erste Integral verschwindet, weil die Testfunktion $v(x)$ auf
+$\partial G$ verschwindet.
+Es bleibt also nur noch das Integral von $\nabla u(x)\cdot\nabla v(x)$.
+
+Der Gradient $\nabla u(x)$ ist durch die partiellen Ableitungen von $u(x)$
+nach jeder einzelnen Koordinaten $x_i$, $i=1,\dots,n$ bestimmt.
+Es sind also differenzierbare Formfunktionen mit der Eigenschaft
+zu bestimmen, dass sie oder ihre partiellen Ableitungen in genau
+einem Punkt des Gitters von $0$ verschieden sind.
+In diesem Gitterpunkt sind die Funktionswerte $=1$ oder aber 
+genau eine der partiellen Ableitungen.
+Die Funktion $u(x)$ kann dann durch eine Linearkombination
+dieser Formfunktionen approximiert werden, wobei die Koeffizienten
+der Linearkombination genau der Funktionswert bzw.~die Werte
+der partiellen Ableitungen in diesem Gitterpunkt sind.
+Diese Variablen heissen wieder Knotenvariablen.
+
+Es ist allerdings nicht nötig, ein quadratisches Gitter wie
+in Abschnitt~\ref{buch:pdenumerik:fdm:subsection:laplace} zu verwenden.
+Eine beliebige Triangulation des Gebietes ist auch denkbar.
+Die Knotenvariablen sind dann die Werte der Funktion in einem Eckpunkt
+der Triangulation und die Formfunktion verschwinden ausserhalb der Dreieck,
+die diesen Eckpunkt nicht als Ecke haben.
 
 %
 % Lineare Gleichungen
@@ -413,6 +503,22 @@ Dazu sind nur die Integrale
 \]
 zu berechnen, was dank der expliziten Form der Funktionen $H(x)$ und
 $H^1(x)$ nur eine Fleissarbeit ist.
+
+Die Vorgehensweise zur Aufstellung der linearen Gleichungen bleibt
+in höheren Dimensionen unverändert.
+Zu einer geeigneten Triangulation müssen erst Formfunktionen bestimmt
+werden, die in genau einem Knoten einer Triangulation einen von 0
+verschiedenen Wert oder eine von 0 verschiedene Ableitung haben.
+Ausserdem soll der Träger in den angrenzenden Dreiecken der Triangulation
+enhalten sein.
+Das lineare Gleichungssystem hat dann als Koeffizienten die Skalarprodukte
+von Funktionen Ableitungen.
+Die Tatsache, dass die Träger der Funktionen sehr klein sind, führt
+zu einer Koeffizientenmatrix, in der jeweils nur wenige Einträge
+auf einer Zeile von 0 verschieden sind.
+Solche Gleichungssysteme lassen sich mit den in
+Abschnitt~\ref{buch:pdenumerik:section:linear} beschriebenen
+iterativen Methoden sehr effizient lösen.
 
 
 %
