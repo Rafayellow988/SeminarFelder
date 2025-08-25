@@ -9,14 +9,14 @@
 \section{Oszilierende Muster
 \label{reaktdiff:section:teil2}}
 \kopfrechts{Teil 2}
-Zum Schluss dieses Papers werden Systeme beleuchtet welche oszillieren.
+Zum Schluss dieses Papers werden Systeme beleuchtet, welche oszillieren.
 Hierfür wird die Lotka-Volterra-Reaktion als Beispiel genommen.
 
 
 \subsection{Lotka-Volterra Reaktion 
 \label{reaktdiff:subsection:bonorum}}
 
-Die Lotka-Volterra-Reaktion \cite{Wikipedia_LotkaVolterra_2025}  besteht ebenfalls wie die Turing-Muster aus einem Reaktionsdiffusionsmodell mit zwei Gleichungen.
+Die Lotka-Volterra Reaktion \cite{Wikipedia_LotkaVolterra_2025}  besteht ebenfalls wie die Turing-Muster aus einem Reaktionsdiffusionsmodell mit zwei Gleichungen.
 Der grosse Unterschied zu den Turing-Mustern ist, dass die Lotka-Volterra-Reaktion bereits ohne Diffusion instabil ist.
 Die Lotka-Volterra-Reaktion (oder Gleichung) wird ebenfalls benutzt, um das klassische Räuber-Beute-Modell zu beschreiben.
 
@@ -70,7 +70,7 @@ Somit erhält man
      \Rightarrow
      \lambda = \pm j \sqrt{a\gamma}
 \end{equation*}
-als Eigenewerte.
+als Eigenwerte.
 Die Eigenwerte sind rein imaginär.
 Das bedeutet, dass eine kleine Störung im System keine Dämpfung erfährt.
 Es entsteht ein oszillierendes Muster (siehe Abbildung \ref{reaktdiff:fig:lv}).
@@ -102,7 +102,7 @@ Diese Abweichung kann durch numerische Effekte erklärt werden.
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{papers/reaktdiff/images/LotkaVolterra/fft_plot_latex.png}
-    \caption{FFT der Animation. Die rote Linie zeigt die theortische Frequnez von \(f = \omega / 2 \Pi \approx 0.195\,\text{Hz}\). Die Abweichung kann durch generelle abweichungen in der Simulation erklärt werden}
+    \caption{FFT der Animation eines Reaktionsdiffusionsmodell mit den Reaktionstermen \eqref{reaktdiff:equation:lvsys}. Die rote Linie zeigt die theortisch dominante Frequnez von \(f = \omega / 2 \Pi \approx 0.195\,\text{Hz}\). Die Abweichung kann durch generelle abweichungen in der Simulation erklärt werden}
     \label{reaktdiff:fig:lvfft}
 \end{figure}
 
