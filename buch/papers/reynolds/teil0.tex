@@ -18,28 +18,28 @@ Effekte in die Navier-Stokes-Gleichung einfügen lassen.
 %
 \subsection{Die Navier-Stokes-Gleichung}
 %
-Die Navier-Stokes-Gleichung für ein viskoses, inkompressibles, newtonisches Fluid lauten
+Die Navier-Stokes-Gleichungn für ein viskoses, inkompressibles, newtonisches Fluid lauten
 %
 \begin{equation}
     \label{reynolds:eqs:impulse}
     \frac{\partial u_i}{\partial t} + u_j \frac{\partial u_i}{\partial x_j} =
         f_i - \frac{1}{\rho} \frac{\partial p}{\partial x_i} + 
-        \nu \frac{\partial^2 u_i}{\partial x_j\, \partial x_j},\quad\text{für $i = 1,2,3$}
+        \nu \frac{\partial^2 u_i}{\partial x_j\, \partial x_j},\quad\text{für $i = 1,2,3$},
 \end{equation}
 %
 wobei $u_i$ die Komponenten des Flussgeschwindigkeitsvektors und $p$ den Druck bezeichnet.
 
 Eine weitere fundamentale Gleichung, die das Verhalten eines Fluids beschreibt, ist die \emph{Kontinuitätsgleichung},
-welche die Tatsache abbildet, dass Masse erhalten bleibt, d.h. in einem gegebenen Volumen Fluid keine Masse
+welche die Tatsache abbildet, dass Masse erhalten bleibt, das hiesst in einem gegebenen Volumen Fluid keine Masse
 entstehen oder verschwinden kann, ausser sie fliesst über die Volumengrenze. Für ein inkompressibles Fluid lautet sie
 %
 \begin{equation}
     \label{reynolds:eqs:mass}
-    \frac{\partial u_i}{\partial x_i} = 0
+    \frac{\partial u_i}{\partial x_i} = 0.
 \end{equation}
 %
 Die Gleichungen machen Gebrauch von der \emph{einsteinschen Summenkonvention}: Über Indizes, welche in einem Term doppelt
-erscheinen, wird summiert, so entspricht z.B. in Gleichung \eqref{reynolds:eqs:impulse}
+erscheinen, wird summiert, so wird zum Beispiel der Diffusions-Therm aus Gleichung \eqref{reynolds:eqs:impulse} wie folgt aufgelöst:
 %
 \begin{equation}
 u_j \frac{\partial u_i}{\partial x_j} = \sum_{j=1}^{3} u_j \frac{\partial u_i}{\partial x_j}
@@ -52,7 +52,7 @@ Die Terme lassen sich wie folgt beschreiben:
     Aufgrund des Massenerhalts $ = 0$.
     \item $\frac{\partial u_i}{\partial t}$: Die zeitliche Änderung der Flussgeschwindigkeit (also die 
         Impulsänderung) and einem fixen, örtlichen Punkt.
-    \item $u_j \frac{\partial u_i}{\partial x_j}$: Die Konvektion, also die Impulsänderung durch ``Abfliessen''
+    \item $u_j \frac{\partial u_i}{\partial x_j}$: Die Konvektion, also die Impulsänderung durch \emph{Abfliessen}
         von bewegten Teilchen.
     \item $f_i$: Andere, allgemeine \emph{innere} Kräfte, typischerweise die Gravitation.
     \item $\frac{1}{\rho} \frac{\partial p}{\partial x_i}$: Das Druckgefälle.
@@ -93,7 +93,7 @@ Aus der Definition des Operators $\ravg{\cdot}$ folgen die Eigenschaften:
     \ravg{a + b} &= \ravg{a} + \ravg{b} \\
     \ravg{a \ravg{b}} &= \ravg{a} \ravg{b} \\
     \label{reynolds:eqs:ravg-partial}
-    \ravg{\frac{\partial a}{\partial x_i}} &=
+    \biggl\langle\frac{\partial a}{\partial x_i}\biggr\rangle &=
         \frac{\partial \ravg{a}}{\partial x_i},\quad\text{für $i = 1, 2, 3$}
 \end{align}
 %
@@ -101,7 +101,7 @@ und daher
 %
 \begin{equation}
     \label{reynolds:eqs:trans-cancel}
-    \ravg{u_i'} = \ravg{u_i - \ravg{u_i}} = \ravg{u_i} - \ravg{u_i} = 0
+    \ravg{u_i'} = \ravg{u_i - \ravg{u_i}} = \ravg{u_i} - \ravg{u_i} = 0.
 \end{equation}
 %
 \subsection{Turbulenz}
@@ -141,7 +141,7 @@ wie folgt umformen:
 \begin{equation*}
     ( \rdecomp{u_j} ) \frac{\partial ( \rdecomp{u_i} )}{\partial x_j} =
         \frac{\partial \biggl[ ( \rdecomp{u_j} ) ( \rdecomp{u_i} ) \biggr]}{\partial x_j}
-        - \frac{\partial ( \rdecomp{u_j} )}{\partial x_j} ( \rdecomp{u_i} )
+        - \frac{\partial ( \rdecomp{u_j} )}{\partial x_j} ( \rdecomp{u_i} ).
 \end{equation*}
 %
 Aus dem Massenerhalt (Gleichung \eqref{reynolds:eqs:mass}) folgt
@@ -208,10 +208,10 @@ gezogen:
             \frac{\partial}{\partial x_j} 
                 \biggl(
                     \mu \frac{\partial \ravg{u_i}}{\partial x_j} - \rho \ravg{u_i' u_j'}
-                \biggr)
+                \biggr).
 \end{equation*}
 %
-Mit der Vereinfachung (Kettenregel, Gleichungen \eqref{reynolds:eqs:ravg-partial} und \eqref{reynolds:eqs:mass})
+Mit der Vereinfachung
 %
 \begin{align*}
     \frac{\partial ( \ravg{u_i} \ravg{u_j})}{\partial x_j} &=
@@ -222,7 +222,7 @@ Mit der Vereinfachung (Kettenregel, Gleichungen \eqref{reynolds:eqs:ravg-partial
     &= \frac{\partial \ravg{u_i}}{\partial x_j} \ravg{u_j}
 \end{align*}
 %
-erhalten wir schlussendlich
+(Kettenregel, Gleichungen \eqref{reynolds:eqs:ravg-partial} und \eqref{reynolds:eqs:mass}) erhalten wir schlussendlich
 %
 \begin{align}
     \label{reynolds:eqs:rans}
@@ -234,15 +234,14 @@ erhalten wir schlussendlich
             \frac{\partial}{\partial x_j}
             \biggl(
                 \mu \frac{\partial \ravg{u_i}}{\partial x_j} - \rho \ravg{u_i' u_j'}
-            \biggr),\quad\text{für $i=1,2,3$}
+            \biggr),\quad\text{für $i=1,2,3$}.
 \end{align}
 %
 Die Gleichung \eqref{reynolds:eqs:rans} stellt die
 \emph{Reynolds-gemittelten Navier-Stokes-Gleichung} (oder englisch \emph{Reynolds-averaged
 Navier-Stokes (RANS)})-Gleichung dar.
 Verblüfend ist dabei wie sehr die gemittelten-Navier-Stokes-Gleichungen den normalen Navier-Stokes-Gleichen ähnlich sind.
-Das auch weil der einzige Term, in dem die transienten
-Anteile vorkommen, ist
+Das auch weil der einzige Term, in dem die transienten Anteile vorkommen der Folgende ist
 %
 \begin{equation*}
     \frac{\partial(- \rho \ravg{u_i' u_j'})}{\partial x_j}.
@@ -255,21 +254,23 @@ Er enthält die Korrelation
 \]
 %
 zwischen den Transienten der verschiedenen Raumkoordinaten und wird auch als Reynolds-Spannungstensor
-bezeichnet, und bringt eine Art zusätzlichen Impuls, für die zeitlich Gemittelten Phänomene, in die Gleichung einbring.
+bezeichnet, und bringt eine Art zusätzlichen Impuls, für die zeitlich Gemittelten Phänomene, in die Gleichung ein.
 Der Reynolds-Spannungstensor sieht folgendermassen aus:
 %
 \begin{equation*}
-    (R_{ij}) \overset{\text{def}}{=} (-\rho\ravg{u'_i u'_j}) =
-        \begin{bmatrix}
-            R_{11} & R_{12} & R_{13} \\
-            R_{21} & R_{22} & R_{23} \\
-            R_{31} & R_{32} & R_{33}
-        \end{bmatrix},
+    R_{ij} = -\rho \langle u'_iu'_j\rangle
+    \qquad\text{oder als Matrix}\qquad
+    R
+    =
+    \begin{pmatrix}
+        R_{11} & R_{12} & R_{13} \\
+        R_{21} & R_{22} & R_{23} \\
+        R_{31} & R_{32} & R_{33}
+    \end{pmatrix}
 \end{equation*}
 %
 wobei die Diagonalen $R_{11}$, $R_{22}$ und $R_{33}$ die drei Normalspannungen sind.
-Die zusammengesetzten Terme $R_{12} = R_{21}$, $R_{13} = R_{31}$ und $R_{23} = R_{32}$ stellen
-die Schubspannungen dar.
+Und die zusammengesetzten Terme $R_{12} = R_{21}$, $R_{13} = R_{31}$ und $R_{23} = R_{32}$ die Schubspannungen darstellen.
 %
 \subsection{Beispiel anhand von k-$\epsilon$}
 %
