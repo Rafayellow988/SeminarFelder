@@ -3,7 +3,7 @@
 \subsection{Rotationen sind zwei aufeinanderfolgende Spiegelungen}
 Eine Rotation kann durch zwei aufeinanderfolgende Spiegelungen ausgedrückt werden (siehe
 \autoref{geoalgebra:fig:rotation-as-two-reflections}).
-Die Rotation wird am Drehpunkt $O$ durchgeführt, dem Schnittpunkt der beiden Vektoren $\u, \v$.
+Die Rotation wird am Drehpunkt $O$ durchgeführt, dem Schnittpunkt der beiden Spiegelungsachsen $\u, \v$.
 \begin{figure}
   \begin{center}
 \input{papers/geoalgebra/assets/rotations/rotations-as-two-reflections.tex}
@@ -12,9 +12,9 @@ Die Rotation wird am Drehpunkt $O$ durchgeführt, dem Schnittpunkt der beiden Ve
 \label{geoalgebra:fig:rotation-as-two-reflections}
 \end{figure}
 
-Dasselbe funktioniert auch in höheren Dimensionen. In drei Dimensionen hätten wir es mit einem
-Rotationsvektor zu tun. Dieser Rotationsvektor ist orthogonal zu $\u$ und $\v$, zum Beispiel $\u \times \v$,
-wobei die Länge irrelevant ist. Relevant ist ausserdem noch eine fixe Position des Vektors, in diesem Fall
+Dasselbe funktioniert auch in höheren Dimensionen. In drei Dimensionen hätten wir es mit einer
+Rotationsachse zu tun. Diese ist orthogonal zu $\u$ und $\v$, also $\u \times \v$,
+wobei die Länge irrelevant ist. Relevant ist ausserdem noch die fixe Position der Rotationsachse, in diesem Fall
 $O$.
 
 \subsection{Rotation eines Vektors}
@@ -79,7 +79,7 @@ Das Skalarprodukt von zwei Einheitsvektoren $\u$ und $\v$ ist äquivalent zum Ko
   \u \cdot \v = \cos{\theta}.
 \end{equation}
 
-Das Wedgeprodukt zwischen zwei Vektoren bildet wie bereits bekannt den Bivektor dazwischen, d.h. die orientierte Fläche.
+Das Wedgeprodukt zwischen zwei Vektoren bildet wie bereits bekannt den Bivektor dazwischen, d.~h. die orientierte Fläche.
 Da $\u$ und $\v$ Einheitsvektoren sind, beträgt die Fläche dazwischen genau $\sin{\theta}$. Für das Wedgeprodukt gilt daher
 \begin{equation}
   \v \wedge \u = \sin{\theta} \cdot \hat{B},
@@ -93,7 +93,7 @@ Daher sind $R$ und $\tilde{R}$:
 Dies erzeugt jedoch wie gesehen die Rotation um den doppelten Winkel $2 \theta$. Wir ersetzen $\alpha = 2\theta$ und erhalten die Rotation um
 den tatsächlichen Vektor $\alpha$
 \begin{equation}
-  \mathbf{x}'' = (\cos{\frac{\alpha}{2}} - \sin{\frac{\alpha}{2}} \eot) \mathbf{x} (\cos{\frac{\alpha}{2}} + \sin{\frac{\alpha}{2}} \eot).
+  \mathbf{x}'' = \left(\cos{\frac{\alpha}{2}} - \sin{\frac{\alpha}{2}} \eot \right) \mathbf{x} \left(\cos{\frac{\alpha}{2}} + \sin{\frac{\alpha}{2}} \eot \right).
 \end{equation}
 
 
@@ -107,8 +107,8 @@ Somit gilt
 \begin{equation}
   \newcommand{\fraction}{\frac{\sqrt{2}}{2}}
   \begin{aligned}
-    \mathbf{x}'' &= \left( \cos{\frac{\alpha}{2}} - \sin{\frac{\alpha}{2}} \eot \right) (\eone + \etwo) \left(\cos{\frac{\alpha}{2}} + \sin{\frac{\alpha}{2}} \eot\right) \\
-    &= \left( \fraction - \fraction \eot \right) (\eone + \etwo) \left( \fraction + \fraction \eot \right) \\
+    \mathbf{x}'' &= \left( \cos{\frac{\alpha}{2}} - \sin{\frac{\alpha}{2}} \eot \right) \biggl(\eone + \etwo\biggr) \left(\cos{\frac{\alpha}{2}} + \sin{\frac{\alpha}{2}} \eot\right) \\
+    &= \left( \fraction - \fraction \eot \right) \biggl(\eone + \etwo\biggr) \left( \fraction + \fraction \eot \right) \\
     &= \left( \fraction \eone + \fraction \etwo + \fraction \etwo - \fraction \eone \right) \left( \fraction + \fraction \eot \right) \\
     &= \sqrt{2} \etwo \left( \fraction + \fraction \eot \right) \\
     &= -\eone + \etwo,
@@ -139,8 +139,8 @@ Somit ist
     \newcommand{\fraca}{\frac{\sqrt{3}}{2}}
     \newcommand{\fracb}{\frac{1}{2}}
     \begin{aligned}
-    \mathbf{x}'' &= \left( \cos{\frac{\alpha}{2}} - \sin{\frac{\alpha}{2}} \eot \right) (2 \eone + 3 \etwo + 4 \ethree) \left(\cos{\frac{\alpha}{2}} + \sin{\frac{\alpha}{2}} \eot\right) \\
-      &= \left(\fraca - \fracb \eot \right) (2\eone + 3 \etwo + 4 \ethree) \left(\fraca + \fracb \eot \right) \\
+    \mathbf{x}'' &= \left( \cos{\frac{\alpha}{2}} - \sin{\frac{\alpha}{2}} \eot \right) \biggl(2 \eone + 3 \etwo + 4 \ethree\biggr) \left(\cos{\frac{\alpha}{2}} + \sin{\frac{\alpha}{2}} \eot\right) \\
+      &= \left(\fraca - \fracb \eot \right) \biggl(2\eone + 3 \etwo + 4 \ethree\biggr) \left(\fraca + \fracb \eot \right) \\
       &= \left(\sqrt{3} \eone + \frac{3\sqrt{3}}{2} \etwo + 2\sqrt{3}\ethree + \etwo - \frac{3}{2}\eone - 2 \mathbf{e}_{123}\right) \left(\fraca + \fracb \eot\right) \\
       &= \left( \left( \sqrt{3} - \frac{3}{2} \right) \eone + \left(\frac{3\sqrt{3}}{2} + 1\right)\etwo + 2 \sqrt{3} \ethree - 2 \mathbf{e}_{123} \right) \left(\fraca + \fracb \eot\right) \\
       &= \left(1 - \frac{3 \sqrt{3}}{2}\right) \eone + \left(\frac{3}{2} + \sqrt{3}\right) \etwo + 4 \ethree \\
@@ -148,11 +148,11 @@ Somit ist
     \end{aligned}
   \end{equation}
   was der Rotation um die $\eot$-Achse entspricht:
-  \begin{equation}
+  \begin{equation*}
     \begin{pmatrix}
       \cos{\alpha} & -\sin{\alpha} & 0 \\
       \sin{\alpha} & \cos{\alpha} & 0 \\
       0 & 0 & 1
-    \end{pmatrix} \begin{pmatrix} 2 \\ 3 \\ 4 \end{pmatrix}.
-  \end{equation}
+    \end{pmatrix} \begin{pmatrix} 2 \\ 3 \\ 4 \end{pmatrix}. \qedhere
+  \end{equation*}
 \end{beispiel}
