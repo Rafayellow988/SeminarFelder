@@ -88,7 +88,7 @@ Sei $\Phi$ ein zweimal stetig differenzierbares Skalarfeld.
     
     Zur besseren Übersicht werden die gemischten Ableitungen ausgeschrieben:
     $$
-    \nabla \Phi =
+    \nabla \times (\nabla \Phi) =
     \begin{pmatrix}
         \frac{\partial^2 \Phi}{\partial y \partial z} - \frac{\partial^2 \Phi}{\partial z \partial y} \\
         \frac{\partial^2 \Phi}{\partial z \partial x} - \frac{\partial^2 \Phi}{\partial x \partial z} \\
@@ -97,7 +97,7 @@ Sei $\Phi$ ein zweimal stetig differenzierbares Skalarfeld.
     $$
     Der \emph{Satz von Schwarz} besagt, dass bei stetigen Funktionen die Reihenfolge der partiellen Ableitungen vertauscht werden kann. Damit heben sich die Terme in jeder Komponente gegenseitig auf und es bleibt
     $$
-    \nabla \Phi  =
+    \nabla \times (\nabla \Phi)  =
     \begin{pmatrix}
         0 \\
         0 \\
@@ -142,7 +142,7 @@ Sei $\Phi$ ein zweimal stetig differenzierbares Skalarfeld.
     \end{align*}
 \end{enumerate}
 
-Damit ist die Identität $\nabla \cdot (\nabla \times \mathbf{\Psi}) = 0$ bewiesen.
+\noindent Damit ist die Identität $\nabla \cdot (\nabla \times \mathbf{\Psi}) = 0$ bewiesen.
 
 
 \subsection{Berechnung der Potentiale
@@ -259,14 +259,15 @@ wobei $r = |\mathbf{r}|$ der Abstand vom Ursprung ist.
 
 \noindent Diese Bedingungen stellen sicher, dass die Integrale in der Greenschen Formulierung konvergieren und die Zerlegung eindeutig ist.
 
-\subsubsection{Eindeutigkeit der Zerlegung}
+\subsubsection{Eindeutigkeit der Zerlegung
+\label{helmholtz:subsection:Bedingungen_onlyEindeutigkeit}}
 
 Die Eindeutigkeit der Helmholtz-Zerlegung hängt von den Randbedingungen ab:
 
 \begin{itemize}
-\item Für unbeschränkte Gebiete: Die Zerlegung ist eindeutig, wenn das Vektorfeld im Unendlichen gegen null geht. Diese Bedingung stellt sicher, dass bestimmte Oberflächenintegrale bei der Herleitung der Zerlegung verschwinden \cite{baird_helmholtz}.
+\item Für unbeschränkte Gebiete: Die Zerlegung ist eindeutig, wenn das Vektorfeld im Unendlichen gegen null geht. Diese Bedingung stellt sicher, dass bestimmte Oberflächenintegrale bei der Herleitung der Zerlegung verschwinden \cite{wiki:helmholtz}.
 
-\item Für beschränkte Gebiete: Die Eindeutigkeit erfordert zusätzliche Randbedingungen. Obwohl das Vektorfeld auch als Summe eines irrotationalen und eines solenoidalen Anteils geschrieben werden kann, ist für eine eindeutige Lösung die Festlegung von Randbedingungen notwendig \cite{baird_helmholtz}. Typischerweise sind dies:
+\item Für beschränkte Gebiete: Die Eindeutigkeit erfordert zusätzliche Randbedingungen. Obwohl das Vektorfeld auch als Summe eines irrotationalen und eines solenoidalen Anteils geschrieben werden kann, ist für eine eindeutige Lösung die Festlegung von Randbedingungen notwendig \cite{wiki:helmholtz}. Typischerweise sind dies:
   \begin{itemize}
     \item Festlegung der Normalkomponente des irrotationalen Teils auf dem Rand.
     \item Festlegung der Tangentialkomponente des solenoidalen Teils auf dem Rand.
@@ -278,9 +279,11 @@ Die Eindeutigkeit der Helmholtz-Zerlegung hängt von den Randbedingungen ab:
 Eine wichtige Eigenschaft der Helmholtz-Zerlegung ist die Orthogonalität der beiden Komponenten. Für ein Vektorfeld $\mathbf{F} = \mathbf{F}_{\text{irr}} + \mathbf{F}_{\text{sol}}$ gilt unter geeigneten Randbedingungen:
 
 \begin{equation}
-\int_V \mathbf{F}_{\text{irr}} \cdot \mathbf{F}_{\text{sol}} \, dV = 0
+\int_V \mathbf{F}_{\text{irr}} \cdot \mathbf{F}_{\text{sol}} \, dV = 0.
 \end{equation}
+
+\noindent Das Integral ist null, weil es mithilfe des Gaussschen Integralsatzes in ein Oberflächenintegral umgewandelt werden kann, das unter den für die Helmholtz-Zerlegung Randbedingungen, wie in \ref{helmholtz:subsection:Bedingungen_onlyEindeutigkeit} beschrieben, verschwindet.
  
-\noindent In physikalischen Anwendungen, wie beispielsweise in der Akustik, bedeutet diese mathematische Orthogonalität, dass die beiden Feldkomponenten unterschiedliche physikalische Phänomene beschreiben, die unabhängig voneinander analysiert werden können. Mehr dazu wird im Unterkapitel \ref{tab:helmholtz:Energie_Interpretation} erläutert.
+ In physikalischen Anwendungen, wie beispielsweise in der Akustik, bedeutet diese mathematische Orthogonalität, dass die beiden Feldkomponenten unterschiedliche physikalische Phänomene beschreiben, die unabhängig voneinander analysiert werden können. Mehr dazu wird im Unterkapitel \ref{tab:helmholtz:Energie_Interpretation} erläutert.
 
 
