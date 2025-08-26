@@ -8,9 +8,9 @@ definieren, das \emph{Wedgeprodukt} $\wedge$.
 Es ist die grundlegende Operation der geometrischen
 Algebra.
 Angenommen, wir haben die
-zwei Vektoren $\mathbf{v}_1, \mathbf{v}_2$ und bilden das Wedgeprodukt
+zwei Vektoren $\a, \b$ und bilden das Wedgeprodukt
 \begin{equation}
-  B = \mathbf{v}_1 \wedge \mathbf{v}_2,
+  B = \a \wedge \b.
 \end{equation}
 erhalten wir ein neues mathematisches Konzept, den \emph{Bivektor} $B$.
 Ein Bivektor unterscheidet sich grundsätzlich von einem Vektor (siehe \autoref{geoalgebra:section:bivektoren}).
@@ -24,7 +24,7 @@ um uns eine Algebra darauf aufzubauen. Somit definieren wir
   Das Wedgeprodukt ist \em{antikommutativ}
 
   \begin{equation}
-  \mathbf{v}_i \wedge \mathbf{v}_j = -\mathbf{v}_j \wedge \mathbf{v}_i.
+  \a \wedge \b = -\b \wedge \a.
   \end{equation}
   \label{geoalgebra:eq:antikommutativ}
 \end{axiom}
@@ -33,22 +33,21 @@ Daraus folgt:
   \label{geoalgebra:lemma:null}
   Das Wedgeprodukt eines Vektors mit sich selbst ist $0$
   \begin{equation*}
-  \mathbf{v}_i \wedge \mathbf{v}_i = 0.
+  \a \wedge \a = 0.
   \end{equation*}
 \end{lemma}
 
 \begin{axiom}
   Es gilt das \em{Distributivgesetz}
   \begin{equation*}
-  \mathbf{v}_i \wedge (\mathbf{v}_j + \mathbf{v}_k) = \mathbf{v}_i \wedge \mathbf{v}_j + \mathbf{v}_i \wedge \mathbf{v}_k.
+  \a \wedge (\b + \c) = \a \wedge \b + \a \wedge \c.
   \end{equation*}
 \end{axiom}
 
 \begin{axiom}
   Das Wedgeprodukt ist bilinear in beiden Faktoren
   \begin{equation}
-  \mathbf{v}_i \wedge (\lambda \mathbf{v}_j + \mu \mathbf{v}_k) 
-  = \lambda (\mathbf{v}_i \wedge \mathbf{v}_j) + \mu (\mathbf{v}_i \wedge \mathbf{v}_k).
+    \a \wedge (\lambda \b + \mu \c) = \lambda (\a \wedge \b) + \mu (\a \wedge \c).
     \label{geoalgebra:eq:bilinear}
   \end{equation}
 \end{axiom}
@@ -62,40 +61,38 @@ Für die Definition von \emph{Trivektoren} benötigen wir desweiteren noch das A
 \end{axiom}
 
 \subsection{Das Wedgeprodukt in zwei Dimensionen}
-
+\renewcommand{\subsectionautorefname}{Abschnitt}
 Mit den Axiomen aus \autoref{geoalgebra:section:axiome} können wir bereits das Wedgeprodukt zwischen zwei
 Vektoren in der zwei Dimensionen herleiten.
 Dazu machen wir uns zu nutze, dass wir jeden Vektor als
-Linearkombination von den Einheitsvektoren beschreiben können.
+Linearkombination von den Standardbasisvektoren beschreiben können.
 Es gilt
 \begin{align}
-  \mathbf{v} &= \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} \\
-    &= v_1 \mathbf{e}_1 + v_2 \mathbf{e}_2.
+  \a &= \begin{pmatrix} a_1 \\ a_2 \end{pmatrix} = a_1 \mathbf{e}_1 + a_2 \mathbf{e}_2.
 \end{align}
 
 \begin{definition}
-  Wir betrachten die beiden (zweidimensionalen) Vektoren $\mathbf{u},
-  \mathbf{v}$.
-  Das Wedgeprodukt von $\mathbf{u}$ und $\mathbf{v}$ ist
+  Wir betrachten die beiden zweidimensionalen Vektoren $\a,
+  \b$.
+  Das Wedgeprodukt von $\a$ und $\b$ ist
 
   \begin{equation}
     \begin{aligned}
-    \mathbf{u} \wedge \mathbf{v} &= (u_1 \eone + u_2 \etwo) \wedge
-    (v_1 \eone + v_2 \etwo) \\
-    &= u_1 \eone \wedge (v_1 \eone + v_2 \etwo) + u_2 \etwo \wedge (v_1 \eone + v_2 \etwo) \\
-    &= u_1 \eone \wedge v_1 \eone + u_1 \eone \wedge v_2 \etwo + u_2 \etwo \wedge v_1 \eone + u_2 \etwo \wedge v_2 \etwo \\
-    &= u_1 v_1 (\underbrace{\eone \wedge \eone}_{0}) + u_1 v_2 (\eone \wedge \etwo) + u_2 v_1 (\etwo \wedge \eone) + u_2 v_2 (\underbrace{\etwo \wedge \etwo}_{0}) \\
-    &= (u_1 v_2 - u_2 v_1) \eone \wedge \etwo.
+    \a \wedge \b &= (a_1 \eone + a_2 \etwo) \wedge
+    (b_1 \eone + b_2 \etwo) \\
+    &= a_1 \eone \wedge (b_1 \eone + b_2 \etwo) + a_2 \etwo \wedge (b_1 \eone + b_2 \etwo) \\
+    &= a_1 \eone \wedge b_1 \eone + a_1 \eone \wedge b_2 \etwo + a_2 \etwo \wedge b_1 \eone + a_2 \etwo \wedge b_2 \etwo \\
+    &= a_1 b_1 (\underbrace{\eone \wedge \eone}_{0}) + a_1 b_2 (\eone \wedge \etwo) + a_2 b_1 (\etwo \wedge \eone) + a_2 b_2 (\underbrace{\etwo \wedge \etwo}_{0}) \\
+    &= (a_1 b_2 - a_2 b_1) \eone \wedge \etwo.
     \end{aligned}
     \label{geoalgebra:eq:2d-wedgeproduct}
   \end{equation}
 \end{definition}
-
-Der Skalarfaktor im letzten Ausdruck ist eine Determinante und kann daher als
+\noindent Der Skalarfaktor im letzten Ausdruck ist eine Determinante und kann daher als
 \begin{equation}
   \begin{vmatrix}
-    u_1 & v_1 \\
-    u_2 & v_2
+    a_1 & b_1 \\
+    a_2 & b_2
   \end{vmatrix}
   \eone \wedge \etwo
 \end{equation}
@@ -133,8 +130,9 @@ Das Wedgeprodukt von $\mathbf{a}$ und $\mathbf{b}$ ist
       &\quad+ (a_3 b_1 - a_1 b_3) \ethree \wedge \eone.
   \end{aligned}
 \end{equation}
-\label{geoalgebra:eq:wedgeprodukt-dreidimensional} \end{definition}
-Wir stellen fest, dass die Koeffizienten hinter den drei entstandenen Wedgeprodukten
+\label{geoalgebra:eq:wedgeprodukt-dreidimensional}
+\end{definition}
+\noindent Wir stellen fest, dass die Koeffizienten hinter den drei entstandenen Wedgeprodukten
 gleich sind, wie die Komponenten des Vektorprodukts in \eqref{geoalgebra:eq:vektorprodukt}.
 
 \subsection{Rückblick}
@@ -143,8 +141,8 @@ die komplexen Zahlen nochmals kurz betrachtet und haben gesehen,
 wie sie eine natürliche Erweiterung der reellen Zahlen bieten.
 Analog dazu bietet die geometrische Algebra eine natürliche
 Erweiterung zur bereits bekannten Vektorgeometrie. Wir wissen,
-dass das Vektorprodukt $\mathbf{v}_1 \times \mathbf{v}_2$ nur
+dass das Vektorprodukt $\a_1 \times \a_2$ nur
 in drei Dimensionen funktioniert und haben erkannt, dass
-die neue Operation des Wedgeprodukts $\mathbf{v}_1 \wedge \mathbf{v}_2$
+die neue Operation des Wedgeprodukts $\a_1 \wedge \a_2$
 im Gegensatz dazu auch in zwei Dimensionen funktioniert.
 Später wollen wir das Ganze noch auf beliebige Dimensionen erweitern.
