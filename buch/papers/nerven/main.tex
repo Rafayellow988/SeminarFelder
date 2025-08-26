@@ -144,13 +144,12 @@ Durch die ungleiche Verteilung von Natrium- und Kaliumionen ensteht so wieder ei
 \subsection{Einleitung}
 Das Hodgkin-Huxley-Modell wurde 1952 von den britischen Physiologen Alan Hodgkin und Andrew Huxley entwickelt. Es beschreibt das elektrophysiologische Verhalten von Nervenzellen, genauer gesagt den Aktionspotentialverlauf entlang einer Nervenfaser. Das Modell basiert auf experimentellen Messungen am Riesenaxon des Tintenfisches und erklärt, wie sich die elektrische Spannung entlang einer Nervenzelle über die Zeit verändert. Dieses Modell wurde zum ersten Mal erfolgreich verwendet, um den komplexen Ionenfluss durch die Zellmembran quantitativ zu beschreiben. Es bildet die Grundlage für viele spätere Modelle wie das FitzHugh-Nagumo-Modell, welches in dieser Arbeit vertiefter behandelt wird.
 \subsection{Nutzen}
-Der grösste Beitrag des Hodgkin-Huxley-Modells liegt in der mathematischen Beschreibung der biologischen Realität: Es verbindet biologische Prozesse wie Natrium- und Kaliumkanalbewegungen mit einem nichtlinearer Differentialgleichungens-System. Das Modell erklärt das Zustandekommen eines Aktionspotentials und erlaubt Simulationen und Vorhersagen für Nervenreaktionen auf Reize. Es ist bis heute in der Neuroinformatik, Biophysik und mathematischen Neurowissenschaft von zentraler Bedeutung und diente als Grundlage für realistische neuronale Netzwerke.
+Der grösste Beitrag des Hodgkin-Huxley-Modells liegt in der mathematischen Beschreibung der biologischen Realität: Es verbindet biologische Prozesse wie Natrium- und Kaliumkanalbewegungen mit einem nichtlinearer Differentialgleichungenssystem. Das Modell erklärt das Zustandekommen eines Aktionspotentials und erlaubt Simulationen und Vorhersagen für Nervenreaktionen auf Reize. Es ist bis heute in der Neuroinformatik, Biophysik und mathematischen Neurowissenschaft von zentraler Bedeutung und diente als Grundlage für realistische neuronale Netzwerke.
 \subsection{Mathematische Grundlagen}
-Das Hodgkin-Huxley-Modell basiert auf der elektrischen Leitfähigkeit der Membrane und stellt die Nervenmembran als ein
-elektrisches Schaltbild dar, es bestehend aus einer Kapazität $C_m$, und mehreren stromleitenden Kanälen für spezifische
-Ionen.
-Die fundamentale Gleichung $C_m \frac{dV}{dt} = I_{\text{ext}} - (I_{\text{Na}} + I_{\text{K}} + I_L)$ ist der einzige Ausschnitt des Hodgkin-Huxley-Modells, welcher aus natürlichen und biologischen Beobachtungen entstanden ist, die restlichen Gleichungen und Beobachtungen hängen nicht deutlich von molekularen Mechanismen zusammen.
-
+Das Hodgkin-Huxley-Modell basiert auf der elektrischen Leitfähigkeit der Membrane und stellt die Nervenmembran als ein elektrisches Schaltbild dar, welches eine Kapazität $C_m$ sowie mehrere stromleitende Kanäle für spezifische Ionen umfasst.
+Die fundamentale Gleichung ist der einzige Ausschnitt des Hodgkin-Huxley-Model welche aus natürlichen und biologischen Beobachtungen entstanden ist, die restlichen Gleichungen und Beobachtungen hängen nicht deutlich von molekularen Mechanismen zusammen. 
+Folgend ist die fundamentale Gleichung zu sehen:
+\[C_m \frac{dV}{dt} = I_{\text{ext}} - (I_{\text{Na}} + I_{\text{K}} + I_L)\]
 Dabei ist:
 
 \begin{itemize}
@@ -164,23 +163,22 @@ Dabei ist:
 Die Ionenströme sind spannungs- und zeitabhängig. Sie folgen jeweils einer eigenen Formel:
 \[
 \begin{aligned}
-	I_{\text{Na}} &= \bar{g}_{\text{Na}} \cdot m^3 h \cdot (V - E_{\text{Na}}) \\
-	I_{\text{K}} &= \bar{g}_{\text{K}} \cdot n^4 \cdot (V - E_{\text{K}}) \\
-	I_L &= \bar{g}_L \cdot (V - E_L)
+	I_{\text{Na}} &= \bar{g}_{\text{Na}} \cdot m^3 h \cdot (V - E_{\text{Na}}), \\
+	I_{\text{K}} &= \bar{g}_{\text{K}} \cdot n^4 \cdot (V - E_{\text{K}}), \\
+	I_L &= \bar{g}_L \cdot (V - E_L).
 \end{aligned}
 \]
-\noindent
-Dabei ist:
+
+ Dabei ist:
 
 \begin{itemize}
-	\item $\bar{g}_{\text{Na}},  \bar{g}_{\text{K}},  \bar{g}_L$: maximale Leitfähigkeiten (Konstanten)
+	\item $\bar{g}_{\text{Na}},\, \bar{g}_{\text{K}},\, \bar{g}_L$: maximale Leitfähigkeiten (Konstanten)
 	\item $E_{\text{Na}}, E_{\text{K}}, E_L$: Umkehrpotentiale der Ionen
-	\item $m$, $h$, $n$: \emph{Torvariablen}, die zwischen 0 und 1 schwanken und die Öffnungswahrscheinlichkeit von Ionenkanälen angeben
+	\item $m, h, n$: \emph{Torvariablen}, die zwischen 0 und 1 schwanken und die Öffnungswahrscheinlichkeit von Ionenkanälen angeben
 \end{itemize}
-Die Torvariablen $m$,$h$ und $n$ sind Variablen, die keine reine biologische Überlegungen haben, sondern experimenell entstanden sind. Diese Torvariablen werden so angepasst, dass die Dynamik bei den Natrium- und Kaliumionenkanälen erklärt wird.
-\textcolor{red}{\subsubsection{Dynamik der Torvariablen}} %ganzer Absatz anpassen
+Die Torvariablen $m$,$h$ und $n$ sind Variablen, die keine reine biologische Überlegungen haben, sondern durch vielen Testversuchen entstanden sind. Diese Torvariablen werden so angepasst, dass die Dynamik bei den Natrium- und Kaliumionenkanälen erklärt wird.
+\subsubsection{Dynamik der Torvariablen}
 Die Torvariablen folgen jeweils Differentialgleichungen erster Ordnung, z. B.:
-%\[\frac{dm}{dt} = \alpha_m(V) \cdot (1 - m) - \beta_m(V) \cdot m\]
 
 \begin{align}
 	\frac{dn}{dt} &= \alpha_n (1 - n) - \beta_n n \\
@@ -188,7 +186,7 @@ Die Torvariablen folgen jeweils Differentialgleichungen erster Ordnung, z. B.:
 	\frac{dh}{dt} &= \alpha_h (1 - h) - \beta_h h 
 \end{align}
 
-Ähnliche Gleichungen gelten für $dn/dt$ und $dh/dt$. Dabei sind $\alpha_m$ und $\beta_m$ spannungsgesteuerte Übergangsraten, die empirisch durch Hodgkin und Huxley bestimmt wurden.
+Dabei sind $\alpha_m$ und $\beta_m$ spannungsgesteuerte Übergangsraten, die empirisch durch Hodgkin und Huxley bestimmt wurden.
 Diese Differentialgleichungen beschreiben wie $m$,$h$ und $n$ jeweils vom Membranpotential $V$ abhängig sind.
 \subsubsection{Mathematische Einordnung der Gleichung}
 Mathematisch handelt es sich beim Hodgkin-Huxley-Modell um ein System von vier gekoppelten nichtlinearen
@@ -197,7 +195,6 @@ Differentialgleichungen:
     \item Eine Gleichung für das Membranpotential $V(t)$
     \item Drei Gleichungen für die Torvariablen $m(t)$,$h(t)$,$n(t)$
 \end{itemize}
-
 Es gehört zur Klasse der nichtlinearen dynamischen Systeme, genauer gesagt zu einem System von gewöhnlichen Differentialgleichungen. Die Nichtlinearität entsteht durch die Potenzen (z.B. $m^3$) und das Produkt der Torvariablen mit $V$.
 \subsubsection{Fazit}
 Das Hodgkin-Huxley-Modell ist nicht nur ein Meilenstein der Biologie, sondern auch ein Paradebeispiel dafür, wie mathematische Modellierung biologische Prozesse quantitativ erfassen kann. Die Gleichungen geben Verständnis über die Entstehung und Ausbreitung elektrischer Signale in Nervenzellen und sind bis heute unverzichtbar in der Neurophysik und mathematischen Biologie.
@@ -220,29 +217,25 @@ Das FitzHugh-Nagumo-Modell erlaubt eine qualitative Analyse neuronaler Aktivitä
 Gerade in der Mathematik ist das Modell besonders beliebt, da es sich ideal für phasenraumanalytische Methoden eignet, insbesondere für die Betrachtung von Nullklinen, Fixpunkten und Limitzyklen.
 \subsubsection{Mathematische Beschreibung des Modells}
 Das FitzHugh-Nagumo-Modell besteht aus einem System zweier gekoppelter nichtlinearer Differentialgleichungen erster Ordnung:
-Diese Differentialgleichung wurden aus der fundamentalen Formel des Hodkin-Huxley-Modells hergeleitet, jedoch ist diese
-Herleitung sehr komplex und wird in dieser Arbeit nicht weiter erklärt. 
-Aus der fundamentalen Formel vom Hodkin-Huxley-Modell wurden diese zwei gekoppelten nichtlinearen Differentialgleichung erster
-Ordnung:
+Diese Differentialgleichung wurden aus der fundamentalen Formel des Hodkin-Huxley-Modell hergeleitet, jedoch ist diese Herleitung sehr komplex und wird in dieser Arbeit nicht weiter erklärt. Aus der fundamentalen Formel vom Hodkin-Huxley-Modell wurden diese zwei gekoppelten nichtlinearen Differentialgleichung erster Ordnung:
 \[
 \begin{aligned}
 	\frac{dv}{dt} &= v - \frac{v^3}{3} - w + I_{\text{ext}} \\
 	\frac{dw}{dt} &= \varepsilon (v + a - b w).
 \end{aligned}
 \]
-\noindent
-Dabei ist:
+
+ Dabei ist:
 
 \begin{itemize}
 	\item $v(t)$: Membranpotential (schnelle Variable)
 	\item $w(t)$: Erholungsvariable (langsame Variable)
-	\item $I_{\text{ext}}(t)$: externer Reiz
+	\item $I_{\text{ext}}(t)$: externer Reizstrom
 	\item $\varepsilon \ll 1$: kleine Konstante, die die Zeitskalen trennt (Langsamkeit von $w$)
 	\item $a, b$: Systemparameter, die die Dynamik und Stabilität beeinflussen
 \end{itemize}
-Das ist ein zweidimensionales, also ebenes System von gewöhnlichen Differentialgleichungen. Dies veringert den mathematischen Aufwand und macht es uns sehr einfach, Eigenschaften mithilfe des Modells zu indentifizieren.
-Mit $w$ und $v$ als stetig und differenzierbaren Funktion sind die Ergebnisse mithilfe von \textcolor{red}{Nullklinien} sehr leicht zu
-finden.
+Das ist ein Zweidimensionales, also ebenes System von gewöhnlichen Differentialgleichungen. Dies veringert den mathematischen Aufwand und macht es uns sehr einfach, Eigenschaften mithilfe des Modells zu indentifizieren.
+Mit $w$ und $v$ als stetig und differenzierbaren Funktion sind die Ergebnisse mithilfe von Nullklinien (welche in den nächsten Unterkapiteln erklärt werden) sehr leicht zu finden.
 
 Interpretation:
 \begin{itemize}
@@ -257,44 +250,43 @@ Das FitzHugh-Nagumo-Modell ist ein typisches Beispiel für ein Relaxationsoszill
 	\item Rückkehr zum Ausgangszustand (Refraktärphase)
 	\item Nichtlineare Dynamik mit Sättigung und Schwellenwertverhalten
 \end{itemize}
-Mathematisch ist es ein nichtlineares \textcolor{red}{ODE-System} (System gewöhnlicher Differentialgleichungen).
-%anpassen
-
+Mathematisch ist es ein nichtlineares System von gewöhnlichen Differentialgleichungen.
 \subsubsection{Analyse der Nullklinen}
-Die Nullklinen sind die geometrischen Orte im Phasenraum $(v,w)$, an denen sich die jeweiligen Zeitableitungen nicht verändern (also gleich null sind). \textcolor{red}{Sie sind ein zentrales Werkzeug zur Analyse des Systems.
-\emph{$v$-Nullkline:} $\dfrac{dv}{dt} = 0$}
+Die Nullklinen sind die geometrischen Orte im Phasenraum ($v$,$w$), an denen sich die jeweiligen Zeitableitungen nicht verändern (also gleich null sind). Sie sind ein zentrales Werkzeug zur Analyse des Systems.
+
+\emph{v-Nullkline:} $\dfrac{dv}{dt} = 0$
 
 Setze:
 \[
 v - \frac{v^3}{3} - w + I_{\text{ext}} = 0
 \]
 
-\noindent
+
 Nach $w$ umgestellt:
 \[
 w = v - \frac{v^3}{3} + I_{\text{ext}}
 \]
 
-Das ist eine \emph{kubische Funktion} im Phasenraum, typischerweise mit \emph{S-Form}.  
+Das ist eine \emph{kubische Kurve} im Phasenraum, typischerweise mit \emph{S-Form}.  
 Sie gibt an, wo das Membranpotential im Gleichgewicht ist (für festes $w$).
 
 \vspace{1em}
 
-\emph{$w$-Nullkline:} $\dfrac{dw}{dt} = 0$
+\emph{w-Nullkline:} $\dfrac{dw}{dt} = 0$
 
 Setze:
 \[
 \varepsilon (v + a - b w) = 0 \Rightarrow v + a - b w = 0 \Rightarrow w = \frac{v + a}{b}
 \]
 
-Das ist eine \emph{lineare Funktion} im Phasenraum.  
+Das ist eine Gerade im Phasenraum.  
 Sie gibt an, wo sich die Erholungsvariable im Gleichgewicht befindet (für festes $v$).
 Der Schnittpunkt beider Nullklinen ist ein Gleichgewichtspunkt des Systems: Dort gilt sowohl $\frac{dv}{dt} = 0$ als auch $\frac{dw}{dt} = 0$. Dieser Punkt kann je nach Parametern stabil oder instabil sein.
 \subsubsection{Bedeutung}
 Das Verhalten des Systems kann durch die Phasenporträtanalyse qualitativ vorhergesagt werden:
 \begin{itemize}
 	\item Wenn der Fixpunkt stabil ist, kehrt das System nach einem kleinen Reiz dorthin zurück → Ruhe.
-	\item Bei instabilem Fixpunkt (Sattel, Fokus) kommt es zu LGrenzzyklen → rhythmisches Feuern.
+	\item Bei instabilem Fixpunkt (Sattel, Fokus) kommt es zu Grenzzyklen → rhythmisches Feuern.
 	\item Der Verlauf der Trajektorien im Phasenraum zeigt den zeitlichen Verlauf des Aktionspotentials.
 \end{itemize}
 Die S-Form der $v$-Nullkline erzeugt Sprungdynamik:
@@ -303,7 +295,7 @@ Die S-Form der $v$-Nullkline erzeugt Sprungdynamik:
 	\item Mittlerer Ast: instabil (Schwellwert)
 	\item Rechter Ast: Aktivierung („Spike“)
 \end{itemize}
-Das FitzHugh-Nagumo-Modell ist eine elegante und reduktive Darstellung neuronaler Erregung, das die komplexe Biologie auf zwei mathematisch gut fassbare Prozesse reduziert. Seine Stärke liegt in der Analyse der Dynamik im Phasenraum, insbesondere über die Nullklinen und Fixpunkte. Es eignet sich hervorragend zur Simulation, Theoriebildung und Lehre, und bildet eine solide mathematische Brücke zwischen Biologie und dynamischer Systemtheorie.
+Das FitzHugh-Nagumo-Modell ist eine elegante und reduktive Darstellung neuronaler Erregung, das die komplexe Biologie auf zwei mathematisch gut fassbare Prozesse reduziert. Seine Stärke liegt in der Analyse der Dynamik im Phasenraum, insbesondere über die Nullklinen und Fixpunkte. Es eignet sich hervorragend zur Simulation, Theoriebildung, Lehre und bildet eine solide mathematische Brücke zwischen Biologie und dynamischer Systemtheorie.
 
 
 \section{Verhalten bei Anregung}
