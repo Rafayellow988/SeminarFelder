@@ -88,40 +88,7 @@ Nach Fourier gilt:
 \end{equation}
 Physikalisch heißt das: Es darf keine künstliche Wärmequelle oder -senke an der Schnittkante entstehen.
 
-\subsection{Diskrete Umsetzung mit Ghost-Zellen}
-
-In der FDM-Diskretisierung wird dies durch \emph{Ghost-Zellen} realisiert:
-\begin{itemize}
-	\item Jedes Teilgebiet speichert an seinen Rändern eine zusätzliche Schicht von Gitterpunkten.
-	\item Diese Ghost-Zellen enthalten die Werte aus den benachbarten Teilgebieten.
-	\item Nach jedem Zeitschritt werden die Ghost-Zellen synchronisiert.
-\end{itemize}
-
-Dadurch kann jedes Teilgebiet seine Update-Formel lokal anwenden, ohne direkten Zugriff auf fremde Datenstrukturen zu benötigen.
-
-\subsection{Praktische Aspekte}
-
-\subsubsection {Lastverteilung und Kommunikation.}
-Die Kosten pro Zeitschritt sind proportional zur Anzahl der Gitterpunkte im Teilgebiet 
-($\mathcal{O}(|\Omega_p|)$).  
-Die Kommunikationskosten entstehen durch den Austausch von Ghost-Zellen und hängen von der Länge der Schnittkante ab.  
-Für eine effiziente Parallelisierung ist es daher vorteilhaft, Subdomains mit möglichst kleinem 
-Umfang/Flächen-Verhältnis zu wählen.  
-In 2D bedeutet dies, dass quadratische Teilgebiete günstiger sind als lange, schmale Streifen; 
-im 3D-Fall spricht man analog vom Oberflächen/Volumen-Verhältnis.  
-
-\subsubsection {Stabilität.}
-Die Stabilitätskriterien der expliziten Finite-Differenzen-Methode gelten auch bei der Gebietsunterteilung unverändert.  
-Insbesondere muss in 2D für ein quadratisches Gitter stets
-\[
-\lambda = \frac{\alpha \Delta t}{(\Delta l)^2} \leq \tfrac{1}{4}
-\]
-gelten.  
-Diese Bedingung ist lokal in jedem Teilgebiet genauso einzuhalten wie global.  
-
-
-
-\subsubsection{Stationärer Grenzfall und Matrixformulierung}
+\subsection{Spezialfall Stationärer Grenzfall Wärmeleitungsgleichung}
 
 Für $n \to \infty$ strebt das explizite Zeitschrittverfahren \eqref{eq:update-dd} gegen ein stationäres Temperaturfeld. 
 Dann verschwindet die zeitliche Ableitung, und die Wärmeleitungsgleichung reduziert sich im allgemeinen auf die Laplace-Gleichung
@@ -133,14 +100,21 @@ Dann verschwindet die zeitliche Ableitung, und die Wärmeleitungsgleichung reduz
 	0.
 \end{equation}
 
-Dieser speziealfall läst sich besonders einfach zu 
+Durch die Diskretisierung mit der Finite-Differenzen-Methode (FDM) erhält man für jeden inneren Gitterpunkt eine lineare Beziehung zwischen diesem Punkt und seinen direkten Nachbarn.
+Alle diese Gleichungen zusammen ergeben ein lineares Gleichungssystem der Form
 \begin{equation}
 	\mathbf{A} \vec{u}
 	=
 	\vec{b}
 \end{equation}
-numerisch approximieren.
-Um dies nachzuvollziehen betrachten wir ein kleines Beispiel.
+
+\begin{itemize}
+	\item Die Matrix \(\mathbf{A}\)  hängt nur von der Geometrie des Gitters ab.
+	\item Der Vektor \(\vec{b}\) enthält die Beiträge der Randbedingungen.
+\end{itemize}
+Damit wird die ursprünglich partielle Differentialgleichung (PDE) auf ein reines algebraisches Problem zurückgeführt.
+Dieses muss einmalig gelöst werden – und liefert sofort die stationäre Temperaturverteilung im gesamten Gebiet.
+Folgend ein Beispiel zum besseren Verständniss
 
 \subsubsection*{Beispiel: $4\times 4$-Gitter mit Dirichlet-Randbedingungen}
 
@@ -184,7 +158,7 @@ Damit ergeben sich im Beispiel die folgenden Gleichungen:
 
 Wir ordnen die Unbekannten in einem Vektor
 \[
-\mathbf{u} =
+\vec{u} =
 \begin{bmatrix}
 	T_{2,2} \\ T_{2,3} \\ T_{3,2} \\ T_{3,3}
 \end{bmatrix}.
@@ -197,21 +171,23 @@ Dann können die obigen Gleichungen in Matrixform geschrieben werden als:
 		1 & -4 &  0 &  1 \\
 		1 &  0 & -4 &  1 \\
 		0 &  1 &  1 & -4
-\end{bmatrix}}_{A}
-\begin{bmatrix}
-	T_{2,2} \\ T_{2,3} \\ T_{3,2} \\ T_{3,3}
-\end{bmatrix}
+\end{bmatrix}}_{\mathbf{A}}
+\underbrace{\begin{bmatrix}
+		T_{2,2} \\ T_{2,3} \\ T_{3,2} \\ T_{3,3}
+\end{bmatrix}}_{\vec{u}}
 =
 \underbrace{\begin{bmatrix}
 		0 \\ 0 \\ 0 \\ 0
-\end{bmatrix}}_{\mathbf{b}}.
+\end{bmatrix}}_{\vec{b}}.
 \]
 
 \subsubsection*{Interpretation}
 \begin{itemize}
-	\item Die Matrix $A$ enthält die typische Struktur der \emph{5-Punkt-Stern-Approximation}: 
-	\item Auf der Diagonalen '$-4$' für den jeweiligen Punkt,
-	\item '$-1$' an den Positionen der direkten Nachbarn.  
+	\item Die Matrix \(\mathbf{A}\) enthält die typische Struktur der \emph{5-Punkt-Stern-Approximation}: 
+	\begin{itemize}
+		\item Auf der Diagonalen '$-4$' für den jeweiligen Punkt,
+		\item '$-1$' an den Positionen der direkten Nachbarn. 
+	\end{itemize} 
 	\item Der rechte Seitenvektor $\vec{b}$ enthält die Beiträge der Randwerte.  
 	In diesem Beispiel mit $T=0$ am Rand ist $\vec{b}=\vec{0}$.  
 	Wären die Randwerte ungleich null, würden sie hier erscheinen. 
@@ -269,5 +245,132 @@ führt.
 Damit zeigt sich: unabhängig davon, ob man eine zeitabhängige oder stationäre Simulation betrachtet, 
 bleibt die Grundidee gleich – die Wechselwirkung zwischen Teilgebieten beschränkt sich auf die Schnittkanten. 
 Diese Lokalität ist die Grundlage für effiziente Parallelisierung.
+
+\subsection{Diskrete Umsetzung mit Ghost-Zellen}
+
+In der FDM-Diskretisierung wird dies durch \emph{Ghost-Zellen} realisiert:
+\begin{itemize}
+	\item Jedes Teilgebiet speichert an seinen Rändern eine zusätzliche Schicht von Gitterpunkten.
+	\item Diese Ghost-Zellen enthalten die Werte aus den benachbarten Teilgebieten.
+	\item Nach jedem Zeitschritt werden die Ghost-Zellen synchronisiert.
+\end{itemize}
+
+Dadurch kann jedes Teilgebiet seine Update-Formel lokal anwenden, ohne direkten Zugriff auf fremde Datenstrukturen zu benötigen.
+
+\subsection{Praktische Aspekte}
+
+\subsubsection {Lastverteilung und Kommunikation.}
+Die Kosten pro Zeitschritt sind proportional zur Anzahl der Gitterpunkte im Teilgebiet 
+($\mathcal{O}(|\Omega_p|)$).  
+Die Kommunikationskosten entstehen durch den Austausch von Ghost-Zellen und hängen von der Länge der Schnittkante ab.  
+Für eine effiziente Parallelisierung ist es daher vorteilhaft, Subdomains mit möglichst kleinem 
+Umfang/Flächen-Verhältnis zu wählen.  
+In 2D bedeutet dies, dass quadratische Teilgebiete günstiger sind als lange, schmale Streifen; 
+im 3D-Fall spricht man analog vom Oberflächen/Volumen-Verhältnis.  
+
+\subsubsection {Stabilität.}
+Die Stabilitätskriterien der expliziten Finite-Differenzen-Methode gelten auch bei der Gebietsunterteilung unverändert.  
+Insbesondere muss in 2D für ein quadratisches Gitter stets
+\[
+\lambda = \frac{\alpha \Delta t}{(\Delta l)^2} \leq \tfrac{1}{4}
+\]
+gelten.  
+Diese Bedingung ist lokal in jedem Teilgebiet genauso einzuhalten wie global.  
+
+
+
+\subsubsection*{Beispiel: $5\times 5$-Gitter mit Dirichlet-Randbedingungen (nicht-trivial)}
+
+Wir betrachten ein quadratisches Gitter mit $5\times 5$ Punkten.  
+Die Randwerte seien fest vorgegeben (Dirichlet):
+\[
+T=100^\circ\mathrm{C}\ \text{(links)},\quad
+T=0^\circ\mathrm{C}\ \text{(rechts)},\quad
+T=80^\circ\mathrm{C}\ \text{(oben)},\quad
+T=20^\circ\mathrm{C}\ \text{(unten)}.
+\]
+Unbekannt sind nur die \emph{inneren} Punkte (die $3\times 3$-Punkte im Zentrum).
+Schematisch (Ränder mit ihren Werten, innen $I$):
+\[
+\begin{array}{ccccc}
+	80 & 80 & 80 & 80 & 80 \\
+	100 & I & I & I & 0 \\
+	100 & I & I & I & 0 \\
+	100 & I & I & I & 0 \\
+	20 & 20 & 20 & 20 & 20
+\end{array}
+\]
+
+Somit gibt es $3\times 3 = 9$ innere Unbekannte:
+\[
+T_{2,2},\ T_{2,3},\ T_{2,4},\ T_{3,2},\ T_{3,3},\ T_{3,4},\ T_{4,2},\ T_{4,3},\ T_{4,4}.
+\]
+
+\subsubsection*{Diskretisierung (5-Punkt-Stern) und Gleichungen}
+
+Für einen inneren Punkt $(i,j)$ lautet die Diskretisierung:
+\[
+-4T_{i,j} + T_{i+1,j} + T_{i-1,j} + T_{i,j+1} + T_{i,j-1} = 0.
+\]
+Randnachbarn werden als Konstanten eingesetzt und auf die rechte Seite verschoben.
+Damit ergeben sich für die $9$ inneren Punkte die Gleichungen:
+\begin{alignat*}{6}
+	-4\mathbf{T_{2,2}} &+ T_{3,2} &+ 80 &+ T_{2,3} &+ 100 &= 0, \\
+	-4\mathbf{T_{2,3}} &+ T_{3,3} &+ 80 &+ T_{2,4} &+ T_{2,2} &= 0, \\
+	-4\mathbf{T_{2,4}} &+ T_{3,4} &+ 80 &+ 0 &+ T_{2,3} &= 0, \\
+	-4\mathbf{T_{3,2}} &+ T_{4,2} &+ T_{2,2} &+ T_{3,3} &+ 100 &= 0, \\
+	-4\mathbf{T_{3,3}} &+ T_{4,3} &+ T_{2,3} &+ T_{3,4} &+ T_{3,2} &= 0, \\
+	-4\mathbf{T_{3,4}} &+ T_{4,4} &+ T_{2,4} &+ T_0 &+ T_{3,3} &= 0, \\
+	-4\mathbf{T_{4,2}} &+ 20 &+ T_{3,2} &+ T_{4,3} &+ 100 &= 0, \\
+	-4\mathbf{T_{4,3}} &+ 20 &+ T_{3,3} &+ T_{4,4} &+ T_{4,2} &= 0, \\
+	-4\mathbf{T_{4,4}} &+ 20 &+ T_{3,4} &+ 0 &+ T_{4,3} &= 0.
+\end{alignat*}
+
+\subsubsection*{Matrixformulierung}
+
+Wir ordnen die Unbekannten zeilenweise (row-major) zu einem Vektor
+\[
+\vec{u} =
+\begin{bmatrix}
+	T_{2,2} \\ T_{2,3} \\ T_{2,4} \\
+	T_{3,2} \\ T_{3,3} \\ T_{3,4} \\
+	T_{4,2} \\ T_{4,3} \\ T_{4,4}
+\end{bmatrix}.
+\]
+Dann gilt $\,\mathbf{A}\vec{u}=\vec{b}\,$ mit der $9\times 9$-Matrix (5-Punkt-Stern-Struktur)
+\[
+\mathbf{A}=
+\begin{bmatrix}
+	-4& 1& 0& 1& 0& 0& 0& 0& 0\\
+	1&-4& 1& 0& 1& 0& 0& 0& 0\\
+	0& 1&-4& 0& 0& 1& 0& 0& 0\\
+	1& 0& 0&-4& 1& 0& 1& 0& 0\\
+	0& 1& 0& 1&-4& 1& 0& 1& 0\\
+	0& 0& 1& 0& 1&-4& 0& 0& 1\\
+	0& 0& 0& 1& 0& 0&-4& 1& 0\\
+	0& 0& 0& 0& 1& 0& 1&-4& 1\\
+	0& 0& 0& 0& 0& 1& 0& 1&-4
+\end{bmatrix},
+\quad
+\vec{b}=
+\begin{bmatrix}
+	-180 \\ -80 \\ -80 \\
+	-100 \\ \ \ 0 \\ \ \ 0 \\
+	-120 \\ -20 \\ -20
+\end{bmatrix}.
+\]
+
+\subsubsection*{Interpretation}
+\begin{itemize}
+	\item \(\mathbf{A}\) ist dünnbesetzt und spiegelt exakt die Nachbarschaft der inneren Punkte (5-Punkt-Formel) wider:
+	\(-4\) auf der Diagonalen, Einsen für linke/rechte/obere/untere Nachbarn (sofern innerlich).
+	\item \(\vec{b}\) enthält die Beiträge der \emph{verschiedenen} Randwerte:
+	je nach Lage eines inneren Punkts sind die addierten Randwerte unterschiedlich
+	(z.\,B.\ oben-links: \(-100-80\), Zentrum: \(0\), unten-rechts: \(-20\) usw.).
+	\item Das System hat eine eindeutige Lösung; sie liefert eine plausibel „schräge“ Temperaturverteilung
+	zwischen warmen/kalten und oberen/unteren Rändern.
+\end{itemize}
+
+\end{document}
 
 
