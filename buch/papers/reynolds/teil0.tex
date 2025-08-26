@@ -38,7 +38,7 @@ entstehen oder verschwinden kann, ausser sie fliesst über die Volumengrenze. F�
     \frac{\partial u_i}{\partial x_i} = 0
 \end{equation}
 %
-Die Gleichungen machen Gebrauch von der \emph{Einsteinschen Summenkonvention}: Über Indizes, welche in einem Term doppelt
+Die Gleichungen machen Gebrauch von der \emph{einsteinschen Summenkonvention}: Über Indizes, welche in einem Term doppelt
 erscheinen, wird summiert, so entspricht z.B. in Gleichung \eqref{reynolds:eqs:impulse}
 %
 \begin{equation}
@@ -183,7 +183,7 @@ weg und es bleibt:
             \frac{\partial \bigl[ \ravg{u_i} \ravg{u_j} + \ravg{u_i' u_j'} \bigr]}{\partial x_j}
         \biggr) =
         - \frac{\partial \ravg{p}}{\partial x_i} + 
-        \mu \frac{\partial^2 \ravg{u_i}}{\partial x_j \partial x_j}
+        \mu \frac{\partial^2 \ravg{u_i}}{\partial x_j \partial x_j}.
 \end{equation}
 %
 Der Term 
@@ -219,7 +219,7 @@ Mit der Vereinfachung (Kettenregel, Gleichungen \eqref{reynolds:eqs:ravg-partial
     &= \frac{\partial \ravg{u_i}}{\partial x_j} \ravg{u_j}
 \end{align}
 %
-schlussendlich erhalten wir
+erhalten wir schlussendlich
 %
 \begin{align}
     \label{reynolds:eqs:rans}
@@ -236,17 +236,22 @@ schlussendlich erhalten wir
 %
 Die Gleichung \eqref{reynolds:eqs:rans} stellt die
 \emph{Reynolds-gemittelten Navier-Stokes-Gleichung} (oder englisch \emph{Reynolds-averaged
-Navier-Stokes (RANS)})-Gleichung dar. Der einzige Term, in dem die transienten
+Navier-Stokes (RANS)})-Gleichung dar.
+Verblüfend ist dabei wie sehr die gemittelten-Navier-Stokes-Gleichungen den normalen Navier-Stokes-Gleichen ähnlich sind.
+Das auch weil der einzige Term, in dem die transienten
 Anteile vorkommen, ist
 %
-$$\frac{\partial - \rho (\ravg{u_i' u_j'})}{\partial x_j}$$
+\begin{equation}
+    $$\frac{\partial - \rho (\ravg{u_i' u_j'})}{\partial x_j}$$.
+\end{equation}
 %
 Er enthält die Korrelation
 %
 $$- \rho \ravg{u_i' u_j'}$$
 %
 zwischen den Transienten der verschiedenen Raumkoordinaten und wird auch als Reynolds-Spannungstensor
-bezeichnet, da er die Einheit einer Spannung hat. Der Reynolds-Spannungstensor sieht folgendermassen aus:
+bezeichnet, und bringt eine Art zusätzlichen Impuls, für die zeitlich Gemittelten Phänomene, in die Gleichung einbring.
+Der Reynolds-Spannungstensor sieht folgendermassen aus:
 %
 \begin{equation}
     (R_{ij}) \overset{\text{def}}{=} (-\rho\ravg{u'_i u'_j}) =
@@ -254,7 +259,7 @@ bezeichnet, da er die Einheit einer Spannung hat. Der Reynolds-Spannungstensor s
             R_{11} & R_{12} & R_{13} \\
             R_{21} & R_{22} & R_{23} \\
             R_{31} & R_{32} & R_{33}
-        \end{bmatrix}
+        \end{bmatrix},
 \end{equation}
 %
 wobei die Diagonalen $R_{11}$, $R_{22}$ und $R_{33}$ die drei Normalspannungen sind.
@@ -295,7 +300,7 @@ Die diagonalen Terme $R_{11}$, $R_{22}$ und $R_{33}$ sind
 und die Terme $R_{12} = R_{21}$, $R_{13} = R_{31}$ und $R_{23} = R_{32}$ sind
 %
 \begin{equation}
-    R_{ij} = R_{ji} = \mu_t (\frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i})
+    R_{ij} = R_{ji} = \mu_t \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right).
 \end{equation}
 %
 \begin{figure}
