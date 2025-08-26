@@ -24,7 +24,7 @@ Die Navier-Stokes-Gleichung für ein viskoses, inkompressibles, newtonisches Flu
     \label{reynolds:eqs:impulse}
     \frac{\partial u_i}{\partial t} + u_j \frac{\partial u_i}{\partial x_j} =
         f_i - \frac{1}{\rho} \frac{\partial p}{\partial x_i} + 
-        \nu \frac{\partial^2 u_i}{\partial x_j \partial x_j},\quad\text{für $i = 1,2,3$}
+        \nu \frac{\partial^2 u_i}{\partial x_j\, \partial x_j},\quad\text{für $i = 1,2,3$}
 \end{equation}
 %
 wobei $u_i$ die Komponenten des Flussgeschwindigkeitsvektors und $p$ den Druck bezeichnet.
@@ -38,7 +38,7 @@ entstehen oder verschwinden kann, ausser sie fliesst über die Volumengrenze. F�
     \frac{\partial u_i}{\partial x_i} = 0
 \end{equation}
 %
-Die Gleichungen machen Gebrauch von der \emph{Einsteinschen Summenkonvention}: Über Indizes, welche in einem Term doppelt
+Die Gleichungen machen Gebrauch von der \emph{einsteinschen Summenkonvention}: Über Indizes, welche in einem Term doppelt
 erscheinen, wird summiert, so entspricht z.B. in Gleichung \eqref{reynolds:eqs:impulse}
 %
 \begin{equation}
@@ -56,7 +56,7 @@ Die Terme lassen sich wie folgt beschreiben:
         von bewegten Teilchen.
     \item $f_i$: Andere, allgemeine \emph{innere} Kräfte, typischerweise die Gravitation.
     \item $\frac{1}{\rho} \frac{\partial p}{\partial x_i}$: Das Druckgefälle.
-    \item $\nu \frac{\partial^2 u_i}{\partial x_j \partial x_j} \overset{\text{def}}{=} \nu \Delta u_i$: Die Diffusion, also Änderung des Impulses
+    \item $\nu \frac{\partial^2 u_i}{\partial x_j\, \partial x_j} \overset{\text{def}}{=} \nu \Delta u_i$: Die Diffusion, also Änderung des Impulses
         aufgrund mikroskopischer Kollisionen und anderer Wechselwirkungen von Teilchen bzw.
         makroskopischer Reibung.
 \end{enumerate}
@@ -127,7 +127,7 @@ mit $\rho$ multipliziert. Wir erhalten dann
     \label{reynolds:eqs:der1}
     \rho \biggl( \frac{\partial ( \rdecomp{u_i} )}{\partial t} + (\rdecomp{u_j} ) \frac{\partial ( \rdecomp{u_i} )}{\partial x_j} \biggr) =
         - \frac{\partial ( \rdecomp{p} )}{\partial x_i} + 
-        \mu \frac{\partial^2 ( \rdecomp{u_i} )}{\partial x_j \partial x_j},
+        \mu \frac{\partial^2 ( \rdecomp{u_i} )}{\partial x_j\, \partial x_j},
 \end{equation}
 %
 mit $\mu = \rho \nu$ und, oBdA, $f_i \equiv 0$.
@@ -138,17 +138,17 @@ $$( \rdecomp{u_j} ) \frac{\partial ( \rdecomp{u_i} )}{\partial x_j}$$
 %
 wie folgt umformen:
 %
-\begin{equation}
+\begin{equation*}
     ( \rdecomp{u_j} ) \frac{\partial ( \rdecomp{u_i} )}{\partial x_j} =
         \frac{\partial \biggl[ ( \rdecomp{u_j} ) ( \rdecomp{u_i} ) \biggr]}{\partial x_j}
         - \frac{\partial ( \rdecomp{u_j} )}{\partial x_j} ( \rdecomp{u_i} )
-\end{equation}
+\end{equation*}
 %
 Aus dem Massenerhalt (Gleichung \eqref{reynolds:eqs:mass}) folgt
 %
-\begin{equation}
+\begin{equation*}
     \frac{\partial ( \rdecomp{u_j} )}{\partial x_j} = 0
-\end{equation}
+\end{equation*}
 %
 und somit
 %
@@ -160,31 +160,34 @@ und somit
 %
 Setzen wir Gleichung \eqref{reynolds:eqs:der2} in Gleichung \eqref{reynolds:eqs:der1} ein, erhalten wir
 %
-\begin{align}
+\begin{align*}
     \rho \biggl(
             \frac{\partial ( \rdecomp{u_i} )}{\partial t} +
             \frac{\partial \bigl[ ( \rdecomp{u_j} ) ( \rdecomp{u_i} ) \bigr]}{\partial x_j}
-        \biggr) = \\
+        \biggr) &=
+    - \frac{\partial ( \rdecomp{p} )}{\partial x_i} + 
+    \mu \frac{\partial^2 ( \rdecomp{u_i} )}{\partial x_j\, \partial x_j}
+\intertext{oder nach Ausmultiplizieren}
     \rho \biggl(
             \frac{\partial ( \rdecomp{u_i} )}{\partial t} +
             \frac{\partial \bigl[ \ravg{u_i} \ravg{u_j}  + \ravg{u_j} u_i' + u_j' \ravg{u_i} + u_j' u_i' \bigr]}{\partial x_j}
-        \biggr) = \\
+        \biggr) &=
     - \frac{\partial ( \rdecomp{p} )}{\partial x_i} + 
-    \mu \frac{\partial^2 ( \rdecomp{u_i} )}{\partial x_j \partial x_j}.
-\end{align}
+    \mu \frac{\partial^2 ( \rdecomp{u_i} )}{\partial x_j\, \partial x_j}.
+\end{align*}
 %
 Als nächstes wird auf beide Seiten der Gleichung der Operator $\ravg{\cdot}$ angewendet.
 Aufgrund von Gleichung \eqref{reynolds:eqs:trans-cancel} fallen die transienten Terme somit
 weg und es bleibt:
 %
-\begin{equation}
+\begin{equation*}
     \rho \biggl(
             \frac{\partial \ravg{u_i}}{\partial t} +
             \frac{\partial \bigl[ \ravg{u_i} \ravg{u_j} + \ravg{u_i' u_j'} \bigr]}{\partial x_j}
         \biggr) =
         - \frac{\partial \ravg{p}}{\partial x_i} + 
-        \mu \frac{\partial^2 \ravg{u_i}}{\partial x_j \partial x_j}
-\end{equation}
+        \mu \frac{\partial^2 \ravg{u_i}}{\partial x_j\, \partial x_j}.
+\end{equation*}
 %
 Der Term 
 %
@@ -192,11 +195,11 @@ $$\rho \frac{\partial \ravg{u_i' u_j'}}{\partial x_j}$$
 %
 wird auf die andere Seite des Gleichheitszeichens in den Term 
 %
-$$\mu \frac{\partial^2 \ravg{u_i}}{\partial x_j \partial x_j}$$
+$$\mu \frac{\partial^2 \ravg{u_i}}{\partial x_j\, \partial x_j}$$
 %
 gezogen:
 %
-\begin{equation}
+\begin{equation*}
     \rho \biggl(
             \frac{\partial \ravg{u_i}}{\partial t} +
             \frac{\partial ( \ravg{u_i} \ravg{u_j})}{\partial x_j}
@@ -206,20 +209,20 @@ gezogen:
                 \biggl(
                     \mu \frac{\partial \ravg{u_i}}{\partial x_j} - \rho \ravg{u_i' u_j'}
                 \biggr)
-\end{equation}
+\end{equation*}
 %
 Mit der Vereinfachung (Kettenregel, Gleichungen \eqref{reynolds:eqs:ravg-partial} und \eqref{reynolds:eqs:mass})
 %
-\begin{align}
+\begin{align*}
     \frac{\partial ( \ravg{u_i} \ravg{u_j})}{\partial x_j} &=
     \frac{\partial \ravg{u_i}}{\partial x_j} \ravg{u_j} +
     \ravg{u_i} \frac{\partial \ravg{u_j}}{\partial x_j} \\
     &= \frac{\partial \ravg{u_i}}{\partial x_j} \ravg{u_j} +
     \ravg{u_i} \ravg{\frac{\partial u_j}{\partial x_j}} \\
     &= \frac{\partial \ravg{u_i}}{\partial x_j} \ravg{u_j}
-\end{align}
+\end{align*}
 %
-schlussendlich erhalten wir
+erhalten wir schlussendlich
 %
 \begin{align}
     \label{reynolds:eqs:rans}
@@ -236,26 +239,33 @@ schlussendlich erhalten wir
 %
 Die Gleichung \eqref{reynolds:eqs:rans} stellt die
 \emph{Reynolds-gemittelten Navier-Stokes-Gleichung} (oder englisch \emph{Reynolds-averaged
-Navier-Stokes (RANS)})-Gleichung dar. Der einzige Term, in dem die transienten
+Navier-Stokes (RANS)})-Gleichung dar.
+Verblüfend ist dabei wie sehr die gemittelten-Navier-Stokes-Gleichungen den normalen Navier-Stokes-Gleichen ähnlich sind.
+Das auch weil der einzige Term, in dem die transienten
 Anteile vorkommen, ist
 %
-$$\frac{\partial - \rho (\ravg{u_i' u_j'})}{\partial x_j}$$
+\begin{equation*}
+    \frac{\partial(- \rho \ravg{u_i' u_j'})}{\partial x_j}.
+\end{equation*}
 %
 Er enthält die Korrelation
 %
-$$- \rho \ravg{u_i' u_j'}$$
+\[
+- \rho \ravg{u_i' u_j'}
+\]
 %
 zwischen den Transienten der verschiedenen Raumkoordinaten und wird auch als Reynolds-Spannungstensor
-bezeichnet, da er die Einheit einer Spannung hat. Der Reynolds-Spannungstensor sieht folgendermassen aus:
+bezeichnet, und bringt eine Art zusätzlichen Impuls, für die zeitlich Gemittelten Phänomene, in die Gleichung einbring.
+Der Reynolds-Spannungstensor sieht folgendermassen aus:
 %
-\begin{equation}
+\begin{equation*}
     (R_{ij}) \overset{\text{def}}{=} (-\rho\ravg{u'_i u'_j}) =
         \begin{bmatrix}
             R_{11} & R_{12} & R_{13} \\
             R_{21} & R_{22} & R_{23} \\
             R_{31} & R_{32} & R_{33}
-        \end{bmatrix}
-\end{equation}
+        \end{bmatrix},
+\end{equation*}
 %
 wobei die Diagonalen $R_{11}$, $R_{22}$ und $R_{33}$ die drei Normalspannungen sind.
 Die zusammengesetzten Terme $R_{12} = R_{21}$, $R_{13} = R_{31}$ und $R_{23} = R_{32}$ stellen
@@ -295,7 +305,7 @@ Die diagonalen Terme $R_{11}$, $R_{22}$ und $R_{33}$ sind
 und die Terme $R_{12} = R_{21}$, $R_{13} = R_{31}$ und $R_{23} = R_{32}$ sind
 %
 \begin{equation}
-    R_{ij} = R_{ji} = \mu_t (\frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i})
+    R_{ij} = R_{ji} = \mu_t \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right).
 \end{equation}
 %
 \begin{figure}
