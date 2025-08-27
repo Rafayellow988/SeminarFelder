@@ -6,18 +6,16 @@
 %
 \section{Einleitung}
 
-Wirbelringe sind ein interessantes Naturphänomen, welchem man schneller begegnet als man denkt. 
+Wirbelringe sind ein interessantes Naturphänomen, welchem man schneller begegnet, als man denkt. 
 In diesem Paper schauen wir uns Wirbelringe etwas genauer an und begründen einige Eigenschaften. 
-Des Weiteren untersuchen wir eine weitverbreitete praktische (ungewollte) Anwendung und dessen Auswirkung. 
-Zuletzt formulieren wir ein Modell, womit man zumindest angenähert selbst gezielt Wirbelringe berechnen und erzeugen kann.
+Des Weiteren untersuchen wir eine weitverbreitete, häufig ungewollte praktische Anwendung und deren Auswirkungen. 
+Zuletzt formulieren wir ein Modell, womit man zumindest annäherungsweise selbst gezielt Wirbelringe berechnen und erzeugen kann.
 
 In diesem Paper werden, wo nicht anders angegeben, nur ideale Fluide betrachtet.
-John von Neumann soll über die Theorie der idealen Fluide gesagt haben\cite{Wirbelringe:feynman1964lectures}: 
-
+John von Neumann soll über die Theorie der idealen Fluide gesagt haben \cite{Wirbelringe:feynman1964lectures}: 
 \begin{quote}
     The theory of inviscid fluids is the study of «dry water».
 \end{quote}
-
 Für das Verständnis von Wirbelringen ist sie aber ausreichend.
 
 \subsection{Wirbel}
@@ -25,7 +23,7 @@ Für das Verständnis von Wirbelringen ist sie aber ausreichend.
 \input{papers/wirbelringe/fig/flacher_wirbel}
 
 Für die Betrachtung von Wirbelringen starten wir zunächst mit einzelnen Wirbeln.
-Ein Wirbel ist eine Formation von Teilchen, welche um einen Mittelpunkt rotieren.
+Ein Wirbel ist eine Formation von Teilchen, welche um einen Mittelpunkt rotiert.
 In Abbildung \ref{Wirbelringe:fig:flacher_wirbel} ist ein Wirbel abgebildet.
 Die eingezeichneten Pfeile stellen die Geschwindigkeitsvektoren \( \vec{v} \) der Teilchen, welche Teil des Wirbels sind, dar.
 Nicht explizit eingezeichnet sind die Bahnen, auf welchen sich die Teilchen bewegen.
@@ -37,7 +35,7 @@ Wir kommen später genauer auf \(\vec{\omega}\) zu sprechen.
 
 Um Wirbel besser zu beschreiben, führen wir hier den Begriff {\em Wirbellinie} ein.
 Wirbellinien sind die „Mittelachsen“ von Wirbeln. 
-Um diese Achse rotieren die Teile, welche Teil eines Wirbels sind. 
+Um diese Achse rotieren die Teilchen, welche Teil eines Wirbels sind. 
 Diese hat an sich kein Volumen, allerdings kann es sein, dass Teilchen auf dieser Achse zu liegen kommen. 
 \(\vec{\omega}\) steht tangential zu dieser Wirbellinie.  
 In der Praxis ist eine Wirbellinie nicht gerade, sondern gekrümmt oder sogar spiralenähnlich. 
@@ -58,7 +56,7 @@ Die Kontinuitätsgleichung
 \]
 aus Abschnitt \ref{buch:zusammenhang:erhaltungssatz:subsection:kontinuitaetsgleichung} besagt: Wenn mehr herausfliesst, als hineinfliessen kann --- was einer positiven Divergenz entspricht ---, dann muss die Dichte \(\rho\) abnehmen.
 
-In unserem Fall ist \(\vec{\jmath}\) die Rotation eines Vektorfeldes z.B. \(\operatorname{rot}(\vec{A})\).
+In unserem Fall ist \(\vec{\jmath}\,\) die Rotation eines Vektorfeldes z.B. \(\operatorname{rot}(\vec{A})\).
 Um nun zu beurteilen, ob ein Wirbel stabil ist, können wir die Divergenz der Rotation eines Vektorfeldes betrachten.
 Denn Stabilität bedeutet, dass die Anzahl der Teilchen konstant bleibt, also die Dichte gleich bleibt.
 Somit stellt sich die Frage, ob
@@ -81,28 +79,27 @@ Nehmen wir an, dass \(\vec{A}\) zweimal stetig differenzierbar ist, so können w
     \end{pmatrix} \\
 \intertext{setzen. Mit der Definition der Divergenz ergibt sich}
 &=
-\frac{\partial^2 A_z}{\partial x \partial y} - \frac{\partial^2 A_y}{\partial x \partial z} + 
-\frac{\partial^2 A_x}{\partial y \partial z} - \frac{\partial^2 A_z}{\partial y \partial x} +
-\frac{\partial^2 A_y}{\partial z \partial x} - \frac{\partial^2 A_x}{\partial z \partial y}
+\frac{\partial^2 A_z}{\partial x\, \partial y} - \frac{\partial^2 A_y}{\partial x\, \partial z} + 
+\frac{\partial^2 A_x}{\partial y\, \partial z} - \frac{\partial^2 A_z}{\partial y\, \partial x} +
+\frac{\partial^2 A_y}{\partial z\, \partial x} - \frac{\partial^2 A_x}{\partial z\, \partial y}
 .\\
 \intertext{Der Satz von Schwarz besagt, dass es nicht auf die Reihenfolge der Ableitungen ankommt. Somit kann man sie paarweise anordnen:}\\
 &=
-\frac{\partial^2 A_z}{\partial x \partial y} - \frac{\partial^2 A_z}{\partial y \partial x} + 
-\frac{\partial^2 A_x}{\partial y \partial z} - \frac{\partial^2 A_x}{\partial z \partial y} +
-\frac{\partial^2 A_y}{\partial z \partial x} - \frac{\partial^2 A_y}{\partial x \partial z}.
+\frac{\partial^2 A_z}{\partial x\, \partial y} - \frac{\partial^2 A_z}{\partial y\, \partial x} + 
+\frac{\partial^2 A_x}{\partial y\, \partial z} - \frac{\partial^2 A_x}{\partial z\, \partial y} +
+\frac{\partial^2 A_y}{\partial z\, \partial x} - \frac{\partial^2 A_y}{\partial x\, \partial z}.
 \\
 \intertext{Da sich die Ableitungen dadurch aufheben, folgt}
 &=
-\overbrace{\frac{\partial^2 A_z}{\partial x \partial y} - \frac{\partial^2 A_z}{\partial x \partial y}}^0 + 
-\overbrace{\frac{\partial^2 A_x}{\partial y \partial z} - \frac{\partial^2 A_x}{\partial y \partial z}}^0 +
-\overbrace{\frac{\partial^2 A_y}{\partial x \partial z} - \frac{\partial^2 A_y}{\partial x \partial z}}^0
+\overbrace{\frac{\partial^2 A_z}{\partial x\, \partial y} - \frac{\partial^2 A_z}{\partial x\, \partial y}}^0 + 
+\overbrace{\frac{\partial^2 A_x}{\partial y\, \partial z} - \frac{\partial^2 A_x}{\partial y\, \partial z}}^0 +
+\overbrace{\frac{\partial^2 A_y}{\partial x\, \partial z} - \frac{\partial^2 A_y}{\partial x\, \partial z}}^0
 \\
 &=
 0.
 \end{align*}
-
- Somit gilt 
- \begin{equation} 
+Somit gilt 
+\begin{equation} 
     \label{Wirbelringe:eq:wIdent} 
     \operatorname{div} \big( \operatorname{rot} ( \vec{A} ) \big) 
     = 
