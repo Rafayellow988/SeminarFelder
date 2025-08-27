@@ -1071,6 +1071,46 @@ Die Kohomologiegruppe $H^0(M)$ ist also ein Vektorraum mit sovielen
 Dimensionen, wie die Mannigfaltigkeit Kompoenten hat.
 
 %
+% Integration über $k$-Simplizes
+%
+\subsubsection{Integration über $k$-Simplizes}
+Die Elemente der Kohomologiegruppe $H^k(M)$ quantifizieren, warum
+ein Kozyklus $\alpha\in \Omega^k(M)$ nicht als Korand $\alpha=d^{k-1}\beta$
+geschrieben werden kann.
+Dazu betrachtet man ein in die Mannigfaltigkeit eingebettetes
+$k+1$-dimensionales Simplex $S\subset M$.
+Nach dem allgemeinen Satz von Stokes ist das Integral über den Rand von
+$S$
+\[
+\int_{\partial S} \alpha
+=
+\int_{\partial S} d\beta
+=
+\int_{\partial\partial S}\beta
+=
+0.
+\]
+Damit $\alpha$ ein Korand ist, müssen alle diese Integrale verschwinden.
+
+%
+% Euler-Charakteristik
+%
+\subsubsection{Euler-Charakteristik}
+
+\begin{satz}
+Ist $M$ eine zusammenhängende, orientierbare Mannigfaltigkeit, dann ist
+\[
+\chi(M)
+=
+\sum_{k=0}^n (-1)^k \dim H^k(M).
+\]
+\end{satz}
+
+Die früher mit Simplizes kombinatorisch definierte Euler-Charakteristik
+kann also auch durch Betrachtung von Differentialformen untersucht
+werden.
+
+%
 % Beispiele
 %
 \subsection{Beispiele}
@@ -1099,9 +1139,92 @@ der 0-dimensionale Vektorraum.
 Alle Kohomologiegruppen verschwinden also.
 
 %
+% Eindimensionale Mannigfaltigkeiten
+%
+\subsubsection{Eindimensionale Mannigfaltigkeiten}
+Die eindimensionalen zusammenhängenden Mannigfaltigkeiten sind leicht
+zu klassifizieren.
+Lokal sehen sie wie ein $\mathbb{R}$ aus.
+Ausgehend von einem Punkt kann man sich also nur in zwei Richtungen
+bewegen.
+Eine Kurve $\mathbb{R}\to M$ mit Tangentialvektor $\ne 0$ in der
+Mannigfaltigkeit folgt ihr, ohne umzukehren.
+Indem wir eine Metrik verwenden, können wir auf zwei Möglichkeiten
+reduzieren: die Kurve ist eine injektive Abbildung, d.~h. die Mannigfaltigkeit
+enthält eine Komponenten, die zu $\mathbb{R}$ diffeomorph ist,
+oder die Kurve kehrt zu einem Punkt zurück, d.~h. die Mannigfaltigkeit
+enthält eine Komponente, die zu einer Kreislinie diffeomorph ist.
+
+Die Komponente $\mathbb{R}$ ist zusammenziehbar, also ist $H^1(\mathbb{R})=0$.
+
+Zur genaueren Untersuchung von $S^1$ schreiben wir 
+\[
+S^1
+=
+\mathbb{R}/\mathbb{Z},
+\]
+d.~h. Punkte in $\mathbb{R}$ werden miteinander identifiziert, wenn
+sie sich um eine ganze Zahl unterscheiden.
+Funktionen $\beta\colon S^1\to\mathbb{R}$ sind also periodische Funktionen 
+mit $\beta(x+1)=\beta(x)$.
+
+Wegen $n=1$ sind
+alle $1$-Formen auf $S^1$ Kozyklen, $Z^1(S^1)=\Omega^1(S^1)$.
+Zur Bestimmung von $H^1(S^1)$ ist jetzt zu unterscuhen,
+welche $1$-Formen keine Koränder sind.
+Ein Korand $\alpha$ ist eine 1-Form, welche durch Ableitung einer
+Funktion $\beta$ auf $S^1$ entsteht, sie muss also von der Form
+$\alpha=\beta'(x)\,dx$, wobei $f$ eine periodische Funktion ist.
+Durch Integration über eine Periode folgt
+\[
+\int_{S^1} \alpha
+=
+\int_{S^1} d\beta
+=
+\int_{\partial S^1} \beta
+=
+0.
+\]
+Eine $1$-Form ist also genau dann ein Korand, wenn das Integral
+über $S^1$ verschwindet.
+Es folgt, dass
+\[
+\int_{S^1}
+\colon
+\Omega^1(S^1)\to \mathbb{R}
+:
+\alpha
+\mapsto
+\int_{S^1}\alpha
+\]
+eine lineare Abbildung ist, die als Kern genau
+$B^1(S^1)=\operatorname{im}d^0$ hat.
+Somit ist
+\[
+H^1(S^1)
+=
+Z^1(S^1) / B^1(Z)
+=
+\mathbb{R}.
+\]
+Die Euler-Charakteristik ist
+\[
+\chi(S^1)
+=
+\sum_{k=0}^1 (-1)^k\dim H^k(S^1)
+=
+1-1
+=
+0,
+\]
+wie man auch mit einer Triangulation, die in Dimension 1 natürlich nur
+aus Punkten und Strecken besteht, nachprüfen kann.
+
+%
 % Torus
 %
 \subsubsection{Torus}
+\input{chapters/120-topologie/fig/fig-toruspfade.tex}
 Der zweidimensionale Torus $T$ kann beschrieben werden als die
 Menge $\mathbb{R}^2$, in der Punkte miteinander identifiziert
 werden, die sich genau um $1$ in $x$- bzw.~$y$-Richtung unterscheiden.
@@ -1117,6 +1240,10 @@ T
 /
 \sim.
 \]
+Diese Situation ist in
+Abbildung~\ref{buch:topologie:kohomologie:fig:toruspfade}
+dargestellt .
+
 Ein zweidimensionaler Torus $T$ ist zusammenhängend, daher ist
 $H^0(T)\mathbb{R}$ eindimensional.
 
@@ -1136,7 +1263,7 @@ d\alpha
 \biggl(\frac{\partial g}{\partial y}-\frac{\partial f}{\partial x}\biggr)
 \,dx\wedge dy.
 \]
-Ein Zyklus zeichnet sich daher daduch aus, dass
+Ein Kozyklus zeichnet sich daher dadurch aus, dass
 \begin{equation}
 \frac{\partial g}{\partial y}-\frac{\partial f}{\partial x}
 =
@@ -1144,7 +1271,6 @@ Ein Zyklus zeichnet sich daher daduch aus, dass
 \label{buch:topologie:derham:eqn:integrabilitaet}
 \end{equation}
 ist.
-
 Der Satz von Green besagt, dass unter Voraussetzung
 \eqref{buch:topologie:derham:eqn:integrabilitaet}
 das Wegintegral
@@ -1153,10 +1279,22 @@ das Wegintegral
 \]
 für einen Weg zwischen zwei Punkten auf $\mathbb{R}^2$ nicht vom Weg
 in $\mathbb{R}^2$ abhängt.
-Zwei Punkte in $T$ können aber durch verschiedene Punkte in
+
+Zwei Punkte in $T$ können durch verschiedene Punkte in
 $\mathbb{R}^2$ repräsentiert werden, die sich durch eine Ganzzahl
 in jeder Koordinaten unterscheiden.
-Zwischen zwei $A$ und $B$ Punkten in $T$ gibt es daher viele Wege.
+Zwischen den Punkten $A$ und $B$ in $T$ gibt es daher viele Wege.
+In Abbildung~\ref{buch:topologie:kohomologie:fig:toruspfade} sind
+mehrere Pfade dargestellt.
+Der orange Pfad führt von $A=(0,0)$ zum Punkt $B$ im Einheitsquadrat.
+Der grüne Pfad führt von $A=(0,0)$ zu dem weiter entfernten
+Repräsentanten, dessen $x$- und $y$-Koordinaten um 2 bzw.~1 grösser
+sind.
+Dieser zweite Pfad kann in einen Pfad deformiert werden, der erst
+zwei Einheiten lang der $x$-Achse folgt ({\color{darkred}rotes}
+Teilstück), dann eine Einheit in Richtung der $y$-Achse verläuft
+({\color{blue}blaues} Teilstück), um dann dem {\color{orange}orangen}
+Teilstück bis zum Punkt $B$ zu folgen.
 
 Wir wählen jetzt $A=(0,0)$ und versuchen eine Funktion $\beta$ zu
 konstruieren, so dass $d\beta =\alpha$ ist.
@@ -1171,36 +1309,114 @@ zu $(x,y)$.
 
 Wenn es die Funktion $\beta$ gibt, dann muss man sie durch Integration
 entlang eines beliebigen Wegs in $T$ erhalten können.
-Dies ist nur möglich, wenn die Integration entlang der Strecken
-von $(0,0)$ zu $(1,0)$ und von $(0,0)$ zu $(0,1)$ in $\mathbb{R}^2$
-keinen Beitrag zu Wegintegral leistet.
-
-Wenn $\alpha$ ein Korand ist, dann gibt es eine Funktion $\beta$
-mit $d\beta=\alpha$.
-Dazu betrachten wir die geschlossenen Kurven
-\[
-\gamma_x(t) = (t,0)\in T
-\qquad \text{und} \qquad
-\gamma_y(t) = (0,t)\in T
-\]
-und integrieren die die $1$-Form $\alpha$ entlang dieser Kurven.
-Es ist
+Wie Abbildung~\ref{buch:topologie:kohomologie:fig:toruspfade}
+illustriert lässt sich ein solcher Weg immer zerlegen in 
+$k$ Segmente der Länge $1$ in $x$-Richtung ({\color{darkred}rot})
+und $l$-Segmente der Länge $1$ in $y$-Richtunge ({\color{blue}blau})
+gefolgt vom direkten Pfad im Einheitsquadrat von $(0,0)$ zu $(B)$
+({\color{orange}}).
+Die Funktion $\beta$ im Punkt $B$ muss daher
 \begin{align*}
-\int_{\gamma_x} \alpha
+\beta(B)
 &=
-\int_{\gamma_x} d\beta
+\beta(B) - \beta(A)
 =
-\beta(1,0) - \beta(0,0)
+\int_{{\color{darkgreen}\gamma_{AB}}} d\beta
 =
-0
-\intertext{und analog}
-\int_{\gamma y}\alpha
+\int_{{\color{darkgreen}\gamma_{AB}}} \alpha
+\\
 &=
-0.
+k\int_{(0,0)}^{(1,0)}\alpha
++
+l\int_{(0,0)}^{(0,1)}\alpha
++
+\int_{(0,0)}^{\color{orange}(B)}\alpha
 \end{align*}
+für beliebige $k,l\in\mathbb{Z}$.
+Dies ist nur dann möglich, wenn die beiden ersten Integrale verschwinden.
+Die Abbildung
+\[
+H^1(T)
+\to
+\mathbb{R}^2
+:
+\alpha
+\mapsto
+\biggl(
+\int_{(0,0)}^{(1,0)}
+\alpha,
+\int_{(0,0)}^{(0,1)}
+\alpha
+\biggr)
+\]
+ist eine lineare Abbildung, deren Kern genau aus den Korändern besteht.
+Es folgt daher, dass
+\[
+H^1(T) = \mathbb{R}^2
+\]
+zweidimensional ist.
+
+Weiter ist $H^2(T)=\mathbb{R}$, so dass die Euler-Charakteristik des Torus
+\[
+\chi(T)
+=
+\dim H^0(T) - \dim H^1(T) + \dim H^2(T)
+=
+1-2+1
+=
+0.
+\]
+Dies stimmt überein mit der Euler-Charakteristik, die mit einer Triangulation
+berechnet wurde.
 
 %
 % Kugel
 %
 \subsubsection{Kugel}
+Auf einer zweidimensionalen Kugel $S^2$ sind alle Pfade zwischen zwei
+Punkten ineinander deformierbar.
+Für eine 1-Form $\alpha$ können wir daher die Funktion $\beta$ durch
+\[
+\beta(B)
+=
+\int_{\gamma_{AB}} \alpha
+\]
+definieren, wobei $\gamma_{AB}$ ein beliebiger Pfad von $A$ nach $B$.
+
+Zwei verschiedenen Pfaden $\gamma_{AB}$ und $\tilde{\gamma}_{AB}$
+lassen sich ineinander deformieren, es gibt daher eine Abbildung
+\[
+H
+\colon
+[0,1]\times[0,1] \to S^2
+\qquad\text{mit}\qquad
+H(t,s)
+=
+\begin{cases}
+\gamma_{AB}(t)          &\qquad s=0\\
+\tilde{\gamma_{AB}} (t) &\qquad s=1.
+\end{cases}
+\]
+Da $H$ für $t=0$ und $t=1$ konstant ist, ist das Integral 
+\begin{align*}
+\int_{\gamma_{AB}} \alpha
+-
+\int_{\tilde{\gamma}_{AB}} \alpha
+&=
+\int_{\partial I^2} \alpha
+=
+\int_{I^2} d\alpha.
+\end{align*}
+Für einen Kozyklus ist $d\alpha=0$ und damit sind die beiden Wegintegrale
+gleich und die Funktion $\beta$ ist wohldefiniert.
+Dies zeigt, dass $\alpha=d\beta$ ein Korand ist und damit auch dass
+$H^1(S^2)=0$.
+
+Dieses Argument funktioniert natürlich für jede Mannigfaltigkeit,
+in der sich jeder geschlossene Pfad zu einem Punkt zusammenziehen
+lässt.
+Für solche wie man sagt einfach zusammenhängenden Mannigfaltigkeiten
+gilt daher $H^1(M)=0$.
+
+
 
