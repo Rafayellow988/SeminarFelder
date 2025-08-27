@@ -45,13 +45,13 @@ Das Gesetz der Massenerhaltung beschreibt, dass sich die Masse in einem geschlos
 Dieses Verhalten beschreibt die zweite Euler-Gleichung, indem die Veränderung der Masse durch den Fluss von Masse durch eine Systemgrenze beschrieben wird.
 
 Die erste Euler-Gleichung geht aus der Idee hervor, dass man ein beliebiges Volumen $V$ hat, das fest im Raum liegt. Durch ein Oberflächenstück 
-$d \vb{S} $ 
+$d \mathbf{S} $ 
 des Volumens 
 $V$
  fliesst jeweils der Massenstrom 
-$ \rho\vb{u}\cdot d\vb{S}$, wobei $\vb{u}$ die Geschwindigkeit des Massenstromes ist.
+$ \rho\mathbf{u}\cdot d\mathbf{S}$, wobei $\mathbf{u}$ die Geschwindigkeit des Massenstromes ist.
 Aus dem Massenstrom des Oberflächensegments kann man dann mit dem Oberflächenintegral 
-\[\int_{S}\rho\vb{u}\cdot d\vb{S}\]
+\[\int_{S}\rho\mathbf{u}\cdot d\mathbf{S}\]
 den gesamten Massenstrom berechnen. Dieser Massenstrom muss nun gleich sein wie die Massenänderung 
 \[\frac{\partial M}{\partial t}\]
 der in dem Volumen enthaltenen Flüssigkeit.
@@ -67,20 +67,20 @@ Um die Massenänderung zu erhalten, leitet man dieses Integral partiell nach $t$
 Hier nimmt man die Ableitung auf der rechten Seite noch in das Integral hinein, da dies später das Rechnen erleichtert.
 
 Setzt man nun die beiden Terme der Massenänderung gleich, erhält man die Gleichung 
-\[\int_{S}\rho\vb{u}\cdot d\vb{S} 
+\[\int_{S}\rho\mathbf{u}\cdot d\mathbf{S} 
 =
 \int_{V} \frac{\partial \rho}{\partial t} \, dV .\] 
 Bei dieser Gleichung kann man nun auf der linken Seite mit dem gaussschen Integralsatz das Oberflächenintegral in ein Volumenintegral umwandeln es wird also zu
-\[\int_{V}\nabla\cdot(\rho\vb{u}) \, dV
+\[\int_{V}\nabla\cdot(\rho\mathbf{u}) \, dV
 =
 \int_{V}\frac{\partial \rho}{\partial t}  \, dV .\]
 Mit dem Ändern der Flussrichtung und Umschreiben der Gleichung kann man die rechte Seite auf null setzen, wodurch 
-\[\int_{V}\nabla\cdot(\rho\vb{u})  \, dV + \int_{V}\frac{\partial \rho}{\partial t}  \, dV 
+\[\int_{V}\nabla\cdot(\rho\mathbf{u})  \, dV + \int_{V}\frac{\partial \rho}{\partial t}  \, dV 
 = 
 0\] 
 folgt.
 Dadurch können die Integrale zu einem Integral
-\[\int_{V} \frac{\partial \rho}{\partial t} + \nabla\cdot(\rho\vb{u})  \, dV 
+\[\int_{V} \frac{\partial \rho}{\partial t} + \nabla\cdot(\rho\mathbf{u})  \, dV 
 = 
 0\]
 zusammengefasst werden.
@@ -88,7 +88,7 @@ zusammengefasst werden.
 Dies kann nun in einem letzten Schritt in die Differentialgleichung
 \begin{equation}
 \label{openfoam:euler1}
-\frac{\partial \rho}{\partial t} + \nabla\cdot(\rho\vb{u})  \, dV 
+\frac{\partial \rho}{\partial t} + \nabla\cdot(\rho\mathbf{u})  \, dV 
 = 
 0
 \end{equation}
@@ -106,75 +106,75 @@ Bei der Impulserhaltung ist dieses Volumen aber nicht mehr an einem festen Ort, 
 Ausserdem ist der Masseninhalt nicht mehr beliebig, sondern das Volumen beinhaltet eine feste Menge Masse.
 
 Dieses Volumen weist nun eine Impulsänderung die
-\[\frac{D}{Dt}\int_{V}\rho\vb{u}\, dV\]
+\[\frac{D}{Dt}\int_{V}\rho\mathbf{u}\, dV\]
 entspricht.
 Hier wird nicht mehr die partielle Ableitung verwendet, da das Kontrollvolumen nicht an einem festen Ort ist.
 Anstelle der partiellen Ableitung wird eine substantielle Ableitung \[\frac{D}{Dt}\] verwendet, da diese die Änderung des Feldes an einem bewegten Teilchen beschreibt.
 
-Als nächstes berechnet man die gesamte Kraft auf die Oberfläche des Volumens $V$, in dem man alle Kräfte $\vb{f} = \vb{t}\,dS$, die auf die Oberflächenstücke $dS$ wirken, integriert.
-$\vb{t} dS$ ist hier gleich $(\vb{n\cdot\sigma}dS)$.
+Als nächstes berechnet man die gesamte Kraft auf die Oberfläche des Volumens $V$, in dem man alle Kräfte $\mathbf{f} = \mathbf{t}\,dS$, die auf die Oberflächenstücke $dS$ wirken, integriert.
+$\mathbf{t} dS$ ist hier gleich $(\mathbf{n\cdot\sigma}dS)$.
 Dabei ist $\sigma$ der Spannungstensor, welcher genutzt wird um die drei Spannungsvektoren zusammenzufassen.
-Der Spannungsvektor, der auf die Oberfläche mit Normalenrichtung $\vb{n}$ wirkt, ist das Produkt des Spannungstensors mit $\vb{n}$.
+Der Spannungsvektor, der auf die Oberfläche mit Normalenrichtung $\mathbf{n}$ wirkt, ist das Produkt des Spannungstensors mit $\mathbf{n}$.
 So erhält man die Kraft 
-\[\vb{F} 
+\[\mathbf{F} 
 =
-\int_{S}\vb{f}\, dS
-= \int_{S} (\vb{\sigma}\cdot d\vb{S})
+\int_{S}\mathbf{f}\, dS
+= \int_{S} (\mathbf{\sigma}\cdot d\mathbf{S})
 .\]
 Dies ist nun wieder ein Flächenintegral, das mit dem gaussschen Integralsatz in ein Volumenintegral umgewandelt werden kann.
 Dadurch ergibt sich
-\[\vb{F} 
+\[\mathbf{F} 
 =
-\int_{V}\nabla \cdot \vb{\sigma}\, dV
+\int_{V}\nabla \cdot \mathbf{\sigma}\, dV
 .\]
 
 Zuletzt berechnen wir noch den Einfluss anderer Kräfte wie die Schwerkraft auf den Impuls des Volumens $V$.
-Dazu integrieren wir die normalisierte Volumenkraft $\vb{b}$, über alle Volumenstücke $dV$ wodurch wir das Integral 
-\[\vb{F} 
+Dazu integrieren wir die normalisierte Volumenkraft $\mathbf{b}$, über alle Volumenstücke $dV$ wodurch wir das Integral 
+\[\mathbf{F} 
 =
-\int_{V}\rho\vb{b}\, dV
+\int_{V}\rho\mathbf{b}\, dV
 \]
 erhalten.
 Die normalisierte Volumenkraft ist dabei zum Beispiel die Schwerkraft, die das gesamte Volumen wirkt. 
 Sie wird noch auf die Masse normalisiert, man erhält also eine Beschleunigung.
 
 Nun können wir die Impulsänderung des Volumens gleich der Summe der darauf wirkenden Kräfte setzen und die Integrale in einem Integral zusammenfassen. Daraus erhalten wir, mit der Bedingung die Masse im Volumen sei konstant, die Gleichung 
-\[\int_{V} \rho \frac{D\vb{u}}{Dt} - \nabla \cdot \vb{\sigma} -\rho \vb{b}\, dV
+\[\int_{V} \rho \frac{D\mathbf{u}}{Dt} - \nabla \cdot \mathbf{\sigma} -\rho \mathbf{b}\, dV
 =
 0.
 \]
 Das Integral kann man wie bei \ref{openfoam:euler1} dank Lemma \ref{maxwell:lemma:ampere} weglassen, wodurch wir die Differentialgleichung
 \begin{equation}
 \label{openfoam:euler2_1}
-\rho \frac{D\vb{u}}{Dt}
+\rho \frac{D\mathbf{u}}{Dt}
 = 
-\nabla \cdot \vb{\sigma} +\rho \vb{b}
+\nabla \cdot \mathbf{\sigma} +\rho \mathbf{b}
 \end{equation}
 erhalten.
 
 Zuletzt kann man noch die substantielle Ableitung in eine partielle Ableitung umwandeln, damit wir die gleiche Form wie für die Massenerhaltungsgleichung erhalten.
 Dazu nutzen wir die Definition der substantiellen Ableitung
 \[
-\frac{D\Phi(\vb{x},t)}{Dt}
+\frac{D\Phi(\mathbf{x},t)}{Dt}
 :=
-\frac{\partial \Phi}{\partial t}+(\vb{u}\cdot \nabla)\Phi
+\frac{\partial \Phi}{\partial t}+(\mathbf{u}\cdot \nabla)\Phi
 ,\] 
 die beschreibt, wie die substantielle Ableitung mit der partiellen zusammenhängt.
 Eingesetzt in die Differentialgleichung erhalten wir so 
 \begin{equation}
 \label{openfoam:euler2}
-\rho\frac{\partial\vb{u}}{\partial t} + \nabla \cdot(\rho\vb{u}\otimes \vb{u})
+\rho\frac{\partial\mathbf{u}}{\partial t} + \nabla \cdot(\rho\mathbf{u}\otimes \mathbf{u})
 = 
-\nabla \cdot \vb{\sigma} +\rho \vb{b}.
+\nabla \cdot \mathbf{\sigma} +\rho \mathbf{b}.
 \end{equation}
 Diese Form erleichtert die Berechnung, da sie nicht mehr die Impulsänderung einer sich bewegenden Menge Flüssigkeit beschreibt, sondern die Impulsänderung der sich momentan an einem Ort befindenden Masse. 
 Man kann also anstelle ein sich durch den Raum bewegendes Masseteilchen ein festes Volumenelement simulieren, welches bei der Fluid-dynamik-Simulation die bevorzugte Methode ist.
-Auch zu sehen ist hier das dyadische Produkt das mit $\vb{u}\otimes \vb{u}$ gebildet wird.
-Es wird verwendet, um mit dem Term $\nabla \cdot(\rho\vb{u}\otimes \vb{u})$, eine Advektion zu beschreiben.
+Auch zu sehen ist hier das dyadische Produkt das mit $\mathbf{u}\otimes \mathbf{u}$ gebildet wird.
+Es wird verwendet, um mit dem Term $\nabla \cdot(\rho\mathbf{u}\otimes \mathbf{u})$, eine Advektion zu beschreiben.
 Das dyadische Produkt, auch Tensorprodukt genannt, beschreibt eine Matrix aller Komponenten der Vektoren miteinander Multipliziert.
-Wendet man es auf den Geschwindigkeitsvektor $\vb{u}$ an, erhält man
+Wendet man es auf den Geschwindigkeitsvektor $\mathbf{u}$ an, erhält man
 \begin{equation}
-\vb{u}\otimes \vb{u}
+\mathbf{u}\otimes \mathbf{u}
 = 
 \begin{bmatrix}
 	u_x u_x &  u_x u_y & u_x u_z \\
@@ -216,16 +216,16 @@ der die totale Energieänderung beschreibt, die Energie jeweils mit der Dichte $
 Nun muss anhand des Zuflusses mechanischer und thermischer Energie die Änderung der totalen Energie bestimmt werden.
 Dabei wird noch zwischen internen und externen Energiequellen unterschieden.
 Total muss man also zwischen vier unterschiedlichen Quellen unterscheiden, die eine Änderung der Energie im Kontrollvolumen verursachen.
-Die Änderung der thermischen Energie wird durch die Terme  $- \nabla \cdot \vb{q}$ und  $\rho r$ dargestellt, wobei der erste einen Zufluss durch die Oberfläche des Kontrollvolumens und der zweite eine Energiequelle im Inneren desselben beschreibt.
-Dabei sind $\vb{q}$ und $r$ auf Fläche respektive Volumen normalisierte Wärmequellen.
-Die mechanischen Energiequellen werden durch die Terme $\nabla \cdot (\sigma \cdot \vb{u})$ und $\rho \vb{b} \cdot \vb{u}$ beschrieben.
+Die Änderung der thermischen Energie wird durch die Terme  $- \nabla \cdot \mathbf{q}$ und  $\rho r$ dargestellt, wobei der erste einen Zufluss durch die Oberfläche des Kontrollvolumens und der zweite eine Energiequelle im Inneren desselben beschreibt.
+Dabei sind $\mathbf{q}$ und $r$ auf Fläche respektive Volumen normalisierte Wärmequellen.
+Die mechanischen Energiequellen werden durch die Terme $\nabla \cdot (\sigma \cdot \mathbf{u})$ und $\rho \mathbf{b} \cdot \mathbf{u}$ beschrieben.
 Hier handelt es sich beim ersten Term wieder um einen Zufluss an mechanischer Energie durch die Oberfläche des Kontrollvolumens.  Der zweite Term beschreibt hier aber die Änderung der potenziellen Energie aufgrund von Kräften, wie der Schwerkraft, die auf die gesamte Masse im Volumen wirken.
 Aus allen diesen Termen zusammen lässt sich die Differentialgleichung
 \begin{equation}
 \label{openfoam:euler3}
 \rho \frac{De}{Dt}+  \rho \frac{DK}{Dt}
 =
-- \nabla \cdot \vb{q} + \rho r + \nabla \cdot (\sigma \cdot \vb{u}) + \rho \vb{b} \cdot \vb{u} 
+- \nabla \cdot \mathbf{q} + \rho r + \nabla \cdot (\sigma \cdot \mathbf{u}) + \rho \mathbf{b} \cdot \mathbf{u} 
 \end{equation} 
 bilden.
 
@@ -242,20 +242,20 @@ Sie beschreibt die Veränderung des Impulses in einem Kontrollvolumen aufgrund i
 Die Kräfte die durch Druckunterschiede hervorgerufen werden, werden mit dem Term $- \nabla p$ beschrieben.
 Man nimmt also die negative Divergenz des Druckfeldes um alle Kräfte, die von Gebieten mit höherem Druck zu Gebieten mit tieferem Druck zeigen, zu beschreiben.
 
-Der nächste benötigte Term ist $\mu \Delta \vb{u}$, darin wird ein Impulstransport zwischen Schichten der Flüssigkeit mit unterschiedlicher Geschwindigkeit beschrieben.
+Der nächste benötigte Term ist $\mu \Delta \mathbf{u}$, darin wird ein Impulstransport zwischen Schichten der Flüssigkeit mit unterschiedlicher Geschwindigkeit beschrieben.
 Dazu nutzt man die kinematische Viskosität $\mu$, sie beschreibt wie viel Kraft benötigt wird, zwei Schichten einer Flüssigkeit aneinander vorbei zu bewegen.
 Die zu überwindenden Kräfte entstehen dabei durch Intermolekulare Verbindungen wie die Van-der-Waals-Kräfte.
-Der zweite Teil, $\Delta \vb{u}$, beschreibt wie sich ein Impuls in der Flüssigkeit ausgleicht.
+Der zweite Teil, $\Delta \mathbf{u}$, beschreibt wie sich ein Impuls in der Flüssigkeit ausgleicht.
 Dazu wird der Laplace-Operator auf das Geschwindigkeitsfeld angewandt.
 
 Den letzten Term den wir benötigen beschreibt die Impulsänderung aufgrund Kräften die auf das ganze Kontrollvolumen wirken.
-Dieser Term, $\rho \vb{b}$, wird aus der Gleichung \eqref{openfoam:euler2} wiederverwendet.
+Dieser Term, $\rho \mathbf{b}$, wird aus der Gleichung \eqref{openfoam:euler2} wiederverwendet.
 
 Diese drei Terme zusammen beschreiben die Impulsänderung 
 \begin{equation}
-\rho \frac{D\vb{u}}{Dt}
+\rho \frac{D\mathbf{u}}{Dt}
 =
-- \nabla p + \mu \Delta \vb{u} +\rho \vb{b} 
+- \nabla p + \mu \Delta \mathbf{u} +\rho \mathbf{b} 
 .\end{equation}
 Dadurch das diese Impulserhaltungsgleichung die Reibung der Flüssigkeit beachtet, eignet sie sich besser, um turbulente Flüssigkeiten zu simulieren. 
 
@@ -273,23 +273,23 @@ So werden zum Beispiel die Geschwindigkeit und Temperatur einer Region fest best
 Druck und Geschwindigkeit sind aber nicht unabhängig voneinander, daher muss der Druck frei belassen werden und es wird anstelle eines festen Wertes der Gradient des Druckes fest auf 0 gesetzt.
 So erhält man drei Bedingungen 
 \begin{align*}
- \nabla p(\vb{x}) &= 0 \\
- \vb{u}(\vb{x}) &= \vb{u}_{\text{in}} \\
- T(\vb{x}) &= T_{\text{in}}
+ \nabla p(\mathbf{x}) &= 0 \\
+ \mathbf{u}(\mathbf{x}) &= \mathbf{u}_{\text{in}} \\
+ T(\mathbf{x}) &= T_{\text{in}}
 \end{align*}
-für einen Punkt des Randes $\vb{x}$.
-Wendet man diese Bedingungen auf allen Punkten in einem Bereich an, führen sie dazu, dass auf diesem Teil des Randes die Flüssigkeit mit Geschwindigkeit $\vb{u}_{\text{in}}$ und Temperatur $T_{\text{in}}$ in die Lösungs-Domain fliesst.
+für einen Punkt des Randes $\mathbf{x}$.
+Wendet man diese Bedingungen auf allen Punkten in einem Bereich an, führen sie dazu, dass auf diesem Teil des Randes die Flüssigkeit mit Geschwindigkeit $\mathbf{u}_{\text{in}}$ und Temperatur $T_{\text{in}}$ in die Lösungs-Domain fliesst.
 
 \subsubsection{Outlet}
 Ein Outlet wird meist genau umgekehrt modelliert als ein Inlet.
 Dabei wird die Temperatur und Geschwindigkeit nicht auf einen festen Wert gelegt, sondern es wird der Gradient dieser Variablen auf null gesetzt und der Druck wird auf einen festen Wert gelegt.
 Dies führt zu den Bedingungen
 \begin{align*}
- p(\vb{x}) &= p_{\text{out}} \\
- \nabla\vb{u}(\vb{x}) &= 0 \\
- \nabla T(\vb{x}) &= 0
+ p(\mathbf{x}) &= p_{\text{out}} \\
+ \nabla\mathbf{u}(\mathbf{x}) &= 0 \\
+ \nabla T(\mathbf{x}) &= 0
 \end{align*}
-für einen Punkt des Randes $\vb{x}$.
+für einen Punkt des Randes $\mathbf{x}$.
 Wendet man diese Bedingungen auf allen Punkten in einem Bereich an, resultiert dies darin, dass dieser Bereich des Randes den selben Druck, $p_{\text{out}}$,  wie die Umgebung ausserhalb der Lösungs-Domain aufweist.
 Das führt dazu dass die Flüssigkeit frei aus der Lösungs-Domain fliessen kann.
 
@@ -301,8 +301,8 @@ Dadurch kann die Grenzschicht modelliert werden. Diese besagt, dass die Luft, di
 Dabei ist die Dicke dieser unbewegten Luftschicht abhängig von der Luftgeschwindigkeit und der kinematischen Viskosität.
 Mathematisch beschreibt man dies mit den Bedingungen
 \begin{align*}
- \nabla p(\vb{x}) &= 0 \\
-\vb{u}(\vb{x}) &= 0 ,
+ \nabla p(\mathbf{x}) &= 0 \\
+\mathbf{u}(\mathbf{x}) &= 0 ,
 \end{align*}
 diese gelten für alle undurchlässigen Bereiche des Randes und die Oberfläche des Objektes.
 
