@@ -10,10 +10,12 @@ nicht nur über eine Rotationsebene rotiert werden kann. Um die Rotation um beli
 Richtung in drei Dimensionen zu ermöglichen, gibt es in der herkömmlichen Geometrie zwei Möglichkeiten. Entweder
 man berechnet die Rotationsmatrix, die eine direkte Rotation ermöglicht, oder man arbeitet mit den drei bereits bekannten
 Rotationsmatrizen um die $x, y, z$-Achsen. Dabei müssen bis zu drei
-Rotationen an den drei Rotationsachsen $x, y, z$ nacheinander ausgeführt werden.
+Rotationen an den drei Rotationsachsen $x, y, z$ nacheinander ausgeführt werden, wobei ein
+Gimbal-Lock\footnote{\url{https://de.wikipedia.org/wiki/Gimbal_Lock}} auftreten kann. Dies ist ein Zustand, wo sich zwei der drei Rotationachsen genau gleich ausrichten und somit ein Freiheitsgrad verloren geht.
 Beide Wege führen zu Berechnungen, die um ein Vielfaches
 schwieriger durchzuführen sind und sind insbesondere bei Computergrafiken von Nachteil, da sie sowohl in Laufzeit,
 als auch in Speichereffizienz wesentlich komplexer sind.
 
-Die geometrische Algebra ermöglicht Transformationen ohne Drehmatrizen und ohne Gimbal-Lock und kann an einer beliebigen
-Ebene durchgeführt werden. Berechnungen sind sehr effizient in Laufzeit und Speicher.
+Die geometrische Algebra ermöglicht Transformationen ohne Drehmatrizen, ohne Gimbal-Lock und kann an einer beliebigen
+Ebene durchgeführt werden. Berechnungen sind sehr laufzeit- und speichereffizient.
+Sie definiert Transformationen einheitlich mithilfe des geometrischen Produkts.
