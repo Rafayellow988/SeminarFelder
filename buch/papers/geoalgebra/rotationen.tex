@@ -93,7 +93,7 @@ Daher sind $R$ und $\tilde{R}$:
 Dies erzeugt jedoch wie gesehen die Rotation um den doppelten Winkel $2 \theta$. Wir ersetzen $\alpha = 2\theta$ und erhalten die Rotation um
 den tatsächlichen Vektor $\alpha$
 \begin{equation}
-  \mathbf{x}'' = \left(\cos{\frac{\alpha}{2}} - \sin{\frac{\alpha}{2}} \eot \right) \mathbf{x} \left(\cos{\frac{\alpha}{2}} + \sin{\frac{\alpha}{2}} \eot \right).
+  \mathbf{x}'' = \biggl(\cos{\frac{\alpha}{2}} - \sin{\frac{\alpha}{2}} \eot \biggr) \mathbf{x} \biggl(\cos{\frac{\alpha}{2}} + \sin{\frac{\alpha}{2}} \eot \biggr).
 \end{equation}
 
 
@@ -107,10 +107,10 @@ Somit gilt
 \begin{equation}
   \newcommand{\fraction}{\frac{\sqrt{2}}{2}}
   \begin{aligned}
-    \mathbf{x}'' &= \left( \cos{\frac{\alpha}{2}} - \sin{\frac{\alpha}{2}} \eot \right) \biggl(\eone + \etwo\biggr) \left(\cos{\frac{\alpha}{2}} + \sin{\frac{\alpha}{2}} \eot\right) \\
-    &= \left( \fraction - \fraction \eot \right) \biggl(\eone + \etwo\biggr) \left( \fraction + \fraction \eot \right) \\
-    &= \left( \fraction \eone + \fraction \etwo + \fraction \etwo - \fraction \eone \right) \left( \fraction + \fraction \eot \right) \\
-    &= \sqrt{2} \etwo \left( \fraction + \fraction \eot \right) \\
+    \mathbf{x}'' &= \biggl( \cos{\frac{\alpha}{2}} - \sin{\frac{\alpha}{2}} \eot \biggr) \biggl(\eone + \etwo\biggr) \biggl(\cos{\frac{\alpha}{2}} + \sin{\frac{\alpha}{2}} \eot\biggr) \\
+    &= \biggl( \fraction - \fraction \eot \biggr) \biggl(\eone + \etwo\biggr) \biggl( \fraction + \fraction \eot \biggr) \\
+    &= \biggl( \fraction \eone + \fraction \etwo + \fraction \etwo - \fraction \eone \biggr) \biggl( \fraction + \fraction \eot \biggr) \\
+    &= \sqrt{2} \etwo \biggl( \fraction + \fraction \eot \biggr) \\
     &= -\eone + \etwo,
   \end{aligned}
 \end{equation}
@@ -139,11 +139,11 @@ Somit ist
     \newcommand{\fraca}{\frac{\sqrt{3}}{2}}
     \newcommand{\fracb}{\frac{1}{2}}
     \begin{aligned}
-    \mathbf{x}'' &= \left( \cos{\frac{\alpha}{2}} - \sin{\frac{\alpha}{2}} \eot \right) \biggl(2 \eone + 3 \etwo + 4 \ethree\biggr) \left(\cos{\frac{\alpha}{2}} + \sin{\frac{\alpha}{2}} \eot\right) \\
-      &= \left(\fraca - \fracb \eot \right) \biggl(2\eone + 3 \etwo + 4 \ethree\biggr) \left(\fraca + \fracb \eot \right) \\
-      &= \left(\sqrt{3} \eone + \frac{3\sqrt{3}}{2} \etwo + 2\sqrt{3}\ethree + \etwo - \frac{3}{2}\eone - 2 \mathbf{e}_{123}\right) \left(\fraca + \fracb \eot\right) \\
-      &= \left( \left( \sqrt{3} - \frac{3}{2} \right) \eone + \left(\frac{3\sqrt{3}}{2} + 1\right)\etwo + 2 \sqrt{3} \ethree - 2 \mathbf{e}_{123} \right) \left(\fraca + \fracb \eot\right) \\
-      &= \left(1 - \frac{3 \sqrt{3}}{2}\right) \eone + \left(\frac{3}{2} + \sqrt{3}\right) \etwo + 4 \ethree \\
+    \mathbf{x}'' &= \biggl( \cos{\frac{\alpha}{2}} - \sin{\frac{\alpha}{2}} \eot \biggr) \biggl(2 \eone + 3 \etwo + 4 \ethree\biggr) \biggl(\cos{\frac{\alpha}{2}} + \sin{\frac{\alpha}{2}} \eot\biggr) \\
+      &= \biggl(\fraca - \fracb \eot \biggr) \biggl(2\eone + 3 \etwo + 4 \ethree\biggr) \biggl(\fraca + \fracb \eot \biggr) \\
+      &= \biggl(\sqrt{3} \eone + \frac{3\sqrt{3}}{2} \etwo + 2\sqrt{3}\ethree + \etwo - \frac{3}{2}\eone - 2 \mathbf{e}_{123}\biggr) \biggl(\fraca + \fracb \eot\biggr) \\
+      &= \biggl( \biggl( \sqrt{3} - \frac{3}{2} \biggr) \eone + \biggl(\frac{3\sqrt{3}}{2} + 1\biggr)\etwo + 2 \sqrt{3} \ethree - 2 \mathbf{e}_{123} \biggr) \biggl(\fraca + \fracb \eot\biggr) \\
+      &= \biggl(1 - \frac{3 \sqrt{3}}{2}\biggr) \eone + \biggl(\frac{3}{2} + \sqrt{3}\biggr) \etwo + 4 \ethree \\
       &= \begin{pmatrix} 1 - \frac{3 \sqrt{3}}{2} \\ \frac{3}{2} + \sqrt{3} \\ 4 \end{pmatrix},
     \end{aligned}
   \end{equation}
