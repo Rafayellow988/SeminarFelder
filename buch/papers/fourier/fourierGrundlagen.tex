@@ -31,24 +31,23 @@ Der Summations- bzw. Frequenzindex wird mit $n$ bezeichnet, über den im Folgend
 	\begin{equation}
 		a_n = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t) \cos\left(n\omega t\right) dt.
 	\end{equation}
-	Die $a_n$ skalieren den geraden Anteil der Funktion, also die Cosinus-Anteile. 
-	Eine gerade Funktion ist definiert mit $f_1(-t) = f_1(t)$. 
+	Die $a_n$ skalieren den geraden Anteil der Funktion, also die Kosinusanteile. 
+	Eine gerade Funktion ist definiert durch die Eigenschaft $f_1(-t) = f_1(t)$. 
 	
 	
 	\item $b_n$ ist definieren mit 
 	\begin{equation}
-		b_n = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t) \sin\left(n\omega t\right) dt
+		b_n = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t) \sin\left(n\omega t\right) dt.
 	\end{equation}
-	Die $b_n$ skalieren den ungeraden Anteil der Funktion, also die Sinus-Anteile. 
-	Eine ungerade Funktion ist definiert mit $f_1(-t) = -f_1(t)$. 
+	Die $b_n$ skalieren den ungeraden Anteil der Funktion, also die Sinusanteile. 
+	Eine ungerade Funktion ist definiert durch die Eigenschaft $f_1(-t) = -f_1(t)$. 
 	
 \end{itemize}
 
 
 Sind alle Koeffizienten bestimmt, lässt sich nahezu jede periodische Funktion beliebig genau approximieren.
-Funktionen mit Sprungstellen bilden dabei jedoch eine Ausnahme. 
-Die Koeffizienten $a_n$ und $b_n$ gewichten die Cosinus- bzw Sinus-Anteile der Schwingung für $n \ge 1$.
-Je nach Ausgangsfunktion können die Abhängigkeiten $a_n(n)$ und $b_n(n)$ komplexe Formen annehmen.
+Die Koeffizienten $a_n$ und $b_n$ gewichten die Sinusanteile und Kosinusanteile der Schwingung für $n \ge 1$.
+Je nach Ausgangsfunktion können die Abhängigkeiten der Koeffizienten von $n$ komplexe Formen annehmen.
 Im Allgemeinen nehmen die Amplituden mit wachsendem $n$ ab und das Abklingverhalten hängt von der Funktion ab und lässt sich nicht verallgemeinern.
 Mit jedem Summanden der Reihe erhöht sich die Frequenz des Terms proportional zum Index $n$.
 Die Fourier-Reihe lautet dann 
@@ -58,12 +57,10 @@ f(t) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left( a_n \cos\left( n\omega t \righ
 \end{equation}
 
 
-
 \begin{beispiel}
 
-\input{papers/fourier/fig/fig-fourier_Dreieck.tex}
-
 Im Beispiel zur Dreiecksfunktion (Abbildung~\ref{fourier:fig:fourierdreieck}) entspricht  
+\index{Dreiecksfunktion}%
 \begin{equation}
 	f_1(t) = \sum_{\substack{n=1 \\ n\ \text{ungerade}}}^{5} \frac{-8}{\pi^2 n^2} \cos(n\pi t)
 \end{equation}
@@ -72,15 +69,16 @@ Da $f_1$ gerade ist, sind alle Sinuskoeffizienten $b_n=0$ und die Kosinuskoeffiz
 Der Mittelwert ist $a_0=0$.  
 Bei der Fourier-Reihenbildung kann man sich viel Zeit ersparen, wenn man zuerst überprüft, ob es sich um eine gerade oder ungerade Funktion handelt.
 So kann man ohne zu rechnen $a_n$ oder $b_n$ gleich Null setzen.
+\input{papers/fourier/fig/fig-fourier_Dreieck.tex}
 \end{beispiel}
 
-
+Während sich die Dreiecksfunktion aufgrund ihrer Stetigkeit beliebig genau durch eine Fourier-Reihe darstellen lässt, zeigt sich bei Funktionen mit Sprungstellen ein anderes Verhalten. Ein solches Beispiel wird im Folgenden betrachtet.
 
 \begin{beispiel}
 
-\input{papers/fourier/fig/fig-fourier_Rechteck.tex}
-
-In der Rechtecksfunktion (Abbildung~\ref{fourier:fig:fourierrechteck}) mit Sprungstelle tritt das Gibbssche Phänomen auf.  
+In der Rechtecksfunktion (Abbildung~\ref{fourier:fig:fourierrechteck}) mit Sprungstelle tritt das gibbssche Phänomen auf.  
+\index{Phänomen von Gibbs}%
+\index{Gibbs-Phänomen}%
 In der Nähe eines Sprungs entsteht ein charakteristischer Überschwinger, der selbst bei unendlich vielen Summanden nicht verschwindet.
 Das Gleichheitszeichen in \eqref{eq:fourier} gilt daher nur eingeschränkt.  
 Die Fourier-Reihe bis $n=5$ lautet
@@ -88,8 +86,8 @@ Die Fourier-Reihe bis $n=5$ lautet
 	f_2(t) = \frac{1}{2} + \sum_{\substack{n=1 \\ n\ \text{ungerade}}}^{5} \frac{2}{\pi n} \sin\left( \pi n t \right)
 \end{equation}
 und entspricht der roten Kurve.  
-Da die Rechteckfunktion um den Mittelwert $\frac{a_0}{2}=\frac{1}{2}$ ungerade ist, sind alle Cosinuskoeffizienten $a_n=0$ und die Sinuskoeffizienten bleiben nur für ungerade $n$ ungleich $0$.  
-
+Da die Rechteckfunktion um den Mittelwert $\frac{a_0}{2}=\frac{1}{2}$ ungerade ist, sind alle Kosinuskoeffizienten $a_n=0$ und die Sinuskoeffizienten bleiben nur für ungerade $n$ ungleich $0$.  
+\input{papers/fourier/fig/fig-fourier_Rechteck.tex}
 \end{beispiel}
 
 
