@@ -15,7 +15,8 @@ Dafür nehmen wir die explizite Form einer Fläche $z = f(x,y)$.
 Die Variablen sind nun nicht mehr $u, v$ sondern $x, y$.
 Nun brauchen wir die Koeffizienten der Fundamentalformen, welche mit dem Radiusvektor $\vec r$ und seinen Ableitungen 
 beschrieben werden können
-\begin{align}
+\begin{equation*}
+\begin{aligned}
   \vec r &= \begin{pmatrix}
    x \\
    y \\
@@ -48,8 +49,9 @@ beschrieben werden können
       0 \\
       0 \\
       \frac{\partial^2 f}{\partial y^2}
-    \end{pmatrix}\\
-\end{align}
+    \end{pmatrix}
+\end{aligned}
+\end{equation*}
 Damit sind die Koeffizienten der ersten Fundamentalform 
 \begin{equation}
   E = 1 + \left(\frac{\partial f}{\partial x}\right)^2, \quad
@@ -70,20 +72,22 @@ Für die zweite Fundamentalform wird die Flächennormale benötigt, welche aus \
 ist.
 Somit sind die Koeffizienten der zweiten Fundamentalform
 \begin{equation}
-  L = \frac{\frac{\partial^2 f}{\partial x^2}}{\sqrt{EG-F}}, \quad
-  M = \frac{\frac{\partial^2 f}{\partial x \, \partial y}}{\sqrt{EG-F}}, \quad
-  N = \frac{\frac{\partial^2 f}{\partial y^2}}{\sqrt{EG-F}}
+  L = \frac{\displaystyle\frac{\partial^2 f}{\partial x^2}}{\sqrt{EG-F}}, \quad
+  M = \frac{\displaystyle\frac{\partial^2 f}{\partial x \, \partial y}}{\sqrt{EG-F}}, \quad
+  N = \frac{\displaystyle\frac{\partial^2 f}{\partial y^2}}{\sqrt{EG-F}}.
   \label{mongeampere:2fund22}
 \end{equation}
 Setzen wir die Koeffizienten aus \eqref{mongeampere:fund1exp} und \eqref{mongeampere:2fund22} in die Formel der gausschen Krümmung \eqref{mongeampere:gausskrumm}
 ein, erhalten wir
 \begin{equation}
   K = \frac{
-    \frac{\partial^2 f}{\partial x^2} \cdot \frac{\partial^2 f}{\partial y^2} - \left(\frac{\partial^2 f}{\partial x \, \partial y} \right)^2}
+    \displaystyle\frac{\partial^2 f}{\partial x^2} \cdot \displaystyle\frac{\partial^2 f}{\partial y^2} - \left(\displaystyle\frac{\partial^2 f}{\partial x \, \partial y} \right)^2}
     {\left[1 + 
-    \left(\frac{\partial f}{\partial x}\right)^2 +
-    \left(\frac{\partial f}{\partial y}\right)^2\right]^2}.
-  \label{mongeampere:pd}
+    \left(\displaystyle\frac{\partial f}{\partial x}\right)^2 +
+    \left(\displaystyle\frac{\partial f}{\partial y}\right)^2\right]^2} \Rightarrow
+    \det D^2 f = K \left[ 1 + 
+    \left(\nabla f\right)^2\right]^2
+    \label{mongeampere:pd}
 \end{equation}
 Wie wir sehen können, ist der Zähler gleich der Determinante der hesseschen Matrix von $f(x,y)$.
 Der Nenner ist eine nichtlineare Funktion der ersten Ableitungen.

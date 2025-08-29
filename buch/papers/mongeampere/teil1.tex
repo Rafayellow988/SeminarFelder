@@ -24,7 +24,7 @@ Die Fläche kann man in der Parameterform auch als Radiusvektor
   \begin{pmatrix}
     x(u,v) \\
     y(u,v) \\
-    z(u,v) \\
+    z(u,v). \\
   \end{pmatrix}
   \label{mongeampere:rad}
 \end{equation}
@@ -36,12 +36,12 @@ mit welchen die Flächennormale
   \vec m = \frac{\vec r_u \times \vec r_v}{\sqrt{(\vec r_u \times \vec r_v)^2}} 
   \label{mongeampere:norm}
 \end{equation}
-beschrieben werden kann, wobei $(\cdot)^2$ für das Skalarprodukt eines Vektores mit sich selber steht.
+beschrieben werden kann, wobei $(\cdot)^2$ für das Skalarprodukt eines Vektors mit sich selber steht.
 
 \subsection{Erste Fundamentalform
 \label{mongeampere:subsection:finibus}}
 Die erste Fundamentalform beschreibt die innere Geometrie einer Fläche.
-Betrachtet man das Quadrate des Bogendifferential einer auf der Fläche 
+Betrachtet man das Quadrat des Bogendifferential einer auf der Fläche 
 beschriebenen Kurve $S(u,v)$ so ist 
 \begin{equation}
   \begin{split}
@@ -58,7 +58,8 @@ Rechnet man die Klammern aus, erhält man
     \label{mongeampere:1fundform}
 \end{equation}
 mit
-\begin{align}
+\begin{equation*}
+\begin{aligned}
      E(u,v) &= \left(\frac{\partial x}{\partial u} \right)^2 +
      \left(\frac{\partial y}{\partial u} \right)^2 +
      \left(\frac{\partial z}{\partial u} \right)^2 
@@ -73,7 +74,8 @@ mit
      \left(\frac{\partial z}{\partial v} \right)^2 
              &=& \vec r_v ^2\\
   \label{mongeampere:1fundbed}
-\end{align}
+\end{aligned}
+\end{equation*}
 Diese Formulierung des Bogendifferentials ist als erste Fundamentalform bekannt.
 Man kann sie auch in Form des metrischen Tensors 
 \begin{equation}
@@ -133,11 +135,11 @@ mit den Koeffizienten
 Die zweite Fundamentalform beschreibt, wie stark sich die Fläche an einem Punkt
 von der Tangentialebene entfernt, wenn sich die Parameter etwas ändern.
 In \eqref{mongeampere:2fund2} haben wir die zweite Fundamentalform in Richtung einer Flächenkurve mit
-dem Quadrat ihres Bigendifferentiales normalisiert.
-Damit erhielten wir den Anteil der Krümmung der Flächenkruve, die von der Krümmung der Fläche kommt.
+dem Quadrat ihres Bogendifferentiales normalisiert.
+Damit erhielten wir den Anteil der Krümmung der Flächenkurve, die von der Krümmung der Fläche kommt.
 
 \subsection{Krümmung}
-Um den Begriff der Krümmung auf einer Fläche etwas besser zu verstehen
+Um den Begriff der Krümmung auf einer Fläche etwas besser zu verstehen,
 untersuchen wir die Krümmung von Normalenschnitte.
 Ein Normalenschnitt ist die Schnittkurve, zwischen der Fläche und der Ebene, welche durch einen Vektor auf 
 der Tangentialebene der Fläche und der Flächennormalen aufgespannt wird.
@@ -146,10 +148,10 @@ der Tangentialebene der Fläche und der Flächennormalen aufgespannt wird.
     \includegraphics[width=0.95\textwidth]{papers/mongeampere/images/schnittkurven.pdf}
   \end{center}
   \caption{Schnittkurve auf einem Ellipsoid. Der Tangentialvektor $\vec t$ und die Flächennormale $\vec m$ spannen eine Ebene auf, 
-  dessen Schnitt mit der Fläche die Schnittkurve $y(t)$ ergibt.}\label{mongeampere:fig:schnitt}
+  dessen Schnitt mit der Fläche die Schnittkurve $y(t)$ ergibt. In Gelb sind die Parameterkurven von $u$ und $v$ dargestellt.}\label{mongeampere:fig:schnitt}
 \end{figure}
 In Abbildung \ref{mongeampere:fig:schnitt} ist ein Beispiel einer solchen Schnittkurve zu sehen.
-Die Schnittkurve ist nur von der Richtung des Tangentialvektors abhängig, welche durch $d u$ und $d v$ charakterisiert wird.
+Die Schnittkurve ist nur von der Richtung des Tangentialvektors abhängig, welche durch das Verhältnis von $d u$ und $d v$ charakterisiert wird.
 Da die Normale eines Normalenschnittes bis auf das Vorzeichen gleich der Flächennormale ist, ist der 
 Krümmungsradius
 \begin{equation}
@@ -212,8 +214,8 @@ Sie is definiert als
   K = \frac{1}{R_1 R_2} = \frac{LN-M^2}{EG-F^2}.
   \label{mongeampere:gausskrumm}
 \end{equation}
-Da sie die beiden Hauptkrümmungsradien multipliziert, ist sie immer positiv wenn 
-beide Krümmungradien das gleiche Vorzeichen haben, und negativ falls sie sich unterscheiden.
+Da sie die beiden Hauptkrümmungsradien multipliziert, ist sie immer positiv, wenn 
+beide Krümmungradien das gleiche Vorzeichen haben, und negativ, falls sie sich unterscheiden.
 Ausserdem lässt sich anhand des Vorzeichens bestimmen, ob ein Punkt elliptisch, hyperbolisch oder parabolisch 
 ist, da die Diskriminante der zweiten Normalform im Zähler ist.
 
