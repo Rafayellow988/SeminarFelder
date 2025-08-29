@@ -38,7 +38,7 @@ Wir werden uns im Abschnitt \ref{openfoam:section:Anfangsbedingungen} nochmals d
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.55\textwidth]{papers/openfoam/Bilder/Ordnerstruktur_Simuliert.jpg}
+    \includegraphics[width=0.85\textwidth]{papers/openfoam/Bilder/Ordnerstruktur_Simuliert.jpg}
     \caption{Ordnerstruktur nach der Simulation, 0,5...60 die Zeitpunkte, die in Paraview dargestellt werden können.}
     \label{fig:ordStrktSim}
 \end{figure}
@@ -112,14 +112,14 @@ Im Dokument \texttt{surfaceFeature}\-\texttt{ExtractDict} werden die Parameter d
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.55\textwidth]{papers/openfoam/Bilder/Snappy_grob.png}
+    \includegraphics[width=\textwidth]{papers/openfoam/Bilder/Snappy_grob.png}
     \caption{Mesh nach dem ersten Durchlauf von snappyHexMesh}
     \label{fig:snappygrobbild}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.55\textwidth]{papers/openfoam/Bilder/Snappy_fein.png}
+    \includegraphics[width=\textwidth]{papers/openfoam/Bilder/Snappy_fein.png}
     \caption{Mesh nach dem mehrfachen Durchlaufen von snappyHexMesh}
     \label{fig:snappyfeinbild}
 \end{figure}
@@ -232,13 +232,18 @@ Abbildung \ref{fig:vorschWindWestBlocky} zeigt dasselbe Ergebnis, jedoch mit der
 \begin{figure}
     \centering
     \includegraphics[width=1\textwidth]{papers/openfoam/Bilder/Beispiel_Paraview.png}
-    \caption{Bedienung von \texttt{ParaView}\\ oben links: slice auswählen\\ oben mitte: Zeitschritte\\ unten links: Parameter}
+    \caption{Bedienung von \texttt{ParaView}. Die drei wichtigsten Elemente
+sind rot hervorgehben.
+Oben links: slice auswählen, oben mitte: Zeitschritte, unten links: Parameter.}
     \label{fig:Beispiel_Paraview}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=1\textwidth]{papers/openfoam/Bilder/vorschlag_Wind_Westen_10m_blocky.png}
+\begin{tikzpicture}
+\clip (-6.3,-4.1) rectangle (6.3,4.1);
+\node at (-0.3,0.2) {\includegraphics[width=1.4\textwidth]{papers/openfoam/Bilder/vorschlag_Wind_Westen_10m_blocky.png}};
+\end{tikzpicture}
     \caption{Gleiches Bild wie auf dem Buchumschlag, jedoch mit den einzelnen Simulationszellen sichtbar.}
     \label{fig:vorschWindWestBlocky}
 \end{figure}
