@@ -26,6 +26,7 @@
 #declare kurvenfarbe = rgb<0.8,0,0>;
 #declare tangentialvektorfarbe = rgb<0.8,0.2,0.8>;
 #declare normalenfarbe = rgb<0,0.6,0>;
+#declare basisfarbe = rgb<0.2,0.6,1.0>;
 
 place_camera(<53, 30, -40>, <0, sz, 0>, 16/9, 0.0175)
 lightsource(<-10, 30, -40>, 10, 0.5 * White)
@@ -219,3 +220,6 @@ union {
 		specular 0.9
 	}
 }
+
+arrow( <0, sz, 0>, <0, sz, 0> + <0.5, 0, 0>, kurvenradius, basisfarbe)
+arrow( <0, sz, 0>, <0, sz, 0> - <0, 0, 0.5>, kurvenradius, basisfarbe)
