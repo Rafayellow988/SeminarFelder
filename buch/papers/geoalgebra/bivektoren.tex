@@ -9,6 +9,8 @@
 Durch das Wedgeprodukt zwischen $\acolored$ und $\bcolored$ erhalten wir
 den
 Bivektor $\acolored \wedge \bcolored$. Einen Bivektor können wir uns als \emph{orientierte Fläche}, die zwischen den beiden Vektoren aufgespannt
+\index{Bivektor}%
+\index{orientierte Fläche}%
 wird, vorstellen (siehe \autoref{geoalgebra:fig:bivektor-als-flaeche}).
 \begin{figure}
   \begin{center}
@@ -40,6 +42,7 @@ $\bcolored$ am Vektor $\acolored$ aufspannen (siehe \autoref{geoalgebra:fig:aufs
 In diesem Fall entsteht eine im Uhrzeigersinn orientierte Fläche mit demselben
 Flächeninhalt. Laut Axiom \eqref{geoalgebra:eq:antikommutativ} ist das Wedgeprodukt
 \emph{antikommutativ}, d.~h. $\a \wedge \b = -\b \wedge \a$. Das Vorzeichen bestimmt also,
+\index{antikommutativ}%
 wie die Fläche orientiert ist.
 
 \begin{figure}
@@ -51,6 +54,7 @@ wie die Fläche orientiert ist.
 \end{figure}
 
 Eine positive, orientierte Fläche ist generell einem Umlaufsinn \emph{im Uhrzeigersinn}
+\index{Umlaufsinn}%
 zuzuordnen, eine negative, orientierte Fläche bedeutet ein Umlaufsinn \emph{im Gegenuhrzeigersinn}.
 
 
@@ -58,19 +62,18 @@ zuzuordnen, eine negative, orientierte Fläche bedeutet ein Umlaufsinn \emph{im 
 \label{geoalgebra:section:example}
 
 Angenommen, dass 
-\begin{equation}
-  \begin{aligned}
+\begin{align*}
     \mathbf{a} &= \begin{pmatrix} 3 \\ 1 \end{pmatrix} = 3 \eone + \etwo, \\
     \mathbf{b} &= \begin{pmatrix} 1 \\ 2 \end{pmatrix} = \eone + 2 \etwo.
-  \end{aligned}
-\end{equation}
+\end{align*}
 Das Wedgeprodukt zwischen den beiden Vektoren ergibt
-\begin{equation}
-  \begin{aligned}
-    \mathbf{a} \wedge \mathbf{b} &= (3 \eone + \etwo) \wedge (\eone + 2 \etwo) \\
+\begin{align}
+    \mathbf{a} \wedge \mathbf{b} &= (3 \eone + \etwo) \wedge (\eone + 2 \etwo)
+\notag
+\\
     &= 5 \eone \wedge \etwo.
-  \end{aligned}
-\end{equation}
+\label{geoalgebra:bivektor:beispiel}
+\end{align}
 Der Flächeninhalt des aufgespannten Parallelogramms ist $5$ und im Gegenuhrzeigersinn orientiert.
 
 \subsection{Äquivalente Bivektoren}
@@ -87,14 +90,15 @@ und den anderen stauchen. Dies lässt sich bereits aus unseren Axiomen herleiten
 Sei
   \begin{align*}
     \a &= \begin{pmatrix} 3 \\ 1 \end{pmatrix} \\
-    \b &= \begin{pmatrix} 1 \\ 2 \end{pmatrix}
+    \b &= \begin{pmatrix} 1 \\ 2 \end{pmatrix}.
   \end{align*}
-Das Wedgeprodukt zwischen $\a$ und $\b$ ergibt
-  \begin{equation}
+Das Wedgeprodukt zwischen $\a$ und $\b$ ergibt gemäss
+\eqref{geoalgebra:bivektor:beispiel}
+  \begin{equation*}
     \a \wedge \b = 5 \eone \wedge \etwo.
-  \end{equation}
+  \end{equation*}
 
-  Wir strecken $\a$ und stauchen $\b$ um denselben Faktor $2$. Durch die Bilinearität (\eqref{geoalgebra:eq:bilinear}) ergibt
+  Wir strecken $\a$ und stauchen $\b$ um denselben Faktor $2$. Durch die Bilinearität \eqref{geoalgebra:eq:bilinear} ergibt
   \begin{equation*}
     2 \a \wedge \frac{1}{2} \b = 2 \frac{1}{2} \a \wedge \b = \a \wedge \b. \qedhere
   \end{equation*}
@@ -131,16 +135,17 @@ auf alle von den Standardbasisvektoren aufgespannten Ebenen.
 
 In \eqref{geoalgebra:eq:wedgeprodukt-dreidimensional} haben wir das Wedgeprodukt zwischen zwei Vektoren
 in drei Dimensionen bereits hergeleitet. Wir erhielten drei Summanden aus Wedgeprodukten mit skalaren Faktoren
-\begin{align*}
-&(a_1 b_2 - a_2 b_1) \eone \wedge \etwo \\
-  &+(a_2 b_3 - a_3 b_2) \etwo \wedge \ethree \\
-  &+(a_3 b_1 - a_1 b_3) \ethree \wedge \eone.
-\end{align*}
+\begin{equation*}
+(a_1 b_2 - a_2 b_1) \eone \wedge \etwo 
+  +(a_2 b_3 - a_3 b_2) \etwo \wedge \ethree 
+  +(a_3 b_1 - a_1 b_3) \ethree \wedge \eone.
+\end{equation*}
 Der Term $a_1 b_2 - a_2 b_1$ ist der Flächeninhalt der \emph{Projektion} (oder des ``Schattens'') des aufgespannten Parallelogramms auf die $\eone$-$\etwo$-Ebene.
+\index{Projektion}
 Analog dazu ist $a_2 b_3 - a_3 b_2$ der Flächeninhalt der Projektion auf die $\etwo$-$\ethree$-Ebene und $a_3 b_1 - a_1 b_3$ der Flächeninhalt
 der Projektion auf die $\ethree$-$\eone$-Ebene (siehe \autoref{geoalgebra:fig:bivectors-3d}).
 
-\begin{figure}[h]
+\begin{figure}
   \centering
   \includegraphics[width=0.4\textwidth]{papers/geoalgebra/assets/bivectors-3d.png}
   \caption{Bivektoren im dreidimensionalen Raum}
@@ -162,9 +167,9 @@ $\eone \wedge \etwo, \eone \wedge \ethree, \eone \wedge \mathbf{e}_{4}, \etwo \w
 Die Anzahl Komponenten, die aus einem Bivektor resultieren, hängt also von der Dimension des Vektorraums ab, den wir betrachten.
 Wie in \eqref{geoalgebra:eq:2d-wedgeproduct} bereits erkannt, fallen die Terme, welche Wedgeprodukte von gleichen Vektoren $\mathbf{v}_i \wedge \mathbf{v}_i$ beinhalten,
 immer weg, da diese Produkte $0$ ergeben. Ausserdem werden vertauschte Reihenfolgen einfach negiert und zusammengefasst: 
-\begin{equation}
+\begin{equation*}
   \lambda \mathbf{v}_i \wedge \mathbf{v}_j + \mu \mathbf{v}_j \wedge \mathbf{v_i} = \lambda \mathbf{v}_i \wedge \mathbf{v}_j - \mu \mathbf{v}_i \wedge \mathbf{v}_j = (\mu - \lambda) \mathbf{v}_i \wedge \mathbf{v}_j.
-\end{equation}
+\end{equation*}
 Wir erhalten also für jede Kombination von verschiedenen Basisvektoren eines Vektorraums eine Komponente.
 \begin{satz}
 Sei $N$ die Dimension des Vektorraumes. Die Dimension $K$ des Raums der Bivektoren berechnet sich als
