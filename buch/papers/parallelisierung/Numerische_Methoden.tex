@@ -112,7 +112,7 @@ Im Raum:
 \end{equation}
 und in der Zeit:
 \begin{equation}
-	t^n
+	t_n
 	=
 	n \cdot \Delta t.
 \end{equation}
@@ -121,7 +121,7 @@ Somit wird unsere resultierende, diskrete Temperaturfunktion die Form
 \begin{equation}
 	T^n_{i,j}
 	=
-	T(x_i,y_j,t^n)
+	T(x_i,y_j,t_n)
 \end{equation}
 haben.
 
@@ -132,11 +132,11 @@ Die partielle Ableitung der Temperaturfunktion \( T \) nach der Zeit wird durch 
 
 \begin{equation}
 	\label{parallelisierung:eq:discrete_time_derivative}
-	\left. \frac{\partial T}{\partial t}\right|_{(i,j,n)}
+	\left. \frac{\partial T}{\partial t}\right|{(i,j,n)}
 	\approx
 	\frac{T_{i,j}^{n+1} - T_{i,j}^n}{\Delta t}.
 \end{equation}
-Dies entspricht der zeitlichen Änderungsrate von \( T \) am diskreten Gitterpunkt \( (x_i, y_j, t^n) \).
+Dies entspricht der zeitlichen Änderungsrate von \( T \) am diskreten Gitterpunkt \( (x_i, y_j, t_n) \).
 
 \subsubsection{Diskretisierung des Raums}
 Auch hier beginen wir mit der einmaligen Anwendungen des Differentialquotienten (vorwärts), um die erste Ableitung, zunächst in $x$-Richtung zu approximieren:
@@ -145,9 +145,9 @@ Auch hier beginen wir mit der einmaligen Anwendungen des Differentialquotienten 
 	\left. \frac{\partial T}{\partial x} \right|{(i,j,n)}
 	\approx \frac{T_{i+1,j}^n - T_{i,j}^n}{\Delta x}.
 \end{equation}
-Zusätzlich bestimmen wir die Rückwärtsdifferenz
+Zusätzlich bestimmen wir den Differentialquotienten an einem vorangehenden Gitterpunkt
 \begin{equation}
-	\left. \frac{\partial T}{\partial x} \right|{(i,j,n)}
+	\left. \frac{\partial T}{\partial x} \right|{(i-1,j,n)}
 	\approx \frac{T_{i,j}^n - T_{i-1,j}^n}{\Delta x},
 \end{equation}
 um mittels einer letzen Anwendung des Differentialquotienten die Änderung dieser beiden Änderungen, also genau das was die zweite Ableitung beschreibt, diskret zu bestimmen
@@ -186,7 +186,7 @@ womit die diskretisierung der Wärmeleitungsgleichung mittels der Finite-Differe
 \label{parallelisierung:sec:update_formel}
 
 
-Aufgrund der lokalität und kausalität der Feldgleichungen ist die Temperatur eines Gitterpunkts \( (x_i, y_j)\) zu einem bestimmten Zeitpunkt in der Zukunft \( (t^n)\) sprich \(T_{i,j}^{n+1}\) nur von dem  vergangenen Zustand eben dieses Gitterpunkts und desen direkten Nachbbaren abhängig.
+Aufgrund der lokalität und kausalität der Feldgleichungen ist die Temperatur eines Gitterpunkts \( (x_i, y_j)\) zu einem bestimmten Zeitpunkt in der Zukunft \( (t_n)\) sprich \(T_{i,j}^{n+1}\) nur von dem  vorangegangenen Zustand eben dieses Gitterpunkts und desen direkten Nachbbaren abhängig.
 Dies ist  in der nach \(T_{i,j}^{n+1}\) umgestellten Formel (\ref{parallelisierung:eq:update_formula_unsorted}) ersichtlich:
 \begin{equation}
 	\label{parallelisierung:eq:update_formula_sorted}
@@ -223,7 +223,7 @@ Nun sind wir in der Lage, Formel \eqref{parallelisierung:eq:update_formula_sorte
 \end{equation}
 Diese Formel wird als explizite Updateformel bezeichent, da sie iterativ auf Grundlage von gemesenen Daten oder zuvor berechneten Datenpunkten den nächsten Zeitschritt auswertet.
 
-Es ist nun klar ersichtlich, dass die Temperatur an einem Punkt (\(x_i, y_j\)) zu einem gegebenen Zeitpunkt \(t^{n+1}\)  von der Temperatur an diesem Punkt zum Zeitpunkt \(t^n\) und der Wärmeflussbilanz zu den 4 direkten Nachbarquadraten abhängig ist.
+Es ist nun klar ersichtlich, dass die Temperatur an einem Punkt (\(x_i, y_j\)) zu einem gegebenen Zeitpunkt \(t_{n+1}\)  von der Temperatur an diesem Punkt zum Zeitpunkt \(t_n\) und der Wärmeflussbilanz zu den 4 direkten Nachbarquadraten abhängig ist.
 
 \subsubsection{Stabilitätskriterien}
 
@@ -393,11 +393,3 @@ wodurch die Simulation wieder stabil wird. Die Konvergenz wird nach 315 Iteratio
 	\caption{\(15\times 15\)-Gitter, \(\lambda = 0.188\), stabil nach Konvergenz.}
 	\label{parallelisierung:fig:simulation_15x15_0.188_konv}
 \end{figure}
-
-
-
-
-
-
-
-
