@@ -9,16 +9,17 @@
 \section{Gausssche Krümmung
 \label{mongeampere:section:teil1}}
 \kopfrechts{Gausssche Krümmung}
-Damit wir verstehen wie die monge-ampèresche Gleichung mit der 
+Damit wir verstehen, wie die monge-ampèresche Gleichung mit der 
 Krümmung einer Fläche zusammenhängt, brauchen wir zuerst eine Methode diese 
 Krümmug zu beschreiben.
 Die Herleitungen in diesem Kapitel basieren auf \cite{mongeampere:smirnow}.
 Wir betrachten dabei die Fläche
 \begin{equation}
-  x = \varphi(u,v), \quad y = \psi(u,v), \quad z = \omega(u,v)
+  x = \varphi(u,v), \quad y = \psi(u,v), \quad z = \omega(u,v).
   \label{mongeampere:areaparam}
 \end{equation}
 Die Fläche kann man in der Parameterform auch als Radiusvektor
+\index{Parameterform}%
 \begin{equation}
   \vec r (u, v) =
   \begin{pmatrix}
@@ -32,16 +33,20 @@ schreiben.
 Leitet man diesen Radiusvektor nach den Parametern $u$ und $v$ ab, bekommnt man zwei Tangentialvektoren
 $\vec r_u$ und $\vec r_v$,
 mit welchen die Flächennormale 
+\index{Flächennormale}%
 \begin{equation}
-  \vec m = \frac{\vec r_u \times \vec r_v}{\sqrt{(\vec r_u \times \vec r_v)^2}} 
+  \vec m = \frac{\vec r_u \times \vec r_v}{\!\sqrt{(\vec r_u \times \vec r_v)^2}} 
   \label{mongeampere:norm}
 \end{equation}
 beschrieben werden kann, wobei $(\cdot)^2$ für das Skalarprodukt eines Vektors mit sich selber steht.
 
 \subsection{Erste Fundamentalform
 \label{mongeampere:subsection:finibus}}
-Die erste Fundamentalform beschreibt die innere Geometrie einer Fläche.
+Die \emph{erste Fundamentalform} beschreibt die innere Geometrie einer Fläche.
+\index{erste Fundamentalform}%
+\index{Fundamentalform!erste}%
 Betrachtet man das Quadrat des Bogendifferential einer auf der Fläche 
+\index{Bogendifferential}%
 beschriebenen Kurve $S(u,v)$ so ist 
 \begin{equation}
   \begin{split}
@@ -89,7 +94,7 @@ beschreiben.
 
 Die Koeffizienten der ersten Fundamentalform können auch für das Flächenelement mit
 \begin{equation}
-  d S = |\vec r_u \times \vec r_v|\,d u \,d v = \sqrt{EG-F^2} \,d u \,d v.
+  d S = |\vec r_u \times \vec r_v|\,d u \,d v = \!\sqrt{EG-F^2} \,d u \,d v.
   \label{mongeampere:ds}
 \end{equation}
 verwendet werden.
@@ -113,6 +118,7 @@ erhalten wir mit der Produktregel
 \end{equation}
 Der Term $d \vec t / d s = \varrho^{-1} \vec n$ beschreibt einen Vektor in Richtung der Kurvennormalen 
 $\vec n$ mit der Länge $\varrho^{-1}$, welche den inversen Krümmungsradius der Kurve 
+\index{Krümmungsradius}%
 darstellt.
 Somit können wir \eqref{mongeampere:2fund1} umformen nach
 \begin{equation}
@@ -134,6 +140,7 @@ mit den Koeffizienten
 \end{align*}
 Die zweite Fundamentalform beschreibt, wie stark sich die Fläche an einem Punkt
 von der Tangentialebene entfernt, wenn sich die Parameter etwas ändern.
+\index{Tangentialebene}%
 In \eqref{mongeampere:2fund2} haben wir die zweite Fundamentalform in Richtung einer Flächenkurve mit
 dem Quadrat ihres Bogendifferentiales normalisiert.
 Damit erhielten wir den Anteil der Krümmung der Flächenkurve, die von der Krümmung der Fläche kommt.
@@ -141,14 +148,16 @@ Damit erhielten wir den Anteil der Krümmung der Flächenkurve, die von der Krü
 \subsection{Krümmung}
 Um den Begriff der Krümmung auf einer Fläche etwas besser zu verstehen,
 untersuchen wir die Krümmung von Normalenschnitten.
-Ein Normalenschnitt ist die Schnittkurve, zwischen der Fläche und der Ebene, welche durch einen Vektor auf 
+\index{Normalenschnitt}%
+Ein \emph{Normalenschnitt} ist die Schnittkurve, zwischen der Fläche und der Ebene, welche durch einen Vektor auf 
+\index{Schnittkurve}%
 der Tangentialebene der Fläche und der Flächennormalen aufgespannt wird.
 \begin{figure}
   \begin{center}
     \includegraphics[width=0.95\textwidth]{papers/mongeampere/images/schnittkurven.pdf}
   \end{center}
   \caption{Schnittkurve auf einem Ellipsoid. Der Tangentialvektor $\vec t$ und die Flächennormale $\vec m$ spannen eine Ebene auf, 
-  dessen Schnitt mit der Fläche die Schnittkurve $y(t)$ ergibt. In Gelb sind die Parameterkurven von $u$ und $v$ dargestellt.}\label{mongeampere:fig:schnitt}
+  deren Schnitt mit der Fläche die Schnittkurve $y(t)$ ergibt. In Gelb sind die Parameterkurven von $u$ und $v$ dargestellt.}\label{mongeampere:fig:schnitt}
 \end{figure}
 In Abbildung \ref{mongeampere:fig:schnitt} ist ein Beispiel einer solchen Schnittkurve zu sehen.
 Die Schnittkurve ist nur von der Richtung des Tangentialvektors abhängig, welche durch das Verhältnis von $d u$ und $d v$ charakterisiert wird.
@@ -167,29 +176,64 @@ Teilen wir den Zähler durch $d u^2$ erhalten wir den quadratischen Term
   \label{mongemapere:dsik}
 \end{equation}
 Untersucht man die Diskriminante dieses Terms ergeben sich drei Fälle:
+\index{Diskriminante}%
 \begin{enumerate}
   \item $M^2 - LN < 0$: Das Vorzeichen des Krümmungsradius ändert sich nicht, somit geht die Krümmung für alle 
     Flächennormalen in dieselbe Richtung. 
     Ein solcher Punkt wird \emph{elliptisch} genannt. Ein Beispiel ist, wie der 
+\index{elliptischer Punkt}%
+\index{Punkt!elliptisch}%
+\index{Ellipsoid}%
     Name schon vermuten lässt, ein Ellipsoid.
   \item $M^2 - LN > 0$: Das Vorzeichen des Krümmungsradius ändert sich, somit wechselt die Richtung der Krümmung.
     Ein solcher Punkt wird \emph{hyperbolisch} genannt. Ein Beispiel ist ein Sattelpunkt, wie auf einem einschaligen Hyperboloid.
+\index{einschaliges Hyperboloid}%
+\index{Hyperboloid}%
+\index{hyperbolischer Punkt}%
+\index{Punkt!hyperbolisch}%
   \item $M^2 - LN = 0$: Das Vorzeichen des Krümmungsradius ändert sich nicht, jedoch wird der Radius für einen 
     bestimmten Normalenschnitt null. 
     Ein solcher Punkt wird \emph{parabolisch} genannt. Eine parabolische Fläche ist die Mantelfäche eines Zylinders. 
+\index{Mantelfläche}%
+\index{Zylinder}%
+\index{parbolischer Punkt}%
+\index{Punkt!parabolisch}%
 \end{enumerate}
 In Abbildung \ref{mongeampere:arten} sind Beispiele zu den Flächentypen zu sehen.
 \begin{figure}
 	\centering
-	\subfigure[]{
-		\label{mongeampere:ellip}
-		\includegraphics[width=0.31\textwidth]{papers/mongeampere/fig/ellip}}
-	\subfigure[]{
-		\label{mongeampere:sattel}
-		\includegraphics[width=0.31\textwidth]{papers/mongeampere/fig/saddle}} 
-	\subfigure[]{
-		\label{mongeampere:para}
-		\includegraphics[width=0.31\textwidth]{papers/mongeampere/fig/para}}
+\begin{tikzpicture}[>=latex,thick]
+	\pgfmathparse{12.6/6}
+	\xdef\h{\pgfmathresult}
+	\def\l{1.8}
+	\begin{scope}[xshift=-4.2cm]
+		\clip ({-\h},{-\l-0.7}) rectangle (\h,\l);
+		\node at (-0.05,0) {\includegraphics[width=4.8cm]{papers/mongeampere/fig/ellip.pdf}};
+		%\draw[color=red] ({-\h},{-\l}) rectangle (\h,\l);
+		\node at (0,-2.36) {(a)};
+	\end{scope}
+	\begin{scope}
+		\clip ({-\h},{-\l-0.7}) rectangle (\h,\l);
+		\node at (-0.15,0) {\includegraphics[width=4.8cm]{papers/mongeampere/fig/saddle.pdf}};
+		%\draw[color=red] ({-\h},{-\l}) rectangle ({\h},\l);
+		\node at (0,-2.36) {(b)};
+	\end{scope}
+	\begin{scope}[xshift=4.2cm]
+		\clip ({-\h},{-\l-0.7}) rectangle (\h,\l);
+		\node at (0.05,0) {\includegraphics[width=5.0cm]{papers/mongeampere/fig/para.pdf}};
+		%\draw[color=red] ({-\h},{-\l}) rectangle (\h,\l);
+		\node at (0,-2.36) {(c)};
+	\end{scope}
+\end{tikzpicture}
+%	\subfigure[]{
+%		\label{mongeampere:ellip}
+%		\includegraphics[width=0.32\textwidth]{papers/mongeampere/fig/ellip}}
+%	\subfigure[]{
+%		\label{mongeampere:sattel}
+%		\includegraphics[width=0.32\textwidth]{papers/mongeampere/fig/saddle}} 
+%	\subfigure[]{
+%		\label{mongeampere:para}
+%		\includegraphics[width=0.32\textwidth]{papers/mongeampere/fig/para}}
 	\caption{(a) Elliptischer Punkt (b) Hyperbolischer Punkt  (c) Parabolischer Punkt. In rot und grün sind die jeweiligen Hautpkrümmungen zu sehen.}
 	\label{mongeampere:arten}\end{figure}
 \subsubsection{Hauptkrümmungsradien}
@@ -208,7 +252,8 @@ zu lösen.
 \subsection{Gausssche Krümmung}
 Die Krümmung wie wir sie in \eqref{mongeampere:2fund2} beschrieben haben hat das Problem, dass
 ihr Vorzeichen abhängig von der Normalenrichtung ist.
-Die gausssche Krümmung ist ein Krümmungsmass, welches von solchen Faktoren unabhängig ist.
+Die \emph{gausssche Krümmung} ist ein Krümmungsmass, welches von solchen Faktoren unabhängig ist.
+\index{gausssche Krümmung}%
 Sie is definiert als 
 \begin{equation}
   K = \frac{1}{R_1 R_2} = \frac{LN-M^2}{EG-F^2}.
@@ -220,9 +265,10 @@ Ausserdem lässt sich anhand des Vorzeichens bestimmen, ob ein Punkt elliptisch,
 ist, da die Diskriminante von \eqref{mongemapere:dsik} im Zähler ist.
 
 Eine interessante Eigenschaft, welche Gauss als \emph{Theorema egregium} publiziert hat, ist, dass
+\index{Theorema Egregium}%
 die gausssche Krümmung mit den Koeffizienten der ersten Fundamentalform und ihren Ableitungen beschrieben werden kann.
 Das bedeutet, dass die innere Geometrie einer Fläche bestimmt, welche gausssche Krümmung sie hat.
-Im Umkehrschluss folgt, dass sich eine Fläche nicht auf eine andere Fläche mit einer anderen Krümmung abbilden
+Im Umkehrschluss folgt, dass sich eine Fläche nicht auf eine andere Fläche mit einer anderen gaussschen Krümmung abbilden
 lässt, ohne das Längen oder Winkel gestreckt werden.
 Dieses Theorem erklärt also, wieso es keine längen- und winkeltreue flache Abbildungen der Erdoberfläche gibt.
 
