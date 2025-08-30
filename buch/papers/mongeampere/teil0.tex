@@ -14,20 +14,20 @@ Die monge-ampèresche Gleichung ist
   \label{mongeampere:eq:mongeampere}
 \end{equation}
 wobei $D$ die hessesche Matrix
-\begin{equation}
+\begin{equation*}
   D^2 u =
 \renewcommand{\arraystretch}{1.7}
   \begin{pmatrix}
-    \displaystyle \frac{\partial^2 u}{\partial x_1^2\mathstrut}
+    \displaystyle \frac{\partial^2 u}{\partial x_{1\mathstrut}^2\mathstrut}
 	& \dots
-		&\displaystyle \frac{\partial^2 u}{\partial x_1 \,\partial x_n\mathstrut} \\
+		&\displaystyle \frac{\partial^2 u}{\partial x_{1\mathstrut}^{\phantom{2}} \,\partial x_{n\mathstrut}^{\phantom{2}}\mathstrut} \\[-2pt]
   \vdots & \ddots & \vdots \\
-  \displaystyle \frac{\partial u}{\partial x_n \,\partial x_1\mathstrut}
+  \displaystyle \frac{\partial^2 u}{\partial x_{n\mathstrut}^{\phantom{2}} \,\partial x_{1\mathstrut}^{\phantom{2}}\mathstrut}
 	& \dots
-		&\displaystyle \frac{\partial^2 u}{\partial x_n^2\mathstrut} \\
+		&\displaystyle \frac{\partial^2 u}{\partial x_{n\mathstrut}^2\mathstrut} \\
   \end{pmatrix}
-  \label{mongeampere:eq:hess}
-\end{equation}
+  %\label{mongeampere:eq:hess}
+\end{equation*}
 ist.
 Wenn man die Gleichung ansieht, erkennt man, dass es sich bei ihr um eine partielle
 nicht-lineare Differentialgleichung handelt.
