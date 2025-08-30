@@ -46,9 +46,9 @@ beschriebenen Kurve $S(u,v)$ so ist
 \begin{equation}
   \begin{split}
     d s^2 &= d x^2 + d y^2 + d z^2 \\
-          &= \left(\frac{\partial x}{\partial u}\,d u + \frac{\partial x}{\partial v}\,d v  \right)^2
-          + \left(\frac{\partial z}{\partial u}\,d u + \frac{\partial z}{\partial v}\,d v  \right)^2
-          + \left(\frac{\partial z}{\partial u}\,d u + \frac{\partial z}{\partial v}\,d v  \right)^2.
+          &= \biggl(\frac{\partial x}{\partial u}\,d u + \frac{\partial x}{\partial v}\,d v  \biggr)^2
+          + \biggl(\frac{\partial z}{\partial u}\,d u + \frac{\partial z}{\partial v}\,d v  \biggr)^2
+          + \biggl(\frac{\partial z}{\partial u}\,d u + \frac{\partial z}{\partial v}\,d v  \biggr)^2.
   \end{split}
   \label{mongeampere:bogdiff}
 \end{equation}
@@ -60,18 +60,18 @@ Rechnet man die Klammern aus, erhält man
 mit
 \begin{equation*}
 \begin{aligned}
-     E(u,v) &= \left(\frac{\partial x}{\partial u} \right)^2 +
-     \left(\frac{\partial y}{\partial u} \right)^2 +
-     \left(\frac{\partial z}{\partial u} \right)^2 
+     E(u,v) &= \biggl(\frac{\partial x}{\partial u} \biggr)^2 +
+     \biggl(\frac{\partial y}{\partial u} \biggr)^2 +
+     \biggl(\frac{\partial z}{\partial u} \biggr)^2 
             &&= \vec r_u^2\\
      F(u,v) &= 
      \frac{\partial x}{\partial u} \cdot \frac{\partial x}{\partial v} +
      \frac{\partial y}{\partial u} \cdot \frac{\partial y}{\partial v} +
      \frac{\partial z}{\partial u} \cdot \frac{\partial z}{\partial v}
             &&= \vec r_u \cdot \vec r_v \\
-      G(u,v) &= \left(\frac{\partial x}{\partial v} \right)^2 +
-     \left(\frac{\partial y}{\partial v} \right)^2 +
-     \left(\frac{\partial z}{\partial v} \right)^2 
+      G(u,v) &= \biggl(\frac{\partial x}{\partial v} \biggr)^2 +
+     \biggl(\frac{\partial y}{\partial v} \biggr)^2 +
+     \biggl(\frac{\partial z}{\partial v} \biggr)^2 
              &&= \vec r_v ^2
   \label{mongeampere:1fundbed}
 \end{aligned}
@@ -96,14 +96,14 @@ verwendet werden.
 
 \subsection{Zweite Fundamentalform}
 Die zweite Fundamentalform befasst sich mit der äusseren Geometrie einer 
-Fläche und beschreibt wie sich die Tangente entlang einer Flächenkurve verändert.
-Dafür betrachten wir wieder die Kurve $S(u,v)$ mit einem Tangenteneinheitsvektor 
-$\vec t$;
+Fläche und beschreibt, wie sich die Tangente entlang einer Flächenkurve verändert.
+Dafür betrachten wir wieder die Kurve $S(u,v)$ mit einem Tangentialeinheitsvektor 
+$\vec t$.
 Da die Kurve auf der Fläche liegt, ist $\vec t$ in jedem Punkt senkrecht auf der 
 Flächennormale $\vec m$, womit $\vec t \cdot \vec m = 0$ gilt. 
 Berechnen wir nun 
 \begin{equation}
-  \frac{d }{d s}(\vec t \cdot \vec m)
+  \frac{d }{d s}(\vec t \cdot \vec m),
   \label{mongeampere:2fund0}
 \end{equation}
 erhalten wir mit der Produktregel
@@ -116,7 +116,7 @@ $\vec n$ mit der Länge $\varrho^{-1}$, welche den inversen Krümmungsradius der
 darstellt.
 Somit können wir \eqref{mongeampere:2fund1} umformen nach
 \begin{equation}
-  \frac{\vec n \cdot \vec m}{\varrho} = - \frac{d \vec r \cdot d \vec m }{d s^2} 
+  \frac{\vec n \cdot \vec m}{\varrho} = - \frac{d \vec r \cdot d \vec m }{d s^2},
   \label{mongeampere:2fund2}
 \end{equation}
 Rechnet man den Zähler als Funktion der Parameter $u, v$ aus, erhält man die zweite 
@@ -140,7 +140,7 @@ Damit erhielten wir den Anteil der Krümmung der Flächenkurve, die von der Krü
 
 \subsection{Krümmung}
 Um den Begriff der Krümmung auf einer Fläche etwas besser zu verstehen,
-untersuchen wir die Krümmung von Normalenschnitte.
+untersuchen wir die Krümmung von Normalenschnitten.
 Ein Normalenschnitt ist die Schnittkurve, zwischen der Fläche und der Ebene, welche durch einen Vektor auf 
 der Tangentialebene der Fläche und der Flächennormalen aufgespannt wird.
 \begin{figure}
@@ -166,7 +166,7 @@ Teilen wir den Zähler durch $d u^2$ erhalten wir den quadratischen Term
    L + 2M \frac{d v}{d u} + N \frac{d v^2}{d u ^2}.
   \label{mongemapere:dsik}
 \end{equation}
-Untersucht man die Diskriminante dieses Terms ergeben sich drei Fälle
+Untersucht man die Diskriminante dieses Terms ergeben sich drei Fälle:
 \begin{enumerate}
   \item $M^2 - LN < 0$: Das Vorzeichen des Krümmungsradius ändert sich nicht, somit geht die Krümmung für alle 
     Flächennormalen in dieselbe Richtung. 
@@ -217,7 +217,7 @@ Sie is definiert als
 Da sie die beiden Hauptkrümmungsradien multipliziert, ist sie immer positiv, wenn 
 beide Krümmungradien das gleiche Vorzeichen haben, und negativ, falls sie sich unterscheiden.
 Ausserdem lässt sich anhand des Vorzeichens bestimmen, ob ein Punkt elliptisch, hyperbolisch oder parabolisch 
-ist, da die Diskriminante der zweiten Normalform im Zähler ist.
+ist, da die Diskriminante von \eqref{mongemapere:dsik} im Zähler ist.
 
 Eine interessante Eigenschaft, welche Gauss als \emph{Theorema egregium} publiziert hat, ist, dass
 die gausssche Krümmung mit den Koeffizienten der ersten Fundamentalform und ihren Ableitungen beschrieben werden kann.
