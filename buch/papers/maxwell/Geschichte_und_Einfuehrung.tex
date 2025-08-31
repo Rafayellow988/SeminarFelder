@@ -9,7 +9,7 @@
 \kopfrechts{Geschichte der Elektrodynamik}
 
 Die Geschichte der Elektrodynamik führt sehr weit zurück.
-Das erste Mal, dass Elektrizität, wenn auch unbewusst, was es wirklich ist, verwendet wurde, war ca. 3100 Jahre v. Chr. im alten Ägypten.
+Das erste Mal, dass Elektrizität, wenn auch unbewusst, was sie wirklich ist, verwendet wurde, war ca. 3100 Jahre v. Chr. im alten Ägypten.
 Dort wurden die Elektroschocks des elektrischen Wels zur Behandlung von Gelenkschmerzen verwendet \cite{maxwell:History_of_bioelectricity}.
 
 Ein wichtiger Meilenstein in der Entdeckung des Magnetismus war die Erfindung des Kompasses im Jahre 200 v. Chr.
@@ -18,7 +18,7 @@ Der Kompass wurde anfangs aber nur für das Wahrsagen verwendet, erst viel spät
 
 Im Zeitraum von 1269 bis 1767 wurden die Phänomene der Elektrodynamik erstmals genauer beobachtet.
 So beschrieb 1269 der Franzose Petrus Peregrinus durch Experimente als erster die Polarität von Magneten.
-Während des 17. Jahrhunderts wurde viel mit Reibungselektrizität experimentiert. Der Begriff der ``Elektrizität'' wurde erstmals verwendet und die Unterschiede magnetischer und elektrischer Wirkung wurde erkannt.
+Während des 17. Jahrhunderts wurde viel mit Reibungselektrizität experimentiert. Der Begriff der ``Elektrizität'' wurde erstmals verwendet und die Unterschiede magnetischer und elektrischer Wirkung wurden erkannt.
 Im Jahr 1767 erkannte Joseph Priestley, dass die elektrische Kraft quadratisch zum Abstand abnimmt, ein erster Hinweis auf das Coulomb-Gesetz \cite{maxwell:History_of_electromagnetic_theory}.
 
 \subsection{Erste wissenschaftliche Erkenntnisse}
@@ -43,7 +43,7 @@ Er nahm an, dass die Ursache für die Auslenkung des Magnetfeldes ein vom Strom 
 Dies konnte er durch viele Versuche ein wenig später sogar beweisen.
 Ampère fand in diesen Versuchen heraus, dass sich zwei Leiter, in denen die elektrische Stromrichtung gleich ist, anziehen, und dass sie eine Abstossungskraft ausüben, wenn die Stromrichtung entgegengesetzt ist.
 Er formulierte eine Gleichung, die besagt, dass elektrische Ströme magnetische Wirbelfelder hervorrufen, deren Stärke durch die Stromstärke gegeben ist.
-Das Gesetz wird ampèresches Gesetz oder auch Durchflutungssatz gennant und wird in Integralform
+Das Gesetz wird ampèresches Gesetz oder auch Durchflutungssatz genannt und wird in Integralform
 \begin{equation}
 \label{maxwell:equasion:ampere}
 \oint_{\d A}
@@ -58,7 +58,7 @@ d\vec{s}
 =
 I
 \end{equation}
-oder als differentielle Form
+oder in differentieller Form
 \[
 \nabla
 \times
@@ -78,14 +78,14 @@ Mit Hilfe des allgemeinen Satzes von Stokes (\ref{buch:green:green:satz:stokes})
 =
 \int_{\d M} \omega
 \]
-können wir die differentielle Form der Ampère-Gleichung herleiten.
+und der Gleichung \eqref{maxwell:equasion:ampere} können wir die differentielle Form der Ampère-Gleichung herleiten.
 Dazu definieren wir eine 1-Form $\alpha$, die das $H$-Feld beschreibt:
 \[
 \alpha
 =
 H_x \, dx + H_y \, dy + H_z \, dz . 
 \]
-Berechnen wir nun als erstes die äussere Ableitung von $\alpha$
+Wir berechnen als erstes die äussere Ableitung von $\alpha$
 \begin{align*}
 	d\alpha 
 	&=
@@ -184,7 +184,7 @@ Dabei stellt sich noch die Frage, warum die Integrale beim letzten Schritt wegge
 	\end{align*}
 	Dieser Widerspruch zeigt, dass $\vec{X} = 0$ sein muss.
 \end{proof}
-Das Lemma \ref{maxwell:lemma:ampere} kann nun auf Gleichung \eqref{maxwell:equation:ampere:differential} angewendet werden, und wir erhalten dadurch die Differentialform des ampèreschen Gesetzes ohne Integrale.
+Das Lemma \ref{maxwell:lemma:ampere} kann nun auf Gleichung \eqref{maxwell:equation:ampere:differential} angewendet werden, und wir erhalten dadurch die differentielle Form des ampèreschen Gesetzes ohne Integrale.
 
 
 \subsection{Entdeckung des Induktionsgesetzes}
@@ -202,14 +202,14 @@ Um das zu erreichen, muss der Käfig aus elektrisch leitfähigem Material besteh
 
 Faraday leistete in seinem Leben noch weitere Beiträge im Bereich der Elektrizität und des Magnetismus. 
 Er war einer der Ersten, der nicht an ein Fernwirkungsgesetz glaubte.
-Elektrische Kräfte oder auch die Gravitationskraft sollen durch Kraftlinien und Felder zu Stande kommen, was sich später auch bewahrheitete.
+Elektrische Kräfte oder auch die Gravitationskraft sollen durch Kraftlinien und Felder zustande kommen, was sich später auch bewahrheitete.
 Aussergewöhnlich war zudem auch seine Arbeitsweise.
 Seine veröffentlichten Errungenschaften beinhalteten wenig bis keine mathematischen Beweise, er konnte alles rein durch Experimente verifizieren \cite{maxwell:Michael_Faraday}.
 \begin{quote}
 	„Faraday sah im Geiste die den ganzen Raum durchdringenden Kraftlinien, wo die Mathematiker fernwirkende Kraftzentren sahen; Faraday sah ein Medium, wo sie nichts als Abstände sahen; Faraday suchte das Wesen der Vorgänge in den reellen Wirkungen, die sich in dem Medium abspielten, jene waren aber damit zufrieden, es in den fernwirkenden Kräften der elektrischen Fluida gefunden zu haben…“ \cite{maxwell:zitat}
 \end{quote}
 
-\subsection{Entdeckung des gaussschen Gesetzes}
+\subsection{Entdeckung des gaussschen Gesetzes für elektrische Felder}
 
 Carl Friedrich Gauss war ein sehr bedeutender Mathematiker und Theoretiker.
 Bereits während seiner Lebenszeit wurde er als ``Fürst der Mathematiker'' bezeichnet.
@@ -222,16 +222,16 @@ Daraus lässt sich schliessen, dass das Integral des elektrischen Flusses über 
 \label{maxwell:equasion:elektrisch}
 \oint_{A=\d V} \vec{D} \cdot d\vec{s}
 =
-\int_{V} \rho_{\text{frei}}\, dv
+\int_{V} \rho_{\text{frei}}\, dV
 =
 Q_{\text{frei}} ,
 \end{equation}
-wobei $\rho_{\text{frei}}$ die freie Ladungsdichte und $Q_{\text{frei}}$ die gesamten freien Ladungen in der Kugel sind. $\varepsilon_0$ entspricht der Permitivität im Vakuum. Dies ist auch gerade eine Anwendung vom gaussschen Integralsatz aus der Mathematik.
+wobei $\rho_{\text{frei}}$ die freie Ladungsdichte und $Q_{\text{frei}}$ die gesamten freien Ladungen in der Kugel sind. $\varepsilon_0$ entspricht der Permittivität im Vakuum. Dies ist auch gerade eine Anwendung vom gaussschen Integralsatz aus der Mathematik.
 Die Gleichung lässt sich auch mit der elektrischen Feldstärke ausdrücken. Da $\vec{D} = \varepsilon_0 \vec{E}$ gilt, folgt
 \[
 \oint_{A=\d V} \vec{E} \cdot d\vec{s}
 =
-\frac{1}{\varepsilon_0}\int_{V} \rho\, dv
+\frac{1}{\varepsilon_0}\int_{V} \rho\, dV
 =
 \frac{Q}{\varepsilon_0} .
 \]
@@ -329,13 +329,13 @@ Nun können wir in bei der Integralform des Satzes von Gauss
 \begin{align*}
 	\oint_{A=\d V} \vec{E} \cdot d\vec{s}
 	&=
-	\frac{1}{\varepsilon_0}\int_{V} \rho \, dv
+	\frac{1}{\varepsilon_0}\int_{V} \rho \, dV
 	\\
 	\intertext{den Integralsatz \eqref{maxwell:equasion:gauss:gauss} einsetzen:}
 	\int_{V}
-	(\nabla \cdot \vec{E}) \, dv
+	(\nabla \cdot \vec{E}) \, dV
 	&=
-	\frac{1}{\varepsilon_0}\int_{V} \rho \, dv .
+	\frac{1}{\varepsilon_0}\int_{V} \rho \, dV .
 	\\
 	\intertext{Dadurch folgt mit Hilfe des Lemma \ref{maxwell:lemma:gauss} die differentielle Form}
 	\nabla \cdot \vec{E}
@@ -455,7 +455,7 @@ Somit führte Maxwell den Verschiebungsstrom
 \vec{J}_D = \frac{\d \vec{D}}{\d t}
 \]
 ein, welcher diesen Widerspruch beseitigte.
-Der vollständige Durchflutungsstatz lautet nun in Integralform
+Der vollständige Durchflutungssatz lautet nun in Integralform
 \[
 \oint_{\d A}
 \vec{H}
@@ -494,7 +494,7 @@ Für dieses Phänomen entwickelte Maxwell das gausssche Gesetz für Magnetfelder
 \]
 Der Name kommt vom gaussschen Gesetz für elektrische Felder \eqref{maxwell:equasion:elektrisch}, welches starke Ähnlichkeiten besitzt.
 Die differentielle Form ist sehr intuitiv, denn wenn die Divergenz eines Feldes gleich null ist, gibt es keine Quellen. 
-In unserem Fall hier existieren keine magnetischen Quellen oder Monopole \cite{maxwell:equasions}.
+In unserem Fall bedeutet dies, dass keine magnetischen Quellen oder Monopole existieren \cite{maxwell:equasions}.
 
 Maxwells Entdeckungen legten den Grundstein für die Relativitätstheorie und der Quantenphysik.
 Viele Physiker sehen in ihm den einflussreichsten Wissenschaftler des 19. Jahrhunderts, vergleichbar mit Newton und Einstein.
@@ -502,7 +502,7 @@ Albert Einstein selbst beschrieb Maxwells Arbeiten als die tiefgründigsten und 
 
 Die Gleichungen von Maxwell hatten anfangs aber nicht die Form, wie wir sie heute kennen. 
 Seine gesamten Leistungen der Elektrodynamik umfassen 20 Gleichungen.
-Der Mann, welche sie in der modernen Form der Vektoranalysis formulierte, war Oliver Heaviside, ein autodidaktischer Mathematiker, im Jahre 1884 \cite{maxwell:heaviside}.
+Der Mann, welcher sie in der modernen Form der Vektoranalysis formulierte, war Oliver Heaviside, ein autodidaktischer Mathematiker, im Jahre 1884 \cite{maxwell:heaviside}.
 
 Die Geschichte der Elektrodynamik brachte also vier Gleichungen
 \begin{align*}
